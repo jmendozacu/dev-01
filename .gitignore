@@ -29,7 +29,7 @@ __MACOSX
 /app/design/frontend/default/iphone/
 /app/design/frontend/default/modern/
 /app/design/frontend/enterprise/default
-/app/design/frontend/rwd/
+
 /app/design/install/
 /app/etc/applied.patches.list
 /app/etc/config.xml
@@ -108,7 +108,7 @@ __MACOSX
 /skin/frontend/default/iphone/
 /skin/frontend/default/modern/
 /skin/frontend/enterprise
-/skin/frontend/rwd/
+
 /skin/install/
 /var/
 /media
