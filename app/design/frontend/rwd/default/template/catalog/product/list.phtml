@@ -49,6 +49,7 @@
         <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
             <?php // Product Image ?>
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+            <?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
                 <?php /* Based on the native RWD styling, product images are displayed at a max of ~400px wide when viewed on a
                         one column page layout with four product columns from a 1280px viewport. For bandwidth reasons,
                         we are going to serve a 300px image, as it will look fine at 400px and most of the times, the image
@@ -125,6 +126,7 @@
             <?php endif*/ ?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                    <?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
                     <?php $_imgSize = 210; ?>
                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
                          src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
