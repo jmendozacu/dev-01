@@ -1,0 +1,213 @@
+<style type="text/css">
+    #backgroundPopup{
+    display:none;
+    position:fixed;
+    _position:absolute; /* hack for internet explorer 6*/
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    background:#000000;
+    border:1px solid #cecece;
+    z-index:1;
+    }
+    #forgot-password-content{
+    display:none;
+    position:fixed;
+    _position:absolute; /* hack for internet explorer 6*/
+/*    height:384px;*/
+    width:408px;
+    background:#FFFFFF;
+    border:2px solid #cecece;
+    z-index:9999;
+    padding:12px;
+    font-size:13px;
+    }
+    #forgot-password-content h1{
+    text-align:left;
+    color:#6FA5FD;
+    font-size:22px;
+    font-weight:700;
+    border-bottom:1px dotted #D3D3D3;
+    padding-bottom:2px;
+    margin-bottom:20px;
+    }
+    #forgot-password-contentClose{
+    font-size:14px;
+    line-height:14px;
+    right:6px;
+    top:4px;
+    position:absolute;
+    color:#6fa5fd;
+    font-weight:700;
+    display:block;
+    }
+
+</style>
+<div id="login">
+    <?php echo $this->getChildHtml('login_before')?>
+    <div id="registered_login">
+        <h3 class="mastercheckout-title"><?php echo $this->__('Login') ?></h3>
+        <div class="inner">
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post">
+        <fieldset>
+            <ul class="form-list">
+                <li>
+                    <span for="login-email" class="required"><?php echo $this->__('Email Address') ?><em>*</em></span>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry validate-email" id="login-email" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" />
+                    </div>
+                </li>
+                <li>
+                    <span for="login-password" class="required"><?php echo $this->__('Password') ?><em>*</em></span>
+                    <div class="input-box">
+                        <input type="password" class="input-text required-entry" id="login-password" name="login[password]" />
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+            </ul>
+            <input name="context" type="hidden" value="checkout" />
+        </fieldset>
+        </form>
+
+        </div>
+            <!--<p class="required"><?php echo $this->__('* Required Fields') ?></p>-->
+        <div class="buttons-set buttons-set_width">
+             <button type="submit" class="button" onclick="onepageLogin(this)"><span><span><?php echo $this->__('Login') ?></span></span></button>
+<!--            <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-right forgot"><?php echo $this->__('Forgot your password?') ?></a>-->
+            <label id="mastercheckout-forgot" class="f-right forgot"><?php echo $this->__('Forgot your password?') ?></label>
+        </div>
+        <div id="forgot-password-content"></div>
+    </div>
+
+    <div id="new_user_login">
+                <h3 class="mastercheckout-title"><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Checkout as a Guest or Register') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></h3>
+		<div class="inner">
+        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <!--<p><?php echo $this->__('Register with us for future convenience:') ?></p>-->
+        <?php else: ?>
+<!--            <p><strong><?php echo $this->__('Register and save time!') ?></strong><br />
+            <?php echo $this->__('Register with us for future convenience:') ?></p>
+            <ul>
+                <li><?php echo $this->__('Fast and easy check out') ?></li>
+                <li><?php echo $this->__('Easy access to your order history and status') ?></li>
+            </ul>-->
+        <?php endif; ?>
+        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <ul class="form-list checkout_padd ">
+                <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+                <li class="control">
+                    <input type="radio" name="checkout_method" id="login:guest" value="guest"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_GUEST): ?> checked="checked"<?php endif; ?> class="radio" /><label for="login:guest"><?php echo $this->__('Checkout as Guest') ?></label>
+                </li>
+                <?php endif; ?>
+                <li class="control">
+                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
+                </li>
+            </ul>
+			
+<!--<h4><?php echo $this->__('Register and save time!') ?></h4>
+            <p><?php echo $this->__('Register with us for future convenience:') ?></p>
+            <ul class="ul">
+                <li><?php echo $this->__('Fast and easy check out') ?></li>
+                <li><?php echo $this->__('Easy access to your order history and status') ?></li>
+            </ul>-->
+        <?php else: ?>
+            <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
+        <?php endif; ?>
+            </div>
+<!--        <div class="buttons-set">
+            <p class="required">&nbsp;</p>
+            <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
+                <button id="onepage-guest-register-button" type="button" class="button" onclick="checkout.setMethod('payment');"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+            <?php else: ?>
+                <form action="<?php echo $this->getUrl('persistent/index/saveMethod'); ?>">
+                    <button id="onepage-guest-register-button" type="submit" class="button"><span><span><?php echo $this->__('Register') ?></span></span></button>
+                </form>
+            <?php endif; ?>
+        </div>-->
+    </div>
+</div>
+<div id="forgot_hidden" style="display:none"></div>
+<div id="backgroundPopup"></div>
+<script type="text/javascript">
+//<![CDATA[
+    var loginForm = new VarienForm('login-form', true);
+    $('login-email').observe('keypress', bindLoginPost);
+    $('login-password').observe('keypress', bindLoginPost);
+    function bindLoginPost(evt){
+        if (evt.keyCode == Event.KEY_RETURN) {
+            loginForm.submit();
+        }
+    }
+    function onepageLogin(button)
+    {
+        if(loginForm.validator && loginForm.validator.validate()){
+            button.disabled = true;
+            loginForm.submit();
+        }
+    }
+//]]>
+</script>
+<?php
+    $registerParam = $this->getRequest()->getParam('register');
+    if ($registerParam || $registerParam === ''):
+?>
+    <script type="text/javascript">
+    //<![CDATA[
+        document.observe("dom:loaded", function() {
+            if($('login:register')) {
+                $('login:register').checked = true;
+                checkout.setMethod();
+            }
+        })
+    //]]>
+    </script>
+<?php endif; ?>
+
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(document).ready(function(){
+        jQuery("#mastercheckout-forgot").click(function(){
+            //centering with css
+            forgotPassword("<?php echo $this->getUrl('mastercheckout/account/forgotpassword',array('_secure'=>true)) ?>");
+            centerPopup("forgot-password-content");
+            //load popup
+            loadPopup("forgot-password-content");
+        });
+
+        //CLOSING POPUP
+        //Click the x event!
+        jQuery("#forgot-password-contentClose").click(function(){
+                disablePopup("forgot-password-content");
+        });
+        //Click out event!
+        jQuery("#backgroundPopup").click(function(){
+                disablePopup("forgot-password-content");
+        });
+        //Press Escape event!
+        jQuery(document).keypress(function(e){
+                if(e.keyCode==27 && popupStatus==1){
+                        disablePopup("forgot-password-content");
+                }
+        });
+
+        var forgotPassword = function(url){
+            var request = new Ajax.Request(
+                url,
+                {method: 'post',
+                onComplete: function(transport) {
+                    if (200 == transport.status){
+                        jQuery("#forgot_hidden").html(transport.responseText);
+                        jQuery("#forgot-password-content").html(jQuery("#form-validate"))
+                        jQuery("#forgot_hidden").html("");
+                    }
+                  }
+                }
+            );
+        }
+
+        
+    });
+//]]>
+</script>
