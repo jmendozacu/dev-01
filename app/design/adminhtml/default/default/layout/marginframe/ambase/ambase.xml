@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author MarginFrame Team
+ * @copyright Copyright (c) 2015 MarginFrame (http://www.marginframe.com)
+ * @package MarginFrame_Base
+ */
+-->
+<layout>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addCss">
+                <name>css/marginframe/ambase/style.css</name>
+            </action>
+            <action method="addJs">
+                <name>marginframe/ambase/store.js</name>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+    <ambase_adminhtml_base_ajax>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>empty.phtml</template>
+            </action>
+        </reference>
+    </ambase_adminhtml_base_ajax>
+    <default>
+        <reference name="root">
+            <reference name="notifications">
+                <block type="ambase/adminhtml_promo" name="ampromo" as="ampromo" after="messages" template="marginframe/ambase/promo.phtml"></block>
+            </reference>
+            
+            <reference name="content">
+                <block type="ambase/adminhtml_update" name="amupdate" as="amupdate" template="marginframe/ambase/update.phtml"></block>
+            </reference>
+                
+        </reference>
+    </default>
+</layout>

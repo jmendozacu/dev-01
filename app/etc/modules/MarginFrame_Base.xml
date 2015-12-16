@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author MarginFrame Team
+ * @copyright Copyright (c) 2015 MarginFrame (http://www.marginframe.com)
+ * @package MarginFrame_Base
+ */
+-->
+<config>
+    <modules>
+        <MarginFrame_Base>
+            <active>true</active>
+            <codePool>local</codePool>
+            <edition>community</edition>
+        </MarginFrame_Base>
+    </modules>
+</config>
