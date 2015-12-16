@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <templates_master>
+            <label>Templates-master</label>
+            <sort_order>195</sort_order>
+        </templates_master>
+    </tabs>
+    <sections>
+        <highlight translate="label" module="highlight">
+            <label>Highlight</label>
+            <tab>templates_master</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>834</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <pages translate="label" module="cms">
+                    <label>Pages</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <featured_heading translate="label" module="highlight">
+                            <label>Featured</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_heading>
+                        <featured_title translate="label" module="cms">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_title>
+                        <featured_url translate="label" module="cms">
+                            <label>URL Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_url>
+
+                        <onsale_heading translate="label" module="highlight">
+                            <label>On Sale</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </onsale_heading>
+                        <onsale_title translate="label" module="cms">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </onsale_title>
+                        <onsale_url translate="label" module="cms">
+                            <label>URL Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </onsale_url>
+
+                        <new_heading translate="label" module="highlight">
+                            <label>New Products</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </new_heading>
+                        <new_title translate="label" module="cms">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </new_title>
+                        <new_url translate="label" module="cms">
+                            <label>URL Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </new_url>
+
+                        <bestsellers_heading translate="label" module="highlight">
+                            <label>Bestsellers</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers_heading>
+                        <bestsellers_title translate="label" module="cms">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers_title>
+                        <bestsellers_url translate="label" module="cms">
+                            <label>URL Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers_url>
+                        <bestsellers_period translate="label" module="highlight">
+                            <label>Calculation period, days</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bestsellers_period>
+
+                        <popular_heading translate="label" module="highlight">
+                            <label>Popular Products</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popular_heading>
+                        <popular_title translate="label" module="cms">
+                            <label>Page Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popular_title>
+                        <popular_url translate="label" module="cms">
+                            <label>URL Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popular_url>
+                        <popular_period translate="label" module="highlight">
+                            <label>Calculation period, days</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popular_period>
+                    </fields>
+                </pages>
+            </groups>
+        </highlight>
+    </sections>
+</config>
