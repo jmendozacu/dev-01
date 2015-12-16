@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author		Sashas
+ * @category    Sashas
+ * @package     Sashas_NotificationBar
+ * @copyright   Copyright (c) 2014 Sashas IT Support Inc. (http://www.sashas.org)
+ * @license    http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+ */
+-->
+<config>
+    <modules>
+        <Sashas_NotificationBar>
+            <version>0.1.1</version>
+        </Sashas_NotificationBar>
+    </modules>
+	<global>
+         <blocks>
+        	<notificationbar>
+        		<class>Sashas_NotificationBar_Block</class>        		
+        	</notificationbar>
+        </blocks> 
+        <helpers>
+        	<notificationbar>
+        		<class>Sashas_NotificationBar_Helper</class>        		
+        	</notificationbar>
+        </helpers> 
+        <models>
+        	<notificationbar>
+        		<class>Sashas_NotificationBar_Model</class> 
+        	</notificationbar>         	        
+        </models>         
+		<resources>
+            <notificationbar_setup>
+                <setup>
+                    <module>Sashas_NotificationBar</module>                 
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </notificationbar_setup>
+            <notificationbar_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </notificationbar_write>
+            <notificationbar_read>
+                <connection> 
+                    <use>core_read</use>
+                </connection>
+            </notificationbar_read>
+		</resources>                         
+	</global>	
+    <frontend>
+        <routers>
+            <notificationbar>
+                <use>standard</use>
+                <args>
+                    <module>Sashas_NotificationBar</module>
+                    <frontName>notificationbar</frontName>
+                </args>
+            </notificationbar>
+        </routers>     
+        <layout>
+            <updates>
+                <notificationbar>
+                    <file>notificationbar.xml</file>
+                </notificationbar>
+            </updates>
+        </layout> 
+    </frontend>	  
+  	<default>
+        <notificationbar>
+            <notificationbar_group>
+                <extension_enabled><![CDATA[0]]></extension_enabled>        
+                <show_bar><![CDATA[0]]></show_bar>
+                <bar_color><![CDATA[#fde073]]></bar_color>
+                <bar_opacity><![CDATA[0.7]]></bar_opacity>
+                <bar_position><![CDATA[absolute]]></bar_position>
+                <bar_calendar>0</bar_calendar>
+                <show_popup><![CDATA[0]]></show_popup>          
+                <popup_color><![CDATA[#DDDDDD]]></popup_color>                                                                      
+            </notificationbar_group>
+        </notificationbar>  		
+    </default>	     	   
+</config>
+
+

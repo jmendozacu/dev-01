@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author		Sashas
+ * @category    Sashas
+ * @package     Sashas_NotificationBar
+ * @copyright   Copyright (c) 2014 Sashas IT Support Inc. (http://www.sashas.org)
+ * @license    http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+ */
+-->
+<config>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+ 			<system>
+ 				<children>
+ 					<config>
+ 						<children>
+ 							<notificationbar translate="title" module="notificationbar">
+ 								<title>Notification Bar</title>
+ 							</notificationbar>
+ 						</children>
+ 					</config>
+ 				</children>
+ 			</system>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>	 
+</config>

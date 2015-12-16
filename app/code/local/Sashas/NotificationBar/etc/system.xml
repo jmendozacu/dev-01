@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author		Sashas
+ * @category    Sashas
+ * @package     Sashas_NotificationBar
+ * @copyright   Copyright (c) 2014 Sashas IT Support Inc. (http://www.sashas.org)
+ * @license    http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+ */
+-->
+<config>
+	  <tabs>
+		<sashas_modules translate="label" module="notificationbar">
+            <label>Sashas Extensions</label>
+            <sort_order>10</sort_order>
+        </sashas_modules>
+	  </tabs>
+	  <sections>
+	  	<notificationbar translate="label" module="notificationbar">
+	  		<label>Notification Bar</label>
+	  		<tab>sashas_modules</tab>
+	  		<sort_order>10000</sort_order>
+	  		<show_in_default>1</show_in_default>
+	  		<show_in_website>1</show_in_website>
+	  		<show_in_store>1</show_in_store>
+	  		<groups>
+	  			<notificationbar_group translate="label" module="notificationbar">
+	  				<label>Notification Settings</label>
+	  				<frontend_type>text</frontend_type>
+	  				<sort_order>1000</sort_order>
+	  				<show_in_default>1</show_in_default>
+	  				<show_in_website>1</show_in_website>
+	  				<show_in_store>1</show_in_store>
+	  				<fields>
+	  					<extension_enabled translate="label">
+	  						<label>Extension Enabled: </label>	  						
+	  						<frontend_type>select</frontend_type>
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>
+	  						<sort_order>10</sort_order>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</extension_enabled>	
+	  					<show_bar translate="label">
+	  						<label>Show Top Bar: </label>	  						
+	  						<frontend_type>select</frontend_type>
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>
+	  						<sort_order>50</sort_order>
+	  						<depends><extension_enabled>1</extension_enabled></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</show_bar>		
+	  					<bar_text translate="label">
+	  						<label>Top Bar Message: </label>	  						
+	  						<frontend_type>textarea</frontend_type>	  					 
+	  						<sort_order>52</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_text>		
+	  					<bar_session translate="label">
+	  						<label>Use Session For Bar: </label>	  	
+	  						<frontend_type>select</frontend_type>					
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>	
+	  						<comment><![CDATA[When this options selected to Yes once [close] clicked bar will not appear for this user again.]]></comment>  						 
+	  						<sort_order>55</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_session>		
+	  					<bar_calendar translate="label">
+	  						<label>Schedule Bar Showing: </label>	  	
+	  						<frontend_type>select</frontend_type>					
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>	
+	  						<comment><![CDATA[When this options selected to Yes From and To fields will be used for calendar.]]></comment>  						 
+	  						<sort_order>56</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_calendar>		  		
+	  					<bar_calendar_from translate="label">
+	  						<label>Schedule Bar Showing From: </label>	  
+	  						<frontend_model>notificationbar/frontend_date</frontend_model>	
+	  						<frontend_type>text</frontend_type>						
+	  						<comment><![CDATA[Show Bar From Date.]]></comment>  						 
+	  						<sort_order>57</sort_order>
+	  						<depends><bar_calendar>1</bar_calendar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_calendar_from>		
+	  					<bar_calendar_to translate="label">
+	  						<label>Schedule Bar Showing To: </label>	  	
+	  						<frontend_type>text</frontend_type>		
+	  						<frontend_model>notificationbar/frontend_date</frontend_model>	 			  						
+	  						<comment><![CDATA[Show Bar To Date.]]></comment>  						 
+	  						<sort_order>58</sort_order>
+	  						<depends><bar_calendar>1</bar_calendar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_calendar_to>		  						  									  					
+	  					<bar_position translate="label">
+	  						<label>Top Bar Display Style: </label>	  						
+	  						<frontend_type>select</frontend_type>	 
+	  						<comment><![CDATA[Value will be used for position in css.]]></comment>  
+	  						<source_model>notificationbar/source_position</source_model>					 
+	  						<sort_order>59</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_position>			  					 
+	  					<bar_color translate="label">
+	  						<label>Top Bar Background Color: </label>	
+	  						<comment><![CDATA[Value will be used for background color in css.]]></comment>  						
+	  						<frontend_type>text</frontend_type>	  					 
+	  						<sort_order>60</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_color>	
+	  					<bar_opacity translate="label">
+	  						<label>Top Bar Transparency Level: </label>	  						
+	  						<frontend_type>text</frontend_type>	  	
+	  						<comment><![CDATA[Value will be used for opacity level in css.]]></comment>  					 
+	  						<sort_order>61</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_opacity>	  	
+	  					<bar_custom_css translate="label">
+	  						<label>Top Bar Additional CSS: </label>	  						
+	  						<frontend_type>textarea</frontend_type>	  	
+	  						<comment><![CDATA[Css will be added after bar styles declaration. Bar selector .sashas-notificationbar]]></comment>  					 
+	  						<sort_order>65</sort_order>
+	  						<depends><show_bar>1</show_bar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</bar_custom_css>	  	  										  					 					
+	  					<show_popup translate="label">
+	  						<label>Show Popup Window: </label>	  						
+	  						<frontend_type>select</frontend_type>
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>
+	  						<sort_order>100</sort_order>
+	  						<depends><extension_enabled>1</extension_enabled></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</show_popup>		  					  
+	  					<popup_text translate="label">
+	  						<label>Popup Message: </label>	  						
+	  						<frontend_type>textarea</frontend_type>	  					 
+	  						<sort_order>152</sort_order>
+	  						<depends><show_popup>1</show_popup></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_text>		
+	  					<popup_custom_html translate="label">
+	  						<label>Top Popup Additional HTML:</label>	  						
+	  						<frontend_type>textarea</frontend_type>	  	
+	  						<comment><![CDATA[Html will be shown inside popup window]]></comment>  					 
+	  						<sort_order>153</sort_order>
+	  						<depends><show_popup>1</show_popup></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_custom_html>	  					
+	  					<popup_session translate="label">
+	  						<label>Use Session For Popup: </label>	  	
+	  						<frontend_type>select</frontend_type>					
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>	
+	  						<comment><![CDATA[When this options selected to Yes once [close] clicked bar will not appear for this user again.]]></comment>  						 
+	  						<sort_order>155</sort_order>
+	  						<depends><show_popup>1</show_popup></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_session>		
+	  					<popup_calendar translate="label">
+	  						<label>Schedule Popup Showing: </label>	  	
+	  						<frontend_type>select</frontend_type>					
+	  						<source_model>adminhtml/system_config_source_yesno</source_model>	
+	  						<comment><![CDATA[When this options selected to Yes From and To fields will be used for calendar.]]></comment>  						 
+	  						<sort_order>156</sort_order>
+	  						<depends><show_popup>1</show_popup></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_calendar>		  		
+	  					<popup_calendar_from translate="label">
+	  						<label>Schedule Popup Showing From: </label>	  
+	  						<frontend_model>notificationbar/frontend_date</frontend_model>	
+	  						<frontend_type>text</frontend_type>						
+	  						<comment><![CDATA[Show Popup From Date.]]></comment>  						 
+	  						<sort_order>157</sort_order>
+	  						<depends><popup_calendar>1</popup_calendar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_calendar_from>		
+	  					<popup_calendar_to translate="label">
+	  						<label>Schedule Popup Showing To: </label>	  	
+	  						<frontend_type>text</frontend_type>		
+	  						<frontend_model>notificationbar/frontend_date</frontend_model>	 			  						
+	  						<comment><![CDATA[Show Popup To Date.]]></comment>  						 
+	  						<sort_order>158</sort_order>
+	  						<depends><popup_calendar>1</popup_calendar></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_calendar_to>		  						  									  							  					 
+	  					<popup_color translate="label">
+	  						<label>Top Popup  Background Color: </label>	
+	  						<comment><![CDATA[Value will be used for background color in css.]]></comment>  						
+	  						<frontend_type>text</frontend_type>	  					 
+	  						<sort_order>160</sort_order>
+	  						<depends><show_popup>1</show_popup></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_color>		  	
+	  					<popup_custom_css translate="label">
+	  						<label>Top Popup Additional CSS: </label>	  						
+	  						<frontend_type>textarea</frontend_type>	  	
+	  						<comment><![CDATA[Css will be added after bar styles declaration. Popup selector .sashas-notificationbar-popup]]></comment>  					 
+	  						<sort_order>165</sort_order>
+	  						<depends><show_popup>1</show_popup></depends>
+	  						<show_in_default>1</show_in_default>
+	  						<show_in_website>1</show_in_website>
+	  						<show_in_store>1</show_in_store>	  						
+	  					</popup_custom_css>	  	  							  										
+	  				</fields>
+	  			</notificationbar_group>
+	  		</groups>
+	  	</notificationbar>
+	  </sections>
+</config>
