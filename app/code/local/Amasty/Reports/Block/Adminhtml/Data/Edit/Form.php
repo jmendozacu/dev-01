@@ -309,7 +309,7 @@ class Amasty_Reports_Block_Adminhtml_Data_Edit_Form extends Mage_Adminhtml_Block
 
     protected function _addFieldset( $form,$hlp, $name,$legend )
     {
-        $skin =  Mage::getDesign()->getSkinUrl('/Amasty/amreports/img/') ;//$this->getSkinUrl('/imagename.jpg');
+        $skin =  Mage::getDesign()->getSkinUrl('amasty/amreports/img/') ;//$this->getSkinUrl('/imagename.jpg');
         if ($legend=='Results') {
             /*
              * <li><a href="#" onclick="jQuery(\'#sorttable\').tableExport({type:\'excel\',escape:\'false\'});"> <img src="'.$skin.'xls.png"> XLS</a></li>
