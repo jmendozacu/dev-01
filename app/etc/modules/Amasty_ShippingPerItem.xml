@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright Amasty 2011
+ */
+-->
+<config>
+    <modules>
+        <Amasty_ShippingPerItem>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Amasty_ShippingPerItem>
+    </modules>
+</config>
