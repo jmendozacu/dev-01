@@ -106,7 +106,8 @@ abstract class Aoe_Scheduler_Controller_AbstractController extends Mage_Adminhtm
         }
 
         if (!$helper->runningAsConfiguredUser(false)) {
-            if (!empty($helper->getConfiguredUser())) {
+            $configuredUser = $helper->getConfiguredUser();
+            if (!empty($configuredUser)) {
                 // User is configured and doesn't match
                 $this->_getSession()->addError(
                     $this->__(
