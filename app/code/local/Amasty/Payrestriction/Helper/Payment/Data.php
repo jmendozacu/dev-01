@@ -15,8 +15,11 @@ class Amasty_Payrestriction_Helper_Payment_Data extends Mage_Payment_Helper_Data
         if (!$quote){
             return $methods;
         }
-        
+
         $address = $quote->getShippingAddress();
+        $address->setData('total_qty', $quote->getData('items_qty'));
+        $address->save();
+
         $items   = $quote->getAllItems();
         foreach ($methods as $k => $method){
             foreach ($this->getRules($address, $items) as $rule){
@@ -27,7 +30,7 @@ class Amasty_Payrestriction_Helper_Payment_Data extends Mage_Payment_Helper_Data
                }//if restrict
             }//rules        
         }//methods
-        
+
         return $methods;
     }
 
@@ -126,7 +129,7 @@ class Amasty_Payrestriction_Helper_Payment_Data extends Mage_Payment_Helper_Data
                 $rule->afterLoad(); 
             }
         }
-        
+
         return  $this->_allRules;
     }
     
