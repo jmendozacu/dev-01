@@ -21,7 +21,7 @@
 
             <catalog>
                 <rewrite>
-                    <product_list_toolbar>Amasty_Sorting_Block_Catalog_Product_List_Toolbar</product_list_toolbar>
+                    <!--<product_list_toolbar>Amasty_Sorting_Block_Catalog_Product_List_Toolbar</product_list_toolbar>-->
                 </rewrite>
             </catalog>
         </blocks>

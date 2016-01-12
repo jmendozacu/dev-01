@@ -43,10 +43,10 @@
             </ampromo>
             <salesrule>
                 <rewrite>
-                    <quote_discount>Amasty_Promo_Model_SalesRule_Quote_Discount</quote_discount>
-                    <rule_condition_product>Amasty_Promo_Model_SalesRule_Rule_Condition_Product</rule_condition_product>
-                    <rule_condition_product_subselect>Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Subselect</rule_condition_product_subselect>
-                    <rule_condition_product_combine>Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Combine</rule_condition_product_combine>
+                    <!--<quote_discount>Amasty_Promo_Model_SalesRule_Quote_Discount</quote_discount>-->
+                    <!--<rule_condition_product>Amasty_Promo_Model_SalesRule_Rule_Condition_Product</rule_condition_product>-->
+                    <!--<rule_condition_product_subselect>Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Subselect</rule_condition_product_subselect>-->
+                    <!--<rule_condition_product_combine>Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Combine</rule_condition_product_combine>-->
                 </rewrite>
             </salesrule>
             <salesrule_mysql4>
@@ -68,7 +68,7 @@
             </ampromo>
             <adminhtml>
                 <rewrite>
-                    <promo_quote_edit>Amasty_Promo_Block_Adminhtml_Promo_Quote_Edit</promo_quote_edit>
+                    <!--<promo_quote_edit>Amasty_Promo_Block_Adminhtml_Promo_Quote_Edit</promo_quote_edit>-->
                     <promo_quote_edit_tab_main>Amasty_Promo_Block_Adminhtml_Promo_Quote_Edit_Tab_Main</promo_quote_edit_tab_main>
                 </rewrite>
             </adminhtml>

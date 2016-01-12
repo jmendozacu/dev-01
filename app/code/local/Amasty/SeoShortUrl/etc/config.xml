@@ -34,7 +34,7 @@
 
             <catalog>
                 <rewrite>
-                    <layer_filter_item>Amasty_SeoShortUrl_Model_Catalog_Layer_Filter_Item</layer_filter_item>
+                    <!--<layer_filter_item>Amasty_SeoShortUrl_Model_Catalog_Layer_Filter_Item</layer_filter_item>-->
                 </rewrite>
             </catalog>
         </models>

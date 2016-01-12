@@ -4,7 +4,8 @@
  * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
  * @package Amasty_Promo
  */
-class Amasty_Promo_Model_SalesRule_Rule_Condition_Product extends Mage_SalesRule_Model_Rule_Condition_Product
+//class Amasty_Promo_Model_SalesRule_Rule_Condition_Product extends Mage_SalesRule_Model_Rule_Condition_Product
+class Amasty_Promo_Model_SalesRule_Rule_Condition_Product extends Amasty_Rules_Model_SalesRule_Rule_Condition_Product
 {
 
     protected function _addSpecialAttributes(array &$attributes)

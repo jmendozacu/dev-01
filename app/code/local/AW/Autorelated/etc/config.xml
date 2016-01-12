@@ -60,7 +60,7 @@
                     <rule_condition_product_found>AW_Autorelated_Model_Salesrule_Rule_Condition_Product_Found</rule_condition_product_found>
                 </rewrite>
                 <rewrite>
-                    <rule_condition_product_subselect>AW_Autorelated_Model_Salesrule_Rule_Condition_Product_Subselect</rule_condition_product_subselect>
+                    <!--<rule_condition_product_subselect>AW_Autorelated_Model_Salesrule_Rule_Condition_Product_Subselect</rule_condition_product_subselect>-->
                 </rewrite>
             </salesrule>
         </models>

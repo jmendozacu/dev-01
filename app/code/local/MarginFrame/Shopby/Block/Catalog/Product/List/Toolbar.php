@@ -4,7 +4,8 @@
  * @copyright Copyright (c) 2015 MarginFrame (http://www.marginframe.com)
  * @package MarginFrame_Shopby
  */
-class MarginFrame_Shopby_Block_Catalog_Product_List_Toolbar extends Mage_Catalog_Block_Product_List_Toolbar
+//class MarginFrame_Shopby_Block_Catalog_Product_List_Toolbar extends Mage_Catalog_Block_Product_List_Toolbar
+class MarginFrame_Shopby_Block_Catalog_Product_List_Toolbar extends Amasty_Sorting_Block_Catalog_Product_List_Toolbar
 {
     protected $_pagerAlias = 'product_list_toolbar_pager';
 

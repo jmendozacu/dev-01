@@ -5,7 +5,7 @@
  * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
  * @package Amasty_Promo
  */
-class Amasty_Promo_Block_Adminhtml_Promo_Quote_Edit extends Mage_Adminhtml_Block_Promo_Quote_Edit
+class Amasty_Promo_Block_Adminhtml_Promo_Quote_Edit extends Amasty_Rules_Block_Adminhtml_Promo_Quote_Edit
 {
     public function __construct()
     {

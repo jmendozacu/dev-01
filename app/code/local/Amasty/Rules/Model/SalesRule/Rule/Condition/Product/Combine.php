@@ -67,7 +67,15 @@ class Amasty_Rules_Model_SalesRule_Rule_Condition_Product_Combine extends Mage_S
             // restore original product
             $object->setProduct($origProduct);    
             $object->setSku($origSku);    
-        }        
+        }
+
+      if ($result) {
+        $amStores = explode(',', $this->getRule()->getAmstoreIds());
+        $currentStoreId = Mage::app()->getStore()->getStoreId();
+        if ( !in_array($currentStoreId,$amStores) && !in_array(0,$amStores) ) {
+          return false;
+        }
+      }
 
         return $result;       
     }

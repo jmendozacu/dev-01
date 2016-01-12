@@ -4,7 +4,8 @@
  * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
  * @package Amasty_Promo
  */
-class Amasty_Promo_Model_SalesRule_Quote_Discount extends Mage_SalesRule_Model_Quote_Discount
+//class Amasty_Promo_Model_SalesRule_Quote_Discount extends Mage_SalesRule_Model_Quote_Discount
+class Amasty_Promo_Model_SalesRule_Quote_Discount extends Amasty_Rules_Model_SalesRule_Quote_Discount
 {
     public function __construct()
     {

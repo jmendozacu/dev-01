@@ -6,8 +6,8 @@
  */
 
 
-class Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Subselect
-    extends Mage_SalesRule_Model_Rule_Condition_Product_Subselect
+//class Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Subselect extends Mage_SalesRule_Model_Rule_Condition_Product_Subselect
+class Amasty_Promo_Model_SalesRule_Rule_Condition_Product_Subselect extends Amasty_Rules_Model_SalesRule_Rule_Condition_Product_Subselect
 {
     /**
      * Validate items total amount or total qty
