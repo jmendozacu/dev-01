@@ -531,6 +531,7 @@ class Amasty_Customerattr_Model_Rewrite_Customer
         /**
          * Adding customer attributes to self data array
          */
+      $customerAttributes = '';
         if ('checkout' == Mage::app()->getRequest()->getModuleName()
                 || 'sgps' == Mage::app()->getRequest()->getModuleName()
                 || 'amscheckoutfront' == Mage::app()->getRequest()
