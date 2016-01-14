@@ -218,8 +218,8 @@ class Amasty_Meta_Helper_Data extends Mage_Core_Helper_Abstract
 
 	protected function _getValueByProduct($p, $code)
 	{
-        if ($p instanceof Mage_Catalog_Model_Category)
-            return $p->getData($code);
+//        if ($p instanceof Mage_Catalog_Model_Category)
+//            return $p->getData($code);
 
 		$store = Mage::app()->getStore($p->getStoreId());
 
