@@ -123,31 +123,25 @@ class Amasty_Customerattr_Model_Rewrite_Customer
             /*
              * check if activated user logged in or not
              */
-            $activated = Mage::getModel('customer/customer')->load(
-                $this->getId()
-            )->getAmIsActivated();
-            $activated = $activated === null ? 0
-                : $activated;// just created user without any activation mark
+            $activated = Mage::getModel('customer/customer')->load($this->getId())->getAmIsActivated();
+            $activated = $activated === null ? 0: $activated;// just created user without any activation mark
             $activationRequired = Mage::getStoreConfig(
                 'amcustomerattr/activation/activation_required',
                 $this->getStoreId()
             );
             $loginForm = Mage::app()->getRequest()->getPost('login');
-            if (((($activated == self::ACTIVATION_STATUS_PENDING
-                        && $activationRequired)
-                    || $activated == self::ACTIVATION_STATUS_DEACTIVATED))
-                && ($loginForm)
+            if (((($activated == self::ACTIVATION_STATUS_PENDING && $activationRequired) || $activated == self::ACTIVATION_STATUS_DEACTIVATED)) && ($loginForm)
             ) {// user tries to log in (otherwise we're logged in already and we've changed user via admin panel or etc)
-                Mage::getSingleton('customer/session')->addError(
-                    Mage::helper('amcustomerattr')->__(
-                        'Account is not active yet.'
-                    )
-                );
+//                Mage::getSingleton('customer/session')->addError(
+//                    Mage::helper('amcustomerattr')->__(
+//                        'Account is not active yet.'
+//                    )
+//                );
                 $this->setIsLoggedIn(true);
                 Mage::getSingleton('customer/session')->logout();
-                Mage::app()->getFrontController()->getResponse()->setRedirect(
-                    Mage::getUrl('customer/account')
-                );
+//                Mage::app()->getFrontController()->getResponse()->setRedirect(
+//                    Mage::getUrl('customer/account')
+//                );
                 return $this;
             }
 

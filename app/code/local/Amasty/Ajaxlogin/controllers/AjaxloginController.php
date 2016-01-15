@@ -137,8 +137,9 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
         if ($this->getRequest()->isPost()) {
             $login = $this->getRequest()->getPost('login');
             if (!empty($login['username']) && !empty($login['password'])) {
-                try { 
+                try {
                     $session->login($login['username'], $login['password']);
+                  if($session->getCustomer()->getData('am_is_activated') == '2'){
                     if ($session->getCustomer()->getIsJustConfirmed()) {
                         $text =  $this->_welcomeCustomer($session->getCustomer(), true);
                         $status = 2;
@@ -147,6 +148,10 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
                         $text =  $this->__('You are now logged in.');
                         $status = 2;
                     }
+                  }else{
+                    $text = 'Account is not active yet.';
+                    $status = 1;
+                  }
                 } catch (Mage_Core_Exception $e) {
                     switch ($e->getCode()) {
                         case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
