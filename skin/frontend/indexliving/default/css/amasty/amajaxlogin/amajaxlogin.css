@@ -1,0 +1,359 @@
+#test112211223{
+overflow:hidden;
+}
+
+.am-facebook-image{
+	box-sizing: content-box;
+}
+
+#am-google-image{
+box-sizing: content-box;
+}
+
+#amprogress {
+    background: linear-gradient(rgba(11, 11, 11, 0.1), rgba(11, 11, 11, 0.6)) repeat-x scroll 0 0 rgba(11, 11, 11, 0.2);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100000;
+}
+
+#amimg_container {
+    left: 50%;
+    position: absolute;
+    top: 340px;
+    z-index: 9999;
+}
+
+#am-ajaxlogin-container{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	background:url('ie.png');
+	background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
+	z-index: 99999;
+}
+
+#confirmOverlay div{
+   min-height: none;
+   min-width: none;
+   max-height: none;
+   max-width: none;
+}
+
+#am-ajaxlogin{
+    float: none;   
+    width:95%;
+    top:20%;
+	max-width:600px;
+	position:relative;
+	text-align: center;
+    margin: 0 auto;
+	border: 1px solid rgba(33, 33, 33, 0.6);
+    z-index: 100;
+    background-color: rgb(247,248,250);
+    font-size: 16px;
+    border-radius: 5px;
+	-moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+	-webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+	box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+}
+
+#am-ajaxlogin-close {
+    position: absolute;
+    right: 7px;
+    top:3px;
+    cursor: pointer;
+}
+
+#am-ajaxlogin-title{
+    font-size: 25px;
+    padding: 20px 0px;
+    background-color: rgb(222,222,222);
+    color: #606062;
+}
+
+#am-ajaxlogin-message{
+    background-color: rgb(247,248,250);
+    height: 100%;
+}
+
+.am-form-block{
+    color: #9ba0a4;
+    width:100%;
+    max-width: 250px;
+    float: left;
+    margin: 20px;
+    border-right: 1px solid #606062;
+    text-align: left;
+}
+
+.am-form-list input.input-text {
+    width: 95%;
+}
+
+.am-form-list li {
+    margin: 0 0 8px;
+}
+
+.am-form-list label {
+    float: left;
+    font-weight: bold;
+    position: relative;
+}
+
+.am-form-list em {
+    color: #EB340A;
+    float: right;
+    font-style: normal;
+    position: absolute;
+    right: -8px;
+    top: 0;
+}
+
+.or_use_that{
+    float:left;
+    margin: 10px 0 0 30px;
+}
+
+.am-form-block-line {
+    margin: 10px;
+    height:1px;
+}
+
+.amform-block-account{
+    margin: 10px 10px 10px 10px;
+    border:0;
+}
+
+.amform-block-account-container {
+    position: relative;
+    top: 10px;
+    max-height: 160px;
+}
+
+.amform-block-social{
+    clear: both;
+    padding-left: 30px;
+    position: relative;
+    top: -35px;
+}
+
+.amform-block-social div{
+    cursor: pointer; 
+    margin-bottom: 5px;
+    max-height: 32px;   
+}
+
+#hideDiv{
+    width:100%;
+    height:100%;
+    z-index: 10; 
+    position: absolute;
+    display: block;
+    float: none;   
+}
+
+.am-password-login {
+    float:left;
+    font-size: 11px;
+    width: 120px;
+    padding-top: 5px;
+    color: #9ba0a4;
+}
+
+.am-password-login a{
+    color: #9ba0a4;
+    text-decoration: none;
+    border-bottom: 1px dashed #9ba0a4;
+    cursor: pointer;  
+}
+
+ul.form-list label {
+    color: #9ba0a4;
+}
+
+.am-password-login a:hover{
+    text-decoration: none;
+    border-bottom: 0;  
+}
+
+.am-login-button {
+    background-image: url("../../../images/amasty/amajaxlogin/green.png");
+    background-position: 0 -79px;
+    text-align: center;
+    width: 118px;
+    height: 31px;
+    color:white;
+    background-repeat: no-repeat;
+    padding-top: 3px;
+    font-weight: normal !important;
+    font-size: 15px !important;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    float: left;
+}
+
+.am-login-button:hover {
+    background-image: url("../../../images/amasty/amajaxlogin/green.png");
+    background-position: 0 -39px;
+    color:white;
+}
+
+.am-login-button:active {
+    background-image: url("../../../images/amasty/amajaxlogin/green.png") !important;
+    background-position: 0 2px;
+    color:white;
+}
+
+div.am-login {
+    background-image: url("../../../images/amasty/amajaxlogin/blue.png");
+    background-position: 0 -79px;
+    left: 130px;
+
+}
+
+div.am-login span{
+    display: block;
+    position: relative;
+}
+
+div.am-login:hover {
+    background-image: url("../../../images/amasty/amajaxlogin/blue.png");
+    background-position: 0 -39px;
+    color:white;
+}
+
+div.am-login:active {
+    background-image: url("../../../images/amasty/amajaxlogin/blue.png") !important;
+    background-position: 0 2px;
+}
+
+#confirmBox p{
+	background:none;
+	font-size:16px;
+	line-height:1.4;
+	padding-top: 5px;
+}
+
+.am-ajax-iframe{
+    width: 31px;
+    height:32px;
+    border:0;
+}
+
+.am-ajax-error{
+    color: rgb(211,87,76);
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+
+.am-ajax-error img {
+    margin-right: 10px;
+    margin-top: 5px;
+    width: 20px;
+}
+
+.am-ajax-success img {
+    margin-right: 10px;
+    margin-top: 5px;
+    width: 20px;
+}
+
+.am-ajax-success{
+    color: rgb(90,187,132);
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+/* forgot password block start*/
+
+.am-login-forgotpassword{
+    margin: 20px;
+    text-align: center;
+}
+
+.am-login-forgotpassword div.am-login-button{
+    float:none !important;
+    border: 0;
+    margin: 0 auto;
+}
+
+.am-login-forgotpassword p.required {
+    text-align: center;
+}
+
+.am-login-forgotpassword-form-list {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 260px;
+}
+
+.am-login-forgotpassword .form-list label {
+    float:none !important;
+}
+/* forgot password block end*/
+
+
+/* account block start*/
+.amajaxlogin-block .box-info .box-head h2 {
+    background-image: url("../../../images/i_ma-info.gif");
+}
+
+.amajaxlogin-social-icon {
+    margin: 0 auto;
+    width: 160px;
+}
+.amajaxlogin-social-icon div{
+    margin: 5px 0;
+    max-height: 32px;
+}
+
+.amajaxlogin-social-icon img{
+    cursor: pointer;
+}
+
+#am-twitter-image{
+    color: #FFFFFF;
+    height: 22px;
+    padding: 10px 0 0 35px;
+    text-align: center;
+    width: 78px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-image: url("../../../images/amasty/amajaxlogin/twitter.png");
+    font: 12px/15px Arial,Helvetica,sans-serif;
+    cursor: pointer;
+}
+
+#am-twitter-image:hover{
+    background-position: bottom;
+}
+
+@media screen and (max-width: 565px) {
+
+    .am-form-block div.am-login-button
+    {
+        top: 30px;
+    }
+
+    div.amform-block-account-container{
+        top: -4px;
+    }
+
+
+    #am-ajaxlogin{
+        top:0;
+    }
+    .am-form-block{
+        margin: 0 20px;
+    }
+}
+

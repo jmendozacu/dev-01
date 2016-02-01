@@ -1,0 +1,48 @@
+<?php $catLevel2 = $this->getCatLevel2(); ?>
+<div><h3><?php echo $this->__('All Categories'); ?></h3></div>
+<div>
+  <p>
+    <span><?php echo $this->__('Categories'); ?></span>
+    <select id="allcategory_page_sel" onchange="loadCategoryLevel3();">
+      <?php foreach ($catLevel2 as $cat2): ?>
+        <option value="<?php echo $cat2['entity_id']?>"><?php echo $this->__($cat2['name']);?></option>
+      <?php endforeach; ?>
+    </select>
+    <img id="allcategory_page_ajaxloader" style="display:none;" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif'); ?>"/>
+  </p>
+</div>
+
+<div id="allcategory_page_catchild"></div>
+
+<script type="text/javascript">
+  document.observe('dom:loaded', function() {
+    loadCategoryLevel3();
+  });
+  
+  function loadCategoryLevel3(){
+    var cat2Id = $('allcategory_page_sel').value;
+    var url = '<?php echo Mage::getUrl('allcategory/index/getCatLevel3') ?>';
+    new Ajax.Request(url,{
+      method: 'get',
+    
+      parameters: {
+        cat2Id: cat2Id
+      },
+      
+      onLoading: function(){
+        $('allcategory_page_ajaxloader').show();
+      },
+      
+      onSuccess: function(transport){
+        $('allcategory_page_ajaxloader').hide();
+        var data = transport.responseJSON;
+        if(data.success == true){
+          $('allcategory_page_catchild').update(data.html);
+        }
+        else{
+          $('allcategory_page_catchild').update('<p>No Select</p>');
+        }
+      }
+    });
+  }
+</script>
