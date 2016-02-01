@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Magebuzz_Dealerlocator>
-      <version>0.2.0</version>
+      <version>0.2.1</version>
     </Magebuzz_Dealerlocator>
   </modules>
   <frontend>
@@ -60,6 +60,17 @@
         </Magebuzz_Dealerlocator>
       </modules>
     </translate>
+    <events>
+      <catalog_product_save_after>
+        <observers>
+          <assign_dealers_to_product>
+            <type>singleton</type>
+            <class>dealerlocator/observer</class>
+            <method>setDealerForProduct</method>
+          </assign_dealers_to_product>
+        </observers>
+      </catalog_product_save_after>
+    </events>
   </adminhtml>
 
   <global>
@@ -80,6 +91,11 @@
           <dealerlocator_tag>
             <table>dealerlocator_tag</table>
           </dealerlocator_tag>
+          
+          <!-- data for product dealer -->
+          <productdealer>
+            <table>product_dealer</table>
+          </productdealer>
         </entities>
       </dealerlocator_mysql4>
     </models>
@@ -114,6 +130,13 @@
           <html_head>Magebuzz_Dealerlocator_Block_Html_Head</html_head>
         </rewrite>
       </page>
+      
+      <!-- add new tab for product manager to set store locator -->
+      <adminhtml>
+        <rewrite>
+             <catalog_product_edit_tabs>Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs</catalog_product_edit_tabs>
+        </rewrite>
+      </adminhtml>
     </blocks>
 
     <helpers>
@@ -121,7 +144,6 @@
         <class>Magebuzz_Dealerlocator_Helper</class>
       </dealerlocator>
     </helpers>
-
   </global>
 
   <default>

@@ -32,24 +32,4 @@
       </block>
     </reference>
   </dealerlocator_index_index>
-  
-  <!-- show product dealer in product view -->
-  <catalog_product_view>
-    <reference name="head">
-      <block type="core/template" template="dealerlocator/productdealer/head.phtml"/>
-    </reference>
-    <reference name="alert.urls">
-      <block type="dealerlocator/productdealer" name="dealerlocator.productdealer" template="dealerlocator/productdealer.phtml" />
-    </reference>
-    <!-- <reference name="product.info">
-      <block type="dealerlocator/productdealer" name="dealerlocator.productdealer" template="dealerlocator/productdealer.phtml" after="product.info.additional">
-        <action method="addToParentGroup">
-          <group>detailed_info</group>
-        </action>
-        <action method="setTitle" translate="value">
-          <value>Product Dealers</value>
-        </action>
-      </block>
-    </reference> -->
-  </catalog_product_view>
 </layout> 

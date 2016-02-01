@@ -10,4 +10,24 @@
       <block type="dealerlocator/adminhtml_import" name="import"/>
     </reference>
   </dealerlocatoradmin_adminhtml_import_index>
+  
+  <!-- product for dealer locator -->
+  <dealerlocatoradmin_adminhtml_productassigndealer_index>
+    <block type="core/text_list" name="root">
+      <block type="dealerlocator/adminhtml_rewrite_catalog_product_edit_tabs_dealer" name="product.edit.tabs.dealer"/>
+      <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+        <action method="initSerializerBlock">
+          <grid_block_name>product.edit.tabs.dealer</grid_block_name>
+          <data_callback>getSelectedDealers</data_callback>
+          <hidden_input_name>in_dealer</hidden_input_name>
+          <reload_param_name>oblock</reload_param_name>
+        </action>
+      </block>
+    </block>
+  </dealerlocatoradmin_adminhtml_productassigndealer_index>
+  <dealerlocatoradmin_adminhtml_productassigndealer_grid>
+    <block type="core/text_list" name="root">
+      <block type="dealerlocator/adminhtml_rewrite_catalog_product_edit_tabs_dealer" name="product.edit.tabs.dealer"/>
+    </block>
+  </dealerlocatoradmin_adminhtml_productassigndealer_grid>
 </layout>

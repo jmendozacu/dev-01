@@ -12,7 +12,9 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Dealerlocator_Edit_Tab_Form extends
 
     $model = Mage::registry('dealerlocator_data');
     $dealTag = $model->getDealerTag();
-    $model->setDealerTag(implode(',', $dealTag));
+    if($dealTag != null){
+      $model->setDealerTag(implode(',', $dealTag));
+    }
 
     if (Mage::getSingleton('adminhtml/session')->getDealerlocatorData()) {
       $data = Mage::getSingleton('adminhtml/session')->getDealerlocatorData();
