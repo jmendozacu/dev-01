@@ -1,0 +1,149 @@
+<input type="button" style="float:left; clear:both;" id="btn_fancybox" value="Dealers" onclick="showProductDealers();"/>
+
+<?php $productDealers = $this->getProductDealer(); ?>
+<div class="product-dealer" style="overflow:hidden; width:1150px; display:none;" id="product-dealer">
+  <div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
+    <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
+
+    <div class="list-all-product-dealer" style="width:600px; float:left;">
+      <?php if ($productDealers->getSize()): ?>
+        <?php echo $this->getPagerHtml(); ?>
+        <table class="data-table" id="product-dealer-list">
+          <colgroup>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th><?php echo $this->__('Store') ?></th>
+              <th><?php echo $this->__('Address') ?></th>
+              <th><?php echo $this->__('Phone') ?></th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($productDealers as $productdealer): ?>
+            <tr
+              onclick="showLocationOnMap('<?php echo $productdealer->getDealerId() ?>', '<?php echo $productdealer->getIconImage() ?>'); window.location='#product_dealer_map_canvas'">
+              <td>
+                <label class="product-dealer-label"><?php echo $this->__('Store') ?></label>
+                <?php echo $productdealer->getTitle(); ?>
+              </td>
+              <td>
+                <label class="product-dealer-label"><?php echo $this->__('Address') ?></label>
+                <?php echo $productdealer->getAddress(); ?>
+              </td>
+              <td>
+                <label class="product-dealer-label"><?php echo $this->__('Phone') ?></label>
+                <?php echo $productdealer->getPhone(); ?>
+              </td>
+            </tr>
+            <input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
+                   value="<?php echo $productdealer->getLatitude() ?>"/>
+            <input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
+                   value="<?php echo $productdealer->getLongitude() ?>"/>
+           <input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $productdealer->getDealerId() ?>"
+                   value="<?php echo $productdealer->getTitle() ?>"/>
+                   
+            <div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $productdealer->getDealerId() ?>">
+              <p><strong><?php echo $productdealer->getTitle() ?></strong></p>
+            </div>
+            
+          <?php endforeach; ?>
+          </tbody>
+        </table>
+        
+        <?php /*<script type="text/javascript">decorateTable('dealer-list')</script>*/?>
+      <?php else: ?>
+        <p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
+      <?php endif; ?>
+    </div>
+
+    <div class="gmap">
+      <div id="product_dealer_map_canvas" style="float:right;width:500px; height:370px"></div>
+    </div>
+  </div>
+</div>
+<?php
+  $productdealerdefaultlatlong = $this->getProductDealDefaultLatLong();
+?>  
+  
+<script type="text/javascript">
+  function initMap() {
+    var mapDiv = document.getElementById('product_dealer_map_canvas');
+    var myOptions = {
+      zoom: 10,
+      <?php if (isset($productdealerdefaultlatlong['lat']) && isset($productdealerdefaultlatlong['long'])):?>
+      center: new google.maps.LatLng(<?php echo $productdealerdefaultlatlong['lat'] ?>, <?php echo $productdealerdefaultlatlong['long'] ?>),
+      <?php endif;?>
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    
+    map = new google.maps.Map(mapDiv, myOptions);
+    infoWindow = new google.maps.InfoWindow;
+
+    var marker = this;
+
+    // auto display dealer markers in the map
+    <?php if ($productDealers->getSize()): ?>
+      <?php foreach ($productDealers as $productDealer): ?>
+        var dealer_icon = '<?php echo $productDealer->getIconImage() ?>';
+        if(dealer_icon == ""){
+          dealer_icon = '<?php echo Mage::getStoreConfig('dealerlocator/google_map_options/default_dealer_icon'); ?>';
+        }
+        dealer_icon = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + dealer_icon;
+        
+        var id = '<?php echo $productDealer->getDealerId() ?>';
+        
+        var marker_<?php echo $productDealer->getDealerId() ?> = new google.maps.Marker({
+          position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
+          map: map,
+          icon: dealer_icon,
+          title: $('product_dealer_title_' + id).value
+        });
+        
+        google.maps.event.addListener(marker_<?php echo $productDealer->getDealerId(); ?>, "click", function () {
+          infoWindow.setContent($('product_dealer_highlight_' +<?php echo $productDealer->getDealerId()?>).innerHTML);
+          infoWindow.open(map, marker_<?php echo $productDealer->getDealerId(); ?>);
+        });
+        
+      <?php endforeach; ?>
+    <?php endif; ?>
+  }
+  
+  function showLocationOnMap(id, icon_image) {
+    window.location.hash = 'product-dealer-gmap-container';
+    var highlight = $('product_dealer_highlight_' + id);
+    var infoContent = $('product_dealer_highlight_' + id).innerHTML;
+
+    if(icon_image == ""){
+        icon_image = '<?php echo Mage::getStoreConfig('dealerlocator/google_map_options/default_dealer_icon'); ?>';
+    }
+    icon_image = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + icon_image;
+
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
+      map: map,
+      icon: icon_image,
+      title: $('product_dealer_title_' + id).value
+    });
+    
+    infoWindow.setContent(infoContent);
+    infoWindow.open(map, marker);
+
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.setContent(infoContent);
+      infoWindow.open(map, marker);
+    });
+  }
+</script>
+
+<script type="text/javascript">
+  function showProductDealers(){
+    jQuery("#btn_fancybox").fancybox({
+      'href' : '#product-dealer',
+      'afterShow': function() { initMap();}
+    });
+  }
+  //window.onload = initMap();
+</script>
