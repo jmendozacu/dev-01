@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author		Sashas
+ * @category    Sashas
+ * @package     Sashas_NotificationBar
+ * @copyright   Copyright (c) 2014 Sashas IT Support Inc. (http://www.sashas.org)
+ * @license     http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+ */
+-->
+<layout version="0.1.0">
+    
+	<default>
+		<reference name="after_body_start">
+			<block type="notificationbar/bar" ifconfig="" name="notification_bar" as="NotificationBar" after="google_analytics" template="notificationbar/bar.phtml" />	
+			<!--@todo  also need dates, change background enable/disable, display on homepage, cms pages or category pages, other ones + save in session-->								
+		</reference>     
+	    <reference name="before_body_end">
+			<block type="notificationbar/popup" name="notification_popup"  after="-" template="notificationbar/popup.phtml" />
+		</reference>       
+	</default> 
+   
+</layout>
