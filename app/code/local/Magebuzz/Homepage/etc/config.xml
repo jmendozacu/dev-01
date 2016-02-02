@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+		<page>
+			<layouts>
+				<onecolumn_homepage>					<label>One-Column Home Pages</label>					<template>page/1column-home.phtml</template>				</onecolumn_homepage>      </layouts> 
+		</page>
+	</global>
+</config>

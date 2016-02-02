@@ -496,12 +496,12 @@ textarea {
 }
 
 a {
-  color: #3399cc;
+  color: #000;
   text-decoration: none;
 }
 
 a:hover {
-  color: #2e8ab8;
+  color: #434343;
   text-decoration: underline;
 }
 
@@ -522,8 +522,8 @@ ul {
 h1, .h1 {
   margin: 0;
   margin-bottom: 0.7em;
-  color: #3399cc;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #000;
+ font-family: 'FuturaBT-Book';
   font-size: 28px;
   font-weight: 400;
   font-style: normal;
@@ -535,8 +535,8 @@ h1, .h1 {
 h2, .h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #000;
+  font-family: 'FuturaBT-Book';
   font-size: 24px;
   font-weight: 400;
   font-style: normal;
@@ -548,8 +548,8 @@ h2, .h2 {
 h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
-  color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #000;
+  font-family: 'FuturaBT-Book';
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -561,8 +561,8 @@ h3, .h3 {
 h4, .h4 {
   margin: 0;
   margin-bottom: 10px;
-  color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #000;
+  font-family: 'FuturaBT-Book';
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -574,8 +574,8 @@ h4, .h4 {
 h5, .h5 {
   margin: 0;
   margin-bottom: 10px;
-  color: #636363;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #000;
+  font-family: 'FuturaBT-Book';
   font-size: 13px;
   font-weight: bold;
   font-style: normal;
@@ -587,8 +587,8 @@ h5, .h5 {
 h6, .h6 {
   margin: 0;
   margin-bottom: 5px;
-  color: #636363;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  color: #000;
+  font-family: 'FuturaBT-Book';
   font-size: 12px;
   font-weight: bold;
   font-style: normal;
@@ -923,12 +923,13 @@ body:not(.customer-account) .block:first-child .block-title {
   color: #FFFFFF;
   font-size: 13px;
   font-weight: normal;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 19px;
-  text-align: center;
-  text-transform: uppercase;
   vertical-align: middle;
   white-space: nowrap;
+  text-align:center;
+  font-size:16px;
+  text-transform:uppercase;
+  font-family: 'Lato', sans-serif;
 }
 .button:hover,
 .cart-table .product-cart-actions .button:hover,
@@ -1002,6 +1003,10 @@ a.button:hover {
   text-decoration: none;
   color: #246b8f;
 }
+
+.button.btn-cart {background:#FFC222; border-radius:3px;}
+.button.btn-cart > span {display:inline-block; padding-left:38px; position:relative;}
+.button.btn-cart > span:before {content:""; position:absolute; width:30px; height:30px; top:5px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
 
 @media only screen and (max-width: 770px) {
   .col2-set .buttons-set .button,
@@ -1759,7 +1764,6 @@ a.button:hover {
 }
 
 .price-box .price {
-  color: #3399cc;
   font-size: 16px;
 }
 
@@ -1979,25 +1983,6 @@ span.weee {
 
 .add-to-links .separator {
   display: none;
-}
-
-/* -------------------------------------------- *
- * Product Image
- */
-.product-image,
-.no-touch .product-img-box .product-image:not(.zoom-available):hover {
-  position: relative;
-  display: block;
-  border: 1px solid #ededed;
-}
-
-@media only screen and (max-width: 770px) {
-  body .product-img-box .product-image:hover {
-    border-color: #ededed;
-  }
-}
-.no-touch .product-image:hover {
-  border-color: #3399cc;
 }
 
 /* -------------------------------------------- *
@@ -3308,6 +3293,65 @@ body {
 .top-menu li a:hover {text-decoration:none;}
 .main-container,
 .footer-container {float:left; width:100%;}
+
+/* home page */
+.main-home .std ul {list-style:none;}
+.main-home .std ul li {margin:0px;}
+.banner-static-home {float:left; width:100%; background:#EBEBEB; padding:16px 0; margin-top:-5px; text-align:center; font-family: 'FuturaBT-Book';}
+.banner-static-home ul {float:left; width:100%; margin:0px;}
+.banner-static-home li {float:left; width:25%;}
+.banner-static-home li  span {display:inline-block; text-align:left; font-size:16px; text-transform:uppercase; color:#898989; line-height:18px; padding-left:50px; position:relative; }
+.banner-static-home li  span:before {content:""; position:absolute; top:0px; left:0px; width:50px; height:100%; background:url(../images/icons.png) no-repeat 0px -620px;}
+.banner-static-home li:nth-child(2) span {padding-left:75px;}
+.banner-static-home li:nth-child(2)  span:before {background-position:0px -699px; width:75px;}
+.banner-static-home li:nth-child(3) span {padding-left:42px;}
+.banner-static-home li:nth-child(3)  span:before {background-position:-72px -620px; width:42px;}
+.banner-static-home li:nth-child(4) span {padding-left:60px;}
+.banner-static-home li:nth-child(4)  span:before {background-position:0px -774px; width:60px;}
+
+.box-home-list-products {float:left; width:100%; margin-top:60px; margin-bottom:50px;}
+.box-home-list-products .box-list-products {float:left; width: 74.416%;  margin-right: 2%;}
+.box-home-list-products .box-list-products ul {margin-bottom:0px!important;}
+.box-home-list-products .best-seller,
+.box-home-list-products .new-arrival {float:left; width:100%;}
+.box-home-list-products .best-seller {margin-bottom:42px;}
+.box-home-list-products .banner-right {float:right; width: 23.584%;}
+.main-home .box-home-list-products .banner-right li{margin-bottom:10px;}
+.title-style1 {float:left; width:100%; margin-bottom:40px; font-family: 'FuturaBT-Book'; text-align:center; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
+.title-style1:before {content:""; position:absolute; height:7px; width:165px; background:#FFC222; bottom:-6px; left:50%; margin-left:-82px;}
+.title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; }
+.title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#434343; font-size:14px; padding-right:15px;}
+.title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #434343; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
+.title-style1 a:hover {color:#FFC222; text-decoration:none;}
+.title-style1 a:hover:after {border-left-color:#FFC222;}
+.box-home-list-products  .category-products {float:left; width:100%;}
+
+.box-home-decor {float:left; width:100%; position:relative; }
+.box-home-decor:before {content:""; position:absolute; width:100%; height:56.5%; left:0px; top:0px; background:#FFC222;}
+.box-home-decor .home-decor-content {float:left; width:100%; position:relative; padding-top:96px;}
+.box-home-decor .title-decor {position:absolute; text-transform:uppercase; font-family: 'FuturaBT-Book'; color:#000; top:20px; right:0px; float:right; text-align:right; font-size:32px; line-height:36px;}
+.box-home-decor .title-decor label {display:block; font-size:55px; line-height:58px; font-family: 'FuturaBT-Book'; font-weight:normal;}
+.box-home-decor .title-decor label strong {font-family: 'FuturaBookBold'; font-size:60px;}
+.box-home-decor .decor-style {float:left; width:17.5%; background:#434343; padding:0 13px;}
+.box-home-decor .decor-banner {float:left; width:82.5%; margin:2.5% 0; background:#252525; padding:24px 0;}
+.title-style3 {text-align:center; margin:0px; padding:10px 0; font-size:23px; color:#fff; line-height:30px; font-family: 'FuturaBookBold';}
+.main-home .box-home-decor .decor-style ul {margin:0px;}
+.main-home .box-home-decor .decor-style li {margin-bottom:10px;}
+.main-home .box-home-decor .decor-style .banner-title {color:#000; width:100%; text-align:center; margin:auto; font-size:19px; font-family: 'FuturaBookBold'; line-height:22px; height:22px;  bottom:0px; padding:0 18px; text-transform:uppercase; }
+.main-home .box-home-decor .decor-style li:nth-child(5) .banner-title  {height:44px;}
+.box-home-decor .box-slider {float:left; width: 64.243%; margin:0 1.481%;}
+.box-home-decor .box-banner-right {float:left;  width: 31.314%; margin-right:1.481%;}
+.main-home .box-home-decor .box-banner-right li {margin-bottom:3.3%;}
+.main-home .box-home-decor .box-banner-right li:nth-last-child(1){margin-bottom:0px;}
+.home-brands {float:left; width:100%; margin:40px 0 0;}
+.home-brands .brand-banner {float:left; width:100%; margin-bottom:28px;}
+.main-home .home-brands .brand-banner li {float:left; width: 32.334%; margin-right:1.499%; border:solid 1px #AEAEAE;}
+.main-home .home-brands .brand-banner li:nth-child(3n){margin-right:0px;}
+.home-brand-content {float:left; width:100%;}
+.home-brand-content .amshopby-featured {padding:0px;}
+.home-brand-content .logo-item {text-align:center;}
+.home-brand-content .logo-item img {margin:auto; max-width:99.9%;}
+.home-brand-content .owl-carousel .owl-wrapper-outer {}
 /* ============================================ *
  * Logo
  * ============================================ */
@@ -3569,7 +3613,7 @@ a.skip-link {
 .nav-primary li.subcat ul  li  a{color:#252525; font-size:14px;}
 .nav-primary li.subcat ul li  a:hover,
 .nav-primary .menu-content .title-viewall a:hover {color:#FFC222; text-decoration:none;}
-.nav-primary li.subcat li.level1 >a {font-size:24px; font-weight:bold;}
+.nav-primary li.subcat li.level1 >a {font-size:20px; font-weight:bold; font-family: 'FuturaExtraBold';}
 
 .nav-primary .bannerads-category { display:none; border-right: solid 2px #233B5F;  border-bottom: solid 2px #233B5F;  opacity: 0; transition:.3s; -webkit-transition:.3s; -moz-transition:.3s; width:100%; height:100%; position:absolute; left:300%; top:0px; margin-right:2px;  }
 .nav-primary .bannerads-category img {max-width:100%; max-height:100%; position:absolute; right:0px; top:0px;}
@@ -4123,56 +4167,6 @@ body.catalogsearch-result-index .page-title h1 {
   white-space: normal;
 }
 
-/* -------------------------------------------- *
- * Product Name
- */
-h2.product-name,
-h3.product-name,
-h4.product-name,
-h5.product-name,
-p.product-name {
-  margin: 0;
-  margin-bottom: 0.5em;
-  color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.2;
-  text-rendering: optimizeLegibility;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-weight: normal;
-  line-height: 1.4;
-}
-h2.product-name a,
-h3.product-name a,
-h4.product-name a,
-h5.product-name a,
-p.product-name a {
-  color: #636363;
-}
-h2.product-name a:hover,
-h3.product-name a:hover,
-h4.product-name a:hover,
-h5.product-name a:hover,
-p.product-name a:hover {
-  color: #3399cc;
-  text-decoration: none;
-}
-
-.products-grid .product-name,
-.products-list .product-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-}
-.products-grid .product-name a,
-.products-list .product-name a {
-  font-weight: 500;
-}
 
 /* ============================================ *
  * Product Grid
@@ -4190,21 +4184,31 @@ p.product-name a:hover {
 .products-grid > li {
   position: relative;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
+  padding:0px 10px;
+  border:solid 1px transparent;
 }
+.products-grid > li:hover {border:solid 1px #EAEAEA; border-radius:3px; box-shadow:0px 0px 2px 2px #F8F8F8;}
+
 .products-grid > li:after {
   content: '';
   display: table;
   clear: both;
 }
+.products-grid .prolabel-wrapper {position:relative;}
 
 .products-grid .product-image {
-  width: 100%;
+  max-width: 100%;
   margin-bottom: 15px;
+  margin:auto;
+  text-align:center;
+  padding:30px 0;
+  display:block;
 }
 
 .products-grid .product-image img {
-  width: 100%;
+  max-width: 100%;
+  margin:auto;
   height: auto;
 }
 .products-grid .product-image img:hidden {
@@ -4217,18 +4221,42 @@ p.product-name a:hover {
   margin-left: 10%;
 }
 
+.products-grid .link-wishlist  {width:23px; height:23px; position:absolute; top:10px; right:0px; background:url(../images/icons.png) no-repeat -78px -745px;}
+.products-grid .link-wishlist.added-item {background-position:-78px -791px;}
+.products-grid .product-name {line-height:18px; margin-bottom:5px;}
+.products-grid .product-name a {color:#000; font-size:14px; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; font-family: 'FuturaBT-Book';}
+.products-grid .desc {font-size:12px; color:#434343; font-family: 'FuturaLight'; margin-bottom:5px;}
+.products-grid  .grid-price {float:left; width:100%; position:relative;}
+.products-grid  .grid-price .save-price-percent {position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-grid  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
+.products-grid  .price-box {float:left; min-height:47px;}
+.products-grid  .price-box .regular-price .price,
+.products-grid  .price-box .special-price .price {color:#000; font-size:22px; font-family: 'FuturaExtraBold'; line-height:28px; float:left;}
+.products-grid  .price-box .special-price .price  {color:#FF0000;}
+.products-grid  .price-box .old-price .price  {color:#898989; font-size:12px; font-family: 'FuturaLight'; line-height:16px;}
+.products-grid  .price-box .special-price,
+.products-grid  .price-box .old-price {float:left; margin:0px; clear:both; padding:0px;}
+
 .products-grid .product-info {
   position: relative;
   padding-bottom: 95px;
 }
 
 .products-grid .actions {
-  padding-top: 10px;
-  position: absolute;
-  bottom: 0px;
-  min-height: 85px;
-  width: 100%;
+  float:left;
+  width:100%;
+  margin-bottom:15px;
+  opacity:0;
+  z-index:-1;
+  transition:0.2s;
+  -webkit-transition:0.2s;
+  -moz-transition:0.2s;
 }
+.products-grid .actions .button.btn-cart ,
+.products-grid .actions  p {float:left; padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:16px; text-transform:uppercase; font-family: 'Lato', sans-serif; }
+.products-grid .actions  p {color:#000;}
+
+.products-grid > li:hover .actions {z-index:1; opacity:1;}
 
 .products-grid .ratings .rating-box {
   margin: 0 auto;
@@ -4255,13 +4283,6 @@ p.product-name a:hover {
   margin-right: 4.54545%;
 }
 
-.products-grid > li:nth-child(odd) {
-  clear: left;
-}
-
-.products-grid > li:nth-child(even) {
-  margin-right: 0;
-}
 
 .products-grid .product-image {
   margin-bottom: 5px;
@@ -4293,62 +4314,15 @@ p.product-name a:hover {
   display: block;
 }
 
-@media only screen and (min-width: 480px) {
-  /* Config: Three columns + flexible gutter */
-  .products-grid {
-    /* Undo two-column config */
-    /* Set three-column config */
-  }
-  .products-grid > li:nth-child(odd) {
-    clear: none;
-  }
-  .products-grid > li:nth-child(even) {
-    margin-right: 3.7037%;
-  }
-  .products-grid > li {
-    width: 30.8642%;
-    margin-right: 3.7037%;
-  }
-  .products-grid > li:nth-child(3n+1) {
-    clear: left;
-  }
-  .products-grid > li:nth-child(3n) {
-    margin-right: 0;
-  }
-}
 @media only screen and (min-width: 960px) {
   /* Config: Columns + flexible gutter */
   /* Undo three-column config */
-  .products-grid--max-4-col > li:nth-child(odd) {
-    clear: none;
-  }
-
-  .products-grid--max-4-col > li:nth-child(3n+1) {
-    clear: none;
-  }
-
-  .products-grid--max-4-col > li:nth-child(even),
-  .products-grid--max-4-col > li:nth-child(3n) {
-    margin-right: 2.22222%;
-  }
-
-  /* Set column config */
-  .products-grid--max-4-col > li {
-    margin-right: 2.22222%;
-  }
-
-  .products-grid--max-4-col > li {
-    width: 23.33333%;
-    margin-right: 2.22222%;
-  }
-
-  .products-grid--max-4-col > li:nth-child(4n+1) {
-    clear: left;
-  }
-
-  .products-grid--max-4-col > li:nth-child(4n) {
-    margin-right: 0;
-  }
+  .products-grid--max-4-col  li.item,
+  .main-home .products-grid--max-4-col  li.item {float:left; width:24%; margin-right:1.3333%; }
+  .products-grid--max-4-col  li.item:nth-child(4n),
+  .main-home  .products-grid--max-4-col  li.item:nth-child(4n){margin-right:0px;}
+  .products-grid--max-4-col  li.item:nth-child(4n +1) {clear:left;}
+  
 
   /* Config: Columns + flexible gutter */
   /* Undo three-column config */

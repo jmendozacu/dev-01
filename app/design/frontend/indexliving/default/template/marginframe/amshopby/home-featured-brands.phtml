@@ -1,0 +1,50 @@
+<?php
+   $row_count = 3;
+   if(!$this->getItems()) { return; }
+   $_collectionSize = $this->getItems()->getSize();
+  if($_collectionSize >0):
+ ?>
+<h2 class="title-style1"><span><?php echo $this->__('our brands') ?></span><a title="view all" href="#"><?php echo $this->__('view all') ?></a></h2>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-brand-banner')->toHtml() ?>
+<div class="home-brand-content">
+  <div id="grid-featured-brands">
+    <?php $i=0; foreach ($this->getItems() as $item): ?>
+      <?php $itemTitle = unserialize($item->getTitle());?>
+      
+        <div class="logo-item">
+      
+        <a href="<?php echo $item->getUrl()?>">
+          <?php if ($item->getImgBig()) : ?>
+              <img class="amshopby-featured" title="<?php echo $itemTitle[0]?>" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgBig()?>" />
+          <?php else: ?>
+            <?php echo $this->htmlEscape($item->getTitle())?>
+          <?php endif ?>
+        </a>
+      
+        </div>
+      
+    <?php endforeach ?>
+  </div>
+</div>
+<script type="text/javascript">
+  <?php $column_count = (int)($_collectionSize/$row_count); ?>
+
+  jQuery("#grid-featured-brands").owlCarousel({
+    
+    loop:true,
+    margin:20,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:6
+        }
+    }
+  });
+</script>
+<?php endif; ?>

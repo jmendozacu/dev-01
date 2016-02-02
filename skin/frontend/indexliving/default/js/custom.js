@@ -42,4 +42,8 @@ jQuery(document).ready(function () {
 		jQuery(activeTab).show(); //Fade in the active ID content
 		return false;
 	});
+  
+  /* change position special-price and old-price in products-grid */
+  (jQuery('.products-grid .special-price')).insertBefore(jQuery('.products-grid .old-price'));
+  jQuery('.special-price + .special-price').remove();
 });

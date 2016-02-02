@@ -1,0 +1,36 @@
+/********Css For bannerads************/
+.wrap-bannerads {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin: 0px;
+}
+
+/*
+.wrap-bannerads .div-banner{background:#FFF; border:2px solid #F0F0F0; padding:5px; overflow:hidden}
+*/
+.wrap-bannerads img {
+  max-width: 100%;
+}
+
+/* Display type: Show all */
+/*.wrap-bannerads .div-banner ul li{float:left; display:inline; margin:0 0 5px;}*/
+/* Display type: Random */
+.wrap-bannerads div.banner {
+  margin: 0 auto;
+}
+
+.wrap-bannerads div.banner .bx-viewport {
+  /* background: #FFF; */
+}
+
+.showall-banner {
+}
+
+.banner {
+}
+
+.allbanner {
+  width: 70%;
+  margin: 0 auto;
+}

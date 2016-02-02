@@ -75,6 +75,10 @@ Default layout, loads most of the pages
 
     <cms_index_index translate="label">
         <label>CMS Home Page</label>
+        <reference name="head">
+          <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+          <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
+        </reference>
     </cms_index_index>
 
     <cms_index_defaultindex>
