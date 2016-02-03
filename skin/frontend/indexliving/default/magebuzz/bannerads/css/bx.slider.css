@@ -50,14 +50,12 @@
 .bx-wrapper .bx-pager .bx-pager-item,
 .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
   display: inline-block;
-  *zoom: 1;
-  *display: inline;
 }
 .bx-wrapper .bx-pager.bx-default-pager {
   position:absolute;
   bottom:5px;
   width:100%;
-	z-index:999;
+	z-index:9;
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
@@ -106,7 +104,7 @@
   height: 40px;
   text-indent: -9999px;
   background:url(images/icon.png) no-repeat;
-	z-index:999;
+	z-index:9;
 }
 
 
