@@ -46,4 +46,11 @@ jQuery(document).ready(function () {
   /* change position special-price and old-price in products-grid */
   (jQuery('.products-grid .special-price')).insertBefore(jQuery('.products-grid .old-price'));
   jQuery('.special-price + .special-price').remove();
+  
+  jQuery(".go-top").click(function() {
+    jQuery('html, body').animate({
+    scrollTop: 0
+  }, 500);
+  });
+  
 });
