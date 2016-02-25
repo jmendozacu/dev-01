@@ -17,12 +17,12 @@
     </cms_page>
     <catalog_category_default>
         <reference name="content">
-            <block type="awautorelated/blocks" name="awarp.content.top.category" before="-"/>
+            <block type="awautorelated/blocks" name="awarp.content.top.category" before="product_list" after="title"/>
         </reference>
     </catalog_category_default>
     <catalog_category_layered>
         <reference name="content">
-            <block type="awautorelated/blocks" name="awarp.content.top.category" before="-"/>
+            <block type="awautorelated/blocks" name="awarp.content.top.category" before="product_list" after="title"/>
         </reference>
     </catalog_category_layered>
     <catalog_product_view>

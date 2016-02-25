@@ -88,7 +88,7 @@
                     </div>
                     <div class="product-secondary">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
-                            <p class="action"><button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                            <p class="actions"><button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
                         <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                             <p class="action"><a title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
                         <?php else: ?>
@@ -161,9 +161,6 @@
                         <ul class="add-to-links">
                             <?php if ($this->helper('wishlist')->isAllow()) : ?>
                                 <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                            <?php endif; ?>
-                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
-                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
                             <?php endif; ?>
                         </ul>
                     </div>

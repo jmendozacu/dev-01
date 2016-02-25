@@ -28,9 +28,9 @@ padding: 0pt 10px 10px 0pt; float: left;
 	overflow: hidden;
 }
 div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left;}  
-div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover {padding-left:15px; background-image:url(../images/amshopby-cb1.gif); background-repeat: no-repeat; background-position: left center;}
+div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover {padding-left:32px; background-image:url(../images/amshopby-cb1.gif); background-repeat: no-repeat; background-position: left center;}
 div.block-layered-nav dd a.amshopby-attr::before, div.block-layered-nav dd a.amshopby-attr-selected::before {border-style: none !important;}
-div.block-layered-nav dd a.amshopby-attr-selected {font-weight: bold; padding-left:15px; background-image:url(../images/amshopby-cb2.gif); background-repeat: no-repeat; background-position: left center;}
+div.block-layered-nav dd a.amshopby-attr-selected {font-weight: bold; padding-left:32px; background-image:url(../images/amshopby-cb2.gif); background-repeat: no-repeat; background-position: left center;}
 div.block-layered-nav dd a.amshopby-attr-inactive {pointer-events: none; color: #666666}
 div.block-layered-nav dd a img {/* padding: 0px 4px 5px;*/ float:left;}
 

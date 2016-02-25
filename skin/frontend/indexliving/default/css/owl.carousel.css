@@ -74,6 +74,7 @@
 .owl-carousel .owl-stage-outer {
   position: relative;
   overflow: hidden;
+	clear:both;
   /* fix for flashing background */
   -webkit-transform: translate3d(0px, 0px, 0px);
 }
@@ -115,7 +116,6 @@
 }
 .owl-carousel .owl-item img {
   display: block;
-  width: 100%;
   -webkit-transform-style: preserve-3d;
 }
 .owl-carousel.owl-text-select-on .owl-item {

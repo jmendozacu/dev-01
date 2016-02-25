@@ -22,17 +22,32 @@
                 </allcategory>
             </updates>
         </layout>
+				<events>
+            <controller_action_layout_load_before>
+                <observers>
+                    <allcategory_controller_category_load_before>
+                        <class>allcategory/observer</class>
+                        <method>categoryViewLoadBefore</method>
+                    </allcategory_controller_category_load_before>
+                </observers>
+            </controller_action_layout_load_before>
+        </events>
     </frontend>
     <global>
-        <helpers>
-            <allcategory>
-                <class>Magebuzz_Allcategory_Helper</class>
-            </allcategory>
-        </helpers>
-        <blocks>
-            <allcategory>
-                <class>Magebuzz_Allcategory_Block</class>
-            </allcategory>
-        </blocks>
+			<helpers>
+				<allcategory>
+					<class>Magebuzz_Allcategory_Helper</class>
+				</allcategory>
+			</helpers>
+			<blocks>
+				<allcategory>
+					<class>Magebuzz_Allcategory_Block</class>
+				</allcategory>
+			</blocks>
+			<models>
+				<allcategory>
+					<class>Magebuzz_Allcategory_Model</class>
+				</allcategory>
+			</models>
     </global>
 </config> 

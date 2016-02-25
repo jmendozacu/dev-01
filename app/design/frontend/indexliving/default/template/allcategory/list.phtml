@@ -1,0 +1,77 @@
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<div class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></div>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+?>
+<div class="allcategories-list">
+	<div class="category-overview">
+		<?php if($_imgUrl): ?>
+			<?php echo $_imgHtml ?>
+		<?php endif; ?>
+		<div class="category-info">
+			<div class="page-title category-title">
+				<?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+					<a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+				<?php endif; ?>
+				<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+			</div>
+			<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+				<div class="category-description std">
+					<?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="categories-list">
+		<div class="selectcat-title"><h1><?php echo $this->__('Select Category')?></h1></div>
+		<?php 
+			$_subcategories = $_category->getChildrenCategories();
+			$_categoryHelper    = $this->helper('catalog/category');
+		?>
+		<?php if (count($_subcategories) > 0): ?>
+			<ul class="category-grid">
+			<?php $i=0; foreach($_subcategories as $_subcategory): $i++;?>
+					<li class="category-item<?php if($i%3==0): ?> last<?php endif; ?>">
+						<?php $_subcategoryData = Mage::getModel('catalog/category')->load($_subcategory->getId()); ?>
+						<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" title="<?php echo $_subcategoryData->getName() ?>" />
+						<div class="categories-links">
+						<?php $_categoryLevel3 = $_subcategory->getChildrenCategories(); ?>
+						<?php if (count($_categoryLevel3) > 0): ?>
+							<a class="link-has-sub" href="javascript:void(0);">
+								<?php echo $_subcategory->getName() ?>
+							</a>
+							<div class="categories-list-lvl3">
+								<ul class="cat-lvl3">
+								<?php $j=0; foreach($_categoryLevel3 as $_subcatlvl3): $j++;?>
+									<?php $_subcatLvl3Data = Mage::getModel('catalog/category')->load($_subcatlvl3->getId()); ?>
+									<li>
+										<a href="<?php echo $_categoryHelper->getCategoryUrl($_subcatLvl3Data) ?>">
+											<?php echo $_subcatLvl3Data->getName() ?>
+										</a>
+									</li>
+								<?php if($j > 2): break; endif;?>	
+								<?php endforeach;?>
+								</ul>
+								<a class="link-view-all" href="<?php echo $_categoryHelper->getCategoryUrl($_subcategory) ?>"><?php echo $this->__('View All (%s)', count($_categoryLevel3))?></a>
+							</div>
+						<?php else:?>
+							<a class="link-no-sub" href="<?php echo $_categoryHelper->getCategoryUrl($_subcategoryData) ?>">
+								<?php echo $_subcategoryData->getName() ?>
+							</a>
+						<?php endif; ?>
+						</div>
+					</li>
+			<?php endforeach; ?>
+					<li class="category-item category-products-list">
+						<a class="link-view-productlist" href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?p=productlist">
+							<?php echo $this->__('View All') ?>
+						</a>
+					</li>
+			</ul>
+		<?php endif; ?>
+	</div>
+</div>

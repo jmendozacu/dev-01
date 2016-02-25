@@ -7,4 +7,24 @@
       <block type="allcategory/page" name="allcategory.page" template="allcategory/page.phtml" />
     </reference>
   </allcategory_index_index>
+	<catalog_category_layered_haschildren>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
+		</reference>
+		<reference name="content">
+			<remove name="category.products" />
+			<block type="catalog/category_view" name="category.list" template="allcategory/list.phtml">
+					
+			</block>
+		</reference>
+		<reference name="footer.before">
+			<block type="cms/block" name="category.static.content" before="-">
+				<action method="setBlockId"><block_id>index-allcategory-static-content</block_id></action>
+			</block>
+		</reference>
+	</catalog_category_layered_haschildren>
 </layout>
