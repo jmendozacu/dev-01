@@ -42,15 +42,24 @@
 ?>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
 
-<?php if($_imgUrl): ?>
-    <?php echo $_imgHtml ?>
-<?php endif; ?>
-
-<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
-    <div class="category-description std">
-        <?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
-    </div>
-<?php endif; ?>
+<div class="category-overview">
+		<?php if($_imgUrl): ?>
+			<?php echo $_imgHtml ?>
+		<?php endif; ?>
+		<div class="category-info">
+			<div class="page-title category-title">
+				<?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+					<a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
+				<?php endif; ?>
+				<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+			</div>
+			<?php if($_description=$this->getCurrentCategory()->getDescription()): ?>
+				<div class="category-description std">
+					<?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
 
 <?php if($this->isContentMode()): ?>
     <?php echo $this->getCmsBlockHtml() ?>
