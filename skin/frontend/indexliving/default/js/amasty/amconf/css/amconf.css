@@ -1,3 +1,5 @@
+.products-grid li.item .amconf-block{ position:absolute; top:200px; width:100%; text-align:center;}
+.products-grid li.item .amconf-block dl dt{display:none;}
 .amconf-image{
     margin: 3px;
     border-radius: 3px;
@@ -16,8 +18,7 @@
 .amconf-color-container{
     cursor: pointer;
     overflow: hidden;
-    border-radius: 3px;
-    outline: 3px double #555;
+    border-radius: 10px;
 }
 
 em{
@@ -29,7 +30,8 @@ em{
 } 
 
 #amasty_gallery img{
-    display: inline !important;
+	display: inline !important;
+	border:1px solid #dadada;
 }
 
 .amasty-main-spinner{
@@ -94,7 +96,8 @@ hr.amconf-hr{
 .amconf-image-selected
 {
     margin: 0;
-    outline: 3px double #eaff00;
+    outline: 1px solid #000;
+		border-radius:10px;
 }
 
 .amconf-image-outofstock
@@ -114,8 +117,7 @@ hr.amconf-hr{
     display: inline-block;
     position: relative;
     text-align: center;
-    margin-right: 10px;
-    margin-bottom: 3px;
+    margin-right: 5px;
 }
 
 .amconf-image-container img, .amconf-image-container div:first-child

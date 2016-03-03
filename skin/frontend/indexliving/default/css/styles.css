@@ -1058,7 +1058,7 @@ a.button:hover {
   color: #246b8f;
 }
 
-.button.btn-cart {background:#FFC222; border-radius:3px;}
+.button.btn-cart, .button.btn-view-details {background:#FFC222; border-radius:3px;}
 .button.btn-cart > span {display:inline-block; padding-left:38px; position:relative;}
 .button.btn-cart > span:before {content:""; position:absolute; width:30px; height:30px; top:5px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
 
@@ -4275,6 +4275,7 @@ body.catalogsearch-result-index .page-title h1 {
   -moz-transition:0.2s;
 }
 .products-grid .actions .button.btn-cart ,.products-list .actions .button.btn-cart ,
+.products-grid .actions .button.btn-view-details ,.products-list .button.btn-view-details ,
 .products-grid .actions  p, .products-list .actions  p {float:left; padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:18px; text-transform:uppercase; font-family: "FuturaT_Bold"; }
 .products-grid .actions  p, .products-list .actions  p {color:#000;}
 
@@ -4875,7 +4876,7 @@ body.catalogsearch-result-index .page-title h1 {
   border: 0;
 }
 .product-view .product-shop {
-  width: 50%;
+  width: 36%;
   float: right;
 }
 .product-view .product-shop .product-name {
@@ -4958,13 +4959,6 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .old-price .price-label {
   display: none;
 }
-.product-view .add-to-cart-wrapper,
-.product-view .block-related {
-  width: 50%;
-  float: right;
-  clear: right;
-}
-
 @media only screen and (max-width: 850px) {
   .product-view .product-shop .price-box .price-excluding-tax .label,
   .product-view .product-shop .price-box .price-including-tax .label {
@@ -5001,8 +4995,9 @@ body.catalogsearch-result-index .page-title h1 {
   }
 }
 .product-img-box {
-  width: 50%;
+  width: 60%;
   float: left;
+	position:relative;
 }
 .product-img-box .product-name h1 {
   border: 0;
@@ -5073,16 +5068,6 @@ body.catalogsearch-result-index .page-title h1 {
 
 .no-touch .product-image-thumbs a:hover {
   border-color: #c7c7c7;
-}
-
-.product-view .product-shop,
-.product-view .add-to-cart-wrapper,
-.product-view .block-related {
-  padding-left: 15px;
-}
-
-.product-img-box {
-  padding-right: 15px;
 }
 
 .product-view .product-shop,
