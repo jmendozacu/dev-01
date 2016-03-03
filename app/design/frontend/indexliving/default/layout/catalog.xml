@@ -102,6 +102,11 @@ Category default layout
                 </block>
             </block>
         </reference>
+				<reference name="footer.before">
+					<block type="cms/block" name="category.static.content" before="-">
+						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>
+					</block>
+				</reference>
     </catalog_category_default>
 <!--
 Category layered navigation layout
@@ -155,6 +160,11 @@ Category layered navigation layout
                 </block>
             </block>
         </reference>
+				<reference name="footer.before">
+					<block type="cms/block" name="category.static.content" before="-">
+						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>
+					</block>
+				</reference>
     </catalog_category_layered>
 
 <!--

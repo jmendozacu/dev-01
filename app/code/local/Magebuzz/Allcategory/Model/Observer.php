@@ -7,7 +7,7 @@ class Magebuzz_Allcategory_Model_Observer {
 			/** @var $layout Mage_Core_Model_Layout */
 			$update = Mage::getSingleton('core/layout')->getUpdate();
 			$params = Mage::app()->getRequest()->getParams();
-			if ($category->hasChildren() && !isset($params['p'])) {
+			if ($category->hasChildren() && !isset($params['page'])) {
 				$update->addHandle('catalog_category_layered_haschildren');
 			}
 		}

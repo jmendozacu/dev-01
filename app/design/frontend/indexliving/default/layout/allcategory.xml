@@ -23,7 +23,7 @@
 		</reference>
 		<reference name="footer.before">
 			<block type="cms/block" name="category.static.content" before="-">
-				<action method="setBlockId"><block_id>index-allcategory-static-content</block_id></action>
+				<action method="setBlockId"><block_id>index-allcategory-recommend-products</block_id></action>
 			</block>
 		</reference>
 	</catalog_category_layered_haschildren>
