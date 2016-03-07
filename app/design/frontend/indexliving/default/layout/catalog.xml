@@ -211,6 +211,8 @@ Product view
             <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action>
             <action method="addItem"><type>js</type><name>calendar/calendar.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
             <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
+						<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+						<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
         </reference>
         <reference name="content">
             <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
@@ -244,8 +246,9 @@ Product view
                 </block>
                 <block type="catalog/product_list_related" name="catalog.product.related" as="related_products" template="catalog/product/list/related.phtml" />
 
-                <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml"/>
-                <block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
+                <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml">
+									<block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
+								</block>							
                 <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
@@ -269,7 +272,6 @@ Product view
                     <block type="catalog/product_view" name="product.clone_prices" as="prices" template="catalog/product/view/price_clone.phtml"/>
                     <action method="append"><block>product.info.addtocart</block></action>
                     <action method="append"><block>product.info.addto</block></action>
-                    <action method="append"><block>product.info.sharing</block></action>
                 </block>
 
                 <block type="core/template_facade" name="product.info.container1" as="container1">
@@ -291,6 +293,11 @@ Product view
         <reference name="right">
 
         </reference>
+				<reference name="footer.before">
+					<block type="cms/block" name="category.static.content" before="-">
+						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>
+					</block>
+				</reference>
     </catalog_product_view>
 
 <!--
