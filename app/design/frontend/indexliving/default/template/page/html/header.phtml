@@ -42,15 +42,22 @@
 
 <header id="header" class="page-header">
     <div class="page-header-container">
+        <div class="icon-menu box-mobile" id="toggle-menu">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="icon-search box-mobile" id="toggle-search"><?php echo $this->__('search-icon')?></div>
         <a class="logo" href="<?php echo $this->getUrl('') ?>">
-            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large" />
-            <!-- <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small" />-->
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large box-desktop" />
+            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small box-mobile" />
         </a>
-        <div id="header-search">
+        <div id="header-search" class="box-desktop">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
         <div class="box-right">
-          <ul class="top-links">
+          <span class="icon-account box-mobile" id="toggle-account"></span>
+          <span class="icon-minicart box-mobile" id="toggle-minicart"></span>
+          
+          <ul class="top-links box-desktop">
           <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
             <li><a href="<?php echo Mage::getUrl('customer/account/login'); ?>" title="<?php echo $this->__('Login'); ?>"><?php echo $this->__('Login'); ?></a></li>
             <li><a href="<?php echo Mage::getUrl('customer/account/create'); ?>" title="<?php echo $this->__('Register'); ?>"><?php echo $this->__('Register'); ?></a></li>
@@ -61,7 +68,7 @@
             <li class="wishlist"><a title="<?php echo $this->__("wishlist")?>" href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a></li>
           <?php endif; ?>
           </ul>
-          <div class="header-minicart">
+          <div class="header-minicart box-desktop">
             <?php
               $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
             ?>
@@ -91,7 +98,7 @@
   <div class="page-header">
     <div class="cateogry" >
        <a href="#header-nav" title="<?php echo $this->__('Menu') ?>" class="skip-link skip-cateogry">
-        <span class="icon-menu">
+        <span class="icon-menu box-desktop">
           <span></span>
           <span></span>
           <span></span>
@@ -113,7 +120,20 @@
         </div> 
       </div>   
     </div>
-    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topmenu')->toHtml() ?>
+    <div class="box-desktop">
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topmenu')->toHtml() ?>
+    </div>
+    <div class="box-menu-mobile box-mobile">
+      <h2 class="menu-title"><span><?php echo $this->__('Menu') ?></span></h2>
+      <ul class="topheader-links box-mobile">
+        <li class="back-home"><a href="<?php echo Mage::getUrl(''); ?>" title="<?php echo $this->__('back to home')?>"><span><?php echo $this->__('back to home')?></span></a></li>
+        <li class="language"><a href="javascript:void(0)" title="<?php echo $this->__('language')?>"><span><?php echo $this->__('language')?></span></a></li>
+      </ul>
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topheader-links')->toHtml() ?>
+      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-call-us')->toHtml() ?>
+      <?php echo $this->getChildHtml('store_language_mobile') ?>
+    </div>
+    
   </div>
 </div>
 

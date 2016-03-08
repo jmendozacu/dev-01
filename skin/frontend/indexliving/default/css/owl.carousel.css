@@ -281,3 +281,15 @@
 .owl-pagination .owl-page.active {
   background:url(../images/paper2.png) no-repeat;
 }
+@media (max-width: 450px){
+.home-brand-content .owl-carousel .owl-stage-outer{ padding-right:30px;  overflow: initial!important;}
+.home-brand-content .owl-carousel {overflow:hidden!important; padding-right:30px;}
+}
+
+
+
+
+
+
+
+
