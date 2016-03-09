@@ -46,7 +46,7 @@
   .banner-static-home li {width:50%;} 
   .banner-static-home li span {width:100%; margin:5px 0;}
   .box-home-list-products .box-list-products {width:100%; margin:0 0 30px;}
-  .box-home-list-products .banner-right {width:100%;}
+  .box-home-list-products .banner-right {width:100%; padding-left:10px; padding-right:10px;}
   .products-grid .actions {opacity:1;}
   .box-home-list-products .category-products {margin-bottom:12px;}
   .box-home-list-products .block-content {max-width:100%; overflow-x:auto;}
@@ -150,6 +150,9 @@
   .footer .footer-links .box-links h3 {cursor:pointer; line-height:24px; padding:10px 0; position:relative; margin:0px;}
   .footer .footer-links .box-links h3:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:44px; position:absolute; top:0px; right:0px; background:url(../images/arrow-mobile.png) no-repeat center center;}
   .footer .footer-links .box-links h3.active:before {-webkit-transform: rotate(-180deg);	-moz-transform: rotate(-180deg); -ms-transform: rotate(-180deg); -o-transform: rotate(-180deg); transform: rotate(-180deg);}
+  .footer-bottom address {width:100%; text-align:center; line-height:18px;}
+  .footer-bottom ul {width:100%; text-align:center; margin-top:10px;}
+  .footer-bottom ul li {float:none; display:inline-block;}
  }
  @media (min-width: 601px) and (max-width: 767px) {}
  @media (max-width:600px){}
