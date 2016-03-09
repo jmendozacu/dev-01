@@ -104,7 +104,34 @@ jQuery(document).ready(function () {
       jQuery(this).removeClass('active');
     }
 	});
-  /*top menu on mobile */
+  /*icon search on mobile */
+  jQuery('#toggle-search').click(function(){
+    jQuery('.box-header-content').hide();
+    jQuery('.toggle-header-content').removeClass('active'); 
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).addClass('active');
+      jQuery('#header-search').show();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#header-search').hide();
+    }
+  });
+  /*icon menu on mobile */
+  jQuery('#toggle-menu').click(function(){
+    jQuery('.box-header-content').hide();
+    jQuery('.toggle-header-content').removeClass('active');
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).addClass('active');
+      jQuery('.box-top-menu').show();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('.box-top-menu').hide();
+    }
+  });
+  
+  /*top menu nav on mobile */
   jQuery('.nav-primary li.level0.parent').append( "<span class='arrow box-mobile'></span>" );
   jQuery('.nav-primary li.level0.parent > .arrow').click(function(){
 	 if (!jQuery(this).hasClass('active')){
@@ -140,6 +167,7 @@ jQuery(document).ready(function () {
 		jQuery('.box-menu-mobile .form-language').addClass('active');
 		jQuery('.box-top-menu .topheader-links li.language a').addClass('active');
     jQuery('.box-top-menu').addClass('active');
+    jQuery('body').scrollTop(0);
 	 }
 	 else{
 		jQuery('.box-top-menu .topheader-links li.language a').removeClass('active');

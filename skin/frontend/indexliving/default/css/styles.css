@@ -3277,11 +3277,12 @@ body {
 .topheader-links li.services a span:before {background-position:-36px -33px;}
 
 .header-language-container .box-right {float:right;}
-.header-language-container .call-us {float:left; padding:8px 0px; margin-right:20px;}
-.header-language-container .call-us label {line-height:22px; float:left; margin-right:10px; font-size:13px; font-family: 'FuturaBT-Book';}
-.header-language-container .call-us > div {float:right; font-family: 'FuturaBT-Book';}
-.header-language-container .call-us > div strong {display:block; font-size:18px; line-height:22px;}
-.header-language-container .call-us > div span {font-size:10px; line-height:12px; display:block;}
+.call-us {float:left; padding:8px 0px; margin-right:20px; font-family: 'FuturaBT-Book';}
+.call-us label {line-height:22px; float:left; font-size:13px;  font-family: 'FuturaBT-Book';}
+.call-us > div {display:block; text-align:right;}
+.call-us label  a { font-size:18px; line-height:22px; font-weight:bold; text-decoration:none;}
+.call-us span {font-size:10px; line-height:12px; display:block;}
+
 .store-language-container{float:right; font-family: 'Lato', sans-serif;}
 .form-language .dropdown {min-width:50px;}}
 .form-language .dropdown dd,

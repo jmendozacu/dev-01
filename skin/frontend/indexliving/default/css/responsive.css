@@ -32,15 +32,17 @@
   .box-desktop,
   #header-search  {display:none;}
   .box-mobile {display:block;}
-  #header{background:#252525;  float:left; width:100%;}
+  #header{background:#252525;  float:left; width:100%; padding:0px;}
   .page-header {padding-left:10px; padding-right:10px;}
-  .page-header-container {padding-top:13px; padding-bottom:8px; text-align:center;}
-  .icon-menu {margin:0px;}
-  .icon-search {float:left; width:30px; height:15px; margin:0 15px; text-indent:-9999px; background:url(../images/icon-mobile.png) no-repeat 8px 0px;}
-  .logo {display:inline-block; margin:0px; float:none;}
+  .page-header-container {padding:0; text-align:center;}
+  .icon-menu {margin:0px; padding: 15px 10px 14px;  width: 43px;}
+  .icon-menu.active,
+  .icon-search.active {background-color:#343434;} 
+  .icon-search {float:left; width:42px; height:44px; margin:0px; text-indent:-9999px; background:url(../images/icon-mobile.png) no-repeat 15px 15px;}
+  .logo {display:inline-block;  margin: 13px 0px 0; float:none;}
   .icon-account,
-  .icon-minicart{float:left; width:30px; height:18px;  background:url(../images/icon-mobile.png) no-repeat -36px 0px;}
-  .icon-minicart {background-position:-71px 0px; margin-left:10px;}
+  .icon-minicart{float:left; width: 42px;  height: 44px;  background:url(../images/icon-mobile.png) no-repeat -30px 13px;}
+  .icon-minicart {background-position:-69px 13px;}
   .banner-static-home li {width:50%;} 
   .banner-static-home li span {width:100%; margin:5px 0;}
   .box-home-list-products .box-list-products {width:100%; margin:0 0 30px;}
@@ -89,7 +91,7 @@
   .box-home-list-products .nav-primary li.level0:hover > a {color:#fff;}
   .box-home-list-products .nav-primary .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:0px;}
   .box-home-list-products .nav-primary .mCSB_scrollTools.mCSB_scrollTools_horizontal {opacity:0!important;}
-  .box-top-menu {position:absolute; left:0px; top:44px; z-index:99; background:#fff;}
+  .box-top-menu {position:absolute; display:none; left:0px; top:44px; z-index:99; background:#fff;}
   .box-top-menu .page-header {padding-left:0px; padding-right:0px;}
   .box-top-menu .cateogry {width:100%; padding:0px;}
   .box-top-menu .cateogry .skip-cateogry {background: #343434;  text-align: center;  border: none;}
@@ -128,12 +130,18 @@
   .box-top-menu .topheader-links li.back-home a span:before {background-position:10px -34px;}
   .box-top-menu .topheader-links li.language a span:before {background-position:-71px -32px;}
   .box-top-menu .topheader-links li a:before {content:""; width:10%; height:100%; position:absolute; top:0px; right:0px; background: url(../images/arrow-right.png) no-repeat center center;}
-  .box-top-menu .form-language.active {position: absolute;  top: 0px;  width: 100%;  left: 100%;  z-index: 99;}
+  .box-top-menu .form-language {display:none;}
+  .box-top-menu .form-language.active {position: absolute;  display:block; top: 0px;  width: 100%;  left: 100%;  z-index: 99;}
   .box-top-menu .form-language .topheader-links li a:before {left:0px; -webkit-transform: rotate(-180deg);	-moz-transform: rotate(-180deg); -ms-transform: rotate(-180deg); -o-transform: rotate(-180deg); transform: rotate(-180deg);}
   .box-top-menu .form-language .topheader-links li a {padding-left:10%; border-bottom:none; background:#363636;}
   .box-top-menu .form-language ul li {float:left; width:100%;}
   .box-top-menu .form-language ul li a {display:block; background:#000; line-height:34px; padding:5px 10%; color:#fff; font-size:16px; }
   .box-top-menu .form-language ul li.active a{background:#FFD322;}
+  .box-callus-mobile {float:left; width:100%; background:#343434; text-align:center;}
+  .box-callus-mobile .call-us { display:inline-block; float:none; margin:0px; color:#fff;}
+  .box-callus-mobile .call-us a {color:#FFD322;}
+  .box-callus-mobile .call-us > div {text-align:center;}
+  #header-search {position:absolute; top:44px; left:0px; width:100%; background:#fff; z-index:99; }
   .footer .footer-contacts,
   .footer .footer-links,
   .footer .footer-links .box-links {width:100%;}
