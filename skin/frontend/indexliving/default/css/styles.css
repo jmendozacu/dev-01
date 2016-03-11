@@ -3266,22 +3266,23 @@ body {
 }
 .header-language-container .topheader-links {float:left; font-family: 'FuturaBT-Book';}
 .header-language-container .topheader-links li {float:left; margin-right:1px;}
-.header-language-container .topheader-links li a {transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s; display:block; min-width:128px; text-align:center; padding:10px; line-height:30px; font-size:12px; color:#fff; background:#434343;}
-.header-language-container .topheader-links li a:hover {background:#FFC222; text-decoration:none;}
-.header-language-container .topheader-links li a span {display:inline-block; padding-left:20px; position:relative;}
-.header-language-container .topheader-links li a span:before {content:""; position:absolute; top:0px; left:0px; width:20px; height:100%; background:url(../images/icons.png) no-repeat 0px 0px;}
-.header-language-container .topheader-links li.promotion a span:before {background-position:0px 8px;}
-.header-language-container .topheader-links li.e-catalog a span:before {background-position:-37px 8px;}
-.header-language-container .topheader-links li.joycard a span:before {background-position:-85px 8px;}
-.header-language-container .topheader-links li.location a span:before {background-position:0px -33px;}
-.header-language-container .topheader-links li.services a span:before {background-position:-36px -33px;}
+.topheader-links li a {transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s; display:block; min-width:128px; text-align:center; padding:10px; line-height:30px; font-size:12px; color:#fff; background:#434343;}
+.topheader-links li a:hover {background:#FFC222; text-decoration:none;}
+.topheader-links li a span {display:inline-block; padding-left:20px; position:relative;}
+.topheader-links li a span:before {content:""; position:absolute; top:0px; left:0px; width:20px; height:100%; background:url(../images/icons.png) no-repeat 0px 0px;}
+.topheader-links li.promotion a span:before {background-position:0px 8px;}
+.topheader-links li.e-catalog a span:before {background-position:-37px 8px;}
+.topheader-links li.joycard a span:before {background-position:-85px 8px;}
+.topheader-links li.location a span:before {background-position:0px -33px;}
+.topheader-links li.services a span:before {background-position:-36px -33px;}
 
 .header-language-container .box-right {float:right;}
-.header-language-container .call-us {float:left; padding:8px 0px; margin-right:20px;}
-.header-language-container .call-us label {line-height:22px; float:left; margin-right:10px; font-size:13px; font-family: 'FuturaBT-Book';}
-.header-language-container .call-us > div {float:right; font-family: 'FuturaBT-Book';}
-.header-language-container .call-us > div strong {display:block; font-size:18px; line-height:22px;}
-.header-language-container .call-us > div span {font-size:10px; line-height:12px; display:block;}
+.call-us {float:left; padding:8px 0px; margin-right:20px; font-family: 'FuturaBT-Book';}
+.call-us label {line-height:22px; float:left; font-size:13px;  font-family: 'FuturaBT-Book';}
+.call-us > div {display:block; text-align:right;}
+.call-us label  a { font-size:18px; line-height:22px; font-weight:bold; text-decoration:none;}
+.call-us span {font-size:10px; line-height:12px; display:block;}
+
 .store-language-container{float:right; font-family: 'Lato', sans-serif;}
 .form-language .dropdown {min-width:50px;}}
 .form-language .dropdown dd,
@@ -3544,28 +3545,7 @@ a.skip-link {
 /* ============================================ *
  * Global Header Navigation
  * ============================================ */
-@media only screen and (max-width: 770px) {
-  #header-account li a,
-  .nav-primary a.level0 {
-    padding: 0 15px 0 25px;
-    border-bottom: 1px solid #cccccc;
-    text-align: left;
-    color: #636363;
-    text-transform: uppercase;
-    line-height: 30px;
-  }
 
-  #header-account li:last-child a,
-  .nav-primary li.level0:last-child a.level0 {
-    border-bottom: 0;
-  }
-
-  .no-touch #header-account a:hover,
-  .no-touch .nav-primary a:hover {
-    background-color: #f4f4f4;
-    text-decoration: none;
-  }
-}
 .account-cart-wrapper {
   position: absolute;
   top: 0px;
@@ -3615,38 +3595,52 @@ a.skip-link {
 /* ============================================ *
  * Nav Primary
  * ============================================ */
- 
+.nav-primary .title-viewall span.level1 {padding:12px 0; color:#FFD322; text-transform:capitalize; float:left; width:100%; padding-left:68px; padding-right:2px; position:relative;}
 .nav-primary li {float:left; width:100%; font-size:16px;  text-transform:capitalize; padding:0; line-height:24px;}
 .nav-primary li.level0{ border-top:solid 1px #E6E6E6; transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s;}
 .nav-primary li.level0.first {border-top:none;}
 .nav-primary li.level0 > a {transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s; padding:12px 0; float:left; width:100%; padding-left:68px; padding-right:2px; position:relative; color:#363636;}
 .nav-primary li.level0.parent > a{width:90%;}
 .nav-primary li.level0.parent:after {content:""; width:10%; float:right; height:12px; margin-top:20px; background:url(../images/arrow-right.png) no-repeat left 0px;  }
-.nav-primary li.level0 > a:before { content:""; height:40px; width:40px; position:absolute; left:12px; top:5px; border-radius:100%; background:url(../images/icons.png) no-repeat center 14px;}
-.nav-primary li.level0:hover {background:#363636; }
-.nav-primary li.level0:hover > a {color:#FFC222; padding-left:75px; text-decoration:none; }
-.nav-primary li.level0:hover > a:before  {left:28px; background-color:#FFC222;}
-
+.nav-primary li.level0 > a:before,
+.nav-primary .title-viewall span.level1:before { content:""; height:40px; width:40px; position:absolute; left:12px; top:5px; border-radius:100%; background:url(../images/icons.png) no-repeat center 14px;}
+.nav-primary .title-viewall span.level1:before {background-color:#FFD322; border-radius:100%;}
+ @media (min-width: 768px) {
+  .nav-primary li.level0:hover {background:#363636; }
+  .nav-primary li.level0:hover > a {color:#FFC222; padding-left:75px; text-decoration:none; }
+  .nav-primary li.level0:hover > a:before  {left:28px; background-color:#FFC222;}
+  .nav-primary li.level0:nth-child(1):hover  > a:before {background-position: -65px -113px;}
+  .nav-primary li.level0:nth-child(2):hover  > a:before {background-position: -62px -162px;)}
+  .nav-primary li.level0:nth-child(3):hover  > a:before{background-position: -63px -212px;}
+  .nav-primary li.level0:nth-child(4):hover  > a:before{background-position: -63px -259px;}
+  .nav-primary li.level0:nth-child(5):hover  > a:before{background-position: -63px -308px;}
+  .nav-primary li.level0:nth-child(6):hover  > a:before{background-position: -64px -355px;)}
+  .nav-primary li.level0:nth-child(7):hover  > a:before{background-position: -63px -405px;}
+  .nav-primary li.level0:nth-child(8):hover  > a:before{background-position: -1px -456px;}
+  .nav-primary li.level0:nth-child(9):hover  > a:before{background-position: -65px -503px;}
+  .nav-primary li.level0:nth-child(10):hover  > a:before {background-position: -66px -553px;}
+  .nav-primary li.subcat li.level1 >a {font-size:20px; font-weight:bold; font-family: 'FuturaT_Bold';}
+ }
 .nav-primary li.level0:nth-child(1)  > a:before { background-position: -3px -113px; }
-.nav-primary li.level0:nth-child(1):hover  > a:before {background-position: -65px -113px;}
+.nav-primary  li.level0:nth-child(1) .title-viewall span.level1:before {background-position: -65px -113px;}
 .nav-primary li.level0:nth-child(2)  > a:before {background-position: 0px -162px;}
-.nav-primary li.level0:nth-child(2):hover  > a:before {background-position: -62px -162px;)}
+.nav-primary  li.level0:nth-child(2) .title-viewall span.level1:before {background-position: -62px -162px;)}
 .nav-primary li.level0:nth-child(3)  > a:before {background-position: -1px -212px;}
-.nav-primary li.level0:nth-child(3):hover  > a:before {background-position: -63px -212px;}
+.nav-primary  li.level0:nth-child(3) .title-viewall span.level1:before {background-position: -63px -212px;}
 .nav-primary li.level0:nth-child(4)  > a:before {background-position: -1px -259px;}
-.nav-primary li.level0:nth-child(4):hover  > a:before {background-position: -63px -259px;}
+.nav-primary  li.level0:nth-child(4) .title-viewall span.level1:before {background-position: -63px -259px;}
 .nav-primary li.level0:nth-child(5)  > a:before {background-position: -1px -308px;}
-.nav-primary li.level0:nth-child(5):hover  > a:before {background-position: -63px -308px;}
+.nav-primary  li.level0:nth-child(5) .title-viewall span.level1:before {background-position: -63px -308px;}
 .nav-primary li.level0:nth-child(6)  > a:before {background-position: -2px -355px;}
-.nav-primary li.level0:nth-child(6):hover  > a:before {background-position: -64px -355px;)}
+.nav-primary  li.level0:nth-child(6) .title-viewall span.level1:before {background-position: -64px -355px;)}
 .nav-primary li.level0:nth-child(7)  > a:before {background-position: -1px -405px;}
-.nav-primary li.level0:nth-child(7):hover  > a:before {background-position: -63px -405px;}
+.nav-primary  li.level0:nth-child(7) .title-viewall span.level1:before {background-position: -63px -405px;}
 .nav-primary li.level0:nth-child(8)  > a:before {background-position: -1px -456px; border-radius:0px; width:47px; background-color:transparent;}
-.nav-primary li.level0:nth-child(8):hover  > a:before {background-position: -1px -456px;}
+.nav-primary  li.level0:nth-child(8) .title-viewall span.level1:before {background-position: -1px -456px;}
 .nav-primary li.level0:nth-child(9)  > a:before {background-position: -3px -503px;}
-.nav-primary li.level0:nth-child(9):hover  > a:before {background-position: -65px -503px;}
+.nav-primary  li.level0:nth-child(9) .title-viewall span.level1:before {background-position: -65px -503px;}
 .nav-primary li.level0:nth-child(10)  > a:before {background-position: -4px -553px;}
-.nav-primary li.level0:nth-child(10):hover  > a:before {background-position: -66px -553px;}
+.nav-primary  li.level0:nth-child(10) .title-viewall span.level1:before {background-position: -66px -553px;}
 
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
 .nav-primary .menu-content .title-viewall a {float:right; font-size:14px; font-family: 'Lato', sans-serif; font-weight:bold; line-height:22px; color:#fff; padding-right:33px; position:relative;}
@@ -3659,7 +3653,7 @@ a.skip-link {
 .nav-primary li.subcat ul  li  a{color:#252525; font-size:14px;}
 .nav-primary li.subcat ul li  a:hover,
 .nav-primary .menu-content .title-viewall a:hover {color:#FFC222; text-decoration:none;}
-.nav-primary li.subcat li.level1 >a {font-size:20px; font-weight:bold; font-family: 'FuturaT_Bold';}
+
 
 .nav-primary .bannerads-category { display:none; border-right: solid 2px #233B5F;  border-bottom: solid 2px #233B5F;  opacity: 0; transition:.3s; -webkit-transition:.3s; -moz-transition:.3s; width:100%; height:100%; position:absolute; left:300%; top:0px; margin-right:2px;  }
 .nav-primary .bannerads-category img {max-width:100%; max-height:100%; position:absolute; right:0px; top:0px;}
@@ -4014,8 +4008,11 @@ a.skip-link {
 
 .footer .footer-links .box-links {float:left; width:25%;}
 .footer .footer-links .box-links h3  {color:#363636; font-size:15px; line-height:22px; font-family: 'FuturaT_Bold';  text-transform: capitalize;}
-.footer .footer-links .box-links h3.title-shoppingonline {text-indent:-999px; background:url(../images/logo-shopping.png) no-repeat; background-size:114px auto;  min-height:57px; margin-top:-36px;}
-.footer .footer-links .box-links h3.title-indexliving {text-indent:-999px; background:url(../images/logo.png) no-repeat; height:22px; background-size: auto 21px;}
+ @media (min-width: 768px){
+  .footer .footer-links .box-links h3.title-shoppingonline {text-indent:-999px; background:url(../images/logo-shopping.png) no-repeat; background-size:114px auto;  min-height:57px; margin-top:-36px;}
+  .footer .footer-links .box-links h3.title-indexliving {text-indent:-999px; background:url(../images/logo.png) no-repeat; height:22px; background-size: auto 21px;}
+  .footer .footer-links .box-links ul {display:block!important; height:auto!important;}
+}
 .footer .footer-links .box-links li {display:block; line-height:24px; margin-bottom:5px;}
 .footer .footer-links .box-links li  a  {color:#363636; font-size:14px; font-family: 'FuturaBT-Book';}
 .footer .footer-links .box-links li  a:hover {color:#FFC222;}

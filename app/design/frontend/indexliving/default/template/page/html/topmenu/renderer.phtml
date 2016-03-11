@@ -92,9 +92,13 @@ foreach ($children as $child) {
     if($childLevel==0){
       $html .= '<div class="menu-content" ' .$styleImage.'>';
       $html .= '<h3 class="title-viewall">';
-      $html .=         '<a class="level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
+      $html .=         '<a class="box-desktop level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
       $html .=             $this->__('View All');
       $html .=         '</a>';
+      $html .=         '<span class="box-mobile level'. $nextChildLevel .'">';
+      $html .=             $child->getName();
+      $html .=         '</span>';
+      
       $html .= '</h3>';
       $html .= '<ul class="level' . $childLevel . '">';
       $html .= $this->render($child, $childrenWrapClass);

@@ -15,11 +15,7 @@
     border-radius: 3px;
 }
 
-.amconf-color-container{
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 10px;
-}
+
 .product-view .amconf-color-container{border-radius:0;}
 
 em{
@@ -241,4 +237,24 @@ hr.amconf-hr{
 
 .am-swatch-next:not(.disabled):hover {
     background-position: -27px 52px;
+}
+
+.amconf-color-container{
+    cursor: pointer;
+    /* overflow: hidden; */
+    border-radius: 10px;
+    position: relative;
+}
+.amconf-color-container:before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border: solid 1px transparent;
+    border-radius: 100%;
+} 
+.amconf-image-selected:before {
+    border-color: #000;
 }
