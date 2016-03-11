@@ -5258,10 +5258,8 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .add-to-links a.link-share:hover{background-position:0 -80px; color:#ffc222;}
 
 
-.product-view .add-to-links .shareproduct-content{position:absolute; background:#FFFFFF; padding:10px; min-width:300px; right:90px; top:-10px;}
-.product-view .add-to-links .shareproduct-content ul{text-align:right;}
-.product-view .add-to-links .shareproduct-content ul li{display:inline-block; margin-right:10px;}
-.product-view .add-to-links .shareproduct-content ul li a{text-indent:-9999em; }
+.product-view .add-to-links .shareproduct-content{position:absolute; background:#FFFFFF; padding:10px; min-width:200px; right:90px; top:-10px;}
+.product-view .add-to-links .shareproduct-content  li a{float:left; margin-right:10px; text-indent:-9999em; }
 .icon-facebook{
 	background-image: url(../images/i_share_facebook.png);
 	background-size: 33px 33px;
