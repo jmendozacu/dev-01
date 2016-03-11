@@ -9,18 +9,16 @@
  * http://opensource.org/licenses/afl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
+ * to license@magentocommerce.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade Magento to newer
  * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
+ * needs please refer to http://www.magentocommerce.com for more information.
  *
- * @category    design
- * @package     default_default
- * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
 /***************** WIDGETS ******************
@@ -567,7 +565,7 @@ td.divider              { font-size:1px; line-height:0; }
 .wrapper { min-width:960px; }
 .wrapper-popup { min-width:750px; }
 .header { background:url(images/header_top_bg.gif) repeat-x #425e66; text-align:right; }
-.middle { min-height:450px; background:url(images/simple_container_bg.gif) repeat-x #fff; padding:23px 27px 0 27px; }
+.middle { min-height:450px; background:url(images/simple_container_bg.gif) repeat-x #fff; padding:23px 27px; }
 .middle-popup { border-bottom:3px solid #fff; background:url(images/middle_bg.gif) repeat-x 0 100% #fff; padding:0 0 0 0; background:yellow; }
 .container-collapsed { padding:1.8em 2.2em 1.8em 2em; padding-top:0; }
 .columns {background:url(images/side_col_bg.gif) repeat-y 217px 0; }
@@ -958,7 +956,7 @@ ul.item-options li { padding-left:.7em; }
 .pp-method-express > .config-heading .heading strong,
 .pp-method-general > .config-heading .heading strong { padding-left:56px; background:url(images/paypal/logo-paypal.png) no-repeat 0 2px; }
 .pp-method-general > .config-heading .button-container { padding:8px 0 0 180px; background:url(images/paypal/pp-allinone.png) no-repeat 0 0; height:26px; }
-.pp-method-express > .config-heading .button-container { padding:0 0 0 174px; background:url(images/paypal/pp-alt.png) no-repeat 0 0; height:29px; }
+.pp-method-express > .config-heading .button-container { padding:0 0 0 160px; background:url(images/paypal/pp-alt.png) no-repeat 0 0; height:29px; }
 .pp-method-payflow > .config-heading .button-container { padding:0px 0 0 99px; background:url(images/paypal/pp-gateways.png) no-repeat 1px 0; height:36px; }
 .pp-general-uk > .config-heading .button-container { padding:9px 0 0 201px; background:url(images/paypal/pp-uk.png) no-repeat 0 0; height:27px; }
 .payflow-settings-notice {padding-bottom: 1em;max-width: 660px;}
@@ -1027,8 +1025,7 @@ ul.item-options li { padding-left:.7em; }
 .x-tree-node { margin:0 !important; }
 .x-tree-node .leaf .x-tree-node-icon        { background-image:url(images/fam_leaf.png); }
 .x-tree-node .system-leaf .x-tree-node-icon { background-image:url(images/fam_application_form_delete.png); }
-
-.adminhtml-catalog-category-edit .x-tree-node-ct { overflow: visible; }
+.x-tree-node-ct { overflow:hidden; }
 
 /* Product - Websites */
 .website-name .checkbox                 { vertical-align:top; margin-top:2px; }
@@ -1604,7 +1601,6 @@ ul.super-product-attributes { padding-left:15px; }
 /* Font */
 .bold               { font-weight:bold !important; }
 .normal             { font-weight:normal !important; }
-.strike             { text-decoration: line-through; }
 
 /* Clear */ /* This keeps our HTML free of buncha clearing elements */
 .config-heading:after,
