@@ -290,9 +290,6 @@ Product view
                 <action method="unsetCallChild"><child>container2</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
             </block>
         </reference>
-        <reference name="right">
-
-        </reference>
 				<reference name="footer.before">
 					<block type="cms/block" name="category.static.content" before="-">
 						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>

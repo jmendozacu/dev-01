@@ -89,7 +89,7 @@ jQuery(document).ready(function () {
   }, 500);
   });
   jQuery('#shareProductLink').click(function() {
-		jQuery('#shareproduct-content').toggle("slide",{ direction: "right" }, 500);
+		jQuery('#shareproduct-content').slideToggle();
 	});
   
   /* box links footer on mobile */

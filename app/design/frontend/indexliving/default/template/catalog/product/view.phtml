@@ -90,7 +90,7 @@
 														<?php endif; ?>
 													<?php endif; ?>
 													<?php echo $this->getChildHtml('addto') ?>
-
+													<?php echo $this->getChildHtml('sharing') ?>
 											</div>
 											<?php echo $this->getChildHtml('extra_buttons') ?>
 									<?php elseif (!$_product->isSaleable()): ?>
@@ -99,8 +99,6 @@
 											</div>
 									<?php endif; ?>
 								</div>
-
-								<?php echo $this->getChildHtml('related_products') ?>
 
 								<div class="clearer"></div>
 								<?php if ($_product->isSaleable() && $this->hasOptions()):?>
@@ -160,7 +158,7 @@
         //]]>
         </script>
     </div>
-
+		<?php echo $this->getChildHtml('related_products') ?>
     <div class="product-collateral toggle-content tabs">
         <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
             <dl id="collateral-tabs" class="collateral-tabs">
