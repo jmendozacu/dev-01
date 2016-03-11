@@ -36,7 +36,7 @@ a{color: #E27B3C;}
 	text-align: center;
 }
 
-.mf-theme .mf-login-container .login-form h2 a{display:block;text-indent:-9999px;width:206px;height:50px;background:url(images/mf-theme/logo.jpg) no-repeat;margin:44px auto 0;}
+.mf-theme .mf-login-container .login-form h2 a{display:block;text-indent:-9999px;width:206px;height:50px;background:url("images/mf-theme/logo.png") no-repeat;margin:44px auto 0;}
 
 
 .mf-theme .mf-login-container .login-form label{color: #999;}
