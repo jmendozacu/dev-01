@@ -36,14 +36,8 @@ a{color: #E27B3C;}
 	text-align: center;
 }
 
-.mf-theme .mf-login-container .login-form h2 a{
-  display: block;
-  text-indent: -9999px;
-  width: 100px;
-  height: 50px;
-  background: url(images/mf-theme/logo.jpg) 0 0 no-repeat;
-  margin: 20px auto;
-}
+.mf-theme .mf-login-container .login-form h2 a{display:block;text-indent:-9999px;width:206px;height:50px;background:url(images/mf-theme/logo.jpg) no-repeat;margin:44px auto 0;}
+
 
 .mf-theme .mf-login-container .login-form label{color: #999;}
 .mf-theme .mf-login-container .login-form .input-box{
