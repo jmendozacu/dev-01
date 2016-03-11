@@ -132,6 +132,7 @@ function amshopby_ajax_request(url){
                         throw new EventException('Invalid data structure in response');
                     }
                     amshopby_ajax_update(data);
+                    rerun_some_init_scripts();
                 } catch (e) {
                     console.log(e.message);
                     setLocation(url);
@@ -486,6 +487,56 @@ function amshopby_external_rwd() {
     });
 }
 
+function rerun_some_init_scripts() {
+    var widthWindow = jQuery( window ).width();
+    if(widthWindow <768){ 
+      /* box promo */
+      jQuery(".category-banners .div-banner").mCustomScrollbar({
+        axis:"x",
+        advanced:{autoExpandHorizontalScroll:true}
+      });
+      /* move sort-by-mobile on box filter */
+      var sortByHtml = jQuery(".toolbar .sort-by-mobile").html(); 
+      jQuery(".col-left-first .block-layered-nav .block-content.toggle-content ").append(sortByHtml);
+      jQuery('.toolbar .sort-by-mobile').remove();
+      /* toggle layered-nav */
+      jQuery('.toggle-box-filter.toggle-nav').click(function(){
+        jQuery('.box-filter-content').hide();
+        jQuery('.toggle-box-filter').removeClass('active');
+        if(!jQuery(this).hasClass('active')){
+          jQuery(this).addClass('active');
+          jQuery('#narrow-by-list').show();
+        }else{
+          jQuery(this).removeClass('active');
+          jQuery('#narrow-by-list').hide();
+        }
+        if(!jQuery('.block-layered-nav').hasClass('active')){
+          jQuery('.block-layered-nav').addClass('active');
+        }
+      });
+      /*  and sortby */
+      jQuery('.toggle-box-filter.toggle-sort-by').click(function(){
+        jQuery('.box-filter-content').hide();
+        jQuery('.toggle-box-filter').removeClass('active');
+        if(!jQuery(this).hasClass('active')){
+          jQuery(this).addClass('active');
+          jQuery('.sort-by-content').show();
+        }else{
+          jQuery(this).removeClass('active');
+          jQuery('.sort-by-content').hide();
+        }
+        if(!jQuery('.block-layered-nav').hasClass('active')){
+          jQuery('.block-layered-nav').addClass('active');
+        }
+      });
+      /* close-filter */
+      jQuery('#close-filter').click(function(){
+        jQuery('.block-layered-nav, .toggle-box-filter').removeClass('active');
+        jQuery('.box-filter-content').hide();
+      });
+    }
+}
+
 function amshopby_external_megatron() {
     var windowWidth = window.innerWidth || document.documentElement.clientWidth;
     var animate = jQuery(".notouch .animate");
@@ -518,3 +569,4 @@ function amshopby_external_megatron() {
         })
     }
 }
+

@@ -1274,8 +1274,11 @@ yx-axis
  @media (min-width: 768px){
   .box-list-products .mCSB_horizontal.mCSB_inside > .mCSB_container  {width:100%!important;} 
  }
+.allcategory-banners  .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.category-banners  .mCSB_scrollTools.mCSB_scrollTools_horizontal,
+.category-bestseller .mCSB_scrollTools.mCSB_scrollTools_horizontal{margin-left:10px; margin-right:10px;}
 
-
+.recommend-allcategory .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:5px;}
 
 
 

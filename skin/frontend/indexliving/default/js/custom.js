@@ -175,5 +175,59 @@ jQuery(document).ready(function () {
     jQuery('.box-top-menu').removeClass('active');
 	 }
   });
+  /* cat mobile */
+  jQuery('.toolbar-bottom .sort-by-mobile').remove();
   
+  
+  var widthWindow = jQuery( window ).width();
+  var widthHeight = jQuery( window ).height();
+    if(widthWindow <768){ 
+      /* box promo */
+      jQuery(".category-banners .div-banner").mCustomScrollbar({
+        axis:"x",
+        advanced:{autoExpandHorizontalScroll:true}
+      });
+      /* move sort-by-mobile on box filter */
+      var sortByHtml = jQuery(".toolbar .sort-by-mobile").html(); 
+      jQuery(".col-left-first .block-layered-nav .block-content.toggle-content ").append(sortByHtml);
+      jQuery('.toolbar .sort-by-mobile').remove();
+      /* toggle layered-nav */
+      jQuery('.toggle-box-filter.toggle-nav').click(function(){
+        jQuery('.box-filter-content').hide();
+        jQuery('.toggle-box-filter').removeClass('active');
+        if(!jQuery(this).hasClass('active')){
+          jQuery(this).addClass('active');
+          jQuery('#narrow-by-list').show();
+        }else{
+          jQuery(this).removeClass('active');
+          jQuery('#narrow-by-list').hide();
+        }
+        if(!jQuery('.block-layered-nav').hasClass('active')){
+          jQuery('.block-layered-nav').addClass('active');
+        }
+      });
+      /*  and sortby */
+      jQuery('.toggle-box-filter.toggle-sort-by').click(function(){
+        jQuery('.box-filter-content').hide();
+        jQuery('.toggle-box-filter').removeClass('active');
+        if(!jQuery(this).hasClass('active')){
+          jQuery(this).addClass('active');
+          jQuery('.sort-by-content').show();
+        }else{
+          jQuery(this).removeClass('active');
+          jQuery('.sort-by-content').hide();
+        }
+        if(!jQuery('.block-layered-nav').hasClass('active')){
+          jQuery('.block-layered-nav').addClass('active');
+        }
+      });
+      /* close-filter */
+      jQuery('#close-filter').click(function(){
+        jQuery('.block-layered-nav, .toggle-box-filter').removeClass('active');
+        jQuery('.box-filter-content').hide();
+      });
+      /* max-height box-filter-content*/
+      jQuery('.box-filter-content').css("max-height", widthHeight -100);
+      
+    }
 });
