@@ -104,6 +104,20 @@ jQuery(document).ready(function () {
       jQuery(this).removeClass('active');
     }
 	});
+  /* mini cart */
+  jQuery('#togglelogin').click(function(){
+    jQuery('.box-header-content').hide();
+    if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
+      jQuery(this).addClass('active');
+      jQuery('#header-mini-login').show();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#header-mini-login').hide();
+    }
+  });
+  
   /*icon search on mobile */
   jQuery('#toggle-search').click(function(){
     jQuery('.box-header-content').hide(); 

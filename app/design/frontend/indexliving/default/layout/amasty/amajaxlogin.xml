@@ -9,11 +9,16 @@
 <layout>
     <default>
      <reference name="head"> 
-            <action method="addItem" ifconfig="amajaxlogin/general/enable"><type>skin_js</type><name>js/amasty/amajaxlogin/amAjaxLogin.js</name><params/></action>
-            <block type="amajaxlogin/config" ifconfig="amajaxlogin/general/enable" name="amajaxlogin.config" before="-" />
-            <action method="addItem" ifconfig="amajaxlogin/general/enable" ><type>skin_css</type><name>css/amasty/amajaxlogin/amajaxlogin.css</name><params/></action>
-            <action method="addItem" ifconfig="amajaxlogin/general/enable_jquery"><type>skin_js</type><name>js/z_amasty/plugins/jquery.js</name><params/></action>
-           </reference> 
+        <action method="addItem" ifconfig="amajaxlogin/general/enable"><type>skin_js</type><name>js/amasty/amajaxlogin/amAjaxLogin.js</name><params/></action>
+        <block type="amajaxlogin/config" ifconfig="amajaxlogin/general/enable" name="amajaxlogin.config" before="-" />
+        <action method="addItem" ifconfig="amajaxlogin/general/enable" ><type>skin_css</type><name>css/amasty/amajaxlogin/amajaxlogin.css</name><params/></action>
+        <action method="addItem" ifconfig="amajaxlogin/general/enable_jquery"><type>skin_js</type><name>js/z_amasty/plugins/jquery.js</name><params/></action>
+      </reference> 
+      <reference name="header">
+				<block type="amajaxlogin/customer_form_login" name="amajaxlogin_header_box" as="header_mini_login" template="amasty/amajaxlogin/customer/form/minilogin.phtml">
+					<block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_social" as="fbLogin" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+				</block>
+			</reference>
     </default>
    
     <customer_account_index translate="label">
