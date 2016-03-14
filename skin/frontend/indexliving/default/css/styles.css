@@ -2577,8 +2577,7 @@ li.centinel-logos div.input-box img {
 label {
   display: inline-block;
   font-size: 13px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: normal;
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
