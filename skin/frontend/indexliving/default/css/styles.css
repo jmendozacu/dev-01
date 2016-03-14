@@ -492,7 +492,7 @@ input,
 select,
 table,
 textarea {
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-family:Tahoma;
   color: #636363;
   font-size: 14px;
   line-height: 1.5;
@@ -1780,7 +1780,6 @@ a.button:hover {
  */
 .price-box {
   margin: 7px 0;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
 .price-box p {
@@ -1797,13 +1796,11 @@ a.button:hover {
 
 .price-box .price,
 .price {
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
 .price-box .price-label {
   color: #a0a0a0;
   white-space: nowrap;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
 .price-box .minimal-price-link {
@@ -1838,7 +1835,7 @@ a.button:hover {
 }
 
 .price-box .special-price {
-  color: #3399cc;
+  color: #ff0000;
   padding-left: 1em;
 }
 .price-box .special-price .price-label {
