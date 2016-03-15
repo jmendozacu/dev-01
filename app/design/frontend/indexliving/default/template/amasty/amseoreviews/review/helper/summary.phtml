@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="br">
-				<h2><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></h2>
+				<h3><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></h3>
 				<p><?php echo $this->__('Own this product? Let us know what you think and write a review.')?></p>
 				<p class="rating-links">
 					<a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Write a review')?></a>
@@ -48,15 +48,19 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			jQuery('.write-review-popup').fancybox();
-		});
-	</script>
 <?php elseif($this->getDisplayIfEmpty()): ?>
-	<div class="page-container">
-    <p class="no-rating"><a
-            href="<?php echo $this->getReviewsUrl(Amasty_SeoReviews_Helper_Data::HASH_TYPE_FORM, $this->product) ?>"><?php echo $this->__('Be the first to review this product') ?></a>
-    </p>
+	<div class="review-box page-container">
+		<div class="box-title">
+			<div class="bl">
+				<h2><?php echo $this->__('Customer Reviews')?></h2>	
+				<p class="no-rating"><a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Be the first to review this product') ?></a>
+			</p>
+			</div>	
+		</div>	
 	</div>	
 <?php endif; ?>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('.write-review-popup').fancybox();
+	});
+</script>
