@@ -104,7 +104,7 @@ jQuery(document).ready(function () {
       jQuery(this).removeClass('active');
     }
 	});
-  /* mini cart */
+  /* mini login */
   jQuery('#togglelogin').click(function(){
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
@@ -115,6 +115,20 @@ jQuery(document).ready(function () {
     else{
       jQuery(this).removeClass('active');
       jQuery('#header-mini-login').hide();
+    }
+  });
+  /* */
+  
+  jQuery('.toggle-minicart').click(function(){
+    jQuery('.box-header-content').hide();
+    if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
+      jQuery(this).addClass('active');
+      jQuery('#mini-cart-info').show();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#mini-cart-info').hide();
     }
   });
   
