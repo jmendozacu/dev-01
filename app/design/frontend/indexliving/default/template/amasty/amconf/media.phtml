@@ -11,6 +11,7 @@
     $smallImageSize = (int)Mage::getStoreConfig('amconf/size/thumb');
     $itemCount = (int)Mage::getStoreConfig('amconf/carousel/visible_items');
 ?>
+<div class="product-image-desk">
 <?php if((Mage::getStoreConfig('amconf/zoom/enable') || Mage::getStoreConfig('amconf/lightbox/enable'))) : ?>
     <script type="text/javascript" src="<?php echo Mage::getDesign()->getSkinUrl('js/amasty/amconf/zoomer.js', array()) ?>"></script>
 <?php endif;?>
@@ -44,8 +45,7 @@
             <?php endif; ?>
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views">
-    <h2><?php echo $this->__('More Views') ?></h2>
+<div class="more-views" style="width:<?php echo $smallImageSize ?>px">
     <div style="position: relative;">
         <div id="amasty_gallery">
              <?php foreach ($this->getGalleryImages() as $_image): ?>
@@ -72,3 +72,56 @@
     }
     catch(ex){console.debug(ex);}
 </script>
+</div>
+<div class="product-image-mobile" style="display:none;">
+	<?php if ('true' == (string) Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
+		<div class="amlabel-div">
+		<?php echo Mage::helper('amlabel')->getLabels($_product, 'product') ?>
+ <?php endif; ?>
+		<ul class="product-image-mobile-slider">
+			<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+			<li class="main-image">
+				<?php
+					$_img = '<img 
+						width="500"
+						src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500).'" 
+						alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'"
+					/>';
+					echo $_helper->productAttribute($_product, $_img, 'image');
+				?>
+			</li>
+
+			<?php else: ?>
+			<li class="main-image">
+				<?php
+					$_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+					echo $_helper->productAttribute($_product, $_img, 'image');
+				?>
+			</li>
+			<?php endif; ?>
+			<?php if (count($this->getGalleryImages()) > 0): ?>
+				<?php foreach ($this->getGalleryImages() as $_image): ?>
+					<li>
+						<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(500); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"  title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+					</li>
+				<?php endforeach; ?>
+				<script type="text/javascript">              
+        jQuery(document).ready(function () {
+						jQuery('.product-image-mobile-slider').bxSlider({
+							auto: true,
+							mode: 'horizontal',
+							controls: false,
+							speed: 2000,
+							preloadImages: 'visible',
+							pager: true,
+							captions: false
+						});
+					});        
+				</script>
+			<?php endif; ?>
+		</ul>
+		
+ <?php if ('true' == (string)Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
+		</div>
+	<?php endif; ?>
+</div>

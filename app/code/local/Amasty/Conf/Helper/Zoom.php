@@ -83,6 +83,7 @@ class Amasty_Conf_Helper_Zoom extends Mage_Core_Helper_Abstract
        /*Carusel configuration start*/
        $param['carousel']['items'] = (int)Mage::getStoreConfig('amconf/carousel/visible_items');
        $param['carousel']['circular'] = Mage::getStoreConfig('amconf/carousel/circular')? true: false;
+       $param['carousel']['direction'] = 'up';
        $param['carousel']['height'] = (int)Mage::getStoreConfig('amconf/size/thumb');
        $param['carousel']['prev'] = array("button" => "#prevGallery", "key" => "left");
        $param['carousel']['next'] = array("button" => "#nextGallery", "key" => "right");
@@ -94,7 +95,7 @@ class Amasty_Conf_Helper_Zoom extends Mage_Core_Helper_Abstract
        if(Mage::getStoreConfig('amconf/carousel/pagination')) {
            $param['carousel']['pagination'] = "#ampagination";    
        }
-       $param['carousel']['responsive'] = false;
+       $param['carousel']['responsive'] = true;
        $param['carousel']['infinite'] = false;
        /*Carusel configuration end*/
        

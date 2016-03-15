@@ -1,3 +1,5 @@
+.products-grid li.item .amconf-block{ position:absolute; top:200px; width:100%; text-align:center;}
+.products-grid li.item .amconf-block dl dt{display:none;}
 .amconf-image{
     margin: 3px;
     border-radius: 3px;
@@ -13,12 +15,8 @@
     border-radius: 3px;
 }
 
-.amconf-color-container{
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 3px;
-    outline: 3px double #555;
-}
+
+.product-view .amconf-color-container{border-radius:0;}
 
 em{
      color:red;
@@ -29,7 +27,8 @@ em{
 } 
 
 #amasty_gallery img{
-    display: inline !important;
+	display: inline !important;
+	border:1px solid #dadada;
 }
 
 .amasty-main-spinner{
@@ -94,7 +93,8 @@ hr.amconf-hr{
 .amconf-image-selected
 {
     margin: 0;
-    outline: 3px double #eaff00;
+   /*  outline: 1px solid #000; */
+		border-radius:10px;
 }
 
 .amconf-image-outofstock
@@ -114,8 +114,7 @@ hr.amconf-hr{
     display: inline-block;
     position: relative;
     text-align: center;
-    margin-right: 10px;
-    margin-bottom: 3px;
+    margin-right: 5px;
 }
 
 .amconf-image-container img, .amconf-image-container div:first-child
@@ -143,17 +142,19 @@ hr.amconf-hr{
 }
 
 .MagicScrollArrowPrev { 
-    width: 35px;
-    height: 35px;
-    background: url(../images/miscellaneous_sprite_sm.png) 0 -35px no-repeat transparent;
-    left:0;
+    width: 30px;
+    height: 16px;
+    background: url(../images/slider-up.png) 0 0 no-repeat transparent;
+    left:16px;
+		top:-30px!important;
 }
 
 .MagicScrollArrowNext {
-    width: 35px;
-    height: 35px; 
-    background: url(../images/miscellaneous_sprite_sm.png) -35px -35px no-repeat transparent;
-    right:0;
+    width: 30px;
+    height: 16px; 
+    background: url(../images/slider-down.png) 0 0 no-repeat transparent;
+    left:16px;
+		top:215px!important;
 }
 
 #nextGallery.disabled, #prevGallery.disabled {
@@ -163,7 +164,11 @@ hr.amconf-hr{
 }
 
 .caroufredsel_wrapper {
-    margin:0 auto !important;    
+   margin:0 auto !important;    
+}
+.product-img-box .more-views .caroufredsel_wrapper{
+	height:200px!important;
+	margin:45px auto!important;
 }
 
 #amasty_gallery a{
@@ -232,4 +237,24 @@ hr.amconf-hr{
 
 .am-swatch-next:not(.disabled):hover {
     background-position: -27px 52px;
+}
+
+.amconf-color-container{
+    cursor: pointer;
+    /* overflow: hidden; */
+    border-radius: 10px;
+    position: relative;
+}
+.amconf-color-container:before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    border: solid 1px transparent;
+    border-radius: 100%;
+} 
+.amconf-image-selected:before {
+    border-color: #000;
 }

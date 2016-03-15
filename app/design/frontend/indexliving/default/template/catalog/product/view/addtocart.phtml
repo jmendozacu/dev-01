@@ -19,24 +19,24 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     rwd_default
+ * @package     base_default
  * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 <?php $_product = $this->getProduct(); ?>
-<?php $buttonTitle = Mage::helper('core')->quoteEscape($this->__('Add to Cart')); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
-    <div class="add-to-cart">
-        <?php if(!$_product->isGrouped()): ?>
-        <div class="qty-wrapper">
-            <label for="qty"><?php echo $this->__('Qty:') ?></label>
-            <input type="text" pattern="\d*" name="qty" id="qty" maxlength="12" value="<?php echo max($this->getProductDefaultQty() * 1, 1) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
-        </div>
-        <?php endif; ?>
-        <div class="add-to-cart-buttons">
-            <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-            <?php echo $this->getChildHtml('', true, true) ?>
-        </div>
-    </div>
+	<?php if(!$_product->isGrouped()): ?>
+		<div class="change-qty">
+			<label for="qty"><?php echo $this->__('Qty') ?></label>
+			<input type="button" onclick="decQty('qty')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="productview_dec_qty_<?php echo $_product->getId()?>" />
+			<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+			<input type="button" onclick="incQty('qty')" value="<?php echo $this->__('+')?>" class="update_qty btn_plus" id="productview_inc_qty_<?php echo $_product->getId()?>" />
+		</div>	
+	<?php endif; ?>
+	<div class="add-to-cart">
+		<button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button r-button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+	<?php echo $this->getChildHtml('', true, true) ?>
+	</div>
 <?php endif; ?>

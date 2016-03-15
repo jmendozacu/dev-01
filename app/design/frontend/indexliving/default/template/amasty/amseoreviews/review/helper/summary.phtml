@@ -6,32 +6,61 @@
  */
 ?>
 <?php if ($this->getReviewsCount()): ?>
-    <div class="ratings">
-        <?php $helper = Mage::helper('amseoreviews');
-        if($helper->isRedirectToProductPageEnabled()){ ?>
-            <script> window.addEventListener("load", hrefChecker, false);
-            function hrefChecker(){
-                $$("#customer-reviews dt a").each(function(val) {
-                    var label = "<strong><u>" + val.innerHTML + "</u></strong>";
-                    val.replace(label);
-                });
-            }</script>
-        <?php } ?>
+	<div class="review-box page-container">
+		<div class="box-title">
+			<div class="bl">
+				<h2><?php echo $this->__('Customer Reviews')?></h2>	
+				<p class="rating-overall"><?php echo $this->__('Overall Product Rating')?></p>
+				<div class="ratings ratings-overview">
+					<?php $helper = Mage::helper('amseoreviews');
+					if($helper->isRedirectToProductPageEnabled()){ ?>
+							<script> window.addEventListener("load", hrefChecker, false);
+							function hrefChecker(){
+									$$("#customer-reviews dt a").each(function(val) {
+											var label = "<strong><u>" + val.innerHTML + "</u></strong>";
+											val.replace(label);
+									});
+							}</script>
+					<?php } ?>
 
-        <?php if($this->getRatingSummary()):
-            echo $this->getCssJsHtml(); ?>
-            <div class="rating-box">
-                <div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
-            </div>
-        <?php endif; ?>
-        <p class="rating-links">
-            <a href="<?php echo $this->getReviewsUrl(Amasty_SeoReviews_Helper_Data::HASH_TYPE_LIST, $this->product) ?>"><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></a>
-            <span class="separator">|</span>
-            <a href="<?php echo $this->getReviewsUrl(Amasty_SeoReviews_Helper_Data::HASH_TYPE_FORM, $this->product) ?>"><?php echo $this->__('Add Your Review') ?></a>
-        </p>
-    </div>
+					<?php if($this->getRatingSummary()):
+							echo $this->getCssJsHtml(); ?>
+							<div class="rating-box">
+									<div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
+							</div>
+							<?php $ratingSummary = $this->getRatingSummary();?>
+							<?php $ratingAverage = ($ratingSummary * 5)/100;?>
+							<h3 class="rating-average"><?php echo $this->__('%.1f / 5', $ratingAverage)?></h3>
+							<div class="rating-summary">	
+								<div class="rating-box-big">
+										<div class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></div>
+								</div>
+							</div>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class="br">
+				<h3 class="review-count"><?php echo $this->__('%d Reviews', $this->getReviewsCount()) ?></h3>
+				<p><?php echo $this->__('Own this product? Let us know what you think and write a review.')?></p>
+				<p class="rating-links">
+					<a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Write a review')?></a>
+				</p>
+			</div>
+		</div>
+	</div>
 <?php elseif($this->getDisplayIfEmpty()): ?>
-    <p class="no-rating"><a
-            href="<?php echo $this->getReviewsUrl(Amasty_SeoReviews_Helper_Data::HASH_TYPE_FORM, $this->product) ?>"><?php echo $this->__('Be the first to review this product') ?></a>
-    </p>
+	<div class="review-box page-container">
+		<div class="box-title">
+			<div class="bl">
+				<h2><?php echo $this->__('Customer Reviews')?></h2>	
+				<p class="no-rating"><a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Be the first to review this product') ?></a>
+			</p>
+			</div>	
+		</div>	
+	</div>	
 <?php endif; ?>
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('.write-review-popup').fancybox();
+	});
+</script>

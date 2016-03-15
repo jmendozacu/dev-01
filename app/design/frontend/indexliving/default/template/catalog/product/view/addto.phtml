@@ -30,14 +30,17 @@
 
 <ul class="add-to-links">
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
-    <li><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+    <li class="add-wishlist"><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
 <?php endif; ?>
 <?php
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
 ?>
 <?php if($_compareUrl) : ?>
-    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+    <li class="add-compare"><a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
 <?php endif; ?>
-
+		<li>
+			<a href="javascript:void(0)" id="shareProductLink" class="link-share"><?php echo $this->__('Share') ?></a>
+			<?php echo $this->getChildHtml('sharing') ?>
+		</li>
 </ul>
 

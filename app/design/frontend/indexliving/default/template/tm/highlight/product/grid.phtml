@@ -16,7 +16,9 @@
                 <div class="prolabel-wrapper">
                   <?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
                     <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
-                    ><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"
+                    ><img class="lazy" src="<?php echo
+                        $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+                        data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"
                         srcset="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?> 1x, <?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135 * 2); ?> 2x"
                         width="135" height="135"
                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
@@ -27,7 +29,7 @@
                 </div>
                 <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                 <div class="desc">
-                    <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                    <?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?>
                 </div>
                 <div class="grid-price">
                   <?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
