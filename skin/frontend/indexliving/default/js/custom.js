@@ -104,24 +104,36 @@ jQuery(document).ready(function () {
       jQuery(this).removeClass('active');
     }
 	});
-  /*icon search on mobile */
-  jQuery('#toggle-search').click(function(){
+  /* mini cart */
+  jQuery('#togglelogin').click(function(){
     jQuery('.box-header-content').hide();
-    jQuery('.toggle-header-content').removeClass('active'); 
     if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
       jQuery(this).addClass('active');
-      jQuery('#header-search').show();
+      jQuery('#header-mini-login').show();
     }
     else{
       jQuery(this).removeClass('active');
-      jQuery('#header-search').hide();
+      jQuery('#header-mini-login').hide();
     }
   });
+  
+  /*icon search on mobile */
+  jQuery('#toggle-search').click(function(){
+    jQuery('.box-header-content').hide(); 
+    jQuery('.toggle-header-content').removeClass('active');
+    jQuery('#header-search').show();
+  });
+  jQuery('.close-box-search').click(function(){
+      jQuery('#header-search').hide();
+  });
+  
+  
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
     jQuery('.box-header-content').hide();
-    jQuery('.toggle-header-content').removeClass('active');
     if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
       jQuery(this).addClass('active');
       jQuery('.box-top-menu').show();
     }

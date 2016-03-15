@@ -56,17 +56,18 @@
         <div class="box-right">
           <span class="icon-account box-mobile toggle-header-content" id="toggle-account"></span>
           <span class="icon-minicart box-mobile toggle-header-content" id="toggle-minicart"></span>
-          
           <ul class="top-links box-desktop">
-          <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-            <li><a href="<?php echo Mage::getUrl('customer/account/login'); ?>" title="<?php echo $this->__('Login'); ?>"><?php echo $this->__('Login'); ?></a></li>
-            <li><a href="<?php echo Mage::getUrl('customer/account/create'); ?>" title="<?php echo $this->__('Register'); ?>"><?php echo $this->__('Register'); ?></a></li>
+            <li class="top-link-account">
+              <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                <a id="togglelogin" class="toggle-header-content" href="javascript:void(0)" title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
+              <?php else: ?>
+                <a id="togglelogin" class="toggle-header-content" href="javascript:void(0)" title="<?php echo $this->__('account'); ?>"><?php echo $this->__('account'); ?></a>
+              <?php endif; ?>
+              <div id="header-mini-login" class="box-header-content">
+                <?php echo $this->getChildHtml('header_mini_login') ?>
+              </div>
+            </li>
             <li class="wishlist"><a title="<?php echo $this->__("wishlist")?>" href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a></li>
-          <?php else: ?>
-            <li><a href="<?php echo Mage::getUrl('customer/account'); ?>" title="<?php echo $this->__('account'); ?>"><?php echo $this->__('account'); ?></a></li>
-            <li><a href="<?php echo Mage::getUrl('customer/account/logout'); ?>" title="<?php echo $this->__('Logout'); ?>"><?php echo $this->__('Logout'); ?></a></li>
-            <li class="wishlist"><a title="<?php echo $this->__("wishlist")?>" href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a></li>
-          <?php endif; ?>
           </ul>
           <div class="header-minicart box-desktop">
             <?php
@@ -91,6 +92,7 @@
               </span>
             </a>
           </div>
+          
         </div>
     </div>
 </header>

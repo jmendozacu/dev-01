@@ -1,41 +1,46 @@
-<?php 
+<?php
 /**
  * @author Amasty Team
  * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
  * @package Amasty_Ajaxlogin
- */  
+ */
 ?>
-
-
+<link href="<?php echo Mage::getDesign()->getSkinUrl('css')?>/amasty/amajaxlogin/amajaxlogin.css" rel="stylesheet" type="text/css" media="screen" />
 <style>
 body {
     margin:0;
 }
+@font-face {
+    font-family: 'RSU Light';
+    src: url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.eot');
+    src: local('?'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.woff') format('woff'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.ttf') format('truetype'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+#am-ajax-facebook iframe{}
 .am-facebook-image{
     color: #FFFFFF;
-     height: 22px;
-    padding: 10px 0 0 35px;
-    text-align: center;
-    width: 78px;
+    font-family: 'RSU_Bold';
+    padding: 0 0 0 60px;
+    text-align: left;
+    width: 250px;
+		border:0 none;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: top left;
     background-image: url("<?php echo  Mage::getDesign()->getSkinUrl('images/amasty/amajaxlogin/facebook.png',array('_area'=>'frontend'))?>");
-    cursor: pointer;  
+    cursor: pointer;
     display: none;
-    font: 12px/15px Arial,Helvetica,sans-serif;
-}
-
-.am-facebook-image:hover{
-    background-position: bottom;
+		line-height:40px;
+		font-size:18px;
 }
 </style>
 
 
 <div class="am-facebook-image" id="am-facebook-image" style="" onclick="window.parent.AmAjaxLoginObj.loginS(this);" data="<?php echo $this->getUrlParaml()?>">
-    <?php echo  $this->__('Connect'); ?>
+    <?php echo  $this->__('Facebook Login'); ?>
 </div>
 <div class="am-facebook-image" id="am-facebook-login" style="display: block" onclick="fb_login();">
-    <?php echo  $this->__('Sign in'); ?>
+    <?php echo  $this->__('Sign in Facebook'); ?>
 </div>
 
 <div id="am-facebook-login">
@@ -47,9 +52,10 @@ body {
             oauth   : true,
             status  : true, // check login status
             cookie  : true, // enable cookies to allow the server to access the session
-            xfbml   : true // parse XFBML
+            xfbml   : true, // parse XFBML
+            version    : 'v2.2'
         });
-        
+
         FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
                 var facebook = document.getElementById('am-facebook-login');
@@ -57,7 +63,7 @@ body {
 
                 var myfacebook = document.getElementById('am-facebook-image');
                 myfacebook.style.display = 'block';
-                         
+
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
             } else if (response.status === 'not_authorized') {
@@ -73,37 +79,49 @@ body {
                 var myfacebook = document.getElementById('am-facebook-image');
                 myfacebook.style.display = 'none';
             }
-            });
-        };
- 
+        });
+    };
+
+    /* (function() {
+        var e = document.createElement('script');
+        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+    }()); */
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
     function fb_login(){
-        FB.login(function(response) {
+        FB.login(
+          function(response) {
             if (response.authResponse) {
                 var facebook = document.getElementById('am-facebook-login');
                 facebook.style.display = 'none'; //or
-            
+
                 var myfacebook = document.getElementById('am-facebook-image');
                  myfacebook.style.display = 'block';
-            
+
                 FB.api('/me', function(response) {
                     window.parent.AmAjaxLoginObj.loginS(document.getElementById('am-facebook-image'));
                     user_email = response.email; //get user email
                 });
 
-            } else {
+            }
+            else {
                 console.log('User cancelled login or did not fully authorize.');
             }
-        }, {
-            scope: 'email,public_profile'
-        });
+          },
+          {
+            scope: 'email,publish_actions'
+          }
+        );
     }
-    
-    (function() {
-        var e = document.createElement('script');
-        e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-        e.async = true;
-        document.getElementById('fb-root').appendChild(e);
-    }());
     </script>
 </div>
- 
+
