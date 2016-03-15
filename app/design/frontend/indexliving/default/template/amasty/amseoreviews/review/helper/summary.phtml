@@ -11,7 +11,7 @@
 			<div class="bl">
 				<h2><?php echo $this->__('Customer Reviews')?></h2>	
 				<p class="rating-overall"><?php echo $this->__('Overall Product Rating')?></p>
-				<div class="ratings">
+				<div class="ratings ratings-overview">
 					<?php $helper = Mage::helper('amseoreviews');
 					if($helper->isRedirectToProductPageEnabled()){ ?>
 							<script> window.addEventListener("load", hrefChecker, false);
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="br">
-				<h3><?php echo $this->__('%d Review(s)', $this->getReviewsCount()) ?></h3>
+				<h3 class="review-count"><?php echo $this->__('%d Reviews', $this->getReviewsCount()) ?></h3>
 				<p><?php echo $this->__('Own this product? Let us know what you think and write a review.')?></p>
 				<p class="rating-links">
 					<a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Write a review')?></a>

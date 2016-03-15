@@ -31,12 +31,10 @@
 		<div class="review-list">
 			<div class="page-container">
 				<ul>
-				<?php foreach ($_items as $_review):?>
-					<li>
+				<?php $i=0; foreach ($_items as $_review):?>
+					<li class="review-item<?php if($i==0):?> first<?php endif ?><?php if($i==(count($_items) - 1)):?> last<?php endif;?>">
 						<div class="review-rating">
-							<a href="<?php echo $this->getReviewUrl($_review->getId()) ?>">
-								<?php echo $this->escapeHtml($_review->getTitle()) ?>
-							</a>
+							<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
 							<?php $_votes = $_review->getRatingVotes(); ?>
 							<?php if (count($_votes)): ?>
 							<table class="ratings-table">
@@ -62,13 +60,13 @@
 						</div>
 						<div class="review-image"><img src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" alt="" /></div>
 						<div class="review-details">
-							<?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
 							<span class="review-meta">
 								 <?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?>
 							</span>
+							<?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
 						</div>
 					</li>	
-				<?php endforeach; ?>
+				<?php $i++; endforeach; ?>
 				</ul>
 			</div>
 		</div>

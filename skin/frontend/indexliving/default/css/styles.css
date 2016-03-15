@@ -2022,6 +2022,7 @@ span.weee {
 .rating-box { width:110px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
 .rating-box .rating { float:left; height:18px; background:url(../images/rating_bg.png) 0 100% repeat-x; }
 .ratings .rating-box { float:left; margin-right:3px; }
+
 .ratings .amount {
   display: block;
   margin: 5px auto;
@@ -5136,14 +5137,32 @@ body.catalogsearch-result-index .page-title h1 {
 	color:#ffc222;
 }
 .product-view .review-box{}
-.product-view .review-box .box-title{float:left; width:100%;}
+.product-view .review-box .box-title{float:left; width:100%; margin-bottom:20px;}
 .product-view .review-box .box-title .bl{float:left;}
-.product-view .review-box .box-title .br{float:right;}
+.product-view .review-box .box-title .br{float:right; text-align:right; max-width:300px;}
+.product-view .review-box .box-title .br .review-count{color:#f4701e; font-size:12px;}
+.product-view .review-box .ratings{}
+.product-view .review-box .ratings .rating-average{
+	float:left;
+	margin-top:8px;
+	font-size: 24px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+}
 .product-view .product-shop .extra-info .review-box{padding:0;}
 .product-view .product-shop .extra-info .review-box h2,
 .product-view .product-shop .extra-info .review-box .rating-overall,
+.product-view .product-shop .extra-info .review-box .rating-average,
 .product-view .product-shop .extra-info .review-box .rating-average{display:none;}
 .product-view .product-shop .extra-info .review-box .box-title .br{float:left;}
+.product-view .product-shop .extra-info .review-box .box-title .br p,
+.product-view .product-shop .extra-info .review-box .box-title .br .rating-links{display:none;}
+.product-view .product-review-summary .review-box .box-title .bl{min-width:300px;}
+.product-view .product-review-summary .review-box .box-title .br .review-count{font-family: "FuturaT_Bold"; text-transform:capitalize; font-size:25px; color:#000000;}
+.product-view .product-review-summary .review-box .box-title .br .write-review-popup{background:#ffc222; padding:5px 15px; text-transform:uppercase;font-family: "FuturaT_Bold"; font-size:22px; color:#FFFFFF; text-decoration:none; margin:5px 0 0; display:inline-block; border-radius:5px;}
+.product-view .product-review-summary .review-box .ratings-overview .rating-box { width:225px; height:35px; font-size:0; line-height:0; background:url(../images/rating_big_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
+.product-view .product-review-summary .review-box .ratings-overview .rating-box .rating { float:left; height:35px; background:url(../images/rating_big_bg.png) 0 100% repeat-x; }
+.product-view .product-review-summary .review-box .ratings-overview .ratings .rating-box { float:left; margin-right:5px; }
 @media only screen and (max-width: 479px) {
   .product-view .add-to-cart-buttons .paypal-or {
     line-height: 20px;
@@ -5189,7 +5208,8 @@ body.catalogsearch-result-index .page-title h1 {
 	float: left;
 	text-indent: 0;
 	padding-left: 40px;
-	font-size: 14px;
+	font-size: 9px;
+	text-transform:uppercase;
 	color: #464646;
 	line-height: 32px;
 	text-decoration: none;
@@ -8451,8 +8471,27 @@ div.paypal-logo span > img {
 	background:#f4f4f4;
 	padding:20px;
 }
-#customer-reviews .review-list li{padding:15px 0; border-bottom:1px solid #ccc;}
+#customer-reviews .review-list li{padding:20px 0; border-bottom:1px solid #ccc; overflow:hidden;}
 #customer-reviews .review-list li.last{border:0 none;}
+#customer-reviews .review-list li > div{float:left; text-align:left}
+#customer-reviews .review-list li > div.review-rating{width:20%}
+#customer-reviews .review-list li .review-rating .rating-title{
+	font-family: "FuturaT_Bold";
+	color:#f4701e;
+	font-size:14px;
+	text-transform:uppercase;
+}
+#customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
+#customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
+#customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
+#customer-reviews .ratings-table tbody th, #customer-reviews .ratings-table tbody th {
+    padding: 3px 15px 3px 0;
+}
+#customer-reviews .ratings-table tbody th{
+	font-family: "FuturaT_Bold";
+	color:#000;
+	font-size:14px;
+}
 #customer-reviews .fieldset {
   padding-top: 25px;
   width: 470px;
