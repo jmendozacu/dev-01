@@ -1176,16 +1176,16 @@ a.button:hover {
 /* -------------------------------------------- *
  * Icons
  */
-.icon-sprite, .btn-remove2, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-.sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon{
+.icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
+.sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating {
   background-image: url(../images/icon_sprite.png);
   background-repeat: no-repeat;
   text-indent: -9999px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 4 / 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .icon-sprite, .btn-remove2, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a{
+  .icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
+  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating {
     background-image: url(../images/icon_sprite@2x.png);
     background-size: 100px 1000px;
   }
@@ -2011,10 +2011,19 @@ span.weee {
 .ratings .rating-links {
   margin: 5px 0;
 }
-.rating-box { width:110px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
-.rating-box .rating { float:left; height:18px; background:url(../images/rating_bg.png) 0 100% repeat-x; }
-.ratings .rating-box { float:left; margin-right:3px; }
-
+.ratings .rating-box {
+  width: 65px;
+  height: 13px;
+  background-repeat: repeat-x;
+  background-position: 0 -615px;
+  overflow: hidden;
+}
+.ratings .rating-box .rating {
+  float: left;
+  height: 13px;
+  background-repeat: repeat-x;
+  background-position: 0 -600px;
+}
 .ratings .amount {
   display: block;
   margin: 5px auto;
@@ -3307,20 +3316,23 @@ body {
 .top-link-account a.active {background:#252525; color:#fff!important;}
 .top-link-account a.active:before {background:url(../images/icon-account-over.png) no-repeat 0px 7px !important;}
 .top-link-account a.active:after,
-.toggle-minicart.active:after  {content:""; width:0px; height:0px; position:absolute; bottom:-14px; right:20px; border-bottom:solid 13px #252525;  border-right:solid 7px transparent; border-left:solid 7px transparent;} 
+.toggle-minicart.active:after  {content:""; width:0px; height:0px; position:absolute; z-index:12; bottom:-16px; right:20px; border-bottom:solid 13px #252525;  border-right:solid 7px transparent; border-left:solid 7px transparent;} 
 .toggle-minicart.active:after {bottom:-4px;}
 .top-link-account {position:relative;}
 #header-mini-login,
-#mini-cart-info {position:absolute; display:none; text-transform: none; z-index:9; top:44px; right:0px; width:302px; max-width:none;}
+#mini-cart-info {position:absolute; display:none; text-transform: none; z-index:10; top:90px; right:153px; width:302px; max-width:none;}
 .account-mini-login,
-.header-cart-box  { float:left; width:100%; border-radius:5px;   box-shadow: 4px 4px 6px -3px #aaa;  border-top: 0 none; background: #FFFFFF; padding:0px;}  
+.header-cart-box,
+.mini-account  { float:left; width:100%; border-radius:5px;  box-shadow: 0px 0px 3px 1px #aaa;  border-top: 0 none; background: #FFFFFF; padding:0px;}  
 .account-mini-login .box-title ,
-#mini-cart-info .box-title { width:100%;  margin:0px;  border-radius: 5px 5px 0 0; float:left; background:#252525; padding:10px; line-height:28px; color:#fff; text-align:center; font-size:20px; font-family: 'RSU_Bold'; }
+#mini-cart-info .box-title,
+.mini-account .box-title { width:100%;  margin:0px;  border-radius: 5px 5px 0 0; float:left; background:#252525; padding:10px; line-height:28px; color:#fff; text-align:center; font-size:20px; font-family: 'RSU_Bold'; }
 #mini-cart-info {width:345px; top:90px; overflow: initial;}
+.mini-account {width:200px; float:right;}
 .header-cart-box .block-content {float:left; width:100%;}
 .header-cart-box .block-content .item-wrap.empty {float:left; width:100%; min-height:480px; text-align:center;}
 .header-cart-box .block-content .item-wrap.empty span {display:block;margin-top:85px; padding:135px 20px 20px ; color:#C1C1C1; font-family: 'RSU_Bold'; font-size:22px; background:url(../images/icon-emptycart.png) no-repeat top center;}
-.header-cart-box .list-items {padding:15px 15px 0;}
+.header-cart-box .list-items {padding:15px 15px 0;  max-height: 414px;  overflow-y: auto;}
 .header-cart-box .mini-products-list li.item{padding-bottom:10px; margin-bottom:10px; border-bottom:solid 1px #E6E6E6; margin:0px; position:relative;}
 .header-cart-box .mini-products-list li.item:nth-last-child(1){border-bottom:none;}
 .header-cart-box  .mini-products-list .product-details .product-name {font-size:14px; padding:0px; color:#000; font-family: 'FuturaBT-Book';     text-transform: uppercase;}
@@ -3336,6 +3348,27 @@ body {
 .header-cart-box  .header-cart-subtotal  {font-size:18px; font-family: 'FuturaT_Bold'; float:right;}
 .header-cart-box  .actions {float:left; width:100%; padding:10px 18px; text-align:right;}
 .header-cart-box  .actions .button {height:40px; line-height:43px; padding:0 10px; min-width:175px; text-align:center;border-radius:5px; font-family: 'RSU_Bold'; font-size:20px;}
+.mini-account li {float:left; text-align:left; width:100%; border-bottom:solid 1px #CBCBCB;}
+.mini-account li:nth-last-child(1){border-bottom:none;}
+.mini-account  a{ display:block;  position:relative; padding:10px 10px 10px 40px; line-height:20px; color:#535353; font-size:18px; font-family: 'RSU_Bold';}
+.mini-account  a:before { content:""; position:absolute; width:24px; height:24px; left:12px; top:8px; background:url(../images/icon-mobile.png) no-repeat;}
+.mini-account li.li-account  a:before {background-position:0px -236px;}
+.mini-account li.li-information  a:before {background-position:0px -278px;}
+.mini-account li.li-address  a:before {background-position:0px -317px;}
+.mini-account li.li-order  a:before {background-position:0px -357px;}
+.mini-account li.li-wishlist  a:before {background-position:0px -397px;}
+.mini-account li.li-points  a:before {background-position:0px -437px;}
+.mini-account li.li-logout  a:before {background-position:0px -477px;}
+.mini-account  a:hover {background:#404040; color:#FFC222; text-decoration:none; padding-left:50px;}
+.mini-account  a:hover:before {left:20px;}
+.mini-account li.li-account  a:hover:before {background-position:-39px -236px;}
+.mini-account li.li-information  a:hover:before {background-position:-39px -278px;}
+.mini-account li.li-address  a:hover:before {background-position:-39px -317px;}
+.mini-account li.li-order  a:hover:before {background-position:-39px -357px;}
+.mini-account li.li-wishlist  a:hover:before {background-position:-39px -397px;}
+.mini-account li.li-points  a:hover:before {background-position:-39px -437px;}
+.mini-account li.li-logout  a:hover:before {background-position:-39px -477px;}
+
 .top-menu ,
 .top-menu li {float:left;}
 .top-menu li a{display:block; padding:5px 0; line-height:34px; font-size:16px; color:#fff; margin:0px 26px; position:relative;}
@@ -4767,7 +4800,7 @@ body.catalogsearch-result-index .page-title h1 {
   float: left;
 }
 .product-view .product-essential .extra-info .ratings .rating-box {
-  margin-top: 0;
+  margin-top: 8px;
   margin-right: 10px;
 }
 .product-view .product-essential .extra-info .ratings:after {
@@ -4817,7 +4850,7 @@ body.catalogsearch-result-index .page-title h1 {
   clear: both;
 }
 .product-view .product-shop .ratings {
-	margin-top:0;
+  margin-bottom: 8px;
 }
 .product-view .product-shop .availability {
   font-size: 16px;
@@ -5109,77 +5142,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .alert-stock {
   clear: both;
 }
-.product-view .product-features{
-	padding:20px 0;
-	background:#f4f4f4;
-}
-.product-view .product-features .box-title{float:left; width:100%; margin:0 0 15px;}
-.product-view .product-features .box-title h2{
-	font-size: 30px;
-	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
-	color:#ffc222;
-	float:left;
-}
-.product-view .product-features .box-title button{float:right; height:41px; line-height:25px; border-radius:5px;}
-.button.btn-downloads{}
-.button.btn-downloads > span {display:inline-block; padding-left:25px; position:relative;}
-.button.btn-downloads > span:before {content:""; position:absolute; width:30px; height:30px; top:0; left:-10px; background: url(../images/icons2.png) no-repeat 0 -246px;}
-.product-view .product-features .products-features-grid li{
-	float:left; width:50%;
-}
-.product-view .product-features .products-features-grid li h3{
-	font-size: 22px;
-	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
-	color:#000000;
-	margin:0;
-}
-.product-view .product-features .products-features-grid li p{
-	font-size: 16px;
-	font-family:Tahoma;
-	color:#767676;
-}
-.product-view .box-collateral h2{
-	font-size: 30px;
-	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
-	color:#ffc222;
-}
-.product-view .product-review-wrap{margin:30px 0;}
-.product-view .product-review-wrap h2{
-	font-size: 30px;
-	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
-	color:#ffc222;
-}
-.product-view .review-box{}
-.product-view .review-box .box-title{float:left; width:100%; margin-bottom:20px;}
-.product-view .review-box .box-title .bl{float:left;}
-.product-view .review-box .box-title .br{float:right; text-align:right; max-width:300px;}
-.product-view .review-box .box-title .br .review-count{color:#f4701e; font-size:12px;}
-.product-view .review-box .ratings{}
-.product-view .review-box .ratings .rating-average{
-	float:left;
-	margin-top:8px;
-	font-size: 24px;
-	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
-}
-.product-view .product-shop .extra-info .review-box{padding:0;}
-.product-view .product-shop .extra-info .review-box h2,
-.product-view .product-shop .extra-info .review-box .rating-overall,
-.product-view .product-shop .extra-info .review-box .rating-average,
-.product-view .product-shop .extra-info .review-box .rating-average{display:none;}
-.product-view .product-shop .extra-info .review-box .box-title .br{float:left;}
-.product-view .product-shop .extra-info .review-box .box-title .br p,
-.product-view .product-shop .extra-info .review-box .box-title .br .rating-links{display:none;}
-.product-view .product-review-summary .review-box .box-title .bl{min-width:300px;}
-.product-view .product-review-summary .review-box .box-title .br .review-count{font-family: "FuturaT_Bold"; text-transform:capitalize; font-size:25px; color:#000000;}
-.product-view .product-review-summary .review-box .box-title .br .write-review-popup{background:#ffc222; padding:5px 15px; text-transform:uppercase;font-family: "FuturaT_Bold"; font-size:22px; color:#FFFFFF; text-decoration:none; margin:5px 0 0; display:inline-block; border-radius:5px;}
-.product-view .product-review-summary .review-box .ratings-overview .rating-box { width:225px; height:35px; font-size:0; line-height:0; background:url(../images/rating_big_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
-.product-view .product-review-summary .review-box .ratings-overview .rating-box .rating { float:left; height:35px; background:url(../images/rating_big_bg.png) 0 100% repeat-x; }
-.product-view .product-review-summary .review-box .ratings-overview .ratings .rating-box { float:left; margin-right:5px; }
+
 @media only screen and (max-width: 479px) {
   .product-view .add-to-cart-buttons .paypal-or {
     line-height: 20px;
@@ -5225,8 +5188,7 @@ body.catalogsearch-result-index .page-title h1 {
 	float: left;
 	text-indent: 0;
 	padding-left: 40px;
-	font-size: 9px;
-	text-transform:uppercase;
+	font-size: 14px;
 	color: #464646;
 	line-height: 32px;
 	text-decoration: none;
@@ -5777,15 +5739,20 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 7px;
 }
 .block-related .block-title {
-  border-top: none;
+  border-bottom: none;
 }
 .block-related .block-title h2 {
   margin: 0;
   margin-bottom: 0.5em;
-	font-size: 30px;
-	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
-	color:#ffc222;
+  color: #636363;
+  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 .block-related .block-subtitle {
   margin-bottom: 7px;
@@ -8458,8 +8425,14 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Review - Customer
  * ============================================ */
-#customer-reviews { margin:30px 0;}
+#customer-reviews {
+  width: auto;
+  float: none;
+}
 #customer-reviews .review-heading {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  padding: 10px 0 5px;
 }
 #customer-reviews .review-heading:after {
   content: '';
@@ -8467,6 +8440,8 @@ div.paypal-logo span > img {
   clear: both;
 }
 #customer-reviews .review-heading h2 {
+  float: left;
+  display: block;
 }
 #customer-reviews .review-heading .pager {
   clear: none;
@@ -8484,30 +8459,22 @@ div.paypal-logo span > img {
 #customer-reviews .review-heading .pager .amount {
   display: none;
 }
-#customer-reviews .review-list{
-	background:#f4f4f4;
-	padding:20px;
+#customer-reviews h2 {
+  color: #3399cc;
+  font-size: 12px;
+  text-transform: uppercase;
 }
-#customer-reviews .review-list li{padding:20px 0; border-bottom:1px solid #ccc; overflow:hidden;}
-#customer-reviews .review-list li.last{border:0 none;}
-#customer-reviews .review-list li > div{float:left; text-align:left}
-#customer-reviews .review-list li > div.review-rating{width:20%}
-#customer-reviews .review-list li .review-rating .rating-title{
-	font-family: "FuturaT_Bold";
-	color:#f4701e;
-	font-size:14px;
-	text-transform:uppercase;
+#customer-reviews h2 span {
+  color: #636363;
 }
-#customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
-#customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
-#customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
-#customer-reviews .ratings-table tbody th, #customer-reviews .ratings-table tbody th {
-    padding: 3px 15px 3px 0;
+#customer-reviews h3 {
+  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  text-transform: uppercase;
 }
-#customer-reviews .ratings-table tbody th{
-	font-family: "FuturaT_Bold";
-	color:#000;
-	font-size:14px;
+#customer-reviews h3 span {
+  color: #3399cc;
 }
 #customer-reviews .fieldset {
   padding-top: 25px;
@@ -8635,6 +8602,33 @@ div.paypal-logo span > img {
   margin-left: 5px;
   position: relative;
   top: 2px;
+}
+
+/* ============================================ *
+ * Ratings - Global
+ * ============================================ */
+.ratings-table {
+  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.ratings-table th {
+  padding-right: 10px;
+}
+.ratings-table .rating-box {
+  background-position: 0 -615px;
+  background-repeat: repeat-x;
+  height: 13px;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 65px;
+}
+.ratings-table .rating-box .rating {
+  background-position: 0 -600px;
+  background-repeat: repeat-x;
+  float: left;
+  height: 13px;
+  text-indent: -9999px;
 }
 
 @media only screen and (max-width: 770px) {

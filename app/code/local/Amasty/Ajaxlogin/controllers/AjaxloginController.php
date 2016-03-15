@@ -180,7 +180,7 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
         $block = Mage::app()->getLayout()->createBlock('amajaxlogin/customer_form_login', 'form_login')
                              ->setTemplate('amasty/amajaxlogin/customer/form/login.phtml');
         $message = $block->tohtml();
-        $this->showCartPopup($title, $text, $message, $status);
+        $this->showCartPopup($title, $text, "", $status);
     }
        
     //creating finale popup 

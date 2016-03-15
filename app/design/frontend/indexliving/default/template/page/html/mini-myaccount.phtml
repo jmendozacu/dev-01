@@ -1,0 +1,40 @@
+<div class="mini-account" >
+<h3 class="box-title"><?php echo $this->__('My Account'); ?></h3>
+<ul>
+  <li class="li-account">
+    <a href="<?php echo Mage::getUrl('customer/account'); ?>" title="<?php echo $this->__('Account Dashboard')?>">
+      <?php echo $this->__('Account Dashboard')?>
+    </a>
+  </li>
+  <li class="li-information">
+    <a href="<?php echo Mage::getUrl('customer/account/edit'); ?>" title="<?php echo $this->__('Account Information')?>">
+      <?php echo $this->__('Account Information')?>
+    </a>
+  </li>
+  <li class="li-address">
+    <a href="<?php echo Mage::getUrl('customer/address'); ?>" title="<?php echo $this->__('Address Book')?>">
+      <?php echo $this->__('Address Book')?>
+    </a>
+  </li>
+  <li class="li-order">
+    <a href="<?php echo Mage::getUrl('sales/order/history'); ?>" title="<?php echo $this->__('My Orders')?>">
+      <?php echo $this->__('My Orders')?>
+    </a>
+  </li>
+  <li class="li-wishlist">
+    <a href="<?php echo Mage::getUrl('wishlist'); ?>" title="<?php echo $this->__('My Wishlist')?>">
+      <?php echo $this->__('My Wishlist')?>
+    </a>
+  </li>
+  <li class="li-points">
+    <a href="<?php echo Mage::getUrl('customer/account'); ?>" title="<?php echo $this->__('Reward Points')?>">
+      <?php echo $this->__('Reward Points')?>
+    </a>
+  </li>
+  <li class="li-logout">
+    <a href="<?php echo Mage::getUrl('customer/account/logout'); ?>" title="<?php echo $this->__('Logout')?>">
+      <?php echo $this->__('Logout')?>
+    </a>
+  </li>
+</ul>
+</div>

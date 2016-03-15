@@ -19,6 +19,7 @@ box-sizing: content-box;
     width: 100%;
     z-index: 100000;
 }
+#amprogress img {width:80px; height:80px; position:absolute; top:50%; margin-top:-40px; margin-left:-40px; left:50%;}
 .or_use_that {
     background: url(or_use_bg.png) repeat-x scroll left center;
     float: left;
@@ -109,7 +110,7 @@ box-sizing: content-box;
 	text-align: left;
 	padding:0 15px;
 }
-.account-mini-login .am-form-block{padding:0 25px; max-width:302px;}
+.account-mini-login .am-form-block{padding:0 25px; max-width:302px; width: 100%;  margin-top: 10px; float:left;}
 .am-form-list input.input-text {
     width: 100%;
 		height:38px;
@@ -282,10 +283,10 @@ div.am-login:active {
 }
 
 
-.am-ajax-error img {
-}
-
+.am-ajax-error img,
 .am-ajax-success img {
+  display: inline-block;
+  margin-right: 11px;
 }
 
 .am-ajax-success{
