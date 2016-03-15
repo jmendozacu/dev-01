@@ -28,7 +28,7 @@
                 </div>
                 <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                 <div class="desc">
-                    <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                   <?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?>
                 </div>
                 <div class="grid-price">
                   <?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
@@ -63,7 +63,7 @@
 </div>
   <script type="text/javascript">
     var widthWindow = jQuery( window ).width();
-    if(widthWindow >767){
+    if(widthWindow > 767){
       jQuery("#recommend-product-list").owlCarousel({	
         loop:true,
         margin:20,

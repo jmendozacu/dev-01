@@ -31,7 +31,7 @@
         <h2><?php echo $this->__('Also Look At') ?></h2>
     </div>
     <div class="block-content">
-        <div id="product-list-related">
+        <div id="product-list-related" class="recommend-product-list">
         <?php foreach($this->getItems() as $_item): ?>
             <div class="item">
                 <div class="product">
@@ -43,22 +43,30 @@
         <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
     </div>
 		<script type="text/javascript">
-			jQuery("#product-list-related").owlCarousel({	
-				loop:true,
-				margin:20,
-				nav:true,
-				responsive:{
-					0:{
-							items:1
-					},
-					600:{
-							items:3
-					},
-					1000:{
-							items:4
+			var widthWindow = jQuery( window ).width();
+			if(widthWindow > 767){
+				jQuery("#product-list-related").owlCarousel({	
+					loop:true,
+					margin:20,
+					nav:true,
+					responsive:{
+						0:{
+								items:1
+						},
+						600:{
+								items:3
+						},
+						1000:{
+								items:4
+						}
 					}
-				}
-			});
+				});
+			}else{
+				jQuery('.recommend-product-list').mCustomScrollbar({
+					axis:"x",
+					advanced:{autoExpandHorizontalScroll:true}
+				});
+			}
 		</script>
 	</div>
 </div>

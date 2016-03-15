@@ -5141,7 +5141,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .review-box .box-title .bl{float:left;}
 .product-view .review-box .box-title .br{float:right; text-align:right; max-width:300px;}
 .product-view .review-box .box-title .br .review-count{color:#f4701e; font-size:12px;}
-.product-view .review-box .ratings{}
+.product-view .review-box .ratings{overflow:hidden;}
 .product-view .review-box .ratings .rating-average{
 	float:left;
 	margin-top:8px;

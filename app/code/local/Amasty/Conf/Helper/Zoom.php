@@ -95,7 +95,7 @@ class Amasty_Conf_Helper_Zoom extends Mage_Core_Helper_Abstract
        if(Mage::getStoreConfig('amconf/carousel/pagination')) {
            $param['carousel']['pagination'] = "#ampagination";    
        }
-       $param['carousel']['responsive'] = false;
+       $param['carousel']['responsive'] = true;
        $param['carousel']['infinite'] = false;
        /*Carusel configuration end*/
        

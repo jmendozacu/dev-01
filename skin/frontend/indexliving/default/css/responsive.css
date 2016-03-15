@@ -33,7 +33,7 @@
   #header-search  {display:none;}
   .box-mobile {display:block;}
   #header{background:#252525;  float:left; width:100%; padding:0px;}
-  .page-header {padding-left:10px; padding-right:10px;}
+  .page-header,.page-container {padding-left:10px; padding-right:10px;}
   .page-header-container {padding:0; text-align:center;}
   .icon-menu {margin:0px; padding: 15px 10px 14px;  width: 43px;}
   .icon-menu.active,
@@ -192,6 +192,7 @@
   .recommend-product-list .products-grid ,
   .categoryproducts .block-content .products-grid{max-width:none; }
   .recommend-product-list div.item {float:left; width:215px;}
+  #product-list-related div.item {border:0 none;}
   .category-banners .div-banner .banner-carousel li ,
   .category-bestseller .categoryproducts.block-highlight .block-content .products-grid div.item {float:left; width:258px; clear:none!important;}
   .category-bestseller .categoryproducts.block-highlight {background:none; padding:0px;}
@@ -258,9 +259,39 @@
   .toolbar-bottom .pages li  span.next {background-image:url(../images/arrow-mobile1-2.png);}
   .toolbar-bottom  .pages .next:before,
   .toolbar-bottom  .pages .previous:before {display:none;}
+	/* Product Page */
+	.product-image-desk{display:none;}
+	.product-image-mobile{display:block!important; margin:0 0 20px;}
+	.product-image-mobile .bx-pager.bx-default-pager a{border:1px solid #ffc222}
+	.product-view .product-features .box-title h2{width:100%;}
+	.product-view .product-features .box-title button{float:left;}
+	.product-view .product-features .products-features-grid li{width:100%;  margin:0 0 10px;}
  }
- @media (min-width: 601px) and (max-width: 767px) {}
- @media (max-width:600px){}
+ @media (min-width: 640px) and (max-width: 767px) {
+	#customer-reviews .review-list li > div.review-rating{width:30%;}
+	#customer-reviews .review-list li > div.review-details{width:53%; float:right;}
+ }
+ @media (max-width:640px){
+	/* Product Page */
+	.product-view .product-review-summary .review-box .box-title .bl,
+	.product-view .product-review-summary .review-box .box-title .br{
+		float: left;
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+	}
+	.product-view .review-box .ratings{margin:1% 15%;}
+	.product-view .review-box .ratings .rating-average{float:right;}
+	#customer-reviews .review-list li > div, 
+	#customer-reviews .review-list li > div.review-rating,
+	#customer-reviews .review-list li > div.review-image,
+	#customer-reviews .review-list li > div.review-details{
+		width:100%;
+		margin:0 0 10px;
+		text-align:left;
+	}
+	#customer-reviews .review-list li .review-details .review-meta{float:left; text-align:left;}
+ }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;} 
 	.banner-static-home li span {font-size:10px; line-height:14px; padding-left:40px;}
