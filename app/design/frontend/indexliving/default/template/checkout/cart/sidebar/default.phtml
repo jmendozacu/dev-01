@@ -28,6 +28,8 @@
     $_item = $this->getItem();
     $isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
     $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
+    //zend_debug::dump($_item);
+    $product=Mage::getModel('catalog/product')->load($_item->getProductId());
 ?>
 <li class="item">
     <?php if ($this->hasProductUrl()): ?>
@@ -38,10 +40,20 @@
     <div class="product-details">
         <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the shopping cart?')) ?>');" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
         <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
-        <?php if ($isVisibleProduct): ?>
-        <a href="<?php echo $this->getConfigureUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Edit item')) ?>" class="btn-edit"><?php echo $this->__('Edit item')?></a>
-        <?php endif ?>
-        <strong><?php echo $this->getQty() ?></strong> x
+        <?php if ($_options = $this->getOptionList()):?>
+          <dl class="item-options">
+            <?php foreach ($_options as $_option) : ?>
+            <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
+            <dd>
+              <?php if (is_array($_option['value'])): ?>
+              <?php echo nl2br(implode("\n", $_option['value'])) ?>
+              <?php else: ?>
+              <?php echo $_option['value'] ?>
+              <?php endif; ?>
+            </dd>
+            <?php endforeach; ?>
+          </dl>
+        <?php endif; ?>
 
     <?php if ($canApplyMsrp): ?>
 
@@ -82,9 +94,6 @@
             <?php endif; ?>
         <?php endif; ?>
     <?php endif; ?>
-
-
-
     <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
         <?php $_incl = $this->helper('checkout')->getPriceInclTax($_item); ?>
         <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
@@ -121,25 +130,17 @@
     <?php endif; ?>
 
     <?php endif; //Can apply MSRP ?>
-
-        <?php if ($_options = $this->getOptionList()):?>
-        <div class="truncated">
-          <div class="truncated_full_value">
-            <dl class="item-options">
-                <?php foreach ($_options as $_option) : ?>
-                <dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-                <dd>
-                    <?php if (is_array($_option['value'])): ?>
-                    <?php echo nl2br(implode("\n", $_option['value'])) ?>
-                    <?php else: ?>
-                    <?php echo $_option['value'] ?>
-                    <?php endif; ?>
-                </dd>
-                <?php endforeach; ?>
-            </dl>
-          </div>
-        <a href="#" onclick="return false;" class="details"><?php echo $this->__('Details') ?></a>
-        </div>
+    <!-- qty -->
+    <div class="qty-minicart">
+      <span class="qty-item">
+        <input class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
+        <?php if($product->getTypeId() == 'configurable'):?>
+          <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
+        <?php else: ?> 
+          <input style="display:none;" type="button" onclick="headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>')" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
         <?php endif; ?>
+        <img class="apply-change-qty-loading" style="display:none;" id="apply_change_qty_loading_<?php echo $_item->getProduct()->getId() ?>" alt="<?php echo $this->__('Loading')?>" width="20" height="20" src="<?php echo $this->getSkinUrl('images/main-loading.gif')?>"/>
+      </span>
+    </div>    
     </div>
 </li>

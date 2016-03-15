@@ -54,12 +54,12 @@
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
         <div class="box-right">
-          <span class="icon-account box-mobile toggle-header-content" id="toggle-account"></span>
-          <span class="icon-minicart box-mobile toggle-header-content" id="toggle-minicart"></span>
+          <span class="icon-account box-mobile toggle-header-content togglelogin"></span>
+          <span class="icon-minicart box-mobile toggle-header-content toggle-minicart"></span>
           <ul class="top-links box-desktop">
             <li class="top-link-account">
               <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-                <a id="togglelogin" class="toggle-header-content" href="javascript:void(0)" title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
+                <a class="toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
               <?php else: ?>
                 <a id="togglelogin" class="toggle-header-content" href="javascript:void(0)" title="<?php echo $this->__('account'); ?>"><?php echo $this->__('account'); ?></a>
               <?php endif; ?>
@@ -69,30 +69,20 @@
             </li>
             <li class="wishlist"><a title="<?php echo $this->__("wishlist")?>" href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a></li>
           </ul>
-          <div class="header-minicart box-desktop">
+          <div class="header-minicart  box-desktop" >
             <?php
-              $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
+              $count =0;
+              if($this->helper('checkout/cart')->getSummaryCount()):
+                $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
+              endif;
             ?>
-            <a class="mycart" href="<?php echo Mage::getUrl('checkout/cart'); ?>" title="<?php echo $this->__('My cart')?>">
-              <span>
-              <?php
-                if($count==0)
-                  {
-                    echo $this->__('0');
-                  }
-                  if(($count>0) && ($count<10))
-                  {
-                    echo $this->__('0%s',$count);
-                  }
-                  if($count>10)
-                  {
-                    echo $this->__('%s',$count);
-                  }
-              ?>
-              </span>
+            <a class="mycart toggle-header-content toggle-minicart cart_item_count"  href="javascript:void(0)" title="<?php echo $this->__('My cart')?>">
+              <span id="cartItemCountInHead"><span class="cart-item-count"><?php echo $count;?></span></span>
             </a>
           </div>
-          
+          <div id="mini-cart-info" class="box-header-content">
+            <?php echo $this->getChildHtml('header_cart_mini') ?>
+          </div>
         </div>
     </div>
 </header>
