@@ -39,6 +39,7 @@
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
 <div class="product-view">
     <div class="product-essential">
+			<div class="page-container">
         <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
             <?php echo $this->getBlockHtml('formkey') ?>
             <div class="no-display">
@@ -157,22 +158,25 @@
             }.bind(productAddToCartForm);
         //]]>
         </script>
+			</div>
     </div>
+		<?php echo $this->getChildHtml('additional') ?>
 		<?php echo $this->getChildHtml('related_products') ?>
-    <div class="product-collateral toggle-content tabs">
-        <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
-            <dl id="collateral-tabs" class="collateral-tabs">
-                <?php foreach ($detailedInfoGroup as $alias => $html):?>
-                    <dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
-                    <dd class="tab-container">
-                        <div class="tab-content"><?php echo $html ?></div>
-                    </dd>
-                <?php endforeach;?>
-            </dl>
-        <?php endif; ?>
-    </div>
-
-    <?php echo $this->getChildHtml('upsell_products') ?>
+		<!-- Get attribute banner image in here -->
+		<?php if ($_product->getProductIdeaBanner() != 'no_selection' && $_product->getProductIdeaBanner()): ?>
+		<div class="product-essential product-idea-image">
+			<img id="product_idea_banner" src="<?php echo Mage::helper('catalog/image')->init($_product, 'product_idea_banner')?>" alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" title="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" />
+		</div>	
+		<?php endif; ?>
+		<!-- End product attribute banner image -->
+		<div class="product-review-wrap">
+			<div class="product-review-summary">
+				<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+			</div>
+			<div class="product-review-details-form">
+				<?php echo $this->getChildHtml('product_reviews') ?>
+			</div>
+		</div>
     <?php echo $this->getChildHtml('product_additional_data') ?>
 
 </div>

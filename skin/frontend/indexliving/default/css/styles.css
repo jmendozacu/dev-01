@@ -1176,16 +1176,16 @@ a.button:hover {
 /* -------------------------------------------- *
  * Icons
  */
-.icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-.sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating {
+.icon-sprite, .btn-remove2, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
+.sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon{
   background-image: url(../images/icon_sprite.png);
   background-repeat: no-repeat;
   text-indent: -9999px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 4 / 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating {
+  .icon-sprite, .btn-remove2, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
+  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a{
     background-image: url(../images/icon_sprite@2x.png);
     background-size: 100px 1000px;
   }
@@ -2022,19 +2022,9 @@ span.weee {
 .ratings .rating-links {
   margin: 5px 0;
 }
-.ratings .rating-box {
-  width: 65px;
-  height: 13px;
-  background-repeat: repeat-x;
-  background-position: 0 -615px;
-  overflow: hidden;
-}
-.ratings .rating-box .rating {
-  float: left;
-  height: 13px;
-  background-repeat: repeat-x;
-  background-position: 0 -600px;
-}
+.rating-box { width:110px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
+.rating-box .rating { float:left; height:18px; background:url(../images/rating_bg.png) 0 100% repeat-x; }
+.ratings .rating-box { float:left; margin-right:3px; }
 .ratings .amount {
   display: block;
   margin: 5px auto;
@@ -4755,7 +4745,7 @@ body.catalogsearch-result-index .page-title h1 {
   float: left;
 }
 .product-view .product-essential .extra-info .ratings .rating-box {
-  margin-top: 8px;
+  margin-top: 0;
   margin-right: 10px;
 }
 .product-view .product-essential .extra-info .ratings:after {
@@ -4805,7 +4795,7 @@ body.catalogsearch-result-index .page-title h1 {
   clear: both;
 }
 .product-view .product-shop .ratings {
-  margin-bottom: 8px;
+	margin-top:0;
 }
 .product-view .product-shop .availability {
   font-size: 16px;
@@ -5097,7 +5087,59 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .alert-stock {
   clear: both;
 }
-
+.product-view .product-features{
+	padding:20px 0;
+	background:#f4f4f4;
+}
+.product-view .product-features .box-title{float:left; width:100%; margin:0 0 15px;}
+.product-view .product-features .box-title h2{
+	font-size: 30px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+	color:#ffc222;
+	float:left;
+}
+.product-view .product-features .box-title button{float:right; height:41px; line-height:25px; border-radius:5px;}
+.button.btn-downloads{}
+.button.btn-downloads > span {display:inline-block; padding-left:25px; position:relative;}
+.button.btn-downloads > span:before {content:""; position:absolute; width:30px; height:30px; top:0; left:-10px; background: url(../images/icons2.png) no-repeat 0 -246px;}
+.product-view .product-features .products-features-grid li{
+	float:left; width:50%;
+}
+.product-view .product-features .products-features-grid li h3{
+	font-size: 22px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+	color:#000000;
+	margin:0;
+}
+.product-view .product-features .products-features-grid li p{
+	font-size: 16px;
+	font-family:Tahoma;
+	color:#767676;
+}
+.product-view .box-collateral h2{
+	font-size: 30px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+	color:#ffc222;
+}
+.product-view .product-review-wrap{margin:30px 0;}
+.product-view .product-review-wrap h2{
+	font-size: 30px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+	color:#ffc222;
+}
+.product-view .review-box{}
+.product-view .review-box .box-title{float:left; width:100%;}
+.product-view .review-box .box-title .bl{float:left;}
+.product-view .review-box .box-title .br{float:right;}
+.product-view .product-shop .extra-info .review-box{padding:0;}
+.product-view .product-shop .extra-info .review-box h2,
+.product-view .product-shop .extra-info .review-box .rating-overall,
+.product-view .product-shop .extra-info .review-box .rating-average{display:none;}
+.product-view .product-shop .extra-info .review-box .box-title .br{float:left;}
 @media only screen and (max-width: 479px) {
   .product-view .add-to-cart-buttons .paypal-or {
     line-height: 20px;
@@ -5694,20 +5736,15 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 7px;
 }
 .block-related .block-title {
-  border-bottom: none;
+  border-top: none;
 }
 .block-related .block-title h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.2;
-  text-rendering: optimizeLegibility;
-  text-transform: uppercase;
-  margin-bottom: 0;
+	font-size: 30px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+	color:#ffc222;
 }
 .block-related .block-subtitle {
   margin-bottom: 7px;
@@ -8380,14 +8417,8 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Review - Customer
  * ============================================ */
-#customer-reviews {
-  width: auto;
-  float: none;
-}
+#customer-reviews { margin:30px 0;}
 #customer-reviews .review-heading {
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
-  padding: 10px 0 5px;
 }
 #customer-reviews .review-heading:after {
   content: '';
@@ -8395,8 +8426,6 @@ div.paypal-logo span > img {
   clear: both;
 }
 #customer-reviews .review-heading h2 {
-  float: left;
-  display: block;
 }
 #customer-reviews .review-heading .pager {
   clear: none;
@@ -8414,23 +8443,12 @@ div.paypal-logo span > img {
 #customer-reviews .review-heading .pager .amount {
   display: none;
 }
-#customer-reviews h2 {
-  color: #3399cc;
-  font-size: 12px;
-  text-transform: uppercase;
+#customer-reviews .review-list{
+	background:#f4f4f4;
+	padding:20px;
 }
-#customer-reviews h2 span {
-  color: #636363;
-}
-#customer-reviews h3 {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 12px;
-  font-weight: normal;
-  text-transform: uppercase;
-}
-#customer-reviews h3 span {
-  color: #3399cc;
-}
+#customer-reviews .review-list li{padding:15px 0; border-bottom:1px solid #ccc;}
+#customer-reviews .review-list li.last{border:0 none;}
 #customer-reviews .fieldset {
   padding-top: 25px;
   width: 470px;
@@ -8557,33 +8575,6 @@ div.paypal-logo span > img {
   margin-left: 5px;
   position: relative;
   top: 2px;
-}
-
-/* ============================================ *
- * Ratings - Global
- * ============================================ */
-.ratings-table {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-.ratings-table th {
-  padding-right: 10px;
-}
-.ratings-table .rating-box {
-  background-position: 0 -615px;
-  background-repeat: repeat-x;
-  height: 13px;
-  overflow: hidden;
-  text-indent: -9999px;
-  width: 65px;
-}
-.ratings-table .rating-box .rating {
-  background-position: 0 -600px;
-  background-repeat: repeat-x;
-  float: left;
-  height: 13px;
-  text-indent: -9999px;
 }
 
 @media only screen and (max-width: 770px) {

@@ -228,7 +228,7 @@
 
 .owl-carousel {position:relative!important;}
 .owl-carousel .owl-controls .owl-nav .owl-prev{
-  left: -20px;
+  left: 0;
   background:url(../images/slider-prev3.png) no-repeat 0 0;
 }
 .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
@@ -236,11 +236,11 @@
 }
 
 .owl-carousel .owl-controls .owl-nav .owl-next {
-  right: -20px;
+  right: 0;
   background:url(../images/slider-next3.png) no-repeat 100% 0;
 }
 .owl-carousel .owl-controls .owl-nav .owl-next:hover {
-  right: -20px;
+  right: 0;
   background:url(../images/slider-prev3.png) no-repeat 100% 0;
 }
 
