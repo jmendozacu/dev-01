@@ -24,12 +24,11 @@
     <customer_account_index translate="label">
         <update handle="my.account.wrapper"/>
         <reference name="my.account.wrapper">
-            <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+            <!-- <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/> -->
         </reference>
     </customer_account_index>
 
     <customer_account_login>
-      
         <reference name="content">
              <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
         </reference>

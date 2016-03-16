@@ -32,38 +32,31 @@
     </div>
 <?php if( sizeof($_orders->getItems()) > 0 ): ?>
     <table class="data-table orders" id="my-orders-table">
-    <col width="1" />
-    <col width="1" />
     <col />
-    <col width="1" />
-    <col width="1" />
-    <col width="1" />
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
         <thead>
             <tr>
-                <th class="number"><?php echo $this->__('Order #') ?></th>
+                <th class="id"><?php echo $this->__('Id') ?></th>
                 <th class="date"><?php echo $this->__('Date') ?></th>
-                <th class="ship"><?php echo $this->__('Ship To') ?></th>
+                <th class="number"><?php echo $this->__('Order #') ?></th>
                 <th class="total"><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
+                <th class="ship"><?php echo $this->__('Ship To') ?></th>
                 <th class="status"><?php echo $this->__('Status') ?></th>
-                <th class="view">&nbsp;</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($_orders as $_order): ?>
+            <?php $i=0; foreach ($_orders as $_order): $i++;?>
                 <tr>
-                    <td class="number"><?php echo $_order->getRealOrderId() ?></td>
+                    <td class="number"><?php echo $i;?></td>
                     <td class="date"><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
-                    <td class="ship"><?php echo $_order->getShippingAddress() ? $this->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
+                    <td class="number"><?php echo $_order->getRealOrderId() ?></td>
                     <td class="total"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
-                    <td class="status"><em><?php echo $_order->getStatusLabel() ?></em></td>
-                    <td class="a-center view">
-                        <span class="nobr">
-                        <a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a>
-                        <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
-                            <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
-                        <?php endif ?>
-                        </span>
-                    </td>
+                    <td class="ship"><?php echo $_order->getShippingAddress() ? $this->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
+                    <td class="status"><span <?php if($_order->getStatus() == 'complete'): ?> class="status-done" <?php endif; ?>><?php echo $_order->getStatusLabel() ?></span></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
