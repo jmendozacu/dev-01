@@ -43,7 +43,6 @@
     <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
     <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
         <h2 class="legend"><?php echo $this->__('Contact Information') ?></h2>
-        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
         <ul class="form-list">
             <li class="fields">
                 <?php echo $this->getNameBlockHtml() ?>
@@ -68,12 +67,7 @@
                     </div>
                 </div>
             </li>
-        </ul>
-    </div>
-    <div class="fieldset">
-        <h2 class="legend"><?php echo $this->__('Address') ?></h2>
-        <ul class="form-list">
-        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
             <li class="wide">
                 <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
                 <div class="input-box">
@@ -133,7 +127,7 @@
                     </div>
                 </div>
             </li>
-            <li<?php if($this->canSetAsDefaultBilling()) echo ' class="control"' ?>>
+            <li <?php if($this->canSetAsDefaultBilling()) echo ' class="control checkout-style2"' ?>>
                 <?php if($this->isDefaultBilling()): ?>
                     <strong><?php echo $this->__('Default Billing Address') ?></strong>
                 <?php elseif($this->canSetAsDefaultBilling()): ?>
@@ -142,7 +136,7 @@
                     <input type="hidden" name="default_billing" value="1" />
                 <?php endif; ?>
             </li>
-            <li<?php if($this->canSetAsDefaultShipping()) echo ' class="control"' ?>>
+            <li <?php if($this->canSetAsDefaultShipping()) echo ' class="control checkout-style2"' ?>>
                 <?php if($this->isDefaultShipping()): ?>
                     <strong><?php echo $this->__('Default Shipping Address') ?></strong>
                 <?php elseif($this->canSetAsDefaultShipping()): ?>
@@ -163,4 +157,7 @@
     var dataForm = new VarienForm('form-validate', true);
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 //]]>
+  jQuery(function () {
+      jQuery('.checkout-style2').customRadioCheckbox();
+  });
 </script>
