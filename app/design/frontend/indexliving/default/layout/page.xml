@@ -116,6 +116,8 @@
 											<label>Shopping Cart Sidebar Extra Actions</label>
 									</block>
 								</block>
+                <block type="core/template" name="header.myaccount.mini" as="mini-myaccount" template="page/html/mini-myaccount.phtml"/>
+                
             </block>
 
             <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
