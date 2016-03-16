@@ -25,16 +25,23 @@
  */
 ?>
 <div class="dashboard">
+    <!--
     <div class="page-title">
         <h1><?php echo $this->__('My Dashboard') ?></h1>
     </div>
+    -->
     <?php echo $this->getMessagesBlock()->toHtml() ?>
     <?php echo $this->getChildHtml('hello') ?>
+    <div class="box-points-dashboard"> <!-- box-html -->
+      <?php $mypoints = 2050; ?>
+      <p>
+        <?php echo $this->__('คุณมีคะแนนสะสมทั้งหมด  <span>%s</span> คะแนน ',$mypoints ) ?></br>
+        <?php echo $this->__('ทุกๆ 5,000 แต้ม ใช้แทนส่วนลด 50 บาท',$mypoints ) ?>
+      </p>
+    </div>
+    
     <?php echo $this->getChildHtml('top') ?>
-    <div class="box-account box-info">
-        <div class="box-head">
-            <h2><?php echo $this->__('Account Information') ?></h2>
-        </div>
+    <div class="box-account box-info2">
         <?php /* Extensions placeholder */ ?>
         <?php echo $this->getChildHtml('customer.account.dashboard.extra') ?>
         <?php echo $this->getChildHtml('info') ?>

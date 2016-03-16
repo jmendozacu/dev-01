@@ -36,11 +36,12 @@
             <?php foreach ($_links as $_link): ?>
                 <?php $_last = ($_index++ >= $_count); ?>
                 <?php if ($this->isActive($_link)): ?>
-                    <li class="current<?php echo ($_last ? ' last' : '') ?>"><a href="<?php echo $_link->getUrl() ?>"><strong><?php echo $_link->getLabel() ?></strong></a></li>
+                    <li class="current <?php echo $_link->getName() ?>"><a href="<?php echo $_link->getUrl() ?>"><span><strong><?php echo $_link->getLabel() ?></strong></span></a></li>
                 <?php else: ?>
-                    <li<?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+                    <li class="<?php echo $_link->getName() ?>"><a href="<?php echo $_link->getUrl() ?>"><span><?php echo $_link->getLabel() ?></span></a></li>
                 <?php endif; ?>
             <?php endforeach; ?>
         </ul>
     </div>
 </div>
+
