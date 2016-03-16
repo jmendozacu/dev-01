@@ -1,0 +1,49 @@
+<?php 
+	
+	$contrlName = Mage::app()->getRequest()->getControllerName();
+	$actName = Mage::app()->getRequest()->getActionName();
+	$routName = Mage::app()->getRequest()->getRouteName();
+	$modulName = Mage::app()->getRequest()->getModuleName();
+	$isCartPage = false;
+	$isCheckoutPage = false;
+	$isCheckoutSuccessPage = false;
+	if($modulName == 'checkout' && $contrlName == 'cart' && $actName == 'index'){
+		$isCartPage = true;
+	}
+	if($modulName == 'checkout' && $contrlName == 'onepage' && $actName == 'index'){
+		$isCheckoutPage = true;
+	}
+	if($modulName == 'checkout' && $contrlName == 'onepage' && $actName == 'success'){
+		$isCheckoutSuccessPage = true;
+	}
+?>
+<div class="checkout-list-step">
+  <ul>
+    <li class="first <?php if ($isCartPage) :?>active<?php endif; ?><?php if ($isCheckoutPage || $isCheckoutSuccessPage) :?>active complete<?php endif; ?>">
+      <?php if (!$isCartPage) :?>
+				<label class="step-number"><span><?php echo $this->__('1');?></span></label>
+        <a href="<?php echo Mage::getUrl('checkout/cart'); ?>">
+          <h6><span><?php echo $this->__('Shopping cart');?></span></h6>
+        </a>
+      <?php else: ?>
+				<label class="step-number"><span><?php echo $this->__('1');?></span></label>
+        <h6><span><?php echo $this->__('Shopping cart');?></span></h6>
+      <?php endif; ?>
+    </li>
+    <li class="<?php if ($isCheckoutPage) :?>active<?php endif; ?> <?php if ($isCheckoutSuccessPage) :?>active complete<?php endif; ?>">
+      <?php if (!$isCheckoutPage) :?>
+				<label class="step-number"><span><?php echo $this->__('2');?></span></label>
+        <a href="<?php echo Mage::getUrl('checkout/onepage'); ?>">
+          <h6><span><?php echo $this->__('Shipping & payment information');?></span></h6>
+        </a>
+      <?php else: ?>
+				<label class="step-number"><span><?php echo $this->__('2');?></span></label>
+        <h6><span><?php echo $this->__('Shipping & payment information');?></span></h6>
+      <?php endif; ?>
+    </li>
+    <li class="last <?php if ($isCheckoutSuccessPage) :?>active complete<?php endif; ?>">
+			<label class="step-number"><span><?php echo $this->__('3');?></span></label>
+      <h6><span><?php echo $this->__('Order Complete');?></span></h6>
+    </li>
+  </ul>
+</div>

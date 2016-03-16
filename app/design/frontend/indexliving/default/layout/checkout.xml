@@ -80,7 +80,12 @@ Default layout, loads most of the pages
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+				<reference name="breadcrumbs">
+					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Cart</crumbName><crumbInfo><label>Cart</label><title>Cart</title></crumbInfo></action>
+				</reference>
         <reference name="content">
+						<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
             <block type="checkout/cart" name="checkout.cart">
                 <action method="setCartTemplate"><value>checkout/cart.phtml</value></action>
                 <action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
@@ -105,7 +110,7 @@ Default layout, loads most of the pages
                 <block type="core/text_list" name="checkout.cart.methods" as="methods" translate="label">
                     <label>Payment Methods After Checkout Button</label>
                     <block type="checkout/onepage_link" name="checkout.cart.methods.onepage.bottom" template="checkout/onepage/link.phtml"/>
-                    <block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/>
+                    <!-- <block type="checkout/multishipping_link" name="checkout.cart.methods.multishipping" template="checkout/multishipping/link.phtml"/> -->
                 </block>
 
                 <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>

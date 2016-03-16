@@ -1,0 +1,225 @@
+<input type="button" style="float:left; clear:both;" id="btn_fancybox" value="Dealers" onclick="showProductDealers();"/>
+
+<?php $productDealers = $this->getProductDealer(); ?>
+<div class="product-dealer" style="overflow:hidden; width:1150px; display:none;" id="product-dealer">
+  <div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
+    <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
+
+    <div class="list-all-product-dealer" style="width:600px; float:left;">
+      <?php if ($productDealers->getSize()): ?>
+        <?php echo $this->getPagerHtml(); ?>
+				<?php $numProductDealer = 1;?>
+        <table class="data-table" id="product-dealer-list">
+          <colgroup>
+            <col>
+            <col>
+            <col>
+          </colgroup>
+          <thead>
+            <tr>
+              <th><?php echo $this->__('Store') ?></th>
+              <th><?php echo $this->__('Address') ?></th>
+              <th><?php echo $this->__('Phone') ?></th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($productDealers as $productdealer): ?>
+            <tr id="product-dealer-tr-<?php echo $numProductDealer; ?>" style="display:none">
+              <td>
+                <label class="product-dealer-label"><?php echo $this->__('Store') ?></label>
+                <?php echo $productdealer->getTitle(); ?>
+              </td>
+              <td>
+                <label class="product-dealer-label"><?php echo $this->__('Address') ?></label>
+                <?php echo $productdealer->getAddress(); ?>
+              </td>
+              <td>
+                <label class="product-dealer-label"><?php echo $this->__('Phone') ?></label>
+                <?php echo $productdealer->getPhone(); ?>
+              </td>
+            </tr>
+						<?php $numProductDealer = ($numProductDealer + 1);?>
+          <?php endforeach; ?>
+          </tbody>
+        </table>
+        
+        <?php /*<script type="text/javascript">decorateTable('dealer-list')</script>*/?>
+      <?php else: ?>
+        <p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+	var selectLimitDealer = $('product-dealer').down(8);
+	
+	//li page dealer
+	var pages = document.getElementsByClassName('pages');
+	var page = pages[0];
+	
+	var ols = page.select('ol');
+	var ol = ols[0];
+	ol.insert({
+		top: '<li><a class="previous"></a></li>'
+	});
+	
+	var liPageDealer = ol.select('li');
+	
+	/* #################################### */	
+	
+  function showProductDealers(){
+		loadProductDealerPopupByValue();
+		
+    jQuery("#btn_fancybox").fancybox({
+      'href' : '#product-dealer',
+      //'afterShow': function() { initMap();}
+    });
+  }
+	
+	function loadProductDealerPopupByValue(){
+		//replace function onchange of select limit;
+		selectLimitDealer.writeAttribute("onchange", "loadProductDealerByLimit()");
+		
+		//replace li page
+		for (var i = 0; i < liPageDealer.length; i++){
+			var li = liPageDealer[i];
+			var li_down = li.down();
+			var textContent = li.textContent;
+			
+			if(li_down){
+				if(li_down.hasClassName('next'))
+					textContent = 'next';
+				if(li_down.hasClassName('previous'))
+					textContent = 'previous';
+			}
+			
+			li.writeAttribute("id","li_page_"+textContent);
+			
+			if(li_down){
+				li_down.writeAttribute("href","javascript:loadProductDealerByPage('"+textContent+"')");
+			}
+		}
+		
+		var limit;
+		var p;
+		//get limit of product deal
+		limit = getLimitProductDealer();
+		
+		//get page of product deal
+		p = getPageProductDealer();
+		
+		//load product dealer by limit and p default
+		loadProductDealer(limit, p);
+	}
+	
+	function loadProductDealerByLimit(){
+		var limit;
+		var p;
+		limit = getLimitProductDealer();
+		p = getPageProductDealer();
+		
+		loadProductDealer(limit, p);
+	}
+	
+	function loadProductDealerByPage(textContent){
+		var limit;
+		var p;
+		var currentp = getPageProductDealer();
+		
+		limit = getLimitProductDealer();
+		p = textContent;
+		
+		if(textContent == 'next')
+			p =  parseInt(currentp) + 1;
+		
+		if(textContent == 'previous')
+			p =  parseInt(currentp) - 1;
+		
+		loadProductDealer(limit, p, currentp);
+	}
+	
+	function getLimitProductDealer(){
+		var limit;
+		var url_link = selectLimitDealer.value;
+		var params = {};
+		
+		url_link.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			params[key] = value;
+		});
+		
+		limit = params['limit'];
+		
+		return limit;
+	}
+	
+	function getPageProductDealer(){
+		//var pages = document.getElementsByClassName('pages')[0].down().next().select('li');
+		var p;
+		var lis = liPageDealer;
+		
+		for (var i = 0; i < lis.length; i++){
+			var li = lis[i];
+			if(li.hasClassName('current'))
+				p = li.textContent;
+		}
+		return p;
+	}
+	
+	function loadProductDealer(limit, p, currentp){
+		var num_row = '<?php echo $numProductDealer ?>';
+		for (var i = 1; i < num_row; i++){
+			if($('product-dealer-tr-'+i))
+				$('product-dealer-tr-'+i).hide();
+		}
+		
+		var begin = (p-1)*limit;
+		var end = p*limit;
+		for (var num = begin; num <= end; num++){
+			if($('product-dealer-tr-'+num))
+				$('product-dealer-tr-'+num).show();
+		}
+		
+		if(currentp){
+			$('li_page_'+currentp).removeClassName('current');
+			$('li_page_'+currentp).update('<a href="javascript:loadProductDealerByPage('+currentp+')">'+currentp+'</a>');
+			
+			$('li_page_'+p).update(p);
+			$('li_page_'+p).addClassName('current');
+		}
+		
+		var taotalPage = parseInt((num_row - 1)/(limit));
+		var maxPage = taotalPage;
+		var du = (num_row - 1) % limit;
+		if(du > 0){
+			maxPage = maxPage + 1;
+		}
+		
+		if(p == 1){
+			$('li_page_previous').hide();
+		}
+		else{
+			$('li_page_previous').show();
+		}
+		
+		if(p == maxPage){
+			$('li_page_next').hide();
+		}
+		else{
+			$('li_page_next').show();
+		}
+		
+		for (var i = 1; i <= liPageDealer.length - 2; i++){
+			if(i <= maxPage){
+				$('li_page_'+i).show();
+			}
+			else{
+				$('li_page_'+i).hide();
+			}
+		}
+	}
+  //window.onload = initMap();
+</script>
+
+
