@@ -200,6 +200,14 @@ New customer registration
         <reference name="root">
             <action method="setHeaderTitle" translate="title" module="customer"><title>Edit Account Info</title></action>
         </reference>
+        <reference name="breadcrumbs">
+          <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+          <action method="addCrumb"><crumbName>My Account</crumbName><crumbInfo><label>My Account</label><title>My Account</title></crumbInfo></action>
+        </reference>
+        <reference name="head">
+					<action method="addItem"><type>skin_js</type><name>js/jquery.custom-radio-checkbox.js</name></action>
+					<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
+				</reference>
         <reference name="my.account.wrapper">
             <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml"/>
         </reference>
