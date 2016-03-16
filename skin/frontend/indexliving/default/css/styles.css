@@ -1209,16 +1209,16 @@ a.button:hover {
 /* -------------------------------------------- *
  * Icons
  */
-.icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-.sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating {
+.icon-sprite, .btn-remove2, /* .ratings .rating-box, .ratings .rating-box .rating, */ .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
+.sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon/* , .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating  */{
   background-image: url(../images/icon_sprite.png);
   background-repeat: no-repeat;
   text-indent: -9999px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 4 / 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating {
+  .icon-sprite, .btn-remove2, /* .ratings .rating-box, .ratings .rating-box .rating, */ .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
+  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a/* , .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating */ {
     background-image: url(../images/icon_sprite@2x.png);
     background-size: 100px 1000px;
   }
@@ -1287,9 +1287,8 @@ a.button:hover {
 }
 
 .btn-remove2 {
-  background-position: 4px -648px;
-  border: none;
-  vertical-align: top;
+	background:url(../images/delete2.png) no-repeat center center;
+  border:none;
 }
 .btn-remove2:after {
   display: none;
@@ -2044,7 +2043,7 @@ span.weee {
 .ratings .rating-links {
   margin: 5px 0;
 }
-.ratings .rating-box {
+/* .ratings .rating-box {
   width: 65px;
   height: 13px;
   background-repeat: repeat-x;
@@ -2056,7 +2055,11 @@ span.weee {
   height: 13px;
   background-repeat: repeat-x;
   background-position: 0 -600px;
-}
+} */
+.rating-box { width:110px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
+.rating-box .rating { float:left; height:18px; background:url(../images/rating_bg.png) 0 100% repeat-x; }
+.ratings .rating-box { float:left; margin-right:3px; }
+
 .ratings .amount {
   display: block;
   margin: 5px auto;
@@ -4833,7 +4836,7 @@ body.catalogsearch-result-index .page-title h1 {
   float: left;
 }
 .product-view .product-essential .extra-info .ratings .rating-box {
-  margin-top: 8px;
+  margin-top: 0;
   margin-right: 10px;
 }
 .product-view .product-essential .extra-info .ratings:after {
@@ -4883,7 +4886,7 @@ body.catalogsearch-result-index .page-title h1 {
   clear: both;
 }
 .product-view .product-shop .ratings {
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 .product-view .product-shop .availability {
   font-size: 16px;
@@ -5845,12 +5848,12 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 7px;
 }
 .block-related .block-title {
-  border-bottom: none;
+  /* border-bottom: none; */
 }
 .block-related .block-title h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #636363;
+  /* color: #636363;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -5858,7 +5861,11 @@ body.catalogsearch-result-index .page-title h1 {
   line-height: 1.2;
   text-rendering: optimizeLegibility;
   text-transform: uppercase;
-  margin-bottom: 0;
+  margin-bottom: 0; */
+	font-size: 30px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold";
+	color:#ffc222;
 }
 .block-related .block-subtitle {
   margin-bottom: 7px;
@@ -6347,7 +6354,10 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-table td,
 .cart-table tbody td {
   border-bottom: none;
-  vertical-align: top;
+  vertical-align: middle;
+}
+.cart-table tbody td.a-center.product-cart-remove{
+	vertical-align:top;
 }
 .cart-table h2 {
   color: #636363;
@@ -6358,12 +6368,25 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-table thead th,
 .cart-table tbody td {
   background-color: transparent;
-  padding: 10px 5px;
+  padding: 20px 0;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+}
+.cart-table thead th{
+	background:#000000;
+	color:#FFFFFF;
+	text-align:center;
 }
 .cart-table .product-cart-info,
 .cart-table .product-cart-actions {
-  padding-left: 15px;
+}
+.cart-table .product-cart-actions input{float:left;}
+.cart-table .product-cart-actions input.update_qty{
+	float: left;
+	background: #000;
+	border: 0 none;
+	width: 20px;
+	height: 40px;
+	color:#FFFFFF;
 }
 .cart-table tr {
   border-bottom: 1px solid silver;
@@ -6380,7 +6403,6 @@ body.catalogsearch-result-index .page-title h1 {
   font-size: 9px;
   padding: 0 5px;
   text-transform: uppercase;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .cart-table .product-cart-image .cart-links,
 .cart-table .product-cart-info .btn-remove,
@@ -6392,8 +6414,8 @@ body.catalogsearch-result-index .page-title h1 {
   padding-right: 0;
 }
 .cart-table .product-cart-image .product-image img {
-  max-width: 100%;
-  width: 100%;
+	float:left;
+	margin-right:20px;
 }
 .cart-table .product-cart-image a.cart-edit {
   display: none;
@@ -6462,16 +6484,33 @@ body.catalogsearch-result-index .page-title h1 {
   min-width: 60px;
   text-align: center;
 }
+.cart-table .product-cart-actions .cart-qty-actions{width:115px; margin:0 auto;}
 .cart-table .product-cart-actions .qty {
-  height: 30px;
-  border-color: silver;
+  height: 40px;
+  border-color: #000000;
   border-radius: 0;
-  margin-bottom: 10px;
+	color:#000; 
+	font-size:14px; 
+	font-family: 'FuturaT_Bold';
   text-align: center;
-  width: 3.2em;
+  width: 40px;
 }
-.cart-table .product-cart-actions .button {
-  margin-bottom: 5px;
+.cart-table .cart-price .price{
+	color:#000; 
+	font-size:14px; 
+	font-family: 'FuturaT_Bold';
+}
+.cart-table .product-cart-actions .button, .cart-table .product-cart-actions .button:hover {
+	float: left;
+	height: 40px;
+	padding: 5px;
+	background:#000000;
+	color:#FFFFFF;
+}
+.cart-table .product-cart-actions .button span{
+	background:#000000;
+	color:#FFFFFF;
+	
 }
 .cart-table .item-options {
   padding-left: 15px;
@@ -8557,23 +8596,24 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Review - Customer
  * ============================================ */
-#customer-reviews {
+/* #customer-reviews {
   width: auto;
   float: none;
-}
-#customer-reviews .review-heading {
+} */
+#customer-reviews { margin:30px 0;}
+/* #customer-reviews .review-heading {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
   padding: 10px 0 5px;
-}
+} */
 #customer-reviews .review-heading:after {
   content: '';
   display: table;
   clear: both;
 }
 #customer-reviews .review-heading h2 {
-  float: left;
-  display: block;
+  /* float: left;
+  display: block; */
 }
 #customer-reviews .review-heading .pager {
   clear: none;
@@ -8591,7 +8631,7 @@ div.paypal-logo span > img {
 #customer-reviews .review-heading .pager .amount {
   display: none;
 }
-#customer-reviews h2 {
+/* #customer-reviews h2 {
   color: #3399cc;
   font-size: 12px;
   text-transform: uppercase;
@@ -8607,6 +8647,31 @@ div.paypal-logo span > img {
 }
 #customer-reviews h3 span {
   color: #3399cc;
+} */
+#customer-reviews .review-list{
+	background:#f4f4f4;
+	padding:20px;
+}
+#customer-reviews .review-list li{padding:20px 0; border-bottom:1px solid #ccc; overflow:hidden;}
+#customer-reviews .review-list li.last{border:0 none;}
+#customer-reviews .review-list li > div{float:left; text-align:left}
+#customer-reviews .review-list li > div.review-rating{width:20%}
+#customer-reviews .review-list li .review-rating .rating-title{
+	font-family: "FuturaT_Bold";
+	color:#f4701e;
+	font-size:14px;
+	text-transform:uppercase;
+}
+#customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
+#customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
+#customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
+#customer-reviews .ratings-table tbody th, #customer-reviews .ratings-table tbody th {
+    padding: 3px 15px 3px 0;
+}
+#customer-reviews .ratings-table tbody th{
+	font-family: "FuturaT_Bold";
+	color:#000;
+	font-size:14px;
 }
 #customer-reviews .fieldset {
   padding-top: 25px;
@@ -8739,7 +8804,7 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Ratings - Global
  * ============================================ */
-.ratings-table {
+/* .ratings-table {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
@@ -8761,7 +8826,7 @@ div.paypal-logo span > img {
   float: left;
   height: 13px;
   text-indent: -9999px;
-}
+} */
 
 @media only screen and (max-width: 770px) {
   body.review-product-list .product-view .product-shop .price-info {
