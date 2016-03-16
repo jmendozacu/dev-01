@@ -7873,6 +7873,11 @@ body.customer-account .my-account .addresses-list h2,
 body.customer-account .my-account .order-details h2 {
   width: 100%;
   display: inline-block;
+  border:none;
+  font-size:24px;
+  color:#000;
+  font-family: 'DBYordXMed';
+  margin-bottom:5px;
 }
 body.customer-account .my-account .addresses-list h3 {
   font-size: 14px;
@@ -7945,7 +7950,12 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   width: 80px;
   float: left;
 }
-
+.customer-account  .buttons-set {float:left; width:100%; border-top:5px; margin-top:20px;}
+.customer-account .buttons-set .button {height:40px; float:left; border-radius:5px; min-width:250px;}
+.customer-account .buttons-set .button.back-link {line-height:26px; background:#252525; text-align:center; min-width:150px; margin-right:20px; }
+.box-edit-subscribed h3 {font-size:24px; color:#000; font-family: 'DBYordXMed'; }
+.box-edit-subscribed .subscribed {float:left; background:#F8F8F8; padding: 10px 20px;}
+.fieldset-change-password {float:left; width:100%; border-top:solid 1px #B5B5B5; padding-top:20px; margin-bottom:0px;}
 /* ============================================ *
  * Dashboard
  * ============================================ */

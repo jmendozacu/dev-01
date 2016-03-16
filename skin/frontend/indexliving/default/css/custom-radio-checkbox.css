@@ -18,6 +18,8 @@
 .checkbox.checkbox-checked {
   background: url(../images/icon-checked.png) no-repeat;
 }
+.change-password .checkbox {width:20px; height:20px; margin-top:0px;  background: url(../images/checkbox1.jpg) no-repeat;}
+.change-password .checkbox.checkbox-checked { background: url(../images/checkbox2.png) no-repeat;}
 
 /* hide input from view but still visible (ie & opera support) */
 .rc-hidden { opacity:0; margin-left:-20px;}
