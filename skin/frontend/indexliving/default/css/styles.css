@@ -2756,8 +2756,6 @@ input:-moz-placeholder {
  */
 .checkbox,
 .radio {
-  position: relative;
-  top: -1px;
   display: inline-block;
 }
 
@@ -2804,81 +2802,7 @@ p.required,
   margin-bottom: 10px;
 }
 
-/* Turn the label of controls (radio/checkbox) into a button style that wraps the input */
-.form-list .control,
-.sp-methods dt,
-#checkout-shipping-method-load .sp-methods dd,
-#co-shipping-method-form .sp-methods dd,
-.product-options ul.options-list {
-  /* When a label is next to an input that is set to not display, we should style the label in a non-clickable state */
-}
-.form-list .control div.input-box,
-.sp-methods dt div.input-box,
-#checkout-shipping-method-load .sp-methods dd div.input-box,
-#co-shipping-method-form .sp-methods dd div.input-box,
-.product-options ul.options-list div.input-box {
-  display: inline;
-  float: left;
-}
-.form-list .control div.input-box:after,
-.sp-methods dt div.input-box:after,
-#checkout-shipping-method-load .sp-methods dd div.input-box:after,
-#co-shipping-method-form .sp-methods dd div.input-box:after,
-.product-options ul.options-list div.input-box:after {
-  display: none;
-}
-.form-list .control input.radio,
-.form-list .control input.checkbox,
-.sp-methods dt input.radio,
-.sp-methods dt input.checkbox,
-#checkout-shipping-method-load .sp-methods dd input.radio,
-#checkout-shipping-method-load .sp-methods dd input.checkbox,
-#co-shipping-method-form .sp-methods dd input.radio,
-#co-shipping-method-form .sp-methods dd input.checkbox,
-.product-options ul.options-list input.radio,
-.product-options ul.options-list input.checkbox {
-  float: left;
-  margin-right: -40px;
-  margin-top: 10px;
-  margin-left: 15px;
-}
-.form-list .control label,
-.sp-methods dt label,
-#checkout-shipping-method-load .sp-methods dd label,
-#co-shipping-method-form .sp-methods dd label,
-.product-options ul.options-list label {
-  color: #636363;
-  background-color: #f4f4f4;
-  padding: 5px 10px;
-  display: inline-block;
-  width: auto;
-  max-width: none;
-  min-width: 250px;
-  float: none;
-  padding: 6px 10px 6px 40px;
-}
-.form-list .control label:hover,
-.sp-methods dt label:hover,
-#checkout-shipping-method-load .sp-methods dd label:hover,
-#co-shipping-method-form .sp-methods dd label:hover,
-.product-options ul.options-list label:hover {
-  background-color: #ececec;
-}
-.form-list .control .no-display + label,
-.sp-methods dt .no-display + label,
-#checkout-shipping-method-load .sp-methods dd .no-display + label,
-#co-shipping-method-form .sp-methods dd .no-display + label,
-.product-options ul.options-list .no-display + label {
-  padding-left: 10px;
-  background-color: transparent;
-}
-.form-list .control .no-display + label:hover,
-.sp-methods dt .no-display + label:hover,
-#checkout-shipping-method-load .sp-methods dd .no-display + label:hover,
-#co-shipping-method-form .sp-methods dd .no-display + label:hover,
-.product-options ul.options-list .no-display + label:hover {
-  background-color: transparent;
-}
+
 
 .product-options ul.options-list label,
 .col2-set .form-list .control label {
@@ -7869,10 +7793,25 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* ============================================ *
  * My Account Global Styles
  * ============================================ */
+
 body.customer-account .my-account .page-title h1 {
   border: 0;
   text-align: left;
+  font-size:30px;
+  color:#2278143;
+  font-family: 'DBYordXMed';
+  font-weight:normal;
+  line-height:43px;
+  padding-bottom:14px;
+  border-bottom:solid 1px #C1C1C1;
 }
+body.customer-account-edit.customer-account .my-account .page-title h1{
+  padding-left:55px;
+  background:url(../images/icon-edit-big.png) no-repeat left top;
+  
+}
+ 
+
 body.customer-account .my-account .title-buttons {
   position: relative;
   text-align: right;
