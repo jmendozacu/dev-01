@@ -24,7 +24,10 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php $_items = $this->getReviewsCollection()->getItems();?>
+<?php
+	$_items = $this->getReviewsCollection()->getItems();
+	$collection= Mage::helper('customreview')->getAllImages();
+?>
 <div class="box-collateral box-reviews" id="customer-reviews">
 	<?php if (count($_items)):?>
 			<?php echo $this->getChildHtml('toolbar') ?>
@@ -58,7 +61,11 @@
 							</table>
 							<?php endif; ?>
 						</div>
-						<div class="review-image"><img src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" alt="" /></div>
+						<?php if(!isset($_review['img'])):?>
+							<div class="review-image"><img src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" alt="" /></div>
+						<?php elseif(isset($_review['img'])):?>
+							<div class="review-image"><img src="<?php echo Mage::getBaseUrl().'media/review/'.$_review['img'] ?>" alt=""/></div>
+						<?php endif;?>
 						<div class="review-details">
 							<span class="review-meta">
 								 <?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?>
