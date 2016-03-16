@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magebuzz_Customreview>
+            <version>0.1.0</version>
+        </Magebuzz_Customreview>
+    </modules>
+
+    <global>
+        <blocks>
+            <customreview_adminhtml>
+                <class>Magebuzz_Customreview_Block</class>
+            </customreview_adminhtml>
+            <adminhtml>
+                <rewrite>
+                    <review_grid>Magebuzz_Customreview_Block_Adminhtml_Review_Grid</review_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <customreview>
+                <class>Magebuzz_Customreview_Helper</class>
+            </customreview>
+        </helpers>
+        <resources>
+            <customreview_setup>
+                <setup>
+                    <module>Magebuzz_Customreview</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </customreview_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <routers>
+            <review>
+                <args>
+                    <modules>
+                        <magebuzz_customreview before="Mage_Review">Magebuzz_Customreview</magebuzz_customreview>
+                    </modules>
+                </args>
+            </review>
+        </routers>
+    </frontend>
+ </config>

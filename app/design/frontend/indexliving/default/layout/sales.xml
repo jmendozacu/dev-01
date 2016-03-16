@@ -52,9 +52,9 @@ Customer account pages, rendered for all tabs in dashboard
         <reference name="customer_account_navigation">
             <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
         </reference>
-        <reference name="left">
+        <!-- <reference name="left">
             <block type="sales/reorder_sidebar" name="sale.reorder.sidebar" as="reorder" template="sales/reorder/sidebar.phtml"/>
-        </reference>
+        </reference> -->
 
     </customer_account>
 
@@ -65,7 +65,7 @@ Customer account home dashboard layout
     <customer_account_index>
         <!-- Mage_Sales -->
         <!--remove name="customer_account_dashboard_top"/-->
-        <reference name="customer_account_dashboard">
+        <reference name="bottom_main">
             <block type="sales/order_recent" name="customer_account_dashboard_top" as="top" template="sales/order/recent.phtml"/>
         </reference>
 

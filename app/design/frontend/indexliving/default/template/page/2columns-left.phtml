@@ -60,6 +60,9 @@
                     <?php echo $this->getChildHtml('content') ?>
                 </div>
                 <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+                <?php if ($_bottomContent = $this->getChildHtml('bottom_main')): ?>
+                  <div class="bottom-main"><?php echo $_bottomContent;   ?></div>
+                <?php endif; ?>
             </div>
           </div>  
         </div>
