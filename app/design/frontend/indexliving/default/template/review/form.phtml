@@ -27,6 +27,9 @@
 <div class="add-review-form" id="review-form-popup" style="display:none;">
 	<div class="form-add">
 			<h2><?php echo $this->__('Write Your Own Review') ?></h2>
+			<h1 class="show-message">
+
+			</h1>
 			<?php if ($this->getAllowWriteReviewFlag()): ?>
 			<form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
 					<?php echo $this->getBlockHtml('formkey'); ?>
@@ -101,6 +104,9 @@
 
 									</ul>
 							</div>
+							<span id='ajax_loader' style='display:none'>
+								<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
+							</span>
 							<div class="buttons-set">
 									<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 							</div>
@@ -165,7 +171,33 @@
 
 			});
 
+
 			</script>
+
+				<script type="text/javascript">
+					$j("form#review-form").submit(function(){
+						var frm = $j('#review-form');
+						var formData = new FormData($j(this)[0]);
+						var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
+						$j('#ajax_loader').show();
+						$j.ajax({
+							url: frm.attr('action'),
+							type: 'POST',
+							data: formData,
+							async: false,
+							success: function (data) {
+								$j('#ajax_loader').hide();
+								$j('.form-add .show-message').html(mess);
+							},
+							cache: false,
+							contentType: false,
+							processData: false
+						});
+
+						return false;
+					});
+
+				</script>
 			<?php
 			$star_bg = $this->getSkinUrl('images/star.png', array('_secure'=>true));
 			echo '<style>';
