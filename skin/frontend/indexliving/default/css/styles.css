@@ -967,30 +967,30 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .button,
 .sidebar .actions .button,
 .button.button-secondary {
-  background: #dddddd;
-  color: #636363;
+  background: #252525;
+  color: #FFFFFF;
   padding: 7px 15px;
 }
 .cart .buttons-set .button:hover,
 .cart-table .button:hover,
 .sidebar .actions .button:hover,
 .button.button-secondary:hover {
-  background: #d0d0d0;
+  background: #252525;
   cursor: pointer;
 }
 .cart .buttons-set .button:active,
 .cart-table .button:active,
 .sidebar .actions .button:active,
 .button.button-secondary:active {
-  background: #c4c4c4;
-  color: #636363;
+  background: #252525;
+  color: #FFFFFF;
 }
 .cart .buttons-set .button:focus,
 .cart-table .button:focus,
 .sidebar .actions .button:focus,
 .button.button-secondary:focus {
-  color: #636363;
-  background: #c4c4c4;
+  color: #FFFFFF;
+  background: #252525;
   outline: none;
 }
 
@@ -1059,7 +1059,7 @@ a.button:hover {
 
 /* Adjacent buttons */
 .button + .button {
-  margin-left: 5px;
+  /* margin-left: 5px; */
 }
 
 .button2 {
@@ -6109,12 +6109,11 @@ body.catalogsearch-result-index .page-title h1 {
 }
 
 .cart-totals,
-.cart-forms .discount,
+/* .cart-forms .discount, */
 .cart-forms .giftcard,
 .cart-forms .shipping {
-  padding: 10px;
-  background-color: #f4f4f4;
-  border: 1px solid #cccccc;
+  padding: 10px 15px;
+  background-color: #FFFFFF;
 }
 
 .cart-table,
@@ -6122,7 +6121,7 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-forms .discount,
 .cart-forms .giftcard,
 .cart-forms .shipping {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .checkout-cart-index #postcode {
@@ -6344,6 +6343,13 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-table tfoot tr {
   background: none;
 }
+.cart-table tfoot tr {
+	padding-bottom: 0;
+	border-bottom:0 none;
+}
+.cart-table tfoot tr td{
+	padding:15px 0;
+}
 .cart-table tfoot tr > td:after {
   content: '';
   display: table;
@@ -6371,13 +6377,13 @@ body.catalogsearch-result-index .page-title h1 {
   display: none;
 }
 .cart-table .product-cart-sku {
-  font-family: Georgia, Times, "Times New Roman", serif;
+  /* font-family: Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   font-size: 12px;
-  margin: 5px 0 12px;
+  margin: 5px 0 12px; */
 }
 .cart-table .product-cart-sku .label {
-  font-weight: 600;
+/*   font-weight: 600; */
 }
 .cart-table .btn-empty {
   float: left;
@@ -6447,7 +6453,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart-table .cart-price .price{
 	color:#000; 
-	font-size:14px; 
+	font-size:16px; 
 	font-family: 'FuturaT_Bold';
 }
 .cart-table .product-cart-actions .button, .cart-table .product-cart-actions .button:hover {
@@ -6465,7 +6471,46 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-table .item-options {
   padding-left: 15px;
 }
+.cart-table .cart-footer-actions .button{
+	font-family: 'DBYordXMed';
+	font-size:20px;
+	color:#FFFFFF;
+	border-radius:5px;
+}
+.cart-table .cart-footer-actions .button span{
+	padding-left:20px;
+}
+.cart-table .cart-footer-actions .button span span{
+	padding:0;
+	background:0 none;
+}
+.cart-table .cart-footer-actions .button.btn-empty span{
+	background-image: url(../images/icons2.png);
+	background-repeat: no-repeat;
+	background-position:-10px -278px;
+}
+.cart-table .cart-footer-actions .button.btn-empty span span{
+	background:0 none;
+}
 
+.cart-table .cart-footer-actions .button.btn-update span{
+	background-image: url(../images/icons2.png);
+	background-repeat: no-repeat;
+	background-position:-10px -301px;
+}
+.cart-table .cart-footer-actions .button.btn-update span span{
+	background:0 none;
+}
+
+.cart-table .cart-footer-actions .button.btn-continue{background:#f4701e;}
+.cart-table .cart-footer-actions .button.btn-continue span{
+	background-image: url(../images/icons2.png);
+	background-repeat: no-repeat;
+	background-position:-10px -330px;
+}
+.cart-table .cart-footer-actions .button.btn-continue span span{
+	background:0 none;
+}
 @media only screen and (max-width: 770px) {
   .cart-table th {
     font-size: 12px;
