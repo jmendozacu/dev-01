@@ -151,7 +151,10 @@ New customer registration
         <label>Customer Forgot Password Form</label>
         <remove name="right"/>
         <remove name="left"/>
-
+        <reference name="breadcrumbs">
+          <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+          <action method="addCrumb"><crumbName>Forgot Password</crumbName><crumbInfo><label>Forgot Password</label><title>Forgot Password</title></crumbInfo></action>
+        </reference>
         <reference name="head">
             <action method="setTitle" translate="title" module="customer"><title>Forgot Your Password</title></action>
         </reference>

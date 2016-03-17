@@ -7802,16 +7802,20 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
  * ============================================ */
 /* login page*/
 .account-login .col2-set .content h2,
-.account-create  h2.legend{font-size:24px; color:#252525; font-family: 'DBYordX';}
+.account-create  h2.legend,
+.customer-account-forgotpassword  h2.legend{font-size:24px; color:#252525; font-family: 'DBYordX';}
 .box-content-style1 {float:left; width:100%; background:#f6f6f6; border:solid 1px #E6E6E6; padding:22px; border-radius:3px;}
-.col2-set .col-1.registered-users {width:42%; padding-top:30px; padding-right:15px;}
+.col2-set .col-1.registered-users,
+.forgot-password {width:42%; padding-top:30px; padding-right:15px;}
 .col2-set .col-2.new-users {width:58%; padding-top:30px; padding-left:15px;}
 .a-style2,
 .a-style2:hover {color:#F4701E;}
 .col2-set .col-1.registered-users .buttons-set,
-.col2-set .col-2.new-users .buttons-set { border:none; padding: 0px; margin:10px 0;}
+.col2-set .col-2.new-users .buttons-set,
+.forgot-password .buttons-set { border:none; padding: 0px; margin:10px 0;}
 .col2-set .col-1.registered-users .buttons-set button.button,
-.col2-set .col-2.new-users .buttons-set a.button {float:left; margin:0px; min-width:250px; height:40px; border-radius:5px;}
+.col2-set .col-2.new-users .buttons-set a.button ,
+.forgot-password .buttons-set button.button{float:left; margin:0px; min-width:250px; height:40px; border-radius:5px;}
 .col2-set .col-1.registered-users .amajaxlogin-block {float:left; width:100%; border-top:solid 1px #E6E6E6; margin-top:35px;}
 .col2-set .col-1.registered-users .amajaxlogin-block .amajaxlogin-social-icon label {display:block!important; margin:10px 0;  font-size:24px; color:#252525; font-family: 'DBYordXMed'; }
 
@@ -7825,15 +7829,18 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .col2-set .col-2.new-users .buttons-set a.button {background:#444444;}
 
 /*create account*/
-.account-create  h2.legend {margin-top:30px;}
+.account-create  h2.legend,
+.customer-account-forgotpassword  h2.legend {margin-top:30px; border:none;}
 .box-content-style1 .form-list .field.name-prefix {margin-right:0px; clear:both;}
 .box-content-style1 .form-list .field.name-firstname,
 .box-content-style1 .form-list .field.name-lastname,
 .box-content-style1 .form-list .field,
 .col2-set .box-content-style1  .wide {width:100%; margin-right:0px; clear:both; }
-.account-create .box-content-style1 .fieldset p.required {float:left; text-align:left; width:100%; margin:-10px 0 20px;}
+.account-create .box-content-style1 .fieldset p.required,
+.forgot-password  p.required {float:left; text-align:left; width:100%; margin:-10px 0 20px;}
 .account-create .col2-set .col-1.registered-users,
-.account-create .col2-set .col-2.new-users {padding-top:0px;}
+.account-create .col2-set .col-2.new-users,
+.forgot-password {padding-top:0px;}
 .registerpage_boxtext  {float:left; width:100%; border:solid 10px #FFC222; background:#252525;}
 .registerpage_boxtext .box-left { width: 68.2%; float:left; padding:210px 10px 10px; background:url(../images/bkg-card.jpg) no-repeat center 20px #F8F8F8; color:#000; font-size:14px; }
 .registerpage_boxtext .box-right {float:right; width:31.8%; padding:15px; color:#fff; margin-top:45px;} 
@@ -7902,21 +7909,6 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 }
 .customer-account-create #remember-me-popup {
   max-width: 455px;
-}
-
-.customer-account-forgotpassword .fieldset,
-.customer-account-forgotpassword .buttons-set {
-  margin-left: 30px;
-  max-width: 400px;
-}
-@media only screen and (max-width: 479px) {
-  .customer-account-forgotpassword .fieldset,
-  .customer-account-forgotpassword .buttons-set {
-    margin-left: 0;
-  }
-}
-.customer-account-forgotpassword .fieldset .input-box input.input-text {
-  width: 100%;
 }
 
 /* ============================================ *
