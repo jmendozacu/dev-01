@@ -12,6 +12,7 @@ if(Mage::helper('amajaxlogin/google')->isEnable() || Mage::helper('amajaxlogin/f
 				<div id="am-ajax-google"><iframe width="250" height="40" scrolling="no" style="border: 0;" src="<?php echo Mage::helper('amajaxlogin/google')->getIframeUrl()?>"></iframe></div>
 			<?php } ?>
 			<?php if(Mage::helper('amajaxlogin/facebook')->isEnable()) {?>
+        <label style="display:none;"><?php echo $this->__('Login with Facebook.')?></label>
 				<div id="am-ajax-facebook"><iframe width="250" height="40" scrolling="no" style="border: 0;" src="<?php echo Mage::helper('amajaxlogin/facebook')->getIframeUrl()?>"></iframe></div>
 			<?php } ?>
 			<?php if(Mage::helper('amajaxlogin/twitter')->isEnable()) {?>
@@ -19,8 +20,7 @@ if(Mage::helper('amajaxlogin/google')->isEnable() || Mage::helper('amajaxlogin/f
 			<?php } ?>
 		</div>
 </div>
-<?php
-     endif;
+<?php  endif;?>
 
 
 
