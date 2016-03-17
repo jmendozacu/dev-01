@@ -54,8 +54,6 @@
                 <tr>
                     <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product') ?></span></th>
 
-                    <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-
                     <th class="a-center cart-price-head" colspan="<?php echo $mergedCells; ?>">
 <!--                            <div class="cart-price-placeholder">-->
                             <span class="nobr"><?php echo $this->__('Price') ?></span>
@@ -94,17 +92,13 @@
                     <td colspan="50" class="a-right cart-footer-actions">
 
                         <!-- Make this button the first responder rather than empty cart -->
-                        <button type="submit" style="visibility:hidden;" data-cart-item-update name="update_cart_action" value="update_qty" title="<?php echo $this->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button2 btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
-
-                        <button type="submit" name="update_cart_action" data-cart-empty value="empty_cart" title="<?php echo $this->quoteEscape($this->__('Empty Cart')); ?>" class="button2 btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
-
-                        <button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo $this->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button2 btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
-
-                        <span class="or">-<?php echo $this->__('or'); ?>-</span>
-
+                        <button type="submit" style="visibility:hidden;" data-cart-item-update name="update_cart_action" value="update_qty" title="<?php echo $this->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+												<button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo $this->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
                         <?php if($this->getContinueShoppingUrl()): ?>
-                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Continue Shopping')) ?>" class="button2 btn-continue" onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                            <button type="button" title="<?php echo $this->quoteEscape($this->__('Continue Shopping')) ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
                         <?php endif; ?>
+                        
+												<button type="submit" name="update_cart_action" data-cart-empty value="empty_cart" title="<?php echo $this->quoteEscape($this->__('Empty Cart')); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Empty Cart'); ?></span></span></button>
                         <!--[if lt IE 8]>
                         <input type="hidden" id="update_cart_action_container" data-cart-item-update />
                         <script type="text/javascript">

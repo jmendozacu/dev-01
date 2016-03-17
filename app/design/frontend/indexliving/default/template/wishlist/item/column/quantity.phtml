@@ -32,10 +32,10 @@ $options = $this->getChild('customer.wishlist.item.options')
     ->setItem($item)
     ->getConfiguredOptions();
 ?>
-<div class="cart-cell">
-    <div class="add-to-cart-alt">
+<div class="change-qty">
     <?php if ($item->canHaveQty() && $item->getProduct()->isVisibleInSiteVisibility()): ?>
-        <input type="text" pattern="\d*" class="input-text qty validate-not-negative-number" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" />
+      <input type="button" onclick="decQty('qty<?php echo $item->getId()?>')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="productview_dec_qty_<?php echo $item->getId()?>" />
+      <input type="text" id="qty<?php echo $item->getId()?>"  pattern="\d*" class="input-text qty validate-not-negative-number" name="qty[<?php echo $item->getId() ?>]" value="<?php echo $this->getAddToCartQty($item) * 1 ?>" />
+      <input type="button" onclick="incQty('qty<?php echo $item->getId()?>')" value="<?php echo $this->__('+')?>" class="update_qty btn_plus" id="productview_inc_qty_<?php echo $item->getId()?>" />
     <?php endif; ?>
-    </div>
 </div>

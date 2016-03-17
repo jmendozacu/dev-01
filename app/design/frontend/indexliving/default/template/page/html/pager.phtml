@@ -32,25 +32,25 @@
  */
 ?>
 <?php if($this->getCollection()->getSize()): ?>
-
+  <?php if($this->getShowAmounts() || $this->getShowPerPage()): ?>
+    <?php if($this->getShowAmounts()): ?>
+      <?php if($this->getLastPageNum()>1): ?>
+      <p class="amount amount-box amount--has-pages">
+          <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+      </p>
+      <?php else: ?>
+      <p class="amount amount-box amount--no-pages">
+          <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+      </p>
+      <?php endif; ?>
+      <?php endif ?>  
+  <?php endif ?>  
     <?php if($this->getUseContainer()): ?>
     <div class="pager pager-no-toolbar">
     <?php endif ?>
-
     <?php if($this->getShowAmounts() || $this->getShowPerPage()): ?>
     <div class="count-container">
-        <?php if($this->getShowAmounts()): ?>
-            <?php if($this->getLastPageNum()>1): ?>
-            <p class="amount amount--has-pages">
-                <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
-            </p>
-            <?php else: ?>
-            <p class="amount amount--no-pages">
-                <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
-            </p>
-            <?php endif; ?>
-        <?php endif ?>
-
+        
         <?php if($this->getShowPerPage()): ?>
         <div class="limiter">
             <label><?php echo $this->__('Show') ?></label>
