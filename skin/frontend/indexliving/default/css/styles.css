@@ -7834,6 +7834,15 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .account-create .box-content-style1 .fieldset p.required {float:left; text-align:left; width:100%; margin:-10px 0 20px;}
 .account-create .col2-set .col-1.registered-users,
 .account-create .col2-set .col-2.new-users {padding-top:0px;}
+.registerpage_boxtext  {float:left; width:100%; border:solid 10px #FFC222; background:#252525;}
+.registerpage_boxtext .box-left { width: 68.2%; float:left; padding:210px 10px 10px; background:url(../images/bkg-card.jpg) no-repeat center 20px #F8F8F8; color:#000; font-size:14px; }
+.registerpage_boxtext .box-right {float:right; width:31.8%; padding:15px; color:#fff; margin-top:45px;} 
+.registerpage_boxtext .box-left  ul { list-style: initial; padding-left:20px;}
+.text-red {color:red;}
+.registerpage_boxtext .box-right h3 {color:#fff; margin:0px; font-size:28px; font-family: 'DBYordXMed'; line-height:26px; }
+.registerpage_boxtext .box-right .content-box {margin:12px 0; font-family: 'RSU_Bold'; font-size:18px; padding:12px 0; border-bottom:solid 1px #fff; border-top:solid 1px #fff; }
+.registerpage_boxtext .box-right .content-box label {font-family: 'RSU_Bold'; font-size:14px;  }
+.registerpage_boxtext .box-right .content-box .text-logo {color:#FFC222; font-size:18px; font-family: 'FuturaT_Bold';}
 
 
 .customer-account-create .scaffold-form label:first-child {
