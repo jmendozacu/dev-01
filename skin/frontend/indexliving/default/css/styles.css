@@ -7933,7 +7933,8 @@ body.customer-account-edit.customer-account .my-account .page-title h1{
 body.customer-address-index.customer-account .my-account .page-title h1,
 body.sales-order-history.customer-account .my-account .page-title h1,
 body.sales-order-view.customer-account .my-account .page-title h1 ,
-body.wishlist-index-index.customer-account .my-account .page-title h1
+body.wishlist-index-index.customer-account .my-account .page-title h1,
+body.customer-address-form.customer-account .my-account .page-title h1
 {
   padding-left:55px;
   position:relative;
@@ -7941,7 +7942,8 @@ body.wishlist-index-index.customer-account .my-account .page-title h1
 body.customer-address-index.customer-account .my-account .page-title h1:before,
 body.sales-order-history.customer-account .my-account .page-title h1:before,
 body.sales-order-view.customer-account .my-account .page-title h1:before,
-body.wishlist-index-index.customer-account .my-account .page-title h1:before{
+body.wishlist-index-index.customer-account .my-account .page-title h1:before,
+body.customer-address-form.customer-account .my-account .page-title h1:before{
   content:""; 
   position:absolute;
   width:55px;

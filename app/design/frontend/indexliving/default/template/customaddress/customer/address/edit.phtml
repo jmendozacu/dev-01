@@ -34,12 +34,7 @@
                     </div>
                 </div>
             </li>
-        </ul>
-    </div>
-    <div class="fieldset">
-        <h2 class="legend"><?php echo $this->__('Address') ?></h2>
-        <ul class="form-list">
-        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
             <li class="wide">
                 <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
                 <div class="input-box">
@@ -120,7 +115,7 @@
                     </div>
                 </div>
             </li>
-            <li<?php if($this->canSetAsDefaultBilling()) echo ' class="control"' ?>>
+            <li <?php if($this->canSetAsDefaultBilling()) echo ' class="control checkout-style2"' ?>>
                 <?php if($this->isDefaultBilling()): ?>
                     <strong><?php echo $this->__('Default Billing Address') ?></strong>
                 <?php elseif($this->canSetAsDefaultBilling()): ?>
@@ -129,7 +124,7 @@
                     <input type="hidden" name="default_billing" value="1" />
                 <?php endif; ?>
             </li>
-            <li<?php if($this->canSetAsDefaultShipping()) echo ' class="control"' ?>>
+            <li <?php if($this->canSetAsDefaultShipping()) echo ' class="control checkout-style2"' ?>>
                 <?php if($this->isDefaultShipping()): ?>
                     <strong><?php echo $this->__('Default Shipping Address') ?></strong>
                 <?php elseif($this->canSetAsDefaultShipping()): ?>
@@ -140,9 +135,8 @@
             </li>
         </ul>
     </div>
+
     <div class="buttons-set">
-        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
         <button data-action="save-customer-address" type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Save Address')) ?>" class="button"><span><span><?php echo $this->__('Save Address') ?></span></span></button>
     </div>
 </form>
@@ -155,4 +149,7 @@
 		
 		new SubdistrictUpdater('country', 'region_id', 'city_id', 'subdistrict', 'subdistrict_id', 'zip', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
 //]]>
+  jQuery(function () {
+      jQuery('.checkout-style2').customRadioCheckbox();
+  });
 </script>
