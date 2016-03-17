@@ -686,6 +686,7 @@ h6, .h6 {
 /* -------------------------------------------- *
  * Page Titles
  */
+
 .page-title h1,
 .page-title h2,
 .product-name h1,
@@ -699,6 +700,15 @@ h6, .h6 {
   margin-bottom: 15px;
   text-transform: uppercase;
 }
+
+.main-container {overflow:hidden;}
+.page-title.style2 { background:#EFEFEF; position:relative;} 
+.page-title.style2 h1 {display:block; font-size:30px; color:#252525; font-family: 'DBYordXMed'; padding: 15px 0;  line-height:38px; margin:0px;   border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6; }
+.page-title.style2:before,
+.page-title.style2:after {content:""; width:50%; height:100%; position:absolute; top:0px; background:#EFEFEF; border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6;}
+.page-title.style2:before {left:100%;}
+.page-title.style2:after {right:100%;}
+
 
 /* -------------------------------------------- *
  * Block Module
@@ -999,55 +1009,35 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 
 /* Primary Buttons */
-.button,
-.cart-table .product-cart-actions .button,
-#co-shipping-method-form .buttons-set .button,
-.footer .button {
+.button{
   background: #ffc222;
   display: inline-block;
   padding: 7px 15px;
   border: 0;
   color: #FFFFFF;
-  font-size: 13px;
+  font-size: 24px;
+  font-family: 'DBYordXMed';
   font-weight: normal;
-  line-height: 19px;
+  line-height:26px;
   vertical-align: middle;
   white-space: nowrap;
   text-align:center;
-  font-size:16px;
   text-transform:uppercase;
-  font-family: 'Lato', sans-serif;
+  border-radius:5px;
 }
 .button:hover,
-.cart-table .product-cart-actions .button:hover,
-#co-shipping-method-form .buttons-set .button:hover,
-.footer .button:hover {
+.button:active,
+.button:focus {
   background: #fab80a;
   cursor: pointer;
-}
-.button:active,
-.cart-table .product-cart-actions .button:active,
-#co-shipping-method-form .buttons-set .button:active,
-.footer .button:active {
-  background: #f4b102;
-  color: #FFFFFF;
-}
-.button:focus,
-.cart-table .product-cart-actions .button:focus,
-#co-shipping-method-form .buttons-set .button:focus,
-.footer .button:focus {
-  background-color: #f4b102;
+  color:#fff;
   outline: none;
-  color: #FFFFFF;
 }
 
 a.button {
   text-decoration: none;
 }
 
-a.button:hover {
-  color: #FFFFFF;
-}
 
 /* Disabled - class for anchor, state for form elements */
 .button.disabled,
@@ -7727,61 +7717,41 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* ============================================ *
  * Customer
  * ============================================ */
-.customer-account-login .scaffold-form label:first-child {
-  width: 115px;
-}
-.customer-account-login .col2-set .buttons-set {
-  text-align: left;
-  border-top: 0;
-}
-.customer-account-login .col2-set .buttons-set button,
-.customer-account-login .col2-set .buttons-set .button {
-  float: none;
-  min-width: 50%;
-  margin: 0;
-}
-.customer-account-login .col2-set .col-1 ul {
-  list-style: disc;
-  padding-left: 20px;
-  margin: 10px 0 20px 0;
-}
-@media only screen and (min-width: 480px) {
-  .customer-account-login .col2-set .col-1,
-  .customer-account-login .col2-set .col-2 {
-    padding-top: 0;
-    margin-top: 20px;
-  }
-  .customer-account-login .col2-set .col-1 {
-    padding-right: 20px;
-  }
-  .customer-account-login .col2-set .col-2 {
-    padding-left: 20px;
-    border-left: 1px solid #ededed;
-  }
-}
-@media only screen and (min-width: 770px) {
-  .customer-account-login .col2-set .col-1 {
-    padding-right: 0;
-  }
-  .customer-account-login .col2-set .col-2 {
-    padding-left: 60px;
-    border-left: 1px solid #ededed;
-  }
-}
-@media only screen and (max-width: 479px) {
-  .customer-account-login .col2-set .col-1 {
-    padding-bottom: 30px;
-  }
-  .customer-account-login .col2-set .col-2 {
-    padding-top: 30px;
-    border-top: 1px solid #ededed;
-  }
-}
-@media only screen and (max-width: 770px) {
-  .customer-account-login .col2-set p.required {
-    display: none;
-  }
-}
+/* login page*/
+.account-login .col2-set .content h2,
+.account-create  h2.legend{font-size:24px; color:#252525; font-family: 'DBYordX';}
+.box-content-style1 {float:left; width:100%; background:#f6f6f6; border:solid 1px #E6E6E6; padding:22px; border-radius:3px;}
+.col2-set .col-1.registered-users {width:42%; padding-top:30px; padding-right:15px;}
+.col2-set .col-2.new-users {width:58%; padding-top:30px; padding-left:15px;}
+.a-style2,
+.a-style2:hover {color:#F4701E;}
+.col2-set .col-1.registered-users .buttons-set,
+.col2-set .col-2.new-users .buttons-set { border:none; padding: 0px; margin:10px 0;}
+.col2-set .col-1.registered-users .buttons-set button.button,
+.col2-set .col-2.new-users .buttons-set a.button {float:left; margin:0px; min-width:250px; height:40px; border-radius:5px;}
+.col2-set .col-1.registered-users .amajaxlogin-block {float:left; width:100%; border-top:solid 1px #E6E6E6; margin-top:35px;}
+.col2-set .col-1.registered-users .amajaxlogin-block .amajaxlogin-social-icon label {display:block!important; margin:10px 0;  font-size:24px; color:#252525; font-family: 'DBYordXMed'; }
+
+.account-login .col2-set .content  .register_boxtext  {color:#474747;}
+.account-login .col2-set .content  .register_boxtext h2 { color: #252525; margin:0px; font-size: 43px;  font-family: 'FuturaT_Bold';  line-height:43px;}
+.account-login .col2-set .content  .register_boxtext h1 {color:#FFC222;  margin:0px; font-size: 64px;  font-family: 'FuturaT_Bold';}
+.account-login .col2-set .content  .register_boxtext h4 {color:#474747; margin:0px 0 10px; font-size:18px; font-weight: normal;}
+.account-login .col2-set .content  .register_boxtext .box-texstyle1 {font-family: 'RSU_Bold'; font-size:16px; line-height:20px;}
+.account-login .col2-set .content  .register_boxtext h5   {font-family: 'DBYordXMed'; font-weight:normal; font-size:24px; margin:0px; color:#FFC222;}
+.account-login .col2-set .content  .register_boxtext p {margin-bottom:10px;}
+.col2-set .col-2.new-users .buttons-set a.button {background:#444444;}
+
+/*create account*/
+.account-create  h2.legend {margin-top:30px;}
+.box-content-style1 .form-list .field.name-prefix {margin-right:0px; clear:both;}
+.box-content-style1 .form-list .field.name-firstname,
+.box-content-style1 .form-list .field.name-lastname,
+.box-content-style1 .form-list .field,
+.col2-set .box-content-style1  .wide {width:100%; margin-right:0px; clear:both; }
+.account-create .box-content-style1 .fieldset p.required {float:left; text-align:left; width:100%; margin:-10px 0 20px;}
+.account-create .col2-set .col-1.registered-users,
+.account-create .col2-set .col-2.new-users {padding-top:0px;}
+
 
 .customer-account-create .scaffold-form label:first-child {
   width: 140px;
@@ -7828,10 +7798,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .customer-account-create .buttons-set {
   max-width: 455px;
 }
-.customer-account-create .fieldset,
-.customer-account-create .buttons-set {
-  margin-left: 30px;
-}
+
 @media only screen and (max-width: 479px) {
   .customer-account-create .fieldset,
   .customer-account-create .buttons-set {
