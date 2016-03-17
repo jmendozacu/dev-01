@@ -2787,6 +2787,8 @@ p.required,
  * ============================================ */
 .form-list > li {
   margin-bottom: 10px;
+  float:left;
+  width:100%;
 }
 .form-list label {font-size:16px; color:#231F20;}
 .form-list select {
@@ -7891,10 +7893,21 @@ body.customer-account .my-account .page-title h1 {
 }
 body.customer-account-edit.customer-account .my-account .page-title h1{
   padding-left:55px;
-  background:url(../images/icon-edit-big.png) no-repeat left top;
-  
+  background:url(../images/icon-edit-big.png) no-repeat left top; 
 }
- 
+body.customer-address-index.customer-account .my-account .page-title h1{
+  padding-left:55px;
+  position:relative;
+}
+body.customer-address-index.customer-account .my-account .page-title h1:before{
+  content:""; 
+  position:absolute;
+  width:55px;
+  height:100%;
+  top:0px;
+  left:0px;
+  background: url(../images/icons-account.png) no-repeat 0px -121px;
+}
 
 body.customer-account .my-account .title-buttons {
   position: relative;
@@ -7914,10 +7927,14 @@ body.customer-account .my-account .title-buttons span.separator {
   top: -42px;
 }
 body.customer-account .my-account .fieldset h2,
-body.customer-account .my-account .addresses-list h2,
 body.customer-account .my-account .order-details h2 {
   width: 100%;
   display: inline-block;
+  border:none;
+  font-size:24px;
+  color:#000;
+  font-family: 'DBYordXMed';
+  margin-bottom:5px;
 }
 body.customer-account .my-account .addresses-list h3 {
   font-size: 14px;
@@ -7990,7 +8007,12 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   width: 80px;
   float: left;
 }
-
+.customer-account  .buttons-set {float:left; width:100%; border-top:5px; margin-top:20px;}
+.customer-account .buttons-set .button {height:40px; float:left; border-radius:5px; min-width:250px;}
+.customer-account .buttons-set .button.back-link {line-height:26px; background:#252525; text-align:center; min-width:150px; margin-right:20px; }
+.box-edit-subscribed h3 {font-size:24px; color:#000; font-family: 'DBYordXMed'; }
+.box-edit-subscribed .subscribed {float:left; background:#F8F8F8; padding: 10px 20px;}
+.fieldset-change-password {float:left; width:100%; border-top:solid 1px #B5B5B5; padding-top:20px; margin-bottom:0px;}
 /* ============================================ *
  * Dashboard
  * ============================================ */
@@ -7999,7 +8021,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  .box-points-dashboard span {display:inline-block; line-height:23px; padding:0 8px; background:#252525; border-radius:12px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
  .box-account.box-info2 {float:left; width:49%; margin-right:2%;}
  .box-account.box-info2:nth-child(2n){margin-right:0px;}
- .box-account.box-info2 .box-content {padding:15px 22px; background:#F8F8F8; }
+ .box-account.box-info2 .box-content,
+ .addresses-list .box-content {padding:15px 22px; background:#F8F8F8; float:left; width:100%; }
  .box-account.box-info2 .box-content  a {color:#F4701E; font-size:13px;}
  .box-account.box-info2 .box {border-bottom:solid 1px #B5B5B5; padding-bottom:12px; float:left; width:100%;}
  .box-account .subscribed  .icon{ float:left; display:inline-block; width:17px; height:19px; background:url(../images/icon-checked.png) no-repeat center center; margin-right:10px;}
@@ -8018,7 +8041,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   border-bottom: none;
   padding-bottom: 7px;
 }
-.box-head h2 {
+.box-head h2,
+.addresses-additional h2 {
   font-size: 24px;
   font-weight: normal;
   display: inline-block;
@@ -8035,8 +8059,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   color:#000;
 }
 
-.dashboard .box-title a,
-.dashboard .box-head a {
+.customer-account .box-title a,
+.customer-account .box-head a {
   text-transform: capitalize;
   font-size: 18px;
   font-weight:normal;
@@ -8046,6 +8070,12 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   padding-left:24px;
   background:url(../images/edit-icon.png) no-repeat left 3px;
   float:right;
+}
+.customer-account .box-title a.link-remove,
+.customer-account .box-head a.link-remove {
+  margin-left:15px;
+  background:url(../images/delete2-icon.png) no-repeat left 3px;
+  color:#F4701E;
 }
 
 .dashboard  .box-address  {margin-top:20px;}
@@ -8118,14 +8148,31 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  * Address Book
  * ============================================ */
 .my-account .addresses-list {
-  font-family: Georgia, Times, "Times New Roman", serif;
+  /* font-family: Georgia, Times, "Times New Roman", serif; */
+  float:left;
+  width:100%;
 }
+.my-account .addresses-additional{
+  margin-top:30px;
+  padding-top:30px;
+  border-top:solid 1px #B5B5B5;
+  float:left;
+  width:100%;
+}
+.my-account .addresses-additional .box-content address {float:left;}
+.my-account .addresses-additional .box-content .useasdefault {float:right; margin-top:20px;}
+.my-account .addresses-additional .box-content .useasdefault li {margin:4px 0;}
+.my-account .addresses-additional .box-content .useasdefault .checkbox + label {width:auto; max-width:none;}
+.my-account .addresses-additional .box-content .useasdefault li:nth-child(2) label {color:#F4701E;}
+
 .my-account .addresses-list .col-1,
 .my-account .addresses-list .col-2 {
   padding-bottom: 0;
 }
 .my-account .addresses-list .item {
-  margin: 0 0 30px 0;
+  margin: 0 0 10px 0;
+  float:left;
+  width:100%;
 }
 .my-account .addresses-list .item p {
   margin-top: 10px;

@@ -171,6 +171,9 @@
 		//replace function onchange of select limit;
 		selectLimitDealer.writeAttribute("onchange", "loadProductDealerByLimit()");
 		
+		//replace amount pager
+		$('product-dealer').down(5).writeAttribute('id', 'amount_page_dealer');
+		
 		//replace li page
 		for (var i = 0; i < liPageDealer.length; i++){
 			var li = liPageDealer[i];
@@ -263,12 +266,17 @@
 				$('product-dealer-tr-'+i).hide();
 		}
 		
-		var begin = (p-1)*limit;
+		var begin = (p-1)*limit + 1;
 		var end = p*limit;
+		if(end > (num_row - 1))
+			end = (num_row - 1);
 		for (var num = begin; num <= end; num++){
 			if($('product-dealer-tr-'+num))
 				$('product-dealer-tr-'+num).show();
 		}
+		
+		//update amount page dealer
+		$('amount_page_dealer').update(begin+'-'+end+' of '+(num_row - 1));
 		
 		if(currentp){
 			$('li_page_'+currentp).removeClassName('current');
