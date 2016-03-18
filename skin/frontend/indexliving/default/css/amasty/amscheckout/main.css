@@ -22,10 +22,21 @@
 
 .amscheckout .form-list .field, .amscheckout .form-list .wide, .amscheckout .form-list .control{
 	clear:both;
-}
-.amscheckout .form-list .field.name-firstname, .amscheckout .form-list .field.name-lastname{
 	width:100%;
 }
+.amscheckout .form-list .fields{
+	width: 100%;
+	clear: both;
+	float: left;
+} 
+.amscheckout .form-list select  {width:100%;}
+.amscheckout .form-list .field.name-firstname, 
+.amscheckout .form-list .field.name-lastname,
+.amscheckout .form-list .field.name-middlename {
+	width:100%;
+}
+.amscheckout .form-list .customer-dob .dob-month{width:85px!important}
+.amscheckout .form-list .customer-dob .dob-day{width:55px!important}
 .amscheckout-row{
     display: inline-table;
     padding-top: 10px;
@@ -154,7 +165,7 @@
 }
 
 .amscheckout .shipping-method dt{
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .amscheckout .shipping-method dd,
@@ -220,7 +231,15 @@
     display: inline-block;
 		background-size:18px;
 }
-
+.amscheckout .billing .buttons-set button.button{float:left; margin-left:0;}
+.amscheckout .shipping .form-list li {
+    float: left;
+    margin: 0 0 5px;
+    width: 100%;
+}
+.amscheckout .shipping .form-list li.control input{
+	margin:0;
+}
 /*.billing-img{
     background-image: url('../../../images/amasty/amscheckout/billing.png');
 }
@@ -460,13 +479,14 @@
 .amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box > div{background:#FFFFFF; padding:0 15px;}
 .amscheckout table.amscheckout-data-table.total-table{
 	background:#FFFFFF;
+	color:#000;
 }
 .amscheckout table.amscheckout-data-table.total-table tfoot td{
 	padding:5px 0;
 }
 
 .amscheckout table.amscheckout-data-table.total-table tfoot tr:last-child{}
-.amscheckout table.amscheckout-data-table.total-table tfoot tr:last-child td{border-top:1px solid #e6e6e6; padding:10px 0;}
+.amscheckout table.amscheckout-data-table.total-table tfoot tr:last-child td{border-top:1px solid #e6e6e6; padding:10px 0; font-size:18px;}
 
 .amscheckout-review-wrap #checkout-review-submit{padding:0 15px;}
 
@@ -476,6 +496,10 @@
 }
 
 .amscheckout-data-table tfoot td:first-child{
+	text-align:left;
+}
+.amscheckout-data-table tr.summary-details td, .amscheckout-data-table tr.summary-total td{
+	color:#FF0000;
 }
 .checkout-onepage-index .col-main{
     width: 100% !important;
@@ -546,15 +570,15 @@
 
 @media only screen and (max-width: 1100px) {
     .amscheckout .three-columns .first-column,
-    .amscheckout .three-columns .second-column
-    {
-        width: 50%;
-        border: 0px;
+    .amscheckout .three-columns .second-column {
+			width: 49%;
+			border: 0px;
+			margin:0;
     }
-    
-    .amscheckout .three-columns .third-column
-    {
+    .amscheckout .three-columns .second-column{float:right;}
+    .amscheckout .three-columns .third-column{
         width: 100%;
+				margin-top:20px;
     }
 }
 
@@ -570,12 +594,15 @@
 }
 
 @media only screen and (max-width: 599px){
-    #amscheckout-cart .cart .button{
-        float: none;
-        margin: 0;
-        width: 32%;
-        height: 70px;
-    }
+	#amscheckout-cart .cart .button{
+			float: none;
+			margin: 0;
+			width: 32%;
+			height: 70px;
+	}
+	.amscheckout-main .amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box{padding:5px;}
+	.amscheckout-main .amscheckout table#checkout-review-table .opc-product-image{max-width:50px;}
+	.amscheckout-main .amscheckout table#checkout-review-table .opc-product-info{margin-left:70px;}
 }
 
 #review-processing,

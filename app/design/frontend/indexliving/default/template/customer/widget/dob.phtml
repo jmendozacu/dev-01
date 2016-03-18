@@ -52,7 +52,7 @@ Alternatively we could calculate widths automatically using block input paramete
 <label for="<?php echo $this->getFieldId('month')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo Mage::helper('catalog')->__('Birthday'); ?></label>
 <div class="input-box customer-dob">
   <div class="dob-select">
-    <div class="box-select"  style="width:73px;">
+    <div class="box-select dob-day"  style="width:73px;">
       <select name="nday" id="nday" onchange="getElementById('<?php echo $this->getFieldId('day');?>').value=this.value">
         <option  value=""><label><?php echo $this->__('DD') ?></label></option>
         <?php
@@ -68,7 +68,7 @@ Alternatively we could calculate widths automatically using block input paramete
         ?>
       </select>
     </div>
-    <div class="box-select"  style="width:120px;">
+    <div class="box-select dob-month"  style="width:120px;">
       <select name="nmon" id="nmon" onchange="getElementById('<?php echo $this->getFieldId('month');?>').value=this.value">
         <option value=''><?php echo $this->__('MM') ?></option>
         <?php
@@ -94,7 +94,7 @@ Alternatively we could calculate widths automatically using block input paramete
         ?>
       </select>
     </div>
-    <div class="box-select"  style="width:99px;margin:0">
+    <div class="box-select dob-year"  style="width:99px;margin:0">
       <select name="nyear" id="nyear" onchange="getElementById('<?php echo $this->getFieldId('year');?>').value=this.value">
         <option value=""><?php echo $this->__('YYYY') ?></option>
         <?php
