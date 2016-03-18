@@ -207,7 +207,7 @@ jQuery(document).ready(function () {
   
   var widthWindow = jQuery( window ).width();
   var widthHeight = jQuery( window ).height();
-    if(widthWindow <768){ 
+    if(widthWindow <769){ 
       /* box promo */
       jQuery(".category-banners .div-banner").mCustomScrollbar({
         axis:"x",
@@ -254,6 +254,17 @@ jQuery(document).ready(function () {
       });
       /* max-height box-filter-content*/
       jQuery('.box-filter-content').css("max-height", widthHeight -100);
+      /* nav-myaccount mobile*/
+      jQuery('.current-myaccountpage').click(function(){
+       if (!jQuery(this).hasClass('active')){
+        jQuery(this).next().slideDown(300);
+        jQuery(this).addClass('active');
+       }
+       else{
+        jQuery(this).removeClass('active');
+        jQuery(this).next().slideUp(300);
+       }
+      });
       
     }
 });

@@ -23,15 +23,11 @@
  * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
+
+/* @var Mage_Wishlist_Model_Item $item */
+$item = $this->getItem();
+$product = $item->getProduct();
 ?>
-<div class="welcome-msg">
-    <p class="hello"><?php echo $this->__('Hello, %s!', $this->escapeHtml($this->getCustomerName())) ?></p>
-    <!-- <p><?php echo $this->__('From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.') ?></p> -->
-</div>
-<div class="box-points-dashboard"> <!-- box-html -->
-  <?php $mypoints = 2050; ?>
-  <p>
-    <?php echo $this->__('คุณมีคะแนนสะสมทั้งหมด  <span>%s</span> คะแนน ',$mypoints ) ?></br>
-    <?php echo $this->__('ทุกๆ 5,000 แต้ม ใช้แทนส่วนลด 50 บาท',$mypoints ) ?>
-  </p>
-</div>
+<a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>">
+    <img src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize(113); ?>" alt="<?php echo $this->escapeHtml($product->getName()) ?>" />
+</a>
