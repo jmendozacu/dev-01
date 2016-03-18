@@ -9,7 +9,18 @@
  @media (max-width: 1199px) {
 	.checkout-list-step ul{width:100%;}
  }
- @media (min-width: 992px) and (max-width: 1199px) {}
+ @media (min-width: 992px) and (max-width: 1199px) {
+		.product-view .product-img-box{
+			width:50%;
+		}
+		.product-view .product-shop{
+			width:46%;
+		}
+		.product-view .product-shop .add-to-links > li > a{
+			font-size:12px;
+		}
+		.product-view .product-shop .add-to-links .shareproduct-content{right:70px;}
+ }
  @media (max-width: 991px) {}
  @media (min-width: 769px){ }
  @media (min-width: 768px) and (max-width: 991px) {
@@ -29,6 +40,16 @@
   .box-home-list-products .a-button {display:none;}
   .title-style3 {font-size:14px;}
   .main-home .box-home-decor .decor-style .banner-title {font-size:12px; padding:0px;}
+	.product-view .product-img-box{
+		width:50%;
+	}
+	.product-view .product-shop{
+		width:46%;
+	}
+	.product-view .product-shop .add-to-links > li > a{
+		font-size:12px;
+	}
+	.product-view .product-shop .add-to-links .shareproduct-content{right:70px;}
  }
  @media (max-width: 768px) {
   .box-desktop,
