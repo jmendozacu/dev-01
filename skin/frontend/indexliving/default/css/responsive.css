@@ -19,6 +19,8 @@
   .main-home .box-list-products .products-grid li.item.last { display:none;}
   .go-top {display:none;}
   
+  /* category */
+  .categories-list .category-grid li.category-item {min-height:340px; max-height:340px;}
  }
  @media (min-width: 992px) and (max-width: 1199px) {
 		.product-view .product-img-box{
