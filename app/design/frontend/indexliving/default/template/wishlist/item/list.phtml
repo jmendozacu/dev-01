@@ -30,7 +30,7 @@
 <?php
     $columns = $this->getColumns();
 ?>
-<table class="clean-table linearize-table" id="wishlist-table">
+<table class="clean-table box-desktop" id="wishlist-table">
     <thead>
         <tr>
             <?php
@@ -66,6 +66,30 @@
         <?php endif; ?>
     </tbody>
 </table>
+<ul class="wishlist-list-mobile box-mobile">
+  <?php if (count($this->getItems())): ?>
+    <?php foreach ($this->getItems() as $item): ?>
+      <li id="item_<?php echo $item->getId();?>">
+          <?php
+              foreach ($columns as $key => $column):
+                  $_blockName = str_replace('.','-',strtolower($column->getNameInLayout()));
+
+                  /* Override default column title in layout, useful for certain cases like select all box */
+                  if ($column->getRwdTitle()) {
+                      $_rwdLabel = $column->getRwdTitle();
+                  } else {
+                      $_rwdLabel = ($column->getTitle()) ? $column->getTitle() : false;
+                  }
+          ?>
+              <div class="<?php echo 'wishlist-cell'.$key; ?> <?php echo $_blockName; ?>"<?php if($_rwdLabel): ?> data-rwd-label="<?php echo $_rwdLabel; ?>"<?php endif; ?>><?php $column->setItem($item); echo $column->toHtml($item);?></div>
+          <?php endforeach; ?>
+      </li>
+    <?php endforeach ?>
+  <?php else: ?>
+      <li class="wishlist-empty"><?php echo $this->__('This Wishlist has no Items');?></li>
+  <?php endif; ?>
+</ul>
+
 <?php foreach ($columns as $column): ?>
     <?php echo $column->getAdditionalHtml();?>
 <?php endforeach; ?>

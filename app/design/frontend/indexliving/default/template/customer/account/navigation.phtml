@@ -24,15 +24,22 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<div class="box-mobile">
+<?php echo $this->getChildHtml('hello_top'); ?>
+</div>
 <div class="block block-account">
-    <div class="block-title">
-        <strong><span><?php echo $this->__('My Account'); ?></span></strong>
-    </div>
-    <div class="block-content">
-        <ul>
-            <?php $_links = $this->getLinks(); ?>
-            <?php $_index = 1; ?>
-            <?php $_count = count($_links); ?>
+    <div class="block-content" style="display:block!important;">
+        <?php $_links = $this->getLinks(); ?>
+        <?php $_index = 1; ?>
+        <?php $_count = count($_links); ?>
+        <ul class="current-myaccountpage box-mobile">
+          <?php foreach ($_links as $_link): ?>
+              <?php if ($this->isActive($_link)): ?>
+                  <li class="current <?php echo $_link->getName() ?>"><a><span><strong><?php echo $_link->getLabel() ?></strong></span></a></li>
+              <?php endif; ?>
+          <?php endforeach; ?>
+        </ul>
+        <ul class="nav-account-content">
             <?php foreach ($_links as $_link): ?>
                 <?php $_last = ($_index++ >= $_count); ?>
                 <?php if ($this->isActive($_link)): ?>
