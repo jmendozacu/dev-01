@@ -29,8 +29,13 @@
     </customer_account_index>
 
     <customer_account_login>
-        <reference name="content">
+        <reference name="customer_form_login">
              <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
         </reference>
     </customer_account_login>
+    <customer_account_create>
+        <reference name="customer_form_register">
+             <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+        </reference>
+    </customer_account_create>
 </layout>
