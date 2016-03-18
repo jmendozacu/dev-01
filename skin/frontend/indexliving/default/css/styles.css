@@ -7567,9 +7567,23 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .checkout-onepage-success .buttons-set {
   margin: 10px 0;
   text-align: center;
+	border:0 none;
 }
 .checkout-onepage-success .buttons-set button {
   float: none;
+}
+
+.checkout-success{padding:200px 0 0; background:url(../images/icon-checkout-complete.png) center 50px no-repeat;}
+.checkout-success .page-title h1{padding:0 0 15px; margin:0 0 10px; font-family: 'DBYordXMed'; font-size:30px; color:#252525;}
+.checkout-success h2.sub-title{font-family: 'DBYordXMed'; font-size:30px; color:#252525;}
+.checkout-success p{margin:0 0 30px;}
+.checkout-success p.order-id {
+    font-family: 'DBYordXMed';
+    font-size: 24px;
+    color: #252525;
+}
+.checkout-success p.order-id span {
+    color: #f4701e;
 }
 
 /* ============================================ *

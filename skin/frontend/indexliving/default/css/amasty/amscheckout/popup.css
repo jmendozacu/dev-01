@@ -1,3 +1,4 @@
+.checkout-onepage-index .dialog table.table_window{background:#000;}
 .amschekcout_close {
     width: 23px;
     height: 23px;
@@ -11,7 +12,7 @@
 }
 
 .amschekcout_content{
-    /*background-color: #FFF;*/
+  background-color: #FFF;
 }
 
 .amschekcout_title{
@@ -45,11 +46,11 @@
 
 .login-buttons{
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
 
 .amscheckout-forgot{
-    padding: 5px;
+    padding: 0 10px;
     display: block;
 }
 
@@ -61,5 +62,5 @@
 }
 
 .login-button{
-    padding: 0px 40px;
+    padding: 0px 10px;
 }
