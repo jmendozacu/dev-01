@@ -536,6 +536,7 @@ One page checkout order review block
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
+						<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
             <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
         </reference>
     </checkout_onepage_success>
