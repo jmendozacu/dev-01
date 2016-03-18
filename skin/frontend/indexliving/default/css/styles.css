@@ -969,6 +969,16 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li.current.rewardpoints_dashboard a:before,
 .block-account li.rewardpoints_dashboard a:hover:before{background-position:-62px -301px;}
 
+.block-recently-viewed{position:fixed; max-width:130px; right: 0; top:30%;}
+.block-recently-viewed .box-title{background:#000; padding:5px 0; text-align:center;}
+.block-recently-viewed .box-title span{font-family: 'FuturaT_Bold'; color:#FFFFFF; text-transform:uppercase; font-size:14px; padding:5px 0;}
+.block-recently-viewed .box-content{background:#FFFFFF; border:1px solid #e6e6e6; border-top:0 none; padding:10px; overflow:hidden;}
+.block-recently-viewed .box-content .mini-products-list li{float:left; width:100%; text-align:center;}
+.block-recently-viewed .box-content .mini-products-list .product-details{margin:0;}
+.block-recently-viewed .box-content .mini-products-list .product-details .product-name{font-family: 'FuturaBT-Book'; color:#000; text-transform:uppercase; font-size:14px; font-weight:bold;}
+.block-recently-viewed .box-content .mini-products-list .product-details .product-name a{text-decoration:none;}
+.block-recently-viewed .box-content .mini-products-list .product-details .product-name a:hover{color:#ffc222;}
+
 /* ============================================ *
  * Buttons
  * ============================================ */
@@ -1227,8 +1237,8 @@ a.button {
 
 .breadcrumbs li {
   float: left;
-  font-size: 14px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 18px;
+  font-family: 'DBYordXMed';
   text-transform: uppercase;
 }
 
@@ -4793,7 +4803,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .product-name .h1 {
   color: #000;
 	font-family: "FuturaT_Bold";
-	font-size: 35px;
+	font-size: 24px;
 }
 .product-view .product-shop .extra-info {
   float: left;
@@ -4832,7 +4842,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .price-box .full-product-price .price {
   color: #ff0000;
 	font-family: "FuturaT_Bold";
-	font-size: 35px;
+	font-size: 30px;
 }
 .product-view .product-shop .price-box .special-price .price-label {
   font-size: 16px;
