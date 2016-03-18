@@ -1,25 +1,21 @@
 <?php
 /**
  * @author Amasty Team
- * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
  * @package Amasty_Scheckout
  */
 ?>
 <?php echo $this->getChildHtml('items_before'); ?>
 <div id="checkout-review-table-wrapper">
+		<div class="amscheckout-data-listitem-box">
     <table class="amscheckout-data-table" id="checkout-review-table">
         <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2; else: $colspan = $rowspan = 1; endif; ?>
-        <colgroup><col>
-        <col width="1">
-        <col width="1">
-        <col width="1">
+        <colgroup>
+					<col />
         </colgroup>
         <thead>
             <tr>
-                <th rowspan="<?php echo $rowspan ?>"><?php echo $this->__('Product Name') ?></th>
-                <th colspan="<?php echo $colspan ?>" class="a-center"><?php echo $this->__('Price') ?></th>
-                <th rowspan="<?php echo $rowspan ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
-                <th colspan="<?php echo $colspan ?>" class="a-center"><?php echo $this->__('Subtotal') ?></th>
+                <th rowspan="<?php echo $rowspan ?>"><?php echo $this->__('') ?></th>
             </tr>
             <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
                 <tr>
@@ -30,13 +26,20 @@
                 </tr>
             <?php endif; ?>
         </thead>
-        <?php echo $this->getChildHtml('totals'); ?>
         <tbody>
         <?php foreach($this->getItems() as $_item): ?>
             <?php echo $this->getItemHtml($_item)?>
         <?php endforeach ?>
         </tbody>
     </table>
+		</div>
+		<div class="amscheckout-data-total-box">
+			<div>
+				<table class="amscheckout-data-table total-table">
+					<?php echo $this->getChildHtml('totals'); ?>
+				</table>
+			</div>
+		</div>
 </div>
 <?php echo $this->getChildHtml('items_after'); ?>
 <script type="text/javascript">
