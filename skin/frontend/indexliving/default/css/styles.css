@@ -3263,9 +3263,7 @@ body {
 .box-top-menu {float:left;  width:100%; background:#FFC222; font-family: 'FuturaBT-Book'; text-transform:uppercase;}
 .box-top-menu .cateogry {float:left; width:24%; background:#252525; padding: 0 19px; position:relative;}
 .box-top-menu .cateogry .skip-cateogry{float:left; width:100%; text-align:left; background:url(../images/cat-arrow.png) no-repeat right center; font-size:17px; color:#FFC222; padding:5px 0px 5px 0px; line-height:35px; position:relative;  }
-.box-top-menu .cateogry .skip-cateogry.skip-active{
-	background:url(../images/cat-arrow-active.png) no-repeat right center;
-}
+.box-top-menu .cateogry .skip-cateogry.skip-active{	background:url(../images/cat-arrow-active.png) no-repeat right center;}
 .icon-menu {float:left; width:23px; margin-top:10px; margin-right:25px;}
 .icon-menu span {float:left; width:100%; margin:0 0 2px; height:3px; background:#fff;}
 .skip-content.menu-content {display:none; position:absolute; top:44px; width:100%; left:0px; z-index:99;}
@@ -3294,7 +3292,7 @@ body {
 .header-cart-box .block-content {float:left; width:100%;}
 .header-cart-box .block-content .item-wrap.empty {float:left; width:100%; min-height:480px; text-align:center;}
 .header-cart-box .block-content .item-wrap.empty span {display:block;margin-top:85px; padding:135px 20px 20px ; color:#C1C1C1; font-family: 'RSU_Bold'; font-size:22px; background:url(../images/icon-emptycart.png) no-repeat top center;}
-.header-cart-box .list-items {padding:15px 15px 0;  max-height: 414px;  overflow-y: auto;}
+.header-cart-box .list-items {padding:15px 15px 0;  max-height: 262px;  overflow-y: auto;}
 .header-cart-box .mini-products-list li.item{padding-bottom:10px; margin-bottom:10px; border-bottom:solid 1px #E6E6E6; margin:0px; position:relative;}
 .header-cart-box .mini-products-list li.item:nth-last-child(1){border-bottom:none;}
 .header-cart-box  .mini-products-list .product-details .product-name {font-size:14px; padding:0px; color:#000; font-family: 'FuturaBT-Book';     text-transform: uppercase;}
@@ -3302,6 +3300,8 @@ body {
 .header-cart-box  .mini-products-list .item-options dt,
 .header-cart-box  .mini-products-list .item-options dd {font-size:12px; font-weight:normal; margin-bottom:0px;}
 .header-cart-box  .mini-products-list .price {font-family: 'FuturaT_Bold'; font-size:18px; color:#000;}
+.header-cart-box  .mini-products-list .special-price .price {color:#ff0000;}
+.header-cart-box  .mini-products-list .old-price .price  {color:#a0a0a0; font-size:10px; font-family: 'FuturaLight';}
 .header-cart-box  .mini-products-list .qty-minicart {float:right; }
 .header-cart-box  .mini-products-list .qty-minicart .qty {width:44px; height:44px; color:#000; font-size:15px; line-height:40px; text-align:center; background:#fff; border:solid 2px #FFC222; border-radius:3px;}
 .header-cart-box  .mini-products-list .qty-minicart .apply_update_qty {width:44px; height:44px; border:none; color:#fff; background:#FFC222; padding:0 10px; border-radius:3px;}
@@ -3310,6 +3310,8 @@ body {
 .header-cart-box  .header-cart-subtotal  {font-size:18px; font-family: 'FuturaT_Bold'; float:right;}
 .header-cart-box  .actions {float:left; width:100%; padding:10px 18px; text-align:right;}
 .header-cart-box  .actions .button {height:40px; line-height:43px; padding:0 10px; min-width:175px; text-align:center;border-radius:5px; font-family: 'RSU_Bold'; font-size:20px;}
+.myaccount-header > span{padding-right:15px;}
+.myaccount-header  > span:after {width:15px; height:100%; position:absolute; content:""; background:url(../images/arrow-mobile-light.png) no-repeat center center; top:0px; right:5px;} 
 .mini-account li {float:left; text-align:left; width:100%; border-bottom:solid 1px #CBCBCB;}
 .mini-account li:nth-last-child(1){border-bottom:none;}
 .mini-account  a{ display:block;  position:relative; padding:10px 10px 10px 40px; line-height:20px; color:#535353; font-size:18px; font-family: 'RSU_Bold';}
@@ -4533,6 +4535,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .mini-products-list .product-details {
   margin-left: 60px;
+  text-align:left;
 }
 .mini-products-list .product-details .product-name {
   padding-top: 10px;
