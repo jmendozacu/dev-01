@@ -6,9 +6,9 @@
 		<reference name="head">
 			<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>
 		</reference>
-		<reference name="checkout.onepage">
+		<!-- <reference name="checkout.onepage">
 			<action method="setTemplate" ifconfig="customaddress/general/enable_module"><template>customaddress/checkout/onepage.phtml</template></action>
-		</reference>
+		</reference> -->
 		<reference name="checkout.onepage.billing">  
 			<action method="setTemplate" ifconfig="customaddress/general/enable_module"><template>customaddress/checkout/onepage/billing.phtml</template></action>      
 		</reference>

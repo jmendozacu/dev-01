@@ -2832,8 +2832,8 @@ form .form-instructions {
 .form-list .gender,
 .account-create .form-list li.gender,
 .customer-account-edit .form-list > li.gender{float:left; width:100px; margin-right:18px; clear:none;}
-.form-list .field {float:left; width:260px; margin-right:18px;}
-.form-list .field.name-firstname {float:left; margin-right:18px;width:200px}
+.form-list .field {float:left; width:260px; /* margin-right:18px; */}
+.form-list .field.name-firstname {float:left; /* margin-right:18px; */width:200px}
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
