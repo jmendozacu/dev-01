@@ -30,8 +30,9 @@
 ?>
 <div class="box-collateral box-reviews" id="customer-reviews">
 	<?php if (count($_items)):?>
+		<div class="review-list" id="review-list">
+			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Review')?></h3>
 			<?php echo $this->getChildHtml('toolbar') ?>
-		<div class="review-list">
 			<div class="page-container">
 				<ul>
 				<?php $i=0; foreach ($_items as $_review):?>

@@ -4731,6 +4731,10 @@ body.catalogsearch-result-index .page-title h1 {
   .block-layered-nav .block-content.accordion-open > dl > dd.current {
     display: block;
   }
+	
+	.product-view #customer-reviews .review-list li .review-details .review-meta .rating-title{
+		width:100%;
+	}
 
 }
 .block-layered-nav .currently .block-subtitle {

@@ -10,6 +10,7 @@
 		<div class="box-title">
 			<div class="bl">
 				<h2><?php echo $this->__('Customer Reviews')?></h2>	
+				<div>
 				<p class="rating-overall"><?php echo $this->__('Overall Product Rating')?></p>
 				<div class="ratings ratings-overview">
 					<?php $helper = Mage::helper('amseoreviews');
@@ -38,6 +39,7 @@
 							</div>
 					<?php endif; ?>
 				</div>
+			</div>
 			</div>
 			<div class="br">
 				<h3 class="review-count"><?php echo $this->__('%d Reviews', $this->getReviewsCount()) ?></h3>
