@@ -37,7 +37,7 @@
 				<?php $i=0; foreach ($_items as $_review):?>
 					<li class="review-item<?php if($i==0):?> first<?php endif ?><?php if($i==(count($_items) - 1)):?> last<?php endif;?>">
 						<div class="review-rating">
-							<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
+							<label class="review-name"><?php echo $this->escapeHtml($_review->getNickname())?></label>
 							<?php $_votes = $_review->getRatingVotes(); ?>
 							<?php if (count($_votes)): ?>
 							<table class="ratings-table">
@@ -67,9 +67,10 @@
 							<div class="review-image"><img src="<?php echo Mage::getBaseUrl().'media/review/'.$_review['img'] ?>" alt=""/></div>
 						<?php endif;?>
 						<div class="review-details">
-							<span class="review-meta">
-								 <?php echo $this->__('%s', $this->formatDate($_review->getCreatedAt()), 'long') ?>
-							</span>
+							<div class="review-meta">
+								<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
+								<?php $date = new DateTime($_review->getCreatedAt()); echo date('F j, Y',$date->getTimestamp());?>
+							</div>
 							<?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
 						</div>
 					</li>	

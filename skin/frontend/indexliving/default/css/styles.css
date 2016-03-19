@@ -969,12 +969,12 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li.current.rewardpoints_dashboard a:before,
 .block-account li.rewardpoints_dashboard a:hover:before{background-position:-62px -301px;}
 
-.block-recently-viewed{position:fixed; max-width:130px; right: 0; top:30%;}
+.block-recently-viewed{position:fixed; max-width:130px; right: 0; top:30%; z-index:999;}
 .block-recently-viewed .box-title{background:#000; padding:5px 0; text-align:center;}
 .block-recently-viewed .box-title span{font-family: 'FuturaT_Bold'; color:#FFFFFF; text-transform:uppercase; font-size:14px; padding:5px 0;}
 .block-recently-viewed .box-content{background:#FFFFFF; border:1px solid #e6e6e6; border-top:0 none; padding:10px; overflow:hidden;}
 .block-recently-viewed .box-content .mini-products-list li{float:left; width:100%; text-align:center;}
-.block-recently-viewed .box-content .mini-products-list .product-details{margin:0;}
+.block-recently-viewed .box-content .mini-products-list .product-details{margin:0; text-align:center;}
 .block-recently-viewed .box-content .mini-products-list .product-details .product-name{font-family: 'FuturaBT-Book'; color:#000; text-transform:uppercase; font-size:14px; font-weight:bold;}
 .block-recently-viewed .box-content .mini-products-list .product-details .product-name a{text-decoration:none;}
 .block-recently-viewed .box-content .mini-products-list .product-details .product-name a:hover{color:#ffc222;}
@@ -4823,9 +4823,13 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .short-description {
   margin-bottom: 10px;
   clear: both;
+	font-family: 'HelveticaNeue';
+	font-size:14px;
+	color:#5d5d5d;
 }
 .product-view .product-shop .ratings {
   margin-bottom: 0;
+  margin-top: 0;
 }
 .product-view .product-shop .availability {
   font-size: 16px;
@@ -4893,7 +4897,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .change-qty{float:left; width:100%; margin-bottom:10px;}
 .product-view .product-options-bottom .change-qty {float:right; width:auto;}
 .product-view .product-shop .change-qty label,.product-view .product-shop .change-qty input{float:left;}
-.product-view .product-shop .change-qty label{width:100%; margin-bottom:5px;  color:#000000; font-family: "FuturaT_Bold"; font-size:20px; text-transform:uppercase;}
+.product-view .product-shop .change-qty label{width:100%; margin-bottom:5px;  color:#000000; font-family: "FuturaT_Bold"; font-size:15px; text-transform:uppercase;}
 .change-qty {min-width:81px;}
 .change-qty input{
 	height: 40px;
@@ -4961,7 +4965,7 @@ body.catalogsearch-result-index .page-title h1 {
 
 .product-img-box .more-views{
 	position:absolute;
-	top:50%;
+	top:105px;
 }
 
 @media only screen and (max-width: 479px) {
@@ -5162,13 +5166,13 @@ body.catalogsearch-result-index .page-title h1 {
 	font-size: 30px;
 	text-transform: uppercase;
 	font-family: "FuturaT_Bold";
-	color:#ffc222;
+	color:#000000;
 }
 .product-view .review-box{}
 .product-view .review-box .box-title{float:left; width:100%; margin-bottom:20px;}
 .product-view .review-box .box-title .bl{float:left;}
 .product-view .review-box .box-title .br{float:right; text-align:right; max-width:300px;}
-.product-view .review-box .box-title .br .review-count{color:#f4701e; font-size:12px;}
+.product-view .review-box .box-title .br .review-count{color:#f4701e; font-size:12px; margin:3px 0 0;}
 .product-view .review-box .ratings{overflow:hidden;}
 .product-view .review-box .ratings .rating-average{
 	float:left;
@@ -5606,7 +5610,7 @@ body.catalogsearch-result-index .page-title h1 {
   text-align: left;
 }
 .product-options dl dt label{
-	color:#000000; font-family: "FuturaT_Bold"; font-size:20px; text-transform:uppercase;
+	color:#000000; font-family: "FuturaT_Bold"; font-size:15px; text-transform:uppercase;
 }
 
 @media only screen and (max-width: 979px) {
@@ -5643,9 +5647,9 @@ body.catalogsearch-result-index .page-title h1 {
 }
 
 .product-options dd {
-  padding: 0 0 10px 0;
+  /* padding: 0 0 10px 0;
   margin: 0 0 5px;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid #ededed; */
 }
 
 .product-options dl.last dd.last {
@@ -5790,6 +5794,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-related .block-title {
   /* border-bottom: none; */
+	border-top:0 none;
 }
 .block-related .block-title h2 {
   margin: 0;
@@ -8789,7 +8794,7 @@ div.paypal-logo span > img {
 #customer-reviews .review-list li.last{border:0 none;}
 #customer-reviews .review-list li > div{float:left; text-align:left}
 #customer-reviews .review-list li > div.review-rating{width:20%}
-#customer-reviews .review-list li .review-rating .rating-title{
+#customer-reviews .review-list li .review-rating .review-name{
 	font-family: "FuturaT_Bold";
 	color:#f4701e;
 	font-size:14px;
@@ -8798,6 +8803,12 @@ div.paypal-logo span > img {
 #customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
 #customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
 #customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
+#customer-reviews .review-list li .review-details .review-meta .rating-title{
+	float:left; 
+	font-family: "FuturaT_Bold";
+	color:#767676;
+	font-size:27px;
+	text-transform:uppercase; }
 #customer-reviews .ratings-table tbody th, #customer-reviews .ratings-table tbody th {
     padding: 3px 15px 3px 0;
 }
