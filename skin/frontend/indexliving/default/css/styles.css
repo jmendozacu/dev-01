@@ -4159,7 +4159,7 @@ a.skip-link {
 
 .category-banners{margin:25px 0;}
 .category-banners .wrap-bannerads .banner-carousel{}
-.category-banners .wrap-bannerads .banner-carousel li{float:left; margin-right:11px;}
+.category-banners .wrap-bannerads .banner-carousel li{ float: left; margin-right: 11px; width: 32%; margin-right: 1.5%;}
 .category-banners .wrap-bannerads .banner-carousel li:nth-child(2n+3) {margin-right:0;}
 .category-bestseller{margin:10px 0 30px;}
 .category-bestseller .title-style1{border:0 none; margin:0 0 10px; padding:0;}
