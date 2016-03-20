@@ -11,10 +11,85 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	 */
 	public function addAction()
 	{
-			if (!$this->_validateFormKey()) {
-					return $this->_redirect('*/*');
+		$response = array();
+
+		if(!Mage::getSingleton('customer/session')->isLoggedIn()){
+			$response['status'] = 'ERROR';
+			$response['message'] = $this->__('Please Login First');
+			Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account'));
+			return;
+		}
+
+		if(empty($response)){
+			$session = Mage::getSingleton('customer/session');
+			$wishlist = $this->_getWishlist();
+			if (!$wishlist) {
+				$response['status'] = 'ERROR';
+				$response['message'] = $this->__('Unable to Create Wishlist');
+			}else{
+
+				$productId = (int) $this->getRequest()->getParam('product');
+				if (!$productId) {
+					$response['status'] = 'ERROR';
+					$response['message'] = $this->__('Product Not Found');
+				}else{
+
+					$product = Mage::getModel('catalog/product')->load($productId);
+					if (!$product->getId() || !$product->isVisibleInCatalog()) {
+						$response['status'] = 'ERROR';
+						$response['message'] = $this->__('Cannot specify product.');
+					}else{
+
+						try {
+							$requestParams = $this->getRequest()->getParams();
+							$buyRequest = new Varien_Object($requestParams);
+
+							$result = $wishlist->addNewItem($product, $buyRequest);
+							if (is_string($result)) {
+								Mage::throwException($result);
+							}
+							$wishlist->save();
+
+							Mage::dispatchEvent(
+								'wishlist_add_product',
+								array(
+									'wishlist'  => $wishlist,
+									'product'   => $product,
+									'item'      => $result
+								)
+							);
+
+							Mage::helper('wishlist')->calculate();
+
+							$message = $this->__('%1$s has been added to your wishlist.', $product->getName(), $referer);
+							$response['status'] = 'SUCCESS';
+							$response['message'] = $message;
+
+							Mage::unregister('wishlist');
+
+							$this->loadLayout();
+							$toplink = $this->getLayout()->getBlock('top.links')->toHtml();
+							$sidebar_block = $this->getLayout()->getBlock('wishlist_sidebar');
+							$sidebar = $sidebar_block->toHtml();
+							$response['toplink'] = $toplink;
+							$response['sidebar'] = $sidebar;
+						}
+						catch (Mage_Core_Exception $e) {
+							$response['status'] = 'ERROR';
+							$response['message'] = $this->__('An error occurred while adding item to wishlist: %s', $e->getMessage());
+						}
+						catch (Exception $e) {
+							mage::log($e->getMessage());
+							$response['status'] = 'ERROR';
+							$response['message'] = $this->__('An error occurred while adding item to wishlist.');
+						}
+					}
+				}
 			}
-			$this->_addItemToWishList();
+
+		}
+		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+		return;
 	}
 
 	/**

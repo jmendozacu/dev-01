@@ -1,0 +1,19 @@
+<?php if(!$this->helper('customer')->isLoggedIn()):?>
+<div class="model-content">
+<button data-remodal-action="close" class="remodal-close"></button>
+    <h1>Information wishlist</h1>
+    <p class="login">
+    </p>
+    <br>
+    <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+</div>
+<?php endif?>
+<?php if(!$this->helper('customer')->isLoggedIn()):?>
+    <div class="model-content">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1>Please Login First'</h1>
+        <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+    </div>
+<?php endif?>
+
+

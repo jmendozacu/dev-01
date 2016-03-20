@@ -100,7 +100,9 @@ Category default layout
                     <!-- Since the addColumnCountLayoutDepend does not work, we are manually setting the max columns -->
                     <action method="setColumnCount"><count>3</count></action>
                 </block>
+
             </block>
+
         </reference>
 				<reference name="footer.before">
 					<block type="cms/block" name="category.static.content" before="-">
@@ -157,6 +159,7 @@ Category layered navigation layout
                     <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
                     <!-- Since the addColumnCountLayoutDepend does not work, we are manually setting the max columns -->
                     <action method="setColumnCount"><count>3</count></action>
+                    <block type="core/template" name="product_wislist" as="product_wislist" template="wishlist/list-product-wishlist.phtml" />
                 </block>
             </block>
         </reference>
