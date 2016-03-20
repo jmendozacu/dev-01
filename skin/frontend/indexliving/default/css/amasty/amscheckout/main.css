@@ -1,9 +1,11 @@
 .amscheckout-main{
-    border-radius: 2px;
-    overflow: hidden;
-    position: relative;
-    
+	overflow: hidden;
+	position: relative;
 }
+
+.amscheckout-main,
+.amschekcout_title,
+.amschekcout_content{font-family:Tahoma; font-size:14px;}
 
 .amscheckout>table{
     width: 100%;
@@ -18,20 +20,43 @@
     vertical-align: top;
 }
 
+.amscheckout .form-list .field, .amscheckout .form-list .wide, .amscheckout .form-list .control{
+	clear:both;
+	width:100%;
+}
+.amscheckout .form-list .fields{
+	width: 100%;
+	clear: both;
+	float: left;
+} 
+.amscheckout .form-list select  {width:100%;}
+.amscheckout .form-list .field.name-firstname, 
+.amscheckout .form-list .field.name-lastname,
+.amscheckout .form-list .field.name-middlename {
+	width:100%;
+}
+.amscheckout .form-list .customer-dob .dob-month{width:85px!important}
+.amscheckout .form-list .customer-dob .dob-day{width:55px!important}
 .amscheckout-row{
     display: inline-table;
     padding-top: 10px;
 }
 
 .amscheckout .three-columns .first-column,
-.amscheckout .three-columns .second-column,
-.amscheckout .three-columns .third-column
+.amscheckout .three-columns .second-column
 {
-    width: 33%;
-    float: left;
-    margin-bottom: 10px;
+	width: 24%;
+	float: left;
+	margin-bottom: 1%;
+	margin-right:2%;
 }
-
+.amscheckout .three-columns .third-column{
+	width:48%;
+	margin:0;
+	float: left;
+}
+.amscheckout .three-columns .third-column .column-section{
+}
 .amscheckout .two-columns .first-column,
 .amscheckout .two-columns .second-column{
     float: left;
@@ -60,14 +85,25 @@
 .amscheckout .coupon,
 .amscheckout .giftcards
 {
-    padding: 0px 10px;
+    padding: 10px;
+		background:#f6f6f6;
+		border:1px solid #e6e6e6;
+		border-radius:5px;
+		color:#000;
 }
 
 .amscheckout .form-list label,
 .amscheckout .amscheckout-label{
-    /*font-size: 11px;*/
-    /*color: #000;*/
+    font-size: 14px;
+    color: #000;
     font-weight: normal;
+}
+.amscheckout .shipping .form-list label{
+	font-family:Tahoma;
+	font-size: 14px;
+	color: #000;
+	font-weight: normal;
+	text-transform:none;
 }
 
 .amscheckout .amscheckout-label-radio{
@@ -118,13 +154,10 @@
 .amscheckout .area-header{
     font-size: 18px;
     font-weight: bold;
+		margin:0 0 15px;
 }
 
 .amscheckout .second-column{
-    border: 0px;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
-    border-style: dashed;
 }
 
 .amscheckout{
@@ -132,7 +165,7 @@
 }
 
 .amscheckout .shipping-method dt{
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .amscheckout .shipping-method dd,
@@ -147,41 +180,23 @@
 
 
 .amscheckout-header{
-    padding: 20px 15px;
 }
 
 .amscheckout-header .lane{
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
+	margin:0;
 }
 
 .amscheckout-header .lane2{
-    font-size: 12px;
-}
-
-.separator{
-    padding: 0px 15px;
-    margin-left: -1px;
-}
-
-.separator div{
-    border: 0px;
-    border-top: 1px solid grey;
-    padding-top: 1px;
-    border-style: dashed;
 }
 
 .amscheckout-img{
-    
     display: inline-block;
     margin-right: 10px;
-    
     color: white;
     text-align: center;
-    
-    width: 35px;
-    padding: 2px 0px;
+    width: 32px;
+		font-size:20px;
+		line-height:32px;
     
 /*    background-color: #fff;
     background-image: -webkit-linear-gradient(bottom, #5cc98b, #32955d);
@@ -192,35 +207,39 @@
 
 .amscheckout-img-shadow{
     display: inline-block;
-    
-    width: 38px;
-    
-    -webkit-border-radius: 0 3px 0 38px/0 26px 0 4px;
-    -moz-border-radius: 0 3px 0 38px/0 26px 0 4px;
-    border-radius: 0 3px 0 38px/0 26px 0 4px;
-    
-    padding-bottom: 3px;
-    padding-right: 1px;
+    width: 32px;
+		height:32px;
+		background:#ffc222;
+		border-radius:16px;
 }
-
+.amscheckout-review-wrap{
+	background:#f6f6f6;
+	border:1px solid #e6e6e6;
+	border-radius:5px;
+	padding:0 0 35px;
+	overflow:hidden;
+}
 .amscheckout-review{
-    background-image: url('../../../images/amasty/amscheckout/review-img.png');
-    background-repeat:no-repeat;
-    background-position:center; 
-    
-    width: 26px;
-    display: inline-block;
 }
 
+.amscheckout .button{border-radius:5px; }
 .amscheckout-shipping{
     background-image: url('../../../images/amasty/amscheckout/shipping-img.png');
     background-repeat:no-repeat;
     background-position:center; 
-    
-    width: 26px;
+    width: 22px;
     display: inline-block;
+		background-size:18px;
 }
-
+.amscheckout .billing .buttons-set button.button{float:left; margin-left:0;}
+.amscheckout .shipping .form-list li {
+    float: left;
+    margin: 0 0 5px;
+    width: 100%;
+}
+.amscheckout .shipping .form-list li.control input{
+	margin:0;
+}
 /*.billing-img{
     background-image: url('../../../images/amasty/amscheckout/billing.png');
 }
@@ -319,16 +338,25 @@
 .order-review-newsletter,
 .order-review-button{
     clear: both;
-    padding: 0px 10px;
+    padding: 0px 15px;
 }
 
 .order-review-newsletter{
-    padding-bottom: 10px;
+	padding-bottom: 10px;
+	float: right;
+	width: 100%;
+	text-align: right;
 }
 
 .order-review-button button{
-    width: 100%;
-    
+	float:right;
+	min-width:270px;
+	height:58px;
+	line-height:58px;
+	padding:0;
+	font-family: 'DBYordXMed';
+	font-size:36px;
+	text-transform:uppercase;
 }
 
 .coupon-buttons{
@@ -396,18 +424,13 @@
 }
 
 .amscheckout .order-review{
-    padding: 0px 10px;
 }
 
 
 .amscheckout-data-table tr td,
 .amscheckout-data-table tr th{
-    border: 0px;
-    border-bottom: 1px solid grey;
-    border-style: dashed;
-    padding: 7px 0px;
-    vertical-align: middle;
-    
+	padding: 15px 0px;
+	vertical-align: middle;
 }
 
 .amscheckout-data-table tr th{
@@ -422,6 +445,50 @@
 .amscheckout-item{
     line-height: 30px;
 }
+.amscheckout #checkout-review-table-wrapper{}
+.amscheckout #checkout-review-table-wrapper .amscheckout-data-listitem-box{padding:0 15px;}
+.amscheckout table#checkout-review-table{}
+.amscheckout table#checkout-review-table tbody tr td{border-bottom:1px solid #e6e6e6;}
+.amscheckout table#checkout-review-table tbody tr.last td{border:0 none;}
+.amscheckout table#checkout-review-table .opc-product-image{float:left; max-width:100px;}
+.amscheckout table#checkout-review-table .opc-product-info{margin-left:150px;}
+.amscheckout table#checkout-review-table .opc-product-info .product-name{
+	font-family: 'FuturaBT-Book';
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #000;
+	font-weight: bold;
+	margin:0 0 5px;
+}
+.amscheckout table#checkout-review-table .opc-product-info .item-options{float:left; width:100%;}
+.amscheckout table#checkout-review-table .opc-product-info .item-options dd{margin:0;}
+.amscheckout table#checkout-review-table .opc-product-info .opc-review-price{}
+.amscheckout table#checkout-review-table .opc-product-info .opc-review-price .price{
+	font-family: 'FuturaT_Bold';
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #000;
+	font-weight: bold;
+}
+
+.amscheckout table#checkout-review-table .opc-product-info .review-checkout-item-qty{
+	float:right;
+	margin-top:-33px;
+}
+.amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box{padding:20px; background:#e6e6e6}
+.amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box > div{background:#FFFFFF; padding:0 15px;}
+.amscheckout table.amscheckout-data-table.total-table{
+	background:#FFFFFF;
+	color:#000;
+}
+.amscheckout table.amscheckout-data-table.total-table tfoot td{
+	padding:5px 0;
+}
+
+.amscheckout table.amscheckout-data-table.total-table tfoot tr:last-child{}
+.amscheckout table.amscheckout-data-table.total-table tfoot tr:last-child td{border-top:1px solid #e6e6e6; padding:10px 0; font-size:18px;}
+
+.amscheckout-review-wrap #checkout-review-submit{padding:0 15px;}
 
 .amscheckout .amscheckout-item .input-qty{
     margin: 0 3px;
@@ -429,7 +496,10 @@
 }
 
 .amscheckout-data-table tfoot td:first-child{
-    padding-right: 3px;
+	text-align:left;
+}
+.amscheckout-data-table tr.summary-details td, .amscheckout-data-table tr.summary-total td{
+	color:#FF0000;
 }
 .checkout-onepage-index .col-main{
     width: 100% !important;
@@ -500,15 +570,15 @@
 
 @media only screen and (max-width: 1100px) {
     .amscheckout .three-columns .first-column,
-    .amscheckout .three-columns .second-column
-    {
-        width: 50%;
-        border: 0px;
+    .amscheckout .three-columns .second-column {
+			width: 49%;
+			border: 0px;
+			margin:0;
     }
-    
-    .amscheckout .three-columns .third-column
-    {
+    .amscheckout .three-columns .second-column{float:right;}
+    .amscheckout .three-columns .third-column{
         width: 100%;
+				margin-top:20px;
     }
 }
 
@@ -524,26 +594,21 @@
 }
 
 @media only screen and (max-width: 599px){
-    #amscheckout-cart .cart .button{
-        float: none;
-        margin: 0;
-        width: 32%;
-        height: 70px;
-    }
+	#amscheckout-cart .cart .button{
+			float: none;
+			margin: 0;
+			width: 32%;
+			height: 70px;
+	}
+	.amscheckout-main .amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box{padding:5px;}
+	.amscheckout-main .amscheckout table#checkout-review-table .opc-product-image{max-width:50px;}
+	.amscheckout-main .amscheckout table#checkout-review-table .opc-product-info{margin-left:70px;}
 }
 
 #review-processing,
 #payment-method-processing,
 #shipping-method-processing{
     line-height: 10px;
-}
-
-label.required:after, span.required:after{
-      content: ''  !important;
-}
-
-label.required em, span.required em{
-    display: inline !important;
 }
 
 .amscheckout-control [for='billing:gender']{

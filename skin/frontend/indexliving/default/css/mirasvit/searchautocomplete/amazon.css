@@ -410,8 +410,9 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-
-
+ @media (max-width: 1199px) {
+  .searchautocomplete  {width:435px;}
+ }
  @media (max-width: 767px) {
   .searchautocomplete {width:100%; padding:0px;}
   .searchautocomplete .nav {background:#252525; padding:10px 10px 10px 40px; height:50px;}

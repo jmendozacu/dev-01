@@ -31,13 +31,8 @@
     </div>
     -->
     <?php echo $this->getMessagesBlock()->toHtml() ?>
-    <?php echo $this->getChildHtml('hello') ?>
-    <div class="box-points-dashboard"> <!-- box-html -->
-      <?php $mypoints = 2050; ?>
-      <p>
-        <?php echo $this->__('คุณมีคะแนนสะสมทั้งหมด  <span>%s</span> คะแนน ',$mypoints ) ?></br>
-        <?php echo $this->__('ทุกๆ 5,000 แต้ม ใช้แทนส่วนลด 50 บาท',$mypoints ) ?>
-      </p>
+    <div class="box-desktop">
+      <?php echo $this->getChildHtml('hello') ?>
     </div>
     <div class="box-account box-info2">
         <?php /* Extensions placeholder */ ?>

@@ -31,7 +31,7 @@
         <?php if( sizeof($_orders->getItems()) > 0 ): ?><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('View All') ?></a><?php endif; ?>
     </div>
 <?php if( sizeof($_orders->getItems()) > 0 ): ?>
-    <table class="data-table orders orders-table" id="my-orders-table">
+    <table class="data-table orders orders-table table-custom-mobile" id="my-orders-table">
     <col />
     <col />
     <col />
@@ -51,12 +51,40 @@
         <tbody>
             <?php $i=0; foreach ($_orders as $_order): $i++;?>
                 <tr onclick="window.location.href='<?php echo $this->getViewUrl($_order) ?>'" style="cursor: pointer;">
-                    <td class="number"><?php echo $i;?></td>
-                    <td class="date"><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
-                    <td class="number"><a href="<?php echo $this->getViewUrl($_order) ?>" title="<?php echo $this->__('View Order') ?>"><?php echo $_order->getRealOrderId() ?></a></td>
-                    <td class="total"><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
-                    <td class="ship"><?php echo $_order->getShippingAddress() ? $this->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
-                    <td class="status"><span <?php if($_order->getStatus() == 'complete'): ?> class="status-done" <?php endif; ?>><?php echo $_order->getStatusLabel() ?></span></td>
+                    <td class="number">
+                      <label class="th-title box-mobile"><?php echo $this->__('Id') ?></label>
+                      <div class="td-content"><?php echo $i;?></div>
+                    </td>
+                    <td class="date">
+                      <label class="th-title box-mobile"><?php echo $this->__('Date') ?></label>
+                      <div class="td-content">
+                        <span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span>
+                      </div>
+                    </td>
+                    <td class="number">
+                      <label class="th-title box-mobile"><?php echo $this->__('Order #') ?></label>
+                      <div class="td-content">
+                        <a href="<?php echo $this->getViewUrl($_order) ?>" title="<?php echo $this->__('View Order') ?>"><?php echo $_order->getRealOrderId() ?></a>
+                      </div>
+                    </td>
+                    <td class="total">
+                      <label class="th-title box-mobile"><?php echo $this->__('Order Total') ?></label>
+                      <div class="td-content">
+                        <?php echo $_order->formatPrice($_order->getGrandTotal()) ?>
+                      </div>
+                    </td>
+                    <td class="ship">
+                      <label class="th-title box-mobile"><?php echo $this->__('Ship To') ?></label>
+                      <div class="td-content">
+                        <?php echo $_order->getShippingAddress() ? $this->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?>
+                      </div>
+                    </td>
+                    <td class="status">
+                      <label class="th-title box-mobile"><?php echo $this->__('Status') ?></label>
+                      <div class="td-content">
+                        <span <?php if($_order->getStatus() == 'complete'): ?> class="status-done" <?php endif; ?>><?php echo $_order->getStatusLabel() ?></span>
+                      </div>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

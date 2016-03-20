@@ -71,140 +71,6 @@
         
     } else {
 ?>
-<style>
-    .amscheckout-main {
-        border: 2px solid <?php print $themeColor?>;
-        background-color: <?php print $backgroundColor?>;
-        color: <?php print $textColor?>;
-    }
-    <?php if (!empty($fontFamily)) { ?>
-    .amscheckout-main,
-    .amschekcout_title,
-    .amschekcout_content{
-        font-family: <?php print $fontFamily;?>;
-    }
-    <?php } ?>
-    .amscheckout-login-table label,
-    .amscheckout .form-list label, 
-    .amscheckout .amscheckout-label{
-        color: <?php print $textColor?>;
-    }
-    
-    .amscheckout-main a,
-    .amscheckout-main a:active,
-    .amscheckout-main a:hover,
-    .amscheckout-login a,
-    .amscheckout-login a:active,
-    .amscheckout-login a:hover{
-        color: <?php print $themeColor?>;
-    }
-    
-    .amscheckout textarea:focus,
-    .amscheckout select:focus,
-    .amscheckout-login input[type="text"]:focus,
-    .amscheckout input[type="text"]:focus,
-    .amscheckout select:focus:hover,
-    .amscheckout-login input[type="text"]:focus:hover,
-    .amscheckout textarea:focus:hover,
-    .amscheckout input[type="text"]:focus:hover{
-        box-shadow: 0px 0px 5px <?php print $themeColor?>;
-        border:1px solid <?php print $themeColor?>;
-    }
-    
-    .amscheckout .form-list label.required em,
-    .amscheckout .amscheckout-label em{
-        color: <?php print $themeColor?>;
-    }
-    
-    .amscheckout-login{
-        border: 2px solid <?php print $themeColor?>;
-        background-color: <?php print $backgroundColor?>;
-    }
-    
-    .amscheckout-img{
-        background-color: <?php print $themeColor;?>;
-        background-image: -webkit-linear-gradient(bottom, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-        background-image: -moz-linear-gradient(bottom, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-        background-image: -o-linear-gradient(bottom, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-        background-image: linear-gradient(to top, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-    }
-    
-    .amschekcout_title{
-        background-color: <?php print $themeColor;?>;
-        background-image: -webkit-linear-gradient(bottom, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-        background-image: -moz-linear-gradient(bottom, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-        background-image: -o-linear-gradient(bottom, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-        background-image: linear-gradient(to top, <?php print $themeColorFrom;?>, <?php print $themeColorTo;?>);
-    }
-    
-    .amscheckout-img-shadow{
-        background-color: <?php print $backgroundColor?>;
-        background-image: -webkit-linear-gradient(-9deg, #000, <?php print $backgroundColor?>);
-        background-image: -moz-linear-gradient(-9deg, #000, <?php print $backgroundColor?>);
-        background-image: -o-linear-gradient(-9deg, #000, <?php print $backgroundColor?>);
-        background-image: linear-gradient(99deg, #000,<?php print $backgroundColor?>);
-    }
-    
-    .amscheckout-dologin:active span,
-    .amscheckout-submit:active span,
-    .amscheckout-apply:active span
-    {
-        background-color: <?php print $buttonColor?>;
-/*        -webkit-box-shadow: 0 3px 3px rgba(255,255,255,.8), inset 0 3px 4px rgba(193,66,29,.6);
-        -moz-box-shadow: 0 3px 3px rgba(255,255,255,.8), inset 0 3px 4px rgba(193,66,29,.6);
-        box-shadow: 0 3px 3px rgba(255,255,255,.8), inset 0 3px 4px rgba(193,66,29,.6);*/
-        border: solid 1px <?php print $buttonBorderColor;?>;
-background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorActiveFrom;?>, <?php print $buttonColorActiveTo;?>);
-        background-image: -moz-linear-gradient(bottom, <?php print $buttonColorActiveFrom;?>, <?php print $buttonColorActiveTo;?>);
-        background-image: -o-linear-gradient(bottom, <?php print $buttonColorActiveFrom;?>, <?php print $buttonColorActiveTo;?>);
-        background-image: linear-gradient(to top, <?php print $buttonColorActiveFrom;?>, <?php print $buttonColorActiveTo;?>);
-    }
-
-
-
-    .amscheckout-dologin:hover span,
-    .amscheckout-submit:hover span,
-    .amscheckout-apply:hover span
-    {
-        background-color: <?php print $buttonColor?>;
-        -webkit-box-shadow: 0 3px 3px rgba(0,0,0,.25), inset 0 0 3px rgba(255,255,255,.89);
-        -moz-box-shadow: 0 3px 3px rgba(0,0,0,.25), inset 0 0 3px rgba(255,255,255,.89);
-        box-shadow: 0 3px 3px rgba(0,0,0,.25), inset 0 0 3px rgba(255,255,255,.89);
-        border: solid 1px <?php print $buttonBorderColor;?>;
-        background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorHoverFrom;?>, <?php print $buttonColorHoverTo;?>);
-        background-image: -moz-linear-gradient(bottom, <?php print $buttonColorHoverFrom;?>, <?php print $buttonColorHoverTo;?>);
-        background-image: -o-linear-gradient(bottom, <?php print $buttonColorHoverFrom;?>, <?php print $buttonColorHoverTo;?>);
-        background-image: linear-gradient(to top, <?php print $buttonColorHoverFrom;?>, <?php print $buttonColorHoverTo;?>);
-    }
-
-
-
-    .amscheckout-dologin span,
-    .amscheckout-submit span,
-    .amscheckout-apply span
-    {
-        background-color: <?php print $buttonColor?>;
-        -webkit-box-shadow: 0 3px 3px rgba(0,0,0,.25), inset 0 0 3px rgba(255,255,255,.89);
-        -moz-box-shadow: 0 3px 3px rgba(0,0,0,.25), inset 0 0 3px rgba(255,255,255,.89);
-        box-shadow: 0 3px 3px rgba(0,0,0,.25), inset 0 0 3px rgba(255,255,255,.89);
-        border: solid 1px <?php print $buttonBorderColor;?>;
-        background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorFrom;?>, <?php print $buttonColorTo;?>);
-        background-image: -moz-linear-gradient(bottom, <?php print $buttonColorFrom;?>, <?php print $buttonColorTo;?>);
-        background-image: -o-linear-gradient(bottom, <?php print $buttonColorFrom;?>, <?php print $buttonColorTo;?>);
-        background-image: linear-gradient(to top, <?php print $buttonColorFrom;?>, <?php print $buttonColorTo;?>);
-    }
-        
-    #co-payment-form{
-        width: 100%;
-    }
-    .amscheckout .product-name img{
-        float: left;
-    } 
-    .amscheckout .product-name{
-        line-height: 16px;
-    }
-        
-</style>
 <script>
     var billingForm = new VarienForm('amscheckout-onepage');
 
@@ -326,8 +192,7 @@ background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorActive
         <div id="amscheckout-loading" class="amscheckout-loading" style="display: none;">&nbsp;</div>
         
         <div class="amscheckout-header">
-            <div class="lane"><?php echo $this->__("Express checkout lane")?></div>
-            <div class="lane2"><?php echo $this->__("Please enter your details below to complete your purchase")?></div>
+            <h1 class="lane"><?php echo $this->__("Checkout")?></h1>
             <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
             <?php
                 if (!$this->isCustomerLoggedIn()){
@@ -339,13 +204,6 @@ background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorActive
                 }
             ?>
         </div>
-
-        <div class="separator">
-            <div></div>
-            <div></div>
-        </div>
-
-
 
         <input type="hidden" name="form_key" value="<?php print Mage::getSingleton('core/session')->getFormKey();?>"/>
         
@@ -458,12 +316,16 @@ background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorActive
                             <div class="amscheckout-img-shadow">
                                 <div class="amscheckout-img">
                                     <span id="review-processing" style="display: none;" class="amscheckout-processing-small">&nbsp;</span>
-                                    <div id="review-number" class="amscheckout-review">&nbsp;</div>
+                                    <div id="review-number" class="amscheckout-review"><?php 
+                                    echo ($skipShippingMethod ? "3" : "4")
+                                ?></div>
                                 </div>
                             </div>
                             <?php echo $this->htmlEscape($_areas['review']['area_label'])?>
                         </div>
-                        <?php echo $this->getChildHtml("review") ?>
+												<div class="amscheckout-review-wrap">
+													<?php echo $this->getChildHtml("review") ?>
+												</div>
                     </div>
                     <?php }?>
                 </div>
@@ -570,7 +432,9 @@ background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorActive
                         <div class="amscheckout-img-shadow">
                             <div class="amscheckout-img">
                                 <span id="review-processing" style="display: none;" class="amscheckout-processing-small">&nbsp;</span>
-                                <div id="review-number" class="amscheckout-review">&nbsp;</div>
+                                <div id="review-number" class="amscheckout-review"><?php 
+                                    echo ($skipShippingMethod ? "3" : "4")
+                                ?></div>
                             </div>
                         </div>
                         <?php echo $this->htmlEscape($_areas['review']['area_label'])?>
@@ -680,7 +544,9 @@ background-image: -webkit-linear-gradient(bottom, <?php print $buttonColorActive
                         <div class="amscheckout-img-shadow">
                             <div class="amscheckout-img">
                                 <span id="review-processing" style="display: none;" class="amscheckout-processing-small">&nbsp;</span>
-                                <div id="review-number" class="amscheckout-review">&nbsp;</div>
+                                <div id="review-number" class="amscheckout-review"><?php 
+                                    echo ($skipShippingMethod ? "3" : "4")
+                                ?></div>
                             </div>
                         </div>
                         <?php echo $this->htmlEscape($_areas['review']['area_label'])?>

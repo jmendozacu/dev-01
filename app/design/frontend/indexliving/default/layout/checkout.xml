@@ -352,8 +352,12 @@ One page checkout main layout
         <remove name="left"/>
 
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+				<reference name="breadcrumbs">
+					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Checkout</crumbName><crumbInfo><label>Checkout</label><title>Checkout</title></crumbInfo></action>
+				</reference>
         <reference name="right">
             <action method="unsetChildren"></action>
             <block type="page/html_wrapper" name="checkout.progress.wrapper" translate="label">
@@ -368,6 +372,7 @@ One page checkout main layout
             </block>
         </reference>
         <reference name="content">
+						<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
             <block type="checkout/onepage" name="checkout.onepage" template="checkout/onepage.phtml">
                 <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml">
                     <block type="page/html_wrapper" name="checkout.onepage.login.before" as="login_before" translate="label">
@@ -531,6 +536,7 @@ One page checkout order review block
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
+						<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
             <block type="checkout/onepage_success" name="checkout.success" template="checkout/success.phtml"/>
         </reference>
     </checkout_onepage_success>

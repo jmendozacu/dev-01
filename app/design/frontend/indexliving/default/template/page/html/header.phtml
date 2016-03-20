@@ -62,7 +62,7 @@
                 <a class="toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
               <?php else: ?>
                 <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
-                  <?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>
+                  <span><?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?></span>
                 </a>
               <?php endif; ?>
             </li>
