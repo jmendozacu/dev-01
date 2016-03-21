@@ -1,18 +1,22 @@
 <?php $catLevel2 = $this->getCatLevel2(); ?>
-<div><h3><?php echo $this->__('All Categories'); ?></h3></div>
-<div>
-  <p>
-    <span><?php echo $this->__('Categories'); ?></span>
+<div class="page-title style2">
+  <h1>
+    <?php echo $this->__('All Categories'); ?>         
+  </h1>
+</div>
+<div class="allcategory">
+  <div class="select-categorylv1">
+    <label><?php echo $this->__('Categories'); ?></label>
     <select id="allcategory_page_sel" onchange="loadCategoryLevel3();">
       <?php foreach ($catLevel2 as $cat2): ?>
         <option value="<?php echo $cat2['entity_id']?>"><?php echo $this->__($cat2['name']);?></option>
       <?php endforeach; ?>
     </select>
-    <img id="allcategory_page_ajaxloader" style="display:none;" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif'); ?>"/>
-  </p>
+  </div>
+  <img id="allcategory_page_ajaxloader" style="display:none;" src="<?php echo $this->getSkinUrl('images/main-loading.gif'); ?>"/>
+  <div id="allcategory_page_catchild"></div>
 </div>
 
-<div id="allcategory_page_catchild"></div>
 
 <script type="text/javascript">
   document.observe('dom:loaded', function() {

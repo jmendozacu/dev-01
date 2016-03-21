@@ -4,13 +4,12 @@ jQuery(document).ready(function () {
   if(jQuery("#nav-home").html()){
     var navHtml = jQuery("#nav-home").html(); 
     jQuery("#department-menu-mobile").append(navHtml);
-    jQuery("#function-menu-mobile").append(navHtml);
     jQuery('.main-home #nav-home').remove();
     jQuery('.main-home #nav-home').remove();
     jQuery(".box-menu-home .menu-content").remove();
   }
   
-  jQuery(".box-list-products .category-products .block-content,.box-menu-home .nav-primary").mCustomScrollbar({
+  jQuery(".box-list-products .category-products .block-content, .box-home-list-products .nav-primary li.level0 ul.level0").mCustomScrollbar({
     axis:"x",
     advanced:{autoExpandHorizontalScroll:true}
   });

@@ -58,7 +58,7 @@
                     <td class="date">
                       <label class="th-title box-mobile"><?php echo $this->__('Date') ?></label>
                       <div class="td-content">
-                        <span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span>
+                        <span class="nobr"><?php echo date('d/m/Y', strtotime($_order->getCreatedAtStoreDate())); ?></span>
                       </div>
                     </td>
                     <td class="number">

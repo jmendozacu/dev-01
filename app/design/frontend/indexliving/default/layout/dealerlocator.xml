@@ -27,6 +27,10 @@
         </action>
       </action>
     </reference>
+		<reference name="breadcrumbs">
+			<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+			<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Dealers</crumbName><crumbInfo><label>Dealers</label><title>Dealers</title></crumbInfo></action>
+		</reference>
     <reference name="content">
       <block type="dealerlocator/dealerlocator" name="dealerlocator">
       </block>

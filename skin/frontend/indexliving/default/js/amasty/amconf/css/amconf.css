@@ -250,3 +250,6 @@ hr.amconf-hr{
 } 
 .amconf-image-selected:before {
 }
+@media (max-width: 768px) {
+.products-grid li.item .amconf-block {top:43%;}
+}
