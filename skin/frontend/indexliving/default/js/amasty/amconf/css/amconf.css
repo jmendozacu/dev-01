@@ -16,7 +16,8 @@
 }
 
 
-.product-view .amconf-color-container{border-radius:0;}
+.product-view .amconf-color-container{border-radius:0; border:1px solid #ccc;}
+.product-view .amconf-color-container.amconf-image-selected{border:1px solid #000;}
 
 em{
      color:red;
@@ -246,15 +247,6 @@ hr.amconf-hr{
     position: relative;
 }
 .amconf-color-container:before {
-    content: "";
-    width: 14px;
-    height: 14px;
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    border: solid 1px transparent;
-    border-radius: 100%;
 } 
 .amconf-image-selected:before {
-    border-color: #000;
 }

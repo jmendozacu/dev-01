@@ -63,6 +63,13 @@
 		font-size:12px;
 	}
 	.product-view .product-shop .add-to-links .shareproduct-content{right:70px;}
+	.product-view #customer-reviews .review-list li > div.review-rating{
+		width:30%;
+	}
+	.product-view #customer-reviews .review-list li > div.review-details{
+		width:53%;
+		float:right;
+	}
  }
  @media (max-width: 768px) {
   .box-desktop,
@@ -426,6 +433,14 @@
  @media (max-width:640px){
   .main-home .box-list-products .products-grid li.item.last  {display:block; float:left; margin-right:0px;} 
 	/* Product Page */
+	.product-view .product-features .box-title h2{
+		text-align:left;
+		cursor:pointer; 
+		line-height:25px; 
+		position:relative; 
+	}
+	.product-view .product-features .box-title h2:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:0px; right:10px; background:url(../images/arrow-down-2.png) no-repeat center center;}
+  .product-view .product-features .box-title h2.active:before {background:url(../images/arrow-up-2.png) no-repeat center center;}
 	.product-view .product-review-summary .review-box .box-title .bl,
 	.product-view .product-review-summary .review-box .box-title .br{
 		float: left;
@@ -433,8 +448,29 @@
     max-width: 100%;
     width: 100%;
 	}
-	.product-view .review-box .ratings{margin:1% 15%;}
+	.product-view .product-review-summary .review-box .box-title .bl h2{
+		text-align:left;
+		cursor:pointer; 
+		line-height:25px; 
+		position:relative; 
+	}
+	.product-view .product-review-summary .review-box .box-title .bl h2:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:0px; right:10px; background:url(../images/arrow-down-2.png) no-repeat center center;}
+  .product-view .product-review-summary .review-box .box-title .bl h2.active:before {background:url(../images/arrow-up-2.png) no-repeat center center;}
+	.product-view .review-box .ratings{margin:1%;}
 	.product-view .review-box .ratings .rating-average{float:right;}
+	.product-view .m-review-list-title {
+		display:block!important;
+		cursor:pointer; 
+		line-height:25px; 
+		position:relative; 
+		margin:0px;    
+		font-family: "FuturaT_Bold";
+    text-transform: capitalize;
+    font-size: 25px;
+    color: #000000;
+	}
+  .product-view .m-review-list-title:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:0px; right:0px; background:url(../images/arrow-down-2.png) no-repeat center center;}
+  .product-view .m-review-list-title.active:before {background:url(../images/arrow-up-2.png) no-repeat center center;}
 	#customer-reviews .review-list li > div, 
 	#customer-reviews .review-list li > div.review-rating,
 	#customer-reviews .review-list li > div.review-image,

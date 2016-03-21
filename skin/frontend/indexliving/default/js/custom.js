@@ -204,6 +204,45 @@ jQuery(document).ready(function () {
   });
   /* cat mobile */
   jQuery('.toolbar-bottom .sort-by-mobile').remove();
+	
+	/* product page mobile */
+	
+	jQuery('.review-list .m-review-list-title').click(function(){
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).next().slideToggle(300);
+      jQuery(this).addClass('active');
+    }
+    else{
+			jQuery(this).next().slideToggle(300);
+      jQuery(this).removeClass('active');
+    }
+	});
+	
+	jQuery('.product-view .product-features .box-title h2').click(function(){
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).next().slideToggle(300);
+      jQuery('.product-view .product-features ul.products-features-grid').slideToggle(300);
+      jQuery(this).addClass('active');
+    }
+    else{
+			jQuery(this).next().slideToggle(300);
+      jQuery('.product-view .product-features ul.products-features-grid').slideToggle(300);
+      jQuery(this).removeClass('active');
+    }
+	});
+	
+	jQuery('.product-view .product-review-summary .review-box .box-title .bl h2').click(function(){
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).next().slideToggle(300);
+      jQuery('.product-view .product-review-summary .review-box .box-title .br').slideToggle(300);
+      jQuery(this).addClass('active');
+    }
+    else{
+			jQuery(this).next().slideToggle(300);
+      jQuery('.product-view .product-review-summary .review-box .box-title .br').slideToggle(300);
+      jQuery(this).removeClass('active');
+    }
+	});
   
   
   var widthWindow = jQuery( window ).width();

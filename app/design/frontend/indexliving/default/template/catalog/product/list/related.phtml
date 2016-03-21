@@ -25,6 +25,7 @@
  */
 ?>
 <?php if($this->getItems()->getSize()): ?>
+<?php $itemCount = $this->getItems()->getSize();?>
 <div class="block block-related">
 	<div class="page-container">
     <div class="block-title">
@@ -48,12 +49,15 @@
 				jQuery("#product-list-related").owlCarousel({	
 					loop:true,
 					margin:20,
-					nav:true,
+					nav:<?php if($itemCount > 4):?> true <?php else:?> false <?php endif;?>,
 					responsive:{
 						0:{
 								items:1
 						},
 						600:{
+								items:3
+						},
+						768:{
 								items:3
 						},
 						1000:{

@@ -84,8 +84,10 @@ Default layout, loads most of the pages
 					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
 					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Cart</crumbName><crumbInfo><label>Cart</label><title>Cart</title></crumbInfo></action>
 				</reference>
+				<reference name="main.before">
+					<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
+				</reference>
         <reference name="content">
-						<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
             <block type="checkout/cart" name="checkout.cart">
                 <action method="setCartTemplate"><value>checkout/cart.phtml</value></action>
                 <action method="setEmptyTemplate"><value>checkout/cart/noItems.phtml</value></action>
@@ -354,9 +356,16 @@ One page checkout main layout
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+				<reference name="head">
+						<action method="addItem"><type>skin_js</type><name>js/jquery.custom-radio-checkbox.js</name></action>
+						<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
+        </reference>
 				<reference name="breadcrumbs">
 					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
 					<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Checkout</crumbName><crumbInfo><label>Checkout</label><title>Checkout</title></crumbInfo></action>
+				</reference>
+				<reference name="main.before">
+					<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
 				</reference>
         <reference name="right">
             <action method="unsetChildren"></action>
@@ -372,7 +381,6 @@ One page checkout main layout
             </block>
         </reference>
         <reference name="content">
-						<block type="core/template" name="cart.checkout.steps" as="checkoutCartSteps" template="checkout/steps.phtml" before="-"/>
             <block type="checkout/onepage" name="checkout.onepage" template="checkout/onepage.phtml">
                 <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="checkout/onepage/login.phtml">
                     <block type="page/html_wrapper" name="checkout.onepage.login.before" as="login_before" translate="label">

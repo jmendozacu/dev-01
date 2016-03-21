@@ -195,8 +195,9 @@
     color: white;
     text-align: center;
     width: 32px;
-		font-size:20px;
+		font-size:14px;
 		line-height:32px;
+		font-family:'FuturaBT-Book';
     
 /*    background-color: #fff;
     background-image: -webkit-linear-gradient(bottom, #5cc98b, #32955d);
