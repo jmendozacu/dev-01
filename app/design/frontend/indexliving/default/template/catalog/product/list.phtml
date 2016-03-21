@@ -150,9 +150,7 @@
                     }
                     ?>
                     <?php echo $this->getPriceHtml($_product, true) ?>
-                    <?php if($_product->getRatingSummary()): ?>
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
-                    <?php endif; ?>
+                    
                     <div class="actions">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
@@ -162,21 +160,15 @@
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
                         <ul class="add-to-links">
+
                             <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li class="wishlist-ajax">
+                                      <a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?>modal<?php endif ?>"
+                                         class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
+                                    <span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
 
-                                <?php if(!$this->helper('customer')->isLoggedIn()):?>
-                                    <li><a href="<?php echo Mage::getUrl('customer/account/login');?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;"  class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a><span id='ajax_loader' style="display: none"></span>
-
-                                    <?php else: ?>
-                                    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product); ?>" data-remodal-target="modal"
-                                           class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a><span id='ajax_loader' style="display: none"></span>
-                                    <?php ?>
-                                <?php endif;?>
-
-								<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
-                                        <span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
-                        </span></li>
-                            <?php endif; ?>
+                                </li>
+                            <?php endif;?>
                         </ul>
 
                     </div>
@@ -214,78 +206,3 @@ if ($this->getChild('after')) {
     }
 }
 ?>
-<script type="text/javascript">
-    //<![CDATA[
-    var productAddToCartForm = new VarienForm('product_addtocart_form');
-    productAddToCartForm.submit = function(button, url) {
-        if (this.validator.validate()) {
-            var form = this.form;
-            var oldUrl = form.action;
-
-            if (url) {
-                form.action = url;
-            }
-            var e = null;
-            try {
-                this.form.submit();
-            } catch (e) {
-            }
-            this.form.action = oldUrl;
-            if (e) {
-                throw e;
-            }
-
-            if (button && button != 'undefined') {
-                button.disabled = true;
-            }
-        }
-    }.bind(productAddToCartForm);
-
-    productAddToCartForm.submitLight = function(button, url){
-        if(this.validator) {
-            var nv = Validation.methods;
-            delete Validation.methods['required-entry'];
-            delete Validation.methods['validate-one-required'];
-            delete Validation.methods['validate-one-required-by-name'];
-            // Remove custom datetime validators
-            for (var methodName in Validation.methods) {
-                if (methodName.match(/^validate-datetime-.*/i)) {
-                    delete Validation.methods[methodName];
-                }
-            }
-
-            if (this.validator.validate()) {
-                if (url) {
-                    this.form.action = url;
-                }
-                this.form.submit();
-            }
-            Object.extend(Validation.methods, nv);
-        }
-    }.bind(productAddToCartForm);
-    //]]>
-</script>
-<script type="text/javascript">
-    $j(".add-to-links").click(function() {
-        <?php if(!$this->helper('customer')->isLoggedIn()):?>
-         window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
-        <?php endif; ?>
-        <?php if($this->helper('customer')->isLoggedIn()):?>
-        var frm = $j('.add-to-links');
-        url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
-        $j('#ajax_loader').show();
-        url += 'product/'+$j(this).find('.detect-proId').text();
-        $j.ajax({
-            url: url,
-            type: "GET",
-            dataType: 'json',
-            success: function (data) {
-                $j('#ajax_loader').hide();
-                $j(".model-content .login").html(data.message);
-            }
-        });
-        <?php endif;?>
-    });
-
-
-</script>

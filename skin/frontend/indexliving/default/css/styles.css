@@ -1128,6 +1128,7 @@ a.button {
 #wishlist-view-form .button.btn-add  >span:before {content:""; position:absolute; width:30px; height:30px; top:5px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
 .button.btn-cart{ font-family: "FuturaT_Bold"; font-size:14px; }
 
+#wishlist-view-form  .button.btn-removeall > span{padding-left:20px; background:url(../images/icon-remove4.png) no-repeat center left;} 
 @media only screen and (max-width: 770px) {
   .col2-set .buttons-set .button,
   .col2-set .buttons-set .button2 {
@@ -2865,6 +2866,7 @@ form .form-instructions {
 .customer-account-edit .form-list > li.gender{float:left; width:100px; margin-right:18px; clear:none;}
 .form-list .field {float:left; width:260px; /* margin-right:18px; */}
 .form-list .field.name-firstname {float:left; /* margin-right:18px; */width:200px}
+.my-account .form-list .field.name-firstname  {margin-right:18px;}
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
@@ -3158,6 +3160,7 @@ html,
 body {
   height: 100%;
 }
+
 
 .wrapper {
   min-width: 320px;
@@ -8259,7 +8262,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  .box-points-dashboard {float:left; font-family: 'DBYordX'; line-height:23px; color:#000; font-size:19px; width:100%; padding:12px; padding-left:70px; background:url(../images/icon-points.png) no-repeat 12px center #F8F8F8;}
  .box-points-dashboard span {display:inline-block; line-height:23px; padding:0 8px; background:#252525; border-radius:12px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
  .box-account.box-info2 {float:left; width:49%; margin-right:2%;}
- .box-account.box-info2:nth-child(2n){margin-right:0px;}
+ .box-account.box-info2 + .box-account.box-info2 {margin-right:0px;}
  .box-account.box-info2 .box-content,
  .addresses-list .box-content,
 .order-info-box .box-content {padding:15px 22px; background:#F8F8F8; float:left; width:100%; }
@@ -8280,7 +8283,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table.orders-table td.status span {display:inline-block; text-align:center; min-width:84px; height:26px; line-height:26px; border:solid 1px #BEBEBE; border-radius:5px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
 .data-table.orders-table td.status span.status-done { color:#A0D819;}
 .data-table.orders-table  td,
-.data-table.orders-table th{text-align:left;}
+.data-table.orders-table th{/* text-align:left; */}
 .data-table.orders-table .a-right {text-align:right;}
 
  
