@@ -106,16 +106,7 @@
         </span>
        </a>
       <div id="header-nav" class="skip-content menu-content">
-        <ul class="tabs">
-          <li class=""><a href="#tab-funtion" title="<?php echo $this->__('By funtion') ?>"><?php echo $this->__('By funtion') ?></a></li>
-          <li class="first"><a href="#tab-cateogry" title="<?php echo $this->__('By Deparment') ?>"><?php echo $this->__('By Deparment') ?></a></li>
-        </ul>
-        <div id="tab-cateogry" class="tab_content first">
-          <?php echo $this->getChildHtml('topMenu') ?>
-        </div> 
-        <div id="tab-funtion" class="tab_content">
-          <?php // echo $this->getChildHtml('topMenu') ?>
-        </div> 
+        <?php echo $this->getChildHtml('topMenu') ?>
       </div>   
     </div>
     <div class="box-desktop">

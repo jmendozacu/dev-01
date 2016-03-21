@@ -62,6 +62,7 @@ jQuery(document).ready(function () {
     
   /* end language */
   
+  
   /* tab */
   //When page loads...
 	jQuery(".tab_content").hide(); //Hide all content
@@ -158,8 +159,8 @@ jQuery(document).ready(function () {
   });
   
   /*top menu nav on mobile */
-  jQuery('.nav-primary li.level0.parent').append( "<span class='arrow box-mobile'></span>" );
-  jQuery('.nav-primary li.level0.parent > .arrow').click(function(){
+  jQuery('#header-nav .nav-primary li.level1.parent').append( "<span class='arrow box-mobile'></span>" );
+  jQuery('#header-nav .nav-primary li.level1.parent > .arrow').click(function(){
 	 if (!jQuery(this).hasClass('active')){
 		jQuery(this).prev().addClass('active');
 		jQuery(this).addClass('active');
@@ -172,13 +173,13 @@ jQuery(document).ready(function () {
 	 }
   });
   /*top menu lv2 on mobile */
-  jQuery('.nav-primary li.level1.parent').append( "<span class='arrow box-mobile'></span>" );
-  jQuery('.nav-primary li.level1.parent .arrow').click(function(){
-    jQuery('.nav-primary li.level1 > ul').slideUp(300);
-    jQuery('.nav-primary li.level1 > a').removeClass('active');
+  jQuery('#header-nav .nav-primary li.level2.parent').append( "<span class='arrow box-mobile'></span>" );
+  jQuery('#header-nav .nav-primary li.level2.parent .arrow').click(function(){
+    jQuery('#header-nav .nav-primary li.level2 > ul').slideUp(300);
+    jQuery('#header-nav .nav-primary li.level2 > a').removeClass('active');
     if (!jQuery(this).hasClass('active')){
       jQuery(this).prev().slideToggle(300);
-      jQuery('.nav-primary li.level1.parent .arrow').removeClass('active');
+      jQuery('#header-nav .nav-primary li.level2.parent .arrow').removeClass('active');
       jQuery(this).addClass('active');
       jQuery(this).prevAll().addClass('active');
     }
@@ -265,6 +266,17 @@ jQuery(document).ready(function () {
         jQuery(this).next().slideUp(300);
        }
       });
-      
     }
+    /* menu */
+  jQuery("#header-nav .nav-primary ul.level0").hide(); 
+  jQuery("#header-nav .nav-primary li.level0.nav-2 > a").addClass("active").show();
+	jQuery("#header-nav .nav-primary li.level0.nav-2 > ul.level0").show();
+  jQuery("#header-nav .nav-primary li.level0 > a").click(function() {
+    if (!jQuery(this).hasClass('active')){
+      jQuery("#header-nav .nav-primary ul.level0").hide(); 
+      jQuery(this).next().show();
+      jQuery('#header-nav .nav-primary li.level0 > a').removeClass('active');
+      jQuery(this).addClass('active');
+    }
+  });
 });
