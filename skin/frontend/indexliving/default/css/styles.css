@@ -8207,7 +8207,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  .box-points-dashboard {float:left; font-family: 'DBYordX'; line-height:23px; color:#000; font-size:19px; width:100%; padding:12px; padding-left:70px; background:url(../images/icon-points.png) no-repeat 12px center #F8F8F8;}
  .box-points-dashboard span {display:inline-block; line-height:23px; padding:0 8px; background:#252525; border-radius:12px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
  .box-account.box-info2 {float:left; width:49%; margin-right:2%;}
- .box-account.box-info2:nth-child(2n){margin-right:0px;}
+ .box-account.box-info2 + .box-account.box-info2 {margin-right:0px;}
  .box-account.box-info2 .box-content,
  .addresses-list .box-content,
 .order-info-box .box-content {padding:15px 22px; background:#F8F8F8; float:left; width:100%; }

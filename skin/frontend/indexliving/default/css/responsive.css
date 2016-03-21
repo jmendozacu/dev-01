@@ -86,7 +86,8 @@
   .logo {display:inline-block;  margin: 13px 0px 0; float:none;}
   .icon-account,
   .icon-minicart{float:left; width: 42px;  height: 44px;  background:url(../images/icon-mobile.png) no-repeat -30px 13px;}
-  .icon-minicart {background-position:-69px 13px;}
+  .icon-minicart {background-position:-69px 13px; }
+  .icon-minicart.active  {background-position:-69px -180px;}
   .banner-static-home li {width:50%;} 
   .banner-static-home li span {width:100%; margin:5px 0;}
   .box-home-list-products .box-list-products {width:100%; margin:0 0 30px;}
