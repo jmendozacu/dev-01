@@ -9,6 +9,26 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	 *
 	 * @return Mage_Core_Controller_Varien_Action|void
 	 */
+	public function compareAction()
+	{
+		$response = array();
+
+		if ($productId = (int) $this->getRequest()->getParam('product'))
+		{
+			$product = Mage::getModel('catalog/product')
+				->setStoreId(Mage::app()->getStore()->getId())
+				->load($productId);
+
+			if ($product->getId()/* && !$product->isSuper() */)
+			{
+				Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
+				$response['status'] = 'SUCCESS';
+				$response['message'] = $this->__('The product %s has been added to comparison list.', Mage::helper('core')->escapeHtml($product->getName()));
+			}
+		}
+		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+		return;
+	}
 	public function addAction()
 	{
 		$response = array();
