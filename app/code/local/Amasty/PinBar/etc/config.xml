@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_PinBar
+ */
+-->
+<config>
+    <modules>
+        <Amasty_PinBar>
+            <version>1.0.2</version>
+        </Amasty_PinBar>
+    </modules>
+
+    <global>
+        <blocks>
+            <ampinbar>
+                <class>Amasty_PinBar_Block</class>
+            </ampinbar>
+        </blocks>
+
+        <resources>
+            <ampinbar_setup>
+                <setup>
+                    <module>Amasty_PinBar</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </ampinbar_setup>
+            <ampinbar_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ampinbar_write>
+            <ampinbar_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ampinbar_read>
+        </resources>
+
+        <helpers>
+            <ampinbar>
+                <class>Amasty_PinBar_Helper</class>
+            </ampinbar>
+        </helpers>
+
+        <models>
+            <ampinbar>
+                <class>Amasty_PinBar_Model</class>
+                <resourceModel>ampinbar_mysql4</resourceModel>
+            </ampinbar>
+            <ampinbar_mysql4>
+                <class>Amasty_PinBar_Model_Mysql4</class>
+                <entities>
+                    <pinbar>
+                        <table>amasty_ampinbar</table>
+                    </pinbar>
+                    <session>
+                        <table>amasty_ampinbar_session_data</table>
+                    </session>
+                </entities>
+            </ampinbar_mysql4>
+        </models>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Amasty_PinBar after="Mage_Adminhtml">Amasty_PinBar_Adminhtml</Amasty_PinBar>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <ampinbar module="Amasty_PinBar">
+                    <file>amasty/ampinbar/ampinbar.xml</file>
+                </ampinbar>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Amasty_PinBar>
+                    <files>
+                        <default>Amasty_PinBar.csv</default>
+                    </files>
+                </Amasty_PinBar>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <ampinbar_html>
+                        <type>singleton</type>
+                        <class>ampinbar/observer</class>
+                        <method>saveSessionData</method>
+                    </ampinbar_html>
+                    <ampinbar_insert_bar>
+                        <type>singleton</type>
+                        <class>ampinbar/observer</class>
+                        <method>insertBar</method>
+                    </ampinbar_insert_bar>
+                </observers>
+            </core_block_abstract_to_html_after>
+        </events>
+    </adminhtml>
+    
+    <default>
+        <ampinbar>
+            <general>
+                <enable>1</enable>
+                <shared>1</shared>
+            </general>
+        </ampinbar>
+    </default>
+
+</config>
