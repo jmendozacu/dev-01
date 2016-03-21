@@ -5229,7 +5229,16 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-review-summary .review-box .ratings-overview .rating-box { width:225px; height:35px; font-size:0; line-height:0; background:url(../images/rating_big_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
 .product-view .product-review-summary .review-box .ratings-overview .rating-box .rating { float:left; height:35px; background:url(../images/rating_big_bg.png) 0 100% repeat-x; }
 .product-view .product-review-summary .review-box .ratings-overview .ratings .rating-box { float:left; margin-right:5px; }
-
+.product-view .product-review-summary table.ratings-table tbody tr {
+	float: left;
+	padding: 0 10px 0 0;
+}
+.product-view .product-review-summary table.ratings-table tbody th {
+	font-family: "FuturaT_Bold";
+	color: #000;
+	font-size: 14px;
+	padding: 0 10px 0 0;
+}
 
 @media only screen and (max-width: 479px) {
   .product-view .add-to-cart-buttons .paypal-or {
@@ -5276,12 +5285,14 @@ body.catalogsearch-result-index .page-title h1 {
 	float: left;
 	text-indent: 0;
 	padding-left: 40px;
-	font-size: 14px;
+	font-size: 9px;
+	font-family: 'FuturaBT-Book';
 	color: #464646;
 	line-height: 32px;
 	text-decoration: none;
 	background-image:url(../images/icons2.png);
 	background-repeat:no-repeat;
+	text-transform:uppercase;
 }
 .product-view .add-to-links a.link-wishlist{background-position:0 -122px;}
 .product-view .add-to-links a.link-wishlist:hover{background-position:0 0; color:#ffc222;}
