@@ -51,7 +51,7 @@ foreach ($children as $child) {
   $outermostClassCode = 'level' . $childLevel;
   $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
 
-  if($childLevel == 0){
+  if($childLevel == 1){
         $categoryNode = $child->getId();
         $arrayNode = explode('-', $categoryNode);
         $categoryId = $arrayNode[2];
@@ -66,7 +66,7 @@ foreach ($children as $child) {
             }
         }
     }
-  if($childLevel==1){
+  if($childLevel==2){
     $columnCount = $childrenCount/2 +1;
     if($i++%$columnCount == 0){
       $html .= '<li class="subcat">';
@@ -78,8 +78,13 @@ foreach ($children as $child) {
   }
   
   else{
-    $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
-    $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $this->escapeHtml($this->__($child->getName())) . '</a>';
+    if($childLevel==0){
+      $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
+      $html .= '<a href="javascript:void(0)" class="' . $outermostClassCode . ' ' . $_hasChildren . '"><span>' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';
+    }else{
+      $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
+      $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $this->escapeHtml($this->__($child->getName())) . '</a>';  
+    }
   }
   
   if (!empty($childrenWrapClass)) {
@@ -90,6 +95,15 @@ foreach ($children as $child) {
 
   if (!empty($_hasChildren)) {
     if($childLevel==0){
+      $html .= '<ul class="level' . $childLevel . '">';
+      $html .= $this->render($child, $childrenWrapClass);
+      if($catId && $catId != ''){
+        $category = Mage::getModel('catalog/category')->load($catId);
+      }
+      $html .= '</ul>';  
+    }
+    
+    if($childLevel==1){
       $html .= '<div class="menu-content" ' .$styleImage.'>';
       $html .= '<h3 class="title-viewall">';
       $html .=         '<a class="box-desktop level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
@@ -117,7 +131,7 @@ foreach ($children as $child) {
       }
     }  
     
-    if($childLevel==1){
+    if($childLevel==2){
       $html .= '<ul class="level' . $childLevel . '">';
       $html .= $this->render($child, $childrenWrapClass);
       if($catId && $catId != ''){
@@ -130,10 +144,10 @@ foreach ($children as $child) {
   if (!empty($childrenWrapClass)) {
     $html .= '</div>';
   }
-  if($childLevel==0){
+  if($childLevel!=2){
   $html .= '</li>';
   }
-  if($childLevel==1){
+  if($childLevel==2){
     $html .= '</li>';
     if(($i%$columnCount == 0)||($i == $childrenCount)){
       $html .= '</ul>';
