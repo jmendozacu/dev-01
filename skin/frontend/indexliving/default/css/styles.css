@@ -5271,6 +5271,47 @@ body.catalogsearch-result-index .page-title h1 {
 	padding: 0 10px 0 0;
 }
 
+/* Review form in popup IND-69 */
+#review-form-popup{}
+#review-form-popup .form-add{}
+#review-form-popup .form-add h2{background:#000000; padding:10px 0; text-align:center; font-family: 'FuturaT_Bold'; font-size:30px; text-transform:uppercase; color:#FFFFFF; border-radius:4px 4px 0 0;}
+#review-form-popup #product-review-table{}
+#review-form-popup #product-review-table .rating-field{text-align:center;}
+#review-form-popup #product-review-table .r-title,
+#review-form-popup #product-review-table .r-list-vote-options{display:inline-block; padding:0 20px;}
+#review-form-popup #product-review-table .r-title{font-family: 'FuturaT_Bold'; font-size:21px; color:#000000;}
+#review-form-popup #product-review-table .r-list-vote-options .radio{width:25px; height:22px; background:url(../images/i-rating-none.png) top left no-repeat}
+#review-form-popup #product-review-table .r-list-vote-options .radio.radio-checked{background:url(../images/i-rating-selected.png) top left no-repeat}
+#review-form-popup #product-review-star{}
+#review-form-popup #product-review-star ul li{float:left; width:100%; text-align:center;}
+#review-form-popup .rating_title {
+  display: inline-block;
+  min-width:150px;
+	font-family: 'FuturaT_Bold'; 
+	font-size:24px; 
+	color:#000000;
+	text-align:left;
+}
+#review-form-popup  .rating_wrap_start {
+  margin-top: 15px;
+  position: relative;
+  display: inline-block;
+  width: 22px;
+	line-height:16px;
+  overflow: hidden;
+}
+#review-form-popup .rating span {
+  float: left;
+  left: 0;
+  top:0;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  background: url(../images/rating_bg.png) no-repeat 0 0;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 479px) {
   .product-view .add-to-cart-buttons .paypal-or {
     line-height: 20px;
