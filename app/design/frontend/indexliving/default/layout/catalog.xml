@@ -216,6 +216,9 @@ Product view
             <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
 						<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
 						<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
+						
+						<action method="addItem"><type>skin_js</type><name>js/jquery.custom-radio-checkbox.js</name></action>
+						<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
         </reference>
         <reference name="content">
             <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
@@ -248,8 +251,10 @@ Product view
                 <block type="catalog/product_list_related" name="catalog.product.related" as="related_products" template="catalog/product/list/related.phtml" />
 
                 <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml">
-									<block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
-								</block>							
+                    <block type="core/template" name="product_wislist" as="product_wislist" template="wishlist/list-product-wishlist.phtml" />
+                    <block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
+                </block>
+
                 <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">

@@ -29,9 +29,17 @@
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
 
 <ul class="add-to-links">
-<?php if ($this->helper('wishlist')->isAllow()) : ?>
-    <li class="add-wishlist"><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-<?php endif; ?>
+	<?php if ($this->helper('wishlist')->isAllow()) : ?>
+		<li class="wishlist-ajax">
+			<a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?>modal<?php endif ?>"
+			   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
+			<span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
+		</li>
+	<?php endif;?>
+
+	<div class="remodal" data-remodal-id="modal">
+		<?php echo  $this->getChildHtml('product_wislist'); ?>
+	</div>
 <?php
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
 ?>

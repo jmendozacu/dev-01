@@ -131,6 +131,7 @@ div.block-layered-nav div.amshopby-slider div.handle {margin-left:-4px; width:8p
 div.block-layered-nav, div.amshopby-page-container, div.amshopby-filters-top {
     position: relative;
 }
+div.amshopby-page-container {float:left; width:100%;}
 div.amshopby-overlay {
     background-color: #FFFFFF;
     height: 100%;
