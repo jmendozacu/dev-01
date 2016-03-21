@@ -72,6 +72,11 @@
     } else {
 ?>
 <script>
+		// Create custom radio checkbox
+		document.observe("dom:loaded", function() {
+			jQuery('#amscheckout-onepage').customRadioCheckbox();
+		});
+		// End
     var billingForm = new VarienForm('amscheckout-onepage');
 
     function updateReview(){
@@ -231,7 +236,7 @@
                     </div><br/>
                     <?php }?>
                     <?php if (!$skipShipping) {?>
-                    <div id="shipping_area" class="column-section">
+                    <div id="shipping_area" class="column-section" style="display:none;">
                         <div class="area-header">
                             <div class="amscheckout-img-shadow">
                                 <div class="amscheckout-img">
@@ -351,7 +356,7 @@
                 </div><br/>
                 <?php }?>
                 <?php if (!$skipShipping) {?>
-                <div id="shipping_area" class="column-section">
+                <div id="shipping_area" class="column-section" style="display:none;">
                     <div class="area-header">
                         <div class="amscheckout-img-shadow">
                             <div class="amscheckout-img">
@@ -464,7 +469,7 @@
                 </div><br/>
                 <?php }?>
                 <?php if (!$skipShipping) {?>
-                <div id="shipping_area" class="column-section">
+                <div id="shipping_area" class="column-section" style="display:none;">
                     <div class="area-header">
                         <div class="amscheckout-img-shadow">
                             <div class="amscheckout-img">

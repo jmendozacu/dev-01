@@ -165,6 +165,14 @@ function ajaxUpdate(url, after, form){
             }
 
 //            hideLoading(); 
+					var myNav = navigator.userAgent.toLowerCase();
+					var isIE = (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+					if(isIE == 7 || isIE == 8){
+						return;
+					}else{
+						jQuery('#co-shipping-method-form').customRadioCheckbox();
+						jQuery('#co-payment-form-update').customRadioCheckbox();
+					}
         },
         on403: function(){
             document.location.reload();

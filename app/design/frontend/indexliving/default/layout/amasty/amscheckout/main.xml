@@ -23,6 +23,8 @@
             <action method="addCss"><stylesheet>css/amasty/amscheckout/main.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/amasty/amscheckout/popup.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/amasty/amscheckout/cart.css</stylesheet></action>
+						<action method="addItem"><type>skin_js</type><name>js/jquery.custom-radio-checkbox.js</name></action>
+						<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
         </reference>
 
         <reference name="content">
