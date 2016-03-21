@@ -426,6 +426,9 @@
 	.checkout-list-step ul li{padding:20px 0;}
 	.checkout-list-step ul li h6{font-size:13px;}
   
+	.page-not-found{max-width:100%; margin:10% auto; text-align:center;}
+	.page-not-found h1{margin:0 0 10px;}
+	
  }
  @media (min-width: 640px) and (max-width: 767px) {
 	#customer-reviews .review-list li > div.review-rating{width:30%;}
