@@ -495,6 +495,10 @@
 	.product-view .add-to-links .shareproduct-content .popupsharing-content{padding:10px;}
 	.product-view .add-to-links .shareproduct-content .popupsharing-content .input-box{width:280px;}
 	.product-view .add-to-links .shareproduct-content .popupsharing-content .input-box input{min-width:205px;}
+	
+	/* Checkout success */
+	.checkout-success .page-title h1{text-align:center; font-size:27px;}
+	.checkout-success h2.sub-title{font-size:25px;}
  }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;} 
