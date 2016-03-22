@@ -222,7 +222,8 @@
   .breadcrumbs {margin:5px 0;}
   .breadcrumbs li {font-size:12px;}
   /* Category page */
-  .catalog-category-view  .main-container .page-header {padding-left:0px; padding-right:0px;}
+  .catalog-category-view  .main-container .page-header,
+	.catalogsearch-result-index  .main-container .page-header {padding-left:0px; padding-right:0px;}
   .catalog-category-view  .main-container .breadcrumbs,
   .catalog-category-view  .main-container .category-overview,
   .catalog-category-view  .main-container .categories-list  {margin-left:10px; margin-right:10px; display:block; width:auto;}
