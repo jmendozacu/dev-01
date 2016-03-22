@@ -6,7 +6,7 @@
         </reference>
     </default>
     <catalog_product_view>
-        <reference name="alert.urls">
+        <reference name="social.sharing">
             <block type="sharing/sharing" name="simplifiedsocialshareproduct" template="sharing/socialshareproduct.phtml" before="-"/>
         </reference>
     </catalog_product_view>
