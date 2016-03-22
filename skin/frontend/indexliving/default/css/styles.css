@@ -5372,14 +5372,24 @@ body.catalogsearch-result-index .page-title h1 {
 	text-transform:uppercase;
 }
 .product-view .add-to-links a.link-wishlist{background-position:0 -122px;}
-.product-view .add-to-links a.link-wishlist:hover{background-position:0 0; color:#ffc222;}
+.product-view .add-to-links a.link-wishlist:hover,
+.product-view .add-to-links a.link-wishlist.added-item{background-position:0 0; color:#ffc222;}
 .product-view .add-to-links a.link-compare{background-position:0 -162px;}
 .product-view .add-to-links a.link-compare:hover{background-position:0 -40px; color:#ffc222;}
 .product-view .add-to-links a.link-share{background-position:0 -202px;}
-.product-view .add-to-links a.link-share:hover{background-position:0 -80px; color:#ffc222;}
+.product-view .add-to-links a.link-share:hover,
+.product-view .add-to-links a.link-share.active{background-position:0 -80px; color:#ffc222;}
 
 
-.product-view .add-to-links .shareproduct-content{position:absolute; background:#FFFFFF; padding:10px; min-width:200px; right:90px; top:-10px;}
+.product-view .add-to-links .shareproduct-content{position:absolute;background:#FFFFFF;border: 1px solid #e6e6e6; min-width:200px; right:0;z-index: 999;top:45px; border-radius:5px;}
+.product-view .add-to-links .shareproduct-content::after{content:""; background:url(../images/arrow-popup.png) 0 0 no-repeat; width:16px; height:14px; position:absolute; top:-14px; right:60px;}
+.product-view .add-to-links .shareproduct-content  h2{font-family: 'DBYordXMed'; font-size:28px; color:#FFFFFF; background:#000000; text-align:left; padding:10px 20px; text-transform:none; margin:0;}
+.product-view .add-to-links .shareproduct-content  .popupsharing-content{padding:10px 20px;}
+.product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box{float:left; width:390px;}
+.product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box input,
+.product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box button{float:left; width:auto;}
+.product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box input{width: 70%;border:2px solid #dadada;height: 40px;min-width: 315px;border-radius: 4px 0 0 4px; background:url(../images/i-share-link.png) 10px center no-repeat; padding-left:35px;}
+.product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box button{border-radius: 0px 4px 4px 0;}
 .product-view .add-to-links .shareproduct-content  li a{float:left; margin-right:10px; text-indent:-9999em; }
 .icon-facebook{
 	background-image: url(../images/i_share_facebook.png);
@@ -7761,6 +7771,9 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
     color: #252525;
 }
 .checkout-success p.order-id span {
+    color: #f4701e;
+}
+.checkout-success p.order-id span a{
     color: #f4701e;
 }
 

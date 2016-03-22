@@ -90,7 +90,14 @@ jQuery(document).ready(function () {
   }, 500);
   });
   jQuery('#shareProductLink').click(function() {
-		jQuery('#shareproduct-content').slideToggle();
+		if (!jQuery(this).hasClass('active')){
+			jQuery('#shareproduct-content').slideDown();
+			jQuery(this).addClass('active');
+		}else if (jQuery(this).hasClass('active')) {
+			jQuery('#shareproduct-content').slideUp();
+      jQuery(this).removeClass('active');
+    }
+		
 	});
   
   /* box links footer on mobile */

@@ -252,7 +252,11 @@ Product view
 
                 <block type="catalog/product_view" name="product.info.addto" as="addto" template="catalog/product/view/addto.phtml">
                     <block type="core/template" name="product_wislist" as="product_wislist" template="wishlist/list-product-wishlist.phtml" />
-                    <block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml"/>
+                    <block type="catalog/product_view" name="product.info.sharing" as="sharing" template="catalog/product/view/sharing.phtml">
+											<block type="core/text_list" name="social.sharing" as="social_sharing" translate="label">
+												<label>Alert Urls</label>
+											</block>
+										</block>
                 </block>
 
                 <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
