@@ -4786,10 +4786,10 @@ body.catalogsearch-result-index .page-title h1 {
 
 
   .block-layered-nav .block-content > dl > dd {
-    display: none;
+    /* display: none; */
   }
   .block-layered-nav .block-content.accordion-open > dl > dt.current {
-    border-bottom-width: 1px;
+   /*  border-bottom-width: 1px; */
   }
 
   .block-layered-nav .block-content.accordion-open > dl > dd.current {
