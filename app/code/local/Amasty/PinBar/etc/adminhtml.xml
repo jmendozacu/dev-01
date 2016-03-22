@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_PinBar
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ampinbar>
+                                        <title>Amasty - Admin Bookmarks</title>
+                                    </ampinbar>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <translate>
+        <modules>
+            <Amasty_PinBar>
+                <files>
+                    <default>Amasty_PinBar.csv</default>
+                </files>
+            </Amasty_PinBar>
+        </modules>
+    </translate>
+</config> 

@@ -26,89 +26,95 @@
 ?>
 <div class="add-review-form" id="review-form-popup" style="display:none;">
 	<div class="form-add">
-			<h2><?php echo $this->__('Write Your Own Review') ?></h2>
-			<h1 class="show-message">
-			</h1>
-			<?php if ($this->getAllowWriteReviewFlag()): ?>
-			<form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
-					<?php echo $this->getBlockHtml('formkey'); ?>
-					<?php echo $this->getChildHtml('form_fields_before')?>
+		<h2><?php echo $this->__('Write Your Own Review') ?></h2>
+		<h3 class="show-message"></h3>
+		<?php if ($this->getAllowWriteReviewFlag()): ?>
+		<form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
+		<?php echo $this->getBlockHtml('formkey'); ?>
+		<?php echo $this->getChildHtml('form_fields_before')?>
+		<div class="fieldset">
+			<?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
+				<span id="input-message-box"></span>
+				<div class="li_review" id="product-review-star">
+					<script type="text/javascript">
+						var numCode = 0; var codeArray = new Array();
+					</script>
+					<ul>	
+					<?php foreach ($this->getRatings() as $_rating): ?>
+					<li>
+					<script type="text/javascript">
+						codeArray[numCode] = '<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>';
+						numCode = numCode+1;
+					</script>
+						<div class="rating">
+							<div class="rating_title">
+							<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>
+							</div>
+							<?php foreach ($_rating->getOptions() as $_option): ?>
+							<div class="rating_wrap_start" onclick="ratingfollow('<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>','<?php echo $_option->getValue() ?>');">
+								<input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio"/>
+								<span id="Span_<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></span>
+							</div>
+							<?php endforeach; ?>
+						</div>
+						</li>
+					<?php endforeach; ?>
+					</ul>
+					<input type="hidden" name="validate_rating" class="validate-rating" value="" />
+					<div style="clear:both;"></div>
+				</div>
+			<?php endif; ?>
 
-					<h3><?php echo $this->__("You're reviewing:"); ?>
-							<span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span>
-					</h3>
-
-					<div class="fieldset">
-							<?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
-									<h4><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h4>
-									<span id="input-message-box"></span>
-
-								<div class="row">
-
-									<div class="large-7 medium-7 small-12 columns rating input-rating" >
-										<div class="rating" id="product-review-table">
-											<?php foreach ($this->getRatings() as $_rating): ?>
-												<div class="large-5 medium-5 small-12 columns text-rating">
-													<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>
-												</div>
-												<?php foreach ($_rating->getOptions() as $_option): ?>
-													<span class="value valid_rating">
-															<label
-																for="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>">
-																<input
-																	type="radio" name="ratings[<?php echo $_rating->getId() ?>]"
-																	id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"
-																	value="<?php echo $_option->getId() ?>" class="radio"/>
-															</label>
-                               							 </span>
-												<?php endforeach; ?>
-											<?php endforeach; ?>
-										</div>
-										<input type="hidden" name="validate_rating" class="validate-rating" value="" />
-									</div>
+				<ul class="form-list">
+						<li>
+								<label for="review_field" class="required"><em>*</em><?php echo $this->__('Let us know your thoughts') ?></label>
+								<div class="input-box">
+										<textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
 								</div>
-									<script type="text/javascript">decorateTable('product-review-table')</script>
-							<?php endif; ?>
+						</li>
 
-									<ul class="form-list">
-											<li>
-													<label for="review_field" class="required"><em>*</em><?php echo $this->__('Let us know your thoughts') ?></label>
-													<div class="input-box">
-															<textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
-													</div>
-											</li>
-
-											<li>
-												<label for="attachment"><?php echo Mage::helper('review')->__('Upload Image') ?></label>
-												<div class="input-box">
-													<input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
-													<input name="attachment" id="attachment" class="input-text" type="file" />
-												</div>
-											</li>
-											 <li class="inline-label">
-														<label for="summary_field" class="required"><em>*</em><?php echo $this->__('Summary of Your Review') ?></label>
-														<div class="input-box">
-																<input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
-														</div>
-											 </li>
-
-											<li class="inline-label">
-													<label for="nickname_field" class="required"><em>*</em><?php echo $this->__("What's your nickname?") ?></label>
-													<div class="input-box">
-															<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
-													</div>
-											</li>
-
-									</ul>
+						<li>
+							<label for="attachment"><?php echo Mage::helper('review')->__('Upload Image') ?></label>
+							<div class="input-box">
+								<input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
+								<input name="attachment" id="attachment" class="input-text" type="file" />
 							</div>
-							<span id='ajax_loader' style='display:none'>
-								<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
-							</span>
-							<div class="buttons-set">
-									<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
-							</div>
-			</form>
+						</li>
+						 <li class="inline-label">
+									<label for="summary_field" class="required"><em>*</em><?php echo $this->__('Summary of Your Review') ?></label>
+									<div class="input-box">
+											<input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+									</div>
+						 </li>
+
+						<li class="inline-label">
+								<label for="nickname_field" class="required"><em>*</em><?php echo $this->__("What's your nickname?") ?></label>
+								<div class="input-box">
+										<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
+								</div>
+						</li>
+
+				</ul>
+		</div>
+		<div id='ajax_loader' style='display:none'>
+			<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
+		</div>
+		<div class="buttons-set">
+				<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+		</div>
+		</form>
 			<script type="text/javascript">
+				function ratingfollow(checkRatingcode,checkValue){
+					$(checkRatingcode+"_"+checkValue).checked = true;
+					for(var i=1;i<=5; i++){
+						if(i<=checkValue){
+							$("Span_"+checkRatingcode+"_"+i).style.backgroundPosition="0px -195px";//when use firefox;
+						}
+						else{
+							$("Span_"+checkRatingcode+"_"+i).style.backgroundPosition="0px 0px";//when use firefox;
+						}
+					}
+				}
 			//<![CDATA[
 					var dataForm = new VarienForm('review-form');
 					Validation.addAllThese(
@@ -185,6 +191,7 @@
 							success: function (data) {
 								$j('#ajax_loader').hide();
 								$j('.form-add .show-message').html(mess);
+								$j("#review-form")[0].reset();
 							},
 							cache: false,
 							contentType: false,

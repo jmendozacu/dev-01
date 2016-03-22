@@ -23,10 +23,61 @@
                         width="135" height="135"
                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                     /></a>
-                  <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                      <a href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>javascript:void(0)<?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"></a>
-                    <?php endif; ?>
+                    <ul class="add-to-links">
+
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li class="wishlist-ajax">
+                                <a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>"  data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?>modal<?php endif ?>"
+                                   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
+                                <span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
+
+                            </li>
+                        <?php endif;?>
+                    </ul>
+                    <div class="remodal" data-remodal-id="modal">
+                        <div class="model-content">
+                            <button data-remodal-action="close" class="remodal-close"></button>
+                            <h1>Information wishlist</h1>
+                            <p class="login">
+                            </p>
+                            <br>
+                            <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $j(".wishlist-ajax ").click(function(){
+                            var proId = $j(this).find('.link-wishlist').attr('id');
+
+                            <?php if(!$this->helper('customer')->isLoggedIn()):?>
+                            window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
+                            <?php endif; ?>
+                            <?php if($this->helper('customer')->isLoggedIn()):?>
+                            url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
+                            url += 'product/'+$j(this).find('.detect-proId').text();
+                            id = $j(this).find('.detect-proId').text();
+                            $j(".model-content .login").hide();
+                            $j.ajax({
+                                url: url,
+                                type: "GET",
+                                dataType: 'json',
+                                success: function (data) {
+                                    $j('#'+proId).attr('href', '');
+                                    $j('#'+proId).addClass('added-item');
+                                    $j(".model-content .login").show();
+                                    $j(".model-content .login").html(data.message);
+                                    $j('#'+proId).removeAttr('data-remodal-target');
+                                }
+                            });
+                            <?php endif;?>
+                        });
+
+                    </script>
                 </div>
+
+                <div class="remodal" data-remodal-id="modal">
+                    <?php echo  $this->getChildHtml('product_wislist'); ?>
+                </div>
+
                 <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                 <div class="desc">
                     <?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?>

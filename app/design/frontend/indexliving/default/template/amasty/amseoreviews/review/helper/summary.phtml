@@ -66,6 +66,10 @@
 <?php endif; ?>
 <script type="text/javascript">
 	jQuery(document).ready(function() {
-		jQuery('.write-review-popup').fancybox();
+		jQuery('.write-review-popup').fancybox({
+			afterShow:function(){
+				jQuery('#review-form-popup').customRadioCheckbox();
+			}
+		});
 	});
 </script>
