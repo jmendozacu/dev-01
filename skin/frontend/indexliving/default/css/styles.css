@@ -2866,6 +2866,7 @@ form .form-instructions {
 .customer-account-edit .form-list > li.gender{float:left; width:100px; margin-right:18px; clear:none;}
 .form-list .field {float:left; width:260px; /* margin-right:18px; */}
 .form-list .field.name-firstname {float:left; /* margin-right:18px; */width:200px}
+.my-account .form-list .field {margin-right:18px;}
 .my-account .form-list .field.name-firstname  {margin-right:18px;}
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
@@ -9563,7 +9564,7 @@ div.paypal-logo span > img {
 #wishlist-table td[data-rwd-label]:before {
   font-weight: 600;
 }
-#wishlist-view-form .button.btn-add {float:right; padding:0px;}
+#wishlist-view-form .button.btn-add {float:right; padding:0px; background-color:#f4701e;}
 #wishlist-view-form .button.btn-add >span {line-height:35px; display:inline-block;}
 
 @media only screen and (max-width: 1199px) {
