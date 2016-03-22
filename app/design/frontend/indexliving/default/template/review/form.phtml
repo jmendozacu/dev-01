@@ -24,10 +24,10 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="add-review-form" id="review-form-popup" style="display:none;">
+<div class="add-review-form" id="review-form-popup" style="display:none; max-width:740px;">
 	<div class="form-add">
 		<h2><?php echo $this->__('Write Your Own Review') ?></h2>
-		<h3 class="show-message"></h3>
+		<div class="show-message"></div>
 		<?php if ($this->getAllowWriteReviewFlag()): ?>
 		<form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
 		<?php echo $this->getBlockHtml('formkey'); ?>
@@ -64,43 +64,51 @@
 					<div style="clear:both;"></div>
 				</div>
 			<?php endif; ?>
-
+			<div class="submit-fields">
 				<ul class="form-list">
-						<li>
-								<label for="review_field" class="required"><em>*</em><?php echo $this->__('Let us know your thoughts') ?></label>
-								<div class="input-box">
-										<textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
-								</div>
-						</li>
-
-						<li>
-							<label for="attachment"><?php echo Mage::helper('review')->__('Upload Image') ?></label>
+					<li class="inline-label">
+							<label for="nickname_field" class="required"><em>*</em><?php echo $this->__("Your name") ?></label>
 							<div class="input-box">
-								<input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
-								<input name="attachment" id="attachment" class="input-text" type="file" />
+									<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
 							</div>
-						</li>
-						 <li class="inline-label">
-									<label for="summary_field" class="required"><em>*</em><?php echo $this->__('Summary of Your Review') ?></label>
-									<div class="input-box">
-											<input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
-									</div>
-						 </li>
-
-						<li class="inline-label">
-								<label for="nickname_field" class="required"><em>*</em><?php echo $this->__("What's your nickname?") ?></label>
-								<div class="input-box">
-										<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
-								</div>
-						</li>
-
+					</li>
+					<li class="inline-label">
+						<label for="summary_field" class="required"><em>*</em><?php echo $this->__('Title') ?></label>
+						<div class="input-box">
+								<input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+						</div>
+					</li>
+					<li>
+							<label for="review_field" class="required"><em>*</em><?php echo $this->__('Tell us what you thought about it *') ?></label>
+							<div class="input-box">
+									<textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
+							</div>
+					</li>
+					<li>
+						<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+					</li>
 				</ul>
+				<div class="review-image">
+					<label for="attachment"><?php echo Mage::helper('review')->__('Upload Image ') ?><span><?php echo $this->__('(optional)')?></span></label>
+					<img width="48" height="48" id="loading-image" style="display:none;" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif')?>" title="<?php echo $this->__('Please wait...');?>"/>
+					<img id="preview-image" src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" style="max-width:100%,height:auto;"/>
+					<div class="input-box reviewImageInput">
+						<input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
+						<div class="image-upload"> 
+							<div class="fileinputs">     
+								<span id="uploadButton"><span><?php echo $this->__('Choose Image')?></span></span>	
+								<input name="attachment" id="attachment" class="input-text" type="file" />      
+								<p id="upload-error-message" style="color: red;"></p> 		
+							</div>                               
+						</div>    
+						<input id="image-name" name="image-name" type="hidden" value="" class="required-entry" />
+					</div>
+				</div>
+				
+			</div>	
 		</div>
 		<div id='ajax_loader' style="display: none">
 			<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
-		</div>
-		<div class="buttons-set">
-				<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 		</div>
 		</form>
 			<script type="text/javascript">
@@ -174,30 +182,60 @@
 
 			});
 
+			// Ajax upload image
+			var preview_image = $('preview-image'); //id of the preview image
+			var loading_image = $('loading-image');
+			var upload_field = $('attachment');
+			new AjaxUpload('attachment', {
+				action: '<?php echo $this->getUrl('customreview/product/autoupload')?>', //the php script that receives and saves the image
+				name: 'attachment', 
+				onSubmit: function(file, extension) {
+					upload_field.hide();
+					loading_image.show();      
+				},
+				onChange: function(file, extension) {
+					$('upload-error-message').update('');
+				},
+				autoSubmit: true,
+				onComplete: function(file, response) {
+					var data = response.evalJSON();  
+					if (data.error) {
+						$('upload-error-message').update(data.message);
+						$('image-name').value = '';
+					}
+					else {        
+						preview_image.src = data.imageUrl;
+						$('image-name').value = data.imageName; 
+						preview_image.show();
 
+					}
+					loading_image.hide();
+					upload_field.show();
+				}
+			});   
 			</script>
 
-				<script type="text/javascript">
-					$j("form#review-form").submit(function(){
-						var frm = $j('#review-form');
-						$j('#ajax_loader').show();
-						var formData = new FormData($j(this)[0]);
-						var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
-						$j.ajax({
-							url: frm.attr('action'),
-							type: 'POST',
-							data: formData,
-							cache: false,
-							contentType: false,
-							processData: false,
-							success: function (data) {
-								$j('#ajax_loader').remove();
-								$j('.form-add .show-message').html(mess);
-								$j("#review-form")[0].reset();
-							}
-						});
+			<script type="text/javascript">
+				$j("form#review-form").submit(function(){
+					var frm = $j('#review-form');
+					$j('#ajax_loader').show();
+					var formData = new FormData($j(this)[0]);
+					var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
+					$j.ajax({
+						url: frm.attr('action'),
+						type: 'POST',
+						data: formData,
+						cache: false,
+						contentType: false,
+						processData: false,
+						success: function (data) {
+							$j('#ajax_loader').remove();
+							$j('.form-add .show-message').html('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
+							$j("#review-form")[0].reset();
+						}
 					});
-				</script>
+				});
+			</script>
 			<?php
 			$star_bg = $this->getSkinUrl('images/star.png', array('_secure'=>true));
 			echo '<style>';

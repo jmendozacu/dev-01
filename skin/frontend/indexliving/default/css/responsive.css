@@ -500,6 +500,14 @@
 	/* Checkout success */
 	.checkout-success .page-title h1{text-align:center; font-size:27px;}
 	.checkout-success h2.sub-title{font-size:25px;}
+	
+	/* Popup submit review */
+	#review-form-popup .form-add .show-message{padding:0 10px;}
+	#review-form-popup #product-review-star ul li{padding:0 10px;}
+	#review-form-popup .rating_title{width:100%;}
+	#review-form-popup .rating_wrap_start{float:left; margin:3px 0;}
+	#review-form-popup .submit-fields{margin:20px 10px 0;}
+	#review-form-popup .submit-fields ul, #review-form-popup .submit-fields .review-image{margin:0; width:100%; padding:0; border:0 none;}
  }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;} 
