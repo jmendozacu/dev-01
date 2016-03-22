@@ -70,7 +70,7 @@
 						<div class="review-details">
 							<div class="review-meta">
 								<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
-								<?php $date = new DateTime($_review->getCreatedAt()); echo date('F j, Y',$date->getTimestamp());?>
+								<?php $date = new DateTime($_review->getCreatedAt()); echo date('j F, Y',$date->getTimestamp());?>
 							</div>
 							<?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
 						</div>
