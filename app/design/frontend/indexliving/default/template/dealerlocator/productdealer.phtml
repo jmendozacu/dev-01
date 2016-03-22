@@ -165,7 +165,9 @@
 	/* #################################### */	
 	
   function showProductDealers(){
-		loadProductDealerPopupByValue();
+		<?php if ($productDealers->getSize()): ?>
+			loadProductDealerPopupByValue();
+		<?php endif;?>
 		
     jQuery("#btn_fancybox").fancybox({
       'href' : '#product-dealer',
