@@ -220,6 +220,7 @@
   .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:-50px; margin-right:0px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:before,
   .main-banners .wrap-bannerads div.banner .bx-viewport:after {width:50px;}
+  .decor-banner .box-slider .bx-wrapper .bx-pager.bx-default-pager {padding-top:0px; margin-top:8px; }
 }
  @media (max-width: 767px) {
   .allcategory-banners  .banner.banner-category {overflow-x:auto; width:100%;} 
