@@ -191,6 +191,7 @@
 							success: function (data) {
 								$j('#ajax_loader').hide();
 								$j('.form-add .show-message').html(mess);
+								$j("#review-form")[0].reset();
 							},
 							cache: false,
 							contentType: false,

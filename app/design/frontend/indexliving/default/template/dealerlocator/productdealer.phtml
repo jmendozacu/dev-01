@@ -141,19 +141,26 @@
 </script>
 
 <script type="text/javascript">
-	var selectLimitDealer = $('product-dealer').down(8);
-	
 	//li page dealer
-	var pages = document.getElementsByClassName('pages');
-	var page = pages[0];
+	var selectLimitDealer;
 	
-	var ols = page.select('ol');
-	var ol = ols[0];
-	ol.insert({
-		top: '<li><a class="previous"></a></li>'
-	});
-	
-	var liPageDealer = ol.select('li');
+	if(document.getElementsByClassName('pages')[0]){
+		selectLimitDealer = $('product-dealer').down(8);
+		
+		var pages = document.getElementsByClassName('pages');
+		var page = pages[0];
+		
+		var ols = page.select('ol');
+		var ol = ols[0];
+		ol.insert({
+			top: '<li><a class="previous"></a></li>'
+		});
+		
+		var liPageDealer = ol.select('li');
+	}
+	else{
+		selectLimitDealer = $('product-dealer').down(9);
+	}
 	
 	/* #################################### */	
 	
@@ -172,25 +179,27 @@
 		selectLimitDealer.writeAttribute("onchange", "loadProductDealerByLimit()");
 		
 		//replace amount pager
-		$('product-dealer').down(5).writeAttribute('id', 'amount_page_dealer');
+		$('product-dealer').down(3).writeAttribute('id', 'amount_page_dealer');
 		
 		//replace li page
-		for (var i = 0; i < liPageDealer.length; i++){
-			var li = liPageDealer[i];
-			var li_down = li.down();
-			var textContent = li.textContent;
-			
-			if(li_down){
-				if(li_down.hasClassName('next'))
-					textContent = 'next';
-				if(li_down.hasClassName('previous'))
-					textContent = 'previous';
-			}
-			
-			li.writeAttribute("id","li_page_"+textContent);
-			
-			if(li_down){
-				li_down.writeAttribute("href","javascript:loadProductDealerByPage('"+textContent+"')");
+		if(liPageDealer){
+			for (var i = 0; i < liPageDealer.length; i++){
+				var li = liPageDealer[i];
+				var li_down = li.down();
+				var textContent = li.textContent;
+				
+				if(li_down){
+					if(li_down.hasClassName('next'))
+						textContent = 'next';
+					if(li_down.hasClassName('previous'))
+						textContent = 'previous';
+				}
+				
+				li.writeAttribute("id","li_page_"+textContent);
+				
+				if(li_down){
+					li_down.writeAttribute("href","javascript:loadProductDealerByPage('"+textContent+"')");
+				}
 			}
 		}
 		
@@ -249,13 +258,20 @@
 	function getPageProductDealer(){
 		//var pages = document.getElementsByClassName('pages')[0].down().next().select('li');
 		var p;
-		var lis = liPageDealer;
 		
-		for (var i = 0; i < lis.length; i++){
-			var li = lis[i];
-			if(li.hasClassName('current'))
-				p = li.textContent;
+		if(liPageDealer){
+			var lis = liPageDealer;
+		
+			for (var i = 0; i < lis.length; i++){
+				var li = lis[i];
+				if(li.hasClassName('current'))
+					p = li.textContent;
+			}
 		}
+		else{
+			p = 1;
+		}
+		
 		return p;
 	}
 	
@@ -264,6 +280,13 @@
 		for (var i = 1; i < num_row; i++){
 			if($('product-dealer-tr-'+i))
 				$('product-dealer-tr-'+i).hide();
+		}
+		
+		if(limit > num_row){
+			currentp = p;
+			p = 1;
+			/* $('li_page_'+p).update(p);
+			$('li_page_'+p).addClassName('current'); */
 		}
 		
 		var begin = (p-1)*limit + 1;
@@ -286,33 +309,34 @@
 			$('li_page_'+p).addClassName('current');
 		}
 		
-		var taotalPage = parseInt((num_row - 1)/(limit));
-		var maxPage = taotalPage;
+		var totalPage = parseInt((num_row - 1)/(limit));
+		var maxPage = totalPage;
 		var du = (num_row - 1) % limit;
 		if(du > 0){
 			maxPage = maxPage + 1;
 		}
-		
-		if(p == 1){
-			$('li_page_previous').hide();
-		}
-		else{
-			$('li_page_previous').show();
-		}
-		
-		if(p == maxPage){
-			$('li_page_next').hide();
-		}
-		else{
-			$('li_page_next').show();
-		}
-		
-		for (var i = 1; i <= liPageDealer.length - 2; i++){
-			if(i <= maxPage){
-				$('li_page_'+i).show();
+		if(liPageDealer){
+			if(p == 1){
+				$('li_page_previous').hide();
 			}
 			else{
-				$('li_page_'+i).hide();
+				$('li_page_previous').show();
+			}
+			
+			if(p == maxPage){
+				$('li_page_next').hide();
+			}
+			else{
+				$('li_page_next').show();
+			}
+			
+			for (var i = 1; i <= liPageDealer.length - 2; i++){
+				if(i <= maxPage){
+					$('li_page_'+i).show();
+				}
+				else{
+					$('li_page_'+i).hide();
+				}
 			}
 		}
 	}
