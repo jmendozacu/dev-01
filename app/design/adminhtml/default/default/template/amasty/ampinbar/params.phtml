@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_PinBar
+ */
+?>
+<?php /* @var $this Amasty_PinBar_Block_Adminhtml_Params */ ?>
+<?php
+$params = $this->getParams();
+$paramsEncode = base64_encode(serialize($params));
+?>
+<script type="text/javascript">
+    if ($$('.ampinbar_session_params')[1]) {
+        $$('.ampinbar_session_params')[1].remove();
+    }
+</script>
+<input type="hidden" id="ampinbar_session_params" class="ampinbar_session_params" value="<?php echo $paramsEncode; ?>"/>

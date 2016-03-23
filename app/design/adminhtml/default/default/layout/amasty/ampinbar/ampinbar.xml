@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_PinBar
+ */
+-->
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <name>css/amasty/ampinbar/style.css</name>
+            </action>
+            <action method="addJs">
+                <name>amasty/ampinbar/pinbar.js</name>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="ampinbar/adminhtml_pin" name="ampinbar.pin" as="ampinbar.pin" template="amasty/ampinbar/pin.phtml"/>
+        </reference>
+        <reference name="before_body_end">
+            <block type="ampinbar/adminhtml_params" name="ampinbar.params" as="ampinbar.params" template="amasty/ampinbar/params.phtml"/>
+        </reference>
+    </default>
+</layout>

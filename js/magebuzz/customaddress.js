@@ -178,6 +178,9 @@ SubdistrictUpdater.prototype = {
 		}
 		else if (order && order.billingAddressContainer && this.subdistrictEl.id == 'order-billing_address_subdistrict_id') {
 			$('order-billing_address_postcode').value = zipcode;
+			if($('order-shipping_as_billing').checked){
+				$('order-shipping_address_postcode').value = zipcode;
+			}
 		}
 		else if (order && order.shippingAddressContainer && this.subdistrictEl.id == 'order-shipping_address_subdistrict_id') {
 			$('order-shipping_address_postcode').value = zipcode;

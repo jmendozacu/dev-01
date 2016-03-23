@@ -41,6 +41,9 @@
   <catalog_product_view>
     <reference name="head">
       <block type="core/template" template="dealerlocator/productdealer/head.phtml"/>
+			<action method="addCss">
+        <stylesheet>css/dealerlocator/dealerlocator.css</stylesheet>
+      </action>
     </reference>
     <reference name="alert.urls">
       <block type="dealerlocator/productdealer" name="dealerlocator.productdealer" template="dealerlocator/productdealer.phtml" />
