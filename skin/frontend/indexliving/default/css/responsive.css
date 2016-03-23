@@ -501,6 +501,8 @@
 	#review-form-popup .rating_wrap_start{float:left; margin:3px 0;}
 	#review-form-popup .submit-fields{margin:20px 10px 0;}
 	#review-form-popup .submit-fields ul, #review-form-popup .submit-fields .review-image{margin:0; width:100%; padding:0; border:0 none;}
+	
+	.title-style1 a{display:none;}
  }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;} 
