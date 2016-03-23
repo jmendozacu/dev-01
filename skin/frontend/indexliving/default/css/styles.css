@@ -1664,69 +1664,80 @@ a.button {
 .messages li li {
   position: relative;
   margin-bottom: 5px;
-  padding: 7px 10px 7px 20px;
-  background: #f4f4f4;
-  font-size: 15px;
+  padding: 9px 10px;
+	height:43px;
+  background: #000000;
+  font-size: 14px;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-family: 'FuturaBT-Book';
+	border-radius:5px;
 }
 
+.messages li li span{line-height:25px; padding-left:35px;}
+
 .messages li li:before {
-  top: 50%;
+/*   top: 50%;
   left: 0;
-  margin-top: -6px;
+  margin-top: -6px; */
 }
 
 .messages .error-msg li {
-  color: black;
+  /* color: black;
   border-left: 5px solid #df280a;
-  background-color: #faebe7;
+  background-color: #faebe7; */
 }
 
 .messages .error-msg li:before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 25px;
+  height: 25px;
   display: block;
-  border-top: 6px solid transparent;
+  /* border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-left: 6px solid #df280a;
-  border-right: none;
+  border-right: none; */
+	background:url(../images/i-error-msg.png) left center no-repeat;
 }
 
 .messages .notice-msg li {
-  color: black;
+  /* color: black;
   border-left: 5px solid #e26703;
-  background-color: #f9ebe6;
+  background-color: #f9ebe6; */
 }
 
 .messages .notice-msg li:before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 25px;
+  height: 25px;
   display: block;
-  border-top: 6px solid transparent;
+  /* border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-left: 6px solid #e26703;
-  border-right: none;
+  border-right: none; */
+	background:url(../images/i-notice-msg.png) left center no-repeat;
 }
 
 .messages .success-msg li {
-  color: black;
+  /* color: black;
   border-left: 5px solid #11b400;
-  background-color: #eff5ea;
+  background-color: #eff5ea; */
+	
 }
 
 .messages .success-msg li:before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 25px;
+  height: 25px;
   display: block;
-  border-top: 6px solid transparent;
+  /* border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 6px solid #11b400;
-  border-right: none;
+  border-left: 6px solid #e26703;
+  border-right: none; */
+	background:url(../images/i-success-msg.png) left center no-repeat;
 }
 
 @media only screen and (min-width: 915px) {
