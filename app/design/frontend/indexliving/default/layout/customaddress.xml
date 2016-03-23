@@ -24,6 +24,7 @@
 			<action method="setTemplate" ifconfig="customaddress/general/enable_module"><template>customaddress/customer/form/register.phtml</template></action>      
 		</reference> 
 	</customer_account_create>
+	
 	<customer_address_form>
 		<reference name="head">
 			<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>
