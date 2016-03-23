@@ -1,0 +1,39 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_PinBar
+ */
+?>
+<?php /* @var $this Amasty_PinBar_Block_Adminhtml_Pin*/ ?>
+
+<?php
+if(Mage::helper('ampinbar')->moduleEnabled()) :
+$paramsEncode = Mage::helper('ampinbar')->getParamsEncode();
+?>
+
+<div id="ampinbar-pin" class="<?php echo Mage::helper('ampinbar')->pinAlreadyAttached() ? 'attached' : ''; ?>">
+    <div class="tab" style="display: none;">
+        <a href="#"></a>
+        <div class="title">
+            <input type="text" class="title-span" value="" disabled="1"/>
+        </div>
+        <input class="title-input" type="text" value="" style="display: none;"/>
+        <div class="edit">
+            <div class="rename"></div>
+            <div class="delete"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var amPin = new amPinbar(
+        '<?php echo $paramsEncode; ?>',
+        '<?php echo $this->getUrl('adminhtml/pinbar_index/index'); ?>',
+        '<?php echo $this->getUrl('adminhtml/pinbar_index/delete'); ?>',
+        '<?php echo $this->getUrl('adminhtml/pinbar_index/rename'); ?>',
+        '<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/pinbar_index/loadpin'); ?>'
+    );
+
+</script>
+<?php endif; ?>
