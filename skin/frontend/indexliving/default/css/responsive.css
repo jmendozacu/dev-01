@@ -34,6 +34,7 @@
     .main-home .box-list-products .products-grid li.item:nth-child(3n)  {margin-right:0px;}
     .main-home .box-list-products .products-grid li.item.last { display:none;}
     .product-img-box .product-image {padding-left:80px;}
+    .styled-select::after, .styled-select:after {right:4px; margin-top:-3px;}
  }
  @media (max-width: 991px) {}
  @media (min-width: 769px){ }
