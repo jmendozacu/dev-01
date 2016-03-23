@@ -2,68 +2,51 @@
 <?php $numProductDealer = 0;?>
 <?php $productDealers = $this->getProductDealer(); ?>
 
-<div class="product-dealer" style="overflow:hidden; width:1150px; display:none;" id="product-dealer">
+<div class="product-dealer" style="overflow:hidden; display:none;" id="product-dealer">
   <div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
     <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
-
-    <div class="list-all-product-dealer" style="width:600px; float:left;">
-      <?php if ($productDealers->getSize()): ?>
-        <?php echo $this->getPagerHtml(); ?>
+		<div class="list-all-product-dealer">
+			<?php if ($productDealers->getSize()): ?>
+				<?php echo $this->getPagerHtml(); ?>
 				<?php $numProductDealer = 1;?>
-        <table class="data-table" id="product-dealer-list">
-          <colgroup>
-            <col>
-            <col>
-            <col>
-          </colgroup>
-          <thead>
-            <tr>
-              <th><?php echo $this->__('Store') ?></th>
-              <th><?php echo $this->__('Address') ?></th>
-              <th><?php echo $this->__('Phone') ?></th>
-            </tr>
-          </thead>
-          <tbody>
-          <?php foreach ($productDealers as $productdealer): ?>
-            <tr id="product-dealer-tr-<?php echo $numProductDealer; ?>" style="display:none"
-              onclick="showLocationOnMap('<?php echo $productdealer->getDealerId() ?>', '<?php echo $productdealer->getIconImage() ?>'); window.location='#product_dealer_map_canvas'">
-              <td>
-                <label class="product-dealer-label"><?php echo $this->__('Store') ?></label>
-                <?php echo $productdealer->getTitle(); ?>
-              </td>
-              <td>
-                <label class="product-dealer-label"><?php echo $this->__('Address') ?></label>
-                <?php echo $productdealer->getAddress(); ?>
-              </td>
-              <td>
-                <label class="product-dealer-label"><?php echo $this->__('Phone') ?></label>
-                <?php echo $productdealer->getPhone(); ?>
-              </td>
-            </tr>
-            <input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
-                   value="<?php echo $productdealer->getLatitude() ?>"/>
-            <input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
-                   value="<?php echo $productdealer->getLongitude() ?>"/>
-						<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $productdealer->getDealerId() ?>"
-                   value="<?php echo $productdealer->getTitle() ?>"/>
-                   
-            <div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $productdealer->getDealerId() ?>">
-              <p><strong><?php echo $productdealer->getTitle() ?></strong></p>
-            </div>
+					<ul class="product-dealerscroll" id="product-dealer-list">
+					<?php foreach ($productDealers as $productdealer): ?>
+						<li id="product-dealer-tr-<?php echo $numProductDealer; ?>"
+							onclick="showLocationOnMap('<?php echo $productdealer->getDealerId() ?>', '<?php echo $productdealer->getIconImage() ?>'); window.location='#product_dealer_map_canvas'">
+							<h3><?php echo $productdealer->getTitle(); ?></h3>
+							<h4><?php echo $productdealer->getAddress(); ?></h4>
+							<?php if ($productdealer->getPostalCode()): ?>
+							<h4><?php echo $this->__('Postcode') ?>: <?php echo $productdealer->getPostalCode() ?></h4>
+							<?php endif; ?>
+							<?php if ($productdealer->getPhone()): ?>
+								<h4><?php echo $this->__('Phone: %s', $productdealer->getPhone()) ?></h4>
+							<?php endif; ?>
+							<?php if ($productdealer->getWebsite()): ?>
+								<!--<h4><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></h4>-->
+							<?php endif; ?>
+							<input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
+									 value="<?php echo $productdealer->getLatitude() ?>"/>
+							<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
+										 value="<?php echo $productdealer->getLongitude() ?>"/>
+							<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $productdealer->getDealerId() ?>"
+										 value="<?php echo $productdealer->getTitle() ?>"/>
+										 
+							<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $productdealer->getDealerId() ?>">
+								<p><strong><?php echo $productdealer->getTitle() ?></strong></p>
+							</div>
+						</li>
 						<?php $numProductDealer = ($numProductDealer + 1);?>
-          <?php endforeach; ?>
-          </tbody>
-        </table>
-        
-        <?php /*<script type="text/javascript">decorateTable('dealer-list')</script>*/?>
-      <?php else: ?>
-        <p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
-      <?php endif; ?>
-    </div>
+					<?php endforeach; ?>
+					</ul>
+				<?php /*<script type="text/javascript">decorateTable('dealer-list')</script>*/?>
+			<?php else: ?>
+				<p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
+			<?php endif; ?>
+		</div>
 
-    <div class="gmap">
-      <div id="product_dealer_map_canvas" style="float:right;width:500px; height:370px"></div>
-    </div>
+		<div class="gmap">
+			<div id="product_dealer_map_canvas" style="float:right;width:770px; height:450px"></div>
+		</div>
   </div>
 </div>
 <?php
@@ -145,7 +128,7 @@
 	var selectLimitDealer;
 	
 	if(document.getElementsByClassName('pages')[0]){
-		selectLimitDealer = $('product-dealer').down(8);
+		selectLimitDealer = $('dealer-select-limiter');
 		
 		var pages = document.getElementsByClassName('pages');
 		var page = pages[0];
@@ -159,7 +142,7 @@
 		var liPageDealer = ol.select('li');
 	}
 	else{
-		selectLimitDealer = $('product-dealer').down(9);
+		selectLimitDealer = $('dealer-select-limiter');
 	}
 	
 	/* #################################### */	
@@ -171,7 +154,10 @@
 		
     jQuery("#btn_fancybox").fancybox({
       'href' : '#product-dealer',
-      'afterShow': function() { initMap();}
+      'afterShow': function() {
+				jQuery("ul.product-dealerscroll").mCustomScrollbar();
+				initMap();
+			}
     });
   }
   //window.onload = initMap();
@@ -181,7 +167,7 @@
 		selectLimitDealer.writeAttribute("onchange", "loadProductDealerByLimit()");
 		
 		//replace amount pager
-		$('product-dealer').down(3).writeAttribute('id', 'amount_page_dealer');
+		//$('product-dealer').down(3).writeAttribute('id', 'amount_page_dealer');
 		
 		//replace li page
 		if(liPageDealer){
@@ -284,7 +270,7 @@
 				$('product-dealer-tr-'+i).hide();
 		}
 		
-		if(limit > num_row){
+		if(parseInt(limit) > parseInt(num_row)){
 			currentp = p;
 			p = 1;
 			/* $('li_page_'+p).update(p);
@@ -318,6 +304,20 @@
 			maxPage = maxPage + 1;
 		}
 		if(liPageDealer){
+			$('li_page_previous').show();
+			
+			$('li_page_next').show();
+			
+			/* if(p == 1){
+				$('li_page_previous').down().writeAttribute('href', 'javascript:void(0)');
+			}else{
+				$('li_page_previous').down().writeAttribute("href","javascript:loadProductDealerByPage('prev')");
+			}
+			if(p == maxPage){
+				$('li_page_next').down().writeAttribute('href', 'javascript:void(0)');
+			}else{
+				$('li_page_next').down().writeAttribute("href","javascript:loadProductDealerByPage('next')");
+			} */
 			if(p == 1){
 				$('li_page_previous').hide();
 			}

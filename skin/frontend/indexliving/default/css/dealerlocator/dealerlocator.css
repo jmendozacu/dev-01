@@ -173,6 +173,69 @@
 .list-all-dealer .data-table tr:hover {
   background-color: #ccc;
 }
+#product-dealer{max-width:1200px;}
+.product-dealer-body-2columns{}
+
+.product-dealer-body-2columns h2.legend{font-family: 'DBYordXMed'; font-size:28px; background:#252525; padding:15px 20px; color:#FFFFFF; border-radius:4px 4px 0 0;}
+
+.product-dealer-body-2columns .product-dealers-popup{}
+.product-dealer-body-2columns .list-all-product-dealer{float:left; width:34%; padding:0 20px; margin:0 0 20px;}
+.product-dealer-body-2columns .list-all-product-dealer .product-dealerscroll{
+	max-height: 400px;
+  overflow-y: auto;  
+  overflow-x: hidden; 
+}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager{
+	padding:3px 10px 3px 35px; 
+	overflow:hidden; 
+	background:#FFC222 url(images/dealerlocator/i-dealer.png) 10px center no-repeat;
+	margin:0 0 15px;
+}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .amount,
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; font-family:'DBYordXMed';}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages{}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li{display:none;}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_previous,
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next{display:block;}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages strong{display:none;}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages a.previous,
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px;}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages .previous:before {
+    background: url(images/dealerlocator/dealer-i-prev.png) no-repeat center center;
+		width:10px;
+		height:25px;
+}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages .next:before {
+    background: url(images/dealerlocator/dealer-i-next.png) no-repeat center center;
+		width:10px;
+		height:25px;
+}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .limiter{display:none;}
+.product-dealer-body-2columns .list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6;}
+.product-dealer-body-2columns .gmap{float:right; width:65%;  padding:0 20px;}
+.product-dealer-body-2columns .list-all-product-dealer ul li h3{
+	color:#ffc222;
+	font-family:Tahoma;
+	font-size:14px;
+	margin:0 0 5px;
+	font-weight:bold;
+	background:url(images/dealerlocator/icon-link.png) center right no-repeat;
+	padding-right:25px;
+	float:left;
+	display:block;
+	clear:both;
+	text-transform:none;
+}
+.product-dealer-body-2columns .list-all-product-dealer ul li h4{
+	color:#000;
+	font-family:Tahoma;
+	font-size:14px;
+	margin:0 0 5px;
+	clear:both;
+	text-transform:none;
+	font-weight:normal;
+}
+.product-dealer-body-2columns .list-all-product-dealer ul li a{text-decoration: none;}
 
 .dealer-body-2columns .list-all-dealer {
   width: 60%;
