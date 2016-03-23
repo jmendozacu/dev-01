@@ -1,0 +1,26 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_PinBar
+ */
+?>
+<?php if(Mage::helper('ampinbar')->moduleEnabled()): ?>
+<div id="ampinbar-bar" style="display: <?php echo $this->visibleBar()? 'block' : 'none'; ?>">
+    <?php $tabs = $this->getPinBarCollection(); ?>
+    <?php foreach($tabs as $tab): ?>
+        <div class="tab" id="<?php echo $tab->getId(); ?>">
+            <a title="<?php echo $tab->getTitle(); ?>" href="<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/pinbar_index/loadpin', array('pinId' => $tab->getId())); ?>"></a>
+            <div class="title">
+                <input type="text" class="title-span" value="<?php echo $tab->getTitle(); ?>" disabled="1"/>
+            </div>
+            <input class="title-input" type="text" value="<?php echo $tab->getTitle(); ?>" style="display: none;"/>
+            <div class="edit">
+                <div class="rename"></div>
+                <div class="delete"></div>
+            </div>
+        </div>
+    <?php endforeach;?>
+</div>
+<?php endif; ?>
+

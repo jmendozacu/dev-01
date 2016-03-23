@@ -184,6 +184,7 @@
 <?php } ?>
 <?php echo $this->getChildHtml("order_before") ?>
 <form method="post" id="amscheckout-onepage">
+
     <input type="hidden" name="updated_section" id="updated_section"/>
     <?php if ($hlr->isShoppingCartOnCheckout() && !$hlr->isMergeShoppingCartCheckout()) {?>
     <div id="amscheckout-cart">

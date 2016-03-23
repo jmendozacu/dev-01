@@ -122,6 +122,7 @@
 					<customer_edit_tab_addresses>Magebuzz_Customaddress_Block_Adminhtml_Customer_Edit_Tab_Addresses</customer_edit_tab_addresses>
 					<sales_order_create_billing_address>Magebuzz_Customaddress_Block_Adminhtml_Sales_Order_Create_Billing_Address</sales_order_create_billing_address>
 					<sales_order_create_shipping_address>Magebuzz_Customaddress_Block_Adminhtml_Sales_Order_Create_Shipping_Address</sales_order_create_shipping_address>
+					<sales_order_address_form>Magebuzz_Customaddress_Block_Adminhtml_Sales_Order_Address_Form</sales_order_address_form>
 				</rewrite>
 			</adminhtml>
 		</blocks>
