@@ -33,10 +33,13 @@
     .main-home .box-list-products .products-grid li.item {width:31%; margin-right:3%;}
     .main-home .box-list-products .products-grid li.item:nth-child(3n)  {margin-right:0px;}
     .main-home .box-list-products .products-grid li.item.last { display:none;}
+    .product-img-box .product-image {padding-left:80px;}
+    .styled-select::after, .styled-select:after {right:4px; margin-top:-3px;}
  }
  @media (max-width: 991px) {}
  @media (min-width: 769px){ }
  @media (min-width: 768px) and (max-width: 991px) {
+	.box-mobile {display:block;}
   /* .box-desktop,
   #header-search  {display:none;}
   .box-mobile {display:block;}
@@ -53,23 +56,12 @@
   .box-home-list-products .a-button {display:none;}
   .title-style3 {font-size:14px;}
   .main-home .box-home-decor .decor-style .banner-title {font-size:12px; padding:0px;}
-	.product-view .product-img-box{
-		width:50%;
-	}
-	.product-view .product-shop{
-		width:46%;
-	}
-	.product-view .product-shop .add-to-links > li > a{
-		font-size:12px;
-	}
+	.product-view .product-shop,
+  .product-view .product-img-box{	width:100%;}
+	.product-view .product-shop .add-to-links > li > a{	font-size:12px;}
 	.product-view .product-shop .add-to-links .shareproduct-content{right:70px;}
-	.product-view #customer-reviews .review-list li > div.review-rating{
-		width:30%;
-	}
-	.product-view #customer-reviews .review-list li > div.review-details{
-		width:53%;
-		float:right;
-	}
+	.product-view #customer-reviews .review-list li > div.review-rating{	width:30%;}
+	.product-view #customer-reviews .review-list li > div.review-details{	width:53%;	float:right;}
  }
  @media (max-width: 768px) {
   body  {float:left; width:100%; overflow-x:hidden;} 
@@ -302,8 +294,7 @@
   .toolbar-bottom  .sort-by {display:none;}
   .products-grid > li {float:left; width:50%; margin: 0px; border:solid 1px #EBEBEB; border-top:none; }
   .products-grid > li:nth-child(2n){border-left:none;}
-  .button.btn-cart > span {padding-left:30px;}
-  .button.btn-cart > span:before {top:0px; background-size:80px auto; background-position: 3px -674px}
+  
   .products-grid .actions .button.btn-cart, .products-list .actions .button.btn-cart,
   .products-grid .actions .button.btn-view-details,
   .products-list .button.btn-view-details,
@@ -443,6 +434,8 @@
  @media (max-width:640px){
   .main-home .box-list-products .products-grid li.item.last  {display:block; float:left; margin-right:0px;} 
 	/* Product Page */
+  .button.btn-cart > span {padding-left:30px;}
+  .button.btn-cart > span:before {top:0px; background-size:80px auto; background-position: 3px -674px}
 	.product-view .product-features .box-title h2{
 		text-align:left;
 		cursor:pointer; 
@@ -463,11 +456,15 @@
 		cursor:pointer; 
 		line-height:25px; 
 		position:relative; 
+		font-size:25px;
 	}
 	.product-view .product-review-summary .review-box .box-title .bl h2:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:0px; right:10px; background:url(../images/arrow-down-2.png) no-repeat center center;}
   .product-view .product-review-summary .review-box .box-title .bl h2.active:before {background:url(../images/arrow-up-2.png) no-repeat center center;}
+	.product-view .product-review-summary .review-box .ratings-overview .rating-box{float:none; margin:10px auto;}
+	.product-view .product-review-summary .rating-summary-details .ratings-table{width:150px; margin:0 auto;}
+	.product-view .product-review-summary .rating-summary-details .ratings-table tbody th{min-width:80px;}
 	.product-view .review-box .ratings{margin:1%;}
-	.product-view .review-box .ratings .rating-average{float:right;}
+	.product-view .review-box .ratings .rating-average{float:right; width:100%; text-align:center;}
 	.product-view .m-review-list-title {
 		display:block!important;
 		cursor:pointer; 
@@ -508,6 +505,8 @@
 	#review-form-popup .rating_wrap_start{float:left; margin:3px 0;}
 	#review-form-popup .submit-fields{margin:20px 10px 0;}
 	#review-form-popup .submit-fields ul, #review-form-popup .submit-fields .review-image{margin:0; width:100%; padding:0; border:0 none;}
+	
+	.title-style1 a{display:none;}
  }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;} 

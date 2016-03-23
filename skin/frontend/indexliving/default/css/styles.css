@@ -731,7 +731,7 @@ h6, .h6 {
   text-transform: uppercase;
 }
 
-.main-container {overflow:hidden;}
+.main-container {/* overflow:hidden; */}
 .page-title.style2 { background:#EFEFEF; position:relative;} 
 .page-title.style2 h1 {display:block; font-size:30px; color:#252525; font-family: 'DBYordXMed'; padding: 15px 0;  line-height:38px; margin:0px;   border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6; }
 .page-title.style2:before,
@@ -1253,7 +1253,7 @@ a.button {
 
 @media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 4 / 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
   .icon-sprite, .btn-remove2, /* .ratings .rating-box, .ratings .rating-box .rating, */ .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
-  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon, .product-view .sharing-links a/* , .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating */ {
+  .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon/* , .product-view .sharing-links a *//* , .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating */ {
     background-image: url(../images/icon_sprite@2x.png);
     background-size: 100px 1000px;
   }
@@ -1664,69 +1664,80 @@ a.button {
 .messages li li {
   position: relative;
   margin-bottom: 5px;
-  padding: 7px 10px 7px 20px;
-  background: #f4f4f4;
-  font-size: 15px;
+  padding: 9px 10px;
+	height:43px;
+  background: #000000;
+  font-size: 14px;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-family: 'FuturaBT-Book';
+	border-radius:5px;
 }
 
+.messages li li span{line-height:25px; padding-left:35px;}
+
 .messages li li:before {
-  top: 50%;
+/*   top: 50%;
   left: 0;
-  margin-top: -6px;
+  margin-top: -6px; */
 }
 
 .messages .error-msg li {
-  color: black;
+  /* color: black;
   border-left: 5px solid #df280a;
-  background-color: #faebe7;
+  background-color: #faebe7; */
 }
 
 .messages .error-msg li:before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 25px;
+  height: 25px;
   display: block;
-  border-top: 6px solid transparent;
+  /* border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-left: 6px solid #df280a;
-  border-right: none;
+  border-right: none; */
+	background:url(../images/i-error-msg.png) left center no-repeat;
 }
 
 .messages .notice-msg li {
-  color: black;
+  /* color: black;
   border-left: 5px solid #e26703;
-  background-color: #f9ebe6;
+  background-color: #f9ebe6; */
 }
 
 .messages .notice-msg li:before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 25px;
+  height: 25px;
   display: block;
-  border-top: 6px solid transparent;
+  /* border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
   border-left: 6px solid #e26703;
-  border-right: none;
+  border-right: none; */
+	background:url(../images/i-notice-msg.png) left center no-repeat;
 }
 
 .messages .success-msg li {
-  color: black;
+  /* color: black;
   border-left: 5px solid #11b400;
-  background-color: #eff5ea;
+  background-color: #eff5ea; */
+	
 }
 
 .messages .success-msg li:before {
   content: '';
   position: absolute;
-  width: 0;
-  height: 0;
+  width: 25px;
+  height: 25px;
   display: block;
-  border-top: 6px solid transparent;
+  /* border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  border-left: 6px solid #11b400;
-  border-right: none;
+  border-left: 6px solid #e26703;
+  border-right: none; */
+	background:url(../images/i-success-msg.png) left center no-repeat;
 }
 
 @media only screen and (min-width: 915px) {
@@ -3415,7 +3426,7 @@ body {
 .title-style1 {float:left; width:100%; margin-bottom:40px; font-family: 'FuturaBT-Book'; text-align:center; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
 .title-style1:before {content:""; position:absolute; height:7px; width:165px; background:#FFC222; bottom:-6px; left:50%; margin-left:-82px;}
 .title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; }
-.title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#434343; font-size:14px; padding-right:15px;}
+.title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#434343; font-size:14px; padding-right:15px; z-index:999}
 .title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #434343; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
 .title-style1 a:hover {color:#FFC222; text-decoration:none;}
 .title-style1 a:hover:after {border-left-color:#FFC222;}
@@ -5445,6 +5456,18 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box input{width: 70%;border:2px solid #dadada;height: 40px;min-width: 315px;border-radius: 4px 0 0 4px; background:url(../images/i-share-link.png) 10px center no-repeat; padding-left:35px;}
 .product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box button{border-radius: 0px 4px 4px 0;}
 .product-view .add-to-links .shareproduct-content  li a{float:left; margin-right:10px; text-indent:-9999em; }
+.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing{
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin: 10px 0 20px;
+}
+.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links{
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links li{display:inline-block;}
 .icon-facebook{
 	background-image: url(../images/i_share_facebook.png);
 	background-size: 33px 33px;
@@ -5517,6 +5540,9 @@ body.catalogsearch-result-index .page-title h1 {
     width: auto;
     text-indent: 0;
   }
+	.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links li a{
+		width:33px;
+	}
 }
 .product-collateral {
   clear: both;

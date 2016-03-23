@@ -5,7 +5,16 @@
     $_columnCount       = $this->getColumnCount();
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
-
+<?php 
+	if ($this->getCategoryFilter()) {
+		$categoryFilterId = $this->getCategoryFilter();	
+		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);	
+		$_categoryUrl = $_category->getUrl().'/?page=productlist';
+	}else{
+		$_categoryUrl = '#';
+	}
+?>
+<h2 class="title-style1"><span><?php echo $this->__($this->getTitle()) ?></span><a title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all')?></a></h2>
 <div class="category-products block-highlight <?php echo $this->getClassName() ?>">
     <div class="block-content">
         <?php $i=0; foreach ($_productCollection as $_product): ?>

@@ -1,10 +1,15 @@
-<a href="javascript:void(0)" style="float:right;" id="btn_fancybox" class="view-dealers" onclick="showProductDealers();"><?php echo $this->__('View all dealers') ?></a>
+<a href="javascript:void(0)" style="float:right;" id="btn_fancybox" class="view-dealers" onclick="showProductDealers();">
+	<span><?php echo $this->__('View all dealers') ?></span>
+</a>
 <?php $numProductDealer = 0;?>
 <?php $productDealers = $this->getProductDealer(); ?>
 
 <div class="product-dealer" style="overflow:hidden; display:none;" id="product-dealer">
   <div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
     <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
+		<div class="gmap">
+			<div id="product_dealer_map_canvas" style="float:right;width:770px; height:450px"></div>
+		</div>
 		<div class="list-all-product-dealer">
 			<?php if ($productDealers->getSize()): ?>
 				<?php echo $this->getPagerHtml(); ?>
@@ -42,10 +47,6 @@
 			<?php else: ?>
 				<p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
 			<?php endif; ?>
-		</div>
-
-		<div class="gmap">
-			<div id="product_dealer_map_canvas" style="float:right;width:770px; height:450px"></div>
 		</div>
   </div>
 </div>
@@ -151,12 +152,15 @@
 		<?php if ($productDealers->getSize()): ?>
 			loadProductDealerPopupByValue();
 		<?php endif;?>
-		
+		jQuery("#btn_fancybox").addClass('active');
     jQuery("#btn_fancybox").fancybox({
       'href' : '#product-dealer',
       'afterShow': function() {
 				jQuery("ul.product-dealerscroll").mCustomScrollbar();
 				initMap();
+			},
+			'afterClose': function() {
+				//jQuery("#btn_fancybox").removeClass('active');
 			}
     });
   }
