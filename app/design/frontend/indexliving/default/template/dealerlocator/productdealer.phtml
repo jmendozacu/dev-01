@@ -7,6 +7,9 @@
 <div class="product-dealer" style="overflow:hidden; display:none;" id="product-dealer">
   <div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
     <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
+		<div class="gmap">
+			<div id="product_dealer_map_canvas" style="float:right;width:770px; height:450px"></div>
+		</div>
 		<div class="list-all-product-dealer">
 			<?php if ($productDealers->getSize()): ?>
 				<?php echo $this->getPagerHtml(); ?>
@@ -44,10 +47,6 @@
 			<?php else: ?>
 				<p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
 			<?php endif; ?>
-		</div>
-
-		<div class="gmap">
-			<div id="product_dealer_map_canvas" style="float:right;width:770px; height:450px"></div>
 		</div>
   </div>
 </div>

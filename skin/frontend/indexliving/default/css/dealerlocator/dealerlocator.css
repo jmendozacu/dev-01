@@ -359,7 +359,7 @@ td .dealer-label {
 
 	.product-dealer-body-2columns .gmap {
     width: 100%;
-    margin: 10px 0 0;
+    margin: 0 0 10px;
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
@@ -444,7 +444,7 @@ td .dealer-label {
 
 	.product-dealer-body-2columns .gmap {
     width: 100%;
-    margin: 10px 0 0;
+    margin: 0 0 10px;
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
@@ -468,7 +468,7 @@ td .dealer-label {
 
 	.product-dealer-body-2columns .gmap {
     width: 100%;
-    margin: 10px 0 0;
+    margin: 0 0 10px;
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
