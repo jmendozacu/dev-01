@@ -192,8 +192,8 @@
 	margin:0 0 15px;
 }
 .product-dealer-body-2columns .list-all-product-dealer .dealer-pager .amount,
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; font-family:'DBYordXMed';}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages{}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; font-family:'DBYordXMed'; display:block;}
+.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages{float:right;}
 .product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li{display:none;}
 .product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_previous,
 .product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next{display:block;}
@@ -346,6 +346,17 @@ td .dealer-label {
     width: 100%;
     margin: 10px 0 0;
   }
+	.product-dealer-body-2columns .list-all-product-dealer {
+    width: 100%;
+		padding:0 10px;
+  }
+
+	.product-dealer-body-2columns .gmap {
+    width: 100%;
+    margin: 10px 0 0;
+		padding:0 10px;
+  }
+	#product_dealer_map_canvas{max-width:100%;}
 }
 
 @media (min-width: 481px) and (max-width: 600px) {
@@ -419,17 +430,42 @@ td .dealer-label {
     width: 100%;
     margin: 10px 0 0;
   }
+	
+	.product-dealer-body-2columns .list-all-product-dealer {
+    width: 100%;
+		padding:0 10px;
+  }
+
+	.product-dealer-body-2columns .gmap {
+    width: 100%;
+    margin: 10px 0 0;
+		padding:0 10px;
+  }
+	#product_dealer_map_canvas{max-width:100%;}
 }
 
 @media (min-width: 601px) and (max-width: 767px) {
   .dealer-body-2columns .list-all-dealer {
     width: 100%;
   }
-
-  .dealer-body-2columns .gmap {
+	
+	.dealer-body-2columns .gmap {
     width: 100%;
     margin: 10px 0 0;
   }
+	
+	
+	.product-dealer-body-2columns .list-all-product-dealer {
+    width: 100%;
+		padding:0 10px;
+  }
+
+	.product-dealer-body-2columns .gmap {
+    width: 100%;
+    margin: 10px 0 0;
+		padding:0 10px;
+  }
+	#product_dealer_map_canvas{max-width:100%;}
 }
 
 #dealer-search-autocomplete {

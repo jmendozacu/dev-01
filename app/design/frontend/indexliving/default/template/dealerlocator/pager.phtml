@@ -62,7 +62,7 @@
     <?php endif; ?>
 
     <?php if($this->getLastPageNum()>1): ?>
-    <div class="pages box-desktop">
+    <div class="pages">
         <strong><?php echo $this->__('Page:') ?></strong>
         <ol>
         <?php if (!$this->isFirstPage()): ?>
@@ -119,44 +119,6 @@
 		<p class="amount amount-box amount--has-pages" id="amount_page_dealer">
 			<?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
 		</p>
-    <div class="pages box-mobile">
-        <ol>
-        
-            <li class="li-previous">
-              <?php if (!$this->isFirstPage()): ?>
-                <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
-                    <?php if(!$this->getAnchorTextForPrevious()): ?>
-                        <?php echo $this->__('Previous') ?>
-                    <?php else: ?>
-                        <?php echo $this->getAnchorTextForPrevious() ?>
-                    <?php endif;?>
-                </a>
-              <?php else: ?>
-              <span class="previous"></span>
-              <?php endif;?>  
-            </li>
-            
-            <?php foreach ($this->getFramePages() as $_page): ?>
-                <?php if ($this->isPageCurrent($_page)): ?>
-                    <li class="li-current"><?php echo $_page ?>/<?php echo $this->getLastPageNum() ?></li>
-                <?php endif;?>
-            <?php endforeach;?>
-        
-            <li class="li-next">
-               <?php if (!$this->isLastPage()): ?>
-                <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
-                    <?php if(!$this->getAnchorTextForNext()): ?>
-                        <?php echo $this->__('Next') ?>
-                    <?php else: ?>
-                        <?php echo $this->getAnchorTextForNext() ?>
-                    <?php endif;?>
-                </a>
-                <?php else: ?>
-                  <span class="next"></span>
-                <?php endif;?>     
-            </li>
-        </ol>
-    </div>
     <?php endif; ?>
 
     <?php if($this->getUseContainer()): ?>
