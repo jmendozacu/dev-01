@@ -32,6 +32,7 @@
                         width="135" height="135"
                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                     /></a>
+
                     <ul class="add-to-links">
                         <?php if ($this->helper('wishlist')->isAllow()) : ?>
                             <li class="wishlist-ajax-gird add-wishlist">
@@ -103,8 +104,9 @@
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                $j('#'+proId).attr('href','');
-                $j('#'+proId).addClass('added-item');
+                alert(proId);
+                $j('.box-list-products').find('a#'+proId).attr('href','');
+                $j('.box-list-products').find('a#'+proId).addClass('added-item');
                 $j("#ajax_loader").hide();
                 $j(".success-msg").html(data.message);
                 $j(".messages ul li span").html(data.message);

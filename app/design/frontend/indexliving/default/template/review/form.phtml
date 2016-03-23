@@ -100,7 +100,8 @@
 								<input name="attachment" id="attachment" class="input-text" type="file" />      
 								<p id="upload-error-message" style="color: red;"></p> 		
 							</div>                               
-						</div>    
+						</div>
+
 						<input id="image-name" name="image-name" type="hidden" value="" class="required-entry" />
 					</div>
 				</div>
@@ -198,7 +199,8 @@
 				},
 				autoSubmit: true,
 				onComplete: function(file, response) {
-					var data = response.evalJSON();  
+
+					var data = response.evalJSON();
 					if (data.error) {
 						$('upload-error-message').update(data.message);
 						$('image-name').value = '';
@@ -229,9 +231,11 @@
 						contentType: false,
 						processData: false,
 						success: function (data) {
+
 							$j('#ajax_loader').remove();
 							$j('.form-add .show-message').html('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
 							$j("#review-form")[0].reset();
+							$j.fancybox.close();
 						}
 					});
 				});
