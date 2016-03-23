@@ -53,23 +53,12 @@
   .box-home-list-products .a-button {display:none;}
   .title-style3 {font-size:14px;}
   .main-home .box-home-decor .decor-style .banner-title {font-size:12px; padding:0px;}
-	.product-view .product-img-box{
-		width:50%;
-	}
-	.product-view .product-shop{
-		width:46%;
-	}
-	.product-view .product-shop .add-to-links > li > a{
-		font-size:12px;
-	}
+	.product-view .product-shop,
+  .product-view .product-img-box{	width:100%;}
+	.product-view .product-shop .add-to-links > li > a{	font-size:12px;}
 	.product-view .product-shop .add-to-links .shareproduct-content{right:70px;}
-	.product-view #customer-reviews .review-list li > div.review-rating{
-		width:30%;
-	}
-	.product-view #customer-reviews .review-list li > div.review-details{
-		width:53%;
-		float:right;
-	}
+	.product-view #customer-reviews .review-list li > div.review-rating{	width:30%;}
+	.product-view #customer-reviews .review-list li > div.review-details{	width:53%;	float:right;}
  }
  @media (max-width: 768px) {
   body  {float:left; width:100%; overflow-x:hidden;} 
