@@ -3,6 +3,48 @@ require_once(Mage::getModuleDir('controllers','Mage_Review').DS.'ProductControll
 
 class Magebuzz_Customreview_ProductController extends Mage_Review_ProductController
 {
+		public function autouploadAction(){
+			try {
+				$file = $_FILES['attachment'];
+				$image_name = $_FILES['attachment']['name'];    
+				$uploader = new Varien_File_Uploader('attachment');
+				$uploader->setAllowedExtensions(array("jpg", "png", "gif", "bmp","jpeg","PNG","JPG","JPEG","GIF","BMP"));
+				$uploader->setAllowRenameFiles(true);                    
+				$uploader->setFilesDispersion(false);
+				$path = Mage::getBaseDir('media') . DS . 'review';
+				if (!is_dir($path)) {
+					mkdir($path, 0777, true);
+				}        
+				$rs = $uploader->save($path, $_FILES['attachment']['name']);        
+				$new_image_name = $uploader->getUploadedFileName();            
+
+				$location = $path. DS . $new_image_name;
+				//check if valid image size
+				$imageObj = new Varien_Image($location);
+
+				// resize for image
+
+				$resizeWidth = '150';
+				$resizeHeight = '150';     
+				
+				$helper = Mage::helper('customreview/image') ;
+				$urlResize = $helper->resize($new_image_name,$resizeWidth,$resizeHeight,null);
+
+				//end      
+				$result = array(
+				'location' => $location,
+				'imageUrl' => $urlResize,
+				'imageName' => $new_image_name
+				);  
+			}
+			catch (Exception $e) {
+				$result = array(
+				'error' => true,
+				'message' => $e->getMessage()
+				);
+			}
+			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+		}
     public function postAction()
     {
         if (!$this->_validateFormKey()) {
@@ -74,7 +116,7 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
 
                 $uploader       = new Varien_File_Uploader('attachment');
                 $uploader->setAllowedExtensions(array('jpg', 'png'));
-                $uploader->setAllowRenameFiles(false);
+                $uploader->setAllowRenameFiles(true);
                 $uploader->setFilesDispersion(false);
                 $path = Mage::getBaseDir('media') . DS . 'review';
 

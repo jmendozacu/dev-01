@@ -222,7 +222,8 @@
   .breadcrumbs {margin:5px 0;}
   .breadcrumbs li {font-size:12px;}
   /* Category page */
-  .catalog-category-view  .main-container .page-header {padding-left:0px; padding-right:0px;}
+  .catalog-category-view  .main-container .page-header,
+	.catalogsearch-result-index  .main-container .page-header {padding-left:0px; padding-right:0px;}
   .catalog-category-view  .main-container .breadcrumbs,
   .catalog-category-view  .main-container .category-overview,
   .catalog-category-view  .main-container .categories-list  {margin-left:10px; margin-right:10px; display:block; width:auto;}
@@ -489,6 +490,24 @@
 		text-align:left;
 	}
 	#customer-reviews .review-list li .review-details .review-meta{float:left; text-align:left;}
+	
+	/* Share box */
+	.product-view .add-to-links .shareproduct-content::after{right:35px;}
+	.product-view .add-to-links .shareproduct-content .popupsharing-content{padding:10px;}
+	.product-view .add-to-links .shareproduct-content .popupsharing-content .input-box{width:280px;}
+	.product-view .add-to-links .shareproduct-content .popupsharing-content .input-box input{min-width:205px;}
+	
+	/* Checkout success */
+	.checkout-success .page-title h1{text-align:center; font-size:27px;}
+	.checkout-success h2.sub-title{font-size:25px;}
+	
+	/* Popup submit review */
+	#review-form-popup .form-add .show-message{padding:0 10px;}
+	#review-form-popup #product-review-star ul li{padding:0 10px;}
+	#review-form-popup .rating_title{width:100%;}
+	#review-form-popup .rating_wrap_start{float:left; margin:3px 0;}
+	#review-form-popup .submit-fields{margin:20px 10px 0;}
+	#review-form-popup .submit-fields ul, #review-form-popup .submit-fields .review-image{margin:0; width:100%; padding:0; border:0 none;}
  }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;} 

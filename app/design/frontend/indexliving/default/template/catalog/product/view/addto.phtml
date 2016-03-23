@@ -30,7 +30,7 @@
 
 <ul class="add-to-links">
 	<?php if ($this->helper('wishlist')->isAllow()) : ?>
-		<li class="wishlist-ajax">
+		<li class="wishlist-ajax add-wishlist">
 			<a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?>modal<?php endif ?>"
 			   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
 			<span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
