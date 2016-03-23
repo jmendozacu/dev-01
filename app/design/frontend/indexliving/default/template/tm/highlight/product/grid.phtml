@@ -3,11 +3,10 @@
     $_helper            = $this->helper('catalog/output');
     $_collectionSize    = $_productCollection->count();
     $_columnCount       = $this->getColumnCount();
-		$categoryFilterId = $this->getCategoryFilter();
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
 <?php 
-	if (!empty($this->getCategoryFilter())) {
+	if ($this->getCategoryFilter()) {
 		$categoryFilterId = $this->getCategoryFilter();	
 		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);	
 		$_categoryUrl = $_category->getUrl().'/?page=productlist';
