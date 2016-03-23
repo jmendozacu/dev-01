@@ -731,7 +731,7 @@ h6, .h6 {
   text-transform: uppercase;
 }
 
-.main-container {overflow:hidden;}
+.main-container {/* overflow:hidden; */}
 .page-title.style2 { background:#EFEFEF; position:relative;} 
 .page-title.style2 h1 {display:block; font-size:30px; color:#252525; font-family: 'DBYordXMed'; padding: 15px 0;  line-height:38px; margin:0px;   border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6; }
 .page-title.style2:before,
@@ -5456,6 +5456,18 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box input{width: 70%;border:2px solid #dadada;height: 40px;min-width: 315px;border-radius: 4px 0 0 4px; background:url(../images/i-share-link.png) 10px center no-repeat; padding-left:35px;}
 .product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box button{border-radius: 0px 4px 4px 0;}
 .product-view .add-to-links .shareproduct-content  li a{float:left; margin-right:10px; text-indent:-9999em; }
+.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing{
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin: 10px 0 20px;
+}
+.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links{
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links li{display:inline-block;}
 .icon-facebook{
 	background-image: url(../images/i_share_facebook.png);
 	background-size: 33px 33px;
