@@ -3,9 +3,12 @@
     <reference name="root">
       <action method="setTemplate"><template>page/1column.phtml</template></action>
     </reference>
+    <reference name="head">
+        <action method="setTitle" translate="title"><title>All Categories</title></action>
+    </reference>
     <reference name="breadcrumbs">
       <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
-      <action method="addCrumb"><crumbName>Allcategory</crumbName><crumbInfo><label>Allcategory</label><title>Allcategory</title></crumbInfo></action>
+      <action method="addCrumb"><crumbName>All Categories</crumbName><crumbInfo><label>All Categories</label><title>All Categories</title></crumbInfo></action>
     </reference>
     
     <reference name="content">
