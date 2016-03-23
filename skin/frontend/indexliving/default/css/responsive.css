@@ -463,11 +463,15 @@
 		cursor:pointer; 
 		line-height:25px; 
 		position:relative; 
+		font-size:25px;
 	}
 	.product-view .product-review-summary .review-box .box-title .bl h2:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:0px; right:10px; background:url(../images/arrow-down-2.png) no-repeat center center;}
   .product-view .product-review-summary .review-box .box-title .bl h2.active:before {background:url(../images/arrow-up-2.png) no-repeat center center;}
+	.product-view .product-review-summary .review-box .ratings-overview .rating-box{float:none; margin:10px auto;}
+	.product-view .product-review-summary .rating-summary-details .ratings-table{width:150px; margin:0 auto;}
+	.product-view .product-review-summary .rating-summary-details .ratings-table tbody th{min-width:80px;}
 	.product-view .review-box .ratings{margin:1%;}
-	.product-view .review-box .ratings .rating-average{float:right;}
+	.product-view .review-box .ratings .rating-average{float:right; width:100%; text-align:center;}
 	.product-view .m-review-list-title {
 		display:block!important;
 		cursor:pointer; 
