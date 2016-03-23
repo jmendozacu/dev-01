@@ -26,9 +26,12 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 				$response['message'] = $this->__('The product %s has been added to comparison list.', Mage::helper('core')->escapeHtml($product->getName()));
 			}
 		}
+		$response['popup'] = $this->getLayout()->createBlock('catalog/product_compare_list')->setTemplate('catalog/product/compare/list.phtml')->toHtml();
+
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
 		return;
 	}
+
 	public function addAction()
 	{
 		$response = array();
