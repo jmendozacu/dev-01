@@ -2875,7 +2875,7 @@ form .form-instructions {
 .form-list .gender,
 .account-create .form-list li.gender,
 .customer-account-edit .form-list > li.gender{float:left; width:100px; margin-right:18px; clear:none;}
-.form-list .field {float:left; width:260px; /* margin-right:18px; */}
+.form-list .field {float:left; width:260px; margin-right:18px;}
 .form-list .field.name-firstname {float:left; /* margin-right:18px; */width:200px}
 .my-account .form-list .field {margin-right:18px;}
 .my-account .form-list .field.name-firstname  {margin-right:18px;}
