@@ -104,12 +104,10 @@
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                alert(proId);
                 $j('.box-list-products').find('a#'+proId).attr('href','');
                 $j('.box-list-products').find('a#'+proId).addClass('added-item');
                 $j("#ajax_loader").hide();
-                $j(".success-msg").html(data.message);
-                $j(".messages ul li span").html(data.message);
+                $j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
             }
         });
         <?php endif;?>
