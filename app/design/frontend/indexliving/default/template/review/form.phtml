@@ -231,9 +231,8 @@
 						contentType: false,
 						processData: false,
 						success: function (data) {
-
-							$j('#ajax_loader').remove();
-							$j('.form-add .show-message').html('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
+							$j('#ajax_loader').hide();
+							$j('#messages_product_view .page-container').html('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
 							$j("#review-form")[0].reset();
 							$j.fancybox.close();
 						}

@@ -233,7 +233,7 @@ if ($this->getChild('after')) {
                 $j('#'+proId).attr('href','');
                 $j('#'+proId).addClass('added-item');
                 $j("#ajax_loader").hide();
-                $j("#page-container").html(data.message);
+                $j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
             }
         });
         <?php endif;?>
