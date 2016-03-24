@@ -3,7 +3,7 @@
     $_category  = $this->getCurrentCategory();
     $_imgHtml   = '';
     if ($_imgUrl = $_category->getImageUrl()) {
-        $_imgHtml = '<div class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></div>';
+        $_imgHtml = '<div class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></div>';
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }
 ?>
@@ -37,7 +37,7 @@
 			<?php $i=0; foreach($_subcategories as $_subcategory): $i++;?>
 					<li class="category-item<?php if($i%3==0): ?> last<?php endif; ?>">
 						<?php $_subcategoryData = Mage::getModel('catalog/category')->load($_subcategory->getId()); ?>
-						<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" title="<?php echo $_subcategoryData->getName() ?>" />
+						<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
 						<div class="categories-links">
 						<?php $_categoryLevel3 = $_subcategory->getChildrenCategories(); ?>
 						<?php if (count($_categoryLevel3) > 0): ?>

@@ -15,7 +15,7 @@
       
         <a href="<?php echo $item->getUrl()?>">
           <?php if ($item->getImgBig()) : ?>
-              <img class="amshopby-featured" title="<?php echo $itemTitle[0]?>" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgBig()?>" />
+              <img class="amshopby-featured" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgBig()?>" />
           <?php else: ?>
             <?php echo $this->htmlEscape($item->getTitle())?>
           <?php endif ?>
