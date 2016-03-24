@@ -59,7 +59,7 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
                 $rating = $data['ratings'];
             }
         } else {
-            $data   = $this->getRequest()->getPost();
+            $data   = $this->getRequest()->getParams();
             $rating = $this->getRequest()->getParam('ratings', array());
         }
 
@@ -108,36 +108,10 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
                 }
             }
         }
-        $fileName = '';
-        if (isset($_FILES['attachment']['name']) && $_FILES['attachment']['name'] != '') {
-            try {
-                $fileName       = $_FILES['attachment']['name'];
-                $fileName   = rtrim($fileName);
 
-                $uploader       = new Varien_File_Uploader('attachment');
-                $uploader->setAllowedExtensions(array('jpg', 'png'));
-                $uploader->setAllowRenameFiles(true);
-                $uploader->setFilesDispersion(false);
-                $path = Mage::getBaseDir('media') . DS . 'review';
-
-                $imagename =  $_FILES['attachment']['name'];
-                $imagename = $uploader->getNewFileName($fileName);
-
-                if(!is_dir($path)){
-                    mkdir($path, 0777, true);
-                }
-                $uploader->save($path . DS, $fileName );
-
-                //Save Image
                 $reviewId = $review->getId();
-                $collection = Mage::getModel('review/review')->load($reviewId)
-                    ->setImg($imagename)->save();
-
-            } catch (Exception $e) {
-                Mage::getSingleton('customer/session')->addError($e->getMessage());
-                $error = true;
-            }
-        }
+                Mage::getModel('review/review')->load($reviewId)
+                    ->setImg($data['image-name'])->save();
 
         if ($redirectUrl = Mage::getSingleton('review/session')->getRedirectUrl(true)) {
             $this->_redirectUrl($redirectUrl);

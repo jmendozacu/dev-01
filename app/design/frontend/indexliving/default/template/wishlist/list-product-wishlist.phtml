@@ -20,7 +20,7 @@
 
 
 <script type="text/javascript">
-    $j(".wishlist-ajax ").click(function(){
+    $j(".wishlist-ajax-slice ").click(function(){
         var proId = $j(this).find('.link-wishlist').attr('id');
 
         <?php if(!$this->helper('customer')->isLoggedIn()):?>
@@ -30,17 +30,13 @@
         url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
         url += 'product/'+$j(this).find('.detect-proId').text();
         id = $j(this).find('.detect-proId').text();
-        $j(".model-content .login").hide();
         $j.ajax({
             url: url,
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                $j('#'+proId).attr('href', '');
+                $j('#'+proId).attr('href','');
                 $j('#'+proId).addClass('added-item');
-                $j(".model-content .login").show();
-                $j(".model-content .login").html(data.message);
-                $j('#'+proId).removeAttr('data-remodal-target');
             }
         });
         <?php endif;?>
