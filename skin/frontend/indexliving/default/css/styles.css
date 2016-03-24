@@ -517,7 +517,7 @@ textarea {
     content: '';
     height: 0;
     width: 0px;
-    right: 20px;
+    right: 2px;
     top: 50%;
     margin-top: -1px;
     border-top: solid 6px #000000;
