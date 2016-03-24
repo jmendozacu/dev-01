@@ -1657,7 +1657,7 @@ a.button {
  * Messages
  */
 .messages {
-  margin-bottom: 10px;
+  margin: 5px 0;
 	clear:both;
 }
 
@@ -5382,7 +5382,7 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup .submit-fields ul li .input-box textarea{width:100%; border:1px solid #cbcbcb; border-radius:5px;}
 #review-form-popup .submit-fields .review-image label{font-family: 'FuturaT_Bold'; font-size:14px; color:#000000; text-transform:none;}
 #review-form-popup .submit-fields .review-image label span{font-family: 'HelveticaNeue'; font-size:12px; color:#767676; text-transform:none;}
-#review-form-popup .form-add .buttons-set.box-mobile{margin:0 10px;}
+#review-form-popup .form-add .buttons-set.box-mobile{margin:0 10px 20px;}
 #review-form-popup .form-add .buttons-set button.button {margin:15px 0 0; float:left; width:auto; min-width:0;}
 
 @media only screen and (max-width: 479px) {
