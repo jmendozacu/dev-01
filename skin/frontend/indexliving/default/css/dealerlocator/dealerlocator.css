@@ -473,6 +473,16 @@ td .dealer-label {
   }
 	#product_dealer_map_canvas{max-width:100%;}
 }
+@media (max-width: 1199px) {
+	.product-dealer-body-2columns .list-all-product-dealer {
+		padding:0 10px;
+  }
+
+	.product-dealer-body-2columns .gmap {
+		padding:0 10px;
+  }
+	#product_dealer_map_canvas{max-width:100%;}
+}
 
 #dealer-search-autocomplete {
   background-color: white;
