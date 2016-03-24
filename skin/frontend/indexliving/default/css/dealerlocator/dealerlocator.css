@@ -363,6 +363,7 @@ td .dealer-label {
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
+	.view-dealers{width:140px;margin:0 auto;clear: both;float: none!important;display: block;}
 }
 
 @media (min-width: 481px) and (max-width: 600px) {
@@ -448,6 +449,7 @@ td .dealer-label {
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
+	.view-dealers{width:140px;margin:0 auto;clear: both;float: none!important;display: block;}
 }
 
 @media (min-width: 601px) and (max-width: 767px) {
