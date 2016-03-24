@@ -3179,6 +3179,7 @@ body {
   min-height: 100%;
   margin: 0 auto;
   background: #FFFFFF;
+  overflow:hidden;
 }
 
 .wrapper:after {
