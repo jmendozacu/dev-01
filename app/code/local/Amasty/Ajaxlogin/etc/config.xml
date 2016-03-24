@@ -41,6 +41,13 @@
                     <frontName>amajaxlogin</frontName>
                 </args>
             </amajaxlogin>
+						<customer>
+							<args>
+								<modules>
+									<amajaxlogin before="Mage_Customer">Amasty_Ajaxlogin</amajaxlogin>
+								</modules>
+							</args>
+						</customer>
         </routers>
     </frontend>
     
