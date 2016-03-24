@@ -41,7 +41,7 @@ $products = $this->getNewItems();
                                         <h4><?php echo $product->getName()?></h4>
                                         <?php endif?>
                                     </div>
-                                    <img src="<?php echo $product->getSmallImageUrl(160, 160) ?>" class="ampromo-item-image"/>
+                                    <img src="<?php echo $product->getSmallImageUrl(160, 160) ?>" class="ampromo-item-image" alt="<?php echo $this->__('ampromo-item-image') ?>"/>
 
                                     <div class="ampromo-item-options"  <?php if($product->getTypeId() == 'amgiftcard'):?>style="overflow-y: scroll; max-height: 300px"<?php endif;?>>
 										<?php

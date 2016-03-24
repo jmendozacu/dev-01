@@ -24,9 +24,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
               <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
               <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>"<?php endif ?>
                 onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banner->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
-                <img
-                  title="<?php echo $banner->getBannerDescription() ?>"
-                  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt="<?php echo $banner->getBannerTitle(); ?>"/>
+                <img src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt="<?php echo $banner->getBannerTitle(); ?>"/>
                   <span class="banner-title"><?php echo $banner->getBannerTitle(); ?></span>
               </a>
               
@@ -91,8 +89,8 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
               <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>
                 onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banner->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
                 <img
-                  title="<?php echo $banner->getBannerDescription() ?>"
-                  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt=""/>
+                  alt="<?php echo $banner->getBannerTitle(); ?>"
+                  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>"/>
               </a>
             </li>
             <?php $isBlockIds[] = $banner->getBannerId(); ?>

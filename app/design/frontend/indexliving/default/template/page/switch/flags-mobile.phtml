@@ -27,18 +27,20 @@
 
 <?php if(count($this->getStores())>1): ?>
   <div class="form-language">
-    <ul class="topheader-links box-mobile">
-      <li class="language"><a href="javascript:void(0)" title="<?php echo $this->__('language')?>"><span><?php echo $this->__('language')?></span></a></li>
-    </ul>    
-    <ul>
-      <?php foreach ($this->getStores() as $_lang):?>
-        <?php // Zend_Debug::dump($_lang->getData()); ?>
-        <li <?php if($_lang->getId() == $this->getCurrentStoreId()):?> class="active"<?php endif; ?> >
-          <a href="<?php echo $_lang->getCurrentUrl() ?>" title="<?php echo $this->htmlEscape($_lang->getName()) ?>">
-            <span><?php echo $_lang->getCode(); ?></span>
-          </a>  
-        </li>
-      <?php endforeach;?>
-    </ul>
+    <div class="box-mobile">
+      <ul class="topheader-links">
+        <li class="language"><a href="javascript:void(0)" title="<?php echo $this->__('language')?>"><span><?php echo $this->__('language')?></span></a></li>
+      </ul>    
+      <ul>
+        <?php foreach ($this->getStores() as $_lang):?>
+          <?php // Zend_Debug::dump($_lang->getData()); ?>
+          <li <?php if($_lang->getId() == $this->getCurrentStoreId()):?> class="active"<?php endif; ?> >
+            <a href="<?php echo $_lang->getCurrentUrl() ?>" title="<?php echo $this->htmlEscape($_lang->getName()) ?>">
+              <span><?php echo $_lang->getCode(); ?></span>
+            </a>  
+          </li>
+        <?php endforeach;?>
+      </ul>
+    </div>
   </div>
 <?php endif; ?>

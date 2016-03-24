@@ -5,6 +5,7 @@
     $_columnCount       = $this->getColumnCount();
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
+
 <?php 
 	if ($this->getCategoryFilter()) {
 		$categoryFilterId = $this->getCategoryFilter();	
@@ -103,3 +104,5 @@
       });
     }
   </script>
+
+

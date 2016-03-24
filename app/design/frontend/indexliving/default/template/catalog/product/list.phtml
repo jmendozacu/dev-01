@@ -97,8 +97,15 @@
                         <?php endif; ?>
                         <ul class="add-to-links">
                             <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
-                            <?php endif; ?>
+                                <li class="wishlist-ajax add-wishlist">
+                                    <a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>"
+                                       class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
+                                    <span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
+                                    <div id='ajax_loader' style="display: none">
+                                        <img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
+                                    </div>
+                                </li>
+                            <?php endif;?>
                             <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
                                 <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
                             <?php endif; ?>
@@ -160,16 +167,18 @@
                             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
                         <ul class="add-to-links">
-
                             <?php if ($this->helper('wishlist')->isAllow()) : ?>
-                                <li class="wishlist-ajax">
-                                      <a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?>modal<?php endif ?>"
-                                         class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
+                                <li class="wishlist-ajax-list add-wishlist">
+                                    <a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?><?php endif ?>"
+                                       class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
                                     <span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
-
+                                    <div id='ajax_loader' style="display: none">
+                                        <img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
+                                    </div>
                                 </li>
                             <?php endif;?>
                         </ul>
+
 
                     </div>
                 </div>
@@ -181,12 +190,10 @@
         <?php endforeach ?>
     </ul>
 
-        <div class="remodal" data-remodal-id="modal">
-            <?php echo  $this->getChildHtml('product_wislist'); ?>
-        </div>
 
-
-    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <script type="text/javascript">
+        decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+    </script>
     <?php endif; ?>
 
     <div class="toolbar-bottom">
@@ -206,3 +213,30 @@ if ($this->getChild('after')) {
     }
 }
 ?>
+<script type="text/javascript">
+    $j(".wishlist-ajax-list ").click(function(){
+        var proId = $j(this).find('.link-wishlist').attr('id');
+
+        <?php if(!$this->helper('customer')->isLoggedIn()):?>
+        window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
+        <?php endif; ?>
+        <?php if($this->helper('customer')->isLoggedIn()):?>
+        url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
+        url += 'product/'+$j(this).find('.detect-proId').text();
+        id = $j(this).find('.detect-proId').text();
+        $j("#ajax_loader").show();
+        $j.ajax({
+            url: url,
+            type: "GET",
+            dataType: 'json',
+            success: function (data) {
+                $j('#'+proId).attr('href','');
+                $j('#'+proId).addClass('added-item');
+                $j("#ajax_loader").hide();
+                $j("#page-container").html(data.message);
+            }
+        });
+        <?php endif;?>
+    });
+
+</script>
