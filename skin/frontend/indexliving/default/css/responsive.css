@@ -436,7 +436,7 @@
   .main-home .box-list-products .products-grid li.item.last  {display:block; float:left; margin-right:0px;} 
 	/* Product Page */
   .button.btn-cart > span {padding-left:30px;}
-  .button.btn-cart > span:before {top:0px; background-size:80px auto; background-position: 3px -674px}
+  .button.btn-cart > span:before {top:0px; background-size:80px auto; background-position: 3px -668px}
 	.product-view .product-features .box-title h2{
 		text-align:left;
 		cursor:pointer; 
