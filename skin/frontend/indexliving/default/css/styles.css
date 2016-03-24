@@ -517,7 +517,7 @@ textarea {
     content: '';
     height: 0;
     width: 0px;
-    right: 20px;
+    right: 2px;
     top: 50%;
     margin-top: -1px;
     border-top: solid 6px #000000;
@@ -2875,7 +2875,7 @@ form .form-instructions {
 .form-list .gender,
 .account-create .form-list li.gender,
 .customer-account-edit .form-list > li.gender{float:left; width:100px; margin-right:18px; clear:none;}
-.form-list .field {float:left; width:260px; /* margin-right:18px; */}
+.form-list .field {float:left; width:260px; margin-right:18px;}
 .form-list .field.name-firstname {float:left; /* margin-right:18px; */width:200px}
 .my-account .form-list .field {margin-right:18px;}
 .my-account .form-list .field.name-firstname  {margin-right:18px;}
@@ -3179,6 +3179,7 @@ body {
   min-height: 100%;
   margin: 0 auto;
   background: #FFFFFF;
+  overflow:hidden;
 }
 
 .wrapper:after {
@@ -5381,6 +5382,8 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup .submit-fields ul li .input-box textarea{width:100%; border:1px solid #cbcbcb; border-radius:5px;}
 #review-form-popup .submit-fields .review-image label{font-family: 'FuturaT_Bold'; font-size:14px; color:#000000; text-transform:none;}
 #review-form-popup .submit-fields .review-image label span{font-family: 'HelveticaNeue'; font-size:12px; color:#767676; text-transform:none;}
+#review-form-popup .form-add .buttons-set.box-mobile{margin:0 10px;}
+#review-form-popup .form-add .buttons-set button.button {margin:15px 0 0; float:left; width:auto; min-width:0;}
 
 @media only screen and (max-width: 479px) {
   .product-view .add-to-cart-buttons .paypal-or {
