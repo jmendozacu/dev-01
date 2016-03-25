@@ -32,6 +32,29 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		return;
 	}
 
+	protected function _getWishlist()
+	{
+		$wishlist = Mage::registry('wishlist');
+		if ($wishlist) {
+			return $wishlist;
+		}
+
+		try {
+			$wishlist = Mage::getModel('wishlist/wishlist')
+				->loadByCustomer(Mage::getSingleton('customer/session')->getCustomer(), true);
+			Mage::register('wishlist', $wishlist);
+		} catch (Mage_Core_Exception $e) {
+			Mage::getSingleton('wishlist/session')->addError($e->getMessage());
+		} catch (Exception $e) {
+			Mage::getSingleton('wishlist/session')->addException($e,
+				Mage::helper('wishlist')->__('Cannot create wishlist.')
+			);
+			return false;
+		}
+
+		return $wishlist;
+	}
+
 	public function addAction()
 	{
 		$response = array();
@@ -46,6 +69,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		if(empty($response)){
 			$session = Mage::getSingleton('customer/session');
 			$wishlist = $this->_getWishlist();
+			var_dump($wishlist); die('22');
 			if (!$wishlist) {
 				$response['status'] = 'ERROR';
 				$response['message'] = $this->__('Unable to Create Wishlist');
