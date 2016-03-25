@@ -223,6 +223,7 @@
 			<script type="text/javascript">
 				$j("form#review-form").submit(function(){
 					var frm = $j('#review-form');
+					var src= '<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>';
 					$j('#ajax_loader').show();
 					var formData = new FormData($j(this)[0]);
 					var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
@@ -236,7 +237,9 @@
 						success: function (data) {
 							$j('#ajax_loader').hide();
 							$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
-							$j("#review-form")[0].reset();
+							$j('#preview-image').attr('src',src);
+							$j('#review-form').find('input:file').val('');
+							$j('#review-form')[0].reset();
 							$j.fancybox.close();
 						}
 					});
