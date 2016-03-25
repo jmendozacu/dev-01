@@ -9086,7 +9086,16 @@ div.paypal-logo span > img {
 	font-family: "FuturaT_Bold";
 	color:#767676;
 	font-size:27px;
-	text-transform:uppercase; }
+	text-transform:uppercase; 
+}
+#customer-reviews .review-list.no-review{}
+#customer-reviews .review-list.no-review .no-rating{
+	font-family: "FuturaT_Bold";
+	color:#cccccc;
+	font-size:25px;
+	text-align:center;
+	padding:85px 0;
+}
 #customer-reviews .ratings-table tbody th, #customer-reviews .ratings-table tbody th {
     padding: 3px 15px 3px 0;
 }
