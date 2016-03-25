@@ -105,7 +105,6 @@
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                alert(proId);
                 $j('.box-list-products').find('a#'+proId).attr('href','');
                 $j('.box-list-products').find('a#'+proId).addClass('added-item');
                 $j("#ajax_loader").hide();
