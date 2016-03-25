@@ -32,6 +32,30 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		return;
 	}
 
+	protected function _getWishlist()
+	{
+		$wishlist = Mage::registry('wishlist');
+		if ($wishlist) {
+
+			return $wishlist;
+		}
+
+		try {
+			$wishlist = Mage::getModel('wishlist/wishlist')
+				->loadByCustomer(Mage::getSingleton('customer/session')->getCustomer(), true);
+			Mage::register('wishlist', $wishlist);
+		} catch (Mage_Core_Exception $e) {
+			Mage::getSingleton('wishlist/session')->addError($e->getMessage());
+		} catch (Exception $e) {
+			Mage::getSingleton('wishlist/session')->addException($e,
+				Mage::helper('wishlist')->__('Cannot create wishlist.')
+			);
+			return false;
+		}
+
+		return $wishlist;
+	}
+
 	public function addAction()
 	{
 		$response = array();
@@ -46,6 +70,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		if(empty($response)){
 			$session = Mage::getSingleton('customer/session');
 			$wishlist = $this->_getWishlist();
+
 			if (!$wishlist) {
 				$response['status'] = 'ERROR';
 				$response['message'] = $this->__('Unable to Create Wishlist');
@@ -68,6 +93,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 							$buyRequest = new Varien_Object($requestParams);
 
 							$result = $wishlist->addNewItem($product, $buyRequest);
+
 							if (is_string($result)) {
 								Mage::throwException($result);
 							}
@@ -84,18 +110,10 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 							Mage::helper('wishlist')->calculate();
 
-							$message = $this->__('%1$s has been added to your wishlist.', $product->getName(), $referer);
+							$message = $this->__('%1$s has been added to your wishlist.', $product->getName());
 							$response['status'] = 'SUCCESS';
 							$response['message'] = $message;
 
-							Mage::unregister('wishlist');
-
-							$this->loadLayout();
-							$toplink = $this->getLayout()->getBlock('top.links')->toHtml();
-							$sidebar_block = $this->getLayout()->getBlock('wishlist_sidebar');
-							$sidebar = $sidebar_block->toHtml();
-							$response['toplink'] = $toplink;
-							$response['sidebar'] = $sidebar;
 						}
 						catch (Mage_Core_Exception $e) {
 							$response['status'] = 'ERROR';

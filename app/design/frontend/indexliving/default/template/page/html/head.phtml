@@ -24,6 +24,11 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<script type="text/javascript">
+	var BASE_URL = '<?php echo  Mage::getBaseUrl(); ?>';
+	var SKIN_URL = '<?php echo  $this->getSkinUrl(); ?>';
+	var customerIsLoggedIn = <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>false <?php else:?>true <?php endif;?>;
+</script>
 <meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
 <title><?php echo $this->getTitle() ?></title>
 <meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />

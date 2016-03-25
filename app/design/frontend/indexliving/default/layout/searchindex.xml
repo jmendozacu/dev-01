@@ -12,7 +12,7 @@
         </reference>
     </cms_index_index>
 
-    <catalogsearch_result_index translate="label">
+    <!-- <catalogsearch_result_index translate="label">
         <reference name="content">
             <block type="searchindex/results" name="search.result" as="search.result" template="searchindex/results_tabs.phtml">
                 <block type="searchindex/relatedTerms" name="related_searches" template="searchindex/related_terms.phtml" />
@@ -22,7 +22,6 @@
                     <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
                         <block type="page/html_pager" name="product_list_toolbar_pager"/>
                     </block>
-                    <!-- <action method="setColumnCount"><count>3</count></action> -->
                     <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
                 </block>
 
@@ -118,5 +117,5 @@
                 <action method="setListCollection"/>
             </block>
         </reference>
-    </catalogsearch_result_index>
+    </catalogsearch_result_index> -->
 </layout>
