@@ -3340,7 +3340,7 @@ body {
 .toggle-minicart.active:after {bottom:-4px;}
 .top-link-account {position:relative;}
 #header-mini-login,
-#mini-cart-info {position:absolute; display:none; text-transform: none; z-index:10; top:90px; right:153px; width:302px; max-width:none;}
+#mini-cart-info {position:absolute; display:none; text-transform: none; z-index:12; top:90px; right:153px; width:302px; max-width:none;}
 .account-mini-login,
 .header-cart-box,
 .mini-account  { float:left; width:100%; border-radius:5px;  box-shadow: 0px 0px 3px 1px #aaa;  border-top: 0 none; background: #FFFFFF; padding:0px;}  
