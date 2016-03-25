@@ -14,8 +14,6 @@
   .box-top-menu .cateogry {width:30%;}
   .products-grid .link-wishlist {display:block;}
   .products-grid .actions {opacity:1;}
-  .go-top {display:none;}
-  
   /* category */
   .categories-list .category-grid li.category-item {min-height:340px; max-height:340px;}
  }
@@ -66,6 +64,7 @@
  }
  @media (max-width: 768px) {
   body  {float:left; width:100%; overflow-x:hidden;} 
+  .go-top {top:108px;}
   .box-desktop,
   #header-search  {display:none;}
   .box-mobile {display:block;}
@@ -317,6 +316,7 @@
   .pages.box-mobile li  span.next {background-image:url(../images/arrow-mobile1-2.png);}
   .pages.box-mobile .next:before,
   .pages.box-mobile .previous:before {display:none;}
+  .products-grid .product-name {height:42px; overflow:hidden;}
   /* my account */
   .col2-set .col-1.registered-users, .forgot-password,
   .col2-set .col-2.new-users {width:100%; padding-right:0px; padding-left:0px;}
