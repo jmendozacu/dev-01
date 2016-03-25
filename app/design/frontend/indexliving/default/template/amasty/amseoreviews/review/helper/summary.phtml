@@ -58,9 +58,28 @@
 		<div class="box-title">
 			<div class="bl">
 				<h2><?php echo $this->__('Customer Reviews')?></h2>	
-				<p class="no-rating"><a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Be the first to review this product') ?></a>
-			</p>
+				<div>
+					<p class="rating-overall"><?php echo $this->__('Overall Product Rating')?></p>
+					<div class="ratings ratings-overview">
+						<div class="rating-box">
+							<div class="rating" style="width:0%"></div>
+						</div>
+						<h3 class="rating-average"><?php echo $this->__('0 / 0')?></h3>
+						<div class="rating-summary">	
+							<div class="rating-box-big">
+									<div class="rating" style="width:0%"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>	
+			<div class="br">
+				<h3 class="review-count"><?php echo $this->__('0 Reviews') ?></h3>
+				<p><?php echo $this->__('Own this product? Let us know what you think and write a review.')?></p>
+				<p class="rating-links">
+					<a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Write a review')?></a>
+				</p>
+			</div>
 		</div>	
 	</div>	
 <?php endif; ?>
