@@ -151,6 +151,7 @@ jQuery(document).ready(function () {
   });
   
   
+  
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
     jQuery('.box-header-content').hide();
@@ -312,6 +313,7 @@ jQuery(document).ready(function () {
         jQuery(this).next().slideUp(300);
        }
       });
+    
     }
     /* menu */
   jQuery("#header-nav .nav-primary ul.level0").hide(); 
