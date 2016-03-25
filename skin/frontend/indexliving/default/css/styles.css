@@ -5212,6 +5212,10 @@ body.catalogsearch-result-index .page-title h1 {
 	padding:20px 0;
 	background:#f4f4f4;
 }
+.product-view .product-description{
+	padding:20px 0;
+	background:#f8f8f8;
+}
 .product-view .product-features .box-title{float:left; width:100%; margin:0 0 15px;}
 .product-view .product-features .box-title h2{
 	font-size: 30px;
@@ -5248,6 +5252,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .product-view .box-collateral.box-description h2{
 	margin-top:0.5em;
+	margin-bottom:1em;
 }
 .product-view .product-review-wrap{margin:30px 0;}
 .product-view .product-review-wrap h2{
