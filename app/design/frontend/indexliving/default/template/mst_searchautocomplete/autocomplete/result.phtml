@@ -9,7 +9,7 @@ $_query  = Mage::helper('catalogsearch')->getQueryText();
         <?php if (count($this->getIndexes()) > 1): ?>
         <div class="index-title"><?php echo $this->__($_label) ?> <span>(<?php echo $this->getCollection($_index)->getSize() ?>)</span></div>
         <?php endif ?>
-        <ul>
+        <ul id="ul-list">
         <?php
             $_collection = $this->getCollection($_index);
         ?>
@@ -20,4 +20,12 @@ $_query  = Mage::helper('catalogsearch')->getQueryText();
     <?php endforeach ?>
     <div class="all"><a href="<?php echo Mage::getUrl('catalogsearch/result', array('_query' => array('q' => $_query))) ?>"><span><?php echo $this->__('All search results') ?></span></a></div>
     <div class="clearfix"></div>
+    <script>
+    /*box search results on mobile */
+      var widthWindow = jQuery( window ).width();
+      var widthHeight = jQuery( window ).height();
+      if(widthWindow <769){ 
+        jQuery('#ul-list').css("max-height", widthHeight -100);
+      }
+    </script>  
 <?php endif ?>
