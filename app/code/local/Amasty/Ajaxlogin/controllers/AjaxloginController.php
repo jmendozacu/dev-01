@@ -149,7 +149,7 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
                         $status = 2;
                     }
                   }else{
-                    $text = 'Account is not active yet.';
+                    $text = 'Your account is not approved and cannot log in.';
                     $status = 1;
                   }
                 } catch (Mage_Core_Exception $e) {
