@@ -1871,6 +1871,7 @@ a.button {
 .price-box .price-label {
   color: #a0a0a0;
   white-space: nowrap;
+  display:none;
 }
 
 .price-box .minimal-price-link {
@@ -4338,8 +4339,10 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid  .grid-price .save-price-percent {position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
 .products-grid  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
 .products-grid  .price-box {float:left; min-height:47px;}
+.products-grid .price-box .price,
 .products-grid  .price-box .regular-price .price,
 .products-grid  .price-box .special-price .price {color:#000; font-size:22px; font-family: 'FuturaT_Bold'; line-height:28px; float:left;}
+
 .products-grid  .price-box .special-price .price  {color:#FF0000;}
 .products-grid  .price-box .old-price .price  {color:#898989; font-size:12px; font-family: 'FuturaLight'; line-height:16px;}
 .products-grid  .price-box .special-price,

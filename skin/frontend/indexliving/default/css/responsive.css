@@ -316,6 +316,7 @@
   .pages.box-mobile li  span.next {background-image:url(../images/arrow-mobile1-2.png);}
   .pages.box-mobile .next:before,
   .pages.box-mobile .previous:before {display:none;}
+  .products-grid .product-name {height:42px; overflow:hidden;}
   /* my account */
   .col2-set .col-1.registered-users, .forgot-password,
   .col2-set .col-2.new-users {width:100%; padding-right:0px; padding-left:0px;}
