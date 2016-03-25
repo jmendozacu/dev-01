@@ -19,12 +19,23 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     rwd_default
+ * @package     base_default
  * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-?>
 
-<?php if($this->getWishlist()->getItemsCount() && $this->getWishlist()->isSalable()): ?>
-	<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove All')) ?>" onclick="setLocation('<?php echo Mage::getUrl('customwishlist/index/removeall') ?>')" class="button btn-removeall button-secondary"><span><span><?php echo $this->__('Remove All') ?></span></span></button>
-<?php endif;?>
+/**
+ * Product description template
+ *
+ * @see Mage_Catalog_Block_Product_View_Description
+ */
+?>
+<?php $_description = $this->getProduct()->getDescription(); ?>
+<?php if ($_description): ?>
+	<div class="box-collateral box-description">
+    <h2><?php echo $this->__('Description') ?></h2>
+    <div class="std">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_description, 'description') ?>
+    </div>
+  </div>
+<?php endif; ?>

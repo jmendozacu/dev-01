@@ -97,6 +97,21 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 							if (is_string($result)) {
 								Mage::throwException($result);
 							}
+
+
+							Mage::helper('wishlist')->calculate();
+
+							if(Mage::helper('customwishlist')->checkItemInWishlist($productId)){
+								$message = $this->__('This product has been added to your wishlist already');
+								$response['status'] = 'SUCCESS';
+								$response['message'] = $message;
+
+							}else{
+								$message = $this->__('%1$s has been added to your wishlist.', $product->getName());
+								$response['status'] = 'SUCCESS';
+								$response['message'] = $message;
+							}
+
 							$wishlist->save();
 
 							Mage::dispatchEvent(
@@ -107,12 +122,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 									'item'      => $result
 								)
 							);
-
-							Mage::helper('wishlist')->calculate();
-
-							$message = $this->__('%1$s has been added to your wishlist.', $product->getName());
-							$response['status'] = 'SUCCESS';
-							$response['message'] = $message;
 
 						}
 						catch (Mage_Core_Exception $e) {

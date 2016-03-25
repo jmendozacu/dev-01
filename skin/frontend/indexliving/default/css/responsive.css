@@ -16,6 +16,11 @@
   .products-grid .actions {opacity:1;}
   /* category */
   .categories-list .category-grid li.category-item {min-height:340px; max-height:340px;}
+	#customer-reviews .review-list.no-review{}
+	#customer-reviews .review-list.no-review .no-rating{
+		padding:20px 0;
+		font-size:20px;
+	}
  }
  @media (min-width: 992px) and (max-width: 1199px) {
 		.product-view .product-img-box{
