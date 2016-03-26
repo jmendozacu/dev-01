@@ -36,7 +36,7 @@
                     <ul class="add-to-links">
                         <?php if ($this->helper('wishlist')->isAllow()) : ?>
                             <li class="wishlist-ajax-gird add-wishlist">
-                                <a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?><?php endif ?>"
+                                <a id="wishlist-<?php echo $_product->getId()?>"  href="#"  onclick="ajaxwishlist('<?php echo $_product->getId();?>')"
                                    class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
                                 <span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
                                 <div id='ajax_loader' style="display: none">
@@ -45,8 +45,6 @@
                             </li>
                         <?php endif;?>
                     </ul>
-
-
                 </div>
 
                 <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
@@ -89,30 +87,28 @@
 </div>
 <a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>
 <script type="text/javascript">
-    $j(".wishlist-ajax-gird").click(function(){
-        var proId = $j(this).find('.link-wishlist').attr('id');
+    function ajaxwishlist(id) {
 
         <?php if(!$this->helper('customer')->isLoggedIn()):?>
         window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
         <?php endif; ?>
         <?php if($this->helper('customer')->isLoggedIn()):?>
         url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
-        url += 'product/'+$j(this).find('.detect-proId').text();
-        id = $j(this).find('.detect-proId').text();
+        url += 'product/' + id;
         $j("#ajax_loader").show();
         $j.ajax({
             url: url,
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                $j('.box-list-products').find('a#'+proId).attr('href','');
-                $j('.box-list-products').find('a#'+proId).addClass('added-item');
+                $j('#wishlist-'+id).addClass('added-item');
                 $j("#ajax_loader").hide();
-                $j(".success-msg").html(data.message);
-                $j(".messages ul li span").html(data.message);
+                $j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+                setTimeout(function () {
+                    $j('.col-main').find('.messages').remove();
+                }, 5000);
             }
         });
         <?php endif;?>
-    });
-
+    }
 </script>

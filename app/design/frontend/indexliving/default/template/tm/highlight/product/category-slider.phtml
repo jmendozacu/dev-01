@@ -36,7 +36,7 @@
 											/></a>
 										<?php if ($this->helper('wishlist')->isAllow()) : ?>
 											<div class="wishlist-ajax-slider add-wishlist">
-												<a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?><?php endif ?>"
+												<a id="wishlist-<?php echo $_product->getId()?>" href="javascript:void(0)"  onclick="ajaxwishlist('<?php echo $_product->getId();?>')"
 												   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
 												<span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
 												<div id='ajax_loader' style="display: none">
@@ -111,32 +111,31 @@
         advanced:{autoExpandHorizontalScroll:true}
       });
     }
-  </script>
-<script type="text/javascript">
-	$j(".wishlist-ajax-slider").click(function(){
-		var proId = $j(this).find('.link-wishlist').attr('id');
+
+	function ajaxwishlist(id) {
 
 		<?php if(!$this->helper('customer')->isLoggedIn()):?>
 		window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
 		<?php endif; ?>
 		<?php if($this->helper('customer')->isLoggedIn()):?>
 		url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
-		url += 'product/'+$j(this).find('.detect-proId').text();
-		id = $j(this).find('.detect-proId').text();
+		url += 'product/' + id;
 		$j("#ajax_loader").show();
 		$j.ajax({
 			url: url,
 			type: "GET",
 			dataType: 'json',
 			success: function (data) {
-				$j('#'+proId).attr('href','');
-				$j('#'+proId).addClass('added-item');
+				$j('#wishlist-'+id).addClass('added-item');
 				$j("#ajax_loader").hide();
-				$j(".col-main").prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
+				$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+				setTimeout(function () {
+					$j('.col-main').find('.messages').remove();
+				}, 5000);
 			}
 		});
 		<?php endif;?>
-	});
+	}
+  </script>
 
-</script>
 

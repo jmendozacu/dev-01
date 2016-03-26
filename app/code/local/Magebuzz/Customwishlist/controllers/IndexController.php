@@ -24,12 +24,19 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 				Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
 				$response['status'] = 'SUCCESS';
 				$response['message'] = $this->__('The product %s has been added to comparison list.', Mage::helper('core')->escapeHtml($product->getName()));
+				$_productCollection = Mage::helper('catalog/product_compare')->getItemCollection()->count();
+
+				if($_productCollection >=1){
+					$response['popup'] = $this->getLayout()->createBlock('catalog/product_compare_list')->setTemplate('catalog/product/compare/list.phtml')->toHtml();
+					$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+					return;
+				}else{
+					$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+					return;
+				}
+
 			}
 		}
-		$response['popup'] = $this->getLayout()->createBlock('catalog/product_compare_list')->setTemplate('catalog/product/compare/list.phtml')->toHtml();
-
-		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
-		return;
 	}
 
 	protected function _getWishlist()
@@ -92,12 +99,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 							$requestParams = $this->getRequest()->getParams();
 							$buyRequest = new Varien_Object($requestParams);
 
-							$result = $wishlist->addNewItem($product, $buyRequest);
-
-							if (is_string($result)) {
-								Mage::throwException($result);
-							}
-
 
 							Mage::helper('wishlist')->calculate();
 
@@ -112,6 +113,10 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 								$response['message'] = $message;
 							}
 
+							$result = $wishlist->addNewItem($product, $buyRequest);
+							if (is_string($result)) {
+								Mage::throwException($result);
+							}
 							$wishlist->save();
 
 							Mage::dispatchEvent(
