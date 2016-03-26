@@ -247,6 +247,7 @@
 								$j('#ajax_loader').hide();
 								$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + mess + '</span></li></ul></li></ul>');
 								$j('#preview-image').attr('src', src);
+								$j('#review-form #nickname_field').attr('value', '');
 								$j('#review-form #image-name').attr('value', '');
 								$j('#review-form').trigger("reset");
 								setTimeout(function(){
