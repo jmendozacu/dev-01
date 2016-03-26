@@ -41,6 +41,15 @@
                             </div>
                         </td>
                     </tr>
+								<?php else:?>	
+										<tr>
+                        <th><?php echo $this->__($this->escapeHtml($_rating->getRatingCode())) ?></th>
+                        <td>
+                            <div class="rating-box">
+                                <div class="rating" style="width:0%;"></div>
+                            </div>
+                        </td>
+                    </tr>
                 <?php endif; ?>
             <?php endforeach; ?>
         </tbody>

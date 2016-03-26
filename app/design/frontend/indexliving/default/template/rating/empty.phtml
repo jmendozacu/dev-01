@@ -19,12 +19,9 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     rwd_default
+ * @package     base_default
  * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
-<?php if($this->getWishlist()->getItemsCount() && $this->getWishlist()->isSalable()): ?>
-	<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove All')) ?>" onclick="setLocation('<?php echo Mage::getUrl('customwishlist/index/removeall') ?>')" class="button btn-removeall button-secondary"><span><span><?php echo $this->__('Remove All') ?></span></span></button>
-<?php endif;?>
+<p class="no-rating"><a href="#review-form"><?php echo $this->__('Be the first to review this product') ?></a></p>
