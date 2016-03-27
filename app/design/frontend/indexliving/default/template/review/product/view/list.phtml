@@ -62,13 +62,19 @@
 							</table>
 							<?php endif; ?>
 						</div>
+						<div class="review-details box-mobile">
+							<div class="review-meta">
+								<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
+								<?php $date = new DateTime($_review->getCreatedAt()); echo date('j F, Y',$date->getTimestamp());?>
+							</div>
+						</div>
 						<?php if(!isset($_review['img'])):?>
 							<div class="review-image"><img src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" alt="" /></div>
 						<?php elseif(isset($_review['img'])):?>
 							<div class="review-image"><img src="<?php echo Mage::getBaseUrl().'media/review/'.$_review['img'] ?>" alt=""/></div>
 						<?php endif;?>
 						<div class="review-details">
-							<div class="review-meta">
+							<div class="review-meta box-desktop">
 								<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
 								<?php $date = new DateTime($_review->getCreatedAt()); echo date('j F, Y',$date->getTimestamp());?>
 							</div>

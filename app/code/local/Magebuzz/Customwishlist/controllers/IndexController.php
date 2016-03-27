@@ -11,8 +11,8 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	 */
 	public function compareAction()
 	{
-		$response = array();
 
+		$response = array();
 		if ($productId = (int) $this->getRequest()->getParam('product'))
 		{
 			$product = Mage::getModel('catalog/product')
