@@ -101,7 +101,7 @@
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                $j('.box-list-products').find('#wishlist-'+id).addClass('added-item');
+                $j('ul li').children('#wishlist-'+id).addClass('added-item');
                 $j("#ajax_loader").hide();
                 $j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
                 setTimeout(function () {
