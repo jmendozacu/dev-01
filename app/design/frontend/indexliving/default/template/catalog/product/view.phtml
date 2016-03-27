@@ -105,6 +105,7 @@
 								<?php if ($_product->isSaleable() && $this->hasOptions()):?>
 										<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
 								<?php endif;?>	
+								<?php echo $this->getChildHtml('compareInsideProduct') ?>
             </div>
         </form>
 
