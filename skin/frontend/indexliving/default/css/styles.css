@@ -8397,6 +8397,11 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  
  .bottom-main {float:left; width:100%; margin-top:40px;} 
  .box-account.box-recent .box-head a  { float:right; line-height:28px; font-size: 18px; font-weight:normal; color:#F4701E; font-family: 'DBYordXMed';  }
+ 
+ .dashboard-newsletter, .form-newsletter{}
+ .my-account .dashboard-newsletter li.control, .my-account .form-newsletter li.control{position:relative}
+ .my-account .dashboard-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
+ .my-account .form-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
 
 .data-table.orders-table th,
 #wishlist-table  th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  } 
@@ -8550,6 +8555,14 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   margin: 0 0 10px 0;
   float:left;
   width:100%;
+	position:relative;
+}
+.my-account .addresses-list .item .ajaxload{
+  position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-12px;
+	margin-left:-12px;
 }
 .my-account .addresses-list .item p {
   margin-top: 10px;

@@ -45,17 +45,9 @@
           <a title="<?php echo $this->__('Edit Newsletters') ?>" href="<?php echo $this->getUrl('newsletter/manage') ?>"><?php echo $this->__('Edit') ?></a>
       </div>
       <div class="box-content">  
-        <?php if( $this->getIsSubscribed() ): ?>
-          <div class="subscribed">  
-            <p><?php echo $this->__("You are currently subscribed to 'General Subscription'.")?></p>
-            <span class="icon"></span><span><?php echo $this->__('Newsletter Email') ?></span>
-          </div>  
-        <?php else: ?>
-          <div class="not subscribed"> 
-            <p><?php echo $this->__('You are currently not subscribed to any newsletter.') ?></p>
-            <span class="icon"></span><span><?php echo $this->__('Newsletter Email') ?></span>
-          </div>  
-        <?php endif; ?>  
+				<div class="customer-newsletter">
+					<?php echo $this->getChildHtml('customer_newsletter') ?>
+				</div>
       </div>
   </div>
   <?php /* Extensions placeholder */ ?>
