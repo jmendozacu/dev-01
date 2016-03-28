@@ -219,7 +219,9 @@ New customer registration
 					<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
 				</reference>
         <reference name="my.account.wrapper">
-            <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml"/>
+            <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml">
+							<block type="customer/newsletter" name="customer_newsletter" as="customer_newsletter" template="customer/form/ajax_subscription.phtml" />
+						</block>
         </reference>
 
         <reference name="left">

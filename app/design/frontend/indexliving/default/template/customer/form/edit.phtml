@@ -64,9 +64,7 @@
         <div class="box-edit-subscribed">
             <h3><?php echo $this->__('Newsletters') ?></h3>
             <div class="subscribed">  
-              <p><?php echo $this->__("You are currently subscribed to 'General Subscription'.")?></p>
-              <input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo Mage::helper('core')->quoteEscape($this->__('General Subscription')) ?>"<?php if($this->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-              <label for="subscription"><?php echo $this->__('Newsletter Email') ?></label>
+              <?php echo $this->getChildHtml('customer_newsletter')?>
             </div>  
         </div>
     </div>
