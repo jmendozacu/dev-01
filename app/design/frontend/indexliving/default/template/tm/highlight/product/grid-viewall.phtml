@@ -87,7 +87,6 @@
 <a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>
 <script type="text/javascript">
     function ajaxwishlist(id) {
-
         <?php if(!$this->helper('customer')->isLoggedIn()):?>
         window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
         <?php endif; ?>
@@ -100,7 +99,7 @@
             type: "GET",
             dataType: 'json',
             success: function (data) {
-                $j('#wishlist-'+id).addClass('added-item');
+                $j('ul li').children('#wishlist-'+id).addClass('added-item');
                 $j("#ajax_loader").hide();
                 $j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
                 setTimeout(function () {
