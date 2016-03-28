@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magebuzz_Customcompare>
+            <version>0.1.0</version>
+        </Magebuzz_Customcompare>
+    </modules>
+
+    <frontend>
+    <routers>
+        <customcompare>
+            <use>standard</use>
+            <args>
+                <module>Magebuzz_Customcompare</module>
+                <frontName>customcompare</frontName>
+            </args>
+        </customcompare>
+        <catalog>
+            <args>
+                <modules>
+                    <magebuzz_customcompare before="Mage_Catalog">Magebuzz_Customcompare</magebuzz_customcompare>
+                </modules>
+            </args>
+        </catalog>
+    </routers>
+    </frontend>
+</config>
