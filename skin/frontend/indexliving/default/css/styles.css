@@ -3658,7 +3658,12 @@ a.skip-link {
 #allcategory_page_catchild li.level1:nth-child(1):before {left:0px;}
 #allcategory_page_catchild li.level1:nth-child(3):before{left:50%;}
 #allcategory_page_catchild li.level1{float:left; width:25%; padding:20px;}
-#allcategory_page_catchild li.level1 >a {font-size:24px; color:#252525; font-family: 'DBYordXBd'; line-height:32px; display:block; padding-left:36px; background:url(../images/category-icons/icon1.png) no-repeat left 3px; }
+#allcategory_page_catchild li.level1 > .category-icon{
+	float: left;
+	max-width: 25px;
+	margin-right: 10px;
+}
+#allcategory_page_catchild li.level1 > a {font-size:24px; color:#252525; font-family: 'DBYordXBd'; line-height:32px; display:block;}
 #allcategory_page_catchild a  { position:relative; z-index:1;}
 #allcategory_page_catchild a:hover {color:#FFC220;}
 #allcategory_page_catchild ul ul a {color:#252525; font-family:tahoma; font-size:14px; line-height:28px; } 
