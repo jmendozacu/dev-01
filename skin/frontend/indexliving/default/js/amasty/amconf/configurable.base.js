@@ -84,7 +84,7 @@ Product.Config.prototype.resetChildren = function(element){
 }
 
 Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId, key){
-    var imgContainer = new Element('li', {
+    var imgContainer = new Element('div', {
         'class': 'amconf-image-container',
         'id'   : 'amconf-images-container-' + attributeId,
     });
@@ -99,29 +99,21 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
             'class': 'amconf-color-container',
             'id'   : 'amconf-image-' + option.id,
         });
-				var divLabel = new Element('div', {
-            'class': 'amconf-color-label'
-        });
         div.setStyle({
             width: width + 'px',
             height: height + 'px'
         });
-				var labelMarin = (width + 10) + 'px';
+
         if(option.color){
-					div.setStyle({background: '#' + option.color});
-					//div.insert(option.label);
-					//div.insert(option.label);
+            div.setStyle({background: '#' + option.color});
         }
         else{
             div.setStyle({lineHeight: height + 'px'});
             div.addClassName('amconf-noimage-div');
             div.insert(option.label);
         }
-				divLabel.insert(option.label);
         imgContainer.appendChild(div);
-        imgContainer.appendChild(divLabel);
         div.observe('click', this.configureImage.bind(this));
-        divLabel.observe('click', this.configureImage.bind(this));
 
         if(useTooltip){
             amcontentPart = 'background: #' + option.color + '">';
@@ -244,25 +236,12 @@ Product.Config.prototype.fillSelect = function(element){
             
         if (this.config.attributes[attributeId].use_image) {
             holder = element.parentNode;
-            window.holderDiv = new Element('ul', {
+            window.holderDiv = new Element('div', {
                 'class': 'amconf-images-container',
                 'id'   : 'amconf-images-' + attributeId,
             });
-						
-						window.labelDiv = new Element('div', {
-              'class': 'amconf-images-list-label',
-							'id'   : 'amconf-images-label-' + attributeId,
-            });
-						
-						labelDiv.insert(this.config.chooseText);
-						
-						window.holderDivList = new Element('div', {
-                'class': 'amconf-images-list-container',
-                'id'   : 'amconf-images-list-' + attributeId,
-            });
-						holderDivList.appendChild(labelDiv);
-						holderDivList.appendChild(holderDiv);
-            holder.insertBefore(holderDivList, element);
+
+            holder.insertBefore(holderDiv, element);
         }
         
         var index = 1, key = '';
@@ -553,7 +532,6 @@ Product.Config.prototype.configureImage = function(event){
     
     $('attribute' + attributeId).value = optionId;
     this.configureElement($('attribute' + attributeId));
-		this.updateLabel(element);
     /* fix for sm ajax cart*/
     if($$('body.sm_market').length > 0){
         jQuery('#attribute' + attributeId).trigger("change");
@@ -562,55 +540,13 @@ Product.Config.prototype.configureImage = function(event){
 
 Product.Config.prototype.selectImage = function(element)
 {
-	attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
-	$('amconf-images-' + attributeId).childElements().each(function(child){
-			child.childElements().each(function(children){
-					children.removeClassName('amconf-image-selected');
-			});
-	});
-	element.addClassName('amconf-image-selected');
-}
-
-Product.Config.prototype.updateLabel = function(element) {
-	attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
-	//attributeId = element.closest('li.amconf-image-container').id.replace(/[a-z-]*/, '');
-	$('amconf-images-' + attributeId).childElements().each(function(child){
-		child.childElements().each(function(children){
-			if(children.hasClassName('amconf-image-selected')){
-				
-				// Empty selected item
-				$('amconf-images-label-' + attributeId).update('');
-				
-				// Add new selected item
-				
-				var labelStyleWidth = children.getStyle('width');
-				var labelStyleHeight = children.getStyle('height');
-				var labelStyleBackground = children.getStyle('background');
-				
-				var selectedOption = new Element('div', {
-            'class': 'selectedItem'
+    attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
+    $('amconf-images-' + attributeId).childElements().each(function(child){
+        child.childElements().each(function(children){
+            children.removeClassName('amconf-image-selected');
         });
-				var selectedOptionLabel = new Element('div', {
-            'class': 'selectedItemLabel'
-        });
-        selectedOption.setStyle({
-            width: labelStyleWidth,
-            height: labelStyleHeight
-        });
-				selectedOption.setStyle({background: labelStyleBackground});
-				
-				selectedOptionLabel.insert(children.next().innerHTML);
-				
-				$('amconf-images-label-' + attributeId).appendChild(selectedOption);
-				$('amconf-images-label-' + attributeId).appendChild(selectedOptionLabel);
-				
-				// Close options list
-				$('amconf-images-' + attributeId).setStyle({
-            'display': 'none'
-        });
-			}
-		});
-	});
+    });
+    element.addClassName('amconf-image-selected');
 }
 
 Product.Config.prototype.processEmpty = function()
