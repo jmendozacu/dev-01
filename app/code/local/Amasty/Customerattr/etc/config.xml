@@ -306,12 +306,6 @@
                 </rewrite>
             </customer_resource>
 
-            <checkout>
-                <rewrite>
-                    <type_onepage>Amasty_Customerattr_Model_Rewrite_Checkout_Type_Onepage</type_onepage>
-                </rewrite>
-            </checkout>
-
             <catalog>
                 <rewrite>
                     <product_flat_indexer>Amasty_Customerattr_Model_Rewrite_Catalog_Product_Flat_Indexer</product_flat_indexer>

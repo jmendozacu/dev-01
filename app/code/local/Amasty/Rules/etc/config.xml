@@ -85,12 +85,7 @@
                     <rule_condition_product_subselect>Amasty_Rules_Model_SalesRule_Rule_Condition_Product_Subselect</rule_condition_product_subselect>
                     <rule_condition_product_combine>Amasty_Rules_Model_SalesRule_Rule_Condition_Product_Combine</rule_condition_product_combine>
                 </rewrite>
-            </salesrule>
-            <enterprise_customersegment>
-                <rewrite>
-                    <observer>Amasty_Rules_Model_Customersegment_Observer</observer>
-                </rewrite>
-            </enterprise_customersegment>
+            </salesrule>    
            <!-- <catalogrule>
                 <rewrite>
                     <rule_condition_product>Amasty_Rules_Model_CatalogRule_Rule_Condition_Product</rule_condition_product>
