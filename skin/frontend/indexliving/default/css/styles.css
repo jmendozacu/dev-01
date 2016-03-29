@@ -3668,6 +3668,8 @@ a.skip-link {
 	float: left;
 	max-width: 25px;
 	margin-right: 10px;
+	position:relative;
+	margin-top:5px;
 }
 #allcategory_page_catchild li.level1 > a {font-size:24px; color:#252525; font-family: 'DBYordXBd'; line-height:32px; display:block;}
 #allcategory_page_catchild a  { position:relative; z-index:1;}
