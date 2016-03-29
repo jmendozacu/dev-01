@@ -52,7 +52,8 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
         </ol>
         <script type="text/javascript">decorateList('compare-items')</script>
         <div class="actions">
-            <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>" class="button" onclick="popWin('<?php echo $_helper->getListUrl() ?>','compare','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+            <button type="button" id="compare-all-items" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>" class="button"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+						<a class="compare-link" href="<?php echo $_helper->getListUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>"><?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?></a>
             <a href="javascript:void(0)" onclick="clearCompare('<?php echo $_helper->getClearListUrl() ?>');"><?php echo $this->__('Clear All') ?></a>
         </div>
     <?php else: ?>
@@ -64,7 +65,19 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
     <span class="compare_bar"></span>
 </div>
 <?php //endif; ?>
-<script>
+<script type="text/javascript">
+		jQuery("#compare-all-items").click(function() {
+			jQuery.fancybox.open({
+				href: "<?php echo $_helper->getListUrl() ?>",
+				type: "ajax",
+				ajax: {
+						type: "POST",
+						data: {
+								temp: "tada"
+						}
+				}
+			});
+		});
     function removeajaxCompare(url) {
         url = url.replace("catalog/product_compare/remove", "customcompare/product_compare/remove");
         $j.ajax({

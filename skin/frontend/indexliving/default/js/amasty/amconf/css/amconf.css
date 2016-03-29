@@ -1,5 +1,5 @@
 .products-grid li.item .amconf-block{ position:absolute; top:200px; width:100%; text-align:center;}
-.products-grid li.item .amconf-block dl dt{display:none;}
+.products-grid li.item .amconf-block dl dt, .products-list li.item .amconf-block dl dt{display:none;}
 .amconf-image{
     margin: 3px;
     border-radius: 3px;
@@ -115,8 +115,13 @@ hr.amconf-hr{
     width: 100%;
     clear: both;
 }
-
-.amconf-image-container
+.amconf-image-container {
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	margin-right: 5px;
+}
+.product-view .product-shop .amconf-image-container
 {
 	display: inline-block;
 	position: relative;
@@ -130,7 +135,7 @@ hr.amconf-hr{
 {
 	float:left;
 }
-.amconf-image-container div.amconf-color-container{margin-right:10px;}
+.product-view .product-shop .amconf-image-container div.amconf-color-container{margin-right:10px;}
 .amconf-image-container div.amconf-color-label{float:left}
 .amconf-image-title
 {
