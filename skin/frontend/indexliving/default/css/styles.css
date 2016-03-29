@@ -4972,6 +4972,8 @@ body.catalogsearch-result-index .page-title h1 {
 	border-bottom:1px solid #dadada;
 	margin:0 0 15px;
 }
+.product-view .product-shop .warranty-info .warranty{}
+.product-view .product-shop .warranty-info .warranty img{float:left; margin-right:15px;}
 .product-view .product-shop .add-to-cart-wrapper {
   float:left;
 	width:100%;
