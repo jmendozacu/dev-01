@@ -69,6 +69,9 @@ class Magebuzz_Dealerlocator_Model_Mysql4_Dealerlocator extends Mage_Core_Model_
     if ($object->getId()) {
       $stores = $this->lookupStoreIds($object->getId());
       $tag = $this->lookupDealerTag($object->getId());
+			if (empty($tag)) {
+				$tag = null;
+			}
       $object->setData('store_id', $stores);
       $object->setData('dealer_tag', $tag);
     }
