@@ -54,10 +54,8 @@
 			<?php echo $this->getChildHtml('sharing') ?>
 		</li>
 </ul>
+<span class="mess_wishlish"></span>
 
-<!--<div class="remodal" id="modal" style="display:none">-->
-<!--	<span class="popup_compare"></span>-->
-<!--</div>-->
 
 <script type="text/javascript">
 	function ajaxCompare(url){
@@ -97,9 +95,9 @@
 			success: function (data) {
 				$j('#wishlist-detail-'+id).addClass('added-item');
 				$j("#ajax_loader").hide();
-				$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+				$j('.mess_wishlish').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
 				setTimeout(function () {
-					$j('.col-main').find('.messages').remove();
+					$j('.mess_wishlish').find('.messages').remove();
 				}, 5000);
 			}
 		});

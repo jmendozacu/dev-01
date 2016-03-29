@@ -293,14 +293,18 @@
 		}
 		
 		//update amount page dealer
-		$('amount_page_dealer').update(begin+'-'+end+' of '+(num_row - 1));
+		if($('amount_page_dealer'))
+			$('amount_page_dealer').update(begin+'-'+end+' of '+(num_row - 1));
 		
 		if(currentp){
-			$('li_page_'+currentp).removeClassName('current');
-			$('li_page_'+currentp).update('<a href="javascript:loadProductDealerByPage('+currentp+')">'+currentp+'</a>');
-			
-			$('li_page_'+p).update(p);
-			$('li_page_'+p).addClassName('current');
+			if($('li_page_'+currentp)){
+				$('li_page_'+currentp).removeClassName('current');
+				$('li_page_'+currentp).update('<a href="javascript:loadProductDealerByPage('+currentp+')">'+currentp+'</a>');
+			}
+			if($('li_page_'+p)){
+				$('li_page_'+p).update(p);
+				$('li_page_'+p).addClassName('current');
+			}
 		}
 		
 		var totalPage = parseInt((num_row - 1)/(limit));
