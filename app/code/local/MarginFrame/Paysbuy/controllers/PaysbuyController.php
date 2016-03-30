@@ -1,0 +1,475 @@
+<?php
+class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_Action
+{
+    
+    /**
+     * Order instance
+     */
+    protected $_order;
+
+    /**
+     *  Get order
+     *
+     *  @return	  Mage_Sales_Model_Order
+     */
+    public function getOrder()
+    {
+        if ($this->_order == null) {
+        }
+        return $this->_order;
+    }
+
+    protected function _expireAjax()
+    {
+        if (!Mage::getSingleton('checkout/session')->getQuote()->hasItems()) {
+            $this->getResponse()->setHeader('HTTP/1.1','403 Session Expired');
+            exit;
+        }
+    }
+
+    /**
+     * Get singleton with Paysbuy strandard order transaction information
+     *
+     * @return Autoeye_Paysbuy_Model_Standard
+     */
+    public function getStandard()
+    {
+        return Mage::getSingleton('Paysbuy/standard');
+    }
+
+    /**
+     * When a customer chooses Paysbuy on Checkout/Payment page
+     *
+     */
+    public function redirectAction()
+    {
+		
+		$session = Mage::getSingleton('checkout/session');
+		$session->setPaysbuyStandardQuoteId($session->getQuoteId());
+		$order = Mage::getModel('sales/order');
+		$order->load(Mage::getSingleton('checkout/session')->getLastOrderId());
+		$order->sendNewOrderEmail();
+		$order->save();
+		
+		$this->getResponse()->setBody($this->getLayout()->createBlock('Paysbuy/form_redirect')->toHtml());
+		$session->unsQuoteId();
+
+    }
+
+    /**
+     * When a customer cancel payment from Paysbuy.
+     */
+    public function cancelAction($PaysbuyCode,$PaysbuyState)
+    {
+        $session = Mage::getSingleton('checkout/session');
+        $session->setQuoteId($session->getPaysbuyStandardQuoteId(true));
+
+        // cancel order
+        if ($session->getLastRealOrderId()) {
+            $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
+            if ($order->getId()) {
+                //$order->cancel()->save();
+				 if($order->canCancel()) {
+				 	$order->cancel();
+				 	$message="Cancel :: Paysbuy Return Code : " .  $PaysbuyCode . ", State : ". $PaysbuyState;
+					$order->addStatusToHistory($order->getStatus(), $message, false);
+					$order->save();
+				 }
+ 
+              
+              $orderModel->setStatus('canceled_pendings');
+              $orderModel->save();
+			  
+			  
+				$state = Mage_Sales_Model_Order::STATE_CANCELED;
+				
+				$order->setState($state, true, $message);
+				
+            }
+        }
+
+		Mage::getSingleton('checkout/session')->addError("Paysbuy Payment has been cancelled and the transaction has been declined.");
+		$this->_redirect('checkout/cart');
+    }
+
+    /**
+     * when Paysbuy returns
+     * The order information at this point is in POST
+     * variables.  However, you don't want to "process" the order until you
+     * get validation from the IPN.
+     */
+    public function  successAction()
+    {
+        if (!$this->getRequest()->isPost()) {
+        	throw new Exception(' Wrong request type:  should be Post.', 10);
+        }
+
+        $status = true;
+
+		$response = $this->getRequest()->getPost();		 		
+		if (empty($response))  {
+            $status = false;
+			throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
+        }
+		
+		
+		
+		//=> Paysbuy Return Data
+		//-> result = 00 = �����, 99 ��������, 22 = ���������ҧ���Թ��� �ٻẺ��� ResultCode + Invoice 
+		//=> Invoice = �Ţ������觫����Թ���
+		//=> apCode = Transaction Code �ͧ Paysbuy  / Approved Code, 000000 = ��������
+		//=> amt = �ӹǹ�Թ������¡��
+		//=> fee = ��Ҹ���������÷���¡��
+		//=> method =��ͧ�ҧ��ê���
+		$PaysbuyResult = ""; 
+		$PaysbuyResultCode = ""; 
+		$PaysbuyInvoice = "";
+		$PaysbuyAppCode = "";
+		$PaysbuyAmount = 0;
+		$PaysbuyFee = 0;
+		$PaysbuyMethod = "";
+		
+		$PaysbuyCreateDate = "";
+		$PaysbuyPaymentDate = "";
+		$confirmCS = "";
+		
+		//print_r($response);
+		
+		if(isset($response["result"])) $PaysbuyResult = trim($response["result"]);
+		if(isset($response["apCode"])) $PaysbuyAppCode=$response["apCode"];
+		if(isset($response["amt"])) $PaysbuyAmount =$response["amt"];
+		if(isset($response["fee"])) $PaysbuyFee= $response["fee"];
+		if(isset($response["method"])) $PaysbuyMethod=$response["method"];
+		
+		if(isset($response["create_date"])) $PaysbuyCreateDate = $response["create_date"];
+		if(isset($response["payment_date"])) $PaysbuyPaymentDate = $response["payment_date"];
+		if(isset($response["confirm_cs"])) $confirmCS = $response["confirm_cs"];
+		
+		//=> Data for show paysbuy return message
+		$PaysbuyReturnData = "Result : " . $PaysbuyResult . "\n<br/>" .
+			"Approve Code : " . $PaysbuyAppCode . "\n<br/>" .
+			"Paid Amount : " . $PaysbuyAmount . "\n<br/>" .
+			"Fee : " . $PaysbuyFee . "\n<br/>" .
+			"Method : " . $PaysbuyMethod .  "\n<br/>" . 
+			"Create Date : " . $PaysbuyCreateDate .  "\n<br/>" . 
+			"Paid Date : " . $PaysbuyPaymentDate . "\n\<br/>" .
+			"confirm CS : " . $confirmCS;
+		//echo "<p>My Data : $PaysbuyReturnData</p>";
+		
+		if ($PaysbuyResult !=="") {
+			//=> �ó��ա�� Return ��ҡ�Ѻ��
+			$PaysbuyResultCode = substr($PaysbuyResult,0,2); 
+			$PaysbuyInvoice = substr($PaysbuyResult,2);
+			//echo "<br/>Order_Id=". $PaysbuyInvoice . " and Payment Result : " . $PaysbuyResultCode;
+			$order = Mage::getModel('sales/order');
+			$order->loadByIncrementId($PaysbuyInvoice);
+			
+			if ($order->getId()) {				
+				$CurrentOrderStatus = $order->getStatus();
+				$CurrentOrderState = $order->getState();
+				
+				$PaysbuyReturnData = "- **** Paysbuy click back || ". $CurrentOrderState . "=>" . $CurrentOrderStatus ." **** \n<br/>" . $PaysbuyReturnData;
+				
+				$order->addStatusToHistory($order->getStatus(), $PaysbuyReturnData, false);
+				$order->save();				
+				
+				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
+				switch ($PaysbuyResultCode) {
+					case "00":
+						if ($dbAmt == $PaysbuyAmount) {
+							$comment = "Received through Paysbuy Payment: " . $dbAmt;
+							if (strtolower($CurrentOrderState)=="new") {							
+								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
+								
+								//=> auto invoice
+								$isAutoCreateInvoice = Mage::getStoreConfig('payment/Paysbuy/autocreateinvoice');
+								if (((int)$isAutoCreateInvoice==1) && ($order->canInvoice()))  {
+
+									//START Handle Invoice
+									$invoice = Mage::getModel('sales/service_order', $order)->prepareInvoice();
+									$invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE);
+									$invoice->register();
+									$invoice->getOrder()->setCustomerNoteNotify(true);
+									$invoice->getOrder()->setIsInProcess(true);
+									$invoice->sendEmail();
+									$transactionSave = Mage::getModel('core/resource_transaction')
+									->addObject($invoice)
+									->addObject($invoice->getOrder());
+									$transactionSave->save();
+
+									//ICC-142 - Harry - Save Invoice Increment Id For Online Payment
+									Mage::helper('invoiceid')->saveInvoiceIncrementId($order, $invoice);
+
+									$order->addStatusToHistory($order->getStatus(), "Automatically invoiced", false);
+									$order->save();
+									//END Handle Invoice																
+								}
+								
+								//=> end uto invoice
+								
+								//$order->sendOrderUpdateEmail(true, $comment);
+								$session = Mage::getSingleton('checkout/session');
+								$session->setQuoteId($session->getPaysbuyStandardQuoteId(true));
+							}
+							else {
+								$order->addStatusToHistory($order->getStatus(), strtolower($CurrentOrderState) . " -> " . $PaysbuyReturnData, false);
+								$order->save();								
+							}
+							/**
+							* set the quote as inactive after back from Paysbuy
+							*/
+						}
+						else {
+							$order->addStatusToHistory($order->getStatus(), $dbAmt . "<>" . $PaysbuyAmount . "->" . $PaysbuyReturnData, false);
+							$order->save();
+
+						}
+							
+						Mage::getSingleton('checkout/session')->getQuote()->setIsActive(false)->save();
+						$this->_redirect('checkout/onepage/success', array('_secure'=>true));
+							
+						break;
+					case "02":
+						$comment = "Awaiting Counter Service payment";
+				
+						$order->setState(Mage_Sales_Model_Order::STATE_HOLDED, true, $comment, 1)->save();
+						
+						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
+						//$order->sendOrderUpdateEmail(true, $comment);
+						$this->_redirect('checkout/cart');
+						break;
+					case "99":
+						$comment = "Payment Failed";
+						if($order->canCancel()) {
+							$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
+						}
+						
+						$this->getCheckout()->setPaysbuyErrorMessage('An error occurred in the process of payment');
+						//$order->sendOrderUpdateEmail(true, $comment);
+						$this->_redirect('checkout/cart');
+						break;
+					default:
+						$comment = "Other - " . $PaysbuyResultCode;
+						if($order->canCancel()) {
+							$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
+						}
+						
+						$this->getCheckout()->setPaysbuyErrorMessage('Paysbuy can not payment');
+						$this->_redirect('checkout/cart');
+						
+						break;
+				}									
+			}
+			else {
+				//=>
+				//=> �ó�����ա��  Can not load order
+				$this->getCheckout()->setPaysbuyErrorMessage('Paysbuy can not load order.('. $PaysbuyInvoice .')'  );   
+				$this->cancelAction();
+				return false;						
+				//>
+				
+			}
+		}
+		else
+		{
+			//=> �ó�����ա�� Return Result Code
+			$this->getCheckout()->setPaysbuyErrorMessage('Paysbuy not affect the transaction back.('. $PaysbuyReturnData .')'  );   
+			$this->cancelAction();
+			return false;		
+		}		
+    }
+	
+    public function  feedAction()
+    {
+		Mage::log('feed start', null, 'mylogfile.log');
+        if (!$this->getRequest()->isPost()) {
+        	throw new Exception(' Wrong request type:  should be Post.', 10);
+        }
+
+        $status = true;
+
+		$response = $this->getRequest()->getPost();		 		
+		if (empty($response))  {
+            $status = false;
+			throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
+        }
+		
+		
+		
+		//=> Paysbuy Return Data
+		//-> result = 00 = �����, 99 ��������, 22 = ���������ҧ���Թ��� �ٻẺ��� ResultCode + Invoice 
+		//=> Invoice = �Ţ������觫����Թ���
+		//=> apCode = Transaction Code �ͧ Paysbuy  / Approved Code, 000000 = ��������
+		//=> amt = �ӹǹ�Թ������¡��
+		//=> fee = ��Ҹ���������÷���¡��
+		//=> method =��ͧ�ҧ��ê���
+		$PaysbuyResult = ""; 
+		$PaysbuyResultCode = ""; 
+		$PaysbuyInvoice = "";
+		$PaysbuyAppCode = "";
+		$PaysbuyAmount = 0;
+		$PaysbuyFee = 0;
+		$PaysbuyMethod = "";
+		
+		$PaysbuyCreateDate = "";
+		$PaysbuyPaymentDate = "";
+		$confirmCS = "";
+		
+		//print_r($response);
+		
+		if(isset($response["result"])) $PaysbuyResult = trim($response["result"]);
+		if(isset($response["apCode"])) $PaysbuyAppCode=$response["apCode"];
+		if(isset($response["amt"])) $PaysbuyAmount =$response["amt"];
+		if(isset($response["fee"])) $PaysbuyFee= $response["fee"];
+		if(isset($response["method"])) $PaysbuyMethod=$response["method"];
+		
+		if(isset($response["create_date"])) $PaysbuyCreateDate = $response["create_date"];
+		if(isset($response["payment_date"])) $PaysbuyPaymentDate = $response["payment_date"];
+		if(isset($response["confirm_cs"])) $confirmCS = $response["confirm_cs"];
+		
+		//=> Data for show paysbuy return message
+		$PaysbuyReturnData = "Result : " . $PaysbuyResult . "\n<br/>" .
+			"Approve Code : " . $PaysbuyAppCode . "\n<br/>" .
+			"Paid Amount : " . $PaysbuyAmount . "\n<br/>" .
+			"Fee : " . $PaysbuyFee . "\n<br/>" .
+			"Method : " . $PaysbuyMethod .  "\n<br/>" . 
+			"Create Date : " . $PaysbuyCreateDate .  "\n<br/>" . 
+			"Paid Date : " . $PaysbuyPaymentDate . "\n\<br/>" .
+			"confirm CS : " . $confirmCS;
+		//echo "<p>My Data : $PaysbuyReturnData</p>";
+		
+		Mage::log('My log entry : ' . $PaysbuyReturnData, null, 'mylogfile.log');
+		
+		if ($PaysbuyResult !=="") {
+			//=> �ó��ա�� Return ��ҡ�Ѻ��
+			$PaysbuyResultCode = substr($PaysbuyResult,0,2); 
+			$PaysbuyInvoice = substr($PaysbuyResult,2);
+			//echo "<br/>Order_Id=". $PaysbuyInvoice . " and Payment Result : " . $PaysbuyResultCode;
+			$order = Mage::getModel('sales/order');
+			$order->loadByIncrementId($PaysbuyInvoice);
+			
+			if ($order->getId()) {				
+				$CurrentOrderStatus = $order->getStatus();
+				$CurrentOrderState = $order->getState();
+				
+				$PaysbuyReturnData = "- **** Paysbuy background response || ". $CurrentOrderState . "=>" . $CurrentOrderStatus ." **** \n<br/>" . $PaysbuyReturnData;
+				
+				$order->addStatusToHistory($order->getStatus(), $PaysbuyReturnData, false);
+				$order->save();				
+				
+				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
+				switch ($PaysbuyResultCode) {
+					case "00":
+						if ($dbAmt == $PaysbuyAmount) {
+							$comment = "Received through Paysbuy Payment: " . $dbAmt;
+							if (strtolower($CurrentOrderState)=="new") {							
+								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
+								//=> auto invoice
+								$isAutoCreateInvoice = Mage::getStoreConfig('payment/Paysbuy/autocreateinvoice');
+								if (((int)$isAutoCreateInvoice==1) && ($order->canInvoice()))  {
+									//START Handle Invoice
+									$invoice = Mage::getModel('sales/service_order', $order)->prepareInvoice();
+									$invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_OFFLINE);
+									$invoice->register();
+									$invoice->getOrder()->setCustomerNoteNotify(true);
+									$invoice->getOrder()->setIsInProcess(true);
+									$invoice->sendEmail();
+									$transactionSave = Mage::getModel('core/resource_transaction')
+									->addObject($invoice)
+									->addObject($invoice->getOrder());
+									$transactionSave->save();
+								
+									$order->addStatusToHistory($order->getStatus(), "Automatically invoiced", false);
+									$order->save();
+									//END Handle Invoice																
+								}
+								
+								//=> end uto invoice
+																
+								//$order->sendOrderUpdateEmail(true, $comment);
+								$session = Mage::getSingleton('checkout/session');
+								$session->setQuoteId($session->getPaysbuyStandardQuoteId(true));
+							}
+							else {
+								$order->addStatusToHistory($order->getStatus(), strtolower($CurrentOrderState) . " -> " . $PaysbuyReturnData, false);
+								$order->save();								
+							}
+							/**
+							* set the quote as inactive after back from Paysbuy
+							*/
+						}
+						else {
+							$order->addStatusToHistory($order->getStatus(), $dbAmt . "<>" . $PaysbuyAmount . "->" . $PaysbuyReturnData, false);
+							$order->save();
+
+						}
+							
+						Mage::getSingleton('checkout/session')->getQuote()->setIsActive(false)->save();
+						$this->_redirect('checkout/onepage/success', array('_secure'=>true));
+							
+						break;
+					case "02":
+						$comment = "Awaiting Counter Service payment";
+				
+						$order->setState(Mage_Sales_Model_Order::STATE_HOLDED, true, $comment, 1)->save();
+						
+						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
+						//$order->sendOrderUpdateEmail(true, $comment);
+						$this->_redirect('checkout/cart');
+						break;
+					case "99":
+						$comment = "Payment Failed";
+						if($order->canCancel()) {
+							$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
+						}
+						
+						$this->getCheckout()->setPaysbuyErrorMessage('An error occurred in the process of payment');
+						//$order->sendOrderUpdateEmail(true, $comment);
+						$this->_redirect('checkout/cart');
+						break;
+					default:
+						$comment = "Other - " . $PaysbuyResultCode;
+						if($order->canCancel()) {
+							$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
+						}
+						
+						$this->getCheckout()->setPaysbuyErrorMessage('Paysbuy can not payment');
+						$this->_redirect('checkout/cart');
+						
+						break;
+				}									
+			}
+			else {
+				//=>
+				//=> �ó�����ա��  Can not load order
+				$this->getCheckout()->setPaysbuyErrorMessage('Paysbuy can not load order.('. $PaysbuyInvoice .')'  );   
+				$this->cancelAction();
+				return false;						
+				//>
+				
+			}
+		}
+		else
+		{
+			//=> �ó�����ա�� Return Result Code
+			$this->getCheckout()->setPaysbuyErrorMessage('Paysbuy not affect the transaction back.('. $PaysbuyReturnData .')'  );   
+			$this->cancelAction();
+			return false;		
+		}		
+    }
+		
+	public function errorAction()
+    {
+        $this->_redirect('checkout/onepage/');
+    }
+     /**
+     * Get singleton of Checkout Session Model
+     *
+     * @return Mage_Checkout_Model_Session
+     */
+    public function getCheckout()
+    {
+        return Mage::getSingleton('checkout/session');
+    }
+
+}
