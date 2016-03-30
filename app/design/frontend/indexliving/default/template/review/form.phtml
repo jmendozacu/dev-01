@@ -35,11 +35,11 @@
 		<div class="fieldset">
 			<?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
 				<span id="input-message-box"></span>
-				<div class="li_review" id="product-review-star">
+				<div class="li_review">
 					<script type="text/javascript">
 						var numCode = 0; var codeArray = new Array();
 					</script>
-					<ul>	
+					<ul id="product-review-star">
 					<?php foreach ($this->getRatings() as $_rating): ?>
 					<li>
 					<script type="text/javascript">
@@ -52,7 +52,7 @@
 							</div>
 							<?php foreach ($_rating->getOptions() as $_option): ?>
 							<div class="rating_wrap_start" onclick="ratingfollow('<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>','<?php echo $_option->getValue() ?>');">
-								<input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio"/>
+								<input type="radio"  name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio"/>
 								<span id="Span_<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></span>
 							</div>
 							<?php endforeach; ?>
@@ -60,10 +60,10 @@
 						</li>
 					<?php endforeach; ?>
 					</ul>
-<!--					<input type="hidden" name="validate_rating" class="validate-rating" value="" />-->
 					<div style="clear:both;"></div>
 				</div>
 			<?php endif; ?>
+			<input type="hidden" name="validate_rating" class="validate-rating" value="" />
 			<div class="submit-fields">
 				<ul class="form-list">
 					<li class="inline-label">
@@ -138,8 +138,8 @@
 					Validation.addAllThese(
 					[
 								 ['validate-rating', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Please select one of each of the ratings above')) ?>', function(v) {
-											var trs = $('product-review-table').select('tr');
-											var inputs;
+											var trs = $('product-review-star').select('li');
+										 	var inputs;
 											var error = 1;
 
 											for( var j=0; j < trs.length; j++ ) {
@@ -245,15 +245,16 @@
 							processData: false,
 							success: function (data) {
 								$j('#ajax_loader').hide();
-								$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + mess + '</span></li></ul></li></ul>');
+								$j('.show-message').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + mess + '</span></li></ul></li></ul>');
 								$j('#preview-image').attr('src', src);
 								$j('#review-form #nickname_field').attr('value', '');
 								$j('#review-form #image-name').attr('value', '');
 								$j('#review-form').trigger("reset");
 								setTimeout(function(){
-									$j('.col-main').find('.messages').remove();
+									$j('.show-message').find('.messages').remove();
+									$j.fancybox.close();
 								},5000);
-								$j.fancybox.close();
+
 							}
 						});
 					}
