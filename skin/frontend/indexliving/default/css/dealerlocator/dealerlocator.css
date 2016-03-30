@@ -363,6 +363,17 @@ td .dealer-label {
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
+	.view-dealers-link{
+		display: block;
+    overflow: hidden;
+    clear: both;
+    margin: 0 10px;
+    text-align: center;
+    border: solid 1px #E6E6E6;
+    background: #F8F8F8;
+    padding: 10px;
+	}
+	.view-dealers{background-color:#F8F8F8; width:140px;margin:0 auto;clear: both;float: none!important;display: block;}
 }
 
 @media (min-width: 481px) and (max-width: 600px) {
@@ -448,6 +459,17 @@ td .dealer-label {
 		padding:0 10px;
   }
 	#product_dealer_map_canvas{max-width:100%;}
+	.view-dealers-link{
+		display: block;
+    overflow: hidden;
+    clear: both;
+    margin: 0 10px;
+    text-align: center;
+    border: solid 1px #E6E6E6;
+    background: #F8F8F8;
+    padding: 10px;
+	}
+	.view-dealers{background-color:#F8F8F8; width:140px;margin:0 auto;clear: both;float: none!important;display: block;}
 }
 
 @media (min-width: 601px) and (max-width: 767px) {

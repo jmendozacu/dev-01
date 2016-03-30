@@ -47,7 +47,9 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
 		}
     public function postAction()
     {
+
         if (!$this->_validateFormKey()) {
+
             // returns to the product item page
             $this->_redirectReferer();
             return;
@@ -59,10 +61,11 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
                 $rating = $data['ratings'];
             }
         } else {
+
             $data   = $this->getRequest()->getParams();
             $rating = $this->getRequest()->getParam('ratings', array());
-        }
 
+        }
         if (($product = $this->_initProduct()) && !empty($data)) {
             $session    = Mage::getSingleton('core/session');
             /* @var $session Mage_Core_Model_Session */
@@ -70,7 +73,9 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
             /* @var $review Mage_Review_Model_Review */
 
             $validate = $review->validate();
+
             if ($validate === true) {
+
                 try {
                     $review->setEntityId($review->getEntityIdByCode(Mage_Review_Model_Review::ENTITY_PRODUCT_CODE))
                         ->setEntityPkValue($product->getId())
@@ -89,6 +94,10 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
                     }
 
                     $review->aggregate();
+                    $reviewId = $review->getId();
+                    Mage::getModel('review/review')->load($reviewId)
+                        ->setImg($data['image-name'])->save();
+
                     $session->addSuccess($this->__('Your review has been accepted for moderation.'));
                 }
                 catch (Exception $e) {
@@ -109,9 +118,7 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
             }
         }
 
-                $reviewId = $review->getId();
-                Mage::getModel('review/review')->load($reviewId)
-                    ->setImg($data['image-name'])->save();
+
 
         if ($redirectUrl = Mage::getSingleton('review/session')->getRedirectUrl(true)) {
             $this->_redirectUrl($redirectUrl);

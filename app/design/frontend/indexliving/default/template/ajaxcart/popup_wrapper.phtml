@@ -1,0 +1,43 @@
+<?php
+$param = $this->getRequest()->getPost();
+?>
+<div id="ajaxcart_configurable_block">
+	<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+  <?php $_product = $this->getProduct() ?>
+  <img class="ajaxcart-product-image" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" />
+  <script type="text/javascript">
+    optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+    optionsPrice.productType = '<?php echo $_product->getTypeId() ?>';
+
+  </script>
+  <?php echo $this->getChildHtml('product_js');?>  
+  <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post"
+    id="ajaxcart_product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    <div id="product_options">
+      <div class="product-options" id="product-options-wrapper" style="margin:0">
+        <div class="product-name"><?php echo $_product->getName() ?></div>
+        <?php echo str_replace('var ', '', $this->getChildHtml('options_configurable'));?>
+        <?php echo str_replace('var ', '', $this->getChildHtml('type_bundle_options'));?>
+        <?php echo str_replace('var ', '', $this->getChildHtml('product_type_data'));?>
+        <?php echo str_replace('var ', '', $this->getChildHtml('type_downloadable_options'));?>
+        <?php echo str_replace('var ', '', $this->getChildHtml('product_options'));?>
+        <?php echo str_replace('var ', '', $this->getChildHtml('product_price'));?>
+        <?php echo str_replace('var ', '', $this->getChildHtml('product_type_availability'));?>
+      </div>
+      <?php if(isset($param['qty']) && $param['qty'] !=''):?>
+      <input type="hidden" id="qty" name="qty" value="<?php echo $param['qty'];?>"/>
+      <?php endif;?>
+      <?php if(isset($param['wishlist_item_id']) && $param['wishlist_item_id'] !=''):?>
+      <input type="hidden" id="wishlist_item_id" name="wishlist_item_id" value="<?php echo $param['wishlist_item_id'];?>"/>
+      <?php endif;?>
+      <div class="ajaxcart-buttons">
+        <button type="button" id="ajaxcart_cancel" class="button" title="<?php echo $this->__('Cancel')?>">
+          <span><?php echo $this->__('Cancel')?></span>
+        </button>
+        <button type="button" id="ajaxcart_add" class="focus button" title="<?php echo $this->__('Add to cart')?>">
+          <span><?php echo $this->__('Add to cart')?></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

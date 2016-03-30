@@ -81,8 +81,8 @@ jQuery(document).ready(function () {
 	});
   
   /* change position special-price and old-price in products-grid */
-  (jQuery('.products-grid .special-price')).insertBefore(jQuery('.products-grid .old-price'));
-  jQuery('.special-price + .special-price').remove();
+  // (jQuery('.products-grid .special-price')).insertBefore(jQuery('.products-grid .old-price'));
+  // jQuery('.special-price + .special-price').remove();
   
   jQuery(".go-top").click(function() {
     jQuery('html, body').animate({
@@ -149,6 +149,7 @@ jQuery(document).ready(function () {
   jQuery('.close-box-search').click(function(){
       jQuery('#header-search').hide();
   });
+  
   
   
   /*icon menu on mobile */
@@ -312,6 +313,7 @@ jQuery(document).ready(function () {
         jQuery(this).next().slideUp(300);
        }
       });
+    
     }
     /* menu */
   jQuery("#header-nav .nav-primary ul.level0").hide(); 

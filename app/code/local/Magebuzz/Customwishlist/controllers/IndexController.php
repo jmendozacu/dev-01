@@ -12,7 +12,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	public function compareAction()
 	{
 		$response = array();
-
 		if ($productId = (int) $this->getRequest()->getParam('product'))
 		{
 			$product = Mage::getModel('catalog/product')
@@ -24,12 +23,38 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 				Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
 				$response['status'] = 'SUCCESS';
 				$response['message'] = $this->__('The product %s has been added to comparison list.', Mage::helper('core')->escapeHtml($product->getName()));
+//				$_productCollection = Mage::helper('catalog/product_compare')->getItemCollection()->count();
+
+					$response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/sidebar.phtml')->toHtml();
+					$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+
 			}
 		}
-		$response['popup'] = $this->getLayout()->createBlock('catalog/product_compare_list')->setTemplate('catalog/product/compare/list.phtml')->toHtml();
+	}
 
-		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
-		return;
+
+	protected function _getWishlist()
+	{
+		$wishlist = Mage::registry('wishlist');
+		if ($wishlist) {
+
+			return $wishlist;
+		}
+
+		try {
+			$wishlist = Mage::getModel('wishlist/wishlist')
+				->loadByCustomer(Mage::getSingleton('customer/session')->getCustomer(), true);
+			Mage::register('wishlist', $wishlist);
+		} catch (Mage_Core_Exception $e) {
+			Mage::getSingleton('wishlist/session')->addError($e->getMessage());
+		} catch (Exception $e) {
+			Mage::getSingleton('wishlist/session')->addException($e,
+				Mage::helper('wishlist')->__('Cannot create wishlist.')
+			);
+			return false;
+		}
+
+		return $wishlist;
 	}
 
 	public function addAction()
@@ -46,6 +71,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		if(empty($response)){
 			$session = Mage::getSingleton('customer/session');
 			$wishlist = $this->_getWishlist();
+
 			if (!$wishlist) {
 				$response['status'] = 'ERROR';
 				$response['message'] = $this->__('Unable to Create Wishlist');
@@ -67,6 +93,20 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 							$requestParams = $this->getRequest()->getParams();
 							$buyRequest = new Varien_Object($requestParams);
 
+
+							Mage::helper('wishlist')->calculate();
+
+							if(Mage::helper('customwishlist')->checkItemInWishlist($productId)){
+								$message = $this->__('This product has been added to your wishlist already');
+								$response['status'] = 'SUCCESS';
+								$response['message'] = $message;
+
+							}else{
+								$message = $this->__('%1$s has been added to your wishlist.', $product->getName());
+								$response['status'] = 'SUCCESS';
+								$response['message'] = $message;
+							}
+
 							$result = $wishlist->addNewItem($product, $buyRequest);
 							if (is_string($result)) {
 								Mage::throwException($result);
@@ -82,20 +122,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 								)
 							);
 
-							Mage::helper('wishlist')->calculate();
-
-							$message = $this->__('%1$s has been added to your wishlist.', $product->getName(), $referer);
-							$response['status'] = 'SUCCESS';
-							$response['message'] = $message;
-
-							Mage::unregister('wishlist');
-
-							$this->loadLayout();
-							$toplink = $this->getLayout()->getBlock('top.links')->toHtml();
-							$sidebar_block = $this->getLayout()->getBlock('wishlist_sidebar');
-							$sidebar = $sidebar_block->toHtml();
-							$response['toplink'] = $toplink;
-							$response['sidebar'] = $sidebar;
 						}
 						catch (Mage_Core_Exception $e) {
 							$response['status'] = 'ERROR';

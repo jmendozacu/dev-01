@@ -58,11 +58,13 @@
                     <catalog_product>Amasty_SeoSingleUrl_Model_Resource_Sitemap_Catalog_Product</catalog_product>
                 </rewrite>
             </sitemap_resource>
-            <catalogsearch_resource>
+            <!--
+						<catalogsearch_resource>
                 <rewrite>
                     <fulltext_collection>Amasty_SeoSingleUrl_Model_Resource_CatalogSearch_Fulltext_Collection</fulltext_collection>
                 </rewrite>
             </catalogsearch_resource>
+						-->
             <catalog>
                 <rewrite>
                     <product_url>Amasty_SeoSingleUrl_Model_Product_Url</product_url>

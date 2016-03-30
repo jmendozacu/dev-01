@@ -1,0 +1,34 @@
+<div class="block" id="ajaxcart_content_option_product">
+	<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+	<?php $_product = $this->getProduct(); ?>
+	<?php $_params = $this->getParams(); ?>
+	<?php 
+		if (($_product->getTypeId() == 'configurable')&&(isset($_params['super_attribute']))) {
+			$childProduct = Mage::getModel('catalog/product_type_configurable')->getProductByAttributes($_params['super_attribute'], $_product);
+			$_product = Mage::getModel('catalog/product')->load($childProduct->getId());
+		}
+	?>
+	<?php $productName = $_product->getName(); ?>
+	<?php $imgSrc = $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(135); ?>
+	<p class="added-success-message">
+		<?php
+			if (Mage::getStoreConfig('ajaxcart/general/success_message_content')) {
+				echo Mage::getStoreConfig('ajaxcart/general/success_message_content', Mage::app()->getStore()->getId());
+			} else {
+				echo $this->__("You have recently added this product to your Cart");
+			}
+		?>
+	</p>
+	<h2 class="product-name"><?php echo $productName ?></h2>
+	<img class="ajaxcart-product-image" src="<?php echo $imgSrc; ?>"
+			 width="135" height="135"/>
+	<div class="ajaxcart-buttons">
+		<button type="button" id="ajaxcart_continue_shopping" class="button" title="<?php echo $this->__('Continue')?>">
+			<span><?php echo $this->__('Continue')?></span>
+		</button>
+		<button type="button" id="ajaxcart_checkout" class="focus r-button button" title="<?php echo $this->__('View Cart')?>"
+						onclick="setLocation('<?php echo $this->getUrl('checkout/cart'); ?>')">
+			<span><?php echo $this->__('View Cart')?></span>
+		</button>
+	</div>
+</div>

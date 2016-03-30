@@ -1,5 +1,5 @@
 .products-grid li.item .amconf-block{ position:absolute; top:200px; width:100%; text-align:center;}
-.products-grid li.item .amconf-block dl dt{display:none;}
+.products-grid li.item .amconf-block dl dt, .products-list li.item .amconf-block dl dt{display:none;}
 .amconf-image{
     margin: 3px;
     border-radius: 3px;
@@ -16,8 +16,14 @@
 }
 
 
-.product-view .amconf-color-container{border-radius:0; border:1px solid #ccc;}
-.product-view .amconf-color-container.amconf-image-selected{border:1px solid #000;}
+.product-view .amconf-color-container{border-radius:0;/*  border:1px solid #ccc; */}
+.product-view .amconf-color-container{border-radius:0;/*  border:1px solid #ccc; */}
+.product-view .product-options .amconf-images-container{}
+.amconf-images-list-container{position:relative;}
+.amconf-images-list-container .amconf-images-list-label{background:url(../images/arrow-dropdown.png) 95% center no-repeat; border:2px solid #000; padding:5px 10px; overflow:hidden; border-radius:5px;}
+.amconf-images-list-container .amconf-images-list-label .selectedItem{float:left; margin-right:10px;}
+.amconf-images-list-container .amconf-images-list-label .selectedItemLabel{float:left}
+.amconf-images-list-container .amconf-images-container{display:none;position: absolute;padding: 5px 10px;background: #fff;z-index: 9999;border: 2px solid #000;top: 37px;  border-radius:5px;}
 
 em{
      color:red;
@@ -109,19 +115,28 @@ hr.amconf-hr{
     width: 100%;
     clear: both;
 }
-
-.amconf-image-container
+.amconf-image-container {
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	margin-right: 5px;
+}
+.product-view .product-shop .amconf-image-container
 {
-    display: inline-block;
-    position: relative;
-    text-align: center;
-    margin-right: 5px;
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	float:left;
+	width:100%;
+	margin-bottom:5px;
 }
 
 .amconf-image-container img, .amconf-image-container div:first-child
 {
-    margin: 0 auto;
+	float:left;
 }
+.product-view .product-shop .amconf-image-container div.amconf-color-container{margin-right:10px;}
+.amconf-image-container div.amconf-color-label{float:left}
 .amconf-image-title
 {
     margin-bottom:5px;

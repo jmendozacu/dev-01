@@ -29,7 +29,7 @@
 		<h2><?php echo $this->__('Write Your Own Review') ?></h2>
 		<div class="show-message"></div>
 		<?php if ($this->getAllowWriteReviewFlag()): ?>
-		<form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
+		<form action="javascript:void(0)" method="post" id="review-form" enctype="multipart/form-data">
 		<?php echo $this->getBlockHtml('formkey'); ?>
 		<?php echo $this->getChildHtml('form_fields_before')?>
 		<div class="fieldset">
@@ -60,7 +60,7 @@
 						</li>
 					<?php endforeach; ?>
 					</ul>
-					<input type="hidden" name="validate_rating" class="validate-rating" value="" />
+<!--					<input type="hidden" name="validate_rating" class="validate-rating" value="" />-->
 					<div style="clear:both;"></div>
 				</div>
 			<?php endif; ?>
@@ -85,7 +85,7 @@
 							</div>
 					</li>
 					<li>
-						<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button box-desktop"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+						<button type="submit" onclick="submitbt()" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button box-desktop"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 					</li>
 				</ul>
 				<div class="review-image">
@@ -93,16 +93,16 @@
 					<img width="48" height="48" id="loading-image" style="display:none;" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif')?>" title="<?php echo $this->__('Please wait...');?>"/>
 					<img id="preview-image" src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" style="max-width:100%,height:auto;"/>
 					<div class="input-box reviewImageInput">
-						<input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
+						<input name="MAX_FILE_SIZE" type="hidden" value="" />
 						<div class="image-upload"> 
 							<div class="fileinputs">     
 								<span id="uploadButton"><span><?php echo $this->__('Choose Image')?></span></span>	
-								<input name="attachment" id="attachment" class="input-text" type="file" />      
+								<input name="attachment" id="attachment" class="input-text" type="file" />
 								<p id="upload-error-message" style="color: red;"></p> 		
 							</div>                               
 						</div>
 
-						<input id="image-name" name="image-name" type="hidden" value="" class="required-entry" />
+						<input id="image-name" name="image-name" type="hidden" value="" />
 					</div>
 				</div>
 				
@@ -116,6 +116,12 @@
 		</div>
 		</form>
 			<script type="text/javascript">
+				//< ![CDATA[
+				var customForm = new VarienForm('review-form');
+				//]]>
+			</script>
+
+			<script type="text/javascript">
 				function ratingfollow(checkRatingcode,checkValue){
 					$(checkRatingcode+"_"+checkValue).checked = true;
 					for(var i=1;i<=5; i++){
@@ -127,7 +133,7 @@
 						}
 					}
 				}
-			//<![CDATA[
+//			<![CDATA[
 					var dataForm = new VarienForm('review-form');
 					Validation.addAllThese(
 					[
@@ -158,7 +164,7 @@
 									}]
 					]
 					);
-			//]]>
+//			]]>
 			$j(document).ready(function(){
 
 				$j('.rating > span').hover(function(){
@@ -192,10 +198,10 @@
 			var upload_field = $('attachment');
 			new AjaxUpload('attachment', {
 				action: '<?php echo $this->getUrl('customreview/product/autoupload')?>', //the php script that receives and saves the image
-				name: 'attachment', 
+				name: 'attachment',
 				onSubmit: function(file, extension) {
 					upload_field.hide();
-					loading_image.show();      
+					loading_image.show();
 				},
 				onChange: function(file, extension) {
 					$('upload-error-message').update('');
@@ -208,41 +214,53 @@
 						$('upload-error-message').update(data.message);
 						$('image-name').value = '';
 					}
-					else {        
+					else {
 						preview_image.src = data.imageUrl;
-						$('image-name').value = data.imageName; 
+						$('image-name').value = data.imageName;
 						preview_image.show();
 
 					}
 					loading_image.hide();
 					upload_field.show();
 				}
-			});   
+			});
 			</script>
 
 			<script type="text/javascript">
-				$j("form#review-form").submit(function(){
-					var frm = $j('#review-form');
-					$j('#ajax_loader').show();
-					var formData = new FormData($j(this)[0]);
-					var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
-					$j.ajax({
-						url: frm.attr('action'),
-						type: 'POST',
-						data: formData,
-						cache: false,
-						contentType: false,
-						processData: false,
-						success: function (data) {
-
-							$j('#ajax_loader').remove();
-							$j('.form-add .show-message').html('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
-							$j("#review-form")[0].reset();
-							$j.fancybox.close();
-						}
-					});
-				});
+				function submitbt(){
+					var customForm = new VarienForm('review-form', true);
+					if (customForm.validator.validate()) {
+						var frm = $j('#review-form');
+						var url = '<?php echo $this->getAction() ?>';
+						var src = '<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>';
+						$j('#ajax_loader').show();
+						var formData = new FormData($j('#review-form')[0]);
+						var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
+						$j.ajax({
+							url: url,
+							type: 'POST',
+							data: formData,
+							cache: false,
+							contentType: false,
+							processData: false,
+							success: function (data) {
+								$j('#ajax_loader').hide();
+								$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + mess + '</span></li></ul></li></ul>');
+								$j('#preview-image').attr('src', src);
+								$j('#review-form #nickname_field').attr('value', '');
+								$j('#review-form #image-name').attr('value', '');
+								$j('#review-form').trigger("reset");
+								setTimeout(function(){
+									$j('.col-main').find('.messages').remove();
+								},5000);
+								$j.fancybox.close();
+							}
+						});
+					}
+				}
 			</script>
+
+
 			<?php
 			$star_bg = $this->getSkinUrl('images/star.png', array('_secure'=>true));
 			echo '<style>';

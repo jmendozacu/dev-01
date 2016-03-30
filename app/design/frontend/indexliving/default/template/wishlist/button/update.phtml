@@ -25,6 +25,6 @@
  */
 ?>
 
-<?php if($this->getWishlist()->getItemsCount()): ?>
-    <button type="submit" name="do" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove all')) ?>" class="button btn-removeall button-secondary"><span><span><?php echo $this->__('Remove all') ?></span></span></button>
+<?php if($this->getWishlist()->getItemsCount() && $this->getWishlist()->isSalable()): ?>
+	<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove All')) ?>" onclick="setLocation('<?php echo Mage::getUrl('customwishlist/index/removeall') ?>')" class="button btn-removeall button-secondary"><span><span><?php echo $this->__('Remove All') ?></span></span></button>
 <?php endif;?>

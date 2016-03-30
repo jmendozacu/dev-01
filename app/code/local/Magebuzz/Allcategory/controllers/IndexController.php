@@ -24,6 +24,9 @@ class Magebuzz_Allcategory_IndexController extends Mage_Core_Controller_Front_Ac
           $result['html'] .= '<ul class="level1">';
         }
         $result['html'] .= '<li class="level1">';
+					if(isset($cat3['category_icon']) && $cat3['category_icon'] != ''){
+						$result['html'] .= '<img class="category-icon" src="'.Mage::getBaseUrl('media').'/catalog/category/'.$cat3['category_icon'].'" />';
+					}
           $result['html'] .= '<a href="'.Mage::getUrl($cat3['url_path']).'">'.$cat3['name'].'</a>';
           $cat_level_4 = $helper->getCatChildByGroup($cat3['entity_id']);
           $result['html'] .= '<ul class="level2">';

@@ -219,7 +219,9 @@ New customer registration
 					<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
 				</reference>
         <reference name="my.account.wrapper">
-            <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml"/>
+            <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml">
+							<block type="customer/newsletter" name="customer_newsletter" as="customer_newsletter" template="customer/form/ajax_subscription.phtml" />
+						</block>
         </reference>
 
         <reference name="left">
@@ -240,6 +242,10 @@ Customer account pages, rendered for all tabs in dashboard
             <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
             <action method="addBodyClass"><class>customer-account</class></action>
         </reference>
+				<reference name="head">
+					<action method="addItem"><type>skin_js</type><name>js/jquery.custom-radio-checkbox.js</name></action>
+					<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
+				</reference>
         <reference name="breadcrumbs">
           <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
           <action method="addCrumb"><crumbName>My Account</crumbName><crumbInfo><label>My Account</label><title>My Account</title></crumbInfo></action>
@@ -323,7 +329,9 @@ Customer account home dashboard layout
             <block type="customer/account_dashboard" name="customer_account_dashboard" template="customer/account/dashboard.phtml">
                 <block type="customer/account_dashboard_hello" name="customer_account_dashboard_hello" as="hello" template="customer/account/dashboard/hello.phtml"/>
                 <block type="core/template" name="customer_account_dashboard_top" as="top" />
-                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml"/>
+                <block type="customer/account_dashboard_info" name="customer_account_dashboard_info" as="info" template="customer/account/dashboard/info.phtml">
+									<block type="customer/newsletter" name="customer_newsletter" as="customer_newsletter" template="customer/form/ajax_subscription.phtml" />
+								</block>
                 <block type="customer/account_dashboard_newsletter" name="customer_account_dashboard_newsletter" as="newsletter" template="customer/account/dashboard/newsletter.phtml"/>
                 <block type="customer/account_dashboard_address" name="customer_account_dashboard_address" as="address" template="customer/account/dashboard/address.phtml"/>
             </block>
