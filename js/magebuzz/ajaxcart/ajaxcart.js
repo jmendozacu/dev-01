@@ -3,9 +3,8 @@ var AjaxCart = Class.create();
 AjaxCart.prototype = {
   ajaxLoading: null,
   miniCartElement: null,
-  miniCartMobileElement: null,
   sidebarCartElement: null,
-  toplinkCartElement: null,
+  miniCartItemCount: null,
   productCartFormElement: null,
   productCartFormObject: null,
   optionsPopup: null,
@@ -21,9 +20,8 @@ AjaxCart.prototype = {
     this.initConfig = initConfig;
     this.createElements();
     if ($('product_addtocart_form')) this.productCartFormObject = new VarienForm('product_addtocart_form');
-    if ($$('li.cart-info')[0]) this.miniCartElement = $$('li.cart-info')[0];
-    if ($$('li.m-cart-info')[0]) this.miniCartMobileElement = $$('li.m-cart-info')[0];
-    if ($$('a.top-link-cart')[0]) this.toplinkCartElement = $$('a.top-link-cart')[0];
+    if ($$('div.mini-cart-info')[0]) this.miniCartElement = $$('div.mini-cart-info')[0];
+    if ($$('span.mini-cart-item-count')[0]) this.miniCartItemCount = $$('span.mini-cart-item-count')[0];
     if ($$('div.block-cart')[0]) this.sidebarCartElement = $$('div.block-cart')[0];
     if ($('product_addtocart_form')) this.productCartFormElement = $('product_addtocart_form');
 
@@ -99,17 +97,10 @@ AjaxCart.prototype = {
       //this.reRunCoreCode();
       Effect.Pulsate(this.miniCartElement);
     }
-		/* update mini cart mobile*/
-    if (this.miniCartMobileElement && JSON_response.m_mini_cart_html) {
-      this.miniCartMobileElement.update(JSON_response.m_mini_cart_html);
-      //this.reRunCoreCode();
-      Effect.Pulsate(this.miniCartMobileElement);
-    }
     /* update top link cart */
-    if (this.toplinkCartElement && JSON_response.toplink_cart_html) {
-      this.toplinkCartElement.update(JSON_response.toplink_cart_html);
-      this.toplinkCartElement.setAttribute('title',JSON_response.toplink_cart_html);
-      Effect.Pulsate(this.toplinkCartElement);
+    if (this.miniCartItemCount && JSON_response.toplink_cart_html) {
+      this.miniCartItemCount.update(JSON_response.toplink_cart_html);
+      Effect.Pulsate(this.miniCartItemCount);
     }
     /* update sidebar cart */
     if (this.sidebarCartElement && JSON_response.sidebar_cart_html) {

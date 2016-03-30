@@ -77,8 +77,8 @@ class Magebuzz_Ajaxcart_IndexController extends Mage_Core_Controller_Front_Actio
         return;
       }
 
-      $_response['toplink_cart_html'] = $this->__("My Cart (%d items)",$_cart->getSummaryQty());
-      if ((strcmp(Mage::getVersion(),'1.9.0.0') >= 0)&&(Mage::getStoreConfig('design/package/name')=='rwd')) {
+      $_response['toplink_cart_html'] = $this->__("<span class='cart-item-count'>%d<span>",$_cart->getSummaryQty());
+      if ((strcmp(Mage::getVersion(),'1.9.0.0') >= 0)) {
         // check using minicart by check magento version >= 1.9.0.1
         $_response['mini_cart_html'] = Mage::helper('ajaxcart')->getMiniCartHtml();
       }
@@ -150,8 +150,8 @@ class Magebuzz_Ajaxcart_IndexController extends Mage_Core_Controller_Front_Actio
 
       $wishlist->save();
 
-      $_response['toplink_cart_html'] = $this->__("My Cart (%d items)",$cart->getSummaryQty());
-      if ((strcmp(Mage::getVersion(),'1.9.0.0') >= 0)&&(Mage::getStoreConfig('design/package/name')=='rwd')) {
+      $_response['toplink_cart_html'] = $this->__("<span class='cart-item-count'>%d<span>",$cart->getSummaryQty());
+      if ((strcmp(Mage::getVersion(),'1.9.0.0') >= 0)) {
         // check using minicart by check magento version >= 1.9.0.1
         $_response['mini_cart_html'] = Mage::helper('ajaxcart')->getMiniCartHtml();
       }
