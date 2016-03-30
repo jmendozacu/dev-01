@@ -66,7 +66,7 @@
 													<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
 											<?php endif; ?>
 										</div>
-										<a href="#" class="btn-remove" onclick="removeItem('<?php echo $this->helper('catalog/product_compare')->getRemoveUrl($_item) ?>');" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>"><?php echo $this->__('Remove This Item') ?></a>
+										<a href="#" class="btn-remove" onclick="removeCompareItemPopup('<?php echo $this->helper('catalog/product_compare')->getRemoveUrl($_item) ?>');" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>"><?php echo $this->__('Remove This Item') ?></a>
 									</div>	
                 </td>
             <?php endforeach; ?>
@@ -104,15 +104,14 @@
         </tbody>
     </table>
 		<span class="please-wait" id="compare-list-please-wait" style="display:none;">
-				<img src="<?php echo $this->getSkinUrl('images/main-loading.gif') ?>" alt="<?php echo $this->quoteEscape($this->__('Please wait...')) ?>" title="<?php echo $this->quoteEscape($this->__('Please wait...')) ?>" class="v-middle" /> <?php echo $this->__('Please wait...') ?>
+				<img src="<?php echo $this->getSkinUrl('images/main-loading.gif') ?>" alt="<?php echo $this->quoteEscape($this->__('Please wait...')) ?>" title="<?php echo $this->quoteEscape($this->__('Please wait...')) ?>" class="v-middle" />
 		</span>
     <script type="text/javascript">
         decorateTable('product_comparison');
-
         /**
          * Send remove item request, after that reload windows
          */
-        function removeItem(url)
+        function removeCompareItemPopup(url)
         {
             new Ajax.Request(url, {
                 parameters: {isAjax: 1, method: 'POST'},
@@ -121,9 +120,6 @@
                     $('compare-list-please-wait').hide();
                     window.location.reload();
                     //window.opener.location.reload();
-										if(jQuery("#compare-all-items")){
-											jQuery("#compare-all-items").trigger('click');
-										}
                 }
             });
         }
