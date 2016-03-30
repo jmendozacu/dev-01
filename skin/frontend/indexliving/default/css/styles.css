@@ -2165,7 +2165,7 @@ span.weee {
   background-repeat: repeat-x;
   background-position: 0 -600px;
 } */
-.rating-box { width:110px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
+.rating-box { width:107px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
 .rating-box .rating { float:left; height:18px; background:url(../images/rating_bg.png) 0 100% repeat-x; }
 .ratings .rating-box { float:left; margin-right:3px; }
 
