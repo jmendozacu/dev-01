@@ -4178,7 +4178,7 @@ a.skip-link {
 .footer .footer-links .box-links h3  {color:#363636; font-size:15px; line-height:22px; font-family: 'FuturaT_Bold';  text-transform: capitalize;}
  @media (min-width: 769px){
   .footer .footer-links .box-links h3.title-shoppingonline {text-indent:-999px; background:url(../images/logo-shopping.png) no-repeat; background-size:114px auto;  min-height:57px; margin-top:-36px;}
-  .footer .footer-links .box-links h3.title-indexliving {text-indent:-999px; background:url(../images/logo.png) no-repeat; height:22px; background-size: auto 21px;}
+  .footer .footer-links .box-links h3.title-indexliving {background:url(../images/logo.png) no-repeat; height:0; padding-top:22px; overflow: hidden; background-size: auto 21px;}
   .footer .footer-links .box-links ul {display:block!important; height:auto!important;}
 }
 .footer .footer-links .box-links li {display:block; line-height:24px; margin-bottom:5px;}
