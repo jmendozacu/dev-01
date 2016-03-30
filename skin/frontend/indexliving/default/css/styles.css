@@ -5371,7 +5371,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-review-summary .review-box .box-title .bl{min-width:300px;}
 .product-view .product-review-summary .review-box .box-title .br .review-count{font-family: "FuturaT_Bold"; text-transform:capitalize; font-size:25px; color:#000000;}
 .product-view .product-review-summary .review-box .box-title .br .write-review-popup{background:#ffc222; padding:5px 15px; text-transform:uppercase;font-family: "FuturaT_Bold"; font-size:22px; color:#FFFFFF; text-decoration:none; margin:5px 0 0; display:inline-block; border-radius:5px;}
-.product-view .product-review-summary .review-box .ratings-overview .rating-box { width:225px; height:35px; font-size:0; line-height:0; background:url(../images/rating_big_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
+.product-view .product-review-summary .review-box .ratings-overview .rating-box { width:223px; height:35px; font-size:0; line-height:0; background:url(../images/rating_big_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
 .product-view .product-review-summary .review-box .ratings-overview .rating-box .rating { float:left; height:35px; background:url(../images/rating_big_bg.png) 0 100% repeat-x; }
 .product-view .product-review-summary .review-box .ratings-overview .ratings .rating-box { float:left; margin-right:5px; }
 .product-view .product-review-summary .rating-summary-details {display:block;}
