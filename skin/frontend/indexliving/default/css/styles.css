@@ -5535,6 +5535,7 @@ body.catalogsearch-result-index .page-title h1 {
 	background-image:url(../images/icons2.png);
 	background-repeat:no-repeat;
 	text-transform:uppercase;
+  height:34px;
 }
 .product-view .add-to-links a.link-wishlist{background-position:0 -122px;}
 .product-view .add-to-links a.link-wishlist:hover,
