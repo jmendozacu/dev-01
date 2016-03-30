@@ -4139,7 +4139,7 @@ a.skip-link {
  * Footer
  */
 .footer-container {margin-top:40px;}
-.newsletter-footer {float:left; width:100%; background:url(../images/background-newsletter.jpg) no-repeat center center;}
+.newsletter-footer {float:left; width:100%; background:url(../images/background-newsletter.jpg) no-repeat center center; background-size: cover;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;}
 .newsletter-footer .block.block-subscribe { position:relative; float:left; width:100%; margin:0px;}
 .logo-newsletter {float:left; width:100%; width:32.2%; background:#111; padding:36px 15px; text-align:center;}
 .logo-newsletter img {margin:auto; max-width:100%;}
