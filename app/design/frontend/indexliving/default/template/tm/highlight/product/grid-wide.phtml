@@ -28,11 +28,13 @@
                         <?php endif; ?>
                         <?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
                         <div class="actions">
-                            <?php if($_product->isSaleable()): ?>
-                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                            <?php else: ?>
-                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                            <?php endif; ?>
+                            <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+															<button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+														<?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+															<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
+														<?php else: ?>
+															<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+														<?php endif; ?>
                             <ul class="add-to-links">
                                 <?php if ($this->helper('wishlist')->isAllow()) : ?>
                                     <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
