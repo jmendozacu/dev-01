@@ -4307,7 +4307,7 @@ a.skip-link {
 .allcategory-banners .banners-list .lb{float:left; width:35%; background:#000000; padding-top:60px; padding-right:60px;}
 .allcategory-banners .banners-list .lb h2{font-size:40px; color:#FFFFFF; margin:0;}
 .allcategory-banners .banners-list .lb h2 strong{font-family:"FuturaT_Bold";}
-.allcategory-banners .banners-list .lb p{color:#ffc222; font-size:25px;}
+.allcategory-banners .banners-list .lb p{color:#ffc222;font-size:40px;font-family:"DBYordX";line-height:32px;}
 .allcategory-banners .banners-list .rb{float:right; width:65%;}
 
 .category-banners{margin:25px 0;}
