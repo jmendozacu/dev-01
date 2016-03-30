@@ -38,11 +38,11 @@
         <reference name="head">
             <action method="addItem" ifconfig="amconf/product_image_size/enable_jquery"><type>skin_js</type><name>js/amasty/plugins/jquery-1.9.1.min.js</name><params/></action>
             <action method="addItem" ifconfig="amconf/list/enable_list"><type>skin_css</type><name>js/amasty/amconf/css/amconf.css</name><params/></action>
-            <!-- <action method="addJs" ifconfig="amconf/list/enable_list"><script>varien/product.js</script></action>
+            <action method="addJs" ifconfig="amconf/list/enable_list"><script>varien/product.js</script></action>
             <action method="addJs" ifconfig="amconf/list/enable_list"><script>varien/configurable.js</script></action>
 
             <action method="addItem" ifconfig="amconf/list/enable_list"><type>skin_js</type><name>js/amasty/amconf/formList.js</name><params/></action>
-            <action method="addItem" ifconfig="amconf/list/enable_list"><type>skin_js</type><name>js/amasty/amconf/configurableList.js</name><params/></action> -->
+            <action method="addItem" ifconfig="amconf/list/enable_list"><type>skin_js</type><name>js/amasty/amconf/configurableList.js</name><params/></action>
             <action method="addItem"><type>skin_js</type><name>js/amasty/plugins/jquery.tooltipster.min.js</name><params/></action>
             <action method="addItem"><type>skin_css</type><name>js/amasty/amconf/css/tooltipster.css</name><params/></action>
         </reference>

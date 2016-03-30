@@ -512,14 +512,13 @@ textarea {
 .styled-select {
     float: left;
     position: relative;
-		width:100%;
 }
 .styled-select::after, .styled-select:after {
     content: '';
     height: 0;
     width: 0px;
-    right: 6px;
-    top: 39%;
+    right: 5px;
+    top: 34%;
     border-top: solid 10px #000000;
     border-left: solid 6px transparent;
     border-right: solid 6px transparent;
@@ -8197,6 +8196,9 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .product-view .product-options dd .input-box {
   width: 100%;
   height: auto;
+}
+.product-view .product-options dd .input-box .styled-select{
+	width:100%;
 }
 .product-view .product-options .select-label {
   display: none;
