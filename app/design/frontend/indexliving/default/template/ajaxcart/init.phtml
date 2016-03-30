@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  <?php if (Mage::getStoreConfig('ajaxcart/general/enabled')): ?>
+    document.observe("dom:loaded", function() {
+      ajaxCart = new AjaxCart(
+        {
+          'show_success_message': <?php echo Mage::getStoreConfig('ajaxcart/general/display_success_message'); ?>,
+          'timerErrorMessage': 3000,
+          'addWishlistItemUrl': '<?php echo Mage::getUrl('ajaxcart/index/addWishlistItem');?>',
+					'removeItemUrl': '<?php echo Mage::getUrl('ajaxcart/index/removeItem'); ?>'
+        }
+      );
+    });
+  <?php endif; ?>
+</script>
