@@ -2165,7 +2165,7 @@ span.weee {
   background-repeat: repeat-x;
   background-position: 0 -600px;
 } */
-.rating-box { width:110px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
+.rating-box { width:107px; height:18px; font-size:0; line-height:0; background:url(../images/rating_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
 .rating-box .rating { float:left; height:18px; background:url(../images/rating_bg.png) 0 100% repeat-x; }
 .ratings .rating-box { float:left; margin-right:3px; }
 
@@ -4307,7 +4307,7 @@ a.skip-link {
 .allcategory-banners .banners-list .lb{float:left; width:35%; background:#000000; padding-top:60px; padding-right:60px;}
 .allcategory-banners .banners-list .lb h2{font-size:40px; color:#FFFFFF; margin:0;}
 .allcategory-banners .banners-list .lb h2 strong{font-family:"FuturaT_Bold";}
-.allcategory-banners .banners-list .lb p{color:#ffc222; font-size:25px;}
+.allcategory-banners .banners-list .lb p{color:#ffc222;font-size:40px;font-family:"DBYordX";line-height:32px;}
 .allcategory-banners .banners-list .rb{float:right; width:65%;}
 
 .category-banners{margin:25px 0;}
@@ -5535,6 +5535,7 @@ body.catalogsearch-result-index .page-title h1 {
 	background-image:url(../images/icons2.png);
 	background-repeat:no-repeat;
 	text-transform:uppercase;
+  height:34px;
 }
 .product-view .add-to-links a.link-wishlist{background-position:0 -122px;}
 .product-view .add-to-links a.link-wishlist:hover,
