@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+		<models>
+			<Paysbuy>
+				<class>MarginFrame_Paysbuy_Model</class>
+			</Paysbuy>
+		</models>
+		<helpers>
+			<Paysbuy>
+				<class>MarginFrame_Paysbuy_Helper</class>
+			</Paysbuy>
+		</helpers>
+		<blocks>
+			<Paysbuy>
+				<class>MarginFrame_Paysbuy_Block</class>
+			</Paysbuy>
+		</blocks>
+	</global>
+	<frontend>
+		<routers>
+			<Paysbuy>
+				<use>standard</use>
+				<args>
+					<module>MarginFrame_Paysbuy</module>
+					<frontName>Paysbuy</frontName>
+				</args>
+			</Paysbuy>
+		</routers>
+		<translate>
+			<modules>
+				<MarginFrame_Paysbuy>
+					<files>
+						<default>MarginFrame_Paysbuy.csv</default>
+					</files>
+				</MarginFrame_Paysbuy>
+			</modules>
+		</translate>
+	</frontend>
+
+	<default>
+		<payment>
+			<Paysbuy>
+				<active>1</active>
+				<model>Paysbuy/method_Paysbuy</model>
+				<order_status>1</order_status>
+				<payment_success_status>2</payment_success_status>
+				<title>Paysbuy Payment</title>
+				<allowspecific>0</allowspecific>
+			</Paysbuy>
+		</payment>
+	</default>
+</config>

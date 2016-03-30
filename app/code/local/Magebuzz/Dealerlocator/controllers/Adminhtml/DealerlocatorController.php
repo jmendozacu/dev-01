@@ -57,8 +57,10 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
       if (!$data['longitude'] || !$data['latitude'] || $data['address'] != $model->getAddress()) {
         $address = urlencode($data['address']);
         $json = Mage::helper('dealerlocator')->getJsonData($address);
-        $data['latitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'});
-        $data['longitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'});
+				if(!empty($json->{'results'})){
+					$data['latitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'});
+					$data['longitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'});
+				}
       }
 
       if (isset($_FILES['icon_image']['name']) && $_FILES['icon_image']['name'] != '') {

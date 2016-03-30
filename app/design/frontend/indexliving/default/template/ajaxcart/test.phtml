@@ -1,0 +1,89 @@
+<script type="text/javascript">
+  function openMyPopup() {
+    var url = '<?php echo $this->getUrl('/') ?>?';
+    if ($('browser_window') && typeof(Windows) != 'undefined') {
+      Windows.focus('browser_window');
+      return;
+    }
+    var dialogWindow = Dialog.info(null, {
+      closable:true,
+      resizable:true,
+      draggable:true,
+      className:'magento',
+      windowClassName:'popup-window',
+      title:'Test popup Dialog',
+      top:50,
+      width:640,
+      height:480,
+      zIndex:1000,
+      recenterAuto:true,
+      hideEffect:Element.hide,
+      showEffect:Element.show,
+      id:'browser_window',
+      url:url
+    });
+  }
+
+</script>
+<img id="image-test" src="<?php echo $this->getSkinUrl('magebuzz/ajaxcart/images/1.png');?>"/>
+<ul>
+  <li><button class="button" title="TEST BUTTON" onclick="javascript:openMyPopup()" type="button">TEST BUTTON</button></li>
+  <li><button class="button" title="Grow" onclick="javascript:Grow()" type="button">TEST ANIMATION Grow</button></li>
+  <li><button class="button" title="SlideUp" onclick="javascript:SlideUp()" type="button">TEST ANIMATION SlideUp</button></li>
+  <li><button class="button" title="BlindUp" onclick="javascript:BlindUp()" type="button">TEST ANIMATION BlindUp</button></li>
+  <li><button class="button" title="BlindDown" onclick="javascript:BlindDown()" type="button">TEST ANIMATION BlindDown</button></li>
+  <li><button class="button" title="Puff" onclick="javascript:Puff()" type="button">TEST ANIMATION Puff</button></li>
+  <li><button class="button" title="Appear" onclick="javascript:Appear()" type="button">TEST ANIMATION Appear</button></li>
+  <li><button class="button" title="Shrink" onclick="javascript:Shrink()" type="button">TEST ANIMATION Shrink</button></li>
+  <li><button class="button" title="Pulsate" onclick="javascript:Pulsate()" type="button">TEST ANIMATION Pulsate</button></li>
+  <li><button class="button" title="MoveBy" onclick="javascript:MoveBy()" type="button">TEST ANIMATION MoveBy</button></li>
+  <li><button class="button" title="Combo" onclick="javascript:Combo()" type="button">TEST ANIMATION Combo</button></li>
+</ul>
+
+<script type="text/javascript">
+  function SlideUp() {
+    Effect.SlideUp($('image-test'));
+  }
+
+  function BlindDown() {
+    Effect.BlindDown($('image-test'));
+  }
+
+  function Grow() {
+    Effect.Grow($('image-test'));
+  }
+
+  function BlindUp() {
+    Effect.BlindUp($('image-test'));
+  }
+
+  function Puff() {
+    Effect.Puff($('image-test'));
+  }
+
+  function Appear() {
+    Effect.Appear($('image-test'));
+  }
+
+  function Shrink() {
+    Effect.Shrink($('image-test'));
+  }
+
+  function Pulsate() {
+    Effect.Pulsate($('image-test'));
+  }
+
+  function MoveBy() {
+    Effect.MoveBy($('image-test'),100,0);
+  }
+
+  function Combo() {
+    Effect.Appear($('image-test'), { queue: 'end'});
+    Effect.Puff($('image-test'), { queue: 'end'});
+  }
+</script>
+
+<div>
+  <?php $product = Mage::getModel('catalog/product')->load('380'); ?>
+  <?php echo Mage::helper('ajaxcart')->getSuccessHtml($product); ?>
+</div>

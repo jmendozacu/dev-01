@@ -76,7 +76,7 @@
               endif;
             ?>
             <a class="mycart toggle-header-content toggle-minicart cart_item_count"  href="javascript:void(0)" title="<?php echo $this->__('My cart')?>">
-              <span id="cartItemCountInHead"><span class="cart-item-count"><?php echo $count;?></span></span>
+              <span id="cartItemCountInHead" class="mini-cart-item-count"><span class="cart-item-count"><?php echo $count;?></span></span>
             </a>
           </div>
           <div id="header-mini-login" class="box-header-content">
@@ -86,7 +86,7 @@
               <?php echo $this->getChildHtml('mini-myaccount') ?>
             <?php endif; ?>
           </div>
-          <div id="mini-cart-info" class="box-header-content">
+          <div id="mini-cart-info" class="box-header-content mini-cart-info">
             <?php echo $this->getChildHtml('header_cart_mini') ?>
           </div>
         </div>

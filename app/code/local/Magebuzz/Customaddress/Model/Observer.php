@@ -12,7 +12,7 @@ class Magebuzz_Customaddress_Model_Observer {
 		
 		//$subdistrictId = Mage::app()->getRequest()->getParam('subdistrict_id');
 		$subdistrict = Mage::app()->getRequest()->getParam('subdistrict');					
-		$cityId = $address->getData('subdistrict_id');
+		$subdistrictId = $address->getData('subdistrict_id');
 		if ($subdistrictId && $subdistrictId != 0) {
 			$subdistrict = Mage::getModel('customaddress/subdistrict')->load($subdistrictId)->getDefaultName();
 		}
