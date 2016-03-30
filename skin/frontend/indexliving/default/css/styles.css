@@ -512,22 +512,22 @@ textarea {
 .styled-select {
     float: left;
     position: relative;
+		width:100%;
 }
 .styled-select::after, .styled-select:after {
     content: '';
     height: 0;
     width: 0px;
-    right: 2px;
-    top: 50%;
-    margin-top: -1px;
-    border-top: solid 6px #000000;
+    right: 6px;
+    top: 39%;
+    border-top: solid 10px #000000;
     border-left: solid 6px transparent;
     border-right: solid 6px transparent;
     position: absolute;
     pointer-events: none;
 }
 .styled-select::before, .styled-select:before {
-    background: #fff none repeat scroll 0 0;
+   /*  background: #fff none repeat scroll 0 0; */
     content: "";
     height: 100%;
     position: absolute;
@@ -6000,8 +6000,12 @@ body.catalogsearch-result-index .page-title h1 {
 }
 
 .product-options dd select {
-  width: 330px;
+	width:100%;
   max-width: 100%;
+	border: 2px solid #000;
+	padding: 5px 10px;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 .product-options ul.options-list {
@@ -8191,7 +8195,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   padding-left: 5px;
 }
 .product-view .product-options dd .input-box {
-  width: auto;
+  width: 100%;
   height: auto;
 }
 .product-view .product-options .select-label {
