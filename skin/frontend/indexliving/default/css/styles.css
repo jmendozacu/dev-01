@@ -4266,7 +4266,7 @@ a.skip-link {
 .categories-list .category-grid li.category-item{ float:left; width:32%; margin-right:2%; margin-bottom:2%; background:#252525; min-height:388px; max-height:388px; overflow:hidden; position:relative;}
 .categories-list .category-grid li.category-item.first, .categories-list .category-grid li.category-item.last{margin:0;}
 .categories-list .category-grid li.category-item.last{float:right;}
-.categories-list .category-grid li.category-item.category-products-list{text-align:center;}
+.categories-list .category-grid li.category-item.category-products-list{text-align:center; cursor:pointer;}
 .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{color:#ffc222; font-size:60px; font-family: 'FuturaT_Bold'; text-transform:uppercase; margin-top:30%; text-decoration:none; display:block;}
 .categories-list .category-grid li a{}
 .categories-list .category-grid li a:hover{color:#ffc222;}
