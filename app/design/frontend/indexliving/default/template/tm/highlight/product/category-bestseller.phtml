@@ -14,10 +14,7 @@
                 <div class="prolabel-wrapper">
                   <?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
                     <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
-                    ><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"
-                        srcset="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?> 1x, <?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135 * 2); ?> 2x"
-                        width="135" height="135"
-                        alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                    ><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(268)?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                     /></a>
                   <?php if ($this->helper('wishlist')->isAllow()) : ?>
                       <a href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>javascript:void(0)<?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"></a>

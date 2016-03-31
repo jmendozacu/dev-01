@@ -88,6 +88,7 @@
 	<?php echo $this->getChildHtml('toolbar') ?>
 	<?php else: ?>
 		<div class="review-list no-review" id="review-list">
+			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Review')?></h3>
 			<p class="no-rating"><?php echo $this->__('Be the first to review this product') ?></p>
 		</div>	
 	<?php endif;?>

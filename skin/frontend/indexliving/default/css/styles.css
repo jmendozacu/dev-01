@@ -4139,7 +4139,7 @@ a.skip-link {
  * Footer
  */
 .footer-container {margin-top:40px;}
-.newsletter-footer {float:left; width:100%; background:url(../images/background-newsletter.jpg) no-repeat center center;}
+.newsletter-footer {float:left; width:100%; background:url(../images/background-newsletter.jpg) no-repeat center center; background-size: cover;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;}
 .newsletter-footer .block.block-subscribe { position:relative; float:left; width:100%; margin:0px;}
 .logo-newsletter {float:left; width:100%; width:32.2%; background:#111; padding:36px 15px; text-align:center;}
 .logo-newsletter img {margin:auto; max-width:100%;}
@@ -4266,16 +4266,16 @@ a.skip-link {
 .categories-list .category-grid li.category-item{ float:left; width:32%; margin-right:2%; margin-bottom:2%; background:#252525; min-height:388px; max-height:388px; overflow:hidden; position:relative;}
 .categories-list .category-grid li.category-item.first, .categories-list .category-grid li.category-item.last{margin:0;}
 .categories-list .category-grid li.category-item.last{float:right;}
-.categories-list .category-grid li.category-item.category-products-list{text-align:center;}
+.categories-list .category-grid li.category-item.category-products-list{text-align:center; cursor:pointer;}
 .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{color:#ffc222; font-size:60px; font-family: 'FuturaT_Bold'; text-transform:uppercase; margin-top:30%; text-decoration:none; display:block;}
 .categories-list .category-grid li a{}
 .categories-list .category-grid li a:hover{color:#ffc222;}
-.categories-list .category-grid .categories-links{position:absolute; bottom:0; background:#252525; text-align:center; width:100%; padding:0 10px; height:50px;}
+.categories-list .category-grid .categories-links{position:absolute; bottom:0; background:#252525; text-align:center; width:100%; padding:0 10px; min-height:50px;}
 .categories-list .category-grid .categories-links a{color:#fff; font-family: 'FuturaBT-Book'; font-size:20px; text-decoration:none;}
 .categories-list .category-grid .categories-links a.link-has-sub,
 .categories-list .category-grid .categories-links a.link-no-sub{color:#ffc222; font-size:20px; font-family: 'FuturaT_Bold'; text-transform:uppercase; display:block; padding:10px; }
 .categories-list .category-grid .categories-links a.link-has-sub{}
-.categories-list .category-grid .categories-links a.link-view-all{border-top:1px solid #555; color:#fff; font-family: 'FuturaBT-Book'; font-size:14px; padding:5px 0; display:block; text-transform:uppercase;}
+.categories-list .category-grid .categories-links a.link-view-all{border-top:1px solid #555; color:#fff; font-family: 'FuturaBT-Book'; font-size:14px; padding:5px 0; display:block; text-transform:uppercase; background:url(../images/i-viewall.png) 62% center no-repeat; padding-right:30px;}
 .categories-list .category-grid .categories-links a.link-view-all:hover{color:#ffc222;}
 .categories-list .category-grid .categories-links .categories-list-lvl3{
 	max-height: 0;
@@ -4290,6 +4290,7 @@ a.skip-link {
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul{padding:10px 0;}
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul li a{text-transform:uppercase;  font-family: 'FuturaBT-Book'; font-size:18px;}
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul li a:hover{
+	text-decoration:underline;
 }
 .allcategory-banners{
 	padding:30px 0 15px 0;
@@ -4309,6 +4310,7 @@ a.skip-link {
 .allcategory-banners .banners-list .lb h2 strong{font-family:"FuturaT_Bold";}
 .allcategory-banners .banners-list .lb p{color:#ffc222;font-size:40px;font-family:"DBYordX";line-height:32px;}
 .allcategory-banners .banners-list .rb{float:right; width:65%;}
+.allcategory-banners h3{text-transform:none;}
 
 .category-banners{margin:25px 0;}
 .category-banners .wrap-bannerads .banner-carousel{}
@@ -4336,6 +4338,8 @@ a.skip-link {
 .category-bestseller .owl-carousel .owl-controls .owl-nav .owl-prev:hover{background:url(../images/slider-next4.png) no-repeat 0 0; left:-10px;}
 .category-bestseller .owl-carousel .owl-controls .owl-nav .owl-next{background:url(../images/slider-next4.png) no-repeat 100% 0; right:-10px}
 .category-bestseller .owl-carousel .owl-controls .owl-nav .owl-next:hover{background:url(../images/slider-prev4.png) no-repeat 100% 0; right:-10px}
+.category-bestseller .owl-carousel .owl-item .item .actions{opacity:1;}
+.category-bestseller .owl-carousel .owl-item .item .link-wishlist{display:block;}
 .category-title h1,
 body.catalogsearch-result-index .page-title h1 {
   border-bottom: none;
@@ -4385,7 +4389,7 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 15px;
   margin:auto;
   text-align:center;
-  padding:30px 0;
+  /* padding:30px 0; */
   display:block;
 }
 
@@ -9192,6 +9196,7 @@ div.paypal-logo span > img {
 	text-transform:uppercase;
 }
 #customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
+#customer-reviews .review-list li > div.review-image img{max-width:150px;}
 #customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
 #customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
 #customer-reviews .review-list li .review-details .review-meta .rating-title{

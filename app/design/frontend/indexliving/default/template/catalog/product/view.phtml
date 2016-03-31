@@ -71,53 +71,56 @@
                     <?php echo $this->getTierPriceHtml() ?>
 										<?php echo $this->getChildHtml('alert_urls') ?>
                 </div>
+								<?php $_themeCustomHelper = Mage::helper('themecustom');?>
+								<?php if($_themeCustomHelper->isValidFeatureAttribute($_product)): ?>
 								<div class="warranty-info">
 									<div class="warranty">
-										<?php if($_product->getResource()->getAttribute('feature_special_1') && $_product->getResource()->getAttribute('feature_special_1')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/cow-leather.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_1')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_1')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/cow-leather.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_1')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_2') && $_product->getResource()->getAttribute('feature_special_2')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/crystal-lized.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_2')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_2')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/crystal-lized.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_2')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_3') && $_product->getResource()->getAttribute('feature_special_3')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img style="margin-top:10px" src="<?php echo $this->getSkinUrl('images/warranty/e1.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_3')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_3')):?>
+											<img style="margin-top:10px" src="<?php echo $this->getSkinUrl('images/warranty/e1.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_3')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_4') && $_product->getResource()->getAttribute('feature_special_4')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/german-melamine.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_4')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_4')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/german-melamine.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_4')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_5') && $_product->getResource()->getAttribute('feature_special_5')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/pian-higloss.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_5')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_5')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/pian-higloss.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_5')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_6') && $_product->getResource()->getAttribute('feature_special_6')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/grs.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_6')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_6')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/grs.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_6')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_7') && $_product->getResource()->getAttribute('feature_special_7')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/safety-glass.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_7')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_7')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/safety-glass.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_7')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_8') && $_product->getResource()->getAttribute('feature_special_8')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/v-series.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_8')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_8')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/v-series.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_8')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_9') && $_product->getResource()->getAttribute('feature_special_9')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/25-years.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_9')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_9')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/25-years.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_9')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_10') && $_product->getResource()->getAttribute('feature_special_10')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/hiqualit-fabric.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_10')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_10')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/hiqualit-fabric.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_10')?>"/>
 										<?php endif;?>
 										
-										<?php if($_product->getResource()->getAttribute('feature_special_11') && $_product->getResource()->getAttribute('feature_special_11')->getFrontend()->getValue($_product) == 'Yes'):?>
-											<img src="<?php echo $this->getSkinUrl('images/warranty/tempered-glass.png')?>" alt="<?php echo $_product->getResource()->getAttribute('feature_special_11')->getFrontend()->getLabel($_product)?>"/>
+										<?php if($_themeCustomHelper->checkProductAttributeYesNo($_product, 'feature_special_11')):?>
+											<img src="<?php echo $this->getSkinUrl('images/warranty/tempered-glass.png')?>" alt="<?php echo $_themeCustomHelper->getProductAttributeLabel($_product, 'feature_special_11')?>"/>
 										<?php endif;?>
 									</div>
 								</div>
+								<?php endif;?>
                 <?php echo $this->getChildHtml('other');?>
 
                 <?php if ($_product->isSaleable() && $this->hasOptions()):?>
