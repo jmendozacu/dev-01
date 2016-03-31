@@ -38,4 +38,21 @@
              <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
         </reference>
     </customer_account_create>
+		
+		<customer_account_rewardpoints>
+			<update handle="customer_account"/>
+			<!-- Mage_Customer -->
+			<reference name="root">
+					<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+			<reference name="breadcrumbs">
+				<action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+				<action method="addCrumb"><crumbName>My Account</crumbName><crumbInfo><label>My Account</label><title>My Account</title></crumbInfo></action>
+			</reference>
+			<reference name="my.account.wrapper">
+				<block type="cms/block" name="customer.rewardpoints" before="-">
+						<action method="setBlockId"><block_id>index-customer-rewardpoints</block_id></action>
+				</block>
+			</reference>
+		</customer_account_rewardpoints>
 </layout>

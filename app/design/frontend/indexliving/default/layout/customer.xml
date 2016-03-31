@@ -293,7 +293,7 @@ Customer account pages, rendered for all tabs in dashboard
                 </action> -->
                 <action method="addLink" translate="label" module="customer">
                   <name>rewardpoints_dashboard</name>
-                  <path>customer</path>
+                  <path>customer/account/rewardpoints</path>
                   <label>Reward Points</label>
                 </action>
             </block>
@@ -306,6 +306,7 @@ Customer account pages, rendered for all tabs in dashboard
             <!--</block>-->
             <!-- <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/> -->
             <remove name="tags_popular"/>
+            <remove name="catalog.compare.sidebar"/>
 
         </reference>
     </customer_account>

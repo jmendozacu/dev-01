@@ -59,4 +59,15 @@ class Amasty_Ajaxlogin_AccountController extends Mage_Customer_AccountController
 
 			$this->_loginPostRedirect();
 	}
+	
+	public function rewardpointsAction() {
+		
+		$this->loadLayout();
+		
+		$this->_initLayoutMessages('customer/session');
+		
+
+		$this->getLayout()->getBlock('head')->setTitle($this->__('Reward Points'));
+		$this->renderLayout();
+	}
 }

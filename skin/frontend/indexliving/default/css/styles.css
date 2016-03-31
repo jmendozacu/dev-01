@@ -766,7 +766,7 @@ h6, .h6 {
 	width:100%;
 }
 .sidebar .block-title strong{
-	background:url(../images/arrow-down.gif) right center no-repeat;
+	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
 .block-title small {
   font-size: 100%;
@@ -1005,7 +1005,7 @@ body:not(.customer-account) .block:first-child .block-title {
 
 /* Block Compare */
 .block-compare{}
-.block-compare .block-content{}
+.block-compare .block-content{padding-right:12px;}
 .block-compare .block-content li.item{margin:0; padding:10px 0; border-bottom:1px solid #dadada; overflow:hidden; position:relative;}
 .block-compare .block-content .product-name{margin:0!important;}
 .block-compare .block-content .product-name a{font-family: 'FuturaBT-Book'; font-size:14px; text-transform:uppercase; color:#000000;}
@@ -1077,7 +1077,7 @@ body:not(.customer-account) .block:first-child .block-title {
 /* Secondary Buttons */
 .cart .buttons-set .button,
 .cart-table .button,
-.sidebar .actions .button,
+/* .sidebar .actions .button, */
 .button.button-secondary {
   background: #252525;
   color: #FFFFFF;
@@ -1085,21 +1085,21 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .cart .buttons-set .button:hover,
 .cart-table .button:hover,
-.sidebar .actions .button:hover,
+/* .sidebar .actions .button:hover, */
 .button.button-secondary:hover {
   background: #252525;
   cursor: pointer;
 }
 .cart .buttons-set .button:active,
 .cart-table .button:active,
-.sidebar .actions .button:active,
+/* .sidebar .actions .button:active, */
 .button.button-secondary:active {
   background: #252525;
   color: #FFFFFF;
 }
 .cart .buttons-set .button:focus,
 .cart-table .button:focus,
-.sidebar .actions .button:focus,
+/* .sidebar .actions .button:focus, */
 .button.button-secondary:focus {
   color: #FFFFFF;
   background: #252525;
@@ -1342,7 +1342,7 @@ a.button {
 }
 
 .breadcrumbs a:hover {
-  color: #3399cc;
+  color: #000;
 }
 
 .breadcrumbs strong {
@@ -2946,7 +2946,8 @@ form .form-instructions {
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
-.form-list #gender, .form-list #prefix {float:left; width:100px;}
+.form-list #gender/* , .form-list #prefix  */{float:left; width:100px;}
+.form-list #prefix{float:left; width:100px;}
 
 .customer-account-edit .form-list ,
 .form-list .gender,
@@ -4155,7 +4156,7 @@ a.skip-link {
   clear: both;
   width: 100%;
   float:left;
-  padding-top: 37px;
+  padding-top: 50px;
 }
 .footer .footer-content {position:relative;}
 .footer .footer-contacts {float:left; width:24%;}
@@ -4258,7 +4259,9 @@ a.skip-link {
 .allcategories-list{}
 .category-overview{background:#252525; overflow:hidden;}
 .category-overview .category-image{float:left; width:64%; margin:0;}
-.category-overview .category-info{float:right; width:36%; padding:2.5%;}
+/* .category-overview .category-info{float:right; width:36%; padding:2.5%;} */
+.category-overview .category-info{float:right; width:36%; padding:3.5% 4%; position:relative;}
+.category-overview .category-info::before{background:url(../images/i-category-info.png) top left no-repeat; content: ""; height: 46px; width: 46px; position: absolute; top:37px; left:-22px;}
 .category-overview .category-info .page-title.category-title h1{color:#ffc222; font-size:32px; font-family: 'FuturaT_Bold';}
 .category-overview .category-info .category-description{color:#fff;}
 .categories-list{margin-top:90px;}
@@ -4823,10 +4826,10 @@ body.catalogsearch-result-index .page-title h1 {
 	padding:0 0 5px;
 	margin:0 0 10px;
 	border-bottom:1px solid #ccc;
-	background:url(../images/arrow-down.gif) right center no-repeat;
+	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
 .block-layered-nav .block-content > dl > dt.current{
-	background:url(../images/arrow-up.gif) right center no-repeat;
+	background:url(../images/arrow-up.gif) 94% center no-repeat;
 	border:0 none;
 }
 .block-layered-nav .block-content > dl > dt:after {
@@ -4847,6 +4850,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-layered-nav .block-content > dl > dd {
   margin: 0 0 10px;
+	padding-right:20px;
 }
 .block-layered-nav .block-content > dl > dd:last-child {
   border-width: 0 1px 1px 1px;
@@ -8570,8 +8574,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 
 .dashboard .box-account p,
 .dashboard .box-account address {
-  font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
+  font-family: "Helvetica",Arial,Tahoma,sans-serif;
+  font-style: normal;
 }
 .dashboard .col2-set .col-1,
 .dashboard .col2-set .col-2 {
@@ -10310,7 +10314,14 @@ div.paypal-logo span > img {
   font-style: normal;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
-
+.cms-page-view .std p, .cms-page-view p{font-family: "Helvetica",Arial,Tahoma,sans-serif;font-style:normal;}
+.cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
+.cms-page-view .c_right{float:right;}
+.cms-page-view .c_left{text-align: right; padding-top: 1%;}
+.cms-page-view .c_left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
+.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
+.cms-page-view .content_cms h3{font-size:29px;font-weight:500;margin-bottom:0}
+.cms-page-view .content_cms .frist_con{border-bottom: solid 1px #EEE; padding-bottom: 10px;margin-bottom:20px;}
 #accordion .toggle-tabs {
   display: none;
 }
