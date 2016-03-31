@@ -1342,7 +1342,7 @@ a.button {
 }
 
 .breadcrumbs a:hover {
-  color: #3399cc;
+  color: #000;
 }
 
 .breadcrumbs strong {
@@ -4155,7 +4155,7 @@ a.skip-link {
   clear: both;
   width: 100%;
   float:left;
-  padding-top: 37px;
+  padding-top: 50px;
 }
 .footer .footer-content {position:relative;}
 .footer .footer-contacts {float:left; width:24%;}
@@ -8572,8 +8572,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 
 .dashboard .box-account p,
 .dashboard .box-account address {
-  font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
+  font-family: "Helvetica",Arial,Tahoma,sans-serif;
+  font-style: normal;
 }
 .dashboard .col2-set .col-1,
 .dashboard .col2-set .col-2 {

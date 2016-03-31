@@ -16,7 +16,7 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
                     try {
                         Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
                         $response['status'] = 'SUCCESS';
-                        $response['message'] = $this->__('The product %s has been added to comparison list.', Mage::helper('core')->escapeHtml($product->getName()));
+                        $response['message'] = $this->__('The product has been added to comparison list.');
                         Mage::register('referrer_url', $this->_getRefererUrl());
                         Mage::helper('catalog/product_compare')->calculate();
                         Mage::dispatchEvent('catalog_product_compare_add_product', array('product' => $product));
@@ -66,7 +66,7 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
             }
         }
         $response['status'] = 'SUCCESS';
-        $response['message'] = $this->__('The product %s has been added to comparison list.', Mage::helper('core')->escapeHtml($product->getName()));
+        $response['message'] = $this->__('The product has been added to comparison list.');
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
         return;
         }
