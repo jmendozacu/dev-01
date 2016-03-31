@@ -5,10 +5,10 @@
     $_columnCount       = $this->getColumnCount();
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
-<?php 
+<?php
 	if ($this->getCategoryFilter()) {
-		$categoryFilterId = $this->getCategoryFilter();	
-		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);	
+		$categoryFilterId = $this->getCategoryFilter();
+		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);
 		$_categoryUrl = $_category->getUrl().'/?page=productlist';
 	}else{
 		$_categoryUrl = '#';
@@ -27,9 +27,9 @@
                     <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
                     ><img class="lazy" src="<?php echo
                         $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
-                        data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>"
-                        srcset="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?> 1x, <?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135 * 2); ?> 2x"
-                        width="135" height="135"
+                        data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(190); ?>"
+                        srcset="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(190); ?> 1x, <?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(190 * 2); ?> 2x"
+                        width="190" height="190"
                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                     /></a>
 
@@ -62,7 +62,7 @@
                     <div class="save-price-percent"><span><?php echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
                   <?php endif; ?>
                 </div>
-                
+
                 <div class="actions">
                   <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
 										<button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
