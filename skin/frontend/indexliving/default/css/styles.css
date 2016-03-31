@@ -812,6 +812,7 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .block .actions .button {
   float: right;
+	min-width:155px;
 }
 
 .col-left .block .actions .button ~ a,
@@ -2945,7 +2946,7 @@ form .form-instructions {
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
-.form-list #gender {float:left; width:100px;}
+.form-list #gender, .form-list #prefix {float:left; width:100px;}
 
 .customer-account-edit .form-list ,
 .form-list .gender,
@@ -4827,6 +4828,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-layered-nav .block-content > dl > dt.current{
 	background:url(../images/arrow-up.gif) right center no-repeat;
+	border:0 none;
 }
 .block-layered-nav .block-content > dl > dt:after {
   content: '';
@@ -5397,6 +5399,7 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup .form-add #ajax_loader{position:absolute; top:50%; left:50%; margin-left:-16px;}
 #review-form-popup .form-add h2{background:#000000; padding:10px 0; text-align:center; font-family: 'FuturaT_Bold'; font-size:30px; text-transform:uppercase; color:#FFFFFF; border-radius:4px 4px 0 0;}
 #review-form-popup .form-add .show-message{padding:0 20px;}
+#review-form-popup .form-add .li_review{text-align:center;}
 #review-form-popup #product-review-table{}
 #review-form-popup #product-review-table .rating-field{text-align:center;}
 #review-form-popup #product-review-table .r-title,
@@ -5404,7 +5407,7 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup #product-review-table .r-title{font-family: 'FuturaT_Bold'; font-size:21px; color:#000000;}
 #review-form-popup #product-review-table .r-list-vote-options .radio{width:25px; height:22px; background:url(../images/i-rating-none.png) top left no-repeat}
 #review-form-popup #product-review-table .r-list-vote-options .radio.radio-checked{background:url(../images/i-rating-selected.png) top left no-repeat}
-#review-form-popup #product-review-star{}
+#review-form-popup #product-review-star{ text-align:center;}
 #review-form-popup #product-review-star ul li{float:left; width:100%; text-align:center;}
 #review-form-popup .rating_title {
   display: inline-block;
