@@ -8570,8 +8570,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 
 .dashboard .box-account p,
 .dashboard .box-account address {
-  font-family: Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
+  font-family: "Helvetica",Arial,Tahoma,sans-serif;
+  font-style: normal;
 }
 .dashboard .col2-set .col-1,
 .dashboard .col2-set .col-2 {
