@@ -4336,6 +4336,8 @@ a.skip-link {
 .category-bestseller .owl-carousel .owl-controls .owl-nav .owl-prev:hover{background:url(../images/slider-next4.png) no-repeat 0 0; left:-10px;}
 .category-bestseller .owl-carousel .owl-controls .owl-nav .owl-next{background:url(../images/slider-next4.png) no-repeat 100% 0; right:-10px}
 .category-bestseller .owl-carousel .owl-controls .owl-nav .owl-next:hover{background:url(../images/slider-prev4.png) no-repeat 100% 0; right:-10px}
+.category-bestseller .owl-carousel .owl-item .item .actions{opacity:1;}
+.category-bestseller .owl-carousel .owl-item .item .link-wishlist{display:block;}
 .category-title h1,
 body.catalogsearch-result-index .page-title h1 {
   border-bottom: none;
