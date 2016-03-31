@@ -2945,7 +2945,7 @@ form .form-instructions {
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
-.form-list #gender {float:left; width:100px;}
+.form-list #gender,.form-list #prefix {float:left; width:100px;}
 
 .customer-account-edit .form-list ,
 .form-list .gender,
