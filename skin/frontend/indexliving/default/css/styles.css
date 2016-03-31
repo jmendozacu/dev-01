@@ -4257,7 +4257,8 @@ a.skip-link {
 .allcategories-list{}
 .category-overview{background:#252525; overflow:hidden;}
 .category-overview .category-image{float:left; width:64%; margin:0;}
-.category-overview .category-info{float:right; width:36%; padding:2.5%;}
+.category-overview .category-info{float:right; width:36%; padding:3.5% 4%; position:relative;}
+.category-overview .category-info::before{background:url(../images/i-category-info.png) top left no-repeat; content: ""; height: 46px; width: 46px; position: absolute; top:37px; left:-22px;}
 .category-overview .category-info .page-title.category-title h1{color:#ffc222; font-size:32px; font-family: 'FuturaT_Bold';}
 .category-overview .category-info .category-description{color:#fff;}
 .categories-list{margin-top:90px;}
