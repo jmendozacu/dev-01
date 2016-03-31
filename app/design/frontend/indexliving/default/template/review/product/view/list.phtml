@@ -31,7 +31,7 @@
 <div class="box-collateral box-reviews" id="customer-reviews">
 	<?php if (count($_items)):?>
 		<div class="review-list" id="review-list">
-			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Reviews')?></h3>
+			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Review')?></h3>
 			<?php echo $this->getChildHtml('toolbar') ?>
 			<div class="page-container">
 				<ul>
@@ -88,7 +88,7 @@
 	<?php echo $this->getChildHtml('toolbar') ?>
 	<?php else: ?>
 		<div class="review-list no-review" id="review-list">
-			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Reviews')?></h3>
+			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Review')?></h3>
 			<p class="no-rating"><?php echo $this->__('Be the first to review this product') ?></p>
 		</div>	
 	<?php endif;?>

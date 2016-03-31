@@ -2945,7 +2945,7 @@ form .form-instructions {
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
-.form-list #gender,.form-list #prefix {float:left; width:100px;}
+.form-list #gender {float:left; width:100px;}
 
 .customer-account-edit .form-list ,
 .form-list .gender,
@@ -4310,6 +4310,7 @@ a.skip-link {
 .allcategory-banners .banners-list .lb h2 strong{font-family:"FuturaT_Bold";}
 .allcategory-banners .banners-list .lb p{color:#ffc222;font-size:40px;font-family:"DBYordX";line-height:32px;}
 .allcategory-banners .banners-list .rb{float:right; width:65%;}
+.allcategory-banners h3{text-transform:none;}
 
 .category-banners{margin:25px 0;}
 .category-banners .wrap-bannerads .banner-carousel{}
