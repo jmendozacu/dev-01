@@ -51,7 +51,9 @@
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 							<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 							<?php $_imgSize = 210; ?>
-							<img id="product-collection-image-<?php echo $_product->getId(); ?>" class="lazy" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    <img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+                         data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400);?>"
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
             </a>
             <?php // Product description ?>
             <div class="product-shop">
@@ -140,7 +142,7 @@
                     }
                     ?>
                     <?php echo $this->getPriceHtml($_product, true) ?>
-                    
+
                     <div class="actions">
                         <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                             <button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
