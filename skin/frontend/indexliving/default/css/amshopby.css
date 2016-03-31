@@ -236,10 +236,11 @@ div.block-layered-nav div.amshopby-slider div.handle.active { z-index: 3; }
 .amshopby-narrow-by-list table td { vertical-align: top; }
 
 input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"].input-text{
-    width: 120px;
+    width: 46%;
+		float:left;
 		border-radius:0;
 }
-
+.price-separator{float:left; width:8%; padding:0;}
 .amshopby-price-find{margin-top:15px; min-width:155px;}
 
 .amshopby-item-top{

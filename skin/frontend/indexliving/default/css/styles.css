@@ -766,7 +766,7 @@ h6, .h6 {
 	width:100%;
 }
 .sidebar .block-title strong{
-	background:url(../images/arrow-down.gif) right center no-repeat;
+	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
 .block-title small {
   font-size: 100%;
@@ -1005,7 +1005,7 @@ body:not(.customer-account) .block:first-child .block-title {
 
 /* Block Compare */
 .block-compare{}
-.block-compare .block-content{}
+.block-compare .block-content{padding-right:12px;}
 .block-compare .block-content li.item{margin:0; padding:10px 0; border-bottom:1px solid #dadada; overflow:hidden; position:relative;}
 .block-compare .block-content .product-name{margin:0!important;}
 .block-compare .block-content .product-name a{font-family: 'FuturaBT-Book'; font-size:14px; text-transform:uppercase; color:#000000;}
@@ -1077,7 +1077,7 @@ body:not(.customer-account) .block:first-child .block-title {
 /* Secondary Buttons */
 .cart .buttons-set .button,
 .cart-table .button,
-.sidebar .actions .button,
+/* .sidebar .actions .button, */
 .button.button-secondary {
   background: #252525;
   color: #FFFFFF;
@@ -1085,21 +1085,21 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .cart .buttons-set .button:hover,
 .cart-table .button:hover,
-.sidebar .actions .button:hover,
+/* .sidebar .actions .button:hover, */
 .button.button-secondary:hover {
   background: #252525;
   cursor: pointer;
 }
 .cart .buttons-set .button:active,
 .cart-table .button:active,
-.sidebar .actions .button:active,
+/* .sidebar .actions .button:active, */
 .button.button-secondary:active {
   background: #252525;
   color: #FFFFFF;
 }
 .cart .buttons-set .button:focus,
 .cart-table .button:focus,
-.sidebar .actions .button:focus,
+/* .sidebar .actions .button:focus, */
 .button.button-secondary:focus {
   color: #FFFFFF;
   background: #252525;
@@ -2946,7 +2946,8 @@ form .form-instructions {
 .form-list .field.name-lastname {float:left; margin-right:0px;width:200px}
 .form-list .wide.street input[type=text] {width:518px;}
 .account-create .form-list li.dob  {float:left; width:auto; margin-right:18px;}
-.form-list #gender, .form-list #prefix {float:left; width:100px;}
+.form-list #gender/* , .form-list #prefix  */{float:left; width:100px;}
+.form-list #prefix{float:left; width:100px;}
 
 .customer-account-edit .form-list ,
 .form-list .gender,
@@ -4825,10 +4826,10 @@ body.catalogsearch-result-index .page-title h1 {
 	padding:0 0 5px;
 	margin:0 0 10px;
 	border-bottom:1px solid #ccc;
-	background:url(../images/arrow-down.gif) right center no-repeat;
+	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
 .block-layered-nav .block-content > dl > dt.current{
-	background:url(../images/arrow-up.gif) right center no-repeat;
+	background:url(../images/arrow-up.gif) 94% center no-repeat;
 	border:0 none;
 }
 .block-layered-nav .block-content > dl > dt:after {
@@ -4849,6 +4850,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-layered-nav .block-content > dl > dd {
   margin: 0 0 10px;
+	padding-right:20px;
 }
 .block-layered-nav .block-content > dl > dd:last-child {
   border-width: 0 1px 1px 1px;
