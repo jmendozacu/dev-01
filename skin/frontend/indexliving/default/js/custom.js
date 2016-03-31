@@ -1,3 +1,6 @@
+var widthWindow = jQuery( window ).width();
+var widthHeight = jQuery( window ).height();
+
 function incQty(inputId){
 	var qty = parseInt(jQuery('#' + inputId).val());
 	jQuery('#' + inputId).val(qty + 1);
@@ -214,47 +217,56 @@ jQuery(document).ready(function () {
   jQuery('.toolbar-bottom .sort-by-mobile').remove();
 	
 	/* product page mobile */
-	
-	jQuery('.review-list .m-review-list-title').click(function(){
-    if (!jQuery(this).hasClass('active')){
-      jQuery(this).next().slideToggle(300);
-      jQuery(this).addClass('active');
-    }
-    else{
-			jQuery(this).next().slideToggle(300);
-      jQuery(this).removeClass('active');
-    }
-	});
-	
-	jQuery('.product-view .product-features .box-title h2').click(function(){
-    if (!jQuery(this).hasClass('active')){
-      jQuery(this).next().slideToggle(300);
-      jQuery('.product-view .product-features ul.products-features-grid').slideToggle(300);
-      jQuery(this).addClass('active');
-    }
-    else{
-			jQuery(this).next().slideToggle(300);
-      jQuery('.product-view .product-features ul.products-features-grid').slideToggle(300);
-      jQuery(this).removeClass('active');
-    }
-	});
-	
-	jQuery('.product-view .product-review-summary .review-box .box-title .bl h2').click(function(){
-    if (!jQuery(this).hasClass('active')){
-      jQuery(this).next().slideToggle(300);
-      jQuery('.product-view .product-review-summary .review-box .box-title .br').slideToggle(300);
-      jQuery(this).addClass('active');
-    }
-    else{
-			jQuery(this).next().slideToggle(300);
-      jQuery('.product-view .product-review-summary .review-box .box-title .br').slideToggle(300);
-      jQuery(this).removeClass('active');
-    }
-	});
+	if(widthWindow <= 640){ 
+		jQuery('.review-list .m-review-list-title').click(function(){
+			if (!jQuery(this).hasClass('active')){
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).addClass('active');
+			}
+			else{
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).removeClass('active');
+			}
+		});
+		
+		jQuery('.product-view .product-features .box-title h2').click(function(){
+			if (!jQuery(this).hasClass('active')){
+				jQuery(this).next().slideToggle(300);
+				jQuery('.product-view .product-features ul.products-features-grid').slideToggle(300);
+				jQuery(this).addClass('active');
+			}
+			else{
+				jQuery(this).next().slideToggle(300);
+				jQuery('.product-view .product-features ul.products-features-grid').slideToggle(300);
+				jQuery(this).removeClass('active');
+			}
+		});
+		
+		jQuery('.product-view .product-review-summary .review-box .box-title .bl h2').click(function(){
+			if (!jQuery(this).hasClass('active')){
+				jQuery(this).next().slideToggle(300);
+				jQuery('.product-view .product-review-summary .review-box .box-title .br').slideToggle(300);
+				jQuery(this).addClass('active');
+			}
+			else{
+				jQuery(this).next().slideToggle(300);
+				jQuery('.product-view .product-review-summary .review-box .box-title .br').slideToggle(300);
+				jQuery(this).removeClass('active');
+			}
+		});
+		
+		jQuery('.product-view .box-collateral.box-description h2').click(function(){
+			if (!jQuery(this).hasClass('active')){
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).addClass('active');
+			}
+			else{
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).removeClass('active');
+			}
+		});
   
-  
-  var widthWindow = jQuery( window ).width();
-  var widthHeight = jQuery( window ).height();
+  }
     if(widthWindow <769){ 
       /* box promo */
       jQuery(".category-banners .div-banner").mCustomScrollbar({

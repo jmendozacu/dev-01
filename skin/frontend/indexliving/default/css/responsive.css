@@ -446,7 +446,7 @@
 	/* Product Page */
   .button.btn-cart > span {padding-left:30px;}
   .button.btn-cart > span:before {top:0px; background-size:80px auto; background-position: 3px -668px}
-
+	.product-view .box-collateral h2{position:relative;}
 	.product-view .product-features .box-title h2{
 		text-align:left;
 		cursor:pointer;
@@ -491,6 +491,8 @@
 	}
 	.product-view .product-review-summary .review-box .box-title .bl h2:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:0px; right:10px; background:url(../images/arrow-up-2.png) no-repeat center center;}
   .product-view .product-review-summary .review-box .box-title .bl h2.active:before {background:url(../images/arrow-down-2.png) no-repeat center center;}
+	.product-view .box-collateral.box-description h2:before {content:""; transition:0.3s; -webkit-transition:0.3s; -moz-transition:0.3s; width:16px; height:25px; position:absolute; top:5px; right:10px; background:url(../images/arrow-up-2.png) no-repeat center center;}
+  .product-view .box-collateral.box-description h2.active:before {background:url(../images/arrow-down-2.png) no-repeat center center;}
 	.product-view .product-review-summary .rating-summary-details .rating-box{
 		width: 60px;
     height: 9px;
