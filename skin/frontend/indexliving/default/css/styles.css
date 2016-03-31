@@ -4275,7 +4275,7 @@ a.skip-link {
 .categories-list .category-grid .categories-links a.link-has-sub,
 .categories-list .category-grid .categories-links a.link-no-sub{color:#ffc222; font-size:20px; font-family: 'FuturaT_Bold'; text-transform:uppercase; display:block; padding:10px; }
 .categories-list .category-grid .categories-links a.link-has-sub{}
-.categories-list .category-grid .categories-links a.link-view-all{border-top:1px solid #555; color:#fff; font-family: 'FuturaBT-Book'; font-size:14px; padding:5px 0; display:block; text-transform:uppercase;}
+.categories-list .category-grid .categories-links a.link-view-all{border-top:1px solid #555; color:#fff; font-family: 'FuturaBT-Book'; font-size:14px; padding:5px 0; display:block; text-transform:uppercase; background:url(../images/i-viewall.png) 62% center no-repeat; padding-right:30px;}
 .categories-list .category-grid .categories-links a.link-view-all:hover{color:#ffc222;}
 .categories-list .category-grid .categories-links .categories-list-lvl3{
 	max-height: 0;
@@ -4290,6 +4290,7 @@ a.skip-link {
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul{padding:10px 0;}
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul li a{text-transform:uppercase;  font-family: 'FuturaBT-Book'; font-size:18px;}
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul li a:hover{
+	text-decoration:underline;
 }
 .allcategory-banners{
 	padding:30px 0 15px 0;
