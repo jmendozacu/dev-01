@@ -4270,7 +4270,7 @@ a.skip-link {
 .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{color:#ffc222; font-size:60px; font-family: 'FuturaT_Bold'; text-transform:uppercase; margin-top:30%; text-decoration:none; display:block;}
 .categories-list .category-grid li a{}
 .categories-list .category-grid li a:hover{color:#ffc222;}
-.categories-list .category-grid .categories-links{position:absolute; bottom:0; background:#252525; text-align:center; width:100%; padding:0 10px; height:50px;}
+.categories-list .category-grid .categories-links{position:absolute; bottom:0; background:#252525; text-align:center; width:100%; padding:0 10px; min-height:50px;}
 .categories-list .category-grid .categories-links a{color:#fff; font-family: 'FuturaBT-Book'; font-size:20px; text-decoration:none;}
 .categories-list .category-grid .categories-links a.link-has-sub,
 .categories-list .category-grid .categories-links a.link-no-sub{color:#ffc222; font-size:20px; font-family: 'FuturaT_Bold'; text-transform:uppercase; display:block; padding:10px; }
