@@ -1022,11 +1022,18 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-compare .actions a{float:left; margin:8px 0;}
 
 /* Compare Popup */
-.compare-popup{}
+.compare-popup{
+	margin: 0 auto;
+	position: absolute;
+	max-width: 1200px;
+	left: 50%;
+	margin-left: -600px;
+	top: 10%;
+}
 .compare-popup .page-title{padding:10px 20px; background:#252525; overflow:hidden; border-radius:4px 4px 0 0;}
 .compare-popup .page-title h1{float:left; color:#FFFFFF; border:0 none; margin:0;}
 .compare-popup .page-title .link-print{float:right; color:#FFFFFF; text-decoration:none; background:url(../images/i-print.png) left center no-repeat; padding-left:30px;}
-.compare-popup .compare-list-table{padding:20px; position:relative;}
+.compare-popup .compare-list-table{padding:20px; position:relative; background:#FFFFFF; max-height:500px; overflow-y:scroll;}
 .compare-popup .compare-list-table .please-wait{position:absolute; top:50%; left:50%; margin-left:-64px; margin-top:-64px;}
 .compare-popup .compare-list-table .please-wait img{width:auto;}
 .compare-popup .data-table th{background:#FFFFFF;}
@@ -1069,6 +1076,16 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .data-table .compare-item-actions .link-wishlist:hover{
 	background-position: 0 0;
   color: #ffc222;
+}
+.compare-popup-close {
+	position: absolute;
+	top: -10px;
+	right: -25px;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	z-index: 8040;
+	background: url(../images/fancybox-close.png) center center no-repeat;
 }
 
 /* ============================================ *

@@ -25,7 +25,8 @@
  */
 /* @var $this Mage_Catalog_Block_Product_Compare_List */
 ?>
-<div class="compare-popup" style="max-width:1200px">
+<div class="compare-popup">
+<a title="Close" class="compare-popup-close" href="javascript:void(0)" onclick="closeComparePopup();"></a>
 <div class="page-title title-buttons">
 	<h1><?php echo $this->__('Compare Products') ?></h1>
 	<a href="#" onclick="window.print(); return false;" class="link-print"><?php echo $this->__('Print This Page') ?></a>
@@ -108,21 +109,6 @@
 		</span>
     <script type="text/javascript">
         decorateTable('product_comparison');
-        /**
-         * Send remove item request, after that reload windows
-         */
-        function removeCompareItemPopup(url)
-        {
-            new Ajax.Request(url, {
-                parameters: {isAjax: 1, method: 'POST'},
-                onLoading: function(){$('compare-list-please-wait').show();},
-                onSuccess: function(transport) {
-                    $('compare-list-please-wait').hide();
-                    window.location.reload();
-                    //window.opener.location.reload();
-                }
-            });
-        }
     </script>
 	</div>	
 <?php else: ?>
