@@ -9195,6 +9195,7 @@ div.paypal-logo span > img {
 	text-transform:uppercase;
 }
 #customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
+#customer-reviews .review-list li > div.review-image img{max-width:150px;}
 #customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
 #customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
 #customer-reviews .review-list li .review-details .review-meta .rating-title{
