@@ -59,6 +59,7 @@
   .box-home-list-products .a-button {display:none;}
   .title-style3 {font-size:14px;}
   .main-home .box-home-decor .decor-style .banner-title {font-size:12px; padding:0px;}
+	.category-overview .category-info::before{left:-17px; background-size:35px; top:23px;}
 	.product-view .product-shop,
   .product-view .product-img-box{	width:100%;}
 	.product-view .product-shop .add-to-links > li > a{	font-size:12px;}
@@ -231,6 +232,7 @@
   .category-overview .category-info {width:100%;}
   .category-overview .category-info .page-title.category-title h1,
   .categories-list .selectcat-title h1 {font-size:20px;}
+	.category-overview .category-info::before{right:-30px; top:-145px; left:auto; background-size:30px;}
   .categories-list {margin-top:20px;}
   .categories-list .category-grid li.category-item,
   .categories-list .category-grid li.category-item.last{width:100%; margin-right:0%; padding-bottom:40px; min-height:0px;}
