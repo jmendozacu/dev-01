@@ -24,8 +24,9 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
               <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
               <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>"<?php endif ?>
                 onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banner->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
-                <img src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt="<?php echo $banner->getBannerTitle(); ?>"/>
-                  <span class="banner-title"><?php echo $banner->getBannerTitle(); ?></span>
+								<span class="banner-mask"></span>
+								<img src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt="<?php echo $banner->getBannerTitle(); ?>"/>
+								<span class="banner-title"><?php echo $banner->getBannerTitle(); ?></span>
               </a>
               
             </li>
