@@ -53,7 +53,7 @@
 									<div class="product-info">
                     <a class="product-image" href="#" onclick="setPLocation('<?php echo $this->getProductUrl($_item) ?>', true)" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(150, 150); ?>" width="150" height="150" alt="<?php echo $this->stripTags($_item->getName(), null, true) ?>" /></a>
                     <h2 class="product-name"><a href="#" onclick="setPLocation('<?php echo $this->getProductUrl($_item) ?>', true)" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></h2>
-                    <?php echo $this->getReviewsSummaryHtml($_item, 'short') ?>
+                    <?php //echo $this->getReviewsSummaryHtml($_item, 'short') ?>
                     <?php echo $this->getPriceHtml($_item, true, '-compare-list-top') ?>
 										<div class="compare-item-actions">
 											<?php if ($this->helper('wishlist')->isAllow()) : ?>
