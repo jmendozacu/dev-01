@@ -157,15 +157,19 @@ jQuery(document).ready(function () {
   
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
+    jQuery('.box-top-menu').css("max-height", widthHeight -44);
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
       jQuery(this).addClass('active');
       jQuery('.box-top-menu').show();
+      jQuery('#header').addClass('fixed');
+      
     }
     else{
       jQuery(this).removeClass('active');
       jQuery('.box-top-menu').hide();
+      jQuery('#header').removeClass('fixed');
     }
   });
   
