@@ -10444,10 +10444,10 @@ div.paypal-logo span > img {
 .tab-left h3{color:#000;}
 .cms_tab_list{margin-left: 3%;}
 
-.career_job .menuheaders .head_title{width: 100%; border-bottom: 1px solid #ececec;background:#e5e5e5;}
+.career_job .menuheaders .head_title{width: 100%; border-bottom: 1px solid #ececec;background:#F7F7F7 url("../images/arrow-yellow-rgt.gif") no-repeat 10px center;}
 .career_job .menuheaders .head_title h3{color:#000;font-size:23px;}
-.career_job .menuheaders.selected .head_title{background:#FFF;border-bottom: 1px solid #ffc121;}
-.career_job .menuheaders h3{padding: 10px; }
+.career_job .menuheaders.selected .head_title{background:#FFF url("../images/arrow-yellow-dwn.gif") no-repeat 10px center;border-bottom: 1px solid #ffc121;}
+.career_job .menuheaders h3{padding: 10px 33px; }
 .career_job .menuheaders .thecontent{display: none;}
 .career_job .menuheaders.selected .thecontent{display: block;padding: 15px;}
 .career_job .menuheaders.selected .thecontent ul{margin-bottom:20px;}
