@@ -4437,8 +4437,26 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid .product-name a {color:#000; font-size:15px; font-weight:800; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; font-family: 'FuturaBT-Book';}
 .products-grid .desc {font-size:12px; color:#434343; font-family: 'FuturaLight'; margin-bottom:5px;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
-.products-grid  .grid-price .save-price-percent {position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-grid  .grid-price .save-price-percent.products-grid  .grid-price .save-price-percent {position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
 .products-grid  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
+
+.products-list  .product-desc {float:left; width:100%; margin-bottom:35px; font-family: 'FuturaBT-Book'; font-size:13px;}
+
+.products-list  .actions {float:right;}
+
+.products-list  .actions button.button,.products-list  .actions button.btn-cart{min-width:245px;}
+
+.products-list  .grid-price {float:left;}
+.products-list .grid-price .price-box{float:left; margin-right:20px;}
+.products-list  .grid-price .save-price-percent{float:left; text-align:center; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-list  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
+
+.products-list .grid-price .price-box .special-price,
+.products-list .grid-price .price-box .old-price{float:left;}
+.products-list .grid-price .price-box .special-price{padding:0 5px 0 0;}
+.products-list .grid-price .price-box .old-price{margin:8px 0 0;}
+
+
 .products-grid  .price-box {float:left; min-height:47px;}
 .products-grid .price-box .price,.products-list .price-box .price,
 .products-grid  .price-box .regular-price .price,.products-list  .price-box .regular-price .price,
@@ -4446,8 +4464,8 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-grid  .price-box .special-price .price, .products-list  .price-box .special-price .price  {color:#FF0000;}
 .products-grid  .price-box .old-price .price,.products-list  .price-box .old-price .price  {color:#898989; font-size:12px; font-family: 'FuturaLight'; line-height:16px;}
-.products-grid  .price-box .special-price,.products-list  .price-box .special-price,
-.products-grid  .price-box .old-price, .products-list  .price-box .old-price {float:left; margin:0px; clear:both; padding:0px;}
+.products-grid  .price-box .special-price,/* .products-list  .price-box .special-price, */
+.products-grid  .price-box .old-price/* , .products-list  .price-box .old-price  */{float:left; margin:0px; clear:both; padding:0px;}
 
 .products-grid .product-info {
   padding-bottom: 95px;
@@ -4644,16 +4662,16 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-list > li  .amconf-block{
   position:absolute;
-	top:140px;
-	left:80px;
+	top:160px;
+	left:100px;
 }
 
 .products-list .product-shop {
   float: right;
-  width: 73%;
+  width: 70%;
 }
 .products-list .product-shop .product-name {
-  margin-bottom: 0;
+/*   margin-bottom: 0; */
 }
 .products-list .product-shop .ratings {
   margin: 0;
@@ -4669,10 +4687,10 @@ body.catalogsearch-result-index .page-title h1 {
 .products-list .product-shop .price-box {
   margin-top: 0;
 	float:left;
-	width:100%;
+	/* width:100%; */
 }
 .products-list .product-shop .price-box .price {
-  font-size: 18px;
+/*   font-size: 18px; */
 }
 .products-list .product-shop .action {
   margin: 7px 0;
