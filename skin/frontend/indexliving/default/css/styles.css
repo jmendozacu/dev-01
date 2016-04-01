@@ -530,13 +530,14 @@ textarea {
     content: "";
     height: 100%;
     position: absolute;
-    right: 1px;
+    right: 0px;
     top: 0;
-    width: 12px;
+    width: 18px;
+    background:#fff;
 }
 .toolbar .styled-select::after,
 .toolbar .styled-select:after {
-  border-width:7px 5px 0 5px;
+  border-width:7px 6px 0 6px;
 }
 
 
