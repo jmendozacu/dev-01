@@ -10374,14 +10374,47 @@ div.paypal-logo span > img {
   font-style: normal;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
-.cms-page-view .std p, .cms-page-view p{font-family: "Helvetica",Arial,Tahoma,sans-serif;font-style:normal;}
+.cms-page-view .std p, .cms-page-view p, .cms-page-view li, .cms-page-view .std li{font-family: "Helvetica",Arial,Tahoma,sans-serif;font-style:normal;}
 .cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
 .cms-page-view .c_right{float:right;}
 .cms-page-view .c_left{text-align: right; padding-top: 1%;}
-.cms-page-view .c_left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
-.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
+.cms-page-view .c_left h2, .tab-left h1, .tab-left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
+.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3, .tab-left h3{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
 .cms-page-view .content_cms h3{font-size:29px;font-weight:500;margin-bottom:0}
+.cms-page-view .content_cms img{max-width:100%;}
 .cms-page-view .content_cms .frist_con{border-bottom: solid 1px #EEE; padding-bottom: 10px;margin-bottom:20px;}
+.cms-page-view .secound_con{margin-bottom: 20px;}
+.cms-page-view .secound_con .con_success_left{width:56%;float:left;}
+.cms-page-view .secound_con .img_con_success{width:43%;float:right;padding-top:2%;}
+.cms-page-view .wrapper_col{margin: 0 -20px;}
+.cms-page-view .col_3{width: 33.3333333%;height:344px;float:left;padding:0 20px;margin-top: 20px;}
+.cms-page-view .col_3 h4{margin-bottom:0;}
+.cms-page-view .col_3 .desc p{font-size: 12px;line-height: 18px;}
+.cms-page-view .col_3 .img{margin-bottom:10px;}
+.cms-page-view .col_3 .img img{width:100%;}
+
+/* tab-cmspage tab-left*/
+.cms-franchise .std ul li{margin-left: 0;}
+.tab-left {float:left; width:100%; position:relative;}
+.tab-left:before {content:""; width:1px; height:100%; background:#E3E3E3; position:absolute; top:0px; left:25%;}
+.tab-left .tabsPage,
+.tab-left .tabs {float:left; width:25%; background:#F5F5F5; font-size:19px; }
+.tab-left .tabsPage li,
+.tab-left .tabs li {float:left; width:100%; border-bottom:solid 2px #E3E3E3;list-style-type: none;}
+.tab-left .tabsPage li a,
+.tab-left .tabs li a {display:block; padding:10px 15px; line-height: 24px; font-family: 'FuturaBT-Book'; }
+.tab-left .tabsPage li a:hover,
+.tab-left .tabs li a:hover {text-decoration:none;}
+.tab-left .tabsPage li.active,
+.tab-left .tabs li.active {background:#fff;position:relative;}
+.tab-left .tabsPage li.active:before,
+.tab-left .tabs li.active:before {content:""; width:1px; height:100%; background:#fff; position:absolute; top:0px; right:-1px;}
+.tab-left .tabsPage li.active a,
+.tab-left .tabs li.active a {color:#000;font-weight: bold;}
+.tab-left .tab_container {float:left; width:75%; padding: 25px 25px 15px; }
+.tab-left h1, .tab-left h2{font-size: 30px;margin-bottom: 12px;}
+.tab-left h3{color:#000;}
+.cms_tab_list{margin-left: 3%;}
 #accordion .toggle-tabs {
   display: none;
 }
