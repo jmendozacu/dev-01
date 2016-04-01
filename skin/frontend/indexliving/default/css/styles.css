@@ -10443,7 +10443,7 @@ div.paypal-logo span > img {
 .tab-left h1, .tab-left h2{font-size: 30px;margin-bottom: 12px;}
 .tab-left h3{color:#000;font-weight: bold;}
 .cms_tab_list{margin-left: 3%;}
-
+.tab-cmspage .secound_con li{margin-left:15px;}
 
 #OverviewContent h2, #OverviewContent p, #OverviewContent ul {margin:0 0 5px;padding:0;color:#231f20;}
 #OverviewContent h2{color:#ffc121;font-size: 30px;}
@@ -10454,6 +10454,12 @@ div.paypal-logo span > img {
 #OverviewContent .ProductCate ul {margin-left:15px;}
 #OverviewContent .Service h3 {  margin:0 0 2px;}
 #OverviewContent .Service p { margin:0 0 10px;}
+
+.show-list .c_left{text-align: left;}
+#whyus {margin:0 -20px;}
+#whyus li {width:50%;padding:0 20px;float: left;list-style-type: none;}
+
+
 
 .career_job .menuheaders .head_title{width: 100%; border-bottom: 1px solid #ececec;background:#F7F7F7 url("../images/arrow-yellow-rgt.gif") no-repeat 10px center;}
 .career_job .menuheaders .head_title h3{color:#000;font-size:23px;}
