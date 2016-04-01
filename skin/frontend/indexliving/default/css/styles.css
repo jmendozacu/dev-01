@@ -10441,7 +10441,7 @@ div.paypal-logo span > img {
 .tab-left .tabs li.active a {color:#000;font-weight: bold;}
 .tab-left .tab_container {float:left; width:75%; padding: 25px 25px 15px; }
 .tab-left h1, .tab-left h2{font-size: 30px;margin-bottom: 12px;}
-.tab-left h3{color:#000;}
+.tab-left h3{color:#000;font-weight: bold;}
 .cms_tab_list{margin-left: 3%;}
 
 .career_job .menuheaders .head_title{width: 100%; border-bottom: 1px solid #ececec;background:#F7F7F7 url("../images/arrow-yellow-rgt.gif") no-repeat 10px center;}
