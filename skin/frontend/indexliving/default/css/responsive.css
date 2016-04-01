@@ -47,6 +47,8 @@
     .cms-page-view .c_left br{display:none;}
   }
  @media (max-width: 991px) {
+  .product-viewed-large-desktop{display:none}
+- .product-viewed-mobile-tablet{display:block;}
   .cms-page-view .c_left, .cms-page-view .c_right{width:100%;float:none;}
   .cms-page-view .c_right{text-align: center;}
   .cms-page-view .content_cms img { display: inline-block;}
