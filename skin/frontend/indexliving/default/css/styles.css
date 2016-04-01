@@ -534,6 +534,12 @@ textarea {
     top: 0;
     width: 12px;
 }
+.toolbar .styled-select::after,
+.toolbar .styled-select:after {
+  border-width:7px 5px 0 5px;
+}
+
+
 .styled-select select::-ms-expand {
     display: none;
 }
@@ -2397,7 +2403,7 @@ span.weee {
 }
 
 .pages ol{
-	margin-left:10px;
+	margin:5px 0px 6px 10px;
 }
 
 .pages li {
@@ -2413,17 +2419,19 @@ span.weee {
   text-transform: uppercase;
   vertical-align: middle;
   white-space: nowrap;
-  line-height: 23px;
-  width: 25px;
-  height: 25px;
+  line-height: 19px;
+  width: 19px;
+  height: 19px;
   padding: 0;
   color: #333;
+  font-family: 'FuturaBT-Book';
+  margin-right:3px;
 }
 
 .pages .current,
 .pages .current:hover {
   color: #ffc222;
-  width: 25px;
+  width: 19px;
   background-color: #000;
   cursor: default;
 	border-radius:50px;
@@ -2445,8 +2453,8 @@ span.weee {
 .pages .previous:before {
   content: '';
   position: absolute;
-  width:25px;
-  height:25px;
+  width:19px;
+  height:19px;
   top:0px;
   left:0px;
   background:url(../images/pager_arrow_right.gif) no-repeat center center;
@@ -2748,6 +2756,7 @@ select {
   font-size: 16px;
   border-color:#CBCBCB;
 }
+.toolbar select  {font-size:14px;}
 
 select + select {
   margin-left: 5px;
