@@ -62,16 +62,16 @@ jQuery(document).ready(function () {
   });
 
   jQuery(".dropdown img.flag").toggleClass("flagvisibility");
-    
+
   /* end language */
-  
-  
+
+
   /* tab */
   //When page loads...
 	jQuery(".tab_content").hide(); //Hide all content
 	jQuery("ul.tabs li.first").addClass("active").show(); //Activate first tab
 	jQuery(".tab_content.first").show(); //Show first tab content
-  
+
 	//On Click Event
 	jQuery("ul.tabs li").click(function() {
 		jQuery("ul.tabs li").removeClass("active"); //Remove any "active" class
@@ -82,11 +82,11 @@ jQuery(document).ready(function () {
 		jQuery(activeTab).show(); //Fade in the active ID content
 		return false;
 	});
-  
+
   /* change position special-price and old-price in products-grid */
   // (jQuery('.products-grid .special-price')).insertBefore(jQuery('.products-grid .old-price'));
   // jQuery('.special-price + .special-price').remove();
-  
+
   jQuery(".go-top").click(function() {
     jQuery('html, body').animate({
     scrollTop: 0
@@ -100,9 +100,9 @@ jQuery(document).ready(function () {
 			jQuery('#shareproduct-content').slideUp();
       jQuery(this).removeClass('active');
     }
-		
+
 	});
-  
+
   /* box links footer on mobile */
   jQuery('.footer-links .box-links h3').click(function(){
     jQuery('.footer-links .box-links ul').slideUp(300);
@@ -129,7 +129,7 @@ jQuery(document).ready(function () {
     }
   });
   /* */
-  
+
   jQuery('.toggle-minicart').click(function(){
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
@@ -142,19 +142,19 @@ jQuery(document).ready(function () {
       jQuery('#mini-cart-info').hide();
     }
   });
-  
+
   /*icon search on mobile */
   jQuery('#toggle-search').click(function(){
-    jQuery('.box-header-content').hide(); 
+    jQuery('.box-header-content').hide();
     jQuery('.toggle-header-content').removeClass('active');
     jQuery('#header-search').show();
   });
   jQuery('.close-box-search').click(function(){
       jQuery('#header-search').hide();
   });
-  
-  
-  
+
+
+
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
     jQuery('.box-top-menu').css("max-height", widthHeight -44);
@@ -164,7 +164,7 @@ jQuery(document).ready(function () {
       jQuery(this).addClass('active');
       jQuery('.box-top-menu').show();
       jQuery('#header').addClass('fixed');
-      
+
     }
     else{
       jQuery(this).removeClass('active');
@@ -172,7 +172,7 @@ jQuery(document).ready(function () {
       jQuery('#header').removeClass('fixed');
     }
   });
-  
+
   /*top menu nav on mobile */
   jQuery('#header-nav .nav-primary li.level1.parent').append( "<span class='arrow box-mobile'></span>" );
   jQuery('#header-nav .nav-primary li.level1.parent > .arrow').click(function(){
@@ -205,7 +205,7 @@ jQuery(document).ready(function () {
     }
 	});
   /*top menu lv2 on mobile */
- 
+
   jQuery('.box-top-menu .topheader-links li.language a').click(function(){
 	 if (!jQuery('.box-top-menu .topheader-links li.language a').hasClass('active')){
 		jQuery('.box-menu-mobile .form-language').addClass('active');
@@ -221,9 +221,9 @@ jQuery(document).ready(function () {
   });
   /* cat mobile */
   jQuery('.toolbar-bottom .sort-by-mobile').remove();
-	
+
 	/* product page mobile */
-	if(widthWindow <= 640){ 
+	if(widthWindow <= 640){
 		jQuery('.review-list .m-review-list-title').click(function(){
 			if (!jQuery(this).hasClass('active')){
 				jQuery(this).next().slideToggle(300);
@@ -234,7 +234,7 @@ jQuery(document).ready(function () {
 				jQuery(this).removeClass('active');
 			}
 		});
-	
+
 		jQuery('.product-view .box-collateral.box-description h2').click(function(){
 			if (!jQuery(this).hasClass('active')){
 				jQuery(this).next().slideToggle(300);
@@ -245,7 +245,7 @@ jQuery(document).ready(function () {
 				jQuery(this).removeClass('active');
 			}
 		});
-	
+
 		jQuery('.product-view .product-features .box-title h2').click(function(){
 			if (!jQuery(this).hasClass('active')){
 				jQuery(this).next().slideToggle(300);
@@ -258,7 +258,7 @@ jQuery(document).ready(function () {
 				jQuery(this).removeClass('active');
 			}
 		});
-	
+
 		jQuery('.product-view .product-review-summary .review-box .box-title .bl h2').click(function(){
 			if (!jQuery(this).hasClass('active')){
 				jQuery(this).next().slideToggle(300);
@@ -272,7 +272,7 @@ jQuery(document).ready(function () {
 			}
 		});
   }
-	
+
 	jQuery('.block-layered-nav #narrow-by-list dt').click(function(){
 		if (!jQuery(this).hasClass('current')){
 			jQuery(this).next().slideToggle(300);
@@ -285,17 +285,17 @@ jQuery(document).ready(function () {
 			jQuery(this).removeClass('current');
 		}
 	});
-  
+
   /* var widthWindow = jQuery( window ).width();
   var widthHeight = jQuery( window ).height(); */
-    if(widthWindow <769){ 
+    if(widthWindow <769){
       /* box promo */
       jQuery(".category-banners .div-banner").mCustomScrollbar({
         axis:"x",
         advanced:{autoExpandHorizontalScroll:true}
       });
       /* move sort-by-mobile on box filter */
-      var sortByHtml = jQuery(".toolbar .sort-by-mobile").html(); 
+      var sortByHtml = jQuery(".toolbar .sort-by-mobile").html();
       jQuery(".col-left-first .block-layered-nav .block-content.toggle-content ").append(sortByHtml);
       jQuery('.toolbar .sort-by-mobile').remove();
       /* toggle layered-nav */
@@ -346,15 +346,24 @@ jQuery(document).ready(function () {
         jQuery(this).next().slideUp(300);
        }
       });
-    
+
     }
+
+    var mytabs = ".career_job .menuheaders";
+   jQuery(mytabs).click(function(){
+   if(jQuery(this).hasClass('selected')){
+      jQuery(this).removeClass('selected');
+    }else{
+      jQuery(this).addClass('selected');
+    }
+ })
     /* menu */
-  jQuery("#header-nav .nav-primary ul.level0").hide(); 
+  jQuery("#header-nav .nav-primary ul.level0").hide();
   jQuery("#header-nav .nav-primary li.level0.nav-1 > a").addClass("active").show();
 	jQuery("#header-nav .nav-primary li.level0.nav-1 > ul.level0").show();
   jQuery("#header-nav .nav-primary li.level0 > a").click(function() {
     if (!jQuery(this).hasClass('active')){
-      jQuery("#header-nav .nav-primary ul.level0").hide(); 
+      jQuery("#header-nav .nav-primary ul.level0").hide();
       jQuery(this).next().show();
       jQuery('#header-nav .nav-primary li.level0 > a').removeClass('active');
       jQuery(this).addClass('active');
