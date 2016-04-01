@@ -39,7 +39,7 @@
     .main-home .box-list-products .products-grid li.item.last { display:none;}
     .product-img-box .product-image {padding-left:80px;}
     .styled-selec {padding-right:3px!important;}
-    .styled-select::after, .styled-select:after {right:1px; /* margin-top:-3px;} */
+    .styled-select::after, .styled-select:after {right:1px; /* margin-top:-3px; */}
 		.product-viewed-large-desktop{display:none}
 		.product-viewed-mobile-tablet{display:block;}
  }
