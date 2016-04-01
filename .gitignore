@@ -305,6 +305,8 @@ __MACOSX
 /media/bannerads
 /media/dailydeal
 /media/magpleasure
+/media/dealers
+/media/dealerlocator
 /var/
 
 # ingore debug extension

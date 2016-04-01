@@ -12,6 +12,7 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Import_Form extends Mage_Adminhtml_
     $fieldset->addField('csv_file', 'file', array('name' => 'csv_file', 'label' => Mage::helper('dealerlocator')->__('Choose CSV file to import'), 'after_element_html' => Mage::helper('dealerlocator')->__('<br/>A CSV file may contain many dealers (<a href="%s">Sample CSV file</a>)', $sampleCSVpath)));
     $form->setUseContainer(TRUE);
     $this->setForm($form);;
+
     return parent::_prepareForm();
   }
 }
