@@ -5,6 +5,7 @@
  * Homepage
  * ============================================ */
  .box-mobile {display:none;}
+ .product-viewed-mobile-tablet{display:none;}
  @media (min-width: 1200px) {}
  @media (max-width: 1199px) {
 	.checkout-list-step ul{width:100%;}
@@ -39,8 +40,13 @@
     .product-img-box .product-image {padding-left:80px;}
     .styled-selec {padding-right:3px!important;}
     .styled-select::after, .styled-select:after {right:1px; margin-top:-3px;}
+		.product-viewed-large-desktop{display:none}
+		.product-viewed-mobile-tablet{display:block;}
  }
- @media (max-width: 991px) {}
+ @media (max-width: 991px) {
+	.product-viewed-large-desktop{display:none}
+	.product-viewed-mobile-tablet{display:block;}
+ }
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {
   /* .box-desktop,
