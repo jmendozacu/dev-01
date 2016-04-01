@@ -29,11 +29,20 @@
     width: 430px;
     margin-left: -215px;
     margin-top: -100px;
-    background-color: #fff;
     text-align: center;
-    padding: 20px;
     z-index: 9040;
 		max-height:480px;
+}
+#ajaxcart_content_option_product .ajaxcart-heading{
+    padding: 20px;
+    background-color: #252525;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+}
+#ajaxcart_content_option_product .ajaxcart-body{
+    padding: 10px 20px 20px 20px;
+    background-color: #fff;
+    border-radius: 0 0 3px 3px;
 }
 #ajaxcart_configurable_block{
     position: absolute;
@@ -46,7 +55,7 @@
     padding: 20px;
     z-index: 9040;
 }
-#ajaxcart_content_option_product .added-success-message{background-image: url(../images/i-success-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-family: 'FuturaBT-Book'; font-size:15px; color:#000; padding-top:15px; padding-bottom:15px; border-bottom:1px solid #e1e1e1;}
+#ajaxcart_content_option_product .added-success-message{background-image: url(../images/i-success-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-family: 'FuturaBT-Book'; font-size:15px; }
 #ajaxcart_content_option_product h2.product-name{font-family: 'FuturaT_Bold'; font-size:24px; color:#000; margin:10px 0; text-transform:uppercase;}
 #ajaxcart_configurable_block .product-options{width:100%;}
 #ajaxcart_configurable_block .product-options dl{}
@@ -69,7 +78,7 @@
 	}
 	#ajaxcart_content_option_product .added-success-message{font-size:11px;}
 	#ajaxcart_content_option_product .ajaxcart-close{right:0; top:-25px;}
-	
+
 	#ajaxcart_configurable_block {
 		width:300px;
 		margin-left:-150px;
@@ -114,10 +123,10 @@
 	position: absolute;
 	top: -10px;
 	right: -25px;
-	width: 18px;
-	height: 18px;
+	width: 20px;
+	height: 20px;
 	cursor: pointer;
 	z-index: 8040;
-	background: url(../images/btn-close.png) center center no-repeat;
+	background: url(../../../js/amasty/plugins/fancybox/fancybox-close.png) center center no-repeat;
 }
 .ajaxcart-close::after{background-color:transparent;}
