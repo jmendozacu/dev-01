@@ -10454,15 +10454,18 @@ div.paypal-logo span > img {
 .content_cms.career h2{color:#000;padding:10px 15px;background:#F7F7F7;margin-bottom:0;margin-top:10px;border-bottom:solid 1px #ececec}
 
 /*history-company*/
-#tabs_history{padding:0;float:left;clear:both;width:99%;margin-bottom:0;margin-top:10px;border:1px solid #eee;}
-ul.tabs_history{margin:0;padding:0;float:left;list-style:none;min-height:45px;width:100%;background:#eee;}
-ul.tabs_history li{float:left;padding:0;margin:0 0 -1px;min-height:45px;line-height:45px;border-left:none;overflow:hidden;position:relative;border-right:2px solid #fff;}
-ul.tabs_history li a{text-decoration:none;color:#454545;display:block;font-size:14px;outline:0;cursor:pointer;text-align:center;padding:0 15px;background-color:#eee;font-weight:400;font-weight:600;}
-ul.tabs_history li a:hover {}
-ul.tabs_history li.active,ul.tabs_history li.active a,ul.tabs_history li.active a:hover{color:#454545;background-color:#fff;border-top:2px solid #1889c1;height:44px;}
-.tab-history-container {overflow: hidden;clear: both;float: left;padding: 0px;width:100%;border-bottom: 3px solid #eee;}
-.tab-history-content {padding: 25px;background: #fff;}
+#tabs_history{padding:0;float:left;clear:both;width:99%;margin-bottom:0;margin-top:10px;border:1px solid #F3F3F3;}
+ul.tabs_history{margin:0;padding:0;float:left;list-style:none;min-height:45px;width:100%;background:#F3F3F3;}
+ul.tabs_history li{float:left;padding:0;min-height:45px;line-height:45px;border-left:none;overflow:hidden;position:relative;}
+ul.tabs_history li a{text-decoration:none;color:#454545;display:block;font-size:20px;outline:0;cursor:pointer;text-align:center;padding:20px 15px;font-weight:400;font-weight:600;font-family: 'FuturaBookBold';}
+ul.tabs_history li a:hover {color:#ffc121;}
+ul.tabs_history li.active,ul.tabs_history li.active a,ul.tabs_history li.active a:hover{color:#ffc121;height:80px;}
+ul.tabs_history li.active, ul.tabs_history li{background-color:#F3F3F3;background-image: url("../images/tab-today.gif");background-repeat: no-repeat;background-position: -5px 58px;}
+ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-position:0 58px;height:80px;padding:0 15px;margin: 0;}
+.tab-history-container {overflow: hidden;clear: both;float: left;padding: 0px;width:100%;border-bottom: 3px solid #F3F3F3;}
+.tab-history-content {padding: 25px;background: #F3F3F3;}
 .tab-history-content h3 { font-size: 18px;margin-bottom: 10px;color: #454545;}
+.tab-history-content h4{font-family: 'DBYordXBd';color:#000;font-size: 40px;}
 
 #accordion .toggle-tabs {
   display: none;
