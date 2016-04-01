@@ -10406,8 +10406,8 @@ div.paypal-logo span > img {
 .cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
 .cms-page-view .c_right{float:right;}
 .cms-page-view .c_left{text-align: right; padding-top: 1%;}
-.cms-page-view .c_left h2, .tab-left h1, .tab-left h2, .content_cms.career h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
-.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3, .tab-left h3{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
+.cms-page-view .c_left h2, .tab-left h1, .tab-left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
+.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3, .tab-left h3, .content_cms.career h2{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
 .cms-page-view .content_cms h3{font-size:29px;font-weight:500;margin-bottom:0}
 .cms-page-view .content_cms img{max-width:100%;}
 .cms-page-view .content_cms .frist_con{border-bottom: solid 1px #EEE; padding-bottom: 10px;margin-bottom:20px;}
