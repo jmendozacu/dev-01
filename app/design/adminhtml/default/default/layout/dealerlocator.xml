@@ -10,6 +10,12 @@
       <block type="dealerlocator/adminhtml_import" name="import"/>
     </reference>
   </dealerlocatoradmin_adminhtml_import_index>
+
+  <dealerlocatoradmin_adminhtml_product_index>
+    <reference name="content">
+      <block type="dealerlocator/adminhtml_product" name="product"/>
+    </reference>
+  </dealerlocatoradmin_adminhtml_product_index>
   
   <!-- product for dealer locator -->
   <dealerlocatoradmin_adminhtml_productassigndealer_index>

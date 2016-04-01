@@ -24,4 +24,4 @@ CREATE TABLE {$this->getTable('dealerlocator')} (
 
     ");
 
-$installer->endSetup(); 
+$installer->endSetup();

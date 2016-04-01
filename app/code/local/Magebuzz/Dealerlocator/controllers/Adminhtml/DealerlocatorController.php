@@ -7,7 +7,6 @@
 class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Adminhtml_Controller_Action {
   protected function _initAction() {
     $this->loadLayout()->_setActiveMenu('dealerlocator/items')->_addBreadcrumb(Mage::helper('adminhtml')->__('Items Manager'), Mage::helper('adminhtml')->__('Item Manager'));
-
     return $this;
   }
 
