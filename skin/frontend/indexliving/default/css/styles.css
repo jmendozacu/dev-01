@@ -5390,6 +5390,12 @@ body.catalogsearch-result-index .page-title h1 {
 	padding:20px 0;
 	background:#f8f8f8;
 }
+.product-view .product-idea-image{
+	text-align:center;
+}
+.product-view .product-idea-image img{
+	display:inline-block;
+}
 .product-view .product-features .box-title{float:left; width:100%; margin:0 0 15px;}
 .product-view .product-features .box-title h2{
 	font-size: 30px;
