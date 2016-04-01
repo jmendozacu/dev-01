@@ -1764,16 +1764,17 @@ a.button {
   position: relative;
   margin-bottom: 5px;
   padding: 9px 10px;
-	height:43px;
+	/* height:43px; */
   background: #000000;
   font-size: 14px;
 	color:#FFFFFF;
 	text-transform:uppercase;
 	font-family: 'FuturaBT-Book';
 	border-radius:5px;
+  overflow:hidden;
 }
 
-.messages li li span{line-height:25px; padding-left:35px;}
+.messages li li span{line-height:25px; padding-left:35px; float:left; width:100%;}
 
 .messages li li:before {
 /*   top: 50%;
@@ -5483,6 +5484,7 @@ body.catalogsearch-result-index .page-title h1 {
 
 /* Review form in popup IND-69 */
 #review-form-popup{}
+#ajax_loader_review {position: absolute;  top: 50%;  left: 50%;  margin-left: -16px;  margin-right: -16px;}
 #review-form-popup .form-add{position:relative;}
 #review-form-popup .form-add #ajax_loader{position:absolute; top:50%; left:50%; margin-left:-16px;}
 #review-form-popup .form-add h2{background:#000000; padding:10px 0; text-align:center; font-family: 'FuturaT_Bold'; font-size:30px; text-transform:uppercase; color:#FFFFFF; border-radius:4px 4px 0 0;}

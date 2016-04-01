@@ -597,12 +597,14 @@
 	/* Popup submit review */
 	#review-form-popup .form-add .show-message{padding:0 10px;}
 	#review-form-popup #product-review-star ul li{padding:0 10px;}
-	#review-form-popup .rating_title{width:100%;}
+  #product-review-star li {float:left; width:100%; padding:0 10px;}
+	#review-form-popup .rating_title{float:left;}
 	#review-form-popup .rating_wrap_start{float:left; margin:3px 0;}
 	#review-form-popup .submit-fields{margin:20px 10px 0;}
 	#review-form-popup .submit-fields ul, #review-form-popup .submit-fields .review-image{margin:0; width:100%; padding:0; border:0 none;}
 
 	.title-style1 a{display:none;}
+  #ajax_loader_review {position: fixed;}
  }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;}
