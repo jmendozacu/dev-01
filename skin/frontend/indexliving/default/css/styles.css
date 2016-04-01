@@ -1025,7 +1025,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-compare .actions .button{float:left; margin-right:10px;}
 .block-compare .actions .button span{background:url(../images/i-btn-compare.png) left center no-repeat; padding-left:25px;}
 .block-compare .actions .button span span{background:0 none; padding:0; font-family: 'FuturaT_Bold'; font-size:18px;}
-.block-compare .actions a{float:left; margin:8px 0; font-family: 'DBYordXMed'; font-size:20px;}
+.block-compare .actions a{float:left; padding:4px 0; font-family: 'DBYordXMed'; font-size:20px; text-decoration:underline}
 .product-view .block-compare{
 	padding:15px 0;
 	border-top:1px solid #dadada;
