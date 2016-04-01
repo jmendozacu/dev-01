@@ -270,6 +270,19 @@ jQuery(document).ready(function () {
 			}
 		});
   }
+	
+	jQuery('.block-layered-nav #narrow-by-list dt').click(function(){
+		if (!jQuery(this).hasClass('current')){
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).next().addClass('current');
+			jQuery(this).addClass('current');
+		}
+		else{
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).next().removeClass('current');
+			jQuery(this).removeClass('current');
+		}
+	});
   
   /* var widthWindow = jQuery( window ).width();
   var widthHeight = jQuery( window ).height(); */
