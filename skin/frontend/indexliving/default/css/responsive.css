@@ -156,7 +156,8 @@
   .box-home-list-products .nav-primary .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:0px;}
   .box-home-list-products .nav-primary .mCSB_scrollTools.mCSB_scrollTools_horizontal {opacity:0!important;}
 
-  .box-top-menu{position:absolute; display:none; left:0px; top:44px; z-index:99; background: url(../images/bkg_box_filter.png);}
+  #header.fixed {position:fixed; top:0px; left:0px;   z-index:99; }
+  .box-top-menu{position:fixed; max-height:100%; overflow-y:auto; display:none; left:0px; top:44px; z-index:99; background: url(../images/bkg_box_filter.png);}
   .box-top-menu .page-header {padding-left:0px; padding-right:0px;}
   .box-top-menu .cateogry {width:100%; padding:0px; background:transparent;}
   .box-top-menu .cateogry .skip-cateogry {background: #343434;  text-align: center;  border: none;}
