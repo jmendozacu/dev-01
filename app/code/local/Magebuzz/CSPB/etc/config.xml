@@ -35,14 +35,24 @@
       <bundle>
         <rewrite>
           <adminhtml_catalog_product_edit_tab_attributes_special>Magebuzz_CSPB_Block_Adminhtml_Catalog_Product_Edit_Tab_Attributes_Special</adminhtml_catalog_product_edit_tab_attributes_special>
-          <adminhtml_catalog_product_edit_tab_attributes>Magebuzz_CSPB_Block_Adminhtml_Catalog_Product_Edit_Tab_Attributes</adminhtml_catalog_product_edit_tab_attributes>
+          <!--<adminhtml_catalog_product_edit_tab_attributes>Magebuzz_CSPB_Block_Adminhtml_Catalog_Product_Edit_Tab_Attributes</adminhtml_catalog_product_edit_tab_attributes>-->
           <!-- <catalog_product_view_type_bundle_option>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option</catalog_product_view_type_bundle_option> -->
-          <catalog_product_view_type_bundle_option_select>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option_Select</catalog_product_view_type_bundle_option_select>
+          <!--<catalog_product_view_type_bundle_option_select>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option_Select</catalog_product_view_type_bundle_option_select>
           <catalog_product_view_type_bundle_option_multi>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option_Multi</catalog_product_view_type_bundle_option_multi>
           <catalog_product_view_type_bundle_option_radio>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option_Radio</catalog_product_view_type_bundle_option_radio>
-          <catalog_product_view_type_bundle_option_checkbox>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option_Checkbox</catalog_product_view_type_bundle_option_checkbox>
+          <catalog_product_view_type_bundle_option_checkbox>Magebuzz_CSPB_Block_Catalog_Product_View_Type_Bundle_Option_Checkbox</catalog_product_view_type_bundle_option_checkbox>-->
         </rewrite>
       </bundle>
 		</blocks>
+		<models>
+			<cspb>
+				<class>Magebuzz_CSPB_Model</class>
+			</cspb>
+			<bundle>
+				<rewrite>
+					<product_price>Magebuzz_CSPB_Model_Bundle_Product_Price</product_price>
+				</rewrite>
+			</bundle>
+		</models>
 	</global>
 </config>
