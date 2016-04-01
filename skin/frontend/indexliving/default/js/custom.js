@@ -157,15 +157,19 @@ jQuery(document).ready(function () {
   
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
+    jQuery('.box-top-menu').css("max-height", widthHeight -44);
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
       jQuery(this).addClass('active');
       jQuery('.box-top-menu').show();
+      jQuery('#header').addClass('fixed');
+      
     }
     else{
       jQuery(this).removeClass('active');
       jQuery('.box-top-menu').hide();
+      jQuery('#header').removeClass('fixed');
     }
   });
   
@@ -176,11 +180,13 @@ jQuery(document).ready(function () {
 		jQuery(this).prev().addClass('active');
 		jQuery(this).addClass('active');
     jQuery('.box-top-menu').addClass('active');
+    jQuery('.box-top-menu').css("overflow-y","initial");
 	 }
 	 else{
 		jQuery(this).removeClass('active');
     jQuery(this).prev().removeClass('active');
     jQuery('.box-top-menu').removeClass('active');
+    jQuery('.box-top-menu').css("overflow-y","auto");
 	 }
   });
   /*top menu lv2 on mobile */
@@ -266,6 +272,19 @@ jQuery(document).ready(function () {
 			}
 		});
   }
+	
+	jQuery('.block-layered-nav #narrow-by-list dt').click(function(){
+		if (!jQuery(this).hasClass('current')){
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).next().addClass('current');
+			jQuery(this).addClass('current');
+		}
+		else{
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).next().removeClass('current');
+			jQuery(this).removeClass('current');
+		}
+	});
   
   /* var widthWindow = jQuery( window ).width();
   var widthHeight = jQuery( window ).height(); */
@@ -331,8 +350,8 @@ jQuery(document).ready(function () {
     }
     /* menu */
   jQuery("#header-nav .nav-primary ul.level0").hide(); 
-  jQuery("#header-nav .nav-primary li.level0.nav-2 > a").addClass("active").show();
-	jQuery("#header-nav .nav-primary li.level0.nav-2 > ul.level0").show();
+  jQuery("#header-nav .nav-primary li.level0.nav-1 > a").addClass("active").show();
+	jQuery("#header-nav .nav-primary li.level0.nav-1 > ul.level0").show();
   jQuery("#header-nav .nav-primary li.level0 > a").click(function() {
     if (!jQuery(this).hasClass('active')){
       jQuery("#header-nav .nav-primary ul.level0").hide(); 

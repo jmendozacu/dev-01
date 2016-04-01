@@ -175,19 +175,7 @@ Compare products page
 -->
 
     <catalog_product_compare_index translate="label">
-        <label>Catalog Product Compare List</label>
-        <!-- Mage_Catalog -->
-        <reference name="root">
-            <action method="setTemplate"><template>page/popup.phtml</template></action>
-        </reference>
-        <reference name="head">
-            <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
-            <action method="addJs"><script>varien/product.js</script></action>
-            <action method="unsetChild"><name>head.viewport</name></action>
-        </reference>
-        <reference name="content">
-            <block type="catalog/product_compare_list" name="catalog.compare.list" template="catalog/product/compare/list.phtml"/>
-        </reference>
+      <block type="catalog/product_compare_list" name="root" template="catalog/product/compare/list.phtml"  output="toHtml"/>
     </catalog_product_compare_index>
 
     <customer_account_index>

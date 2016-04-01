@@ -69,6 +69,8 @@
                 <action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
                 <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</href></action>
                 <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/animatedcollapse.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/tab.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
 
                 <!-- Add stylesheets with no media queries for use in IE 8 and below -->
@@ -119,7 +121,7 @@
 									</block>
 								</block>
                 <block type="core/template" name="header.myaccount.mini" as="mini-myaccount" template="page/html/mini-myaccount.phtml"/>
-                
+
             </block>
 
             <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
@@ -150,7 +152,7 @@
                 <label>Page Footer</label>
                 <action method="setElementClass"><value>footer-before-container</value></action>
             </block>
-						
+
 						<block type="page/html_wrapper" name="main.before" as="before_main" translate="label">
                 <label>Before Main Content</label>
                 <action method="setElementClass"><value>box-before-main</value></action>

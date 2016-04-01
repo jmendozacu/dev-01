@@ -52,7 +52,7 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
         </ol>
         <script type="text/javascript">decorateList('compare-items')</script>
         <div class="actions">
-            <button type="button" id="compare-all-items" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>" class="button"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+            <button type="button" id="compare-all-items" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>" class="button" onclick="openComparePopup('<?php echo $_helper->getListUrl() ?>');"><span><span><?php echo $this->__('Compare') ?></span></span></button>
             <a href="javascript:void(0)" onclick="clearCompare('<?php echo $_helper->getClearListUrl() ?>');"><?php echo $this->__('Clear All') ?></a>
         </div>
     <?php else: ?>
@@ -63,20 +63,40 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
 <div class="sider_bar" style="display: none">
     <span class="compare_bar"></span>
 </div>
+<div class="ajaxcart-overlay" style="display:none;"></div>
 <?php //endif; ?>
 <script type="text/javascript">
-		$j("#compare-all-items").click(function() {
-			$j.fancybox.open({
-				href: "<?php echo $_helper->getListUrl() ?>",
-				type: "ajax",
-				ajax: {
-						type: "POST",
-						data: {
-								temp: "tada"
-						}
+		function closeComparePopup() {
+			$('ajaxcart-overlay').hide();
+		}
+		function openComparePopup(url) {
+			new Ajax.Request(url, {
+				parameters: {isAjax: 1, method: 'POST'},
+				onCreate: function() {
+					this.ajaxCart.ajaxLoading.show(); // using loading from ajax cart
+				}.bind(this),
+				onSuccess: function(transport) {
+					this.ajaxCart.ajaxLoading.hide(); // using loading from ajax cart
+					$('ajaxcart-overlay').update(transport.responseText);
+          $('ajaxcart-overlay').show();
 				}
 			});
-		});
+		}
+		/**
+		 * Send remove item request, after that reload windows
+		 */
+		function removeCompareItemPopup(url)
+		{
+				new Ajax.Request(url, {
+						parameters: {isAjax: 1, method: 'POST'},
+						onLoading: function(){$('compare-list-please-wait').show();},
+						onSuccess: function(transport) {
+								$('compare-list-please-wait').hide();
+								window.location.reload();
+								//window.opener.location.reload();
+						}
+				});
+		}
     function removeajaxCompare(url) {
         url = url.replace("catalog/product_compare/remove", "customcompare/product_compare/remove");
         $j.ajax({

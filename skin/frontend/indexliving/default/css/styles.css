@@ -530,10 +530,17 @@ textarea {
     content: "";
     height: 100%;
     position: absolute;
-    right: 1px;
+    right: 0px;
     top: 0;
-    width: 12px;
+    width: 18px;
+    background:#fff;
 }
+.toolbar .styled-select::after,
+.toolbar .styled-select:after {
+  border-width:7px 6px 0 6px;
+}
+
+
 .styled-select select::-ms-expand {
     display: none;
 }
@@ -1018,25 +1025,44 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .block-compare .actions .button{float:left; margin-right:10px;}
 .block-compare .actions .button span{background:url(../images/i-btn-compare.png) left center no-repeat; padding-left:25px;}
-.block-compare .actions .button span span{background:0 none; padding:0;}
-.block-compare .actions a{float:left; margin:8px 0;}
+.block-compare .actions .button span span{background:0 none; padding:0; font-family: 'FuturaT_Bold'; font-size:18px;}
+.block-compare .actions a{float:left; padding:4px 0; font-family: 'DBYordXMed'; font-size:20px; text-decoration:underline}
+.product-view .block-compare{
+	padding:15px 0;
+	border-top:1px solid #dadada;
+	border-bottom:1px solid #dadada;
+}
+.sidebar .block-compare{
+	padding:0 0 5px;
+	border-bottom:1px solid #dadada;
+}
 
 /* Compare Popup */
-.compare-popup{}
+.compare-popup{
+	margin: 0 auto;
+	position: absolute;
+	max-width: 1200px;
+	left: 50%;
+	margin-left: -600px;
+	top: 10%;
+}
 .compare-popup .page-title{padding:10px 20px; background:#252525; overflow:hidden; border-radius:4px 4px 0 0;}
-.compare-popup .page-title h1{float:left; color:#FFFFFF; border:0 none; margin:0;}
-.compare-popup .page-title .link-print{float:right; color:#FFFFFF; text-decoration:none; background:url(../images/i-print.png) left center no-repeat; padding-left:30px;}
-.compare-popup .compare-list-table{padding:20px; position:relative;}
+.compare-popup .page-title h1{float:left; color:#FFFFFF; border:0 none; margin:0; padding:8px 0;}
+.compare-popup .page-title .link-print{float:right; color:#FFFFFF; text-decoration:none; background:url(../images/i-print.png) left 100% no-repeat; padding-left:30px; padding-top:12px;}
+.compare-popup .compare-list-table{padding:20px; position:relative; background:#FFFFFF; max-height:500px; overflow-y:scroll;}
 .compare-popup .compare-list-table .please-wait{position:absolute; top:50%; left:50%; margin-left:-64px; margin-top:-64px;}
 .compare-popup .compare-list-table .please-wait img{width:auto;}
 .compare-popup .data-table th{background:#FFFFFF;}
-.compare-popup .data-table td{padding:20px; border-bottom:1px solid #dadada; border-right:1px solid #dadada; font-family: 'HelveticaNeue';}
+.compare-popup .data-table td{padding:10px; border-bottom:1px solid #dadada; border-right:1px solid #dadada; font-family: 'Helvetica';}
 .compare-popup .data-table td.title{font-family: 'FuturaT_Bold'; font-size:14px; text-transform:uppercase; color:#000000;}
 .compare-popup .data-table td.last{border-right:0 none;}
 /* .compare-popup .data-table tr.last td{border-bottom:0 none;} */
 .compare-popup .data-table td .product-info{position:relative;}
 .compare-popup .data-table td .product-info .product-name{}
+.compare-popup .data-table td .product-info .product-image {width:100%; text-align:center;}
+.compare-popup .data-table td .product-info .product-image img{display:inline;}
 .compare-popup .data-table td .product-info .product-name a{font-family: 'FuturaBT-Book'; font-weight:bold; font-size:14px; text-transform:uppercase; text-decoration:none;}
+.compare-popup .data-table td .product-info .ratings .rating-box{margin:0 10px 0 0;}
 .compare-popup .data-table td .product-info .price-box .price{font-family: 'FuturaT_Bold'; font-weight:bold; font-size:23px; text-transform:uppercase; text-decoration:none; color:#000000;}
 .compare-popup .data-table td .product-info .price-box .special-price{padding:0 1em 0 0;}
 .compare-popup .data-table td .product-info .price-box .special-price .price{color:#ff0000;}
@@ -1069,6 +1095,16 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .data-table .compare-item-actions .link-wishlist:hover{
 	background-position: 0 0;
   color: #ffc222;
+}
+.compare-popup-close {
+	position: absolute;
+	top: -10px;
+	right: -25px;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	z-index: 8040;
+	background: url(../images/fancybox-close.png) center center no-repeat;
 }
 
 /* ============================================ *
@@ -2380,7 +2416,7 @@ span.weee {
 }
 
 .pages ol{
-	margin-left:10px;
+	margin:5px 0px 6px 10px;
 }
 
 .pages li {
@@ -2396,17 +2432,19 @@ span.weee {
   text-transform: uppercase;
   vertical-align: middle;
   white-space: nowrap;
-  line-height: 23px;
-  width: 25px;
-  height: 25px;
+  line-height: 19px;
+  width: 19px;
+  height: 19px;
   padding: 0;
   color: #333;
+  font-family: 'FuturaBT-Book';
+  margin-right:3px;
 }
 
 .pages .current,
 .pages .current:hover {
   color: #ffc222;
-  width: 25px;
+  width: 19px;
   background-color: #000;
   cursor: default;
 	border-radius:50px;
@@ -2428,8 +2466,8 @@ span.weee {
 .pages .previous:before {
   content: '';
   position: absolute;
-  width:25px;
-  height:25px;
+  width:19px;
+  height:19px;
   top:0px;
   left:0px;
   background:url(../images/pager_arrow_right.gif) no-repeat center center;
@@ -2731,6 +2769,7 @@ select {
   font-size: 16px;
   border-color:#CBCBCB;
 }
+.toolbar select  {font-size:14px;}
 
 select + select {
   margin-left: 5px;
@@ -3391,7 +3430,7 @@ body {
 
 
 .menu-content  li.level0.nav-2 >a { position:absolute; top:0px; right:0px; }
-.menu-content  li.level0 >a{float:left; width:50%; height:37px; line-height:37px; text-align:center; color:#fff; font-size:14px; background:#AEAEAE;}
+.menu-content  li.level0 >a{float:left; /* width:50%; */ width:100%; height:37px; line-height:37px; text-align:center; color:#fff; font-size:14px; background:#AEAEAE;}
 .menu-content  li.level0 >a:hover {text-decoration:none;}
 .menu-content li.level0 >a.active span{background:#434343; position:relative; display:block;  height:37px; line-height:37px; }
 .menu-content li.level0 >a.active span:before {content:""; width:0px; height:0px; position:absolute; bottom:-10px; left:50%; margin-left:-6px; border-top:solid 10px #434343; border-right:solid 6px transparent; border-left:solid 6px transparent;}
@@ -3492,7 +3531,7 @@ body {
 .title-style1 {float:left; width:100%; margin-bottom:40px; font-family: 'FuturaBT-Book'; text-align:center; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
 .title-style1:before {content:""; position:absolute; height:7px; width:165px; background:#FFC222; bottom:-6px; left:50%; margin-left:-82px;}
 .title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; }
-.title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#919191; font-size:14px; padding-right:15px; z-index:999}
+.title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#919191; font-size:14px; padding-right:15px; z-index:9}
 .title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #919191; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
 .title-style1 a:hover {color:#FFC222; text-decoration:none;}
 .title-style1 a:hover:after {border-left-color:#FFC222;}
@@ -3508,7 +3547,29 @@ body {
 .box-home-decor .decor-banner {float:left; width:82.5%; margin:2.5% 0; background:#252525; padding:24px 0;}
 .title-style3 {text-align:center; margin:0px; padding:10px 0; font-size:23px; color:#fff; line-height:30px; font-family: 'FuturaBookBold';}
 .main-home .box-home-decor .decor-style ul {margin:0px;}
-.main-home .box-home-decor .decor-style li {margin-bottom:10px;}
+.main-home .box-home-decor .decor-style li {margin-bottom:10px; position:relative;}
+.main-home .box-home-decor .decor-style li .banner-mask{
+	-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	opacity: 0;
+	background: rgba(255,194,34, 0.8);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	position: absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	bottom:0;
+}
+.main-home .box-home-decor .decor-style li:hover .banner-mask{opacity:1;}
+
+/* .main-home .box-home-decor .decor-style li::before{content:""; }
+.main-home .box-home-decor .decor-style li:hover::before{content:""; }
+.main-home .box-home-decor .decor-style li:hover a{} */
+.main-home .box-home-decor .decor-style li a:hover{}
 .main-home .box-home-decor .decor-style .banner-title {color:#000; width:100%; text-align:center; margin:auto; font-size:19px; font-family: 'FuturaBookBold'; line-height:22px; height:22px;  bottom:0px; padding:0 18px; text-transform:uppercase; }
 .main-home .box-home-decor .decor-style li:nth-child(5) .banner-title  {height:44px;}
 .box-home-decor .box-slider {float:left; width: 64.243%; margin:0 1.481%;}
@@ -4420,8 +4481,26 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid .product-name a {color:#000; font-size:15px; font-weight:800; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; font-family: 'FuturaBT-Book';}
 .products-grid .desc {font-size:12px; color:#434343; font-family: 'FuturaLight'; margin-bottom:5px;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
-.products-grid  .grid-price .save-price-percent {position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-grid  .grid-price .save-price-percent{position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
 .products-grid  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
+
+.products-list  .product-desc {float:left; width:100%; margin-bottom:35px; font-family: 'FuturaBT-Book'; font-size:13px;}
+
+.products-list  .actions {float:right;}
+
+.products-list  .actions button.button,.products-list  .actions button.btn-cart{min-width:245px;}
+
+.products-list  .grid-price {float:left;}
+.products-list  .grid-price .price-box{float:left; margin-right:20px;}
+.products-list  .grid-price .save-price-percent{float:left; text-align:center; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-list  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
+
+.products-list .grid-price .price-box .special-price,
+.products-list .grid-price .price-box .old-price{float:left;}
+.products-list .grid-price .price-box .special-price{padding:0 5px 0 0;}
+.products-list .grid-price .price-box .old-price{margin:8px 0 0;}
+
+
 .products-grid  .price-box {float:left; min-height:47px;}
 .products-grid .price-box .price,.products-list .price-box .price,
 .products-grid  .price-box .regular-price .price,.products-list  .price-box .regular-price .price,
@@ -4429,8 +4508,8 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-grid  .price-box .special-price .price, .products-list  .price-box .special-price .price  {color:#FF0000;}
 .products-grid  .price-box .old-price .price,.products-list  .price-box .old-price .price  {color:#898989; font-size:12px; font-family: 'FuturaLight'; line-height:16px;}
-.products-grid  .price-box .special-price,.products-list  .price-box .special-price,
-.products-grid  .price-box .old-price, .products-list  .price-box .old-price {float:left; margin:0px; clear:both; padding:0px;}
+.products-grid  .price-box .special-price,/* .products-list  .price-box .special-price, */
+.products-grid  .price-box .old-price/* , .products-list  .price-box .old-price  */{float:left; margin:0px; clear:both; padding:0px;}
 
 .products-grid .product-info {
   padding-bottom: 95px;
@@ -4627,16 +4706,16 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-list > li  .amconf-block{
   position:absolute;
-	top:140px;
-	left:80px;
+	top:160px;
+	left:100px;
 }
 
 .products-list .product-shop {
   float: right;
-  width: 73%;
+  width: 70%;
 }
 .products-list .product-shop .product-name {
-  margin-bottom: 0;
+/*   margin-bottom: 0; */
 }
 .products-list .product-shop .ratings {
   margin: 0;
@@ -4652,10 +4731,10 @@ body.catalogsearch-result-index .page-title h1 {
 .products-list .product-shop .price-box {
   margin-top: 0;
 	float:left;
-	width:100%;
+	/* width:100%; */
 }
 .products-list .product-shop .price-box .price {
-  font-size: 18px;
+/*   font-size: 18px; */
 }
 .products-list .product-shop .action {
   margin: 7px 0;
@@ -4825,12 +4904,12 @@ body.catalogsearch-result-index .page-title h1 {
 	text-transform:uppercase;
 	padding:0 0 5px;
 	margin:0 0 10px;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #dadada;
 	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
 .block-layered-nav .block-content > dl > dt.current{
 	background:url(../images/arrow-up.gif) 94% center no-repeat;
-	border:0 none;
+	/* border:0 none; */
 }
 .block-layered-nav .block-content > dl > dt:after {
   content: '';
@@ -10314,14 +10393,47 @@ div.paypal-logo span > img {
   font-style: normal;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
 }
-.cms-page-view .std p, .cms-page-view p{font-family: "Helvetica",Arial,Tahoma,sans-serif;font-style:normal;}
+.cms-page-view .std p, .cms-page-view p, .cms-page-view li, .cms-page-view .std li{font-family: "Helvetica",Arial,Tahoma,sans-serif;font-style:normal;}
 .cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
 .cms-page-view .c_right{float:right;}
 .cms-page-view .c_left{text-align: right; padding-top: 1%;}
-.cms-page-view .c_left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
-.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
+.cms-page-view .c_left h2, .tab-left h1, .tab-left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
+.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3, .tab-left h3{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
 .cms-page-view .content_cms h3{font-size:29px;font-weight:500;margin-bottom:0}
+.cms-page-view .content_cms img{max-width:100%;}
 .cms-page-view .content_cms .frist_con{border-bottom: solid 1px #EEE; padding-bottom: 10px;margin-bottom:20px;}
+.cms-page-view .secound_con{margin-bottom: 20px;}
+.cms-page-view .secound_con .con_success_left{width:56%;float:left;}
+.cms-page-view .secound_con .img_con_success{width:43%;float:right;padding-top:2%;}
+.cms-page-view .wrapper_col{margin: 0 -20px;}
+.cms-page-view .col_3{width: 33.3333333%;height:344px;float:left;padding:0 20px;margin-top: 20px;}
+.cms-page-view .col_3 h4{margin-bottom:0;}
+.cms-page-view .col_3 .desc p{font-size: 12px;line-height: 18px;}
+.cms-page-view .col_3 .img{margin-bottom:10px;}
+.cms-page-view .col_3 .img img{width:100%;}
+
+/* tab-cmspage tab-left*/
+.cms-franchise .std ul li{margin-left: 0;}
+.tab-left {float:left; width:100%; position:relative;}
+.tab-left:before {content:""; width:1px; height:100%; background:#E3E3E3; position:absolute; top:0px; left:25%;}
+.tab-left .tabsPage,
+.tab-left .tabs {float:left; width:25%; background:#F5F5F5; font-size:19px; }
+.tab-left .tabsPage li,
+.tab-left .tabs li {float:left; width:100%; border-bottom:solid 2px #E3E3E3;list-style-type: none;}
+.tab-left .tabsPage li a,
+.tab-left .tabs li a {display:block; padding:10px 15px; line-height: 24px; font-family: 'FuturaBT-Book'; }
+.tab-left .tabsPage li a:hover,
+.tab-left .tabs li a:hover {text-decoration:none;}
+.tab-left .tabsPage li.active,
+.tab-left .tabs li.active {background:#fff;position:relative;}
+.tab-left .tabsPage li.active:before,
+.tab-left .tabs li.active:before {content:""; width:1px; height:100%; background:#fff; position:absolute; top:0px; right:-1px;}
+.tab-left .tabsPage li.active a,
+.tab-left .tabs li.active a {color:#000;font-weight: bold;}
+.tab-left .tab_container {float:left; width:75%; padding: 25px 25px 15px; }
+.tab-left h1, .tab-left h2{font-size: 30px;margin-bottom: 12px;}
+.tab-left h3{color:#000;}
+.cms_tab_list{margin-left: 3%;}
 #accordion .toggle-tabs {
   display: none;
 }

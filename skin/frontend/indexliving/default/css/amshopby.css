@@ -27,8 +27,7 @@ padding: 0pt 10px 10px 0pt; float: left;
 	clear:both; 
 	overflow: hidden;
 }
-div.block-layered-nav dd{display:none;}  
-div.block-layered-nav dd.current{display:block;}  
+div.block-layered-nav dd{display:block;}  
 div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left; font-family:"FuturaBT-Book"; text-transform:uppercase; color:#444;}  
 div.block-layered-nav dd a:hover{color:#ffc222;} 
 div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover {padding-left:32px; background-image:url(../images/amshopby-cb1.gif); background-repeat: no-repeat; background-position: left center;}
@@ -240,7 +239,13 @@ input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"
 		float:left;
 		border-radius:0;
 }
-.price-separator{float:left; width:8%; padding:0;}
+.price-separator{
+	float: left;
+	width: 8%;
+	padding: 0!important;
+	text-align: center;
+	line-height: 35px;
+}
 .amshopby-price-find{margin-top:15px; min-width:155px;}
 
 .amshopby-item-top{
