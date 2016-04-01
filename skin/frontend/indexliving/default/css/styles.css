@@ -4842,12 +4842,12 @@ body.catalogsearch-result-index .page-title h1 {
 	text-transform:uppercase;
 	padding:0 0 5px;
 	margin:0 0 10px;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid #dadada;
 	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
 .block-layered-nav .block-content > dl > dt.current{
 	background:url(../images/arrow-up.gif) 94% center no-repeat;
-	border:0 none;
+	/* border:0 none; */
 }
 .block-layered-nav .block-content > dl > dt:after {
   content: '';
