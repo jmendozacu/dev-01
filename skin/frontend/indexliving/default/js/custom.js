@@ -331,8 +331,8 @@ jQuery(document).ready(function () {
     }
     /* menu */
   jQuery("#header-nav .nav-primary ul.level0").hide(); 
-  jQuery("#header-nav .nav-primary li.level0.nav-2 > a").addClass("active").show();
-	jQuery("#header-nav .nav-primary li.level0.nav-2 > ul.level0").show();
+  jQuery("#header-nav .nav-primary li.level0.nav-1 > a").addClass("active").show();
+	jQuery("#header-nav .nav-primary li.level0.nav-1 > ul.level0").show();
   jQuery("#header-nav .nav-primary li.level0 > a").click(function() {
     if (!jQuery(this).hasClass('active')){
       jQuery("#header-nav .nav-primary ul.level0").hide(); 
