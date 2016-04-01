@@ -240,7 +240,13 @@ input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"
 		float:left;
 		border-radius:0;
 }
-.price-separator{float:left; width:8%; padding:0;}
+.price-separator{
+	float: left;
+	width: 8%;
+	padding: 0!important;
+	text-align: center;
+	line-height: 35px;
+}
 .amshopby-price-find{margin-top:15px; min-width:155px;}
 
 .amshopby-item-top{
