@@ -207,6 +207,7 @@
   margin-bottom: 3px;
   font-size:14px;
   font-family: 'FuturaBT-Book';
+  text-transform:uppercase;
 }
 .searchautocomplete .searchautocomplete-placeholder ul li a .pull-right {
   float: right;
@@ -222,6 +223,7 @@
   float: left;
   margin: 0px 10px 5px 0px;
 }
+.searchautocomplete .searchautocomplete-placeholder ul li .product-info {padding-left:80px;}
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box {
   font-weight: bold;
   font-size: 14px;
