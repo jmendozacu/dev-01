@@ -2,7 +2,7 @@
 <config>
   <modules>
     <Magebuzz_Dealerlocator>
-      <version>0.2.1</version>
+      <version>0.2.4</version>
     </Magebuzz_Dealerlocator>
   </modules>
   <frontend>
@@ -82,12 +82,15 @@
       <dealerlocator_mysql4>
         <class>Magebuzz_Dealerlocator_Model_Mysql4</class>
         <entities>
+
           <dealerlocator>
             <table>dealerlocator</table>
           </dealerlocator>
+
           <dealerlocator_store>
             <table>dealerlocator_store</table>
           </dealerlocator_store>
+
           <dealerlocator_tag>
             <table>dealerlocator_tag</table>
           </dealerlocator_tag>
@@ -96,6 +99,11 @@
           <productdealer>
             <table>product_dealer</table>
           </productdealer>
+
+          <productdealertemp>
+            <table>product_dealer_temp</table>
+          </productdealertemp>
+
         </entities>
       </dealerlocator_mysql4>
     </models>

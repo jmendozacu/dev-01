@@ -180,11 +180,13 @@ jQuery(document).ready(function () {
 		jQuery(this).prev().addClass('active');
 		jQuery(this).addClass('active');
     jQuery('.box-top-menu').addClass('active');
+    jQuery('.box-top-menu').css("overflow-y","initial");
 	 }
 	 else{
 		jQuery(this).removeClass('active');
     jQuery(this).prev().removeClass('active');
     jQuery('.box-top-menu').removeClass('active');
+    jQuery('.box-top-menu').css("overflow-y","auto");
 	 }
   });
   /*top menu lv2 on mobile */

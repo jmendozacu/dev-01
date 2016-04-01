@@ -1,7 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: trinhnv
- * Date: 30/03/2016
- * Time: 00:32
- */
+$installer = $this;
+$installer->startSetup();
+$installer->run("
+	ALTER TABLE {$this->getTable('dealerlocator')} ADD `store_code` varchar(255) null;
+");
+$installer->endSetup();

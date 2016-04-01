@@ -20,6 +20,11 @@
           <sort_order>2</sort_order>
           <action>adminhtml/system_config/edit/section/dealerlocator</action>
         </item3>
+        <item4 module="dealerlocator">
+          <title>Import Store Code</title>
+          <sort_order>4</sort_order>
+          <action>dealerlocatoradmin/adminhtml_product/index</action>
+        </item4>
       </children>
     </dealerlocator>
   </menu>
@@ -60,6 +65,11 @@
                 <sort_order>2</sort_order>
                 <action>adminhtml/system_config/edit/section/dealerlocator</action>
               </item3>
+              <item4 module="dealerlocator">
+                <title>Import Store Code</title>
+                <sort_order>4</sort_order>
+                <action>dealerlocatoradmin/adminhtml_product/index</action>
+              </item4>
             </children>
           </dealerlocator>
         </children>

@@ -20,3 +20,5 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Import extends Mage_Adminhtml_Block
     return Mage::helper('dealerlocator')->__('Add dealers');
   }
 }
+
+
