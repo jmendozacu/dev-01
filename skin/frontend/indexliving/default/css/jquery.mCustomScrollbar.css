@@ -1280,7 +1280,8 @@ yx-axis
 
 .recommend-allcategory .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:5px;}
 
-
+.product-dealerscroll .mCSB_scrollTools .mCSB_draggerRail,
+.product-dealerscroll .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {border-radius:0px;}
 
 
 

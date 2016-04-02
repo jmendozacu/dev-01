@@ -184,14 +184,15 @@
 .product-dealer-body-2columns h2.legend{font-family: 'DBYordXMed'; font-size:28px; background:#252525; padding:15px 20px; color:#FFFFFF; border-radius:4px 4px 0 0;}
 
 .product-dealer-body-2columns .product-dealers-popup{}
-.product-dealer-body-2columns .gmap,
-.dealer-body-2columns .gmap{float:right; width:65%;  padding:0 20px;}
-.list-all-product-dealer{float:left; width:34%; padding:0 20px; margin:0 0 20px;}
+.product-dealer-body-2columns .gmap{float:right; width:65%;  padding:0 20px;}
+.list-all-product-dealer{float:left; width:35%; padding:0 0 0 20px; margin:0 0 20px;}
 .list-all-product-dealer .product-dealerscroll{
 	max-height: 400px;
   overflow-y: auto;  
   overflow-x: hidden; 
 }
+.list-all-dealer.list-all-product-dealer .product-dealerscroll {max-height:464px;}
+
 .list-all-product-dealer .dealer-pager{
 	padding:3px 10px 3px 35px; 
 	overflow:hidden; 
@@ -245,14 +246,15 @@
 .list-all-product-dealer ul li a{text-decoration: none;}
 
 .dealer-body-2columns .list-all-dealer {
-  width: 60%;
+  width: 34%;
   float: left;
+  padding-left:0px;
 }
 
 .dealer-body-2columns .gmap {
-  width: 36%;
-  margin-left: 20px;
+  width: 66%;
   float: right;
+  padding:0px;
 }
 
 .list-all-dealer-by-tag .fieldset ul li {
@@ -522,3 +524,5 @@ div.autocomplete ul li {
 div.autocomplete ul li.selected {
   background-color: #dcebf0;
 }
+#product_dealer_map_canvas {max-width:100%;}
+#dealer-list  {float:left; width:100%; padding: 0 10px;}
