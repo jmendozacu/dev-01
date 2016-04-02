@@ -35,11 +35,9 @@ $_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
         <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
         <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
             <div class="input-box">
-							<div class="styled-select">
-                <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
-                    <option><?php echo $this->__('Choose an Option...') ?></option>
-                  </select>
-							</div>
+							<select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+								<option><?php echo $this->__('Choose an Option...') ?></option>
+							</select>
             </div>
         </dd>
     <?php endforeach; ?>

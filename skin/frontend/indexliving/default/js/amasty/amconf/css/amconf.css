@@ -17,12 +17,14 @@
 
 .product-view .amconf-color-container{border-radius:0;/*  border:1px solid #ccc; */}
 .product-view .amconf-color-container{border-radius:0;/*  border:1px solid #ccc; */}
-.product-view .product-options .amconf-images-container{}
+.product-view .product-options .amconf-images-container{
+	transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+}
 .amconf-images-list-container{position:relative;}
 .amconf-images-list-container .amconf-images-list-label{/* background:url(../images/arrow-dropdown.png) 97% center no-repeat;  */border:2px solid #000; padding:5px 10px; overflow:hidden; border-radius:5px;}
 .amconf-images-list-container .amconf-images-list-label .selectedItem{float:left; margin-right:10px; border:1px solid #dadada;}
 .amconf-images-list-container .amconf-images-list-label .selectedItemLabel{float:left}
-.amconf-images-list-container .amconf-images-container{display:none;position: absolute;padding: 5px 10px;background: #fff;z-index: 9999;border: 2px solid #000;top: 37px;  border-radius:5px;}
+.amconf-images-list-container .amconf-images-container{/* display:none; */position: absolute;padding: 5px 10px;background: #fff;z-index: 9999;border: 2px solid #000;top: 37px;  border-radius:5px;}
 
 em{
      color:red;
