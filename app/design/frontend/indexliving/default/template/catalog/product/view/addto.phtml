@@ -57,13 +57,13 @@
 <script type="text/javascript">
 	function ajaxCompare(url){
 		url = url.replace("catalog/product_compare/add","customcompare/product_compare/add");
-		$j("#ajax_loader").show();
+		$j('#ajax_cart_loading').show();
 		$j.ajax({
 			url: url,
 			type: "POST",
 			dataType: 'json',
 			success: function (data) {
-				$j("#ajax_loader").hide();
+				$j("#ajax_cart_loading").hide();
 				//$j('.block-compare').remove();
 				$j("#product-compare-list").html(data.bar);
 				//$j(".sider_bar").show();

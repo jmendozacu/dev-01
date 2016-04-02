@@ -418,7 +418,8 @@ AjaxCart.prototype = {
 		this.removeWishlistItem(wishlist_item_id);
   },
 	
-	ajaxAddToWishlist: function(url) {		
+	ajaxAddToWishlist: function(url) {
+		url = url.replace('wishlist/index/add','customwishlist/index/add');
 		new Ajax.Request(url, {
 			onCreate: function() {
 				this.ajaxLoading.show();
@@ -439,6 +440,18 @@ AjaxCart.prototype = {
 				//this.optionsPopup.update("Fuck YOU, do not work");
       //this.optionsPopup.show();
 			}.bind(this)
+		});
+	},
+	
+	ajaxRemoveCompareItem: function(url) {
+		new Ajax.Request(url, {
+				parameters: {isAjax: 1, method: 'POST'},
+				onLoading: function(){$('compare-list-please-wait').show();},
+				onSuccess: function(transport) {
+						$('compare-list-please-wait').hide();
+						window.location.reload();
+						window.opener.location.reload();
+				}
 		});
 	}
 }
