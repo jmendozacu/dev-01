@@ -2,8 +2,6 @@
 	float:left; width:100%;
   margin-top:40px;
 }
-.dealerlocator  .h2-label {line-height:40px; padding:10px 30px; color:#fff; font-family: 'DBYordXMed'; font-size:28px; background:#252525; margin-bottom:10px; float:left; width:100%;}
-
 
 .dealerlocator .col2-set .col-1 {
   float: left;
@@ -347,11 +345,21 @@ td .dealer-label {
 
   .dealer-body-2columns .list-all-dealer {
     width: 100%;
+    padding:0px;
+    margin-top:10px;
   }
-
+  .dealerlocator {margin-top:30px;}
   .dealer-body-2columns .gmap {
     width: 100%;
     margin: 10px 0 0;
+    position: relative;
+    padding-bottom: 100%;
+  }
+  .dealer-body-2columns .gmap #map_canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    max-height: 100%;
   }
 	.product-dealer-body-2columns .list-all-product-dealer {
     width: 100%;
@@ -522,5 +530,16 @@ div.autocomplete ul li {
 div.autocomplete ul li.selected {
   background-color: #dcebf0;
 }
+.list-all-product-dealer .dealer-pager .pager {
+    float: right;
+    width: auto;
+    clear: none;
+}
 #product_dealer_map_canvas {max-width:100%;}
 #dealer-list  {float:left; width:100%;}
+.dealerlocator  .h2-label {line-height:40px; padding:10px 30px; color:#fff; font-family: 'DBYordXMed'; font-size:28px; background:#252525; margin-bottom:10px; float:left; width:100%;}
+.title-mobile {display:none;}
+@media (max-width: 480px) {
+  .dealerlocator .h2-label {background:#373737; line-height: 22px;text-align: center; font-size:20px; margin:0px; padding: 7px;}
+  .title-mobile {display:block; float:left; width:100%; margin-bottom:0px; line-height:30px; padding:12px 35px 12px 10px; color:#fff; font-size:22px; font-family: 'DBYordXMed'; background:url(../../images/icon1.png) no-repeat 30px center #252525;}
+}

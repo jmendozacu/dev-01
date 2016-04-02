@@ -18,6 +18,7 @@ $dealers->clear(); ?>
   <p class='note-msg' id="message" style="display:none"></p>
 
   <div class="dealerlocator">
+    <h1 class="title-mobile"><?php echo $this->__("Check each store's product") ?></h1>
     <h2 class="h2-label"><?php echo $this->__('All products can have 10 branches') ?></h2>
     <?php if ($this->displaySearchForm()): ?>
       <div class="dealer-search">
@@ -132,15 +133,13 @@ $dealers->clear(); ?>
           </div>
         <?php endif; ?>
       <?php endif; ?>
-
-      
-
+      <div class="gmap">
+        <div id="map_canvas" style="float:right;width:100%; height:510px"></div>
+      </div>
       <div class="list-all-dealer list-all-product-dealer">
-        
         <?php if ($dealers->getSize()): ?>
           <?php echo $this->getPagerHtml(); ?>
           <ul id="dealer-list" class="product-dealerscroll">
-            
             <?php foreach ($dealers->getItems() as $dealer): ?>
               <li
                 onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
@@ -192,11 +191,6 @@ $dealers->clear(); ?>
         <?php else: ?>
           <p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
         <?php endif; ?>
-      </div>
-
-
-      <div class="gmap">
-        <div id="map_canvas" style="float:right;width:100%; height:510px"></div>
       </div>
     </div>
   </div>
