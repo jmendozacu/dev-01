@@ -1971,7 +1971,7 @@ a.button {
 .price-box .price-label {
   color: #a0a0a0;
   white-space: nowrap;
-  display:none;
+  /* display:none; */
 }
 
 .price-box .minimal-price-link {
@@ -4512,6 +4512,11 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid  .price-box .special-price,/* .products-list  .price-box .special-price, */
 .products-grid  .price-box .old-price/* , .products-list  .price-box .old-price  */{float:left; margin:0px; clear:both; padding:0px;}
 
+.products-grid  .price-box .price-from .price-label,
+.products-grid  .price-box .price-to .price-label,
+.products-list .grid-price .price-box .price-from .price-label,
+.products-list .grid-price .price-box .price-to .price-label{float:left; line-height:28px; margin-right:5px;}
+
 .products-grid .product-info {
   padding-bottom: 95px;
 }
@@ -5095,6 +5100,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .price-box {
   margin-top: 0;
 	float:left;
+  clear:left;
 }
 .product-view .product-shop .price-box .old-price,
 .product-view .product-shop .price-box .special-price,
@@ -6105,6 +6111,14 @@ body.catalogsearch-result-index .page-title h1 {
 	padding: 5px 10px;
 	overflow: hidden;
 	border-radius: 5px;
+  height:35px;
+  line-height:16px;
+}
+.product-options dd .styled-select::before,
+.product-options dd .styled-select:before {
+  border: solid 2px #000;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
 }
 
 .product-options ul.options-list {
