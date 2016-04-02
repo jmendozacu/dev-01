@@ -28,6 +28,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     $pager = $this->getLayout()->createBlock('page/html_pager', 'dealer.pager');
     $pager->setAvailableLimit($showPerPageOptions);
     $pager->setLimit(Mage::helper('dealerlocator')->getDefaultShowPerPage());
+    $pager->setTemplate('dealerlocator/pager.phtml');
     $collection = $this->_getDealers();
     $pager->setCollection($collection);
     $this->setChild('pager', $pager);
