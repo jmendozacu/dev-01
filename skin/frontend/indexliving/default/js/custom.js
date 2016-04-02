@@ -83,6 +83,23 @@ jQuery(document).ready(function () {
 		return false;
 	});
 
+
+  //When page loads...
+  jQuery(".tab-history-content").hide(); //Hide all content
+  jQuery("ul.tabs_history li:first").addClass("active").show(); //Activate first tab
+  jQuery(".tab-history-content:first").show(); //Show first tab content
+
+  //On Click Event
+  jQuery("ul.tabs_history li").click(function() {
+
+    jQuery("ul.tabs_history li").removeClass("active"); //Remove any "active" class
+    jQuery(this).addClass("active"); //Add "active" class to selected tab
+    jQuery(".tab-history-content").hide(); //Hide all tab content
+
+    var activeTab = jQuery(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+    jQuery(activeTab).fadeIn(); //Fade in the active ID content
+    return false;
+  });
   /* change position special-price and old-price in products-grid */
   // (jQuery('.products-grid .special-price')).insertBefore(jQuery('.products-grid .old-price'));
   // jQuery('.special-price + .special-price').remove();
