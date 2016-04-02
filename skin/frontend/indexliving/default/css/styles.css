@@ -3386,7 +3386,7 @@ body {
 .call-us {float:left; padding:8px 0px; margin-right:20px; font-family: 'FuturaBT-Book';}
 .call-us label {line-height:22px; float:left; font-size:13px;  font-family: 'FuturaBT-Book';}
 .call-us > div {display:block; text-align:right;}
-.call-us label  a { font-size:18px; line-height:22px; font-weight:bold; text-decoration:none;}
+.call-us label  a { font-size:19px; font-family: 'FuturaT_Bold'; margin-left:5px; line-height:22px; font-weight:bold; text-decoration:none;}
 .call-us span {font-size:10px; line-height:12px; display:block;}
 
 .store-language-container{float:right; font-family: 'Lato', sans-serif;}
