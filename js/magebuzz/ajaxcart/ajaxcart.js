@@ -416,6 +416,30 @@ AjaxCart.prototype = {
     }
 		var wishlist_item_id = $('ajaxcart_product_addtocart_form')['wishlist_item_id'].getValue();
 		this.removeWishlistItem(wishlist_item_id);
-  }
+  },
+	
+	ajaxAddToWishlist: function(url) {		
+		new Ajax.Request(url, {
+			onCreate: function() {
+				this.ajaxLoading.show();
+			}.bind(this),
+
+			onComplete: function(transport) {
+				if (transport && transport.responseText) {
+					try {
+						response = eval('(' + transport.responseText + ')');
+					}
+					catch (e) {
+						response = {};
+					}
+				}
+				this.ajaxLoading.hide();
+				this.optionsPopup.update(response.html);
+        this.optionsPopup.show();
+				//this.optionsPopup.update("Fuck YOU, do not work");
+      //this.optionsPopup.show();
+			}.bind(this)
+		});
+	}
 }
   

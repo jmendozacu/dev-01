@@ -346,6 +346,8 @@ function amshopby_external(){
     if (typeof ConfigurableSwatchesList != 'undefined') {
         ConfigurableSwatchesList.init();
     }
+		
+		ajaxWishlistInit();
 }
 
 function amshopby_external_rwd() {
