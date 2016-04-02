@@ -60,6 +60,18 @@ class Amasty_Ajaxlogin_AccountController extends Mage_Customer_AccountController
 			$this->_loginPostRedirect();
 	}
 	
+	public function visitorloginAction() {			
+		if ($this->_getSession()->isLoggedIn()) {
+			$this->_redirect('*/*/');
+			return;
+		}
+		$this->getResponse()->setHeader('Login-Required', 'true');
+		$this->loadLayout();
+		$this->_initLayoutMessages('customer/session');
+		$this->_initLayoutMessages('catalog/session');
+		$this->renderLayout();
+  }
+	
 	public function rewardpointsAction() {
 		
 		$this->loadLayout();
