@@ -18,6 +18,8 @@
       <action method="addCss">
         <stylesheet>css/dealerlocator/dealerlocator.css</stylesheet>
       </action>
+      <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+      <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
     </reference>
     <reference name="root">
       <action method="setTemplate">

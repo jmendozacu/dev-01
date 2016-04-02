@@ -7,7 +7,7 @@
 <?php $dealers = $this->getChild('pager')->getCollection();
 $dealers->clear(); ?>
 
-<div class="page-title">
+<div class="page-title style2">
   <h1><?php echo $this->__('Dealer Locator'); ?></h1>
 </div>
 
@@ -18,6 +18,7 @@ $dealers->clear(); ?>
   <p class='note-msg' id="message" style="display:none"></p>
 
   <div class="dealerlocator">
+    <h2 class="h2-label"><?php echo $this->__('All products can have 10 branches') ?></h2>
     <?php if ($this->displaySearchForm()): ?>
       <div class="dealer-search">
         <div class="fieldset clearfix">
@@ -132,71 +133,29 @@ $dealers->clear(); ?>
         <?php endif; ?>
       <?php endif; ?>
 
-      <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
+      
 
-      <div class="list-all-dealer">
+      <div class="list-all-dealer list-all-product-dealer">
+        
         <?php if ($dealers->getSize()): ?>
           <?php echo $this->getPagerHtml(); ?>
-          <table class="data-table" id="dealer-list">
-            <colgroup>
-              <col>
-              <col>
-              <col>
-              <?php if ($this->showEmailAndWebsite()): ?>
-                <col width="1">
-                <col width="1">
-              <?php endif; ?>
-            </colgroup>
-            <thead>
-            <tr>
-              <th><?php echo $this->__('Store') ?></th>
-              <th><?php echo $this->__('Address') ?></th>
-              <th><?php echo $this->__('Phone') ?></th>
-              <?php if (Mage::getSingleton('core/session')->getData('dealer_query')) : ?>
-                <th>
-                  <?php
-                  $unit = Mage::helper('dealerlocator')->getRadiusUnit() ? 'Kilometers' : 'Miles';
-                  echo $this->__('Distance') . ' (' . $unit . ')';
-                  ?>
-                </th>
-              <?php endif; ?>
-              <?php if ($this->showEmailAndWebsite()): ?>
-                <th><?php echo $this->__('Email') ?></th>
-                <th><?php echo $this->__('Website') ?></th>
-              <?php endif; ?>
-            </tr>
-            </thead>
-            <tbody>
+          <ul id="dealer-list" class="product-dealerscroll">
+            
             <?php foreach ($dealers->getItems() as $dealer): ?>
-              <tr
+              <li
                 onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
-                <td><label
-                    class="dealer-label"><?php echo $this->__('Store') ?></label><?php echo $dealer->getTitle(); ?></td>
-                <td><label
-                    class="dealer-label"><?php echo $this->__('Address') ?></label><?php echo $dealer->getAddress(); ?>
-                </td>
-                <td><label
-                    class="dealer-label"><?php echo $this->__('Phone') ?></label><?php echo $dealer->getPhone(); ?></td>
-                <?php if (Mage::getSingleton('core/session')->getData('dealer_query')) : ?>
-                  <td><label class="dealer-label"><?php echo $this->__('Distance') ?></label>
-                    <?php
-                    if (!Mage::helper('dealerlocator')->getRadiusUnit()) {
-                      echo sprintf('%.2f', $dealer->getDistance());
-                    } else {
-                      echo sprintf('%.2f', $dealer->getDistance() * 1.609344);
-                    }
-                    ?>
-                  </td>
+                <h3><?php echo $dealer->getTitle(); ?></h3>
+                <h4><?php echo $dealer->getAddress(); ?></h4>
+                <?php if ($dealer->getPostalCode()): ?>
+                <h4><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></h4>
                 <?php endif; ?>
-                <?php if ($this->showEmailAndWebsite()): ?>
-                  <td><label
-                      class="dealer-label"><?php echo $this->__('Email') ?></label><?php echo $dealer->getEmail(); ?>
-                  </td>
-                  <td><label
-                      class="dealer-label"><?php echo $this->__('Website') ?></label><?php echo $dealer->getWebsite(); ?>
-                  </td>
-                <?php endif ?>
-              </tr>
+                <?php if ($dealer->getPhone()): ?>
+                  <h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
+                <?php endif; ?>
+                <?php if ($dealer->getWebsite()): ?>
+                  <!--<h4><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></h4>-->
+                <?php endif; ?>
+              
               <input type="hidden" name="dealer-longitude" id="dealer_latitude_<?php echo $dealer->getId() ?>"
                      value="<?php echo $dealer->getLatitude() ?>"/>
               <input type="hidden" name="dealer-longitude" id="dealer_longitude_<?php echo $dealer->getId() ?>"
@@ -223,10 +182,13 @@ $dealers->clear(); ?>
                   <a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
                 </p>
               </div>
+              </li>
             <?php endforeach; ?>
-            </tbody>
-          </table>
-          <script type="text/javascript">decorateTable('dealer-list')</script>
+          </ul>
+          <script type="text/javascript">
+            decorateTable('dealer-list');
+            jQuery("ul.product-dealerscroll").mCustomScrollbar();
+          </script>
         <?php else: ?>
           <p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
         <?php endif; ?>

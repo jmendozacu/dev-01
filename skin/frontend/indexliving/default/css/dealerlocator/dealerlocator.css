@@ -1,10 +1,9 @@
 .dealerlocator {
 	float:left; width:100%;
+  margin-top:40px;
 }
+.dealerlocator  .h2-label {line-height:40px; padding:10px 30px; color:#fff; font-family: 'DBYordXMed'; font-size:28px; background:#252525; margin-bottom:10px; float:left; width:100%;}
 
-.dealerlocator * {
-  max-width: none;
-}
 
 .dealerlocator .col2-set .col-1 {
   float: left;
@@ -185,41 +184,43 @@
 .product-dealer-body-2columns h2.legend{font-family: 'DBYordXMed'; font-size:28px; background:#252525; padding:15px 20px; color:#FFFFFF; border-radius:4px 4px 0 0;}
 
 .product-dealer-body-2columns .product-dealers-popup{}
-.product-dealer-body-2columns .list-all-product-dealer{float:left; width:34%; padding:0 20px; margin:0 0 20px;}
-.product-dealer-body-2columns .list-all-product-dealer .product-dealerscroll{
+.product-dealer-body-2columns .gmap,
+.dealer-body-2columns .gmap{float:right; width:65%;  padding:0 20px;}
+.list-all-product-dealer{float:left; width:34%; padding:0 20px; margin:0 0 20px;}
+.list-all-product-dealer .product-dealerscroll{
 	max-height: 400px;
   overflow-y: auto;  
   overflow-x: hidden; 
 }
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager{
+.list-all-product-dealer .dealer-pager{
 	padding:3px 10px 3px 35px; 
 	overflow:hidden; 
 	background:#FFC222 url(images/dealerlocator/i-dealer.png) 10px center no-repeat;
 	margin:0 0 15px;
 }
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .amount,
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; font-family:'DBYordXMed'; display:block;}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages{float:right;}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li{display:none;}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_previous,
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next{display:block;}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages strong{display:none;}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages a.previous,
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px;}
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages .previous:before {
+.list-all-product-dealer .dealer-pager .amount,
+.list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; font-family:'DBYordXMed'; display:block;}
+.list-all-product-dealer .dealer-pager .pager .pages{float:right;}
+.list-all-product-dealer .dealer-pager .pager .pages ol li{display:none;}
+.list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_previous,
+.list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next{display:block;}
+.list-all-product-dealer .dealer-pager .pager .pages strong{display:none;}
+.list-all-product-dealer .dealer-pager .pager .pages a.previous,
+.list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px;}
+.list-all-product-dealer .dealer-pager .pager .pages .previous:before {
     background: url(images/dealerlocator/dealer-i-prev.png) no-repeat center center;
 		width:10px;
 		height:25px;
 }
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .pager .pages .next:before {
+.list-all-product-dealer .dealer-pager .pager .pages .next:before {
     background: url(images/dealerlocator/dealer-i-next.png) no-repeat center center;
 		width:10px;
 		height:25px;
 }
-.product-dealer-body-2columns .list-all-product-dealer .dealer-pager .limiter{display:none;}
-.product-dealer-body-2columns .list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6;}
-.product-dealer-body-2columns .gmap{float:right; width:65%;  padding:0 20px;}
-.product-dealer-body-2columns .list-all-product-dealer ul li h3{
+.list-all-product-dealer .dealer-pager .limiter{display:none;}
+.list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6;}
+
+.list-all-product-dealer ul li h3{
 	color:#ffc222;
 	font-family:Tahoma;
 	font-size:14px;
@@ -232,7 +233,7 @@
 	clear:both;
 	text-transform:none;
 }
-.product-dealer-body-2columns .list-all-product-dealer ul li h4{
+.list-all-product-dealer ul li h4{
 	color:#000;
 	font-family:Tahoma;
 	font-size:14px;
@@ -241,7 +242,7 @@
 	text-transform:none;
 	font-weight:normal;
 }
-.product-dealer-body-2columns .list-all-product-dealer ul li a{text-decoration: none;}
+.list-all-product-dealer ul li a{text-decoration: none;}
 
 .dealer-body-2columns .list-all-dealer {
   width: 60%;
