@@ -1992,7 +1992,9 @@ a.button {
   display: inline-block;
 }
 .price-box .old-price .price-label,
-.price-box .special-price .price-label {
+.price-box .special-price .price-label,
+.price-box .price-from .price-label,
+.price-box .price-to .price-label {
   display: none;
 }
 .price-box .old-price .price,
@@ -2009,6 +2011,18 @@ a.button {
   color: #ff0000;
   padding-right: 1em;
 }
+
+.price-box .price-from .price {
+  color: #ff0000;
+}
+
+.price-box .price-to .price{
+	color: #898989;
+	font-size: 12px;
+	font-family: 'FuturaLight';
+	line-height: 16px;
+}
+
 .price-box .special-price .price-label {
   color: #D84D3C;
 }
@@ -6118,9 +6132,15 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .product-options dd .styled-select::before,
 .product-options dd .styled-select:before {
-  /* border: solid 2px #000;
+  border: solid 2px #000;
   border-radius: 0 5px 5px 0;
-  border-left: none; */
+  border-left: none;
+}
+
+.product-options dd .amconf-images-list-label.styled-select::before,
+.product-options dd .amconf-images-list-label.styled-select:before {
+  border: 0 none;
+  border-radius: 0;
 }
 
 .product-options ul.options-list {
