@@ -3823,21 +3823,23 @@ a.skip-link {
 .nav-primary .title-viewall span.level2:before { content:""; height:40px; width:40px; position:absolute; left:12px; top:5px; border-radius:100%; background:url(../images/icons.png) no-repeat center 14px;}
 .nav-primary .title-viewall span.level2:before {background-color:#FFD322; border-radius:100%;}
  @media (min-width: 769px) {
-  .nav-primary li.level1:hover {background:#363636; }
-  .nav-primary li.level1:hover > a {color:#FFC222; padding-left:75px; text-decoration:none; }
-  .nav-primary li.level1:hover > a:before  {left:28px; background-color:#FFC222;}
-  .nav-primary li.level1:nth-child(1):hover  > a:before {background-position: -65px -113px;}
-  .nav-primary li.level1:nth-child(2):hover  > a:before {background-position: -62px -162px;)}
-  .nav-primary li.level1:nth-child(3):hover  > a:before{background-position: -63px -212px;}
-  .nav-primary li.level1:nth-child(4):hover  > a:before{background-position: -63px -259px;}
-  .nav-primary li.level1:nth-child(5):hover  > a:before{background-position: -63px -308px;}
-  .nav-primary li.level1:nth-child(6):hover  > a:before{background-position: -64px -355px;)}
-  .nav-primary li.level1:nth-child(7):hover  > a:before{background-position: -63px -405px;}
-  .nav-primary li.level1:nth-child(8):hover  > a:before{background-position: -1px -456px;}
-  .nav-primary li.level1:nth-child(9):hover  > a:before{background-position: -65px -503px;}
-  .nav-primary li.level1:nth-child(10):hover  > a:before {background-position: -66px -553px;}
   .nav-primary li.subcat li.level2 >a {font-size:20px; font-weight:bold; font-family: 'FuturaT_Bold';}
+  .nav-primary li.level1:hover {background-color:#363636; }
  }
+  .nav-primary li.level1 > a:hover {color:#FFC222; padding-left:75px; text-decoration:none; }
+  .nav-primary li.level1 > a:hover:before  {left:28px; background-color:#FFC222;}
+  .nav-primary li.level1:nth-child(1) > a:hover:before {background-position: -65px -113px;}
+  .nav-primary li.level1:nth-child(2) > a:hover:before {background-position: -62px -162px;)}
+  .nav-primary li.level1:nth-child(3) > a:hover:before{background-position: -63px -212px;}
+  .nav-primary li.level1:nth-child(4) > a:hover:before{background-position: -63px -259px;}
+  .nav-primary li.level1:nth-child(5) > a:hover:before{background-position: -63px -308px;}
+  .nav-primary li.level1:nth-child(6) > a:hover:before{background-position: -64px -355px;)}
+  .nav-primary li.level1:nth-child(7)  > a:hover:before{background-position: -63px -405px;}
+  .nav-primary li.level1:nth-child(8) > a:hover:before{background-position: -1px -456px;}
+  .nav-primary li.level1:nth-child(9) > a:hover:before{background-position: -65px -503px;}
+  .nav-primary li.level1:nth-child(10) > a:hover:before {background-position: -66px -553px;}
+ 
+ 
 .nav-primary li.level1:nth-child(1)  > a:before { background-position: -3px -113px; }
 .nav-primary  li.level1:nth-child(1) .title-viewall span.level2:before {background-position: -65px -113px;}
 .nav-primary li.level1:nth-child(2)  > a:before {background-position: 0px -162px;}
