@@ -64,12 +64,12 @@
 			dataType: 'json',
 			success: function (data) {
 				$j("#ajax_cart_loading").hide();
-				//$j('.block-compare').remove();
 				$j("#product-compare-list").html(data.bar);
-				//$j(".sider_bar").show();
-				$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
+				//$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
+				$('ajaxcart-overlay').update(data.html);
+				$('ajaxcart-overlay').show();
 				setTimeout(function () {
-					$j('.col-main').find('.messages').remove();
+					Effect.Fade($('ajaxcart-overlay'));
 				}, 5000);
 			}
 		});
