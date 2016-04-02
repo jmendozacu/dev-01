@@ -175,6 +175,10 @@ Compare products page
 -->
 
     <catalog_product_compare_index translate="label">
+			<reference name="head">
+					<action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
+					<action method="addJs"><script>varien/product.js</script></action>
+			</reference>
       <block type="catalog/product_compare_list" name="root" template="catalog/product/compare/list.phtml"  output="toHtml"/>
     </catalog_product_compare_index>
 
@@ -247,7 +251,7 @@ Product view
 
                 <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
 								
-								<block type="catalog/product_compare_sidebar" name="catalog.compare.insideproduct" as="compareInsideProduct" template="catalog/product/compare/sidebar.phtml"/>
+								<block type="catalog/product_compare_sidebar" name="catalog.compare.insideproduct" as="compareInsideProduct" template="catalog/product/compare/compare-product.phtml"/>
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
                     <label>Product View Extra Hint</label>

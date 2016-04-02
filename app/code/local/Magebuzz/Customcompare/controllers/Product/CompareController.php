@@ -21,7 +21,7 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
                         Mage::helper('catalog/product_compare')->calculate();
                         Mage::dispatchEvent('catalog_product_compare_add_product', array('product' => $product));
                         $this->loadLayout();
-                        $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/sidebar.phtml')->toHtml();
+                        $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/compare-response.phtml')->toHtml();
                     }
                     catch (Exception $e) {
                         echo $e->getMessage();
