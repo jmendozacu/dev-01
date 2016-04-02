@@ -2012,11 +2012,11 @@ a.button {
   padding-right: 1em;
 }
 
-.price-box .price-from .price {
+.price-box .price-from .price, .products-grid .price-box .price-from .price, .products-list .price-box .price-from .price{
   color: #ff0000;
 }
 
-.price-box .price-to .price{
+.price-box .price-to .price, .products-grid .price-box .price-to .price, .products-list .price-box .price-to .price{
 	color: #898989;
 	font-size: 12px;
 	font-family: 'FuturaLight';
