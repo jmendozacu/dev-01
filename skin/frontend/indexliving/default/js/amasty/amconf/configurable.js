@@ -137,9 +137,17 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
             'width' : width,
             'height': height
         });
-
-        div.observe('click', this.configureImage.bind(this));
+				
+				var divLabel = new Element('div', {
+            'class': 'amconf-color-label'
+        });
+				
+				divLabel.insert(option.label);
         imgContainer.appendChild(div);
+				imgContainer.appendChild(divLabel);
+				
+				div.observe('click', this.configureImage.bind(this));
+				divLabel.observe('click', this.configureImage.bind(this));
 
         if(useTooltip){
             amcontentPart = '"><img src="' + option.bigimage + '"/>'
@@ -225,7 +233,7 @@ Product.Config.prototype.fillSelect = function(element){
     var attributeId = element.id.replace(/[a-z]*/, '');
     var options     = this.getAttributeOptions(attributeId);
     var savedValue  = element.value;
-	this.clearSelect(element);
+		this.clearSelect(element);
     element.options[0] = new Option(this.config.chooseText, '');
 
     if('undefined' != typeof(AmTooltipsterObject)) {
@@ -241,6 +249,25 @@ Product.Config.prototype.fillSelect = function(element){
         if ($('amconf-images-' + attributeId)) {
             $('amconf-images-' + attributeId).remove();
         }
+				window.labelDiv = new Element('div', {
+					'class': 'amconf-images-list-label',
+					'id'   : 'amconf-images-label-' + attributeId,
+				});
+				
+				labelDiv.insert(this.config.chooseText);
+				
+				window.holderDivList = new Element('div', {
+						'class': 'amconf-images-list-container',
+						'id'   : 'amconf-images-list-' + attributeId,
+				});
+				
+				if ($('amconf-images-list-' + attributeId)) {
+            $('amconf-images-list-' + attributeId).remove();
+        }
+				
+				if ($('amconf-images-label-' + attributeId)) {
+            $('amconf-images-label-' + attributeId).remove();
+        }
             
         if (this.config.attributes[attributeId].use_image) {
             holder = element.parentNode;
@@ -249,17 +276,7 @@ Product.Config.prototype.fillSelect = function(element){
                 'id'   : 'amconf-images-' + attributeId,
             });
 						
-						window.labelDiv = new Element('div', {
-              'class': 'amconf-images-list-label',
-							'id'   : 'amconf-images-label-' + attributeId,
-            });
 						
-						labelDiv.insert(this.config.chooseText);
-						
-						window.holderDivList = new Element('div', {
-                'class': 'amconf-images-list-container',
-                'id'   : 'amconf-images-list-' + attributeId,
-            });
 						holderDivList.appendChild(labelDiv);
 						holderDivList.appendChild(holderDiv);
             holder.insertBefore(holderDivList, element);
@@ -573,44 +590,76 @@ Product.Config.prototype.selectImage = function(element)
 
 Product.Config.prototype.updateLabel = function(element) {
 	attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
+	var options     = this.getAttributeOptions(attributeId);
+	var opSelectedId = $('attribute' + attributeId).value;
 	//attributeId = element.closest('li.amconf-image-container').id.replace(/[a-z-]*/, '');
 	$('amconf-images-' + attributeId).childElements().each(function(child){
 		child.childElements().each(function(children){
 			if(children.hasClassName('amconf-image-selected')){
-				
-				// Empty selected item
-				$('amconf-images-label-' + attributeId).update('');
-				
-				// Add new selected item
-				
-				var labelStyleWidth = children.getStyle('width');
-				var labelStyleHeight = children.getStyle('height');
-				var labelStyleBackground = children.getStyle('background');
-				
 				var selectedOption = new Element('div', {
-            'class': 'selectedItem'
-        });
+					'class': 'selectedItem',
+					'id': 'selectedItem' + attributeId
+				});
 				var selectedOptionLabel = new Element('div', {
-            'class': 'selectedItemLabel'
-        });
-        selectedOption.setStyle({
-            width: labelStyleWidth,
-            height: labelStyleHeight
-        });
-				selectedOption.setStyle({background: labelStyleBackground});
+					'class': 'selectedItemLabel',
+					'id': 'selectedItemLabel' + attributeId
+				});
+				if ($('selectedItem' + attributeId)) {
+            $('selectedItem' + attributeId).remove();
+        }
+				if ($('selectedItemLabel' + attributeId)) {
+          $('selectedItemLabel' + attributeId).remove();
+        }
+				for(var i=0;i<options.length;i++){
+					if(options[i].id == opSelectedId){
+						if (options[i].color || !options[i].image) {
+							// Empty selected item
+							$('amconf-images-label-' + attributeId).update('');
+							
+							// Add new selected item
+							
+							var labelStyleWidth = children.getStyle('width');
+							var labelStyleHeight = children.getStyle('height');
+							var labelStyleBackground = children.getStyle('background');
+							
+							selectedOption.setStyle({
+									width: labelStyleWidth,
+									height: labelStyleHeight
+							});
+							selectedOption.setStyle({background: labelStyleBackground});
+							
+							selectedOptionLabel.insert(children.next().innerHTML);
+							
+						}else{
+							var imgSelected = new Element('img', {
+									'src'   :  children.getAttribute('src'),
+									'alt'   : children.getAttribute('alt'),
+									'title' : children.getAttribute('alt'),
+									'width' : children.getAttribute('width'),
+									'height': children.getAttribute('height')
+							});
+							selectedOption.insert(imgSelected);
+							selectedOptionLabel.insert(children.getAttribute('alt'));
+						}
+					}
+				}
 				
-				selectedOptionLabel.insert(children.next().innerHTML);
-				
+				$('amconf-images-label-' + attributeId).innerHTML = '';
 				$('amconf-images-label-' + attributeId).appendChild(selectedOption);
 				$('amconf-images-label-' + attributeId).appendChild(selectedOptionLabel);
 				
 				// Close options list
 				$('amconf-images-' + attributeId).setStyle({
-            'display': 'none'
-        });
+						'display': 'none'
+				});		
 			}
 		});
 	});
+}
+
+
+Product.Config.prototype.testOpen = function(element) {
+	
 }
 
 Product.Config.prototype.processEmpty = function()

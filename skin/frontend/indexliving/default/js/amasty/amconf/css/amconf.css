@@ -1,9 +1,8 @@
 .products-grid li.item .amconf-block{ position:absolute; top:200px; width:100%; text-align:center;}
 .products-grid li.item .amconf-block dl dt, .products-list li.item .amconf-block dl dt{display:none;}
 .amconf-image{
-    margin: 3px;
-    border-radius: 3px;
-    cursor: pointer;
+	margin-right: 10px;
+	cursor: pointer;
 }
 
 .amconf-noimage-div {
@@ -103,7 +102,7 @@ hr.amconf-hr{
    /*  outline: 1px solid #000; */
 		border-radius:10px;
 }
-
+.product-view .amconf-image-selected{border-radius:0; margin-right:10px;}
 .amconf-image-outofstock
 {
     opacity:0.6;
