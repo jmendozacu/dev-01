@@ -4507,6 +4507,8 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-list  .actions button.button,.products-list  .actions button.btn-cart{min-width:245px;}
 
+.products-list .link-wishlist.added-item {background-position:-78px -791px;}
+
 .products-list  .grid-price {float:left;}
 .products-list  .grid-price .price-box{float:left; margin-right:20px;}
 .products-list  .grid-price .save-price-percent{float:left; text-align:center; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
