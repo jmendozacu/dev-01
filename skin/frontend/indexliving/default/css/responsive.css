@@ -93,7 +93,7 @@
   .box-desktop,
   #header-search  {display:none;}
   .box-mobile {display:block;}
-  #header{background:#252525;  float:left; width:100%; padding:0px; }
+  #header{background:#252525;  float:left; width:100%; padding:0px; position:fixed; z-index:999;}
   #header.fixed {position:fixed; z-index:999;}
   .page-header,.page-container {padding-left:10px; padding-right:10px;}
   .page-header-container {padding:0; text-align:center;}
