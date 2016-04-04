@@ -20,7 +20,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
             $data = new Varien_Object($data);
         }
         $info = $this->getInfoInstance();
-        Mage::helper('Paysbuy')->debug('Assign Again!!!');
+        
         //Mage::helper('Paysbuy')->debug($data,true);
 		// $info->setPaysbuyType($this->getPaysbuyAccountId1())	
 		// 	->setMerchant_Id($data->getMerchant_Id())
