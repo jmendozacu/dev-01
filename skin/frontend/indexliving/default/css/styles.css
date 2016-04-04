@@ -1939,9 +1939,9 @@ a.button {
 }
 
 #co-payment-form-update dt { padding: 15px 0; border-bottom: solid 1px #e6e6e6;}
-#dt_method_Paysbuy{border-bottom: 0 !important;}
-#dd_method_Paysbuy .logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
+#dt_method_Paysbuy, #dt_method_KSmart{border-bottom: 0 !important;}
 #co-payment-form-update .radio{margin-top: 3px;}
+.logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
 /* -------------------------------------------- *
  * Please Wait (Loading Indicator)
  */
