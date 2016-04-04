@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <customcontact_adminhtml_customcontact_index>
+	<reference name="content">
+	  <block type="customcontact/adminhtml_customcontact" name="customcontact" />
+	</reference>
+  </customcontact_adminhtml_customcontact_index>
+</layout>

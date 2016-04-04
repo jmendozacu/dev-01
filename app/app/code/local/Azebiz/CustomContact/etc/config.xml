@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Azebiz_CustomContact>
+      <version>0.1.0</version>
+    </Azebiz_CustomContact>
+  </modules>
+  <frontend>
+    <routers>
+      <customcontact>
+        <use>standard</use>
+          <args>
+            <module>Azebiz_CustomContact</module>
+            <frontName>customcontact</frontName>
+          </args>
+      </customcontact>
+    </routers>
+  </frontend>
+  <global>
+		<rewrite>        
+            <azebiz_customcontact_contacts_indexcontroller>
+                <from><![CDATA[#^/contacts/index/#]]></from> <!-- Mage_Contacts_IndexController  -->
+                <to>/customcontact/contacts_index/</to> <!-- Azebiz_CustomContact_Contacts_IndexController  -->
+            </azebiz_customcontact_contacts_indexcontroller>
+		</rewrite>
+    <helpers>
+      <customcontact>
+        <class>Azebiz_CustomContact_Helper</class>
+      </customcontact>
+    </helpers>
+	<blocks>
+	  <customcontact>
+		<class>Azebiz_CustomContact_Block</class>
+	  </customcontact>
+	</blocks>
+	<models>
+	  <customcontact>
+		<class>Azebiz_CustomContact_Model</class>
+		<resourceModel>customcontact_mysql4</resourceModel>
+	  </customcontact>
+	  <customcontact_mysql4>
+		<class>Azebiz_CustomContact_Model_Mysql4</class>
+		<entities>		  
+			  <customcontact>
+				<table>contact_form_m</table>
+			  </customcontact>
+        </entities>
+	  </customcontact_mysql4>
+	</models>
+	<resources>
+	  <customcontact_setup>
+		<setup>
+		  <module>Azebiz_CustomContact</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </customcontact_setup>
+	  <customcontact_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </customcontact_write>
+	  <customcontact_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </customcontact_read>
+	</resources>
+  </global>
+  <admin>
+	<routers>
+	  <customcontact>
+	    <use>admin</use>
+		<args>
+		  <module>Azebiz_CustomContact</module>
+		  <frontName>admin_customcontact</frontName>
+		</args>
+	  </customcontact>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <customcontact module="customcontact">
+		<title>CustomContact</title>
+		<sort_order>100</sort_order>
+		<children>
+		  <customcontact module="customcontact">
+		    <title>Manage Customcontact</title>
+			<sort_order>0</sort_order>
+			<action>admin_customcontact/adminhtml_customcontact</action>
+		  </customcontact>
+		</children>
+	  </customcontact>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<customcontact translate="title" module="customcontact">
+			  <title>CustomContact</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+		  <customcontact translate="title">
+			<title>Manage Customcontact</title>
+			<sort_order>0</sort_order>
+		  </customcontact>
+			  </children>
+			</customcontact>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<customcontact>
+		  <file>customcontact.xml</file>
+		</customcontact>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 
