@@ -76,7 +76,7 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
             }
         }
         $response['status'] = 'SUCCESS';
-        $response['message'] = $this->__('The product has been added to comparison list.');
+        $response['message'] = $this->__('The product has been removed to comparison list.');
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
         return;
         }

@@ -200,6 +200,10 @@
 .list-all-product-dealer .dealer-pager .amount,
 .list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; /* font-family:'DBYordXMed';  */font-family: 'RSU_Bold';display:block;}
 .list-all-product-dealer .dealer-pager .pager .pages{float:right;}
+.list-all-product-dealer .dealer-pager .pager .pages ol li{display:none;}
+.list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_previous,
+.list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next{display:block;}
+.list-all-product-dealer .dealer-pager .pager .pages strong{display:none;}
 
 .list-all-product-dealer .dealer-pager .pager .pages a.previous,
 .list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px;}
