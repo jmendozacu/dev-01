@@ -5121,6 +5121,8 @@ body.catalogsearch-result-index .page-title h1 {
 	float:left;
   clear:left;
 }
+.product-view .product-shop .price-box .price-from,
+.product-view .product-shop .price-box .price-to { display:inline-block;}
 .product-view .product-shop .price-box .old-price,
 .product-view .product-shop .price-box .special-price,
 .product-view .product-shop .price-box .regular-price {
