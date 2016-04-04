@@ -829,7 +829,7 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 
 @media only screen and (max-width: 770px) {
-  .sidebar .block:not(.block-layered-nav) {
+  /* .sidebar .block:not(.block-layered-nav) {
     margin-bottom: 0;
   }
   .sidebar .block:not(.block-layered-nav) .block-title {
@@ -936,7 +936,7 @@ body:not(.customer-account) .block:first-child .block-title {
   }
   .sidebar .block:last-of-type {
     border-bottom: 1px solid #cccccc;
-  }
+  } */
 }
 /* -------------------------------------------- *
  * Secondary Navigation
@@ -1973,7 +1973,7 @@ a.button {
   white-space: nowrap;
   /* display:none; */
 }
-
+.price-box .minimal-price .price-label{float:left; margin:5px 0 0;}
 .price-box .minimal-price-link {
   padding-left: 1em;
   color: #3399cc;
