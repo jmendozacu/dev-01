@@ -1937,11 +1937,11 @@ a.button {
 .payment-methods .form-list li:last-child {
   margin-bottom: 0;
 }
-
 #co-payment-form-update dt { padding: 15px 0; border-bottom: solid 1px #e6e6e6;}
-#dt_method_Paysbuy, #dt_method_KSmart{border-bottom: 0 !important;}
+#dt_method_Paysbuy, #dt_method_KSmart, #dt_method_ccsave{border-bottom: 0 !important;}
 #co-payment-form-update .radio{margin-top: 3px;}
 .logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
+.call_center_img {margin: 0 -10px -10px;border-radius: 5px;}
 /* -------------------------------------------- *
  * Please Wait (Loading Indicator)
  */
