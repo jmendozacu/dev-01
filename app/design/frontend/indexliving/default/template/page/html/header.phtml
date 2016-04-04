@@ -65,8 +65,8 @@
                   <span>
                     <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
                     <?php
-                      if(iconv_strlen($_customerNameStripped,'UTF-8')>18) {
-                        $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 18, 'UTF-8');
+                      if(iconv_strlen($_customerNameStripped,'UTF-8')>16) {
+                        $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 16, 'UTF-8');
                         $_customerNameStripped .= '...';
                       }
                     ?>
