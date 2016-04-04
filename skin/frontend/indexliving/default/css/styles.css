@@ -706,6 +706,7 @@ h6, .h6 {
 }
 
 .availability.in-stock {
+  display: none;
   color: #11b400;
 }
 
@@ -2924,7 +2925,7 @@ p.required,
   color: #df280a;
   font-size: 13px;
 }
-
+.validation-advice{padding-left: 4%;}
 /* ============================================ *
  * Form List
  * ============================================ */
