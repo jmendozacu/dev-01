@@ -58,16 +58,16 @@
 										<div class="compare-item-actions">
 											<?php if ($this->helper('wishlist')->isAllow()) : ?>
 												<ul class="add-to-links">
-														<li><a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+														<li><a onclick="ajaxCart.ajaxAddToWishlist('<?php echo $this->getAddToWishlistUrl($_item) ?>')" href="javascript:void(0)" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
 												</ul>
 											<?php endif; ?>
 											<?php if($_item->isSaleable()): ?>
-													<button <?php if($_total > 2): ?>style="float:left; width:100%;"<?php endif;?> type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setPLocation('<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($_item) ?>', true)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+													<button <?php if($_total > 2): ?>style="float:left; width:100%;"<?php endif;?> type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart-compare" onclick="setLocation('<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($_item) ?>', true)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
 											<?php else: ?>
 													<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
 											<?php endif; ?>
 										</div>
-										<a href="#" class="btn-remove" onclick="removeCompareItemPopup('<?php echo $this->helper('catalog/product_compare')->getRemoveUrl($_item) ?>');" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>"><?php echo $this->__('Remove This Item') ?></a>
+										<a href="#" class="btn-remove" onclick="ajaxCart.ajaxRemoveCompareItem('<?php echo $this->helper('catalog/product_compare')->getRemoveUrl($_item) ?>');" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>"><?php echo $this->__('Remove This Item') ?></a>
 									</div>	
                 </td>
             <?php endforeach; ?>

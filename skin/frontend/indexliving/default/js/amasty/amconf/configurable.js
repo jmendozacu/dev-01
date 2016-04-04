@@ -250,7 +250,7 @@ Product.Config.prototype.fillSelect = function(element){
             $('amconf-images-' + attributeId).remove();
         }
 				window.labelDiv = new Element('div', {
-					'class': 'amconf-images-list-label',
+					'class': 'amconf-images-list-label styled-select',
 					'id'   : 'amconf-images-label-' + attributeId,
 				});
 				
@@ -276,6 +276,7 @@ Product.Config.prototype.fillSelect = function(element){
                 'id'   : 'amconf-images-' + attributeId,
             });
 						
+						holderDiv.setStyle({'display': 'none'});
 						
 						holderDivList.appendChild(labelDiv);
 						holderDivList.appendChild(holderDiv);
@@ -379,6 +380,7 @@ Product.Config.prototype.fillSelect = function(element){
             this.configureElement(element);
         }
     }
+		this.rebuildOpenOptions(element);
 }
 
 Product.Config.prototype.configureElement = function(element) 
@@ -406,9 +408,9 @@ Product.Config.prototype.configureElement = function(element)
     if(element.value){
         this.state[element.config.id] = element.value;
         if(element.nextSetting){
-            element.nextSetting.disabled = false;
-            this.fillSelect(element.nextSetting);
-            this.resetChildren(element.nextSetting);
+					element.nextSetting.disabled = false;
+					this.fillSelect(element.nextSetting);
+					this.resetChildren(element.nextSetting);
         }
     }
     else {
@@ -658,8 +660,20 @@ Product.Config.prototype.updateLabel = function(element) {
 }
 
 
-Product.Config.prototype.testOpen = function(element) {
-	
+Product.Config.prototype.rebuildOpenOptions = function(element) {
+	var attributeId = element.id.replace(/[a-z]*/, '');
+	$('amconf-images-label-' + attributeId).observe('click', function(event) {
+		if(this.next().visible()){
+			this.next().setStyle({'display': 'none'});
+		}else{
+			this.next().setStyle({'display': 'block'});
+		}
+		
+	});
+	/* // Using jQuery
+	jQuery('#amconf-images-label-' + attributeId).click(function(){
+		jQuery(this).next().slideToggle(300);
+	}); */
 }
 
 Product.Config.prototype.processEmpty = function()

@@ -55,4 +55,7 @@
 				</block>
 			</reference>
 		</customer_account_rewardpoints>
+		<amajaxlogin_account_visitorlogin>
+			<update handle="customer_account_login"/>
+		</amajaxlogin_account_visitorlogin>
 </layout>

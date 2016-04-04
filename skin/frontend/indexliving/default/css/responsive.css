@@ -6,7 +6,9 @@
  * ============================================ */
  .box-mobile {display:none;}
  .product-viewed-mobile-tablet{display:none;}
- @media (min-width: 1200px) {}
+ @media (min-width: 1200px) {
+	.compare-popup{min-width:1200px;}
+}
  @media (max-width: 1199px) {
 	.checkout-list-step ul{width:100%;}
   /* home page*/
@@ -68,6 +70,11 @@
   .icon-minicart{float:left; width:30px; height:18px;  background:url(../images/icon-mobile.png) no-repeat -36px 0px;}
   .icon-minicart {background-position:-71px 0px; margin-left:10px;} */
   .products-grid .actions {opacity:1;}
+	.products-list > li .product-image{width:35%;}
+	.products-list > li .product-shop{width:62%}
+	.products-list .link-wishlist{left:160px; top:5px;}
+	.products-list > li .amconf-block{left:10px;}
+	.products-list .actions button.button, .products-list .actions button.btn-cart{min-width:170px;}
   .box-home-list-products .a-button {display:none;}
   .title-style3 {font-size:14px;}
   .main-home .box-home-decor .decor-style .banner-title {font-size:12px; padding:0px;}
@@ -91,7 +98,7 @@
   .box-desktop,
   #header-search  {display:none;}
   .box-mobile {display:block;}
-  #header{background:#252525;  float:left; width:100%; padding:0px; }
+  #header{background:#252525;  float:left; width:100%; padding:0px; position:fixed; z-index:999;}
   #header.fixed {position:fixed; z-index:999;}
   .page-header,.page-container {padding-left:10px; padding-right:10px;}
   .page-header-container {padding:0; text-align:center;}
@@ -332,6 +339,8 @@
   .products-grid .actions .button.btn-view-details,
   .products-list .button.btn-view-details,
   .products-grid .actions p, .products-list .actions p  {height:30px; line-height:30px; font-size:14px;}
+	.products-list > li .amconf-block{left:20px;}
+	.products-list .actions button.button, .products-list .actions button.btn-cart{min-width:170px;}
   .toolbar-bottom  .toolbar {border:none; padding:0px;}
   .pages.box-mobile {width:100%; border-bottom:solid 1px #EBEBEB; border-top:solid 1px #EBEBEB;}
   .category-products .pages.box-mobile {border-top:none;}

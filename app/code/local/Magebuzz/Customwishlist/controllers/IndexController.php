@@ -1,6 +1,6 @@
 <?php
 /*
-* Copyright (c) 2013 www.magebuzz.com 
+* Copyright (c) 2016 www.magebuzz.com 
 */
 require_once(Mage::getModuleDir('controllers','Mage_Wishlist').DS.'IndexController.php');
 class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexController {
@@ -37,7 +37,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	{
 		$wishlist = Mage::registry('wishlist');
 		if ($wishlist) {
-
 			return $wishlist;
 		}
 
@@ -57,8 +56,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		return $wishlist;
 	}
 
-	public function addAction()
-	{
+	public function addAction() {
 		$response = array();
 
 		if(!Mage::getSingleton('customer/session')->isLoggedIn()){
@@ -68,40 +66,35 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			return;
 		}
 
-		if(empty($response)){
+		if (empty($response)) {
 			$session = Mage::getSingleton('customer/session');
 			$wishlist = $this->_getWishlist();
 
 			if (!$wishlist) {
 				$response['status'] = 'ERROR';
 				$response['message'] = $this->__('Unable to Create Wishlist');
-			}else{
-
+			} else {
 				$productId = (int) $this->getRequest()->getParam('product');
 				if (!$productId) {
 					$response['status'] = 'ERROR';
 					$response['message'] = $this->__('Product Not Found');
-				}else{
-
+				} else {
 					$product = Mage::getModel('catalog/product')->load($productId);
 					if (!$product->getId() || !$product->isVisibleInCatalog()) {
 						$response['status'] = 'ERROR';
 						$response['message'] = $this->__('Cannot specify product.');
-					}else{
-
+					} else {
 						try {
 							$requestParams = $this->getRequest()->getParams();
 							$buyRequest = new Varien_Object($requestParams);
 
-
 							Mage::helper('wishlist')->calculate();
 
-							if(Mage::helper('customwishlist')->checkItemInWishlist($productId)){
+							if (Mage::helper('customwishlist')->checkItemInWishlist($productId)) {
 								$message = $this->__('This product has been added to your wishlist already');
 								$response['status'] = 'SUCCESS';
 								$response['message'] = $message;
-
-							}else{
+							} else {
 								$message = $this->__('%1$s has been added to your wishlist.', $product->getName());
 								$response['status'] = 'SUCCESS';
 								$response['message'] = $message;
@@ -137,6 +130,18 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			}
 
 		}
+		$html = 
+		'<div class="block" id="ajaxcart_content_option_product">
+			<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+			<div class="ajaxcart-heading">
+				<p class="added-success-message">' 		
+				. $response['message'] .
+				'</p>
+			</div>
+		</div>
+		';
+		$response['html'] = $html;
+		
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
 		return;
 	}
