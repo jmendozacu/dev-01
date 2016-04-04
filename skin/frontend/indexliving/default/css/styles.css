@@ -6243,6 +6243,7 @@ body.catalogsearch-result-index .page-title h1 {
   float: left;
 }
 
+
 /* -------------------------------------------- *
  * Related Products
  */
@@ -9113,10 +9114,7 @@ body.newsletter-manage-index .my-account .form-list {
 /* ============================================ *
  * Contacts
  * ============================================ */
-.contacts-index-index .buttons-set {
-  margin-left: 30px;
-  max-width: 435px;
-}
+
 .contacts-index-index .buttons-set p.required {
   float: left;
 }
@@ -10616,9 +10614,6 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
   border: none;
 }
 
-#contactForm {
-  padding-left: 40px;
-}
 #contactForm h2 {
   display: none;
 }
@@ -10635,6 +10630,20 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
   #contactForm {
     padding-left: 0;
   }
+}
+/* contact us*/
+.contacts-content {float:left; width:100%; margin-top:30px;}
+.contacts-content .contacts-left {float:left; width:42%; padding-right:15px;}
+.contacts-content .contacts-right {float:left; width:58%;}
+#contactForm textarea {width:365px; max-width:100%; margin:0px;}
+.contacts-content .buttons-set {border:none; text-align:left;}
+.contacts-content .buttons-set p {width:100%; float:left; margin:0px;}
+.contacts-content .buttons-set button.button {
+  float: left;
+  margin: 0px;
+  min-width: 250px;
+  height: 40px;
+  border-radius: 5px;
 }
 /* ============================================ *
  * Pricing Conditions
