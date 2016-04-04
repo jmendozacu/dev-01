@@ -1,15 +1,9 @@
 <?xml version="1.0"?>
 <config>
-    <tabs>
-        <templates_master>
-            <label>Templates-master</label>
-            <sort_order>195</sort_order>
-        </templates_master>
-    </tabs>
     <sections>
         <highlight translate="label" module="highlight">
             <label>Highlight</label>
-            <tab>templates_master</tab>
+            <tab>catalog</tab>
             <frontend_type>text</frontend_type>
             <sort_order>834</sort_order>
             <show_in_default>1</show_in_default>
