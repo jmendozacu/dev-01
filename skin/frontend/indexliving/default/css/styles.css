@@ -706,7 +706,7 @@ h6, .h6 {
 }
 
 .availability.in-stock {
-  display: block;
+  display: none;
   color: #11b400;
 }
 
