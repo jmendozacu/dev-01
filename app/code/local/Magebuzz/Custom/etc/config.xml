@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magebuzz_Custom>
+            <version>0.1.0</version>
+        </Magebuzz_Custom>
+    </modules>
+
+    <frontend>
+        <routers>
+            <custom>
+                <use>standard</use>
+                <args>
+                    <module>Magebuzz_Custom</module>
+                    <frontName>custom</frontName>
+                </args>
+            </custom>
+        </routers>
+    </frontend>
+</config>

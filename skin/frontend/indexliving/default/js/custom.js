@@ -1,3 +1,63 @@
+function checkItemInWishlist() {
+  //debugger;
+  jQuery.ajax({
+    dataType: 'json',
+    url: BASE_URL + '/custom/index/checkItem'
+  }).done(function(res){
+    //debugger;
+    if(!customerIsLoggedIn){
+      jQuery('.link-wishlist').each(function(){
+        var wl_a = jQuery(this);
+        var href = wl_a.attr('href');
+        wl_a.attr('ref', href);
+        wl_a.removeClass('added-item');
+      });
+      return;
+    }else{
+      jQuery('.link-wishlist').each(function(){
+        var wl_a = jQuery(this);
+        var href = wl_a.attr('href');
+        wl_a.attr('ref', href)
+        if(href.indexOf('wishlistindex') != -1) { // Remove link
+          var removelinkpatt = /item\/\d+/igm;
+          var removepattexec = removelinkpatt.exec(href);
+          if (typeof removepattexec !== 'undefined' && removepattexec !== null) {
+            var productId = removepattexec.shift().slice(5);
+            if(res['wlitemadded'].indexOf(productId) != -1){
+              return;
+            }else{
+              if(wl_a.hasClass('added-item')) {
+                wl_a.removeClass('added-item')
+                    .attr('href', BASE_URL + 'wishlist/index/add/product/' + productId + '/form_key/' + res['form_key'])
+                    .attr('ref', '');
+              }
+            }
+          }
+        }else{
+          var patt = /product\/\d+/igm;
+          var pattexec = patt.exec(href);
+          if (typeof pattexec !== 'undefined' && pattexec !== null) {
+            var productId = pattexec.shift().slice(8);
+            if(res['wlitemadded'].indexOf(productId) != -1){
+              if(!wl_a.hasClass('added-item')) {
+                wl_a.addClass('added-item')
+                    .attr('ref', href)
+                    .attr('href', BASE_URL + 'custom/wishlistindex/remove/item/' + productId);
+              }
+            }else {
+              if(wl_a.hasClass('added-item')) {
+                wl_a.removeClass('added-item')
+                    .attr('href', wl_a.attr('ref'))
+                    .attr('ref', '');
+              }
+            }
+          }
+        }
+      });
+    }
+  });
+}
+
 var widthWindow = jQuery( window ).width();
 var widthHeight = jQuery( window ).height();
 
