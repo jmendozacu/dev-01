@@ -324,6 +324,9 @@
   .sort-by-content li {width:100%; margin: 0px; padding: 5px 25px;}
   .block-layered-nav .block-content > dl > dd  li a,
   .sort-by-content li a{display:block; line-height:20px; padding-top:5px; padding-bottom:5px;}
+	
+	.sidebar .block-compare{padding:10px;}
+	.sidebar .block-title strong{background-position:97% center;}
 
   .block-layered-nav .block-content > dl > dt:after,
   .block-layered-nav .currently,
