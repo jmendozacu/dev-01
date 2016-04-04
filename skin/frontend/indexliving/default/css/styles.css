@@ -1072,8 +1072,8 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .data-table td .product-info .price-box .special-price .price{color:#ff0000;}
 .compare-popup .data-table td .product-info .price-box .old-price .price{
 	font-family: 'FuturaLight';
-  font-size: 16px;  
-	text-decoration: line-through;  
+  font-size: 16px;
+	text-decoration: line-through;
 	color: #898989;
 }
 .compare-popup .data-table td .product-info .btn-remove{
@@ -1938,6 +1938,10 @@ a.button {
   margin-bottom: 0;
 }
 
+#co-payment-form-update dt { padding: 15px 0; border-bottom: solid 1px #e6e6e6;}
+#dt_method_Paysbuy{border-bottom: 0 !important;}
+#dd_method_Paysbuy .logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
+#co-payment-form-update .radio{margin-top: 3px;}
 /* -------------------------------------------- *
  * Please Wait (Loading Indicator)
  */
