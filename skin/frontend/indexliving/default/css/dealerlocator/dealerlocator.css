@@ -198,7 +198,7 @@
 	margin:0 0 15px;
 }
 .list-all-product-dealer .dealer-pager .amount,
-.list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; font-family:'DBYordXMed'; display:block;}
+.list-all-product-dealer .dealer-pager .pager{padding:0; margin:0; font-size:18px; color:#FFFFFF; /* font-family:'DBYordXMed';  */font-family: 'RSU_Bold';display:block;}
 .list-all-product-dealer .dealer-pager .pager .pages{float:right;}
 
 .list-all-product-dealer .dealer-pager .pager .pages a.previous,
