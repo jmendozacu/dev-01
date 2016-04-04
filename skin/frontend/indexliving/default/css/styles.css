@@ -2298,11 +2298,13 @@ span.weee {
   float:left;
   padding:5px 0;
   color:#252525;
-  font-size:24px;
-  font-family: 'DBYordXMed';
+  /* font-size:24px;
+  font-family: 'DBYordXMed'; */
+  font-size:14px;
+  font-family: "FuturaBT-Book";
   line-height:30px;
   }
-.pager-no-toolbar  .pages ol {margin-top:2px; margin-bottom:2px;}
+.pager-no-toolbar  .pages ol {margin-top:5px; margin-bottom:5px;}
 
 .pager-no-toolbar ~ .pager-no-toolbar {
   margin-top: 10px;
@@ -2347,7 +2349,7 @@ span.weee {
   margin-right: 5px;
 }
 
-.pager > .sort-by select, .pager .limiter select{ border:0 none; padding:2px;}
+.pager > .sort-by select, .pager .limiter select{ border:0 none; padding:2px; font-size:14px;}
 
 .pager > .sort-by .sort-by-switcher {
   width: 30px;
