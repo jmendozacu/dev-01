@@ -662,14 +662,16 @@ Product.Config.prototype.updateLabel = function(element) {
 
 Product.Config.prototype.rebuildOpenOptions = function(element) {
 	var attributeId = element.id.replace(/[a-z]*/, '');
-	$('amconf-images-label-' + attributeId).observe('click', function(event) {
-		if(this.next().visible()){
-			this.next().setStyle({'display': 'none'});
-		}else{
-			this.next().setStyle({'display': 'block'});
-		}
-		
-	});
+	if($('amconf-images-label-' + attributeId)){
+		$('amconf-images-label-' + attributeId).observe('click', function(event) {
+			if(this.next().visible()){
+				this.next().setStyle({'display': 'none'});
+			}else{
+				this.next().setStyle({'display': 'block'});
+			}
+			
+		});
+	}
 	/* // Using jQuery
 	jQuery('#amconf-images-label-' + attributeId).click(function(){
 		jQuery(this).next().slideToggle(300);
