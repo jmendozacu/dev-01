@@ -202,11 +202,14 @@
 .list-all-product-dealer .dealer-pager .pager .pages{float:right;}
 .list-all-product-dealer .dealer-pager .pager .pages ol li{display:none;}
 .list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_previous,
-.list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next{display:block;}
+.list-all-product-dealer .dealer-pager .pager .pages ol li#li_page_next,
+.list-all-product-dealer .dealer-pager .pager .pages ol li.li-next,
+.list-all-product-dealer .dealer-pager .pager .pages ol li.li-previous{display:block;}
 .list-all-product-dealer .dealer-pager .pager .pages strong{display:none;}
 
+
 .list-all-product-dealer .dealer-pager .pager .pages a.previous,
-.list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px;}
+.list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px; display:block!important;}
 .list-all-product-dealer .dealer-pager .pager .pages .previous:before {
     background: url(images/dealerlocator/dealer-i-prev.png) no-repeat center center;
 		width:10px;
@@ -217,6 +220,9 @@
 		width:10px;
 		height:25px;
 }
+.list-all-dealer.list-all-product-dealer .dealer-pager .pager .pages .previous:before,
+.list-all-dealer.list-all-product-dealer .dealer-pager .pager .pages .next:before {height:20px;}
+
 .list-all-product-dealer .dealer-pager .limiter{display:none;}
 .list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6; cursor: pointer;}
 
@@ -545,5 +551,6 @@ div.autocomplete ul li.selected {
 .title-mobile {display:none;}
 @media (max-width: 480px) {
   .dealerlocator .h2-label {background:#373737; line-height: 22px;text-align: center; font-size:20px; margin:0px; padding: 7px;}
-  .title-mobile {display:block; float:left; width:100%; margin-bottom:0px; line-height:30px; padding:12px 35px 12px 10px; color:#fff; font-size:22px; font-family: 'DBYordXMed'; background:url(../../images/icon1.png) no-repeat 30px center #252525;}
+  .title-mobile {display:block; float:left; width:100%; margin-bottom:0px; line-height:30px; padding:12px 10px 12px 35px; color:#fff; font-size:22px; font-family: 'DBYordXMed'; background:url(../../images/dealerlocator/icon1.png) no-repeat 16px center #252525;}
+  
 }
