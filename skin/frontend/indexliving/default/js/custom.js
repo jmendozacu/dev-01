@@ -99,6 +99,8 @@ function ss_plugin_loadpopup_js(em){
 
 jQuery(document).ready(function () {
 
+  checkItemInWishlist();
+
   /* language */
   jQuery(".dropdown img.flag").addClass("flagvisibility");
   jQuery(".dropdown dt a").click(function() {

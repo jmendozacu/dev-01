@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config>
-    <modules>
-        <MagentoMasters_MasterCheckout>
-            <active>false</active>
-            <codePool>local</codePool>
-        </MagentoMasters_MasterCheckout>
-    </modules>
-</config>
