@@ -380,15 +380,16 @@
 
 .amscheckout-processing{
     background-image: url('../../../images/amasty/amscheckout/processing.gif');
-    width: 66px;
-    height: 66px;
-    
+    width: 68px;
+    height: 68px;
+    z-index:999;
     margin: 0 auto;
-    position: relative;
-    margin-bottom: -76px;
+    position: absolute;
+    margin-top: -34px;
+    margin-left: -34px;
     float: right;
-    top: 10px;
-    right: 10px;
+    top: 50%;
+    left: 50%;
 }
 
 .amscheckout-processing-small{

@@ -1,4 +1,4 @@
-.products-grid li.item .amconf-block{ position:absolute; top:200px; width:100%; text-align:center;}
+.products-grid li.item .amconf-block{/*  position:absolute; top:200px;  */width:100%; text-align:center;}
 .products-grid li.item .amconf-block dl dt, .products-list li.item .amconf-block dl dt{display:none;}
 .amconf-image{
 	margin-right: 10px;
