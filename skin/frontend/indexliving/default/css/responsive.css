@@ -495,7 +495,7 @@
 	.checkout-list-step ul{
 		width:100%;
 	}
-	.checkout-list-step ul li{padding:20px 0;}
+	.checkout-list-step ul li{/* padding:20px 0; */}
 	.checkout-list-step ul li h6{font-size:13px;}
 
 	.page-not-found{max-width:100%; margin:10% auto; text-align:center;}
@@ -715,7 +715,9 @@
 	.checkout-list-step ul{
 		width:100%;
 	}
-	.checkout-list-step ul li{padding:20px 0;}
+	.checkout-list-step ul li{/* padding:20px 0; */}
+	.checkout-list-step ul li{width:46%}
+	.checkout-list-step ul li.first, .checkout-list-step ul li.last{width:27%}
 	.checkout-list-step ul li h6{font-size:10px;}
 	.compare-popup{
 		max-width: 370px;
