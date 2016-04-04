@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magebuzz_Custom>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magebuzz_Custom>
+    </modules>
+</config>
