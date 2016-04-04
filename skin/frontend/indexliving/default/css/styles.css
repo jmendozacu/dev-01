@@ -538,7 +538,10 @@ textarea {
 .toolbar .styled-select::after,
 .toolbar .styled-select:after {
   border-width:7px 6px 0 6px;
+  right:2px;
 }
+.toolbar .styled-select::before,
+.toolbar .styled-select:before {width:15px;}
 
 
 .styled-select select::-ms-expand {
