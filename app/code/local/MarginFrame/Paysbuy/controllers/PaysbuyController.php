@@ -48,11 +48,60 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 		$session->setPaysbuyStandardQuoteId($session->getQuoteId());
 		$order = Mage::getModel('sales/order');
 		$order->load(Mage::getSingleton('checkout/session')->getLastOrderId());
-		$order->sendNewOrderEmail();
+		// $order->sendNewOrderEmail();
 		$order->save();
-		
-		$this->getResponse()->setBody($this->getLayout()->createBlock('Paysbuy/form_redirect')->toHtml());
-		$session->unsQuoteId();
+
+		$Paysbuy = Mage::getModel('Paysbuy/method_paysbuy');
+    	$soapUrl = $Paysbuy->getPaysbuyUrl();
+    	$xml_post_string = '<?xml version="1.0" encoding="utf-8"?>
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		  <soap:Body>
+		    <api_paynow_authentication_v3 xmlns="http://tempuri.org/">';
+	    foreach ($Paysbuy->getStandardCheckoutFormFields('redirect') as $field=>$value) {
+	    	$xml_post_string.='<'.$field.'>'.$value.'</'.$field.'>';
+	    }
+		$xml_post_string .='</api_paynow_authentication_v3>
+		  </soap:Body>
+		</soap:Envelope>';
+		$headers = array(
+            "Content-type: text/xml;charset=\"utf-8\"",
+            "Accept: text/xml",
+            "Cache-Control: no-cache",
+            "Pragma: no-cache",
+            "SOAPAction: http://tempuri.org/api_paynow_authentication_v3", 
+            "Content-length: ".strlen($xml_post_string),
+        );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_URL, $soapUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_post_string); // the SOAP request
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        // converting
+        $response = curl_exec($ch); 
+        curl_close($ch);
+        
+        // converting
+        $response = str_replace("<soap:Body>","",$response);
+        $response = str_replace("</soap:Body>","",$response);
+        $response = (string)simplexml_load_string($response)->api_paynow_authentication_v3Response->api_paynow_authentication_v3Result;
+
+		if(substr($response,0,2) == "00"){
+			$session = Mage::getSingleton('checkout/session');
+			$refid = substr($response,2,strlen($response));
+			$session->setRefIdPaysbuy($refid);
+			$this->getResponse()->setBody($this->getLayout()->createBlock('Paysbuy/form_redirect')->toHtml());
+		} else {
+			$errMsg = substr($response,2,strlen($response));
+			Mage::getSingleton('checkout/session')->addError($errMsg)->setData( 'validationMessages', $errMsg);
+           	$this->_redirectUrl('checkout/cart');
+		}
+
+		// $session->unsQuoteId();
 
     }
 
@@ -112,7 +161,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
 		
-		
+		Mage::helper('Paysbuy')->debug($response,true);
 		
 		//=> Paysbuy Return Data
 		//-> result = 00 = �����, 99 ��������, 22 = ���������ҧ���Թ��� �ٻẺ��� ResultCode + Invoice 

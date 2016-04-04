@@ -4,7 +4,7 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
     protected function _construct()
     {
         parent::_construct();
-		        $this->setTemplate('Paysbuy/form/paysbuy.phtml');
+                $this->setTemplate('Paysbuy/form/paysbuy.phtml');
     }
 
     /**
@@ -16,18 +16,18 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
     {
         return Mage::getSingleton('Paysbuy/config');
     }
-	
+    
 
    
-	/**
+    /**
      * Retrieve availables credit card types
      *
      * @return array
      */
     public function getPaysbuyServiceTypes()
     {
-		 
-		
+         
+        
         $types = $this->_getPaysbuyConfig()->getPaysbuyServiceTypes();
         if ($method = $this->getMethod()) {
             $availableTypes = $method->getConfigData('Paysbuytypes');
@@ -40,10 +40,10 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
                 }
             }
         }
-		
+        
         return $types;
     }
-	
+    
     /**
      * Retrieve credit card expire months
      *
@@ -92,16 +92,16 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
         }
         return true;
     }
-	public function getQuoteData()
+    public function getQuoteData()
     {
-		return $this->getMethod()->getQuoteData();
-	}
-	public function getBillingAddress()
-	{
-		if ($this->getMethod())
-		{
-			$this->getMethod()->getQuote();
-			$aa= $this->getMethod()->getQuote()->getBillingAddress()->getCountry();
-		}
-	}
+        return $this->getMethod()->getQuoteData();
+    }
+    public function getBillingAddress()
+    {
+        if ($this->getMethod())
+        {
+            $this->getMethod()->getQuote();
+            $aa= $this->getMethod()->getQuote()->getBillingAddress()->getCountry();
+        }
+    }
 }

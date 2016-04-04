@@ -538,7 +538,10 @@ textarea {
 .toolbar .styled-select::after,
 .toolbar .styled-select:after {
   border-width:7px 6px 0 6px;
+  right:2px;
 }
+.toolbar .styled-select::before,
+.toolbar .styled-select:before {width:15px;}
 
 
 .styled-select select::-ms-expand {
@@ -1067,6 +1070,12 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .data-table td .product-info .price-box .price{font-family: 'FuturaT_Bold'; font-weight:bold; font-size:23px; text-transform:uppercase; text-decoration:none; color:#000000;}
 .compare-popup .data-table td .product-info .price-box .special-price{padding:0 1em 0 0;}
 .compare-popup .data-table td .product-info .price-box .special-price .price{color:#ff0000;}
+.compare-popup .data-table td .product-info .price-box .old-price .price{
+	font-family: 'FuturaLight';
+  font-size: 16px;  
+	text-decoration: line-through;  
+	color: #898989;
+}
 .compare-popup .data-table td .product-info .btn-remove{
 	background: url(../images/fancybox-close.png) no-repeat center center;
 	border: none;
@@ -1259,6 +1268,7 @@ a.button {
   .buttons-set .required {
     display: none;
   }
+  #contactForm .buttons-set .required {display:block;}
 }
 /* -------------------------------------------- *
  * Paypal Button
@@ -2294,11 +2304,13 @@ span.weee {
   float:left;
   padding:5px 0;
   color:#252525;
-  font-size:24px;
-  font-family: 'DBYordXMed';
+  /* font-size:24px;
+  font-family: 'DBYordXMed'; */
+  font-size:14px;
+  font-family: "FuturaBT-Book";
   line-height:30px;
   }
-.pager-no-toolbar  .pages ol {margin-top:2px; margin-bottom:2px;}
+.pager-no-toolbar  .pages ol {margin-top:5px; margin-bottom:5px;}
 
 .pager-no-toolbar ~ .pager-no-toolbar {
   margin-top: 10px;
@@ -2343,7 +2355,7 @@ span.weee {
   margin-right: 5px;
 }
 
-.pager > .sort-by select, .pager .limiter select{ border:0 none; padding:2px;}
+.pager > .sort-by select, .pager .limiter select{ border:0 none; padding:2px; font-size:14px;}
 
 .pager > .sort-by .sort-by-switcher {
   width: 30px;

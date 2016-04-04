@@ -231,6 +231,7 @@
   float: left;
   font-family: 'FuturaT_Bold';
 }
+
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .regular-price .price-label,
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .old-price .price-label,
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .special-price .price-label {
@@ -240,6 +241,8 @@
   font-weight: normal;
   color: #999;
 }
+.searchautocomplete .searchautocomplete-placeholder ul li .price-box .old-price  {float:left; margin-top:2px;}
+.searchautocomplete .searchautocomplete-placeholder ul li .price-box .special-price {float:right; padding-right:0px; padding-left:10px;} 
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .old-price .price {
   font-size: 10px;
   color: #5D5D5D;

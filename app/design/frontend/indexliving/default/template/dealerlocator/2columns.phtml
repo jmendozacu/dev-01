@@ -19,7 +19,7 @@ $dealers->clear(); ?>
 
   <div class="dealerlocator">
     <h1 class="title-mobile"><?php echo $this->__("Check each store's product") ?></h1>
-    <h2 class="h2-label"><?php echo $this->__('All products can have 10 branches') ?></h2>
+    <h2 class="h2-label"><?php echo $this->__('All products can have %s branches',$dealers->getSize() ) ?></h2>
     <?php if ($this->displaySearchForm()): ?>
       <div class="dealer-search">
         <div class="fieldset clearfix">
