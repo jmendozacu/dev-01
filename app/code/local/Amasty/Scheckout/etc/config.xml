@@ -58,7 +58,7 @@
             <system>
                 <children>
                     <amscheckout_adminsetting translate="title">
-                        <title>Amasty One Step Checkout</title>
+                        <title>One Step Checkout</title>
                         <action>adminhtml/amscheckout_settings/index</action>
                         <sort_order>300</sort_order>
                     </amscheckout_adminsetting>

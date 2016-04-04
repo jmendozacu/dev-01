@@ -103,14 +103,23 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
             url: url,
             type: "POST",
             dataType: 'json',
+						beforeSend: function(){
+							$j("#ajax_cart_loading").show();
+						},
             success: function (data) {
+								$j("#ajax_cart_loading").hide();
                 $j('.block-compare').remove();
                 $j(".compare_bar").html(data.bar);
                 $j(".sider_bar").show();
-                $j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+                /* $j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
                 setTimeout(function () {
                     $j('.col-main').find('.messages').remove();
-                }, 5000);
+                }, 5000); */
+								$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
+								$j('#ajaxcart-overlay').show();
+								setTimeout(function () {
+									Effect.Fade($('ajaxcart-overlay'));
+								}, 5000);
             }
         });
     }

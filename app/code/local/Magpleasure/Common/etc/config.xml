@@ -122,8 +122,8 @@
         <cache>
             <types>
                 <magpleasure translate="label,description" module="core">
-                    <label>Amasty Extensions Data</label>
-                    <description>Amasty Extensions Data Cache.</description>
+                    <label>MarginFrame Extensions Data</label>
+                    <description>MarginFrame Extensions Data Cache.</description>
                     <tags>AMASTY_DATA</tags>
                 </magpleasure>
             </types>
