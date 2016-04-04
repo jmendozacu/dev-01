@@ -5,199 +5,266 @@
  *
  * @category   Mage
  * @package    Mage_Local
- * @author	   Lee Taylor / Elias Interactive -> lee@eliasinteractive.com
+ * @author     Lee Taylor / Elias Interactive -> lee@eliasinteractive.com
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 -->
 
 <config>
-   <sections>
-        <payment>
-            <groups>
-                <Paysbuy translate="label" module="paygate">
-					<comment><![CDATA[Marginframe Paysbuy Payment พัฒนาเพื่อการเชื่อมต่อกับ Paysbuy รองรับการชำระเงินผ่านบัตรเครดิต เดบิต เคาน์เตอร์เซอร์วิสต่างๆ เช่นธนาคาร Big C, Lotus , PayatPost เป็นต้น<br/>
-					<strong>Payment Gateway Url : </strong>
-						<ul>
-						  <li>&nbsp;&nbsp;&raquo;&raquo;&nbsp;สำหรับทดสอบระบบ (Test Payment) : https://demo.paysbuy.com/paynow.aspx</li>
-						  <li>&nbsp;&nbsp;&raquo;&raquo;&nbsp;สำหรับใช้งานจริง (Production Payment) : https://www.paysbuy.com/paynow.aspx</li>
-						</ul>
-					<hr/>
-					]]></comment>
-                    <label>Paysbuy Payment - full</label>
-				    <sort_order>2</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>
-		           <fields>
-                        <active translate="label">
-                            <label>Enabled</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>1</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </active>
-						<title translate="label">
-                            <label>Title</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>2</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </title>
-						
-						<paymentgatewayurl>
-						    <label>Payment Gateway Url</label>
-			                            <frontend_type>text</frontend_type>
-			                            <sort_order>10</sort_order>
-			                            <show_in_default>1</show_in_default>
-			                            <show_in_website>1</show_in_website>
-			                            <show_in_store>1</show_in_store>
-						</paymentgatewayurl>
-						<merchantid>
-						    <label>Merchant Id</label>
-			                            <frontend_type>text</frontend_type>
-			                            <sort_order>11</sort_order>
-			                            <show_in_default>1</show_in_default>
-			                            <show_in_website>1</show_in_website>
-			                            <show_in_store>1</show_in_store>
-						</merchantid>
-						<terminalid>
-						    <label>Terminal Id</label>
-			                            <frontend_type>text</frontend_type>
-			                            <sort_order>12</sort_order>
-			                            <show_in_default>1</show_in_default>
-			                            <show_in_website>1</show_in_website>
-			                            <show_in_store>1</show_in_store>
-						</terminalid>
-						
-						
-			
-		
-			
-			            <optshowsummary translate="label">
-			              <label>ไม่ต้องแสดงหน้าสรุปของ PAYSBUY</label>
-			              <frontend_type>select</frontend_type>
-			              <source_model>adminhtml/system_config_source_yesno</source_model>
-			              <sort_order>15</sort_order>
-			              <show_in_default>1</show_in_default>
-			              <show_in_website>1</show_in_website>
-			              <show_in_store>0</show_in_store>
-			            </optshowsummary>		
-			
-						<optcomcode translate="label">
-			              <label>ค่าคอมมิชชั่นให้กับบุคคลอื่น</label>
-			              <frontend_type>text</frontend_type>
-			              <sort_order>16</sort_order>
-			              <show_in_default>1</show_in_default>
-			              <show_in_website>1</show_in_website>
-			              <show_in_store>0</show_in_store>
-			            </optcomcode>			
-						
-						<checkouttext translate="label">
-                            <label>Custom text for checkout page*</label>
-							<comment>
-				                <![CDATA[ข้อความอธิบาย / ราละเอียดของการชำระเงินในขั้นตอนการเลือกวิธิการชำระเงิน]]>
-				            </comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>23</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						 </checkouttext>	
+ <sections>
+  <payment>
+    <groups>
+      <Paysbuy translate="label"  module="paygate">
+       <comment><![CDATA[Marginframe Paysbuy Payment พัฒนาเพื่อการเชื่อมต่อกับ Paysbuy Version 3.07 รองรับการชำระเงินผ่านบัตรเครดิต เดบิต เคาน์เตอร์เซอร์วิสต่างๆ เช่นธนาคาร Big C, Lotus , PayatPost เป็นต้น<br/>
+      <hr/>
+      ]]></comment>
+      <label>Paysbuy Payment - full</label>
+      <sort_order>2</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <fields>
+        <active translate="label">
+          <label>Enabled</label>
+          <frontend_type>select</frontend_type>
+          <source_model>adminhtml/system_config_source_yesno</source_model>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+        </active>
+        <sandbox translate="label">
+          <label>Sandbox</label>
+          <frontend_type>select</frontend_type>
+          <source_model>adminhtml/system_config_source_yesno</source_model>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment>
+            <![CDATA[
+            <strong>Payment Gateway Url : </strong>
+            <ul>
+              <li>&nbsp;&nbsp;&raquo;&raquo;&nbsp;สำหรับทดสอบระบบ (Test Payment) :  Turn on Sandbox</li>
+              <li>&nbsp;&nbsp;&raquo;&raquo;&nbsp;สำหรับใช้งานจริง (Production Payment) : Turn off Sandbox</li>
+            </ul>
+            ]]>
+          </comment>
+        </sandbox>
+        <title translate="label">
+          <label>Title</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>2</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+        </title>
+        <psbID>
+          <label>psbID</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>11</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment>
+            <![CDATA[
+            หมายเลยประจ าตัวของร้านค ้า "Example:8303545188"
+            ]]>
+          </comment>
+        </psbID>
+        <username>
+          <label>username</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>12</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment>
+            <![CDATA[
+            อีเมลของร้านค้าหรือบุคคลทั่วไปที่ใช้ในการรับเงิน "Example:demo@paysbuy.com"
+            ]]>
+          </comment>
+        </username>
 
-					 <redirecttext translate="label">
-                            <label>Custom text for redirect page*</label>
-							<comment>
-				                <![CDATA[ข้อความบรรทัดที่ 1 ในหน้าจอระหว่าง Redirect ไป Payment Gateway]]>
-				            </comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>24</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                      </redirecttext>					  					  
-					 <redirectfooter translate="label">
-                            <label>Custom footer for redirect page*</label>
-							<comment>
-				                <![CDATA[ข้อความบรรทัดที่ 2 ในหน้าจอระหว่าง Redirect ไป Payment Gateway]]>
-				            </comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>25</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                      </redirectfooter>		
-						<redirecttime>
-					    <label>Redirect (sec.)*</label>
-							<comment>
-				                <![CDATA[เวลาในการค้างหน้าจอก่อน Redirect ไป Payment Gateway หน่วยเป็น วินาที]]>
-				            </comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>26</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-							<validate>validate-number</validate>
-						</redirecttime>
+        <secureCode>
+          <label>secureCode</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>12</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <comment>
+            <![CDATA[
+            รหัสส่วนตัวของแต่ละร้านค้าที่ทาง Paysbuy กำหนดให้ "Example:1586093a8f80cbb5003001b42f0eeb7c"
+            ]]>
+          </comment>
+        </secureCode>
 
-						<order_status translate="label">
-                            <label>New order status</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_order_status</source_model>
-                            <sort_order>40</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </order_status>
-						
-						<payment_success_status translate="label">
-                            <label>Payment Success order status</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_order_status</source_model>
-                            <sort_order>41</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </payment_success_status>
-						
-                        <autocreateinvoice translate="label">
-                            <label>Auto Invoice</label>
-							<comment>
-				                <![CDATA[ลูกค้าชำระเงินผ่านให้ออก Invoice อัตโนมัติ ]]>
-				            </comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>42</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </autocreateinvoice>							
-						
-                         <allowspecific translate="label">
-                            <label>Payment from applicable countries</label>
-                            <frontend_type>allowspecific</frontend_type>
-                            <sort_order>50</sort_order>
-                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </allowspecific>
-                        <specificcountry translate="label">
-                            <label>Payment from Specific countries</label>
-                            <frontend_type>multiselect</frontend_type>
-                            <sort_order>51</sort_order>
-                            <source_model>adminhtml/system_config_source_country</source_model>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </specificcountry>
-						
-					</fields>
-			
-                </Paysbuy>
-            </groups>
-        </payment>
-    </sections>
+        <opt_fix_redirect translate="label">
+         <label>ไม่ต้องแสดงหน้าสรุปของ PAYSBUY</label>
+         <frontend_type>select</frontend_type>
+         <source_model>adminhtml/system_config_source_yesno</source_model>
+         <sort_order>15</sort_order>
+         <show_in_default>1</show_in_default>
+         <show_in_website>1</show_in_website>
+         <show_in_store>0</show_in_store>
+       </opt_fix_redirect>      
+
+       <com translate="label">
+         <label>ค่าคอมมิชชั่นให้กับบุคคลอื่น</label>
+         <frontend_type>text</frontend_type>
+         <sort_order>16</sort_order>
+         <show_in_default>1</show_in_default>
+         <show_in_website>1</show_in_website>
+         <show_in_store>0</show_in_store>
+       </com>           
+       <couponcode translate="label">
+         <label>Promo Code</label>
+         <frontend_type>text</frontend_type>
+         <sort_order>16</sort_order>
+         <show_in_default>1</show_in_default>
+         <show_in_website>1</show_in_website>
+         <show_in_store>0</show_in_store>
+       </couponcode> 
+       <method translate="label">
+        <label>Method</label>
+        <frontend_type>select</frontend_type>
+        <source_model>MarginFrame_Paysbuy_Model_Adminhtml_System_Config_Source_Method</source_model>
+        <sort_order>4</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>0</show_in_store>
+        <can_be_empty>1</can_be_empty>
+        <comment>
+          <![CDATA[
+          หากไม่เลือกช่องทางใดช่องทางหนึ่ง ลูกค้าสามารถเปลี่ยนช่องทางการชำระเงินได้ที่หน้าของ Paysbuy
+
+          หากมีการเลือก ลูกค้าจะไม่สามารถเปลี่ยนช่องทางการชำระเงินได้
+          ]]>
+        </comment>
+      </method>
+
+      <currency translate="label">
+        <label>Currency</label>
+        <frontend_type>select</frontend_type>
+        <source_model>MarginFrame_Paysbuy_Model_Adminhtml_System_Config_Source_Currency</source_model>
+        <sort_order>4</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>0</show_in_store>
+        <can_be_empty>1</can_be_empty>
+        <comment>
+          <![CDATA[
+          สกุลเงินที่ใช้ในหน้าร้านค้า
+          ]]>
+        </comment>
+      </currency>
+
+      <checkouttext translate="label">
+        <label>Custom text for checkout page*</label>
+        <comment>
+          <![CDATA[ข้อความอธิบาย / ราละเอียดของการชำระเงินในขั้นตอนการเลือกวิธิการชำระเงิน]]>
+        </comment>
+        <frontend_type>text</frontend_type>
+        <sort_order>23</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+      </checkouttext>   
+
+      <redirecttext translate="label">
+        <label>Custom text for redirect page*</label>
+        <comment>
+          <![CDATA[ข้อความบรรทัดที่ 1 ในหน้าจอระหว่าง Redirect ไป Payment Gateway]]>
+        </comment>
+        <frontend_type>text</frontend_type>
+        <sort_order>24</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+      </redirecttext>                                         
+      <redirectfooter translate="label">
+        <label>Custom footer for redirect page*</label>
+        <comment>
+          <![CDATA[ข้อความบรรทัดที่ 2 ในหน้าจอระหว่าง Redirect ไป Payment Gateway]]>
+        </comment>
+        <frontend_type>text</frontend_type>
+        <sort_order>25</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+      </redirectfooter>     
+      <redirecttime>
+       <label>Redirect (sec.)*</label>
+       <comment>
+        <![CDATA[เวลาในการค้างหน้าจอก่อน Redirect ไป Payment Gateway หน่วยเป็น วินาที]]>
+      </comment>
+      <frontend_type>text</frontend_type>
+      <sort_order>26</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <validate>validate-number</validate>
+    </redirecttime>
+
+
+
+    <order_status translate="label">
+      <label>New order status</label>
+      <frontend_type>select</frontend_type>
+      <source_model>adminhtml/system_config_source_order_status</source_model>
+      <sort_order>40</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+    </order_status>
+
+    <payment_success_status translate="label">
+      <label>Payment Success order status</label>
+      <frontend_type>select</frontend_type>
+      <source_model>adminhtml/system_config_source_order_status</source_model>
+      <sort_order>41</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+    </payment_success_status>
+
+    <autocreateinvoice translate="label">
+      <label>Auto Invoice</label>
+      <comment>
+        <![CDATA[ลูกค้าชำระเงินผ่านให้ออก Invoice อัตโนมัติ ]]>
+      </comment>
+      <frontend_type>select</frontend_type>
+      <source_model>adminhtml/system_config_source_yesno</source_model>
+      <sort_order>42</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+    </autocreateinvoice>                            
+
+    <allowspecific translate="label">
+      <label>Payment from applicable countries</label>
+      <frontend_type>allowspecific</frontend_type>
+      <sort_order>50</sort_order>
+      <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+    </allowspecific>
+    <specificcountry translate="label">
+      <label>Payment from Specific countries</label>
+      <frontend_type>multiselect</frontend_type>
+      <sort_order>51</sort_order>
+      <source_model>adminhtml/system_config_source_country</source_model>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+    </specificcountry>
+
+  </fields>
+
+</Paysbuy>
+</groups>
+</payment>
+</sections>
 </config>

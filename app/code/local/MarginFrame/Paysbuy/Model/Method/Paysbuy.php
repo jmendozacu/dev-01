@@ -1,8 +1,8 @@
 <?php
 class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method_Abstract
 {
-    protected $_formBlockType = 'Paysbuy/form_Paysbuy';
-    protected $_infoBlockType = 'Paysbuy/info_Paysbuy';
+    protected $_formBlockType = 'Paysbuy/form_paysbuy';
+    protected $_infoBlockType = 'Paysbuy/info_paysbuy';
     protected $_canSavePaysbuy     = false;
 	protected $_code  = 'Paysbuy';
     
@@ -10,7 +10,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
      * Assign data to info model instance
      *
      * @param   mixed $data
-     * @return  Autoeye_Paysbuy_Model_Info
+     * @return  MarginFrame_Paysbuy_Model_Info
      */
     public function assignData($data)
     {
@@ -20,26 +20,49 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
             $data = new Varien_Object($data);
         }
         $info = $this->getInfoInstance();
-		$info->setPaysbuyType($this->getPaysbuyAccountId1())	
-			->setMerchant_Id($data->getMerchant_Id())
-			->setTerminal_Id($data->getTerminal_Id())
-			->setAmount($data->getAmount())
-			->setRedirect_Url($data->getRedirect_Url())
-			->setResponse_Url($data->getResponse_Url())
-			->setIp_Address($data->getIp_Address())
-			->setDetails($data->getDetails())
-			->setOrder_Id($data->getOrder_Id())
-			->setCurrencycode($data->getCurrencycode())
-			->setResponse_Backgroundurl($data->getResponse_Backgroundurl())
-			->setOptshowsummary($data->getOptshowsummary())
-			->setOptcomcode($data->getOptcomcode());
+        Mage::helper('Paysbuy')->debug('Assign Again!!!');
+        //Mage::helper('Paysbuy')->debug($data,true);
+		// $info->setPaysbuyType($this->getPaysbuyAccountId1())	
+		// 	->setMerchant_Id($data->getMerchant_Id())
+		// 	->setTerminal_Id($data->getTerminal_Id())
+		// 	->setAmount($data->getAmount())
+		// 	->setRedirect_Url($data->getRedirect_Url())
+		// 	->setResponse_Url($data->getResponse_Url())
+		// 	->setIp_Address($data->getIp_Address())
+		// 	->setDetails($data->getDetails())
+		// 	->setOrder_Id($data->getOrder_Id())
+		// 	->setCurrencycode($data->getCurrencycode())
+		// 	->setResponse_Backgroundurl($data->getResponse_Backgroundurl())
+		// 	->setOptshowsummary($data->getOptshowsummary())
+		// 	->setOptcomcode($data->getOptcomcode());
         return $this;
     }
+
+    public function getPaysbuyUrl($option='api')
+    {
+		
+		$sandbox = Mage::getStoreConfig('payment/paysbuy/sandbox');
+        if($sandbox){
+        	if($option=='api'){
+        		$url = 'https://demo.paysbuy.com/api_paynow/api_paynow.asmx?op=api_paynow_authentication_v3';
+        	} else {
+        		$url ='https://demo.paysbuy.com/paynow.aspx'.$option;
+        	}
+        } else {
+            if($option=='api'){
+        		$url = 'https://www.paysbuy.com/api_paynow/api_paynow.asmx?op=api_paynow_authentication_v3';
+        	} else {
+        		$url ='https://www.paysbuy.com/paynow.aspx'.$option;
+        	}
+        }
+        return $url;
+    }
+	
 
     /**
      * Prepare info instance for save
      *
-     * @return Autoeye_Paysbuy_Model_Abstract
+     * @return MarginFrame_Paysbuy_Model_Abstract
      */
     public function prepareSave()
     {
@@ -51,6 +74,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
             ->setPaysbuyCid(null);
         return $this;
     }
+
 	public function getProtocolVersion()
     {
         return '1.0';//$this->getConfigData('protocolversion');
@@ -63,7 +87,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
      */
     public function getSession()
     {
-        return Mage::getSingleton('Paysbuy/session');
+        return Mage::getSingleton('paysbuy/session');
     }
 
     /**
@@ -88,52 +112,49 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 	
 	public function getStandardCheckoutFormFields($option = '')
     {
+    	$quote = $this->getQuote(); 
         if ($this->getQuote()->getIsVirtual()) {
-            $a = $this->getQuote()->getBillingAddress();
-            $b = $this->getQuote()->getShippingAddress();
+            $a = $quote->getBillingAddress();
+            $b = $quote->getShippingAddress();
         } else {
-            $a = $this->getQuote()->getShippingAddress();
-            $b = $this->getQuote()->getBillingAddress();
+            $a = $quote->getShippingAddress();
+            $b = $quote->getBillingAddress();
         }
-		 
-		$showsummarybrforeredirect = (Mage::getStoreConfig('Paysbuy/Paysbuy/optshowsummary')=="1") ? "1" : "1";
 		
+		$storeConfig = Mage::getStoreConfig('payment/Paysbuy');
+		
+		$option ='';
 		$data=$this->getQuoteData($option);
+		
 		$sArr = array(	
-			'biz'                   => $data['Merchant_Id'],
-			'psb'                       => $data['Terminal_Id'],
-			'amt'                     => $data['Amount'],
-			'postURL'                     => $data['Response_Url'],
-			'itm'                     => $data['Details'],
-			'inv'                 => $data['Order_Id'],
-			'currencyCode' => $data['Currencycode'],
-			'opt_fix_redirect' => $showsummarybrforeredirect,
-			'reqURL' => $data['Response_Backgroundurl'],
-			'optcomcode' => $data['optcomcode'],
+			'psbID'     => $storeConfig['psbID'],
+			'username'  => $storeConfig['username'],
+			'secureCode'=> $storeConfig['secureCode'],
+			'inv'       => $data['Order_Id'],
+			'itm'       => $data['Details'],
+			'amt'       => $data['Amount'],
+			'curr_type'=>	$storeConfig['currency'],
+			'com'=>$storeConfig['com'],
+			'method'=> ($storeConfig['method']==0 ? '2':$storeConfig['method']),
+			'language'=>Mage::getStoreConfig('method/paysbuy/currency/'.$storeConfig['currency'].'/language'),
+			'resp_front_url'=>$this->getPaysbuyResponseurl(),
+			'resp_back_url'=>$this->getPaysbuyBackgroundurl(),
+			'opt_fix_redirect'=>$storeConfig['opt_fix_redirect'],
+			'opt_fix_method'=>($storeConfig['method']!=0 ? '1':'0'),// Fix use cannot change
+			'opt_name'=>$data['customer_name'],
+			'opt_email'=>$data['email'],
+			'opt_address'=>$data['address'],
+			'paypal_amt'=>'',
+			'opt_detail'=>'',
+			'opt_param'=> (empty($storeConfig['couponcode']) ? '':'cp_code='.$storeConfig['couponcode']),
 			);
-			
-        $sReq = '';
-        $rArr = array();
-        foreach ($sArr as $k=>$v) {
-            /*
-            replacing & char with and. otherwise it will break the post
-            */
-            $value =  str_replace("&","and",$v);
-            $rArr[$k] =  $value;
-            $sReq .= '&'.$k.'='.$value;
-        }
-		 
-        return $rArr;
+		Mage::helper('Paysbuy')->debug($storeConfig);
+		Mage::helper('Paysbuy')->debug($sArr,true);
+        return $sArr;
     }
 
-    public function getPaysbuyUrl()
-    {
-		 $url=$this->_getPaysbuyConfig()->getPaysbuyServerUrl();
-         return $url;
-    }
 	
-	
-	 public function getOrderPlaceRedirectUrl()
+	public function getOrderPlaceRedirectUrl()
     {
 	         return Mage::getUrl('Paysbuy/Paysbuy/redirect');
     }
@@ -146,7 +167,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 		} else {
 			$quote = $this->getQuote();
 		}
-
+		
 		$data=array();		 	
 		if ($quote)
 		{
@@ -162,54 +183,12 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 			$grand_total =  $quote->getGrandTotal();
 			//$grand_total = $grand_total*100;
 			
-			$data['Merchant_Id']                = Mage::getStoreConfig('payment/Paysbuy/merchantid');
-			$data['Terminal_Id']                = Mage::getStoreConfig('payment/Paysbuy/terminalid');
 			$data['Amount']                     = $grand_total;
-			$data['Redirect_Url']           	= $this->_getPaysbuyConfig()->getPaysbuyRedirecturl();
-			$data['Response_Url']           	= $this->_getPaysbuyConfig()->getPaysbuyResponseurl();
-			$data['optcomcode']                 = Mage::getStoreConfig('payment/Paysbuy/optcomcode');
-			$data['Ip_Address']                 = $_SERVER['REMOTE_ADDR'];
-			
-		$currency_code = $quote->getCurrencyCode();
-		$cur = 764;
-		switch($currency_code){
-		case 'THB':
-			$cur = 764;
-			break;
-		case 'AUD':
-			$cur = 036;
-			break;		
-		case 'GBP':
-			$cur = 826;
-			break;	
-		case 'EUR':
-			$cur = 978;
-			break;		
-		case 'HKD':
-			$cur = 344;
-			break;		
-		case 'JPY':
-			$cur = 392;
-			break;		
-		case 'NZD':
-			$cur = 554;
-			break;
-		case 'SGD':
-			$cur = 702;
-			break;	
-		case 'CHF':
-			$cur = 756;
-			break;	
-		case 'USD':
-			$cur = 840;
-			break;	
-		default:
-			$cur = 764;
-		}	 			
-			
-			$data['Currencycode'] = $cur;
-			$data['Response_Backgroundurl'] = $this->_getPaysbuyConfig()->getPaysbuyBackgroundurl();
-			
+			$data['Ip_Address']                 = $quote->getData('remote_ip');
+			$data['customer_name'] =	$quote->getData('customer_firstname').' '.$quote->getData('customer_middlename').' '.$quote->getData('customer_lastname');
+			$data['email'] =	$quote->getData('customer_email');
+			$data['address'] =	'';//$quote->getBillingAddress();
+			$details = "";
 			$items = $quote->getAllItems();
 			foreach($items as $item) {
 				$details = $item->getName();
@@ -217,14 +196,26 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 			
 			$data['Details']                    = $details;
 			$data['Order_Id']                   = $this->getCheckout()->getLastRealOrderId();
+
 		}
-		 
 		return $data; 
 	}
 	
-	protected function _getPaysbuyConfig()
-    {
-        return Mage::getSingleton('Paysbuy/config');
-    }
+	public function getPaysbuyRedirecturl()
+	{
+		  $url= Mage::getUrl('Paysbuy/Paysbuy/success',array('_secure' => true));
+		 return $url;
+	}
+	public function getPaysbuyResponseurl()
+	{  
+		 $url= Mage::getUrl('Paysbuy/Paysbuy/success',array('_secure' => true));
+		 return $url;
+	}
+	
+	public function getPaysbuyBackgroundurl()
+	{
+		$url= Mage::getUrl('Paysbuy/Paysbuy/feed',array('_secure' => true));
+		return $url;
+	}	
 }
 ?>
