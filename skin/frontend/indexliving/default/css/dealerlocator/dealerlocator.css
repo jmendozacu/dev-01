@@ -214,7 +214,7 @@
 		height:25px;
 }
 .list-all-product-dealer .dealer-pager .limiter{display:none;}
-.list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6;}
+.list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6; cursor: pointer;}
 
 .list-all-product-dealer ul li h3{
 	color:#ffc222;
