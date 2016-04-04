@@ -2925,7 +2925,7 @@ p.required,
   color: #df280a;
   font-size: 13px;
 }
-
+.validation-advice{padding-left: 4%;}
 /* ============================================ *
  * Form List
  * ============================================ */
