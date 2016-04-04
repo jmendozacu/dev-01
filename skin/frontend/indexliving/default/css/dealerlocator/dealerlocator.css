@@ -356,7 +356,7 @@ td .dealer-label {
     padding-bottom: 100%;
   }
   .dealer-body-2columns .gmap #map_canvas {
-    position: absolute;
+    position: absolute!important;
     top: 0px;
     left: 0px;
     max-height: 100%;

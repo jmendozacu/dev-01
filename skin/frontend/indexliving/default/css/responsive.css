@@ -195,6 +195,7 @@
   .menu-content li.level0.nav-2 >a {top:44px;}
   .menu-content ul.level0 { background: transparent; border:none;}
   .box-top-menu .nav-primary li.level1 > a {border:none;}
+  .nav-primary li.level1:hover {background-color:#363636;}
   .nav-primary li.level1 >a:hover {background-color:#363636; }
   .box-top-menu .nav-primary li.level1 > .arrow { float:right; width:10%; height:48px; background: url(../images/arrow-right.png) no-repeat center center;}
   .box-top-menu .nav-primary li.level1 > .arrow.active {position:absolute; top:0px; right:-10%; -webkit-transform: rotate(-180deg);	-moz-transform: rotate(-180deg); -ms-transform: rotate(-180deg); -o-transform: rotate(-180deg); transform: rotate(-180deg);}
