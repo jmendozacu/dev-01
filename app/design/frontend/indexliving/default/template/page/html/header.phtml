@@ -62,7 +62,16 @@
                 <a class="toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
               <?php else: ?>
                 <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
-                  <span><?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?></span>
+                  <span>
+                    <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
+                    <?php
+                      if(iconv_strlen($_customerNameStripped,'UTF-8')>18) {
+                        $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 18, 'UTF-8');
+                        $_customerNameStripped .= '...';
+                      }
+                    ?>
+                    <?php echo $_customerNameStripped; ?>
+                  </span>
                 </a>
               <?php endif; ?>
             </li>
