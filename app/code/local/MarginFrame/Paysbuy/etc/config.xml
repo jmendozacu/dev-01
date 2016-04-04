@@ -50,7 +50,7 @@
 			</Paysbuy>
 		</payment>
 			<method>
-			<paysbuy>
+			<Paysbuy>
 				<methodall>
 					<MT1>
 						<value>1</value>
@@ -148,7 +148,7 @@
 						<title>US Dollar</title>
 					</US>
 				</currency>
-			</paysbuy>
+			</Paysbuy>
 		</method>
 		
 	</default>

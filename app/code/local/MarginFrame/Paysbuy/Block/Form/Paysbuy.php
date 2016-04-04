@@ -4,7 +4,7 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
     protected function _construct()
     {
         parent::_construct();
-                $this->setTemplate('Paysbuy/form/paysbuy.phtml');
+                $this->setTemplate('Paysbuy/form/Paysbuy.phtml');
     }
 
     /**
@@ -28,18 +28,18 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
     {
          
         
-        $types = $this->_getPaysbuyConfig()->getPaysbuyServiceTypes();
-        if ($method = $this->getMethod()) {
-            $availableTypes = $method->getConfigData('Paysbuytypes');
-            if ($availableTypes) {
-                $availableTypes = explode(',', $availableTypes);
-                foreach ($types as $code=>$name) {
-                    if (!in_array($code, $availableTypes)) {
-                        unset($types[$code]);
-                    }
-                }
-            }
-        }
+        // $types = $this->_getPaysbuyConfig()->getPaysbuyServiceTypes();
+        // if ($method = $this->getMethod()) {
+        //     $availableTypes = $method->getConfigData('Paysbuytypes');
+        //     if ($availableTypes) {
+        //         $availableTypes = explode(',', $availableTypes);
+        //         foreach ($types as $code=>$name) {
+        //             if (!in_array($code, $availableTypes)) {
+        //                 unset($types[$code]);
+        //             }
+        //         }
+        //     }
+        // }
         
         return $types;
     }
@@ -51,13 +51,13 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
      */
     public function getPaysbuyMonths()
     {
-        $months = $this->getData('Paysbuy_months');
-        if (is_null($months)) {
-            $months[0] =  $this->__('Month');
-            $months = array_merge($months, $this->_getPaysbuyConfig()->getMonths());
-            $this->setData('Paysbuy_months', $months);
-        }
-        return $months;
+        // $months = $this->getData('Paysbuy_months');
+        // if (is_null($months)) {
+        //     $months[0] =  $this->__('Month');
+        //     $months = array_merge($months, $this->_getPaysbuyConfig()->getMonths());
+        //     $this->setData('Paysbuy_months', $months);
+        // }
+        // return $months;
     }
 
     /**
@@ -67,13 +67,13 @@ class MarginFrame_Paysbuy_Block_Form_Paysbuy extends Mage_Payment_Block_Form
      */
     public function getPaysbuyYears()
     {
-        $years = $this->getData('Paysbuy_years');
-        if (is_null($years)) {
-            $years = $this->_getPaysbuyConfig()->getYears();
-            $years = array(0=>$this->__('Year'))+$years;
-            $this->setData('Paysbuy_years', $years);
-        }
-        return $years;
+        // $years = $this->getData('Paysbuy_years');
+        // if (is_null($years)) {
+        //     $years = $this->_getPaysbuyConfig()->getYears();
+        //     $years = array(0=>$this->__('Year'))+$years;
+        //     $this->setData('Paysbuy_years', $years);
+        // }
+        // return $years;
     }
 
     /**

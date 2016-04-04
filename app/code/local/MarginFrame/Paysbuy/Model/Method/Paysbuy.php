@@ -1,8 +1,8 @@
 <?php
 class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method_Abstract
 {
-    protected $_formBlockType = 'Paysbuy/form_paysbuy';
-    protected $_infoBlockType = 'Paysbuy/info_paysbuy';
+    protected $_formBlockType = 'Paysbuy/form_Paysbuy';
+    protected $_infoBlockType = 'Paysbuy/info_Paysbuy';
     protected $_canSavePaysbuy     = false;
 	protected $_code  = 'Paysbuy';
     
@@ -41,7 +41,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
     public function getPaysbuyUrl($option='api')
     {
 		
-		$sandbox = Mage::getStoreConfig('payment/paysbuy/sandbox');
+		$sandbox = Mage::getStoreConfig('payment/Paysbuy/sandbox');
         if($sandbox){
         	if($option=='api'){
         		$url = 'https://demo.paysbuy.com/api_paynow/api_paynow.asmx?op=api_paynow_authentication_v3';
@@ -87,7 +87,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
      */
     public function getSession()
     {
-        return Mage::getSingleton('paysbuy/session');
+        return Mage::getSingleton('Paysbuy/session');
     }
 
     /**
@@ -123,7 +123,6 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 		
 		$storeConfig = Mage::getStoreConfig('payment/Paysbuy');
 		
-		$option ='';
 		$data=$this->getQuoteData($option);
 		
 		$sArr = array(	
@@ -136,7 +135,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 			'curr_type'=>	$storeConfig['currency'],
 			'com'=>$storeConfig['com'],
 			'method'=> ($storeConfig['method']==0 ? '2':$storeConfig['method']),
-			'language'=>Mage::getStoreConfig('method/paysbuy/currency/'.$storeConfig['currency'].'/language'),
+			'language'=>Mage::getStoreConfig('method/Paysbuy/currency/'.$storeConfig['currency'].'/language'),
 			'resp_front_url'=>$this->getPaysbuyResponseurl(),
 			'resp_back_url'=>$this->getPaysbuyBackgroundurl(),
 			'opt_fix_redirect'=>$storeConfig['opt_fix_redirect'],
@@ -148,8 +147,6 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 			'opt_detail'=>'',
 			'opt_param'=> (empty($storeConfig['couponcode']) ? '':'cp_code='.$storeConfig['couponcode']),
 			);
-		Mage::helper('Paysbuy')->debug($storeConfig);
-		Mage::helper('Paysbuy')->debug($sArr,true);
         return $sArr;
     }
 
@@ -163,6 +160,7 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 	
 		if ($option == 'redirect') {
     		$orderIncrementId = $this->getCheckout()->getLastRealOrderId();
+    	
     		$quote = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
 		} else {
 			$quote = $this->getQuote();
@@ -179,7 +177,6 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
 				$b = $quote->getBillingAddress();
 			}
 				
-			
 			$grand_total =  $quote->getGrandTotal();
 			//$grand_total = $grand_total*100;
 			
