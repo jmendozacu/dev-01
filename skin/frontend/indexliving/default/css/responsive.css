@@ -55,6 +55,9 @@
   @media (max-width: 1155px){
     .cms-page-view .c_left br{display:none;}
   }
+  @media (max-width: 1155px){
+    .cms-page-view .c_left br{display:none;}
+  }
  @media (max-width: 991px) {
 	.product-viewed-large-desktop{display:none}
 	.product-viewed-mobile-tablet{display:block;}
@@ -90,8 +93,14 @@
   .product-view .product-img-box{	width:100%;}
 	.product-view .product-shop .add-to-links > li > a{	font-size:12px;}
 	.product-view .product-shop .add-to-links .shareproduct-content{right:70px;}
+	.product-view .add-to-links a.link-wishlist:hover{background-position:0 0; /* color:#ffc222; */}
+	.product-view .add-to-links a.link-compare:hover{background-position:0 -162px;/*  color:#ffc222; */}
+	.product-view .add-to-links a.link-share:hover{background-position:0 -202px;/*  color:#ffc222; */}
+	.product-view .add-to-links a.link-share.active{background-position:0 -80px;/*  color:#ffc222; */}
+	#customer-reviews .review-list{padding:0;}
 	.product-view #customer-reviews .review-list li > div.review-rating{	width:30%;}
-	.product-view #customer-reviews .review-list li > div.review-details{	width:53%;	float:right;}
+	#customer-reviews .review-list li > div.review-image{width:21%;}
+	.product-view #customer-reviews .review-list li > div.review-details{	width:47%;	float:right;}
   .topheader-links li a {min-width:0px; font-size:10px;}
   .call-us label a {font-size:15px;}
   .logo {display:block; width:100%; text-align:center; max-width:100%; margin-bottom:20px;}
@@ -272,7 +281,7 @@
   .catalog-category-view  .main-container .category-overview,
   .catalog-category-view  .main-container .categories-list  {margin-left:10px; margin-right:10px; display:block; width:auto;}
   .catalog-category-view  .main-container .breadcrumbs .page-container {padding-left:0px; padding-right:0px;}
-  
+
   .category-overview .category-image {width:100%;}
   .category-overview .category-info {width:100%;}
   .category-overview .category-info .page-title.category-title h1,
@@ -339,7 +348,7 @@
   .sort-by-content li {width:100%; margin: 0px; padding: 5px 25px;}
   .block-layered-nav .block-content > dl > dd  li a,
   .sort-by-content li a{display:block; line-height:20px; padding-top:5px; padding-bottom:5px;}
-	
+
 	.sidebar .block-compare{padding:10px;}
 	.sidebar .block-title strong{background-position:97% center;}
 
@@ -391,6 +400,16 @@
 	.product-view .box-collateral h2{position:relative;}
 	.product-view .product-features .box-title button{float:left;}
 	.product-view .product-features .products-features-grid li{width:100%;  margin:0 0 10px;}
+	.product-view .add-to-links a.link-wishlist:hover{background-position:0 0; /* color:#ffc222; */}
+	.product-view .add-to-links a.link-compare:hover{background-position:0 -162px;/*  color:#ffc222; */}
+	.product-view .add-to-links a.link-share:hover{background-position:0 -202px;/*  color:#ffc222; */}
+	.product-view .add-to-links a.link-share.active{background-position:0 -80px;/*  color:#ffc222; */}
+	#customer-reviews .review-list{padding:0;}
+	.product-view #customer-reviews .review-list li > div.review-rating{	width:30%;}
+	#customer-reviews .review-list li > div.review-image{width:21%;}
+	.product-view #customer-reviews .review-list li > div.review-details{	width:47%;	float:right;}
+	.product-view #customer-reviews .review-list li > div.review-details.box-mobile{display:none;}
+	.product-view #customer-reviews .review-list li > div.review-details .box-desktop{display:block;}
   .block-account,
   .customer-account .col-left-first {float:left; width:100%;}
   .customer-account .col-left-first  { background:#F8F8F8; position:relative;}
@@ -482,8 +501,8 @@
 	.checkout-list-step ul{
 		width:100%;
 	}
-	.checkout-list-step ul li{padding:20px 0;}
-	.checkout-list-step ul li h6{font-size:13px;}
+	.checkout-list-step ul li{/* padding:20px 0; */}
+	.checkout-list-step ul li h6{/* font-size:13px; */}
 
 	.page-not-found{max-width:100%; margin:10% auto; text-align:center;}
 	.page-not-found h1{margin:0 0 10px;}
@@ -702,8 +721,10 @@
 	.checkout-list-step ul{
 		width:100%;
 	}
-	.checkout-list-step ul li{padding:20px 0;}
-	.checkout-list-step ul li h6{font-size:10px;}
+	.checkout-list-step ul li{/* padding:20px 0; */}
+	.checkout-list-step ul li{width:46%}
+	.checkout-list-step ul li.first, .checkout-list-step ul li.last{width:27%}
+	.checkout-list-step ul li h6{/* font-size:10px; */}
 	.compare-popup{
 		max-width: 370px;
     margin-left: -185px;

@@ -9,7 +9,7 @@ class MarginFrame_Paysbuy_Model_Adminhtml_System_Config_Source_Method
             'value'=>'0',
             'label'=>'---- Use all method ----'
         );
-        $methods = Mage::getStoreConfig('method/paysbuy/methodall');
+        $methods = Mage::getStoreConfig('method/Paysbuy/methodall');
         foreach ($methods as $code => $method) {
             $options[] = array(
                 'value' => $method['value'],
