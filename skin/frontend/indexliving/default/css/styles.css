@@ -1475,16 +1475,11 @@ a.button {
 .block-layered-nav .currently .btn-remove,
 .block-layered-nav .currently .btn-previous,
 .mini-products-list .btn-previous,
+.mini-products-list .btn-remove,
 /* #compare-items .btn-remove, */
 #compare-items .btn-previous {
   float: right;
   margin-left: 6px;
-}
-
-.mini-products-list .btn-remove{
-  position: absolute;
-  top: 0;
-  right: 6px;
 }
 
 /* -------------------------------------------- *
@@ -4845,16 +4840,11 @@ body.catalogsearch-result-index .page-title h1 {
  * Mini Product List
  * ============================================ */
 .mini-products-list .product-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+  float: left;
   min-width: 50px;
 }
 .mini-products-list .product-details {
-  margin-left: 60px;
-  margin-right: 50px;
   text-align:left;
-  min-height: 110px;
 }
 .mini-products-list .product-details .product-name {
   padding-top: 10px;
@@ -4891,6 +4881,24 @@ body.catalogsearch-result-index .page-title h1 {
   width: 100%;
   max-width: 100%;
 }
+
+.mini-cart-info .mini-products-list .product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mini-cart-info .mini-products-list .product-details {
+  margin-left: 60px;
+  margin-right: 50px;
+  text-align:left;
+  min-height: 110px;
+}
+.mini-products-list .btn-remove{
+  position: absolute;
+  top: 0;
+  right: 6px;
+}
+
 
 /* ============================================ *
  * Catalog - List
