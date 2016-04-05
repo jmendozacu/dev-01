@@ -1474,12 +1474,17 @@ a.button {
 
 .block-layered-nav .currently .btn-remove,
 .block-layered-nav .currently .btn-previous,
-.mini-products-list .btn-remove,
 .mini-products-list .btn-previous,
 /* #compare-items .btn-remove, */
 #compare-items .btn-previous {
   float: right;
   margin-left: 6px;
+}
+
+.mini-products-list .btn-remove{
+  position: absolute;
+  top: 0;
+  right: 6px;
 }
 
 /* -------------------------------------------- *
@@ -3493,18 +3498,20 @@ body {
 .header-cart-box .block-content .item-wrap.empty {float:left; width:100%; min-height:480px; text-align:center;}
 .header-cart-box .block-content .item-wrap.empty span {display:block;margin-top:85px; padding:135px 20px 20px ; color:#C1C1C1; font-family: 'RSU_Bold'; font-size:22px; background:url(../images/icon-emptycart.png) no-repeat top center;}
 .header-cart-box .list-items {padding:15px 15px 0;  max-height: 262px;  overflow-y: auto;}
-.header-cart-box .mini-products-list li.item{padding-bottom:10px; margin-bottom:10px; border-bottom:solid 1px #E6E6E6; margin:0px; position:relative;}
+.header-cart-box .mini-products-list li.item{padding-bottom:10px; border-bottom:solid 1px #E6E6E6; margin:0px; margin-bottom:10px; position:relative;}
 .header-cart-box .mini-products-list li.item:nth-last-child(1){border-bottom:none;}
 .header-cart-box  .mini-products-list .product-details .product-name {font-size:14px; padding:0px; color:#000; font-family: 'FuturaBT-Book';     text-transform: uppercase;}
+.header-cart-box  .mini-products-list .product-details .product-desc{font-size: 12px;}
 .header-cart-box  .mini-products-list .item-options {float:left; width:100%;}
 .header-cart-box  .mini-products-list .item-options dt,
 .header-cart-box  .mini-products-list .item-options dd {font-size:12px; font-weight:normal; margin-bottom:0px;}
 .header-cart-box  .mini-products-list .price {font-family: 'FuturaT_Bold'; font-size:18px; color:#000;}
 .header-cart-box  .mini-products-list .special-price .price {color:#ff0000;}
 .header-cart-box  .mini-products-list .old-price .price  {color:#a0a0a0; font-size:10px; font-family: 'FuturaLight';}
-.header-cart-box  .mini-products-list .qty-minicart {float:right; }
+.header-cart-box  .mini-products-list .qty-minicart { position: absolute; right: 0; top: 30px; width: 44px; text-align: center; }
+.header-cart-box  .mini-products-list .qty-minicart .qty-label{font-size: 11px;}
 .header-cart-box  .mini-products-list .qty-minicart .qty {width:44px; height:44px; color:#000; font-size:15px; line-height:40px; text-align:center; background:#fff; border:solid 2px #FFC222; border-radius:3px;}
-.header-cart-box  .mini-products-list .qty-minicart .apply_update_qty {width:44px; height:44px; border:none; color:#fff; background:#FFC222; padding:0 10px; border-radius:3px;}
+.header-cart-box  .mini-products-list .qty-minicart .apply_update_qty {width:44px; height:24px; border:none; color:#fff; background:#FFC222; padding:0 10px; border-radius:3px; margin-top: 2px; margin-bottom: 5px; font-size: 11px;}
 .header-cart-box  .mini-products-list .qty-minicart .apply-change-qty-loading {position:absolute; top:50%; left:50%; margin-top:-10px; margin-left:-10px;}
 .header-cart-box  .summary {float:left; width:100%; font-family: 'RSU_Bold'; font-size:16px; padding:10px 15px; line-height:24px; background:#EFEFEF; color:#000; border-top:solid 1px #E6E6E6; border-bottom:solid 1px #E6E6E6; }
 .header-cart-box  .header-cart-subtotal  {font-size:18px; font-family: 'FuturaT_Bold'; float:right;}
@@ -4842,12 +4849,16 @@ body.catalogsearch-result-index .page-title h1 {
  * Mini Product List
  * ============================================ */
 .mini-products-list .product-image {
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
   min-width: 50px;
 }
 .mini-products-list .product-details {
   margin-left: 60px;
+  margin-right: 50px;
   text-align:left;
+  min-height: 110px;
 }
 .mini-products-list .product-details .product-name {
   padding-top: 10px;
