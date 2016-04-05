@@ -72,28 +72,24 @@
                                 $url_avatar = "https://graph.facebook.com/" . $facebook_user_id . "/picture?type=normal";
                             }
                         ?>
-                    <?php if ($facebook_user_id): ?>
-                        <span class="avatarfacebook">
-						    <img src=<?php echo $this->__($url_avatar) ?>>
-                        </span>
-                        <a class="myaccount-header toggle-header-content togglelogin-facebook" href="javascript:void(0)"
-                        title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
-                    <?php endif ?>
-
-                        <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)"
-                        title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
-                  <span>
-                    <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
-                    <?php
-                    if (iconv_strlen($_customerNameStripped, 'UTF-8') > 16) {
-                        $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 16, 'UTF-8');
-                        $_customerNameStripped .= '...';
-                    }
-                    ?>
-                    <?php echo $_customerNameStripped; ?>
-                  </span>
+                        <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
+                            <?php if ($facebook_user_id): ?>
+                                <img src=<?php echo $this->__($url_avatar) ?>>
+                            <?php else: ?>
+                                <span class = "default-customer-logo"></span>
+                            <?php endif; ?>
+                            <span>
+                                <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
+                                <?php
+                                if (iconv_strlen($_customerNameStripped, 'UTF-8') > 16) {
+                                    $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 16, 'UTF-8');
+                                    $_customerNameStripped .= '...';
+                                }
+                                ?>
+                                <?php echo $_customerNameStripped; ?>
+                            </span>
                         </a>
-                        <?php endif; ?>
+                    <?php endif; ?>
                 </li>
                 <li class="wishlist"><a title="<?php echo $this->__("wishlist") ?>"
                                         href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a>
