@@ -432,6 +432,7 @@ AjaxCart.prototype = {
 				if (transport && transport.responseText) {
 					try {
 						response = eval('(' + transport.responseText + ')');
+						this.activeWishlistItem(response.wlitemadded);
 					}
 					catch (e) {
 						response = {};
@@ -443,6 +444,22 @@ AjaxCart.prototype = {
 				//this.optionsPopup.update("Fuck YOU, do not work");
       //this.optionsPopup.show();
 			}.bind(this)
+		});
+	},
+	
+	activeWishlistItem: function(wlitemadded) {
+		$$('.link-wishlist').each(function(link){
+			var linkHref = link.readAttribute('onclick');
+			var patt = /product\/\d+/igm;
+      var pattexec = patt.exec(linkHref);
+			if (typeof pattexec !== 'undefined' && pattexec !== null) {
+				var productId = pattexec.shift().slice(8);
+				if(wlitemadded.indexOf(productId) != -1){
+					link.addClassName('added-item');
+				}else{
+					link.removeClassName('added-item');
+				}
+			}
 		});
 	},
 	
