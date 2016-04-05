@@ -214,6 +214,8 @@
   .box-top-menu .nav-primary .menu-content {display:none; top:0px; width:100%; height:auto; opacity:1; background:#fff!important; }
   .box-top-menu .nav-primary .menu-content.active {display:block;}
   .nav-primary .menu-content .title-viewall {padding: 0 0 0 10%; margin:0px;}
+  .nav-primary .menu-content ul.level1 {width:100%;}
+  .nav-primary .bannerads-category {display:none;}
   .nav-primary li.subcat {width:100%; padding:0px;}
   .nav-primary li.subcat li.level2 a {width:100%; float:left; line-height:30px; padding:10px 10%; border-bottom:solid 1px #E6E6E6;}
   .nav-primary li.subcat:nth-child(1){ border-top: solid 1px #E6E6E6;}

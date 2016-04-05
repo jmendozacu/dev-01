@@ -55,13 +55,13 @@ foreach ($children as $child) {
         $categoryNode = $child->getId();
         $arrayNode = explode('-', $categoryNode);
         $categoryId = $arrayNode[2];
-        $category = Mage::getModel('catalog/category')->load($categoryId);
+        $category = Mage::getModel('catalog/category')->load($categoryId); 
         $styleImage = '';
         if($category->getId()) {
             $categoryDesc =  $category->getDescription();
             if($category->getImage()){
                 $categoryImageUrl = Mage::getBaseUrl('media').'catalog/category/'.$category->getImage();
-                $backgroundImage = 'background-image:url('.$categoryImageUrl.');';
+                $backgroundImage = 'background-image:url('.$this->getSkinUrl('images/background-boxmenu.png').'),url('.$categoryImageUrl.');';
                 $styleImage = 'style="'.$backgroundImage.'"';
             }
         }
@@ -120,15 +120,15 @@ foreach ($children as $child) {
         $category = Mage::getModel('catalog/category')->load($catId);
       }
       $html .= '</ul>';
+        if($catId && $catId != ''){
+          $category = Mage::getModel('catalog/category')->load($catId);
+          if($category->getBannerAdsId() != ''){
+            $html .= '<div class="bannerads-category">';
+            $html .= $this->getLayout()->createBlock('bannerads/blockdatacustom')->setBlockBannerId($category->getBannerAdsId())->setTemplate('bannerads/bannerads-menu.phtml')->toHtml();
+            $html .= '</div>';
+          }  
+        }
       $html .= '</div>';
-      if($catId && $catId != ''){
-        $category = Mage::getModel('catalog/category')->load($catId);
-        if($category->getBannerAdsId() != ''){
-          $html .= '<div class="bannerads-category">';
-          $html .= $this->getLayout()->createBlock('bannerads/blockdatacustom')->setBlockBannerId($category->getBannerAdsId())->setTemplate('bannerads/bannerads-menu.phtml')->toHtml();
-          $html .= '</div>';
-        }  
-      }
     }  
     
     if($childLevel==2){
