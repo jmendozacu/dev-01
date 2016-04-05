@@ -72,10 +72,11 @@
                                 $url_avatar = "https://graph.facebook.com/" . $facebook_user_id . "/picture?type=normal";
                             }
                         ?>
-
                         <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
                             <?php if ($facebook_user_id): ?>
                                 <img src=<?php echo $this->__($url_avatar) ?>>
+                            <?php else: ?>
+                                <span class = "default-customer-logo"></span>
                             <?php endif ?>
                             <span>
                                 <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
@@ -88,7 +89,7 @@
                                 <?php echo $_customerNameStripped; ?>
                             </span>
                         </a>
-                        <?php endif; ?>
+                    <?php endif; ?>
                 </li>
                 <li class="wishlist"><a title="<?php echo $this->__("wishlist") ?>"
                                         href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a>
