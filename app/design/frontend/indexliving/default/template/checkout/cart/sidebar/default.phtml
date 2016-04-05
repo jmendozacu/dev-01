@@ -31,7 +31,7 @@
     //zend_debug::dump($_item);
     $product=Mage::getModel('catalog/product')->load($_item->getProductId());
     $collections = Mage::getModel('catalog/product')->getCollection();
-    $productModel = Mage::getModel('catalog/product');    
+    $productModel = Mage::getModel('catalog/product');
 ?>
 <li class="item">
     <?php if ($this->hasProductUrl()): ?>
@@ -56,8 +56,8 @@
             <?php endforeach; ?>
           </dl>
         <?php endif; ?>
-        
-     
+
+
       <?php if($product->getFinalPrice() < $product->getPrice()): ?>
         <div class="price-box">
           <p class="old-price">
@@ -74,18 +74,20 @@
         </p>
         </div>
       <?php endif; ?>
-      <!-- end show product price -->  
+      <!-- end show product price -->
+    </div>
+
     <!-- qty -->
-      <div class="qty-minicart">
-        <span class="qty-item">
-          <input class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
-          <?php if($product->getTypeId() == 'configurable'):?>
-            <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
-          <?php else: ?> 
-            <input style="display:none;" type="button" onclick="headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>')" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
-          <?php endif; ?>
-          <img class="apply-change-qty-loading" style="display:none;" id="apply_change_qty_loading_<?php echo $_item->getProduct()->getId() ?>" alt="<?php echo $this->__('Loading')?>" width="20" height="20" src="<?php echo $this->getSkinUrl('images/main-loading.gif')?>"/>
-        </span>
-      </div>    
+    <div class="qty-minicart">
+      <span class="qty-label"><?php echo $this->__('Qty') ?></span>
+      <span class="qty-item">
+        <input class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
+        <?php if($product->getTypeId() == 'configurable'):?>
+          <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
+        <?php else: ?>
+          <input style="display:none;" type="button" onclick="headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>')" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
+        <?php endif; ?>
+        <img class="apply-change-qty-loading" style="display:none;" id="apply_change_qty_loading_<?php echo $_item->getProduct()->getId() ?>" alt="<?php echo $this->__('Loading')?>" width="20" height="20" src="<?php echo $this->getSkinUrl('images/main-loading.gif')?>"/>
+      </span>
     </div>
 </li>
