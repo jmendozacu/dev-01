@@ -72,11 +72,9 @@
                                 $url_avatar = "https://graph.facebook.com/" . $facebook_user_id . "/picture?type=normal";
                             }
                         ?>
-                        <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
+                        <a class="myaccount-header toggle-header-content togglelogin <?php if ($facebook_user_id): ?>login-facebook<?php endif; ?>" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
                             <?php if ($facebook_user_id): ?>
-                                <img src=<?php echo $this->__($url_avatar) ?>>
-                            <?php else: ?>
-                                <span class = "default-customer-logo"></span>
+                                <img alt="<?php echo $this->__('avatar') ?>" src=<?php echo $this->__($url_avatar) ?>>
                             <?php endif; ?>
                             <span>
                                 <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
