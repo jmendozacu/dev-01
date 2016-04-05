@@ -100,9 +100,9 @@ hr.amconf-hr{
 
 .amconf-image-selected
 {
-    margin: 0;
+    /* margin: 0; */
    /*  outline: 1px solid #000; */
-		border-radius:10px;
+		/* border-radius:10px; */
 }
 .product-view .amconf-image-selected{border-radius:0; margin-right:10px;}
 .amconf-image-outofstock
