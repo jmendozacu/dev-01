@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+
+	<modules>
+		<MarginFrame_KSmart>
+			<version>1.0.0.0</version>
+		</MarginFrame_KSmart>
+	</modules>
+	<global>
+		<models>
+			<KSmart>
+				<class>MarginFrame_KSmart_Model</class>
+			</KSmart>
+		</models>
+		<helpers>
+			<KSmart>
+				<class>MarginFrame_KSmart_Helper</class>
+			</KSmart>
+		</helpers>
+		<blocks>
+			<KSmart>
+				<class>MarginFrame_KSmart_Block</class>
+			</KSmart>
+		</blocks>
+	</global>
+	<frontend>
+		<routers>
+			<KSmart>
+				<use>standard</use>
+				<args>
+					<module>MarginFrame_KSmart</module>
+					<frontName>KSmart</frontName>
+				</args>
+			</KSmart>
+		</routers>
+		<translate>
+			<modules>
+				<MarginFrame_KSmart>
+					<files>
+						<default>MarginFrame_KSmart.csv</default>
+					</files>
+				</MarginFrame_KSmart>
+			</modules>
+		</translate>
+	</frontend>
+
+	<default>
+		<payment>
+			<KSmart>
+				<active>1</active>
+				<model>KSmart/method_KSmart</model>
+				<order_status>1</order_status>
+				<payment_success_status>2</payment_success_status>
+				<title>KSmart Payment</title>
+				<allowspecific>0</allowspecific>
+			</KSmart>
+		</payment>
+	</default>
+</config>

@@ -1072,8 +1072,8 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .data-table td .product-info .price-box .special-price .price{color:#ff0000;}
 .compare-popup .data-table td .product-info .price-box .old-price .price{
 	font-family: 'FuturaLight';
-  font-size: 16px;  
-	text-decoration: line-through;  
+  font-size: 16px;
+	text-decoration: line-through;
 	color: #898989;
 }
 .compare-popup .data-table td .product-info .btn-remove{
@@ -1937,7 +1937,11 @@ a.button {
 .payment-methods .form-list li:last-child {
   margin-bottom: 0;
 }
-
+#co-payment-form-update dt { padding: 15px 0; border-bottom: solid 1px #e6e6e6;}
+#dt_method_Paysbuy, #dt_method_KSmart, #dt_method_ccsave{border-bottom: 0 !important;}
+#co-payment-form-update .radio{margin-top: 3px;}
+.logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
+.call_center_img {margin: 0 -10px -10px;border-radius: 5px;}
 /* -------------------------------------------- *
  * Please Wait (Loading Indicator)
  */
@@ -6560,7 +6564,7 @@ body.catalogsearch-result-index .page-title h1 {
 .checkout-list-step ul li.active > div{border-bottom:5px solid #ffc222;}
 .checkout-list-step ul li .step-number{display:inline-block; height:30px; width:30px; line-height:30px; background:#c1c1c1; border-radius:15px; color:#FFFFFF;}
 .checkout-list-step ul li.active .step-number{background:#ffc222;}
-.checkout-list-step ul li h6{font-family: 'DBYordXMed'; font-size:18px; color:#767676; font-weight: normal; text-transform: none;}
+.checkout-list-step ul li h6{font-family: 'DBYordXMed'; font-size:16px; color:#767676; font-weight: normal; text-transform: none;}
 .checkout-list-step ul li.active h6{color:#000}
 .checkout-list-step ul li.active.complete > div{border:0 none;}
 .checkout-list-step ul li.active.complete .step-number{background:#000000}

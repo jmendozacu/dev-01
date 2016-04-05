@@ -15,19 +15,19 @@
 
 		$_redirecttext = $this->__('You will be redirected to Paysbuy in a few seconds.<br/><br/>');
 		$_redirecttext = "";
-		if (Mage::getStoreConfig('payment/paysbuy/redirecttext') !="") {
+		if (Mage::getStoreConfig('payment/Paysbuy/redirecttext') !="") {
 				$_redirecttext = Mage::getStoreConfig('payment/paysbuy/redirecttext');
 		}
 		
 		$_redirectfooter = $this->__('Copyright Paysbuy.com<br/><br/>');
 		$_redirectfooter = "";
-		if (Mage::getStoreConfig('payment/paysbuy/redirectfooter') !="") {
+		if (Mage::getStoreConfig('payment/Paysbuy/redirectfooter') !="") {
 				$_redirectfooter = Mage::getStoreConfig('payment/paysbuy/redirectfooter');
 		}
 		
 		
 		$RedirectTime = 1;
-		if (Mage::getStoreConfig('payment/paysbuy/redirecttime') !="") {
+		if (Mage::getStoreConfig('payment/Paysbuy/redirecttime') !="") {
 			$RedirectTime  = Mage::getStoreConfig('payment/paysbuy/redirecttime');
 			if ((int)$RedirectTime<=0) {
 				$RedirectTime = 1;
@@ -42,14 +42,14 @@
 		$html.= $_redirectfooter; 
 
 		$html.= $form->toHtml();
-		// $html.= '<script type="text/javascript">
-		// 			function formsubmit()
-		// 			{
-		// 			window.location = "'.$Paysbuy->getPaysbuyUrl('?refid='.$session->getRefIdPaysbuy()).'";
-		// 			}
-		// 			setTimeout("formsubmit()",  '. $RedirectTime .');
+		$html.= '<script type="text/javascript">
+					function formsubmit()
+					{
+					window.location = "'.$Paysbuy->getPaysbuyUrl('?refid='.$session->getRefIdPaysbuy()).'";
+					}
+					setTimeout("formsubmit()",  '. $RedirectTime .');
 
-		// 		</script>';
+				</script>';
 
         $html.= '</body></html>';
 
