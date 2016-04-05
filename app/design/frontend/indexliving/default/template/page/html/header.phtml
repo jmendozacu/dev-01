@@ -77,7 +77,7 @@
                                 <img src=<?php echo $this->__($url_avatar) ?>>
                             <?php else: ?>
                                 <span class = "default-customer-logo"></span>
-                            <?php endif ?>
+                            <?php endif; ?>
                             <span>
                                 <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
                                 <?php
