@@ -375,7 +375,7 @@ jQuery(document).ready(function () {
       });
       /* move sort-by-mobile on box filter */
       var sortByHtml = jQuery(".toolbar .sort-by-mobile").html();
-      jQuery(".col-left-first .block-layered-nav .block-content.toggle-content ").append(sortByHtml);
+      jQuery(".col-left-first .block-layered-nav .block-content").append(sortByHtml);
       jQuery('.toolbar .sort-by-mobile').remove();
       /* toggle layered-nav */
       jQuery('.toggle-box-filter.toggle-nav').click(function(){
