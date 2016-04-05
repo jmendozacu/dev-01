@@ -48,8 +48,6 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 		$session->setPaysbuyStandardQuoteId($session->getQuoteId());
 		$order = Mage::getModel('sales/order');
 		$order->load(Mage::getSingleton('checkout/session')->getLastOrderId());
-		// $order->sendNewOrderEmail();
-		$order->save();
 
 		$Paysbuy = Mage::getModel('Paysbuy/method_paysbuy');
     	$soapUrl = $Paysbuy->getPaysbuyUrl();
@@ -91,14 +89,18 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
         $response = (string)simplexml_load_string($response)->api_paynow_authentication_v3Response->api_paynow_authentication_v3Result;
 
 		if(substr($response,0,2) == "00"){
+			// $order->sendNewOrderEmail();
+			$order->save();
 			$session = Mage::getSingleton('checkout/session');
 			$refid = substr($response,2,strlen($response));
 			$session->setRefIdPaysbuy($refid);
 			$this->getResponse()->setBody($this->getLayout()->createBlock('Paysbuy/form_redirect')->toHtml());
 		} else {
+			
 			$errMsg = substr($response,2,strlen($response));
-			Mage::getSingleton('checkout/session')->addError($errMsg)->setData( 'validationMessages', $errMsg);
-           	$this->_redirectUrl('checkout/cart');
+			Mage::getSingleton('core/session')->addError($errMsg)->setData( 'validationMessages', $errMsg);
+           	$this->_redirectUrl('/checkout/cart');
+           	return;
 		}
 
 		// $session->unsQuoteId();
@@ -161,10 +163,17 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
 		
-		Mage::helper('Paysbuy')->debug($response,true);
 		
-		//=> Paysbuy Return Data
-		//-> result = 00 = �����, 99 ��������, 22 = ���������ҧ���Թ��� �ٻẺ��� ResultCode + Invoice 
+		
+		// //=> Paysbuy Return Data
+		// [result] => 00ORD-16-04-04-00000014
+	 //    [apCode] => 109343
+	 //    [amt] => 8595.00
+	 //    [fee] => 322.3149
+	 //    [method] => 02
+	 //    [create_date] => 4/4/2559 17:00:35
+	 //    [payment_date] => 4/4/2559 17:01:21
+		//-> result = 00 = Success, 99 Fail , 22 = 02 processing ResultCode + Invoice 
 		//=> Invoice = �Ţ������觫����Թ���
 		//=> apCode = Transaction Code �ͧ Paysbuy  / Approved Code, 000000 = ��������
 		//=> amt = �ӹǹ�Թ������¡��
@@ -203,13 +212,15 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			"Create Date : " . $PaysbuyCreateDate .  "\n<br/>" . 
 			"Paid Date : " . $PaysbuyPaymentDate . "\n\<br/>" .
 			"confirm CS : " . $confirmCS;
-		//echo "<p>My Data : $PaysbuyReturnData</p>";
+		// echo "<p>My Data : $PaysbuyReturnData</p>";
 		
+
 		if ($PaysbuyResult !=="") {
 			//=> �ó��ա�� Return ��ҡ�Ѻ��
 			$PaysbuyResultCode = substr($PaysbuyResult,0,2); 
 			$PaysbuyInvoice = substr($PaysbuyResult,2);
 			//echo "<br/>Order_Id=". $PaysbuyInvoice . " and Payment Result : " . $PaysbuyResultCode;
+
 			$order = Mage::getModel('sales/order');
 			$order->loadByIncrementId($PaysbuyInvoice);
 			
@@ -223,6 +234,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 				$order->save();				
 				
 				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
+
 				switch ($PaysbuyResultCode) {
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
@@ -247,7 +259,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 									$transactionSave->save();
 
 									//ICC-142 - Harry - Save Invoice Increment Id For Online Payment
-									Mage::helper('invoiceid')->saveInvoiceIncrementId($order, $invoice);
+									// Mage::helper('invoiceid')->saveInvoiceIncrementId($order, $invoice);
 
 									$order->addStatusToHistory($order->getStatus(), "Automatically invoiced", false);
 									$order->save();

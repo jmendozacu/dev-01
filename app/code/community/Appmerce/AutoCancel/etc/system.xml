@@ -21,27 +21,18 @@
 */
 -->
 <config>
-    <tabs>
-        <appmerce translate="label" module="core">
-            <label>Appmerce</label>
-            <sort_order>100</sort_order>
-        </appmerce>
-    </tabs>
     <sections>
         <autocancel translate="label" module="autocancel">
             <label>Auto-Cancel Orders</label>
-            <tab>appmerce</tab>
+            <tab>sales</tab>
             <frontend_type>text</frontend_type>
-            <sort_order>90</sort_order>
+            <sort_order>305</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
                 <settings translate="label comment">
                     <label>Settings</label>
-                    <comment>
-                        <![CDATA[Extension by <a href="http://www.appmerce.com/" title="Applications for Ecommerce" style="color: #EA7601">Appmerce</a> | <a href="http://www.appmerce.com/get-support" title="Get support for this extension" style="color: #EA7601">Get Support</a>]]>
-                    </comment>
                     <frontend_type>text</frontend_type>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>

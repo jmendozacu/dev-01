@@ -6,7 +6,7 @@ class MarginFrame_Paysbuy_Model_Adminhtml_System_Config_Source_Currency
         $options =  array();
 
 
-        $methods = Mage::getStoreConfig('method/paysbuy/currency');
+        $methods = Mage::getStoreConfig('method/Paysbuy/currency');
         foreach ($methods as $code => $method) {
             $options[] = array(
                 'value' => $method['value'],

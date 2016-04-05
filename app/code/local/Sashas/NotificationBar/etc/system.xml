@@ -11,8 +11,8 @@
 <config>
 	  <tabs>
 		<sashas_modules translate="label" module="notificationbar">
-            <label>Sashas Extensions</label>
-            <sort_order>10</sort_order>
+            <label>Notification</label>
+            <sort_order>500</sort_order>
         </sashas_modules>
 	  </tabs>
 	  <sections>

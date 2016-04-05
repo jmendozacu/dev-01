@@ -137,9 +137,9 @@
 				<?php /* Show quantity */?>
 				<div class="review-checkout-item-qty">
 				<?php if ($this->helper("amscheckout")->isShoppingCartOnCheckout() && $this->helper("amscheckout")->isMergeShoppingCartCheckout()) { ?>
-					<label for="qty"><?php echo $this->__('Qty: ') ?></label><input id="review-qty" class="input-text input-qty" name="review[<?php echo $_item->getId(); ?>][qty]" type="text" value="<?php echo $_item->getQty() ?>"/>
+					<input id="review-qty" class="input-text input-qty" name="review[<?php echo $_item->getId(); ?>][qty]" type="text" value="<?php echo $_item->getQty() ?>"/>
         <?php } else { ?>
-					<label for="qty"><?php echo $this->__('Qty: ') ?></label><?php echo $_item->getQty() ?>
+					<input id="review-qty" class="input-text input-qty" disabled="disabled" name="review[<?php echo $_item->getId(); ?>][qty]" type="text" value="<?php echo $_item->getQty() ?>"/>
         <?php }?>
 				</div>	
 			</div>	

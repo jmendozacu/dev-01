@@ -477,6 +477,14 @@
 	float:right;
 	margin-top:-33px;
 }
+.amscheckout table#checkout-review-table .opc-product-info .review-checkout-item-qty .input-qty {
+	width:40px;
+	height:40px;
+	text-align:center;
+	border:2px solid #ccc;
+	background:#f6f6f6;
+	font-size:14px;
+}
 .amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box{padding:20px; background:#e6e6e6}
 .amscheckout #checkout-review-table-wrapper .amscheckout-data-total-box > div{background:#FFFFFF; padding:0 15px;}
 .amscheckout table.amscheckout-data-table.total-table{
