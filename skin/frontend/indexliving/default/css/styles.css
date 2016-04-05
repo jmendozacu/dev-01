@@ -3497,6 +3497,7 @@ body {
 .header-cart-box .mini-products-list li.item{padding-bottom:10px; border-bottom:solid 1px #E6E6E6; margin:0px; margin-bottom:10px; position:relative;}
 .header-cart-box .mini-products-list li.item:nth-last-child(1){border-bottom:none;}
 .header-cart-box  .mini-products-list .product-details .product-name {font-size:14px; padding:0px; color:#000; font-family: 'FuturaBT-Book';     text-transform: uppercase;}
+.header-cart-box  .mini-products-list .product-details .product-desc{font-size: 12px;}
 .header-cart-box  .mini-products-list .item-options {float:left; width:100%;}
 .header-cart-box  .mini-products-list .item-options dt,
 .header-cart-box  .mini-products-list .item-options dd {font-size:12px; font-weight:normal; margin-bottom:0px;}
