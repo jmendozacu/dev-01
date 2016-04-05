@@ -420,6 +420,9 @@ AjaxCart.prototype = {
 	
 	ajaxAddToWishlist: function(url) {
 		url = url.replace('wishlist/index/add','customwishlist/index/add');
+		if(!customerIsLoggedIn){
+			window.location.href = BASE_URL + 'customer/account/login';
+		}
 		new Ajax.Request(url, {
 			onCreate: function() {
 				this.ajaxLoading.show();

@@ -6564,7 +6564,7 @@ body.catalogsearch-result-index .page-title h1 {
 .checkout-list-step ul li.active > div{border-bottom:5px solid #ffc222;}
 .checkout-list-step ul li .step-number{display:inline-block; height:30px; width:30px; line-height:30px; background:#c1c1c1; border-radius:15px; color:#FFFFFF;}
 .checkout-list-step ul li.active .step-number{background:#ffc222;}
-.checkout-list-step ul li h6{font-family: 'DBYordXMed'; font-size:16px; color:#767676; font-weight: normal; text-transform: none;}
+.checkout-list-step ul li h6{font-family: 'DBYordXMed'; font-size:18px; color:#767676; font-weight: normal; text-transform: none;}
 .checkout-list-step ul li.active h6{color:#000}
 .checkout-list-step ul li.active.complete > div{border:0 none;}
 .checkout-list-step ul li.active.complete .step-number{background:#000000}
