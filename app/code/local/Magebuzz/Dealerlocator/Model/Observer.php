@@ -2,12 +2,10 @@
 class Magebuzz_Dealerlocator_Model_Observer {
   public function setDealerForProduct($observer){
     $data = Mage::app()->getRequest()->getParams();
-
+    $product = $observer->getProduct();
     if(isset($data['in_dealer'])){
-      $productId = $observer->getEvent()->getProductIds();
-      if($productId){
         $productdealerModel = Mage::getModel('dealerlocator/productdealer');
-        //$productId = $data['id'];
+        $productId = $product->getId();
 
         $dealerOlds = $productdealerModel->getCollection()
           ->addFieldToFilter('product_id', $productId)
@@ -39,6 +37,5 @@ class Magebuzz_Dealerlocator_Model_Observer {
           }
         }
       }
-    }
   }
 }

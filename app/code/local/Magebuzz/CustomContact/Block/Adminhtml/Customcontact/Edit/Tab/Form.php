@@ -8,11 +8,6 @@ class Magebuzz_CustomContact_Block_Adminhtml_Customcontact_Edit_Tab_Form extends
 				$this->setForm($form);
 				$fieldset = $form->addFieldset("customcontact_form", array("legend"=>Mage::helper("customcontact")->__("Comment information")));
 
-				
-						$fieldset->addField("contact_id", "text", array(
-						"label" => Mage::helper("customcontact")->__("Contact Id"),
-						"name" => "contact_id",
-						));
 					
 						$fieldset->addField("name", "text", array(
 						"label" => Mage::helper("customcontact")->__("Name"),
