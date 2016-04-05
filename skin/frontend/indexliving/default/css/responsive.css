@@ -115,13 +115,12 @@
  @media (max-width: 768px) {
   .tab-left:before{background:transparent; }
   .tab-left, .tab-left .tabsPage, .tab-left .tabs{width: 100%;}
-  body  {float:left; width:100%; overflow-x:hidden;}
+  body  {float:left; width:100%; overflow-x:hidden; padding-top: 44px;}
   .go-top {top:108px;}
   .box-desktop,
   #header-search  {display:none;}
   .box-mobile {display:block;}
-  #header{background:#252525;  float:left; width:100%; padding:0px; position:fixed; z-index:999;}
-	.wrapper .main-container{padding:44px 0 0;}
+  #header{background:#252525;  float:left; width:100%; padding:0px; position:fixed; z-index:999; top: 0;}
   #header.fixed {position:fixed; z-index:999;}
   .page-header,.page-container {padding-left:10px; padding-right:10px;}
   .page-header-container {padding:0; text-align:center;}
