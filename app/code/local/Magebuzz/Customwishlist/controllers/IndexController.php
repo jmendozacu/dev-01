@@ -58,6 +58,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 	public function addAction() {
 		$response = array();
+		$wlitemadded = array();
 
 		if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 			$response['status'] = 'ERROR';
@@ -105,7 +106,9 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 								Mage::throwException($result);
 							}
 							$wishlist->save();
-
+							// Get all wishlist item of current customer
+							$collection = Mage::getModel('wishlist/item')->getCollection()->addFieldToFilter('wishlist_id', $wishlist->getId());
+							$wlitemadded = $collection->getColumnValues('product_id');							
 							Mage::dispatchEvent(
 								'wishlist_add_product',
 								array(
@@ -114,7 +117,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 									'item'      => $result
 								)
 							);
-
+							$response['wlitemadded'] = $wlitemadded;
 						}
 						catch (Mage_Core_Exception $e) {
 							$response['status'] = 'ERROR';
