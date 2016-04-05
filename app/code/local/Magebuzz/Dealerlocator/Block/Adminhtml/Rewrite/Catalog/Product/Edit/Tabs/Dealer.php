@@ -104,6 +104,9 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs_D
   public function getSelectedDealers(){
     //dealers was assign for product in data
     $productId = $this->getRequest()->getParam('id');
+    if(!$productId){
+      return null;
+    }
     $productdealerCollection = Mage::getModel('dealerlocator/productdealer')
       ->getCollection()
       ->addFieldToFilter('product_id', $productId);
