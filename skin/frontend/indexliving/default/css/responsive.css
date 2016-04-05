@@ -404,6 +404,12 @@
 	.product-view .add-to-links a.link-compare:hover{background-position:0 -162px;/*  color:#ffc222; */}
 	.product-view .add-to-links a.link-share:hover{background-position:0 -202px;/*  color:#ffc222; */}
 	.product-view .add-to-links a.link-share.active{background-position:0 -80px;/*  color:#ffc222; */}
+	#customer-reviews .review-list{padding:0;}
+	.product-view #customer-reviews .review-list li > div.review-rating{	width:30%;}
+	#customer-reviews .review-list li > div.review-image{width:21%;}
+	.product-view #customer-reviews .review-list li > div.review-details{	width:47%;	float:right;}
+	.product-view #customer-reviews .review-list li > div.review-details.box-mobile{display:none;}
+	.product-view #customer-reviews .review-list li > div.review-details .box-desktop{display:block;}
   .block-account,
   .customer-account .col-left-first {float:left; width:100%;}
   .customer-account .col-left-first  { background:#F8F8F8; position:relative;}
