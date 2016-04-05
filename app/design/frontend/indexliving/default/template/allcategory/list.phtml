@@ -66,10 +66,6 @@
 						</div>
 					</li>
 			<?php endforeach; ?>
-					<?php $arrangeClass = '' ?>
-					<?php if (count($_subcategories) % 3 == 2):?>
-						<?php //die('111');?>
-					<?php endif?>
 					<li onclick="setLocation('<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist')" class="category-item category-products-list <?php if (count($_subcategories)%3 == 2):?>last<?php endif;?>">
 						<a class="link-view-productlist" href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist">
 							<?php echo $this->__('View All') ?>
