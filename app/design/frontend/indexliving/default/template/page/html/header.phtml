@@ -32,10 +32,10 @@
     <div class="header-language-container">
         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topheader-links')->toHtml() ?>
         <div class="box-right">
-          <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-call-us')->toHtml() ?>
-          <div class="store-language-container">
-            <?php echo $this->getChildHtml('store_language') ?>
-          </div>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-call-us')->toHtml() ?>
+            <div class="store-language-container">
+                <?php echo $this->getChildHtml('store_language') ?>
+            </div>
         </div>
     </div>
 </div>
@@ -43,68 +43,88 @@
 <header id="header" class="page-header">
     <div class="page-header-container">
         <div class="icon-menu box-mobile toggle-header-content" id="toggle-menu">
-          <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
         </div>
-        <div class="icon-search box-mobile toggle-header-content" id="toggle-search"><?php echo $this->__('search-icon')?></div>
+        <div class="icon-search box-mobile toggle-header-content"
+             id="toggle-search"><?php echo $this->__('search-icon') ?></div>
         <a class="logo" href="<?php echo $this->getUrl('') ?>">
-            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="large box-desktop" />
-            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>" class="small box-mobile" />
+            <img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"
+                 class="large box-desktop"/>
+            <img src="<?php echo $this->getLogoSrcSmall() ?>" alt="<?php echo $this->getLogoAlt() ?>"
+                 class="small box-mobile"/>
         </a>
         <div id="header-search" class="box-desktop box-header-content">
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
         <div class="box-right">
-          <span class="icon-account box-mobile toggle-header-content togglelogin"></span>
-          <span class="icon-minicart box-mobile toggle-header-content toggle-minicart"></span>
-          <ul class="top-links box-desktop">
-            <li class="top-link-account">
-              <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-                <a class="toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
-              <?php else: ?>
-                <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
-                  <span>
-                    <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
-                    <?php
-                      if(iconv_strlen($_customerNameStripped,'UTF-8')>16) {
-                        $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 16, 'UTF-8');
-                        $_customerNameStripped .= '...';
-                      }
-                    ?>
-                    <?php echo $_customerNameStripped; ?>
-                  </span>
+            <span class="icon-account box-mobile toggle-header-content togglelogin"></span>
+            <span class="icon-minicart box-mobile toggle-header-content toggle-minicart"></span>
+            <ul class="top-links box-desktop">
+                <li class="top-link-account">
+                    <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                        <a class="toggle-header-content togglelogin" href="javascript:void(0)"
+                           title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
+                    <?php else: ?>
+                        <?php
+                            $userfacebook = Mage::getSingleton('customer/session')->getCustomer();
+                            $facebook_user_id = $userfacebook['amajaxlogin_fb_id'];
+                            if ($facebook_user_id) {
+                                $url_avatar = "https://graph.facebook.com/" . $facebook_user_id . "/picture?type=normal";
+                            }
+                        ?>
+                        <a class="myaccount-header toggle-header-content togglelogin" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
+                            <?php if ($facebook_user_id): ?>
+                                <img src=<?php echo $this->__($url_avatar) ?>>
+                            <?php else: ?>
+                                <span class = "default-customer-logo"></span>
+                            <?php endif; ?>
+                            <span>
+                                <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
+                                <?php
+                                if (iconv_strlen($_customerNameStripped, 'UTF-8') > 16) {
+                                    $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 16, 'UTF-8');
+                                    $_customerNameStripped .= '...';
+                                }
+                                ?>
+                                <?php echo $_customerNameStripped; ?>
+                            </span>
+                        </a>
+                    <?php endif; ?>
+                </li>
+                <li class="wishlist"><a title="<?php echo $this->__("wishlist") ?>"
+                                        href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a>
+                </li>
+            </ul>
+            <div class="header-minicart box-desktop">
+                <?php
+                $count = 0;
+                if ($this->helper('checkout/cart')->getSummaryCount()):
+                    $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
+                endif;
+                ?>
+                <a class="mycart toggle-header-content toggle-minicart cart_item_count" href="javascript:void(0)"
+                   title="<?php echo $this->__('My cart') ?>">
+                    <span id="cartItemCountInHead" class="mini-cart-item-count"><span
+                            class="cart-item-count"><?php echo $count; ?></span></span>
                 </a>
-              <?php endif; ?>
-            </li>
-            <li class="wishlist"><a title="<?php echo $this->__("wishlist")?>" href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a></li>
-          </ul>
-          <div class="header-minicart box-desktop" >
-            <?php
-              $count =0;
-              if($this->helper('checkout/cart')->getSummaryCount()):
-                $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
-              endif;
-            ?>
-            <a class="mycart toggle-header-content toggle-minicart cart_item_count"  href="javascript:void(0)" title="<?php echo $this->__('My cart')?>">
-              <span id="cartItemCountInHead" class="mini-cart-item-count"><span class="cart-item-count"><?php echo $count;?></span></span>
-            </a>
-          </div>
-          <div id="header-mini-login" class="box-header-content">
-            <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-              <?php echo $this->getChildHtml('header_mini_login') ?>
-            <?php else: ?>
-              <?php echo $this->getChildHtml('mini-myaccount') ?>
-            <?php endif; ?>
-          </div>
-          <div id="mini-cart-info" class="box-header-content mini-cart-info">
-            <?php echo $this->getChildHtml('header_cart_mini') ?>
-          </div>
+            </div>
+            <div id="header-mini-login" class="box-header-content">
+                <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+                    <?php echo $this->getChildHtml('header_mini_login') ?>
+                <?php else: ?>
+                    <?php echo $this->getChildHtml('mini-myaccount') ?>
+                <?php endif; ?>
+            </div>
+            <div id="mini-cart-info" class="box-header-content mini-cart-info">
+                <?php echo $this->getChildHtml('header_cart_mini') ?>
+            </div>
         </div>
     </div>
 </header>
 <div class="box-top-menu box-header-content">
-  <div class="page-header">
-    <div class="cateogry" >
-       <a href="#header-nav" title="<?php echo $this->__('Menu') ?>" class="skip-link skip-cateogry">
+    <div class="page-header">
+        <div class="cateogry">
+            <a href="#header-nav" title="<?php echo $this->__('Menu') ?>" class="skip-link skip-cateogry">
         <span class="icon-menu box-desktop">
           <span></span>
           <span></span>
@@ -113,28 +133,32 @@
         <span class="text-menu">
           <?php echo $this->__('Categories') ?>
         </span>
-       </a>
-      <div id="header-nav" class="skip-content menu-content">
-        <?php echo $this->getChildHtml('topMenu') ?>
-      </div>   
+            </a>
+            <div id="header-nav" class="skip-content menu-content">
+                <?php echo $this->getChildHtml('topMenu') ?>
+            </div>
+        </div>
+        <div class="box-desktop">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topmenu')->toHtml() ?>
+        </div>
+        <div class="box-menu-mobile box-mobile">
+            <h2 class="menu-title"><span><?php echo $this->__('Menu') ?></span></h2>
+            <ul class="topheader-links box-mobile">
+                <li class="back-home"><a href="<?php echo Mage::getUrl(''); ?>"
+                                         title="<?php echo $this->__('back to home') ?>"><span><?php echo $this->__('back to home') ?></span></a>
+                </li>
+                <li class="language"><a href="javascript:void(0)"
+                                        title="<?php echo $this->__('language') ?>"><span><?php echo $this->__('language') ?></span></a>
+                </li>
+            </ul>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topheader-links')->toHtml() ?>
+            <div class="box-callus-mobile">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-call-us')->toHtml() ?>
+            </div>
+            <?php echo $this->getChildHtml('store_language_mobile') ?>
+        </div>
+
     </div>
-    <div class="box-desktop">
-      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topmenu')->toHtml() ?>
-    </div>
-    <div class="box-menu-mobile box-mobile">
-      <h2 class="menu-title"><span><?php echo $this->__('Menu') ?></span></h2>
-      <ul class="topheader-links box-mobile">
-        <li class="back-home"><a href="<?php echo Mage::getUrl(''); ?>" title="<?php echo $this->__('back to home')?>"><span><?php echo $this->__('back to home')?></span></a></li>
-        <li class="language"><a href="javascript:void(0)" title="<?php echo $this->__('language')?>"><span><?php echo $this->__('language')?></span></a></li>
-      </ul>
-      <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topheader-links')->toHtml() ?>
-      <div class="box-callus-mobile">
-        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-call-us')->toHtml() ?>
-      </div>
-      <?php echo $this->getChildHtml('store_language_mobile') ?>
-    </div>
-    
-  </div>
 </div>
 
 <?php echo $this->getChildHtml('topContainer'); ?>
