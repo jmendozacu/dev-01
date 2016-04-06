@@ -53,11 +53,19 @@
                 <li class="fields">
                     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
                 </li>
-                <li>
+                <li class="fields">
+									<div class="field">
                     <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
                     <div class="input-box">
                         <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />
                     </div>
+									</div>
+									<div class="field">
+										<label for="custom_joycard"><?php echo $this->__('JOYCARD') ?></label>
+										<div class="input-box">
+											<input placeholder="<?php echo $this->__('JOYCARD') ?>" type="text" name="custom_joycard" id="custom_joycard" value="" title="<?php echo $this->__('JOYCARD') ?>" class="input-text" />
+										</div>
+									</div>		
                 </li>
                 <?php if ($this->isNewsletterEnabled()): ?>
                 <li class="control">
@@ -182,12 +190,6 @@
     <?php endif; ?>
         <ul class="form-list">
             <li class="fields">
-								<div class="field">
-									<label for="custom_joycard"><?php echo $this->__('JOYCARD') ?></label>
-									<div class="input-box">
-										<input placeholder="<?php echo $this->__('JOYCARD') ?>" type="text" name="custom_joycard" id="custom_joycard" value="" title="<?php echo $this->__('JOYCARD') ?>" class="input-text" />
-									</div>
-								</div>
                 <div class="field">
                     <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
                     <div class="input-box">
@@ -213,13 +215,11 @@
 		jQuery(document).ready(function() {
 			jQuery('#joycard').parent().hide();
 		});	
+		jQuery("#custom_joycard").change(function() {
+			jQuery('#joycard').val(jQuery('#custom_joycard').val());
+		});
     //<![CDATA[
         var registerForm = new VarienForm('form-validate', true);
-				registerForm.submit = function() {
-					if(jQuery('#joycard')){
-						jQuery('#joycard').val(jQuery('#custom_joycard').val())
-					}
-				}.bind(registerForm);
         <?php if($this->getShowAddressFields()): ?>
         new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 				new CityUpdater('country', 'region_id', 'city', 'city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);		
