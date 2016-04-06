@@ -1102,7 +1102,7 @@ body:not(.customer-account) .block:first-child .block-title {
 	text-transform:uppercase;
 	background-position:0 -122px;
 }
-.compare-popup .data-table .compare-item-actions .link-wishlist:hover{
+.compare-popup .data-table .compare-item-actions .link-wishlist:hover, .compare-popup .data-table .compare-item-actions .link-wishlist.added-item{
 	background-position: 0 0;
   color: #ffc222;
 }
