@@ -33,27 +33,11 @@ class Magebuzz_Dealerlocator_Adminhtml_ImportController extends Mage_Adminhtml_C
             $currentData = $importData[$count];
             $data = array_combine($keys, $currentData);
             array_shift($data);
-            if ((!$data['longitude'] || !$data['latitude']) && ($data['address'] || $data['postal_code'])) {
-              if ($data['address']) {
-                $address = urlencode($data['address']);
-                var_dump($address);
-              } else {
-                $address = urlencode($data['postal_code']);
-                var_dump($address);
-              }
-              $json = Mage::helper('dealerlocator')->getJsonData($address);
-              var_dump($json);
-              $data['latitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'});
-              $data['longitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'});
-              var_dump($data['latitude']); var_dump($data['longitude']);
-            }
-            if ($data['dealer_tag'] != '') {
-              $data['dealer_tag'] = explode(',', $data['dealer_tag']);
-              var_dump($data['dealer_tag']);
-            }
+
             // set default store & status
             $data['stores'] = 0;
             $data['status'] = 1;
+
             $model->setData($data)->save();
           }
         } catch (Exception $e) {
