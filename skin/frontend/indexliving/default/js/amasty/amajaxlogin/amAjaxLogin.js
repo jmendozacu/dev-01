@@ -84,7 +84,8 @@ AmAjaxLogin.prototype =
         return postData;
     },
     
-    showMessage: function(response) {
+    showMessage: function(response, isShowMessage) {
+			if(isShowMessage){
         if($('am-ajaxlogin-container'))$('am-ajaxlogin-container').remove();
         var container = document.createElement('div');
         container = $(container);
@@ -108,21 +109,21 @@ AmAjaxLogin.prototype =
         closeBox.innerHTML = '<span>X</span>';  
         loginBox.appendChild(closeBox);
         Event.observe(closeBox, 'click', function(){AmAjaxLoginObj.hideMessage()} );
-        
-        var titleBox = document.createElement('div');
-        titleBox = $(titleBox);
-        titleBox.id = 'am-ajaxlogin-title';
-        titleBox.innerHTML = response.title;
-        loginBox.appendChild(titleBox);
-        
+				
+				var titleBox = document.createElement('div');
+				titleBox = $(titleBox);
+				titleBox.id = 'am-ajaxlogin-title';
+				titleBox.innerHTML = response.title;
+				loginBox.appendChild(titleBox);
+					
         if(response.error){
-            var errorBox = document.createElement('div');
-            errorBox = $(errorBox);
-            errorBox.id = 'am-ajaxlogin-error';
-            text = response.error.replace(new RegExp('&lt;', 'g'), "<");
-	    text = text.replace(new RegExp('&gt;', 'g'), ">");
-            errorBox.innerHTML = text;
-            loginBox.appendChild(errorBox);    
+					var errorBox = document.createElement('div');
+					errorBox = $(errorBox);
+					errorBox.id = 'am-ajaxlogin-error';
+					text = response.error.replace(new RegExp('&lt;', 'g'), "<");
+					text = text.replace(new RegExp('&gt;', 'g'), ">");
+					errorBox.innerHTML = text;
+					loginBox.appendChild(errorBox);    
         }
         
         var messageBox = document.createElement('div');
@@ -130,20 +131,22 @@ AmAjaxLogin.prototype =
         messageBox.id = 'am-ajaxlogin-message';
         messageBox.innerHTML = response.message;  
         loginBox.appendChild(messageBox);
-        if(response.redirect && response.is_error == "2"){
-            if(response.redirect == "1") {
-                location.reload();
-            }
-            else {
-                window.location = response.redirect;
-            }    
-        }
-        
-        try {
-            eval(response.script);
-        } catch(e) {
-            console.debug(e);
-        }   
+				
+			}
+			if(response.redirect && response.is_error == "2"){
+					if(response.redirect == "1") {
+							location.reload();
+					}
+					else {
+							window.location = response.redirect;
+					}    
+			}
+			
+			try {
+					eval(response.script);
+			} catch(e) {
+					console.debug(e);
+			}   
     }, 
     
    hideMessage: function() {
@@ -172,7 +175,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, false);
                      if(response.is_error == "2"){
                         this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
@@ -206,7 +209,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response,false);
                      if(response.is_error == "2"){
                         this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
@@ -236,7 +239,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, false);
                      if(response.is_error == "2"){
                         this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
@@ -268,7 +271,7 @@ AmAjaxLogin.prototype =
 							var response = transport.responseText.evalJSON();
 							if (transport.responseText.isJSON() && response) {
 									 this.hideAnimation();
-									 this.showMessage(response);
+									 this.showMessage(response, true);
 							}
 					}.bind(this),
 					onFailure: function()
@@ -297,7 +300,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, true);
                 }
             }.bind(this),
             onFailure: function()
@@ -325,7 +328,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, true);
                 }
             }.bind(this),
             onFailure: function()
@@ -360,7 +363,7 @@ AmAjaxLogin.prototype =
                  iframe = jQuery(iframe);
                  var answer = iframe.contents().find("plaintext").html();
                  response = answer.evalJSON();
-                 AmAjaxLoginObj.showMessage(response);
+                 AmAjaxLoginObj.showMessage(response, false);
                  if(response.is_error == "2"){
                     AmAjaxLoginObj.updateHeader();    
                  }    

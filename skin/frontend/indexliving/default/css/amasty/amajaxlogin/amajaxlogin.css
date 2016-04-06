@@ -104,7 +104,8 @@ box-sizing: content-box;
 	height: 100%;
 	overflow:hidden;
 }
-#am-ajaxlogin-message .account-login{padding:10px 20px;}
+#am-ajaxlogin-message .account-login{padding:10px 20px; overflow:hidden;}
+#am-ajaxlogin-message .account-login button.button{float:right;}
 .am-form-block{
 	text-align: left;
 }
