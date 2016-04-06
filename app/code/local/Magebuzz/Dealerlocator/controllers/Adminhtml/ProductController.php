@@ -33,25 +33,6 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
                     while (--$count > 0) {
                         $currentData = $importData[$count];
                         $data = array_combine($keys, $currentData);
-                        array_shift($data);
-                        if ((!$data['longitude'] || !$data['latitude']) && ($data['address'] || $data['postal_code'])) {
-                            if ($data['address']) {
-                                $address = urlencode($data['address']);
-                                var_dump($address);
-                            } else {
-                                $address = urlencode($data['postal_code']);
-                                var_dump($address);
-                            }
-                            $json = Mage::helper('dealerlocator')->getJsonData($address);
-                            var_dump($json);
-                            $data['latitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'});
-                            $data['longitude'] = strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'});
-                            var_dump($data['latitude']); var_dump($data['longitude']);
-                        }
-                        if ($data['dealer_tag'] != '') {
-                            $data['dealer_tag'] = explode(',', $data['dealer_tag']);
-                            var_dump($data['dealer_tag']);
-                        }
                         $model->setData($data)->save();
                     }
 
@@ -63,6 +44,7 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
 
 
                     $query3 = "INSERT INTO " .$this->_getTableName('product_dealer')." (product_id,dealer_id) (SELECT product_id, dealerlocator_id FROM product_dealer_temp)" ;
+
                     $this->_getWriteConnection()->query($query3);
                 } catch (Exception $e) {
                     //do nothing here
