@@ -1104,7 +1104,7 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .compare-popup .data-table .compare-item-actions .link-wishlist:hover, .compare-popup .data-table .compare-item-actions .link-wishlist.added-item{
 	background-position: 0 0;
-  color: #ffc222;
+  color: #000;
 }
 .compare-popup-close {
 	position: absolute;
