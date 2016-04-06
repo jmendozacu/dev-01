@@ -421,30 +421,33 @@ AjaxCart.prototype = {
 	ajaxAddToWishlist: function(url) {
 		url = url.replace('wishlist/index/add','customwishlist/index/add');
 		if(!customerIsLoggedIn){
-			window.location.href = BASE_URL + 'customer/account/login';
-		}
-		new Ajax.Request(url, {
-			onCreate: function() {
-				this.ajaxLoading.show();
-			}.bind(this),
+			if(AmAjaxLoginObj){ // If enable amasty ajaxlogin
+				AmAjaxLoginObj.sendLoginAjax();
+			}else{
+				window.location.href = BASE_URL + 'customer/account/login/';
+			}
+		}else{
+			new Ajax.Request(url, {
+				onCreate: function() {
+					this.ajaxLoading.show();
+				}.bind(this),
 
-			onComplete: function(transport) {
-				if (transport && transport.responseText) {
-					try {
-						response = eval('(' + transport.responseText + ')');
-						this.activeWishlistItem(response.wlitemadded);
+				onComplete: function(transport) {
+					if (transport && transport.responseText) {
+						try {
+							response = eval('(' + transport.responseText + ')');
+							this.activeWishlistItem(response.wlitemadded);
+						}
+						catch (e) {
+							response = {};
+						}
 					}
-					catch (e) {
-						response = {};
-					}
-				}
-				this.ajaxLoading.hide();
-				this.optionsPopup.update(response.html);
-        this.optionsPopup.show();
-				//this.optionsPopup.update("Fuck YOU, do not work");
-      //this.optionsPopup.show();
-			}.bind(this)
-		});
+					this.ajaxLoading.hide();
+					this.optionsPopup.update(response.html);
+					this.optionsPopup.show();
+				}.bind(this)
+			});
+		}
 	},
 	
 	activeWishlistItem: function(wlitemadded) {

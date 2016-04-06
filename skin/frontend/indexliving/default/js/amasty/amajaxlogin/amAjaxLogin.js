@@ -188,6 +188,40 @@ AmAjaxLogin.prototype =
         });
         return false;    
     }, 
+		
+		loginFormId: function(formId) {
+         var postData = this.addFormParam(formId);
+         if('' == postData) return false;
+         this.hideMessage();
+         this.showAnimation();
+         var url = this.url.replace(this.url.substring(this.url.length-6, this.url.length), 'login');//    replace ajax to login
+         new Ajax.Request(url, {
+            method: 'post',
+            postBody : postData,
+            onComplete: function()
+            {
+               this.hideAnimation();
+            }.bind(this),
+            onSuccess: function(transport) {
+                var response = transport.responseText.evalJSON()
+                if (transport.responseText.isJSON() && response) {
+                     this.hideAnimation();
+                     this.showMessage(response);
+                     if(response.is_error == "2"){
+                        this.updateHeader();
+                        if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
+                            window.location.reload();
+                        }    
+                     }
+                }
+            }.bind(this),
+            onFailure: function()
+            {
+                this.hideAnimation();
+            }.bind(this)    
+        });
+        return false;    
+    }, 
     
     logoutAjax: function() {
          this.showAnimation();
@@ -220,29 +254,29 @@ AmAjaxLogin.prototype =
     },
     
     sendLoginAjax : function() {
-            new Ajax.Request(this.url, {
-                method: 'post',
-                onCreate: function()
-                {
-                   this.showAnimation();
-                }.bind(this),
-                onComplete: function()
-                {
-                   this.hideAnimation();
-                }.bind(this),
-                onSuccess: function(transport) {
-                    var response = transport.responseText.evalJSON();
-                    if (transport.responseText.isJSON() && response) {
-                         this.hideAnimation();
-                         this.showMessage(response);
-                    }
-                }.bind(this),
-                onFailure: function()
-                {
-                    this.hideAnimation();
-                }.bind(this)    
-            });
-            return false;
+			new Ajax.Request(this.url, {
+					method: 'post',
+					onCreate: function()
+					{
+						 this.showAnimation();
+					}.bind(this),
+					onComplete: function()
+					{
+						 this.hideAnimation();
+					}.bind(this),
+					onSuccess: function(transport) {
+							var response = transport.responseText.evalJSON();
+							if (transport.responseText.isJSON() && response) {
+									 this.hideAnimation();
+									 this.showMessage(response);
+							}
+					}.bind(this),
+					onFailure: function()
+					{
+							this.hideAnimation();
+					}.bind(this)    
+			});
+			return false;
     },
     
     /*end login functions*/
