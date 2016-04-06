@@ -5733,7 +5733,13 @@ body.catalogsearch-result-index .page-title h1 {
 	float: left;
 	width: 100%;
 	text-align: center;
-	margin: 10px 0 20px;
+	margin: 10px 0;
+}
+.product-view .add-to-links .shareproduct-content .popupsharing-content .copy-link{
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin: 0 0 10px;
 }
 .product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links{
 	float: left;

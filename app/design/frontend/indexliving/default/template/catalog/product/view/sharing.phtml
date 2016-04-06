@@ -31,18 +31,6 @@
 	<div id="popupsharing">
 		<h2><?php echo $this->__('Share the link to a friend')?></h2>
 		<div class="popupsharing-content clearfix">
-			<ul class="form-list">
-				<li>
-					<label><?php echo $this->__('Copy the URL link below')?></label>
-					<div class="input-box">
-						<input type="text" name="shareurl" value="<?php echo $_product->getProductUrl(); ?>" id="shareurl" title="<?php echo $this->__('Share the link to a friend')?>" class="input-text" />
-						<button type="button" title="<?php echo $this->__('COPY')?>" onclick="copyToClipboard('#shareurl')" class="r-button button" id="copysharelink"><span><span><?php echo $this->__('COPY')?></span></span></button>
-					</div>
-				</li>
-			</ul>
-			<div class="or_use_that">
-				<span class="or_use_text"><span><?php echo $this->__('OR') ?></span></span>
-			</div>
 			<div class="social-sharing">
 				<?php //echo $this->getChildHtml('social_sharing') ?>
 				<ul class="sharing-links">
@@ -80,6 +68,18 @@
 					</li>
 				</ul>
 			</div>
+			<div class="or_use_that">
+				<span class="or_use_text"><span><?php echo $this->__('OR') ?></span></span>
+			</div>
+			<ul class="form-list copy-link">
+				<li>
+					<label><?php echo $this->__('Copy the URL link below')?></label>
+					<div class="input-box">
+						<input type="text" name="shareurl" value="<?php echo $_product->getProductUrl(); ?>" id="shareurl" title="<?php echo $this->__('Share the link to a friend')?>" class="input-text" />
+						<button type="button" title="<?php echo $this->__('COPY')?>" onclick="copyToClipboard('#shareurl')" class="r-button button" id="copysharelink"><span><span><?php echo $this->__('COPY')?></span></span></button>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
