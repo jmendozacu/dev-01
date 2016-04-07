@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Magebuzz_RegisterSource>
+      <version>0.1.0</version>
+    </Magebuzz_RegisterSource>
+  </modules>
+  <global>
+    <helpers>
+      <registersource>
+        <class>Magebuzz_RegisterSource_Helper</class>
+      </registersource>
+    </helpers>
+	<blocks>
+	  <registersource>
+		<class>Magebuzz_RegisterSource_Block</class>
+	  </registersource>
+			<adminhtml>
+				<rewrite>
+					<customer_grid>Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid</customer_grid>
+				</rewrite>
+			</adminhtml>
+	</blocks>
+	<models>
+	  <registersource>
+		<class>Magebuzz_RegisterSource_Model</class>
+		<resourceModel>registersource_mysql4</resourceModel>
+	  </registersource>
+	</models>
+	<resources>
+	  <registersource_setup>
+		<setup>
+		  <module>Magebuzz_RegisterSource</module>
+		  <class>Mage_Customer_Model_Entity_Setup</class>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </registersource_setup>
+	  <registersource_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </registersource_write>
+	  <registersource_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </registersource_read>
+	</resources>
+	  <events>
+		  <customer_register_success> <!-- identifier of the event we want to catch -->
+			  <observers>
+				  <customer_register_success_handler> <!-- identifier of the event handler -->
+					  <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+					  <class>registersource/observer</class> <!-- observers class alias -->
+					  <method>checkSource</method>  <!-- observer's method to be called -->
+					  <args></args> <!-- additional arguments passed to observer -->
+				  </customer_register_success_handler>
+			  </observers>
+		  </customer_register_success>
+	  </events>
+  </global>
+</config> 
