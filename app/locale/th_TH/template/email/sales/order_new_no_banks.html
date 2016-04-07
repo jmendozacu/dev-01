@@ -1,0 +1,37 @@
+﻿{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+    <td align="center" valign="top" style="padding:20px 0 20px 0">
+        <!-- [ header starts here] -->
+        <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" width="600">
+        <!-- [ middle starts here] -->
+            <tr>
+                <td valign="top">
+                    <h1 style="font-size:14px; font-weight:normal; line-height:16px; margin:0 0 10px 0;">เรียน {{htmlescape var=$order.getCustomerName()}}</h1>
+                    <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;">คำสั่งซื้อหมายเลข <a href="{{store url='sales/order/history/'}}">{{var order.increment_id}}</a> กำลังอยู่ระหว่างการเตรียมจัดส่ง</p>
+                    <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;">ท่านสามารถติดตามการสั่งซื้อของท่านได้ที่ <a href="{{store url='sales/order/history/'}}">{{store url=''}}</a></p>
+                    <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;">ขณะนี้เราได้ดำเนินการจัดเตรียมสินค้าตามคำสั่งซื้อหมายเลข {{var order.increment_id}} ของท่านเรียบร้อยแล้ว เราจะแจ้งให้ท่านทราบเมื่อสินค้าดังกล่าวเข้าสู่กระบวนการจัดส่ง</p>
+                    {{layout handle="sales_email_order_items" order=$order}}
+                    <p style="font-size:14px; margin:0 10px 10px 0">{{var order.getEmailCustomerNote()}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  <table cellspacing="0" cellpadding="10" border="1" width="100%">
+                    <tr>
+                      <td class="padding-all">วิธีการชำระเงิน:</td>
+                      <td class="padding-all">{{var payment_html}}</td>
+                    </tr>
+                    <tr>
+                      <td class="padding-all">ที่อยู่ในการจัดส่ง: </td>
+                      <td class="padding-all">{{var order.getShippingAddress().format('oneline')}}</td>
+                    </tr>
+                  </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+{{template config_path="design/email/footer"}}
