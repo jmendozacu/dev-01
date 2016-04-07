@@ -14,6 +14,26 @@ AmAjaxLogin.prototype =
         this.options = options;
         this.srcImageProgress = options['src_image_progress'];
     },
+		
+		setCookie: function(cname, cvalue, exdays){
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = cname + "=" + cvalue + "; " + expires;
+		},
+		
+		getCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1);
+					if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		
+		
     /*start helper functions*/
     updateHeader : function() {
         if($$('.header-container')[0]){
@@ -69,6 +89,13 @@ AmAjaxLogin.prototype =
         }*/
         if($('amprogress')) $('amprogress').remove();
     },
+		
+		setCookie: function(cname, cvalue, exdays){
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = cname + "=" + cvalue + "; " + expires;
+		},
     
       //add parametr from form on product view page
     addFormParam: function(id) {
@@ -134,12 +161,29 @@ AmAjaxLogin.prototype =
 				
 			}
 			if(response.redirect && response.is_error == "2"){
+				if(response.redirect == "2"){ // No redirect
+					Element.prototype.triggerEvent = function(eventName) {
+						if (document.createEvent)
+						{
+								var evt = document.createEvent('HTMLEvents');
+								evt.initEvent(eventName, true, true);
+
+								return this.dispatchEvent(evt);
+						}
+
+						if (this.fireEvent)
+								return this.fireEvent('on' + eventName);
+					}
+					this.setCookie('mgloggedin', 1, 365);
+					$('mgloggedininput-trigger').triggerEvent('click');
+				}else{
 					if(response.redirect == "1") {
-							location.reload();
+						location.reload();
 					}
 					else {
 							window.location = response.redirect;
 					}    
+				}
 			}
 			
 			try {
@@ -209,7 +253,8 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response,false);
+										 response.redirect = "2"; // new response redirect to reload page
+                     this.showMessage(response, false);
                      if(response.is_error == "2"){
                         this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {

@@ -27,7 +27,9 @@ AjaxCart.prototype = {
 
     /* replace button add to cart */
     this.replaceButtonAddToCart('button.btn-cart');
-
+		this.setCookie('mgloggedin', "", -1);
+		this.setCookie('addWishlistUrl', "", -1);
+		$('mgloggedininput-trigger').observe('click', this.ajaxAddToWishlist.bind(this));
   },
 
   getInitConfig: function(config_name) {
@@ -51,7 +53,25 @@ AjaxCart.prototype = {
   validateProductCartForm: function() {
     return this.productCartFormObject.validator.validate();
   },
-
+	
+	setCookie: function(cname, cvalue, exdays){
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	},
+	
+	getCookie: function(cname) {
+		var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+	},
+	
   sendAjaxAddToCart: function(url) {
     new Ajax.Request(url, {
 
@@ -419,35 +439,47 @@ AjaxCart.prototype = {
   },
 	
 	ajaxAddToWishlist: function(url) {
+		if (this.getCookie('addWishlistUrl') && this.getCookie('mgloggedin')) {
+			url = decodeURI(this.getCookie('addWishlistUrl'));
+			this.loggedInAddToWishlist(url);
+			this.setCookie('addWishlistUrl', "", -1);
+			location.reload();
+			return;
+		}
 		url = url.replace('wishlist/index/add','customwishlist/index/add');
 		if(!customerIsLoggedIn){
 			if(AmAjaxLoginObj){ // If enable amasty ajaxlogin
-				AmAjaxLoginObj.sendLoginAjax();
+				this.setCookie('addWishlistUrl', encodeURI(url), 365);
+				AmAjaxLoginObj.sendLoginAjax(); // Open login popup form
 			}else{
 				window.location.href = BASE_URL + 'customer/account/login/';
 			}
 		}else{
-			new Ajax.Request(url, {
-				onCreate: function() {
-					this.ajaxLoading.show();
-				}.bind(this),
-
-				onComplete: function(transport) {
-					if (transport && transport.responseText) {
-						try {
-							response = eval('(' + transport.responseText + ')');
-							this.activeWishlistItem(response.wlitemadded);
-						}
-						catch (e) {
-							response = {};
-						}
-					}
-					this.ajaxLoading.hide();
-					this.optionsPopup.update(response.html);
-					this.optionsPopup.show();
-				}.bind(this)
-			});
+			this.loggedInAddToWishlist(url)
 		}
+	},
+	
+	loggedInAddToWishlist: function(url) {
+		new Ajax.Request(url, {
+			onCreate: function() {
+				this.ajaxLoading.show();
+			}.bind(this),
+
+			onComplete: function(transport) {
+				if (transport && transport.responseText) {
+					try {
+						response = eval('(' + transport.responseText + ')');
+						this.activeWishlistItem(response.wlitemadded);
+					}
+					catch (e) {
+						response = {};
+					}
+				}
+				this.ajaxLoading.hide();
+				this.optionsPopup.update(response.html);
+				this.optionsPopup.show();
+			}.bind(this)
+		});
 	},
 	
 	activeWishlistItem: function(wlitemadded) {

@@ -19,7 +19,7 @@ box-sizing: content-box;
     width: 100%;
     z-index: 100000;
 }
-#amprogress img {width:80px; height:80px; position:absolute; top:50%; margin-top:-40px; margin-left:-40px; left:50%;}
+#amprogress img {width:68px; height:68px; position:absolute; top:50%; margin-top:-34px; margin-left:-34px; left:50%;}
 .or_use_that {
     background: url(or_use_bg.png) repeat-x scroll left center;
     float: left;
