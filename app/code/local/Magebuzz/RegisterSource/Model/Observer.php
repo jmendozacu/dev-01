@@ -6,7 +6,6 @@ class Magebuzz_RegisterSource_Model_Observer
     {
         $event = $observer->getEvent();
         $customer = $event->getCustomer();
-        Mage::log($customer,null,'testm.log');
         if($customer->getId()){
             $customer->setCustomerSource('Website');
         }
