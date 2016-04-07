@@ -8,7 +8,7 @@ class Magebuzz_RegisterSource_Model_Observer
         $customer = $event->getCustomer();
         Mage::log($customer,null,'testm.log');
         if($customer->getId()){
-            $customer->setSource('Website');
+            $customer->setCustomerSource('Website');
         }
         $facebook_user_id = $customer['amajaxlogin_fb_id'];
         if ($facebook_user_id) {
