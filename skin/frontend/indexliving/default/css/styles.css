@@ -1941,6 +1941,7 @@ a.button {
 #dt_method_Paysbuy, #dt_method_KSmart, #dt_method_ccsave{border-bottom: 0 !important;}
 #co-payment-form-update .radio{margin-top: 3px;}
 .logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
+.logo_payment img {display: inline-block;padding: 3px;}
 .call_center_img {margin: 0 -10px -10px;border-radius: 5px;}
 /* -------------------------------------------- *
  * Please Wait (Loading Indicator)
