@@ -15,7 +15,7 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid extends Mage_Adminht
             ->joinAttribute('billing_country_id', 'customer_address/country_id', 'default_billing', null, 'left');
 
         $this->setCollection($collection);
-        Mage::log($collection->getSelect()->__toString());
+//        Mage::log($collection->getSelect()->__toString());
         return Mage_Adminhtml_Block_Customer_Grid::_prepareCollection();
     }
 

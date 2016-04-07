@@ -266,7 +266,7 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
                 $token,
                 $type
             );
-            $customer->setCustomerSource($typeName)->save();
+
              $this->showCartPopup($this->__('Login or Create an Account'), $this->__('Your %s account is now connected to your store accout. You can now login using our %s Connect button or using store account credentials you will receive to your email address.', $typeName, $typeName), "", 2); 
                 
             return;
