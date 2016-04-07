@@ -51,6 +51,19 @@
 		}
 		.compare-popup .compare-list-table{overflow:scroll;}
 		.compare-popup .data-table td.title{display:none;}
+		.products-grid .flip-container, .products-grid .flip-container .front, .products-grid .flip-container .back,
+		.products-list .flip-container, .products-list .flip-container .front, .products-list .flip-container .back{height:auto; min-height:0;}
+		.products-grid .flip-container .back,
+		.products-list .flip-container .back{display:none;}
+		.flip-container .front, .flip-container .back{
+			position:relative;
+		}
+		.block-highlight .flip-container,.block-highlight .flip-container .front, .block-highlight .flip-container .back {
+			height:auto; min-height:0;
+		}
+		.block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
+			height:auto; min-height:0;
+		}
  }
   @media (max-width: 1155px){
     .cms-page-view .c_left br{display:none;}
@@ -64,6 +77,19 @@
   .cms-page-view .c_left, .cms-page-view .c_right{width:100%;float:none;}
   .cms-page-view .c_right{text-align: center;}
   .cms-page-view .content_cms img { display: inline-block;}
+	.products-grid .flip-container, .products-grid .flip-container .front, .products-grid .flip-container .back,
+	.products-list .flip-container, .products-list .flip-container .front, .products-list .flip-container .back{height:auto; min-height:0;}
+	.products-grid .flip-container .back,
+	.products-list .flip-container .back{display:none;}
+	.flip-container .front, .flip-container .back{
+		position:relative;
+	}
+	.block-highlight .flip-container,.block-highlight .flip-container .front, .block-highlight .flip-container .back {
+		height:auto; min-height:0;
+	}
+	.block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
+		height:auto; min-height:0;
+	}
  }
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {

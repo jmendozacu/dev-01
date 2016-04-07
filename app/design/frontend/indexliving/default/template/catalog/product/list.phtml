@@ -45,15 +45,33 @@
     <?php if($this->getMode()!='grid'): ?>
     <?php $_iterator = 0; ?>
     <ol class="products-list" id="products-list">
-    <?php foreach ($_productCollection as $_product): ?>
+    <?php foreach ($_productCollection as $_item): ?>
         <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+					<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>	
             <?php // Product Image ?>
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 							<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 							<?php $_imgSize = 210; ?>
-                    <img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+							<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+									<div class="flipper">
+										<div class="front">
+											<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+														 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
+														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+										</div>				 
+										<div class="back">
+											<img class="lazy" id="product-collection-flipimage-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+														 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(400,400);?>"
+														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>" />
+										</div>				 
+									</div>				 
+								</div>				
+							<?php else: ?>
+								<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
                          data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
-                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />		
+							<?php endif;?>					 
             </a>
             <?php // Product description ?>
             <div class="product-shop">
@@ -118,16 +136,32 @@
     <?php $_collectionSize = $_productCollection->count() ?>
     <?php $_columnCount = $this->getColumnCount(); ?>
     <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
-        <?php $i=0; foreach ($_productCollection as $_product): ?>
-            <?php /*if ($i++%$_columnCount==0): ?>
-            <?php endif*/ ?>
+        <?php $i=0; foreach ($_productCollection as $_item): ?>
+					<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>
             <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-                    <?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
-                    <?php $_imgSize = 210; ?>
-                    <img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
-                         data-src="<?php echo $this->helper('catalog/image')->init($_product,  'small_image')->resize(400,400);?>"
-                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+									<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
+									<?php $_imgSize = 210; ?>
+									<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+										<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+											<div class="flipper">
+												<div class="front">
+													<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+																 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
+																 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+												</div>				 
+												<div class="back">
+													<img class="lazy" id="product-collection-flipimage-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+																 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(400,400);?>"
+																 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>" />
+												</div>				 
+											</div>				 
+										</div>				 
+									<?php else: ?>
+										<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
+														 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
+														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />		
+									<?php endif;?>
                 </a>
                 <div class="product-info">
                     <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
