@@ -1,6 +1,24 @@
 <?php
 class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid extends Mage_Adminhtml_Block_Customer_Grid
 {
+    protected function _prepareCollection(){
+        $collection = Mage::getResourceModel('customer/customer_collection')
+            ->addNameToSelect()
+            ->addAttributeToSelect('email')
+            ->addAttributeToSelect('created_at')
+            ->addAttributeToSelect('customer_source')
+            ->addAttributeToSelect('group_id')
+            ->joinAttribute('billing_postcode', 'customer_address/postcode', 'default_billing', null, 'left')
+            ->joinAttribute('billing_city', 'customer_address/city', 'default_billing', null, 'left')
+            ->joinAttribute('billing_telephone', 'customer_address/telephone', 'default_billing', null, 'left')
+            ->joinAttribute('billing_region', 'customer_address/region', 'default_billing', null, 'left')
+            ->joinAttribute('billing_country_id', 'customer_address/country_id', 'default_billing', null, 'left');
+
+        $this->setCollection($collection);
+        Mage::log($collection->getSelect()->__toString());
+        return Mage_Adminhtml_Block_Customer_Grid::_prepareCollection();
+    }
+
     protected function _prepareColumns(){
         $this->addColumnAfter('customer', array(
             'header'    =>  Mage::helper('customer')->__('Source'),
