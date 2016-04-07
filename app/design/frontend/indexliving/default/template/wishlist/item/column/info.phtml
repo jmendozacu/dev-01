@@ -36,12 +36,16 @@ $options = $this->getChild('customer.wishlist.item.options')
 </h3>
 <?php echo $this->getChildHtml('customer.wishlist.item.options'); ?>
 
-
-<!-- <div class="description std">
-    <div class="inner"> -->
-        <?php // echo $this->escapeHtml($this->stripTags($product->getShortDescription()));?>
-<!--     </div>
-</div> -->
+<div class="product-sku">
+    <div class="inner">
+        <?php  echo $this->escapeHtml($this->stripTags($product->getSku()));?>
+    </div>
+</div>
+<!-- <div class="description std">-->
+<!--    <div class="inner">-->
+<!--        --><?php // echo $this->escapeHtml($this->stripTags($product->getShortDescription()));?>
+<!--   </div>-->
+<!--</div>-->
 
 <!-- <textarea name="description[<?php echo $item->getWishlistItemId() ?>]" rows="3" cols="5" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Comment')) ?>" placeholder="<?php echo $this->helper('wishlist')->defaultCommentString(); ?>"><?php echo ($this->escapeHtml($item->getDescription() ? $item->getDescription() : '')) ?></textarea>
 
