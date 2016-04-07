@@ -192,8 +192,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		if(!Mage::getSingleton('customer/session')->isLoggedIn()){
 			$response['status'] = 'ERROR';
 			$response['message'] = $this->__('Please Login First');
-			Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account'));
-			return;
 		}
 
 		if (empty($response)) {
