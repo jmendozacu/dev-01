@@ -60,10 +60,20 @@
             </div>
         </form>
 
+        <form id="wishlist-checked-cart-form" action="<?php echo $this->getUrl('customwishlist/index/checkcart') ?>" method="post">
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="wishlist_id" id="wishlist_id" value="<?php echo $this->getWishlistInstance()->getId() ?>" />
+                <input type="hidden" name="qty" id="mb-qty" value="" />
+                <input type="hidden" name="itemids" id="mb-item-ids" value="" />
+            </div>
+        </form>
+
         <script type="text/javascript">
         //<![CDATA[
             var wishlistForm = new Validation($('wishlist-view-form'));
             var wishlistAllCartForm = new Validation($('wishlist-allcart-form'));
+            var wishlistCheckCartForm = new Validation($('wishlist-checked-cart-form'));
 
             function calculateQty() {
                 var itemQtys = new Array();
@@ -82,7 +92,35 @@
                 calculateQty();
                 wishlistAllCartForm.form.submit();
             }
+
+            function calculateCheckedQty() {
+                var itemIds = [];
+
+                $$('#addwishtocart').each(function (input, index) {
+                    if (input.checked) {
+                        itemIds.push(input.value);
+                    }
+                });
+                $$('#mb-item-ids')[0].value = JSON.stringify(itemIds);
+
+                var itemQtys = new Array();
+                $$('#wishlist-view-form .qty').each(
+                    function (input, index) {
+                        var idxStr = input.name;
+                        var idx = idxStr.replace( /[^\d.]/g, '' );
+                        itemQtys[idx] = input.value;
+                    }
+                );
+
+                $$('#mb-qty')[0].value = JSON.stringify(itemQtys);
+            }
+            function addCheckedItemsToCart() {
+                calculateCheckedQty();
+                wishlistCheckCartForm.form.submit();
+            }
         //]]>
+
+
         </script>
     </div>
     <?php echo $this->getChildHtml('bottom'); ?>

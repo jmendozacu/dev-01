@@ -1,0 +1,66 @@
+﻿<!--@subject Welcome, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
+@-->
+
+<!--@styles
+body,td { color:#2f2f2f; font:14px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+<table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+    <tr>
+        <td align="center" valign="top" style="padding:20px 0 20px 0">
+            <!-- [ header starts here] -->
+            <table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="100%" class="table-content">
+            <!-- [ middle starts here] -->
+                <tr>
+                    <td valign="top">
+                        <h1 style="font-size:14px; font-weight:normal; line-height:16px; margin:0 0 10px 0;">คุณ {{htmlescape var=$customer.name}}</h1>
+                        <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;">บัญชีของคุณได้รับการลงทะเบียนเรียบร้อยแล้ว</p>
+                        <table cellspacing="0" cellpadding="10" border="0" width="100%">
+                          <tr>
+                            <td class="topground padding-all border-all color-white" colspan="2">Account Information</td>
+                          </tr>
+                          <tr>
+                            <td class="padding-all border-all">ชื่อลูกค้า</td>
+                            <td class="padding-all border-all">{{htmlescape var=$customer.name}}</td>
+                          </tr>
+                          <tr>
+                            <td class="padding-all border-all">Email</td>
+                            <td class="padding-all border-all">{{var customer.email}}</td>
+                          </tr>                          
+                          <tr>
+                            <td class="padding-all border-all">Password</td>
+                            <td class="padding-all border-all">{{htmlescape var=$customer.password}}</td>
+                          </tr>
+                          {{if telephone}}
+                          <tr>
+                            <td class="padding-all border-all">Phone</td>
+                            <td class="padding-all border-all">{{var telephone}}</td>
+                          </tr>
+                          {{/if}}
+                          {{if street}}
+                          <tr>
+                            <td class="padding-all border-all">Address</td>
+                            <td class="padding-all border-all">{{var street}}</td>
+                          </tr>
+                          {{/if}}
+                        </table>
+                        <br>
+                        <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;">ขอบคุณที่ใช้บริการซื้อสินค้าออนไลน์กับ Dohome ค่ะ</p>
+                        <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;"><a title="ดูโฮม ในเครื่ออุบลวิสดุ จำกัด" href="{{store url=''}}">ดูโฮม ในเครื่ออุบลวิสดุ จำกัด</a></p>
+                        <p style="font-size:14px; line-height:16px; margin:0 0 10px 0;">รหัสผ่านของคุณได้รับการเก็บไว้อย่างปลอดภัยในฐานข้อมูลของเรา ในกรณีที่คุณลืมรหัสผ่านคุณสามารถตั้งค่ารหัสผ่านใหม่ได้โดยใช้ที่อยู่อีเมล์ที่เชื่อมโยงกับบัญชีของคุณ</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{{template config_path="design/email/footer"}}
