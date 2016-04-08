@@ -764,6 +764,7 @@
   .categories-list .category-grid li.category-item,
   .categories-list .category-grid li.category-item.last {width:100%; margin-right:0px!important;}
   .cms-home .div-banner li:last-child img { width: 100%;}
+  #wishlist-view-form .button.btn-add + .button.btn-add {width:100%;}
 }
 @media (max-width: 330px){
   .compare-popup{
