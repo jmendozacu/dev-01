@@ -26,6 +26,7 @@
 /* @var $this Mage_Wishlist_Block_Customer_Wishlist */
 ?>
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <div class="mess"></div>
     <div class="my-wishlist">
         <div class="page-title title-buttons">
             <?php if ($this->helper('wishlist')->isRssAllow() && $this->hasWishlistItems()): ?>
@@ -97,10 +98,15 @@
                 var itemIds = [];
 
                 $$('#addwishtocart').each(function (input, index) {
+
                     if (input.checked) {
                         itemIds.push(input.value);
                     }
                 });
+                if(!itemIds.length){
+                    alert('Please select items');
+                    return false;
+                }
                 $$('#mb-item-ids')[0].value = JSON.stringify(itemIds);
 
                 var itemQtys = new Array();
@@ -113,9 +119,14 @@
                 );
 
                 $$('#mb-qty')[0].value = JSON.stringify(itemQtys);
+
+                return true;
             }
             function addCheckedItemsToCart() {
-                calculateCheckedQty();
+                var $checkItems = calculateCheckedQty();
+                if (!$checkItems) {
+                    return;
+                }
                 wishlistCheckCartForm.form.submit();
             }
         //]]>
