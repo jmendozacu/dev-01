@@ -31,19 +31,6 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
             </li>
           <?php endforeach ?>
         </ul>
-        <script type="text/javascript">
-//          Event.observe(window, 'load', function () {
-//            var banner_ids = '<?php //echo implode(",", $isBlockIds); ?>//';
-//            var block_id = '<?php //echo $block->getBlockId();?>//';
-//            var imp_url = '<?php //echo $urlShow; ?>//';
-//            new Ajax.Request(imp_url, {
-//              method: 'post',
-//              parameters: {banner_ids: banner_ids, block_id: block_id},
-//              onFailure: '',
-//              onSuccess: ''
-//            });
-//          });
-        </script>
       </div>
     <?php endif ?>
     <!-- Display type random -->
@@ -58,20 +45,6 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
             <?php $isBlockIds[] = $banners->getBannerId(); ?>
           </a>
         </div>
-        <script type="text/javascript">
-//          Event.observe(window, 'load', function () {
-//            banner_ids = '<?php //echo implode(",", $isBlockIds); ?>//';
-//            block_id = '<?php //echo $block->getBlockId();?>//';
-//            imp_url = '<?php //echo $urlShow; ?>//';
-//            new Ajax.Request(imp_url, {
-//              method: 'post',
-//              parameters: {banner_ids: banner_ids, block_id: block_id},
-//              onFailure: '',
-//              onSuccess: ''
-//
-//            });
-//          });
-        </script>
       </div>
     <?php endif ?>
     <!-- Display type Slider -->
@@ -91,31 +64,14 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
         </ul>
       </div>
       <script type="text/javascript">
-//        Event.observe(window, 'load', function () {
-//        var banner_ids = '<?php //echo implode(",", $isBlockIds); ?>//';
-//          var block_id = '<?php //echo $block->getBlockId();?>//';
-//          var imp_url = '<?php //echo $urlShow; ?>//';
-//          new Ajax.Request(imp_url, {
-//            method: 'post',
-//            parameters: {banner_ids: banner_ids, block_id: block_id},
-//            onFailure: '',
-//            onSuccess: ''
-//          });
-//        });
-        
-        <?php if ($i > 1): ?>
          jQuery('#banner_carousel_menu_<?php echo $block->getBlockId();?>').bxSlider({
           slideWidth:240,
-          loop:false,
-          mode: 'horizontal',
+          infiniteLoop:false,
           controls: false,
-          speed: <?php echo Mage::helper('bannerads')->getTransitionSpeed()*1000?>,
-          preloadImages: 'visible',
           pager: true,
-          captions: false
+          captions: false,
+          minSlides:1
         });
-      <?php endif; ?>
-        
       </script>
     <?php endif ?>
     <div style="clear: both;"></div>
