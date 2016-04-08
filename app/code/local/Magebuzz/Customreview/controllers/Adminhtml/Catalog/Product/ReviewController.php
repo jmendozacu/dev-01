@@ -19,7 +19,7 @@ class Magebuzz_Customreview_Adminhtml_Catalog_Product_ReviewController extends M
     public function exportExcelAction()
     {
         $fileName   = 'customer_review.xml';
-        $grid       = $this->getLayout()->createBlock('customreview/adminhtml_review_grid');
+        $grid       = $this->getLayout()->createBlock('customreview/adminhtml_review_gridexport');
         $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
     }
 }
