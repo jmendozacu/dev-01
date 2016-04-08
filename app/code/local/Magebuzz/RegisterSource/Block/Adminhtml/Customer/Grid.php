@@ -20,11 +20,16 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid extends Mage_Adminht
     }
 
     protected function _prepareColumns(){
+        /*$groups = Mage::getResourceModel('customer/attribute_collection')
+            ->addFieldToFilter('customer_source', array('gt'=> 0))
+            ->load()
+            ->toOptionHash();
+        Mage::log($groups);*/
         $this->addColumnAfter('customer', array(
             'header'    =>  Mage::helper('customer')->__('Source'),
             'width'     =>  '100',
             'type'      => 'options',
-            'options'   =>  array('Website','Facebook'),
+            'options'   =>  array('Website' => 'Website','Facebook'=>'Facebook'),
             'index'     =>  'customer_source'
         ),'email');
         return parent::_prepareColumns();
