@@ -5289,7 +5289,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-options-bottom .change-qty {float:right; width:auto;}
 .product-view .product-shop .change-qty label,.product-view .product-shop .change-qty input{float:left;}
 .product-view .product-shop .change-qty label{width:100%; margin-bottom:5px;  color:#000000; font-family: "FuturaT_Bold"; font-size:15px; text-transform:uppercase;}
-.change-qty {min-width:81px;}
+.change-qty {min-width:91px;}
 .change-qty input{
 	height: 40px;
 	border: 1px solid #000000;
@@ -8724,7 +8724,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   float: left;
 }
 .customer-account  .buttons-set {float:left; width:100%; border-top:5px; margin-top:20px;}
-.customer-account .buttons-set .button {height:40px; float:left; border-radius:5px; min-width:250px;}
+.customer-account .buttons-set .button {height:40px; float:left; border-radius:5px; min-width:250px; margin-left:0px;}
 .customer-account .buttons-set .button.back-link {line-height:26px; background:#252525; text-align:center; min-width:150px; margin-right:20px; }
 .box-edit-subscribed h3 {font-size:24px; color:#000; font-family: 'DBYordXMed'; }
 .box-edit-subscribed .subscribed {float:left; background:#F8F8F8; padding: 10px 20px;}
@@ -9882,6 +9882,7 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Wishlist
  * ============================================ */
+#wishlist-view-form a.link-print {float:right; clear:both; padding-left:30px; background:url(../images/icon-print.png) no-repeat left center; line-height:25px; margin-bottom:10px; } 
 #wishlist-table th {
   text-align: center;
 }
@@ -9968,6 +9969,7 @@ div.paypal-logo span > img {
   width: 100%;
   height:35px;
   line-height:35px;
+  font-family: "FuturaT_Bold";
 }
 #wishlist-table td.customer-wishlist-item-info dt,
 #wishlist-table td.customer-wishlist-item-info dd{
@@ -10021,7 +10023,7 @@ div.paypal-logo span > img {
 #wishlist-table td[data-rwd-label]:before {
   font-weight: 600;
 }
-#wishlist-view-form .button.btn-add {float:right; padding:0px; background-color:#f4701e;}
+#wishlist-view-form .button.btn-add {float:right; padding:0 10px; background-color:#f4701e; margin-left:5px;}
 #wishlist-view-form .button.btn-add >span {line-height:35px; display:inline-block;}
 
 @media only screen and (max-width: 1199px) {
