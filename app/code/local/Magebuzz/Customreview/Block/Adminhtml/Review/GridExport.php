@@ -1,5 +1,5 @@
 <?php
-class Magebuzz_Customreview_Block_Adminhtml_Review_GridExport extends Mage_Adminhtml_Block_Review_Grid{
+class Magebuzz_Customreview_Block_Adminhtml_Review_Gridexport extends Mage_Adminhtml_Block_Review_Grid{
     protected function _prepareColumns()
     {
         $this->addColumn('review_id', array(

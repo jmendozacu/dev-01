@@ -23,6 +23,8 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid extends Mage_Adminht
         $this->addColumnAfter('customer', array(
             'header'    =>  Mage::helper('customer')->__('Source'),
             'width'     =>  '100',
+            'type'      => 'options',
+            'options'   =>  array('Website','Facebook'),
             'index'     =>  'customer_source'
         ),'email');
         return parent::_prepareColumns();
