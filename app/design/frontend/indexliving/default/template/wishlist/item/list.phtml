@@ -30,9 +30,12 @@
 <?php
     $columns = $this->getColumns();
 ?>
+<a href="<?php echo Mage::getBaseUrl().'customwishlist/index/print'; ?>" class="link-print" onclick="this.target='_blank';"><?php echo $this->__('Print Wishlist') ?></a>
+
 <table class="clean-table box-desktop" id="wishlist-table">
     <thead>
         <tr>
+          <th></th>
             <?php
                 /* @var $column Mage_Wishlist_Block_Customer_Wishlist_Item_Column */
                 foreach ($columns as $column):
@@ -44,8 +47,13 @@
     </thead>
     <tbody>
         <?php if (count($this->getItems())): ?>
+
             <?php foreach ($this->getItems() as $item): ?>
+
                 <tr id="item_<?php echo $item->getId();?>">
+                    <td>
+                        <input type="checkbox" name="addwishtocart" id="addwishtocart" value="<?php echo $item->getId();?>">
+                    </td>
                     <?php
                         foreach ($columns as $key => $column):
                             $_blockName = str_replace('.','-',strtolower($column->getNameInLayout()));
@@ -57,7 +65,8 @@
                                 $_rwdLabel = ($column->getTitle()) ? $column->getTitle() : false;
                             }
                     ?>
-                        <td class="<?php echo 'wishlist-cell'.$key; ?> <?php echo $_blockName; ?>"<?php if($_rwdLabel): ?> data-rwd-label="<?php echo $_rwdLabel; ?>"<?php endif; ?>><?php $column->setItem($item); echo $column->toHtml($item);?></td>
+
+                            <td class="<?php echo 'wishlist-cell'.$key; ?> <?php echo $_blockName; ?>"<?php if($_rwdLabel): ?> data-rwd-label="<?php echo $_rwdLabel; ?>"<?php endif; ?>><?php $column->setItem($item); echo $column->toHtml($item);?></td>
                     <?php endforeach; ?>
                 </tr>
             <?php endforeach ?>

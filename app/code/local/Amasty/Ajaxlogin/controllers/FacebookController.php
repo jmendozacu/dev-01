@@ -30,6 +30,8 @@ class Amasty_Ajaxlogin_FacebookController extends Amasty_Ajaxlogin_AjaxloginCont
                 $userInfo = json_decode(file_get_contents($url . '?' . urldecode(http_build_query($this->_params)) . '&fields=id,name,first_name,last_name,email'), true);
                 if (isset($userInfo['id'])) {
                     $this->_login($userInfo, $token, 'fb', $this->__('Facebook'));
+                    $customer = Mage::getSingleton('customer/session')->getCustomer();
+                    $customer->setCustomerSource('Facebook')->save();
                 }
 
             }

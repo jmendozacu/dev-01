@@ -1,0 +1,129 @@
+<?php
+    $_productCollection = $this->getLoadedProductCollection();
+    $_helper            = $this->helper('catalog/output');
+    $_collectionSize    = $_productCollection->count();
+    $_columnCount       = $this->getColumnCount();
+?>
+<?php if (!$_collectionSize) : return; endif; ?>
+
+<?php 
+	if ($this->getCategoryFilter()) {
+		$categoryFilterId = $this->getCategoryFilter();	
+		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);	
+		$_categoryUrl = $_category->getUrl().'/?page=productlist';
+	}else{
+		$_categoryUrl = '#';
+	}
+?>
+<div class="page-container">
+	<div class="recommend-allcategory">
+		<h2 class="title-style1"><span><?php echo $this->__($this->getTitle()) ?></span><a title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all')?></a></h2>
+		<div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
+			<div class="block-content recommend-product-list">
+					<div id="alsolike-product-list" class="products-grid">
+					<?php $i=0; foreach ($_productCollection as $_item): ?>
+						<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>	
+							<div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+									<div class="prolabel-wrapper">
+										<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
+											<a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
+											>
+											<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>	
+												<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+													<div class="flipper">
+														<div class="front">
+															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+											/>
+														</div>				 
+														<div class="back">
+															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(200); ?>"
+													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>"
+											/>
+														</div>				 
+													</div>				 
+												</div>			
+											<?php else:?>
+												<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+											/>
+											<?php endif;?>
+											</a>
+										<?php if ($this->helper('wishlist')->isAllow()) : ?>
+											<div class="wishlist-ajax-slider add-wishlist">
+												<a id="wishlist-related-<?php echo $_product->getId()?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" 
+												   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a>
+											</div>
+										<?php endif;?>
+									</div>
+									<h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+									<div class="desc">
+										 <?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?>
+									</div>
+									<div class="grid-price">
+										<?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
+										<?php
+											$final_price = $_product->getFinalPrice();
+											$price = $_product->getPrice();
+											$discount_percent = 0;
+											if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
+										?>
+										<?php if ($discount_percent) :?>
+											<div class="save-price-percent"><span><?php echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
+										<?php endif; ?>
+									</div>
+									
+									<div class="actions">
+										<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+											<button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+										<?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+											<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
+										<?php else: ?>
+											<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+										<?php endif; ?>
+									</div>
+							</div>
+					<?php endforeach ?>
+					</div>
+					<div class="clearer"></div>
+					<?php if ($this->getPageUrl() && (string)$this->getPageTitle()) : ?>
+						<div class="page-link">
+							<a href="<?php echo $this->getPageUrl() ?>"><?php echo $this->__((string)$this->getPageTitle()) ?></a>
+						</div>
+					<?php endif ?>
+			</div>
+		</div>
+    <!--<a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>-->
+	</div>
+</div>
+<script type="text/javascript">
+	var widthWindow = jQuery( window ).width();
+	if(widthWindow > 768){
+		jQuery("#alsolike-product-list").owlCarousel({	
+			loop:true,
+			margin:20,
+			nav:true,
+			responsive:{
+				0:{
+						items:10
+				},
+				600:{
+						items:3
+				},
+				768:{
+						items:3
+				},
+				1000:{
+						items:5
+				}
+			}
+		});
+	}else{
+		jQuery('.recommend-product-list').mCustomScrollbar({
+			axis:"x",
+			advanced:{autoExpandHorizontalScroll:true}
+		});
+	}
+</script>
+
+

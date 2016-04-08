@@ -31,7 +31,7 @@
 		<div class="change-qty">
 			<label for="qty"><?php echo $this->__('Qty') ?></label>
 			<input type="button" onclick="decQty('qty')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="productview_dec_qty_<?php echo $_product->getId()?>" />
-			<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+			<input type="text" name="qty" id="qty" maxlength="4" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
 			<input type="button" onclick="incQty('qty')" value="<?php echo $this->__('+')?>" class="update_qty btn_plus" id="productview_inc_qty_<?php echo $_product->getId()?>" />
 		</div>	
 	<?php endif; ?>
