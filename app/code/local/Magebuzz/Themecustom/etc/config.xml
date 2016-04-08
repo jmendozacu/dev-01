@@ -106,5 +106,16 @@
 				<class>Magebuzz_Themecustom_Helper</class>
 			</themecustom>
 		</helpers>
+		<events>
+			<catalog_product_is_salable_after>
+				<observers>
+					<themecustom>
+						<type>singleton</type>
+						<class>themecustom/observer</class>
+						<method>isSalableAfter</method>
+					</themecustom>
+				</observers>
+			</catalog_product_is_salable_after>	
+		</events>
 	</global>
 </config>
