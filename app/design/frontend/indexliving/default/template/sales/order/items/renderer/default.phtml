@@ -27,7 +27,7 @@
 <?php $_item = $this->getItem();?>
 <tr class="border" id="order-item-row-<?php echo $_item->getId()?>">
     <td class="ordered-view-image">
-        <?php $_product = Mage::getModel('catalog/product')->load($_item->getProductId()); ?>
+        <?php $_product = $_item->getProduct(); ?>
         <img style="display:inline" src="<?php echo Mage::helper('catalog/image')->init($_product, 'image')->resize(135); ?>" width="135" height="135" alt="" />
     </td>
     <td><h3 class="product-name"><?php echo $this->escapeHtml($_item->getName()) ?></h3>
