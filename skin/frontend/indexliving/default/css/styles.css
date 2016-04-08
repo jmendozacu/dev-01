@@ -7060,7 +7060,7 @@ body.catalogsearch-result-index .page-title h1 {
   min-width: 60px;
   text-align: center;
 }
-.cart-table .product-cart-actions .cart-qty-actions{width:115px; margin:0 auto;}
+.cart-table .product-cart-actions .cart-qty-actions{width:80px; margin:0 auto;}
 .cart-table .product-cart-actions .qty {
   height: 40px;
   border-color: #000000;
