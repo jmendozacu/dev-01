@@ -40,6 +40,8 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Dealerlocator_Edit_Tab_Form extends
     $fieldset->addField('latitude', 'text', array('label' => Mage::helper('dealerlocator')->__('Latitude'), 'name' => 'latitude',));
 
     $fieldset->addField('icon_image', 'image', array('label' => Mage::helper('dealerlocator')->__('Dealer Icon'), 'required' => FALSE, 'name' => 'icon_image',));
+		
+    $fieldset->addField('dealer_map', 'image', array('label' => Mage::helper('dealerlocator')->__('Dealer Map'), 'required' => FALSE, 'name' => 'dealer_map',));
 
     $fieldset->addField('dealer_tag', 'text', array('label' => Mage::helper('dealerlocator')->__('Dealer Tag'), 'required' => FALSE, 'name' => 'dealer_tag', 'after_element_html' => Mage::helper('dealerlocator')->__('<small>Example : magebuzz,MageBuzz,Azebiz</small>')));
 
@@ -58,6 +60,10 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Dealerlocator_Edit_Tab_Form extends
 
     if (isset($data['icon_image']) && $data['icon_image'] != '') {
       $data['icon_image'] = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/' . $data['icon_image'];
+    }
+		
+		if (isset($data['dealer_map']) && $data['dealer_map'] != '') {
+      $data['dealer_map'] = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $data['dealer_map'];
     }
 
     $form->setValues($data);

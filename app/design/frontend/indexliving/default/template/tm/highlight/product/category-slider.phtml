@@ -21,14 +21,34 @@
 		<div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
 			<div class="block-content recommend-product-list">
 					<div id="recommend-product-list" class="products-grid">
-					<?php $i=0; foreach ($_productCollection as $_product): ?>
+					<?php $i=0; foreach ($_productCollection as $_item): ?>
+						<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>	
 							<div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
 									<div class="prolabel-wrapper">
 										<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 											<a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
-											><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+											>
+											<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>	
+												<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+													<div class="flipper">
+														<div class="front">
+															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
 													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
-											/></a>
+											/>
+														</div>				 
+														<div class="back">
+															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(200); ?>"
+													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>"
+											/>
+														</div>				 
+													</div>				 
+												</div>			
+											<?php else:?>
+												<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+											/>
+											<?php endif;?>
+											</a>
 										<?php if ($this->helper('wishlist')->isAllow()) : ?>
 											<div class="wishlist-ajax-slider add-wishlist">
 												<a id="wishlist-related-<?php echo $_product->getId()?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" 

@@ -10,28 +10,43 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
             $product = Mage::getModel('catalog/product')
                 ->setStoreId(Mage::app()->getStore()->getId())
                 ->load($productId);
-
             if ($product->getId() && (Mage::getSingleton('log/visitor')->getId() || Mage::getSingleton('customer/session')->isLoggedIn()))
                 {
                     try {
-                        Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
-                        $response['status'] = 'SUCCESS';
-                        $response['message'] = $this->__('The product has been added to comparison list.');
-                        Mage::register('referrer_url', $this->_getRefererUrl());
-                        Mage::helper('catalog/product_compare')->calculate();
-                        Mage::dispatchEvent('catalog_product_compare_add_product', array('product' => $product));
-                        $this->loadLayout();
-                        $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/compare-response.phtml')->toHtml();
-												$response['html'] = 
-												'<div class="block" id="ajaxcart_content_option_product">
+                        $collection = $this->getLayout()->createBlock('catalog/product_compare_list')->getItems()->count();
+                        if($collection<4){
+                            Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
+
+                            $response['status'] = 'SUCCESS';
+                            $response['message'] = $this->__('The product has been added to comparison list.');
+                            Mage::register('referrer_url', $this->_getRefererUrl());
+                            Mage::helper('catalog/product_compare')->calculate();
+                            Mage::dispatchEvent('catalog_product_compare_add_product', array('product' => $product));
+                            $this->loadLayout();
+                            $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/compare-response.phtml')->toHtml();
+                            $response['html'] =
+                                '<div class="block" id="ajaxcart_content_option_product">
 													<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
 													<div class="ajaxcart-heading">
-														<p class="added-success-message">' 		
-														. $response['message'] .
-														'</p>
+														<p class="added-success-message">'
+                                . $response['message'] .
+                                '</p>
 													</div>
 												</div>
 												';
+                        }else{
+                            $response['message'] = $this->__(' You can add product to compare maximum 4 products');
+                            $response['html'] =
+                                '<div class="block" id="ajaxcart_content_option_product">
+													<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+													<div class="ajaxcart-heading">
+														<p class="added-success-message">'
+                                . $response['message'] .
+                                '</p>
+													</div>
+												</div>
+												';
+                        }
                     }
                     catch (Exception $e) {
                         echo $e->getMessage();

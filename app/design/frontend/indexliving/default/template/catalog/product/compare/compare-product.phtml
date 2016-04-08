@@ -78,7 +78,7 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
 				onSuccess: function(transport) {
 					this.ajaxCart.ajaxLoading.hide(); // using loading from ajax cart
 					$('ajaxcart-overlay').update(transport.responseText);
-          $('ajaxcart-overlay').show();
+         			 $('ajaxcart-overlay').show();
 					ajaxCart.replaceButtonAddToCart('button.btn-cart-compare');
 				}
 			});
@@ -109,13 +109,7 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
 					},
 					success: function (data) {
 							$j("#ajax_cart_loading").hide();
-							$j('.block-compare').remove();
-							$j(".compare_bar").html(data.bar);
-							$j(".sider_bar").show();
-							/* $j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
-							setTimeout(function () {
-									$j('.col-main').find('.messages').remove();
-							}, 5000); */
+							$j("#product-compare-list").html(data.bar);
 							$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
 							$j('#ajaxcart-overlay').show();
 							setTimeout(function () {
@@ -126,21 +120,19 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
     }
 
     function clearCompare(url) {
-			$j("#ajax_loader").show();
+			$j("#ajax_cart_loading").show();
 			url = url.replace("catalog/product_compare/clear", "customcompare/product_compare/clear");
 			$j.ajax({
 				url: url,
 				type: "POST",
 				dataType: 'json',
 				success: function (data) {
-					$j("#ajax_loader").hide();
-						//$j('.block-compare').remove();
-						$j("#product-compare-list").html(data.bar);
-						//$j(".sider_bar").show();
-						$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
-						setTimeout(function () {
-								$j('.col-main').find('.messages').remove();
-						}, 5000);
+					$j("#ajax_cart_loading").hide();
+					$j("#product-compare-list").html(data.bar);
+					$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+					setTimeout(function () {
+							$j('.col-main').find('.messages').remove();
+					}, 5000);
 				}
 			});
     }

@@ -1003,7 +1003,8 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li.current.rewardpoints_dashboard a:before,
 .block-account li.rewardpoints_dashboard a:hover:before{background-position:-62px -301px;}
 
-.block-recently-viewed{position:fixed; max-width:130px; right: 0; top:30%; z-index:999;}
+.block-recently-viewed{position:fixed; max-width:130px; right: -70px; bottom:0; z-index:999; transition:all 0.3s ease-in-out;}
+.block-recently-viewed:hover{right:0;}
 .block-recently-viewed .box-title{background:#000; padding:5px 0; text-align:center;}
 .block-recently-viewed .box-title span{font-family: 'FuturaT_Bold'; color:#FFFFFF; text-transform:uppercase; font-size:14px; padding:5px 0;}
 .block-recently-viewed .box-content{background:#FFFFFF; border:1px solid #e6e6e6; border-top:0 none; padding:10px; overflow:hidden;}
@@ -1102,9 +1103,9 @@ body:not(.customer-account) .block:first-child .block-title {
 	text-transform:uppercase;
 	background-position:0 -122px;
 }
-.compare-popup .data-table .compare-item-actions .link-wishlist:hover{
+.compare-popup .data-table .compare-item-actions .link-wishlist:hover, .compare-popup .data-table .compare-item-actions .link-wishlist.added-item{
 	background-position: 0 0;
-  color: #ffc222;
+  color: #000;
 }
 .compare-popup-close {
 	position: absolute;
@@ -1941,6 +1942,7 @@ a.button {
 #dt_method_Paysbuy, #dt_method_KSmart, #dt_method_ccsave{border-bottom: 0 !important;}
 #co-payment-form-update .radio{margin-top: 3px;}
 .logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
+.logo_payment img {display: inline-block;padding: 3px;}
 .call_center_img {margin: 0 -10px -10px;border-radius: 5px;}
 /* -------------------------------------------- *
  * Please Wait (Loading Indicator)
@@ -5094,6 +5096,63 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 7px;
 }
 
+/* Flip image */
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 100%;
+	height: 100%;
+	min-height:290px;
+}
+
+.block-highlight .flip-container, .block-highlight .flip-container .front, .block-highlight .flip-container .back {
+	width: 100%;
+	height: 100%;
+	min-height:195px;
+}
+
+.block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
+	width: 100%;
+	height: 100%;
+	min-height:268px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
 /* ============================================ *
  * Catalog - Product
  * ============================================ */
@@ -5241,7 +5300,7 @@ body.catalogsearch-result-index .page-title h1 {
 	font-size:18px;
   float:left;
 }
-.change-qty input.qty{background:#FFFFFF; color:#000000; width:40px; font-family: "FuturaT_Bold"; font-size:14px;}
+.change-qty input.qty{background:#FFFFFF; color:#000000; width:51px; font-family: "FuturaT_Bold"; font-size:14px;}
 
 @media only screen and (max-width: 850px) {
   .product-view .product-shop .price-box .price-excluding-tax .label,
@@ -5733,7 +5792,13 @@ body.catalogsearch-result-index .page-title h1 {
 	float: left;
 	width: 100%;
 	text-align: center;
-	margin: 10px 0 20px;
+	margin: 10px 0;
+}
+.product-view .add-to-links .shareproduct-content .popupsharing-content .copy-link{
+	float: left;
+	width: 100%;
+	text-align: center;
+	margin: 0 0 10px;
 }
 .product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links{
 	float: left;

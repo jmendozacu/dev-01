@@ -134,7 +134,8 @@ class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_B
                 'filter'    => false,
                 'sortable'  => false
             ));
-
+        $this->addExportType('*/*/exportCsv', Mage::helper('catalog')->__('CSV'));
+        $this->addExportType('*/*/exportExcel', Mage::helper('catalog')->__('Excel'));
         $this->addRssList('rss/catalog/review', Mage::helper('catalog')->__('Pending Reviews RSS'));
 
         return $this;

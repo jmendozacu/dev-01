@@ -39,6 +39,13 @@
 					<frontName>customreview</frontName>
 				</args>
 			</customreview>
+			<adminhtml>
+				<args>
+					<modules>
+						<customreview before='Mage_Adminhtml'>Magebuzz_Customreview_Adminhtml</customreview>
+					</modules>
+				</args>
+			</adminhtml>
 		</routers>
 	</admin>
 	<adminhtml>

@@ -62,6 +62,8 @@ class Amasty_Ajaxlogin_GoogleController extends Amasty_Ajaxlogin_AjaxloginContro
          $oauth_token = Mage::getSingleton('core/session')->getData('amajaxlogin_google_token');
          if($data && $oauth_token)
             $this->_login($data, $oauth_token, 'g', $this->__('Google'));
+            $customer = Mage::getSingleton('customer/session')->getCustomer();
+            $customer->setCustomerSource('Google')->save();
      }
     
      public function iframeAction() {
