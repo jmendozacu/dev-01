@@ -121,7 +121,7 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
         imgContainer.appendChild(div);
         imgContainer.appendChild(divLabel);
         div.observe('click', this.configureImage.bind(this));
-        divLabel.observe('click', this.configureImage.bind(this));
+        divLabel.observe('click', this.configureImageLabel.bind(this));
 
         if(useTooltip){
             amcontentPart = 'background: #' + option.color + '">';
@@ -147,7 +147,7 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
 				imgContainer.appendChild(divLabel);
 				
 				div.observe('click', this.configureImage.bind(this));
-				divLabel.observe('click', this.configureImage.bind(this));
+				divLabel.observe('click', this.configureImageLabel.bind(this));
 
         if(useTooltip){
             amcontentPart = '"><img src="' + option.bigimage + '"/>'
@@ -565,6 +565,23 @@ Product.Config.prototype.configureHr = function(event){
 
 Product.Config.prototype.configureImage = function(event){
     var element = Event.element(event);
+    attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
+    optionId = element.id.replace(/[a-z-]*/, '');
+    
+    this.selectImage(element);
+    
+    $('attribute' + attributeId).value = optionId;
+    this.configureElement($('attribute' + attributeId));
+		this.updateLabel(element);
+    /* fix for sm ajax cart*/
+    if($$('body.sm_market').length > 0){
+        jQuery('#attribute' + attributeId).trigger("change");
+    }
+}
+
+Product.Config.prototype.configureImageLabel = function(event){
+    var elementLabel = Event.element(event);
+    var element = elementLabel.previous();
     attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
     optionId = element.id.replace(/[a-z-]*/, '');
     

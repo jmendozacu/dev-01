@@ -218,14 +218,18 @@ AmAjaxLogin.prototype =
             onSuccess: function(transport) {
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
-                     this.hideAnimation();
-                     this.showMessage(response, false);
-                     if(response.is_error == "2"){
-                        this.updateHeader();
-                        if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
-                            window.location.reload();
-                        }    
-                     }
+                    this.hideAnimation();
+										if(response.is_error == "1"){
+											this.showMessage(response, true); // Show message wrong passwords
+										}else{
+											 this.showMessage(response, false);
+										}
+										if(response.is_error == "2"){
+											this.updateHeader();
+											if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
+													window.location.reload();
+											}    
+										}
                 }
             }.bind(this),
             onFailure: function()
@@ -252,9 +256,13 @@ AmAjaxLogin.prototype =
             onSuccess: function(transport) {
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
-                     this.hideAnimation();
-										 response.redirect = "2"; // new response redirect to reload page
-                     this.showMessage(response, false);
+                    this.hideAnimation();
+										response.redirect = "2"; // new response redirect to reload page
+                    if(response.is_error == "1"){
+											this.showMessage(response, true); // Show message wrong passwords
+										}else{
+											 this.showMessage(response, false);
+										}
                      if(response.is_error == "2"){
                         this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
