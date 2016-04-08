@@ -10,7 +10,7 @@ class Magebuzz_Customreview_Adminhtml_Catalog_Product_ReviewController extends M
     public function exportCsvAction()
     {
         $fileName   = 'customer_review.csv';
-        $grid       = $this->getLayout()->createBlock('customreview/adminhtml_review_gridexport');
+        $grid       = $this->getLayout()->createBlock('customreview/adminhtml_review_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getCsvFile());
     }
     /**
