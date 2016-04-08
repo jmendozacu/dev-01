@@ -88,10 +88,41 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
       } elseif ($model->getImage()) {
         $data['icon_image'] = $model->getImage();
       }
+			
+			if (isset($_FILES['dealer_map']['name']) && $_FILES['dealer_map']['name'] != '') {
+        try {
+          //rename image in case image name has space
+          $image_name = $_FILES['dealer_map']['name'];
+          $new_image_name = Mage::helper('dealerlocator')->renameImage($image_name);
+
+          $uploader = new Varien_File_Uploader('dealer_map');
+          $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
+          $uploader->setAllowRenameFiles(TRUE);
+          $uploader->setFilesDispersion(FALSE);
+
+          $path = Mage::getBaseDir('media') . DS . 'dealers' . DS . 'map';
+          if (!is_dir($path)) {
+            mkdir($path, 0777, TRUE);
+          }
+
+          if (!file_exists($path . DS . $new_image_name)) {
+            $uploader->save($path, $new_image_name);
+          }
+        } catch (Exception $e) {
+          // silence is gold
+        }
+        $data['dealer_map'] = $new_image_name;
+      } elseif ($model->getImage()) {
+        $data['dealer_map'] = $model->getImage();
+      }
 
       $post = $this->getRequest()->getPost();
       if (isset($post['icon_image']['delete']) && $post['icon_image']['delete'] == 1) {
         $data['icon_image'] = '';
+      }
+			
+			if (isset($post['dealer_map']['delete']) && $post['dealer_map']['delete'] == 1) {
+        $data['dealer_map'] = '';
       }
 
       $model->setData($data)->setId($this->getRequest()->getParam('id'));
