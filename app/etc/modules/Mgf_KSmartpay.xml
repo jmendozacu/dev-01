@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Elias Interactive
+ *
+ * @category   Mage
+ * @package    Mage_community
+ * @author	   cherdchai Hinjumpa , bugcherd@gmail.com   089-003-5240
+ * @website   http://magentothai.wordpress.com/
+ */
+-->
+<config>
+    <modules>
+        <Mgf_KSmartpay>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Payment />
+            </depends>
+            <version>2.0.0</version>
+        </Mgf_KSmartpay>
+    </modules>
+</config>

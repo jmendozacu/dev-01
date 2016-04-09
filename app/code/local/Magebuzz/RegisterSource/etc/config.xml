@@ -18,6 +18,7 @@
 			<adminhtml>
 				<rewrite>
 					<customer_grid>Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid</customer_grid>
+					<customer_edit_tab_account>Magebuzz_RegisterSource_Block_Adminhtml_Customer_Edit_Tab_Account</customer_edit_tab_account>
 				</rewrite>
 			</adminhtml>
 	</blocks>
@@ -59,6 +60,18 @@
 				  </customer_register_success_handler>
 			  </observers>
 		  </customer_register_success>
+	  </events>
+	  <events>
+		  <adminhtml_customer_save_after> <!-- identifier of the event we want to catch -->
+			  <observers>
+				  <adminhtml_customer_save_after_handler> <!-- identifier of the event handler -->
+					  <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+					  <class>registersource/observer</class> <!-- observers class alias -->
+					  <method>lockSource</method>  <!-- observer's method to be called -->
+					  <args></args> <!-- additional arguments passed to observer -->
+				  </adminhtml_customer_save_after_handler>
+			  </observers>
+		  </adminhtml_customer_save_after>
 	  </events>
   </global>
 </config> 
