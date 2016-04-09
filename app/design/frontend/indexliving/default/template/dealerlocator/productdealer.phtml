@@ -31,6 +31,9 @@
 							<?php if ($productdealer->getWebsite()): ?>
 								<!--<h4><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></h4>-->
 							<?php endif; ?>
+							<?php if($productdealer->getDealerMap()):?>
+									<img width="50" class="dealer-map" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'?><?php echo $productdealer->getDealerMap()?>" alt="<?php echo $productdealer->getTitle(); ?>"/>
+								<?php endif?>
 							<input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
 									 value="<?php echo $productdealer->getLatitude() ?>"/>
 							<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
