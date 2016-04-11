@@ -581,15 +581,15 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 			'FILLSPACE'                 => 'Y',
 			'SHOPID' => $ShopID,
 			'PAYTERM2' => $Payterm2,
-			'txtCHECKSUM'   => $HashValue,
+			'txtCHECKSUM'   => Mage::getStoreConfig('payment/KSmartpay/md5code'),
 			'customer_name'                     => $data['CustomerName'],
 			'customer_email'                     => $data['CustomerEmail'],
 			'customer_phone'                 => $data['CustomerTel'],
 			'installment_card'                 => $PaidbyCard,
 			);
 			
-			//print_r($sArr);
-			//exit;
+			print_r($sArr);
+			exit;
 
         $sReq = '';
 

@@ -187,7 +187,7 @@
                     $InstallmentPlanName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/title', $storeId);
                     $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
                     $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
-                    echo "<li><input type=\"radio\" onclick=\"". trim($InstallmentKey) ."_click();\" name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . "><div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $InstallmentPlanName ."</div></li>";
+                    echo "<li><input type=\"radio\" onclick=\"". trim($InstallmentKey) ."_click();\" name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . "><div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $InstallmentPlanName ."</div><hr></li>";
                     $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
                     $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อน 0% กับ". $InstallmentBankName ."');" . PHP_EOL;
                     $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
@@ -309,3 +309,9 @@
     <?php echo $JavaScriptList;?>
     </script>
 </fieldset>
+<style type="text/css">
+[class *='installmentplan']{
+    float: right;
+}    
+
+</style>

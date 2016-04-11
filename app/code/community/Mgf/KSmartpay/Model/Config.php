@@ -176,15 +176,15 @@ class Mgf_KSmartpay_Model_Config
 	public function getKSmartpayRedirecturl()
 	{
 		 // $url=Mage::getBaseUrl().'checkout/cart/';
-		 //$url= Mage::getUrl('KSmartpay/KSmartpay/success',array('_secure' => true));
-		 $url=  "kbankprocess.php";
+		 $url= Mage::getUrl('KSmartpay/KSmartpay/success',array('_secure' => true));
+		 // $url=  "kbankprocess.php";
 		 return $url;
 	}
 	public function getKSmartpayResponseurl()
 	{
 		 // $url=Mage::getBaseUrl().'checkout/cart/';
-		 $url= "kbankcallapi.php";
-		 //$url= Mage::getUrl('KSmartpay/KSmartpay/success',array('_secure' => true));
+		 // $url= "kbankcallapi.php";
+		 $url= Mage::getUrl('KSmartpay/KSmartpay/success',array('_secure' => true));
 		 return $url;
 	}
 	
