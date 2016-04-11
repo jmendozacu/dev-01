@@ -315,7 +315,7 @@ $j(document).ready(function () {
     var skipContents = $j('.skip-content');
     var skipLinks = $j('.skip-link');
 
-    skipLinks.on('click', function (e) {
+    skipLinks.mouseover(function(e) {
         e.preventDefault();
 
         var self = $j(this);
@@ -340,6 +340,15 @@ $j(document).ready(function () {
             elem.addClass('skip-active');
         }
     });
+		
+		/* skipContents.mouseout(function(e) {
+			e.preventDefault();
+			var self = $j(this);
+			var isSkipContentOpen = self.hasClass('skip-active') ? 1 : 0;
+			if (isSkipContentOpen) {
+				self.removeClass('skip-active');
+			}
+		}); */
 
     $j('#header-cart').on('click', '.skip-link-close', function(e) {
         var parent = $j(this).parents('.skip-content');
