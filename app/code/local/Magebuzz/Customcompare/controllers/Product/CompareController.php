@@ -39,11 +39,15 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
                             $response['html'] =
                                 '<div class="block" id="ajaxcart_content_option_product">
 													<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
-													<div class="ajaxcart-heading">
-														<p class="added-success-message">'
-                                . $response['message'] .
-                                '</p>
-													</div>
+													<ul class="messages">
+                                                        <li class="error-msg">
+                                                            <ul>
+                                                                <li>
+                                                                     <span>' . $response['message'] . '</span>
+                                                                 </li>
+                                                            </ul>
+                                                          </li>
+                                                      </ul>
 												</div>
 												';
                         }
