@@ -500,6 +500,18 @@ function amshopby_external_rwd() {
 
 function rerun_some_init_scripts() {
     var widthWindow = jQuery( window ).width();
+		jQuery('.block-layered-nav #narrow-by-list dt').click(function(){
+			if (!jQuery(this).hasClass('current')){
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).next().addClass('current');
+				jQuery(this).addClass('current');
+			}
+			else{
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).next().removeClass('current');
+				jQuery(this).removeClass('current');
+			}
+		});
     if(widthWindow <768){ 
       /* box promo */
       jQuery(".category-banners .div-banner").mCustomScrollbar({
