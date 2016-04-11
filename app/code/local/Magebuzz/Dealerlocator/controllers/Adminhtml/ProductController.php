@@ -42,10 +42,9 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
                     $query2 = "Update " . $this->_getTableName('product_dealer_temp') ." as pdt INNER JOIN `catalog_product_entity` as cpe ON pdt.`product_sku`=cpe.`sku` set pdt.`product_id` =  cpe.`entity_id`" ;
                     $this->_getWriteConnection()->query($query2);
 
-
-                    $query3 = "INSERT INTO " .$this->_getTableName('product_dealer')." (product_id,dealer_id) (SELECT product_id, dealerlocator_id FROM product_dealer_temp)" ;
-
+                    $query3 = "INSERT INTO " .$this->_getTableName('product_dealer')." (product_id,dealer_id) SELECT product_id, dealerlocator_id FROM product_dealer_temp  ON DUPlICATE KEY update product_dealer.product_id=product_dealer_temp.product_id" ;
                     $this->_getWriteConnection()->query($query3);
+
                 } catch (Exception $e) {
                     //do nothing here
                 }
