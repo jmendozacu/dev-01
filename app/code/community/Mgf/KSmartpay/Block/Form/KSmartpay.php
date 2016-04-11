@@ -20,28 +20,27 @@
  * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category   Mage
- * @package    Mgf_KSmart
+ * @package    Mgf_KSmartpay
  * @author	   cherdchai Hinjumpa , bugcherd@gmail.com   089-003-5240
  * @website   http://magentothai.wordpress.com/
  **/
  
-class MarginFrame_KSmart_Block_Form_KSmart extends Mage_Payment_Block_Form
+class Mgf_KSmartpay_Block_Form_KSmartpay extends Mage_Payment_Block_Form
 {
     protected function _construct()
     {
         parent::_construct();
-		        $this->setTemplate('KSmart/form/KSmart.phtml');
-                
+		        $this->setTemplate('KSmartpay/form/KSmartpay.phtml');
     }
 
     /**
      * Retrieve direcpay configuration object
      *
-     * @return Mgf_KSmart_Model_Config
+     * @return Mgf_KSmartpay_Model_Config
      */
-    protected function _getKSmartConfig()
+    protected function _getKSmartpayConfig()
     {
-        return Mage::getSingleton('KSmart/config');
+        return Mage::getSingleton('KSmartpay/config');
     }
 	
 
@@ -51,13 +50,13 @@ class MarginFrame_KSmart_Block_Form_KSmart extends Mage_Payment_Block_Form
      *
      * @return array
      */
-    public function getKSmartServiceTypes()
+    public function getKSmartpayServiceTypes()
     {
 		 
 		
-         $types = $this->_getKSmartConfig()->getKSmartServiceTypes();
+         $types = $this->_getKSmartpayConfig()->getKSmartpayServiceTypes();
         if ($method = $this->getMethod()) {
-            $availableTypes = $method->getConfigData('KSmarttypes');
+            $availableTypes = $method->getConfigData('KSmartpaytypes');
             if ($availableTypes) {
                 $availableTypes = explode(',', $availableTypes);
                 foreach ($types as $code=>$name) {
@@ -76,13 +75,13 @@ class MarginFrame_KSmart_Block_Form_KSmart extends Mage_Payment_Block_Form
      *
      * @return array
      */
-    public function getKSmartMonths()
+    public function getKSmartpayMonths()
     {
-        $months = $this->getData('KSmart_months');
+        $months = $this->getData('KSmartpay_months');
         if (is_null($months)) {
             $months[0] =  $this->__('Month');
-            $months = array_merge($months, $this->_getKSmartConfig()->getMonths());
-            $this->setData('KSmart_months', $months);
+            $months = array_merge($months, $this->_getKSmartpayConfig()->getMonths());
+            $this->setData('KSmartpay_months', $months);
         }
         return $months;
     }
@@ -92,13 +91,13 @@ class MarginFrame_KSmart_Block_Form_KSmart extends Mage_Payment_Block_Form
      *
      * @return array
      */
-    public function getKSmartYears()
+    public function getKSmartpayYears()
     {
-        $years = $this->getData('KSmart_years');
+        $years = $this->getData('KSmartpay_years');
         if (is_null($years)) {
-            $years = $this->_getKSmartConfig()->getYears();
+            $years = $this->_getKSmartpayConfig()->getYears();
             $years = array(0=>$this->__('Year'))+$years;
-            $this->setData('KSmart_years', $years);
+            $this->setData('KSmartpay_years', $years);
         }
         return $years;
     }

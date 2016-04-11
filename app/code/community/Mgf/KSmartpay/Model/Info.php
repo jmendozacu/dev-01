@@ -19,34 +19,22 @@
  * needs please refer to http://www.magentocommerce.com for more information.
  *
  * @category   Mage
- * @package    Mgf_KSmart
+ * @package    Mgf_KSmartpay
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * Payment information model
+ *
+ * @category   Mage
+ * @package    Mgf_KSmartpay
  * @author	   cherdchai Hinjumpa , bugcherd@gmail.com   089-003-5240
  * @website   http://magentothai.wordpress.com/
  */
-
-
-class MarginFrame_KSmart_Block_Info_KSmart extends Mage_Payment_Block_Info
+ 
+class Mgf_KSmartpay_Model_Info extends Mage_Payment_Model_Info
 {
-    /**
-     * Init default template for block
-     */
-    protected function _construct()
-    {
-        parent::_construct();
-        $this->setTemplate('KSmart/info/KSmart.phtml');
-    }
-    /**
-     * Retrieve credit card type name
-     *
-     * @return string
-     */
-    public function getKSmartTypeName()
-    {
-        $types = Mage::getSingleton('KSmart/config')->getKSmartTypes();
-        if (isset($types[$this->getInfo()->getKSmartType()])) {
-            return $types[$this->getInfo()->getKSmartType()];
-        }
-        return $this->getInfo()->getKSmartType();
-    }
+	
+    
 }
- ?>

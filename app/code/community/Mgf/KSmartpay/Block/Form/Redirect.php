@@ -1,12 +1,12 @@
 <?php 
- class MarginFrame_KSmart_Block_Form_Redirect extends Mage_Core_Block_Abstract
+ class Mgf_KSmartpay_Block_Form_Redirect extends Mage_Core_Block_Abstract
 {
     protected function _toHtml()
     {
 
-		$KSmart = Mage::getModel('KSmart/method_KSmart');
+		$KSmartpay = Mage::getModel('KSmartpay/method_KSmartpay');
 		$xData = "";
-		$MD5Code = Mage::getStoreConfig('payment/KSmart/md5code');
+		$MD5Code = Mage::getStoreConfig('payment/KSmartpay/md5code');
 		
 		$PaymentGatewayName = "";
 
@@ -29,8 +29,8 @@
 		
 		$PayChannel = "";
 		$PayExpiredDate = "";
-		Mage::helper('Paysbuy')->debug('Procressing...',true);
-        foreach ($KSmart->getStandardCheckoutFormFields('redirect') as $field=>$value) {
+		
+        foreach ($KSmartpay->getStandardCheckoutFormFields('redirect') as $field=>$value) {
 			//echo "<li>" . $field . " :: " . $value . "</li>";
 			switch (strtolower(trim($field))) {
 			    case "merchant2":
@@ -75,24 +75,24 @@
 		//exit;
 		$PaymentMethod = "";
 		$PaymentGatewayUrl = "";
-		if (preg_match('#^KSmart#', $paybycard) === 1) {
-			//=> KSmartA,KSmartB,KSmartC,KSmartD,KSmartE
+		if (preg_match('#^KSmartpay#', $paybycard) === 1) {
+			//=> KSmartpayA,KSmartpayB,KSmartpayC,KSmartpayD,KSmartpayE
 			//echo  "tttttttttttttttt<br/>";
-			$PaymentMethod = "KSmart";
+			$PaymentMethod = "KSmartPay";
 			$PaymentGatewayName = "K-Payment Gateway";
-			$PaymentGatewayUrl = trim($KSmart->getKSmartUrl());
+			$PaymentGatewayUrl = trim($KSmartpay->getKSmartpayUrl());
 		}
 		if (preg_match('#^Krungsri#', $paybycard) === 1) {
 			//=> KrungsriA,KrungsriB,KigrungsriX,KrungsriY,KrungsriZ,KrungsriC,KrungsriD,KrungsriP,KrungsriQ,KrungsriR,KrungsriE,KrungsriF,KrungsriS,KrungsriT,KrungsriU,KrungsriG,KrungsriH,KrungsriL,KrungsriM,KrungsriN,KrungsriI,KrungsriJ,KrungsriO,KrungsriV,KrungsriW
 			//echo "kwwwwwwwwwwwwwwwwwwwwwwwwwww<br/>";
 			$PaymentMethod = "Krungsri";
 			$PaymentGatewayName = "Krungsri Payment Gateway";
-			$PaymentGatewayUrl = trim(Mage::getStoreConfig("payment/KSmart/krungsrigatewayurl"));
+			$PaymentGatewayUrl = trim(Mage::getStoreConfig("payment/KSmartpay/krungsrigatewayurl"));
 			if ($PaymentGatewayUrl == "") {
 				//$PaymentGatewayUrl = "https://servicekrungsrigroup.com/epp/payment";
 			}
 			
-			$payMerchantID = trim(Mage::getStoreConfig("payment/KSmart/krungsrimerchantno"));
+			$payMerchantID = trim(Mage::getStoreConfig("payment/KSmartpay/krungsrimerchantno"));
 			if ($payMerchantID =="") {
 				//$payMerchantID = "270019";
 			}
@@ -124,16 +124,16 @@
 		
         $form = new Varien_Data_Form();
         $form->setAction($PaymentGatewayUrl)
-            ->setId('KSmart_standard_checkout')
+            ->setId('KSmartpay_standard_checkout')
             ->setName('sendform')
             ->setMethod('post')
 		    ->setUseContainer(true);
 					
 		//=>
 		switch ($PaymentMethod) {
-		    case "KSmart":
+		    case "KSmartPay":
 				//=> Build post form		
-		        foreach ($KSmart->getStandardCheckoutFormFields('redirect') as $field=>$value) {
+		        foreach ($KSmartpay->getStandardCheckoutFormFields('redirect') as $field=>$value) {
 				    if ((strtolower(trim($field)) == "customer_name") || (strtolower(trim($field)) == "installment_card")  || (strtolower(trim($field)) == "customer_email") || (strtolower(trim($field)) == "customer_phone")) {
 					
 					}
@@ -260,23 +260,23 @@
 		
 		        $html = '<html>
 						<body style="text-align:center;margin: auto;position: absolute; top: 0; left: 0; bottom: 0; right: 0;">';
-				if ((trim(Mage::getStoreConfig('payment/KSmart/redirecttext')) == "") && (trim(Mage::getStoreConfig('payment/KSmart/redirectfooter')) == "")) {		
+				if ((trim(Mage::getStoreConfig('payment/KSmartpay/redirecttext')) == "") && (trim(Mage::getStoreConfig('payment/KSmartpay/redirectfooter')) == "")) {		
 			      	 $html.= $this->__('<p>You will be redirected to ". $PaymentGatewayName ." in a few seconds.</p>');
 				   	 $html.= $this->__('<p>Copyright ". $PaymentGatewayName ."</p>');
 				 }
 				 else {
-				 	 if (trim(Mage::getStoreConfig('payment/KSmart/redirecttext')) != "") { 
-			      	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmart/redirecttext') ."</p>");
+				 	 if (trim(Mage::getStoreConfig('payment/KSmartpay/redirecttext')) != "") { 
+			      	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmartpay/redirecttext') ."</p>");
 					 }
-					 if (trim(Mage::getStoreConfig('payment/KSmart/redirectfooter')) != "") {	
-				   	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmart/redirectfooter') ."</p>");
+					 if (trim(Mage::getStoreConfig('payment/KSmartpay/redirectfooter')) != "") {	
+				   	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmartpay/redirectfooter') ."</p>");
 					 }
 				 
 				 }
 				
 				$RedirectTime = "1000";
-				if (trim(Mage::getStoreConfig('payment/KSmart/redirecttime')) != "") {
-					$RedirectTime = Mage::getStoreConfig('payment/KSmart/redirecttime');
+				if (trim(Mage::getStoreConfig('payment/KSmartpay/redirecttime')) != "") {
+					$RedirectTime = Mage::getStoreConfig('payment/KSmartpay/redirecttime');
 				}
 		
 		       $html.= $form->toHtml();
