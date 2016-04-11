@@ -1,7 +1,43 @@
 <?php
-class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_Block_Review_Grid{
+class Magebuzz_Customreview_Block_Adminhtml_Review_Gridpendingexport extends Mage_Adminhtml_Block_Review_Grid{
+
+    protected function _prepareCollection()
+    {
+        $model = Mage::getModel('review/review');
+        $collection = $model->getProductCollection();
+        $collection->addStatusFilter($model->getPendingStatus());
+
+        if ($this->getProductId() || $this->getRequest()->getParam('productId', false)) {
+            $productId = $this->getProductId();
+            if (!$productId) {
+                $productId = $this->getRequest()->getParam('productId');
+            }
+            $this->setProductId($productId);
+            $collection->addEntityFilter($this->getProductId());
+        }
+
+        if ($this->getCustomerId() || $this->getRequest()->getParam('customerId', false)) {
+            $customerId = $this->getCustomerId();
+            if (!$customerId){
+                $customerId = $this->getRequest()->getParam('customerId');
+            }
+            $this->setCustomerId($customerId);
+            $collection->addCustomerFilter($this->getCustomerId());
+        }
+
+        if (Mage::registry('usePendingFilter') === true) {
+            $collection->addStatusFilter($model->getPendingStatus());
+        }
+
+        $collection->addStoreData();
+
+
+        $this->setCollection($collection);
+        return Mage_Adminhtml_Block_Widget_Grid::_prepareCollection();
+    }
     protected function _prepareColumns()
     {
+
         $this->addColumn('review_id', array(
             'header'        => Mage::helper('review')->__('ID'),
             'align'         => 'right',
@@ -26,9 +62,8 @@ class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_B
             'index'     => 'img',
             'sortable'      => false,
             'width'     => '150',
-            'renderer' => 'Magebuzz_Customreview_Block_Adminhtml_Renderer_Image'
+            'renderer' => 'Magebuzz_Customreview_Block_Adminhtml_Renderer_ImageDir'
         ));
-
         if( !Mage::registry('usePendingFilter') ) {
             $this->addColumn('status', array(
                 'header'        => Mage::helper('review')->__('Status'),
@@ -40,7 +75,6 @@ class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_B
                 'index'         => 'status_id',
             ));
         }
-
         $this->addColumn('title', array(
             'header'        => Mage::helper('review')->__('Title'),
             'align'         => 'left',
@@ -82,7 +116,7 @@ class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_B
                 'header'    => Mage::helper('review')->__('Visible In'),
                 'index'     => 'stores',
                 'type'      => 'store',
-                'store_view' => true,
+                'renderer' => 'Magebuzz_Customreview_Block_Adminhtml_Renderer_VisibleIn',
             ));
         }
 
@@ -117,31 +151,12 @@ class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_B
                 'width'     => '50px',
                 'type'      => 'action',
                 'getter'     => 'getReviewId',
-                'actions'   => array(
-                    array(
-                        'caption' => Mage::helper('adminhtml')->__('Edit'),
-                        'url'     => array(
-                            'base'=>'*/catalog_product_review/edit',
-                            'params'=> array(
-                                'productId' => $this->getProductId(),
-                                'customerId' => $this->getCustomerId(),
-                                'ret'       => ( Mage::registry('usePendingFilter') ) ? 'pending' : null
-                            )
-                        ),
-                        'field'   => 'id'
-                    )
-                ),
+                'renderer' => 'Magebuzz_Customreview_Block_Adminhtml_Renderer_EditText',
                 'filter'    => false,
                 'sortable'  => false
             ));
-        if(strpos(Mage::helper('core/url')->getCurrentUrl(),'pending')){
-            $this->addExportType('*/*/exportPendingCsv', Mage::helper('catalog')->__('CSV'));
-            $this->addExportType('*/*/exportPendingExcel', Mage::helper('catalog')->__('Excel'));
-        }
-        $this->addExportType('*/*/exportCsv', Mage::helper('catalog')->__('CSV'));
-        $this->addExportType('*/*/exportExcel', Mage::helper('catalog')->__('Excel'));
-        $this->addRssList('rss/catalog/review', Mage::helper('catalog')->__('Pending Reviews RSS'));
-
+        $this->addExportType('*/*/exportPendingCsv', Mage::helper('catalog')->__('CSV'));
+        $this->addExportType('*/*/exportPendingExcel', Mage::helper('catalog')->__('Excel'));
         return $this;
     }
 }
