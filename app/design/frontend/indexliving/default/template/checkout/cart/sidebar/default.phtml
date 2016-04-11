@@ -82,7 +82,7 @@
     <div class="qty-minicart">
       <span class="qty-label"><?php echo $this->__('Qty') ?></span>
       <span class="qty-item">
-        <input class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
+        <input maxlength="4" class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
         <?php if($product->getTypeId() == 'configurable'):?>
           <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
         <?php else: ?>
