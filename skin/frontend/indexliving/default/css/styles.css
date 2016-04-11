@@ -1054,7 +1054,8 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .page-title{padding:10px 20px; background:#252525; overflow:hidden; border-radius:4px 4px 0 0;}
 .compare-popup .page-title h1{float:left; color:#FFFFFF; border:0 none; margin:0; padding:8px 0;}
 .compare-popup .page-title .link-print{float:right; color:#FFFFFF; text-decoration:none; background:url(../images/i-print.png) left 100% no-repeat; padding-left:30px; padding-top:12px;}
-.compare-popup .compare-list-table{padding:20px; position:relative; background:#FFFFFF; max-height:450px; overflow-y:scroll;}
+.compare-popup .compare-list-table-wrap{padding:5px; position:relative; background:#FFFFFF;  border-radius:0 0 4px 4px;}
+.compare-popup .compare-list-table{max-height:450px; overflow-y:scroll;}
 .compare-popup .compare-list-table .please-wait{position:absolute; top:50%; left:50%; margin-left:-64px; margin-top:-64px;}
 .compare-popup .compare-list-table .please-wait img{width:auto;}
 .compare-popup .data-table th{background:#FFFFFF;}
