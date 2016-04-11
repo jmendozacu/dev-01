@@ -27,8 +27,7 @@
 /* @var $this Mage_Wishlist_Block_Customer_Wishlist_Item_Column_Cart */
 /* @var Mage_Wishlist_Model_Item $item */
 $item = $this->getItem();
-$product = $item->getProduct();
-
+$product = Mage::getModel('catalog/product')->load($item->getProductId());
 ?>
 <div class="cart-cell">
 <?php if(!$product->canConfigure() && $product->isSaleable()): ?>
