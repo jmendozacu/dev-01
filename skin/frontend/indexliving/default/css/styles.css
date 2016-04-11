@@ -7060,7 +7060,7 @@ body.catalogsearch-result-index .page-title h1 {
   min-width: 60px;
   text-align: center;
 }
-.cart-table .product-cart-actions .cart-qty-actions{width:80px; margin:0 auto;}
+.cart-table .product-cart-actions .cart-qty-actions{width:93px; margin:0 auto;}
 .cart-table .product-cart-actions .qty {
   height: 40px;
   border-color: #000000;
@@ -7069,7 +7069,7 @@ body.catalogsearch-result-index .page-title h1 {
 	font-size:14px;
 	font-family: 'FuturaT_Bold';
   text-align: center;
-  width: 40px;
+  width: 53px;
 }
 .cart-table .cart-price .price{
 	color:#000;
