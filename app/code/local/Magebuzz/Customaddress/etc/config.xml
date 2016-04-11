@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Magebuzz_Customaddress>
-			<version>0.1.3</version>
+			<version>0.1.4</version>
 		</Magebuzz_Customaddress>
 	</modules>
 	<frontend>
