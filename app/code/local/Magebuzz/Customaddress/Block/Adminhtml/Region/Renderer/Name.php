@@ -14,11 +14,14 @@ class Magebuzz_Customaddress_Block_Adminhtml_Region_Renderer_Name extends Mage_A
 				$arr[$row['locale']] = $row['name'];
 		}
 		foreach ($locales as $locale) {
+			$name = '';
+			if (isset($arr[$locale])) {
 				$name = $arr[$locale];
-				if (!$name) {
-						$name = 'EMPTY';
-				}
-				$html[] = '<span>' . $locale . '</span> => <span class="' . $locale . '_name">' . $name . '</span>';
+			}
+			if (!$name) {
+					$name = 'EMPTY';
+			}
+			$html[] = '<span>' . $locale . '</span> => <span class="' . $locale . '_name">' . $name . '</span>';
 		}
 		$html = implode('<br />', $html);
 
