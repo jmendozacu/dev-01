@@ -448,4 +448,14 @@ jQuery(document).ready(function () {
       jQuery(this).addClass('active');
     }
   });
+	jQuery(".flip-container > .flipper > .front" ).hover(function() {
+			jQuery(this).animate({
+        'opacity' : 0
+      },150);
+		}, function() {
+			jQuery(this).animate({
+        'opacity' : 1
+      },150);
+		}
+	);
 });
