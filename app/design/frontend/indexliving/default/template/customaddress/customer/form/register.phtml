@@ -116,7 +116,7 @@
                                    name="cus_mobile"
                                    id = "cus_mobile"
                                    title="<?php echo Mage::helper('core')->quoteEscape($this->__('Mobile')) ?>"
-                                   value="<?php echo $this->escapeHtml($this->getAddress()->getCustomerMobile()) ?>"
+                                   value="<?php echo $this->escapeHtml($this->getAddress()->getCusMobile()) ?>"
                                    class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?> validate-account-number" />
                         </div>
                     </div>
