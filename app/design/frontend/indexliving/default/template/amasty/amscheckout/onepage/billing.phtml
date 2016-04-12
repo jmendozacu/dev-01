@@ -76,6 +76,11 @@
                           ->setField($_field)
                           ->toHtml();
                 break;
+                case "billing:customer_mobile":
+                    print $hlr->getBillingCustomerWidget($this, 'amasty/amscheckout/customer/customer/widget/mobile.phtml')
+                        ->setField($_field)
+                        ->toHtml();
+                break;
                 case "billing:company":
                     echo $hlr->getBeforeControlHtml($_field);
                     ?><input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" title="<?php echo $this->escapeHtml($label) ?>" class="input-text <?php echo $hlr->getAttributeValidationClass('company', $required) ?>" /><?php
