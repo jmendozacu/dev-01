@@ -250,4 +250,19 @@
 		
 		new SubdistrictUpdater('billing:country_id', 'billing:region_id', 'billing:city_id', 'billing:subdistrict', 'billing:subdistrict_id', 'billing:postcode', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
 //]]>
+jQuery('.validate-account-number').keypress(function (e) {
+    if(e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37){
+        return true;
+    }
+    if(jQuery(this).val().length > 10){
+        e.preventDefault();
+    }
+    if(e.which != 8 && isNaN(String.fromCharCode(e.which))){
+        e.preventDefault();
+
+    }
+
+}).on("cut copy paste", function (e) {
+    e.preventDefault();
+});
 </script>
