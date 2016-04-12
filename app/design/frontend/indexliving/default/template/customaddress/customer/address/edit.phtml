@@ -155,9 +155,9 @@
 <script type="text/javascript">
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
-    Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
+    /*Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
         return /^0[0-9]{10}$/i.test(v);
-    });
+    });*/
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 
 		new CityUpdater('country', 'region_id', 'city', 'city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
