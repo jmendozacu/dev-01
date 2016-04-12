@@ -7,13 +7,14 @@ class Magebuzz_Subscription_SubscriberController extends Mage_Newsletter_Subscri
   /**
 	* New subscription action
 	*/
-	public function newAction()
-	{
-		if ($this->getRequest()->isPost() && $this->getRequest()->getPost('email')) {
+	public function newAction() {
+		$this->getResponse()->setHeader('Content-type', 'application/json');
+    $_response = array();	
+		if ((boolean)$this->getRequest()->getParam('subscriber_email', false)) {
 				$session            = Mage::getSingleton('core/session');
 				$customerSession    = Mage::getSingleton('customer/session');
-				$email              = (string) $this->getRequest()->getPost('email');
-
+				$email              = (string) $this->getRequest()->getParam('subscriber_email', false);
+				$html = '';
 				try {
 					if (!Zend_Validate::is($email, 'EmailAddress')) {
 							Mage::throwException($this->__('Please enter a valid email address.'));
@@ -35,25 +36,62 @@ class Magebuzz_Subscription_SubscriberController extends Mage_Newsletter_Subscri
 					$subscriberCollection = Mage::getModel('newsletter/subscriber')->getCollection()->addFieldToFilter('subscriber_email', $email);
 			
 					if ($subscriberCollection->getSize()) {
-						$session->addError(Mage::helper('core')->__('This email address is already assigned to another user.'));
+						$_response['status'] = 'error';
+						$_response['message'] = Mage::helper('core')->__('This email address is already assigned to another user.');
 					}
 					else{
 						$status = Mage::getModel('newsletter/subscriber')->subscribe($email);
 						if ($status == Mage_Newsletter_Model_Subscriber::STATUS_NOT_ACTIVE) {
-							$session->addSuccess($this->__('Confirmation request has been sent.'));
+							$_response['status'] = 'success';
+							$_response['message'] = Mage::helper('core')->__('Confirmation request has been sent.');
 						}
 						else{
-							$session->addSuccess($this->__('Thank you for your subscription.'));
+							$_response['status'] = 'success';
+							$_response['message'] = Mage::helper('core')->__('Thank you for your subscription.');
 						}
 					}
 				}
 				catch (Mage_Core_Exception $e) {
-						$session->addException($e, $this->__('There was a problem with the subscription: %s', $e->getMessage()));
+					$_response['status'] = 'error';
+					$_response['message'] = Mage::helper('core')->__('There was a problem with the subscription: %s', $e->getMessage());
 				}
 				catch (Exception $e) {
-						$session->addException($e, $this->__('There was a problem with the subscription.'));
+					$_response['status'] = 'error';
+					$_response['message'] = Mage::helper('core')->__('There was a problem with the subscription.');
 				}
 		}
-		$this->_redirectReferer();
+		// Add custom message
+		if(Mage::helper('subscription')->isEnabledCustomMsg()) {
+			$customMsg = '';
+			if(Mage::helper('subscription')->isUseStaticBlockForCustomMsg()){
+				$customMsg .= Mage::helper('subscription')->getPopupStaticBlockContent();
+			}else{
+				$customMsg .= (string)Mage::getStoreConfig('subscription/general/manual_custom_msg');
+			}
+			$html = 
+			'<div class="block" id="ajaxcart_content_option_product">
+				<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+				<div class="ajaxcart-heading">
+					<p class="added-success-message">' 		
+					. $_response['message'] .
+					'</p>
+				</div>
+				<div class="ajaxcart-body">'.$customMsg.'</div>
+			</div>
+			';
+		}else{
+			$html = 
+			'<div class="block" id="ajaxcart_content_option_product">
+				<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+				<div class="ajaxcart-heading">
+					<p class="added-success-message">' 		
+					. $_response['message'] .
+					'</p>
+				</div>
+			</div>
+			';
+		}
+		$_response['html'] = $html;
+		$this->getResponse()->setBody(json_encode($_response));
 	}
 }
