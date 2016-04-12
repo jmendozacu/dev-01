@@ -221,6 +221,13 @@ Product view
 						<action method="addItem"><type>skin_js</type><name>js/ajaxupload.js</name></action>
 						<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
         </reference>
+				<reference name="catalog_product_price_template">
+            <action method="addPriceBlockType"><type>simple</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>grouped</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>configurable</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>virtual</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>bundled</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+        </reference>
         <reference name="content">
             <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
                 <!--
