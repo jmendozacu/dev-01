@@ -239,9 +239,9 @@
 <script type="text/javascript">
 //<![CDATA[
 
-    Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
+    /*Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
         return /^0[0-9]{10}$/i.test(v);
-    });
+    });*/
     var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
     var billingForm = new VarienForm('co-billing-form');
 
