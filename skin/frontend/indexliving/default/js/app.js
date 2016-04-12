@@ -312,7 +312,7 @@ $j(document).ready(function () {
     // Skip Links
     // =============================================
 
-    var skipContents = $j('.skip-content');
+    /* var skipContents = $j('.skip-content');
     var skipLinks = $j('.skip-link');
 
     skipLinks.mouseover(function(e) {
@@ -339,7 +339,7 @@ $j(document).ready(function () {
             self.addClass('skip-active');
             elem.addClass('skip-active');
         }
-    });
+    }); */
 		
 		/* skipContents.mouseout(function(e) {
 			e.preventDefault();

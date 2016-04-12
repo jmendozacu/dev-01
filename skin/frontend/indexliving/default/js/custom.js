@@ -471,4 +471,21 @@ jQuery(document).ready(function () {
       },150);
 		}
 	);
+	
+	jQuery(".cateogry > .skip-cateogry" ).hover(function() {
+			jQuery(this).addClass('skip-active');
+			jQuery(this).parent().addClass('skip-active');
+			jQuery(this).next().addClass('skip-active');
+		}
+	);
+	jQuery(".box-top-menu > .page-header > .cateogry").hover(function() {
+			if(jQuery(this).hasClass('skip-active')){
+				jQuery(this).removeClass('skip-active');
+			}
+		}, function() {
+			jQuery(this).removeClass('skip-active');
+			jQuery(this).children(".skip-cateogry").removeClass('skip-active');
+			jQuery(this).children(".menu-content").removeClass('skip-active');
+		}
+	);
 });
