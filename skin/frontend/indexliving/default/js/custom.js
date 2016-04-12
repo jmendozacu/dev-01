@@ -364,6 +364,19 @@ jQuery(document).ready(function () {
 			jQuery(this).removeClass('current');
 		}
 	});
+	
+	jQuery('.sidebar .block-compare .block-title').click(function(){
+		if (!jQuery(this).hasClass('active')){
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).next().addClass('active');
+			jQuery(this).addClass('active');
+		}
+		else{
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).next().removeClass('active');
+			jQuery(this).removeClass('active');
+		}
+	});
 
   /* var widthWindow = jQuery( window ).width();
   var widthHeight = jQuery( window ).height(); */
