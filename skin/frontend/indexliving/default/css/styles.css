@@ -8751,7 +8751,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table.orders-table td.status span {display:inline-block; text-align:center; min-width:84px; height:26px; line-height:26px; border:solid 1px #BEBEBE; border-radius:5px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
 .data-table.orders-table td.status span.status-done { color:#A0D819;}
 .data-table.orders-table  td,
-.data-table.orders-table th{/* text-align:left; */}
+.data-table.orders-table th{/* text-align:left; */ vertical-align:middle;}
 .data-table.orders-table .a-right {text-align:right;}
 
 
