@@ -178,6 +178,9 @@
 </form>
 <script type="text/javascript">
 //<![CDATA[
+    Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
+        return /^0[0-9]{9}$/i.test(v);
+    });
     var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveShipping') ?>',
         '<?php echo $this->getUrl('checkout/onepage/shippingMethod') ?>');
     var shippingForm = new VarienForm('co-shipping-form');
