@@ -31,12 +31,14 @@
     <h3 class="table-caption"><?php echo $this->__('Items Invoiced') ?></h3>
     <table class="data-table linearize-table" id="my-invoice-table-<?php echo $_invoice->getId(); ?>">
         <col />
+        <col />
         <col width="1" />
         <col width="1" />
         <col width="1" />
         <col width="1" />
         <thead>
         <tr>
+            <th><?php echo $this->__('Product Image') ?></th>
             <th><?php echo $this->__('Product Name') ?></th>
             <th><?php echo $this->__('SKU') ?></th>
             <th class="a-right" data-rwd-label="<?php echo $this->__('Price') ?>"><?php echo $this->__('Price') ?></th>
