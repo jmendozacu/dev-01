@@ -42,6 +42,11 @@
       <ajaxcart>
         <class>Magebuzz_Ajaxcart_Block</class>
       </ajaxcart>
+      <checkout>
+        <rewrite>
+          <cart_item_renderer>Magebuzz_Ajaxcart_Block_Checkout_Cart_Item_Renderer</cart_item_renderer>
+        </rewrite>
+      </checkout>
     </blocks>
     <helpers>
       <ajaxcart>
