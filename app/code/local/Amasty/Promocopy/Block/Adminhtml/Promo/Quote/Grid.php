@@ -45,7 +45,16 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
             'index'     => 'discount_amount',
             'getter'     => array($this, 'formatDiscount'),
         ), 'simple_action');
-        
+
+
+        $this->addColumnAfter('times_used', array(
+            'header'    => Mage::helper('sales')->__('No.Used'),
+            'align'     => 'right',
+            'index'     => 'times_used',
+            //'getter'     => array($this, 'timeUsed'),
+        ), 'discount_amount');
+
+
         $this->addColumnAfter('stop_rules_processing', array(
             'header'    => $this->__('Stop'),
             'index'     => 'stop_rules_processing',
@@ -140,6 +149,10 @@ class Amasty_Promocopy_Block_Adminhtml_Promo_Quote_Grid extends Mage_Adminhtml_B
     public function formatDiscount($row)
     {
         return number_format($row->getData('discount_amount'),2);
+    }
+    public function timeUsed($row)
+    {
+        return $row->getData('times_used');
     }
     
 }
