@@ -29,7 +29,7 @@
 		
 		$PayChannel = "";
 		$PayExpiredDate = "";
-		
+
         foreach ($KSmartpay->getStandardCheckoutFormFields('redirect') as $field=>$value) {
 			//echo "<li>" . $field . " :: " . $value . "</li>";
 			switch (strtolower(trim($field))) {
@@ -183,118 +183,62 @@
 		        break;
 		}		
 		
-		//exit;
-
-		
-		
-		
-		
 		$payOrderID = 0;
 		if ($order = Mage::getModel('sales/order')) {
 			$order->loadByIncrementId($payOrderNo);		
 			$payOrderID = $order->getEntityId();
 		}		
 		
-		// Set the POST data
-		$postdata = http_build_query(
-			array(
-				"source" => Mage::getStoreConfig('payment/Bjcpayment/bjcsource'),
-				"paymethod" => $PaymentMethod,
-				"orderno" => $payOrderNo,
-				"orderid" => (int)$payOrderID,
-				"mid" => $payMerchantID,
-				"tid" => $payTerminalID,
-				"ctmid" => $payCustomerID,
-				"ctmname" => $payCustomerName,
-				"ctmemail" => $payCustomerEmail,
-				"ctmtel" => $payCustomerTel,
-				"chn" => $PayChannel,
-				"amt" => $PayAmount,
-				"dst" => $PayDescription,
-				"expdate" => $PayExpiredDate,
-				"card" => $paybycard,
-				"cardname" => trim(Mage::getStoreConfig("payment/". trim($paybycard)  ."/title")),
-				"term" => $paybycardterm,
-				"termrate" => $payInstallRate,
-			)
-		);
+		$order = Mage::getModel('sales/order');
+		$order->loadByIncrementId($payOrderNo);
+		$payment = $order->getPayment();
+		var_dump($payment);
+		exit();
+		// $payment->setAdditionalInformation('transactionid',(int)$result);
 		
-		// Set the POST options
-		$opts = array('http' => 
-			array (
-				'method' => 'GET',
-				'header' => 'Content-Type: text/html; charset=utf-8',
-				'content' => $postdata
-			)
-		);
-	 	
-		//echo $postdata;
-		// Create the POST context
-		$context  = stream_context_create($opts);
-		// POST the data to an api
-		$url = Mage::getStoreConfig('payment/Bjcpayment/bjcpaymenturl') . "/tranregister.php?" . $postdata;
+		$payment->setAdditionalInformation('bank',$PaymentMethod);
+		$payment->setAdditionalInformation('card',$paybycard);
+		$payment->setAdditionalInformation('installmentterms',$paybycardterm);
 		
-		//echo $url;
-		//exit;
-		
-		
-		$result = file_get_contents($url, false, $context);
-		if ((int)$result>0) {		
-		
-				$order = Mage::getModel('sales/order');
-				$order->loadByIncrementId($payOrderNo);
-				$payment = $order->getPayment();
-				$payment->setAdditionalInformation('transactionid',(int)$result);
-				
-				$payment->setAdditionalInformation('bank',$PaymentMethod);
-				$payment->setAdditionalInformation('card',$paybycard);
-				$payment->setAdditionalInformation('installmentterms',$paybycardterm);
-				
-				$payment->setCcOwner($PaymentMethod);
-				$payment->setCcType($paybycard);
-				$payment->setPoNumber($paybycardterm);		
-				$payment->setCcExpYear(trim(Mage::getStoreConfig("payment/". trim($paybycard)  ."/title")));
+		$payment->setCcOwner($PaymentMethod);
+		$payment->setCcType($paybycard);
+		$payment->setPoNumber($paybycardterm);		
+		$payment->setCcExpYear(trim(Mage::getStoreConfig("payment/". trim($paybycard)  ."/title")));
 
-				
-				$payment->save();
 		
-		        $html = '<html>
-						<body style="text-align:center;margin: auto;position: absolute; top: 0; left: 0; bottom: 0; right: 0;">';
-				if ((trim(Mage::getStoreConfig('payment/KSmartpay/redirecttext')) == "") && (trim(Mage::getStoreConfig('payment/KSmartpay/redirectfooter')) == "")) {		
-			      	 $html.= $this->__('<p>You will be redirected to ". $PaymentGatewayName ." in a few seconds.</p>');
-				   	 $html.= $this->__('<p>Copyright ". $PaymentGatewayName ."</p>');
-				 }
-				 else {
-				 	 if (trim(Mage::getStoreConfig('payment/KSmartpay/redirecttext')) != "") { 
-			      	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmartpay/redirecttext') ."</p>");
-					 }
-					 if (trim(Mage::getStoreConfig('payment/KSmartpay/redirectfooter')) != "") {	
-				   	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmartpay/redirectfooter') ."</p>");
-					 }
-				 
-				 }
-				
-				$RedirectTime = "1000";
-				if (trim(Mage::getStoreConfig('payment/KSmartpay/redirecttime')) != "") {
-					$RedirectTime = Mage::getStoreConfig('payment/KSmartpay/redirecttime');
-				}
-		
-		       $html.= $form->toHtml();
-		       $html.= '<script type="text/javascript">
-			   			  function formsubmit()
-						  {
-						  	document.sendform.submit();	
-						  }
-						  setTimeout("formsubmit()", '. $RedirectTime .');
-			            </script>';
-			  
-		        $html.= '</body></html>';
+		$payment->save();
 
-		}
-		else {
-			$html = "Can not create payment transaction at bjcpayment (". $result .")";
+        $html = '<html>
+				<body style="text-align:center;margin: auto;position: absolute; top: 0; left: 0; bottom: 0; right: 0;">';
+		if ((trim(Mage::getStoreConfig('payment/KSmartpay/redirecttext')) == "") && (trim(Mage::getStoreConfig('payment/KSmartpay/redirectfooter')) == "")) {		
+	      	 $html.= $this->__('<p>You will be redirected to ". $PaymentGatewayName ." in a few seconds.</p>');
+		   	 $html.= $this->__('<p>Copyright ". $PaymentGatewayName ."</p>');
+		 }
+		 else {
+		 	 if (trim(Mage::getStoreConfig('payment/KSmartpay/redirecttext')) != "") { 
+	      	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmartpay/redirecttext') ."</p>");
+			 }
+			 if (trim(Mage::getStoreConfig('payment/KSmartpay/redirectfooter')) != "") {	
+		   	 	$html.= $this->__("<p>". Mage::getStoreConfig('payment/KSmartpay/redirectfooter') ."</p>");
+			 }
+		 
+		 }
+		
+		$RedirectTime = "1000";
+		if (trim(Mage::getStoreConfig('payment/KSmartpay/redirecttime')) != "") {
+			$RedirectTime = Mage::getStoreConfig('payment/KSmartpay/redirecttime');
 		}
 
+       $html.= $form->toHtml();
+       $html.= '<script type="text/javascript">
+	   			  function formsubmit()
+				  {
+				  	document.sendform.submit();	
+				  }
+				  setTimeout("formsubmit()", '. $RedirectTime .');
+	            </script>';
+	  
+        $html.= '</body></html>';
         return $html;
 	
     }
