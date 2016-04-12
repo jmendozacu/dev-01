@@ -779,6 +779,9 @@ h6, .h6 {
 .sidebar .block-title strong{
 	background:url(../images/arrow-down.gif) 94% center no-repeat;
 }
+.sidebar .block-title.active strong{
+	background:url(../images/arrow-up.gif) 94% center no-repeat;
+}
 .block-title small {
   font-size: 100%;
   font-weight: normal;
@@ -1039,8 +1042,9 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .sidebar .block-compare{
 	padding:0 0 5px;
-	border-bottom:1px solid #dadada;
+	/* border-bottom:1px solid #dadada; */
 }
+.sidebar .block-compare .block-content{padding:0 0 10px; border-bottom:1px solid #dadada;}
 
 /* Compare Popup */
 .compare-popup{
