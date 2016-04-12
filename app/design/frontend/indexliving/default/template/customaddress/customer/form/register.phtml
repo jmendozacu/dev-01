@@ -237,6 +237,21 @@
 				new SubdistrictUpdater('country', 'region_id', 'city_id', 'subdistrict', 'subdistrict_id', 'zip', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
         <?php endif; ?>
     //]]>
+        jQuery('.validate-account-number').keypress(function (e) {
+            if(e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37){
+                return true;
+            }
+            if(jQuery(this).val().length > 19){
+                e.preventDefault();
+            }
+            if(e.which != 8 && isNaN(String.fromCharCode(e.which))){
+                e.preventDefault();
+
+            }
+
+        }).on("cut copy paste", function (e) {
+            e.preventDefault();
+        });
     </script>
     <?php echo $this->getChildHtml('social') ;?>
   </div> 

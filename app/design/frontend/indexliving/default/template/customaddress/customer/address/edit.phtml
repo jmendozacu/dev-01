@@ -171,7 +171,7 @@ jQuery('.validate-account-number').keypress(function (e) {
     if(e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37){
         return true;
     }
-    if(jQuery(this).val().length > 10){
+    if(jQuery(this).val().length > 19){
         e.preventDefault();
     }
     if(e.which != 8 && isNaN(String.fromCharCode(e.which))){
