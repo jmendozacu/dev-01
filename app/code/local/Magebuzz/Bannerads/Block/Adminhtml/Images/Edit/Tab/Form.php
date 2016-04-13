@@ -70,8 +70,30 @@ class Magebuzz_Bannerads_Block_Adminhtml_Images_Edit_Tab_Form extends Mage_Admin
 				'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			)
 		);
+		
+		$fieldset->addField('banner_show_desc', 'select', array('label' => Mage::helper('bannerads')->__('Show Description'), 'name' => 'banner_show_desc', 'values' => array(array('value' => 1, 'label' => Mage::helper('bannerads')->__('Yes'),),
+
+      array('value' => 2, 'label' => Mage::helper('bannerads')->__('No'),),),));
 
     $fieldset->addField('banner_description', 'textarea', array('name' => 'banner_description', 'label' => Mage::helper('bannerads')->__('Description'), 'title' => Mage::helper('bannerads')->__('Description'),));
+		
+		$fieldset->addField('banner_description_pos', 'select', 
+			array(
+				'label' => Mage::helper('bannerads')->__('Description Position'), 
+				'name' => 'banner_description_pos', 
+				'values' => array(
+					array('value' => 'top-left', 'label' => Mage::helper('bannerads')->__('Top Left'),),
+					array('value' => 'top-center', 'label' => Mage::helper('bannerads')->__('Top Center'),),
+					array('value' => 'top-right', 'label' => Mage::helper('bannerads')->__('Top Right'),),
+					array('value' => 'middle-left', 'label' => Mage::helper('bannerads')->__('Middle Left'),),
+					array('value' => 'middle-center', 'label' => Mage::helper('bannerads')->__('Middle Center'),),
+					array('value' => 'middle-right', 'label' => Mage::helper('bannerads')->__('Middle Right'),),
+					array('value' => 'bottom-left', 'label' => Mage::helper('bannerads')->__('Bottom Left'),),
+					array('value' => 'bottom-center', 'label' => Mage::helper('bannerads')->__('Bottom Center'),),
+					array('value' => 'bottom-right', 'label' => Mage::helper('bannerads')->__('Bottom Right'),),
+				),
+			)
+		);
 
     $fieldset->addField('sort_order', 'text', array('name' => 'sort_order', 'label' => Mage::helper('bannerads')->__('Sort Order'), 'title' => Mage::helper('bannerads')->__('Sort Order'),));
 

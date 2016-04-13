@@ -55,7 +55,11 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
               <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>>
                 <img alt="<?php echo $banner->getBannerTitle(); ?>" src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>"/>
               </a>
-							<?php echo $banner->getBannerDescription(); ?>
+							<?php if($banner->getBannerShowDesc() == '1' && $banner->getBannerDescription() != ''):?>
+							<div class="banner-desc <?php echo $banner->getBannerDescriptionPos()?>">
+								<?php echo $banner->getBannerDescription(); ?>
+							</div>
+							<?php endif; ?>
             </li>
             <?php $isBlockIds[] = $banner->getBannerId(); ?>
           <?php endforeach ?>
