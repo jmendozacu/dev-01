@@ -443,12 +443,24 @@ jQuery(document).ready(function () {
 
     var mytabs = ".career_job .menuheaders";
    jQuery(mytabs).click(function(){
-   if(jQuery(this).hasClass('selected')){
-      jQuery(this).removeClass('selected');
-    }else{
-      jQuery(this).addClass('selected');
-    }
- })
+		 if(jQuery(this).hasClass('selected')){
+				jQuery(this).removeClass('selected');
+			}else{
+				jQuery(this).addClass('selected');
+			}
+	 });
+	jQuery('.block-recently-viewed .box-title span#product-viewed-minimize').click(function(){
+		if (!jQuery(this).hasClass('active')){
+			jQuery(this).parent().next().slideToggle(300);
+			jQuery(this).addClass('active');
+			jQuery(this).html('+');
+		}
+		else{
+			jQuery(this).removeClass('active');
+			jQuery(this).parent().next().slideToggle(300);
+			jQuery(this).html('-');
+		}
+	});
     /* menu */
   jQuery("#header-nav .nav-primary ul.level0").hide();
   jQuery("#header-nav .nav-primary li.level0.nav-1 > a").addClass("active").show();
