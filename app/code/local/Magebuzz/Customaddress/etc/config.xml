@@ -142,6 +142,9 @@
 				<subdistrict>
 					<to_quote_address>*</to_quote_address>
 				</subdistrict>
+				<mobile_customer>
+					<to_quote_address>*</to_quote_address>
+				</mobile_customer>
 			</customer_address>
 			<sales_convert_quote_address>
 				<city_id>
@@ -155,7 +158,11 @@
 				<subdistrict>
 					<to_order_address>*</to_order_address>
 					<to_customer_address>*</to_customer_address>
-				</subdistrict>								
+				</subdistrict>
+				<mobile_customer>
+					<to_order_address>*</to_order_address>
+					<to_customer_address>*</to_customer_address>
+				</mobile_customer>
 			</sales_convert_quote_address>
 			<sales_convert_order_address>
 				<city_id>
