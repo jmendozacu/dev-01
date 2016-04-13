@@ -31,11 +31,17 @@ $product = Mage::getModel('catalog/product')->load($item->getProductId());
 ?>
 <div class="cart-cell">
 <?php if(!$product->canConfigure() && $product->isSaleable()): ?>
-    <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" onclick="addWItemToCart(<?php echo $item->getId()?>);" class="button btn-cart"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-<?php elseif($product->getStockItem() && $product->getStockItem()->getIsInStock()): ?>
-    <button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
+	<?php if($product->getStockItem() && $product->getStockItem()->getIsInStock()): ?>
+		<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" onclick="addWItemToCart(<?php echo $item->getId()?>);" class="button btn-cart"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+	<?php else:?>
+		<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+	<?php endif?>
 <?php else: ?>
-  <p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		<?php if($product->getStockItem() && $product->getStockItem()->getIsInStock()): ?>
+			<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
+		<?php else:?>
+			<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		<?php endif?>
 <?php endif; ?>
 </div>
 <?php foreach($this->getSortedChildren() as $childName):?>
