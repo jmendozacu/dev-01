@@ -41,7 +41,10 @@ class Magebuzz_Extendcart_IndexController extends Mage_Core_Controller_Front_Act
 						Mage::throwException($this->__('Quote item is not found.'));
 				}
 				if($productQty > $count){
-					Mage::throwException($this->__('Over quatity in stock.'));
+					$_response['success'] = 'false';
+					$_response['message'] = $this->__('  The requested quantity for %1$s is not available',$product->getName());
+					$this->getResponse()->setBody(json_encode($_response));
+					return;
 				}
 				if ($productQty == 0) {
 						$cart->removeItem($productId);
