@@ -109,7 +109,8 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs_D
     }
     $productdealerCollection = Mage::getModel('dealerlocator/productdealer')
       ->getCollection()
-      ->addFieldToFilter('product_id', $productId);
+      ->addFieldToFilter('product_id', $productId)
+      ->addFieldToFilter('display', 1);
     $dealers = $productdealerCollection->getColumnValues('dealer_id');
     return $dealers;
   }

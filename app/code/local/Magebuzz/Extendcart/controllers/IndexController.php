@@ -42,6 +42,7 @@ class Magebuzz_Extendcart_IndexController extends Mage_Core_Controller_Front_Act
 				}
 				if($productQty > $count){
 					$_response['success'] = 'false';
+					$_response['cart_item_count'] = Mage::getSingleton('checkout/cart')->getSummaryQty();
 					$_response['message'] = $this->__('  The requested quantity for %1$s is not available',$product->getName());
 					$this->getResponse()->setBody(json_encode($_response));
 					return;

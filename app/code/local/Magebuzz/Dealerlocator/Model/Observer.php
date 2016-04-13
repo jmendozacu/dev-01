@@ -11,6 +11,7 @@ class Magebuzz_Dealerlocator_Model_Observer {
           ->addFieldToFilter('product_id', $productId)
           ->getColumnValues('dealer_id');
 
+
         $dealerPosts = array();
         $dealerPosts = explode('&', $data['in_dealer']);
 
@@ -32,6 +33,7 @@ class Magebuzz_Dealerlocator_Model_Observer {
           foreach($dealerAdds as $dealerAdd){
             $dataForSave['product_id'] = $productId;
             $dataForSave['dealer_id'] = $dealerAdd;
+            $dataForSave['display'] = 1;
             $productdealerModel->setData($dataForSave);
             $productdealerModel->save();
           }

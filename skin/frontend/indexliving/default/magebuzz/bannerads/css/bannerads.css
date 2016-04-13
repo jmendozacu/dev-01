@@ -23,7 +23,20 @@
 .wrap-bannerads div.banner .bx-viewport {
   /* background: #FFF; */
 }
-
+.wrap-bannerads .bx-viewport .banner-desc{position:absolute; right:0; bottom:15px; max-width:440px; max-height:280px; padding:48px; background:url(images/banner-desc-bg.png) top left repeat; text-align:left;}
+.wrap-bannerads .bx-viewport .banner-desc::before{
+	background: url(images/i-plus-orange.png) top left no-repeat;
+	content: "";
+	height: 43px;
+	width: 43px;
+	position: absolute;
+	top: -13px;
+	left: -13px;
+}
+.wrap-bannerads .bx-viewport .banner-desc h1{font-family: 'DBYordXBd'; font-size:50px; color:#000; margin:0 0 15px; line-height:40px;}
+.wrap-bannerads .bx-viewport .banner-desc p{font-family: 'Tahoma'; font-size:14px; color:#000; margin:0 0 10px;}
+.wrap-bannerads .bx-viewport .banner-desc .banner-actions a{padding:10px 20px; float:left; font-weight:bold; display:inline-block; margin-right:10px; border:2px solid #000; color:#000000; text-decoration:none; text-transform:uppercase;}
+.wrap-bannerads .bx-viewport .banner-desc .banner-actions a:hover{background:#000000; color:#FFFFFF;}
 .showall-banner {
 }
 
