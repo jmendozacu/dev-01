@@ -1,5 +1,8 @@
 <?php
     $_productCollection = $this->getLoadedProductCollection();
+		$_productCollection->clear();
+		$_productCollection->addAttributeToSelect('flip_image');
+		$_productCollection->load();
     $_helper            = $this->helper('catalog/output');
     $_collectionSize    = $_productCollection->count();
     $_columnCount       = $this->getColumnCount();
@@ -17,8 +20,7 @@
 <h2 class="title-style1"><span><?php echo $this->__($this->getTitle()) ?></span><a title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all')?></a></h2>
 <div class="category-products block-highlight <?php echo $this->getClassName() ?>">
     <div class="block-content">
-        <?php $i=0; foreach ($_productCollection as $_item): ?>
-				<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>	
+        <?php $i=0; foreach ($_productCollection as $_product): ?>
         <?php if ($i++%$_columnCount==0): ?>
         <ul class="products-grid products-grid--max-<?php echo $_columnCount?>-col">
         <?php endif ?>

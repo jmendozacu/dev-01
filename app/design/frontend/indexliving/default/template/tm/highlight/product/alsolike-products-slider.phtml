@@ -1,5 +1,8 @@
 <?php
     $_productCollection = $this->getLoadedProductCollection();
+		$_productCollection->clear();
+		$_productCollection->addAttributeToSelect('flip_image');
+		$_productCollection->load();
     $_helper            = $this->helper('catalog/output');
     $_collectionSize    = $_productCollection->count();
     $_columnCount       = $this->getColumnCount();
@@ -21,8 +24,7 @@
 		<div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
 			<div class="block-content recommend-product-list">
 					<div id="alsolike-product-list" class="products-grid">
-					<?php $i=0; foreach ($_productCollection as $_item): ?>
-						<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>	
+					<?php $i=0; foreach ($_productCollection as $_product): ?>
 							<div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
 									<div class="prolabel-wrapper">
 										<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
