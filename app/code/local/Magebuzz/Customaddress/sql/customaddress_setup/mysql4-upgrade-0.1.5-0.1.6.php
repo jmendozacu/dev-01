@@ -5,7 +5,7 @@ $installer->startSetup();
 $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
 
 
-$attribute   = Mage::getSingleton("eav/config")->getAttribute("customer_address", "cus_mobile");
+$attribute   = Mage::getSingleton("eav/config")->getAttribute("customer", "cus_mobile");
 
 
 $used_in_forms=array();
