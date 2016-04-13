@@ -75,7 +75,7 @@ class Magebuzz_Bannerads_Block_Adminhtml_Images_Edit_Tab_Form extends Mage_Admin
 
       array('value' => 2, 'label' => Mage::helper('bannerads')->__('No'),),),));
 
-    $fieldset->addField('banner_description', 'editor', array('name' => 'banner_description', 'label' => Mage::helper('bannerads')->__('Description'), 'title' => Mage::helper('bannerads')->__('Description'),'style'     => 'width:700px; height:500px;','wysiwyg'   => true,));
+    $fieldset->addField('banner_description', 'editor', array('name' => 'banner_description', 'label' => Mage::helper('bannerads')->__('Description'), 'title' => Mage::helper('bannerads')->__('Description'),'style'     => 'width:500px; height:300px;','config'    => Mage::getSingleton('bannerads/wysiwyg_config')->getConfig(),));
 		
 		$fieldset->addField('banner_description_pos', 'select', 
 			array(
