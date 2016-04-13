@@ -143,13 +143,13 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label for="shipping:cus_mobile" class="required"><em>*</em><?php echo $this->__('Mobile') ?></label>
+                            <label for="shipping:mobile_customer" class="required"><em>*</em><?php echo $this->__('Mobile') ?></label>
                             <div class="input-box">
                                 <input type="text"
-                                       name="shipping[cus_mobile]"
-                                       id = "shipping:cus_mobile"
+                                       name="shipping[mobile_customer]"
+                                       id = "shipping:mobile_customer"
                                        title="<?php echo Mage::helper('core')->quoteEscape($this->__('Mobile')) ?>"
-                                       value="<?php echo $this->escapeHtml($this->getAddress()->getCusMobile()) ?>"
+                                       value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
                                        class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?> validate-account-number" />
                             </div>
                         </div>
