@@ -27,8 +27,9 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
     
     $productdealerModel = Mage::getModel('dealerlocator/productdealer');
     $productdealerCollection = $productdealerModel->getCollection()
-      ->addFieldToFilter('product_id', $productId);
-    
+      ->addFieldToFilter('product_id', $productId)
+        ->addFieldToFilter('display', 1);
+
     $productdealerCollection->join(array('deatbl' => $dealerlocatorTable), 'deatbl.dealerlocator_id = main_table.dealer_id', array('deatbl.*'))
 			->addFieldToFilter('deatbl.status', '1');
     return $productdealerCollection;
