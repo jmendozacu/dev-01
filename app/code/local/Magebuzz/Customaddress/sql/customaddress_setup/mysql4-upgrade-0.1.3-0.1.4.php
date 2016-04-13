@@ -4,13 +4,7 @@ $installer->startSetup();
 
 $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
 
-$setup->updateAttribute(
-    'customer_address',
-    'telephone',
-    'is_required',
-    0
-);
-$setup->addAttribute("customer_address", "customer_mobile",  array(
+$setup->addAttribute("customer_address", "mobile_customer",  array(
     "type"     => "varchar",
     "backend"  => "",
     "label"    => "Mobile",
@@ -25,7 +19,7 @@ $setup->addAttribute("customer_address", "customer_mobile",  array(
 
 ));
 
-$attribute   = Mage::getSingleton("eav/config")->getAttribute("customer_address", "customer_mobile");
+$attribute   = Mage::getSingleton("eav/config")->getAttribute("customer_address", "mobile_customer");
 
 
 $used_in_forms=array();
