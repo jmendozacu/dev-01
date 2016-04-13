@@ -27,9 +27,9 @@ AjaxCart.prototype = {
 
     /* replace button add to cart */
     this.replaceButtonAddToCart('button.btn-cart');
-		this.setCookie('mgloggedin', "", -1);
-		this.setCookie('addWishlistUrl', "", -1);
-		$('mgloggedininput-trigger').observe('click', this.ajaxAddToWishlist.bind(this));
+		// this.setCookie('mgloggedin', "", -1);
+		// this.setCookie('addWishlistUrl', "", -1);
+		// $('mgloggedininput-trigger').observe('click', this.ajaxAddToWishlist.bind(this));
   },
 
   getInitConfig: function(config_name) {
@@ -439,23 +439,24 @@ AjaxCart.prototype = {
   },
 	
 	ajaxAddToWishlist: function(url) {
-		if (this.getCookie('addWishlistUrl') && this.getCookie('mgloggedin')) {
-			url = decodeURI(this.getCookie('addWishlistUrl'));
-			this.loggedInAddToWishlist(url);
-			this.setCookie('addWishlistUrl', "", -1);
-			location.reload();
-			return;
-		}
-		url = url.replace('wishlist/index/add','customwishlist/index/add');
-		if(!customerIsLoggedIn){
-			if(AmAjaxLoginObj){ // If enable amasty ajaxlogin
-				this.setCookie('addWishlistUrl', encodeURI(url), 365);
-				AmAjaxLoginObj.sendLoginAjax(); // Open login popup form
-			}else{
+		// if (this.getCookie('addWishlistUrl') && this.getCookie('mgloggedin')) {
+			// url = decodeURI(this.getCookie('addWishlistUrl'));
+			// this.loggedInAddToWishlist(url);
+			// this.setCookie('addWishlistUrl', "", -1);
+			// location.reload();
+			// return;
+		// }
+		wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/add');
+		if (!customerIsLoggedIn) {
+			if (AmAjaxLoginObj) { // If enable amasty ajaxlogin
+				//this.setCookie('addWishlistUrl', encodeURI(url), 365);
+				var params = {add_to_wishlist: '1', wishlist_url: url};
+				AmAjaxLoginObj.sendLoginAjaxReview(params); // Open login popup form
+			} else {
 				window.location.href = BASE_URL + 'customer/account/login/';
 			}
-		}else{
-			this.loggedInAddToWishlist(url)
+		} else {
+			this.loggedInAddToWishlist(wishlist_url);
 		}
 	},
 	
