@@ -39,6 +39,7 @@
     <?php if(count($_items)): ?>
       <div class="list-items">
         <ol class="mini-products-list">
+            <li id="minicart-msg" style="display:none; color: red; font-weight: bold"></li>
         <?php foreach($_items as $_item): ?>
           <?php echo $this->getItemHtml($_item) ?>
         <?php endforeach; ?>
@@ -83,8 +84,13 @@
 			},
       onSuccess: function(transport) {
 				jQuery('#apply_change_qty_loading_' + productId).hide();
+          if (transport.responseJSON.success == 'false') {
+              jQuery('#minicart-msg').show();
+              jQuery('#minicart-msg').html(transport.responseJSON.message);
+          }
         if (transport.responseJSON.success == 'true') {
 					jQuery('#apply_qty_' + productId).hide();
+                    jQuery('#minicart-msg').hide();
         }
 				jQuery("#cartItemCountInHead .cart-item-count").remove();
 				jQuery("#cartItemCountInHeadMobile .cart-item-count").remove();
