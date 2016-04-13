@@ -72,7 +72,11 @@ class Magebuzz_Ajaxcart_IndexController extends Mage_Core_Controller_Front_Actio
         $_cart->save();
       } catch (Exception $e) {
         $_response['success'] = 'false';
-        $_response['message'] =  $e->getMessage();
+				$html_popup_false = '<div class="block" id="ajaxcart_content_option_product">
+					<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+					<div class="ajaxcart-heading"><p class="added-error-message">'.$e->getMessage().'</p></div>
+				</div>';
+        $_response['html_popup'] =  $html_popup_false;
         $this->getResponse()->setBody(json_encode($_response));
         return;
       }
