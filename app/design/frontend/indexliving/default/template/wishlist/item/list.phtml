@@ -35,7 +35,6 @@
 <table class="clean-table box-desktop" id="wishlist-table">
     <thead>
         <tr>
-          <th></th>
             <?php
                 /* @var $column Mage_Wishlist_Block_Customer_Wishlist_Item_Column */
                 foreach ($columns as $column):
@@ -49,11 +48,8 @@
         <?php if (count($this->getItems())): ?>
 
             <?php foreach ($this->getItems() as $item): ?>
-
+								<?php $product = $item->getProduct();?>
                 <tr id="item_<?php echo $item->getId();?>">
-                    <td>
-                        <input type="checkbox" name="addwishtocart" id="addwishtocart" value="<?php echo $item->getId();?>">
-                    </td>
                     <?php
                         foreach ($columns as $key => $column):
                             $_blockName = str_replace('.','-',strtolower($column->getNameInLayout()));

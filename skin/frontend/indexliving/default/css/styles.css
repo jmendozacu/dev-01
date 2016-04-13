@@ -9943,7 +9943,21 @@ div.paypal-logo span > img {
   text-align: center;
 }
 #wishlist-table td.customer-wishlist-item-image {
-  width: 113px;
+  width: 125px;
+	position:relative;
+}
+
+#wishlist-table td.customer-wishlist-item-image .addwltocartcheckbox{
+	float: left;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	margin-top: -7px;
+}
+
+#wishlist-table td.customer-wishlist-item-image .product-image.product-image-withinputcart{
+	float:left;
+	padding-left:20px;
 }
 #wishlist-table td.customer-wishlist-item-quantity {
   width: 3em;
