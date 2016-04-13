@@ -219,7 +219,9 @@
 		<!-- Get attribute banner image in here -->
 		<?php if ($_product->getProductIdeaBanner() != 'no_selection' && $_product->getProductIdeaBanner()): ?>
 		<div class="product-essential product-idea-image">
+			<?php if($_product->getProductBannerUrl() != ''):?><a href="<?php echo $_product->getProductBannerUrl(); ?>" title=""><?php endif;?>
 			<img id="product_idea_banner" src="<?php echo Mage::helper('catalog/image')->init($_product, 'product_idea_banner')?>" alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" title="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" />
+			<?php if($_product->getProductBannerUrl() != ''):?></a><?php endif;?>
 		</div>	
 		<?php endif; ?>
 		<!-- End product attribute banner image -->
