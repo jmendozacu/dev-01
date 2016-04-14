@@ -164,7 +164,7 @@
             </fieldset>
         </li>
         <li class="control">
-            <input type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Use Billing Address') ?>" onclick="shipping.setSameAsBilling(this.checked)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Use Billing Address') ?></label>
+            <input type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Use Billing Address') ?>" onclick="Showbillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Use Billing Address') ?></label>
         </li>
 
     </ul>
@@ -195,6 +195,7 @@
 		
 		var subdistrictUpdater = new SubdistrictUpdater('shipping:country_id', 'shipping:region_id', 'shipping:city_id', 'shipping:subdistrict', 'shipping:subdistrict_id', 'shipping:postcode', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
 //]]>
+
 jQuery('.validate-account-number').keypress(function (e) {
     if(e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37){
         return true;
@@ -210,4 +211,8 @@ jQuery('.validate-account-number').keypress(function (e) {
 }).on("cut copy paste", function (e) {
     e.preventDefault();
 });
+    function Showbillingform(flag) {
+        var id_billing_form = document.getElementById("billing-form-show");
+         id_billing_form.style.display = flag.checked ? "block":"none";
+    }
 </script>
