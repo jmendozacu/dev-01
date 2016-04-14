@@ -71,10 +71,10 @@
 									<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
 							</div>
 					</li>
-					<li class="inline-label">
+					<li class="inline-label" style="display:none">
 						<label for="summary_field" class="required"><em>*</em><?php echo $this->__('Title') ?></label>
 						<div class="input-box">
-								<input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+								<input type="text" name="title" id="summary_field" class="input-text required-entry" value="N/A" />
 						</div>
 					</li>
 					<li>
@@ -232,34 +232,38 @@
 				function submitbt(){
 					var customForm = new VarienForm('review-form', true);
 					if (customForm.validator.validate()) {
-						var frm = $j('#review-form');
-						var url = '<?php echo $this->getAction() ?>';
+						var url = '<?php echo $this->getUrl('customreview/product/post') ?>';
 						var src = '<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>';
-						$j('#ajax_loader_review').show();
-						var formData = new FormData($j('#review-form')[0]);
-						var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
-						$j.ajax({
-							url: url,
-							type: 'POST',
-							data: formData,
-							cache: false,
-							contentType: false,
-							processData: false,
-							success: function (data) {
-								$j('#ajax_loader_review').hide();
-								$j('.show-message').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + mess + '</span></li></ul></li></ul>');
-								$j('#preview-image').attr('src', src);
-								$j('.rating_review').removeAttr("style");
-								$j('#review-form #nickname_field').attr('value', '');
-								$j('#review-form #image-name').attr('value', '');
-								$j('#review-form').trigger("reset");
-								setTimeout(function(){
-									$j('.show-message').find('.messages').remove();
-									$j.fancybox.close();
-								},500000);
 
-							}
-						});
+						var params = Form.serialize('review-form') + '&id=' + '<?php echo Mage::registry('current_product')->getId()?>';
+						var resultPopup = $('ajaxcart-overlay');
+						
+						new Ajax.Request(url, {
+							method:'post',
+							parameters: params,
+							onCreate: function() {
+								$('ajax_loader_review').show();
+							}.bind(this),
+							onComplete: function (transport) {
+								if (transport && transport.responseText) {
+									try {
+										response = eval('(' + transport.responseText + ')');
+									}
+									catch (e) {
+										response = {};
+									}
+								}
+								$('ajax_loader_review').hide();
+								if (response.html) {
+									resultPopup.update(response.html);
+									resultPopup.show();	
+								}
+								
+								$j.fancybox.close();
+								//$('review-form-popup').close();
+								
+							}.bind(this), 
+						});											
 					}
 				}
 			</script>
