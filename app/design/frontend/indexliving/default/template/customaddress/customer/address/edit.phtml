@@ -29,7 +29,7 @@
                                id = "mobile_customer"
                                title="<?php echo Mage::helper('core')->quoteEscape($this->__('Mobile')) ?>"
                                value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
-                               class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?> validate-account-number" />
+                               class="input-text validate-account-number" />
                     </div>
                 </div>
                 <div class="field">
@@ -155,9 +155,9 @@
 <script type="text/javascript">
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
-    /*Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
-        return /^0[0-9]{10}$/i.test(v);
-    });*/
+    Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
+        return /^0[0-9]$/i.test(v);
+    });
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 
 		new CityUpdater('country', 'region_id', 'city', 'city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
