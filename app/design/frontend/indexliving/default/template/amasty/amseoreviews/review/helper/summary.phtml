@@ -48,7 +48,14 @@
 				<h3 class="review-count"><?php echo $this->__('%d Reviews', $this->getReviewsCount()) ?></h3>
 				<p><?php echo $this->__('Own this product? Let us know what you think and write a review.')?></p>
 				<p class="rating-links">
-					<a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Write a review')?></a>
+					<?php $reviewLinkHref = '#review-form-popup';?>
+					<?php $reviewLinkClass = 'write-review-popup reviewloggedin'?>
+					<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+						<?php $reviewLinkHref = $this->getUrl('customer/account/login', array('review' => true));?>
+						<?php $reviewLinkClass = 'write-review-popup';?>
+					<?php endif ?>
+					<a class="<?php echo $reviewLinkClass; ?>" id="review-open-popup" href="<?php echo $reviewLinkHref; ?>" title=""><?php echo $this->__('Write a review')?></a>
+					
 				</p>
 			</div>
 		</div>
@@ -80,15 +87,21 @@
 				<h3 class="review-count"><?php echo $this->__('0 Reviews') ?></h3>
 				<p><?php echo $this->__('Own this product? Let us know what you think and write a review.')?></p>
 				<p class="rating-links">
-					<a class="write-review-popup" href="#review-form-popup" title=""><?php echo $this->__('Write a review')?></a>
+					<?php $reviewLinkHref = '#review-form-popup';?>
+					<?php $reviewLinkClass = 'write-review-popup reviewloggedin'?>
+					<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+						<?php $reviewLinkHref = $this->getUrl('customer/account/login', array('review' => true));?>
+						<?php $reviewLinkClass = 'write-review-popup';?>
+					<?php endif ?>
+					<a class="<?php echo $reviewLinkClass; ?>" id="review-open-popup" href="<?php echo $reviewLinkHref; ?>" title=""><?php echo $this->__('Write a review')?></a>
 				</p>
 			</div>
 		</div>	
 	</div>	
 <?php endif; ?>
 <script type="text/javascript">
-	jQuery(document).ready(function() {
-		jQuery('.write-review-popup').fancybox({
+	jQuery(document).ready(function(){
+		jQuery('.reviewloggedin').fancybox({
 			afterShow:function(){
 				jQuery('#review-form-popup').customRadioCheckbox();
 			}

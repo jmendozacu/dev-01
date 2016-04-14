@@ -8,6 +8,8 @@ AmAjaxLogin.prototype =
     timer: 0,
     
     srcImageProgress : null,
+		
+		extraParams: '',
     
     initialize : function(options) {
         this.url = options['send_url'];
@@ -160,22 +162,26 @@ AmAjaxLogin.prototype =
         loginBox.appendChild(messageBox);
 				
 			}
-			if(response.redirect && response.is_error == "2"){
-				if(response.redirect == "2"){ // No redirect
-					Element.prototype.triggerEvent = function(eventName) {
-						if (document.createEvent)
-						{
-								var evt = document.createEvent('HTMLEvents');
-								evt.initEvent(eventName, true, true);
-
-								return this.dispatchEvent(evt);
+			if (response.redirect && response.is_error == "2") {
+				if (response.redirect == "2") { // after add to wishlist or review
+						if (response.show_review_popup == '1') {
+							$('review-open-popup').addClassName('reviewloggedin').setAttribute('href', '#review-form-popup');
+							jQuery('.reviewloggedin').fancybox({
+									afterShow:function(){
+											jQuery('#review-form-popup').customRadioCheckbox();
+									}
+							});
+							$('review-open-popup').stopObserving('click', loadLoginWithAjax);
+							jQuery('.reviewloggedin').click();
 						}
-
-						if (this.fireEvent)
-								return this.fireEvent('on' + eventName);
-					}
-					this.setCookie('mgloggedin', 1, 365);
-					$('mgloggedininput-trigger').triggerEvent('click');
+						
+						if (response.is_adding_to_wishlist == '1') {
+							//add to wishlist
+							if (response.wishlist_url)
+								ajaxCart.ajaxAddToWishlist(response.wishlist_url);
+						}
+					
+					
 				}else{
 					if(response.redirect == "1") {
 						location.reload();
@@ -257,11 +263,14 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                     this.hideAnimation();
-										response.redirect = "2"; // new response redirect to reload page
-                    if(response.is_error == "1"){
+										
+										//response.redirect = "2"; 	
+										
+                    if (response.is_error == "1") {
 											this.showMessage(response, true); // Show message wrong passwords
-										}else{
-											 this.showMessage(response, false);
+										} else {
+											customerIsLoggedIn = true; // need to update this var after logging in
+											this.showMessage(response, false);
 										}
                      if(response.is_error == "2"){
                         this.updateHeader();
@@ -312,6 +321,33 @@ AmAjaxLogin.prototype =
     sendLoginAjax : function() {
 			new Ajax.Request(this.url, {
 					method: 'post',
+					onCreate: function()
+					{
+						 this.showAnimation();
+					}.bind(this),
+					onComplete: function()
+					{
+						 this.hideAnimation();
+					}.bind(this),
+					onSuccess: function(transport) {
+							var response = transport.responseText.evalJSON();
+							if (transport.responseText.isJSON() && response) {
+									 this.hideAnimation();
+									 this.showMessage(response, true);
+							}
+					}.bind(this),
+					onFailure: function()
+					{
+							this.hideAnimation();
+					}.bind(this)    
+			});
+			return false;
+    },
+		
+		sendLoginAjaxReview : function(params) {
+			new Ajax.Request(this.url, {
+					method: 'post',
+					parameters: params,
 					onCreate: function()
 					{
 						 this.showAnimation();
@@ -446,7 +482,7 @@ AmAjaxLogin.prototype =
 
 function AmAjaxLoginLoad(buttonClass){
 	$$(buttonClass).each(function(link){
-		link.onclick = '';
+		link.onclick = '';		
         Event.observe(link, 'click', loadLoginWithAjax);
         if($$('a[href*="customer/account/logout/"]').length == 0){
             $$('ul.links li a[href$="customer/account/"]').each(function(link){
@@ -470,8 +506,16 @@ function AmAjaxLogoutLoad(buttonClass){
 }
 
 function loadLoginWithAjax(event) {
-     event.preventDefault();
-     AmAjaxLoginObj.sendLoginAjax();    
+		var element = Event.element(event);
+		
+    event.preventDefault();
+		if (element.hasClassName('write-review-popup')) {
+			var params = {review:'1'};
+			AmAjaxLoginObj.sendLoginAjaxReview(params);    
+		}
+		else {
+			AmAjaxLoginObj.sendLoginAjax();    
+		}
 }
 
 function loadLogoutWithAjax(event) {

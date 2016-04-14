@@ -46,6 +46,16 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
     //show login popup
     public function indexAction()
     {
+				$review = $this->getRequest()->getParam('review', false);
+				if ($review) {
+					Mage::getSingleton('customer/session')->setWritingReview(1);
+				}
+				$addToWishlist = $this->getRequest()->getParam('add_to_wishlist', false);
+				$wishlist_url = $this->getRequest()->getParam('wishlist_url', false);
+				if ($addToWishlist && $wishlist_url) {
+					Mage::getSingleton('customer/session')->setIsAddingToWishlist(1);
+					Mage::getSingleton('customer/session')->setWishlistUrl($wishlist_url);
+				}
         $block = Mage::app()->getLayout()->createBlock('amajaxlogin/customer_form_login', 'form_login')
                              ->setTemplate('amasty/amajaxlogin/customer/form/login.phtml');
         $message = $block->toHtml();
@@ -201,10 +211,27 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
               'error'     =>  $text,
               'is_error'  =>  $is_error
         ); 
+								
         if(Mage::getStoreConfig('amajaxlogin/general/redirect')) {
             $result['redirect'] = Mage::getStoreConfig('amajaxlogin/general/redirect_url')? Mage::getStoreConfig('amajaxlogin/general/redirect_url'):Mage::getStoreConfig('amajaxlogin/general/redirect');
         }   
-       
+			
+				if ($is_error == 2) {
+					if (Mage::getSingleton('customer/session')->getWritingReview()) {
+						$result['show_review_popup'] = 1;
+						Mage::getSingleton('customer/session')->setWritingReview(null);
+						$result['redirect'] = 2; // no redirect
+					}
+					
+					if (Mage::getSingleton('customer/session')->getIsAddingToWishlist() && 
+						Mage::getSingleton('customer/session')->getWishlistUrl()) {
+						$result['is_adding_to_wishlist'] = 1;
+						$result['wishlist_url'] = Mage::getSingleton('customer/session')->getWishlistUrl();
+						Mage::getSingleton('customer/session')->setIsAddingToWishlist(null);
+						Mage::getSingleton('customer/session')->setWishlistUrl(null);
+						$result['redirect'] = 2; // no redirect
+					}					
+				}
         $result = $this->replaceJs($result);
         $this->getResponse()->setBody($result);
     }

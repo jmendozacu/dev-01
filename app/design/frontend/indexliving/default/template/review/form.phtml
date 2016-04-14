@@ -28,7 +28,6 @@
 	<div class="form-add">
 		<h2><?php echo $this->__('Write Your Own Review') ?></h2>
 		<div class="show-message"></div>
-		<?php if ($this->getAllowWriteReviewFlag()): ?>
 		<form action="javascript:void(0)" method="post" id="review-form" enctype="multipart/form-data">
 		<?php echo $this->getBlockHtml('formkey'); ?>
 		<?php echo $this->getChildHtml('form_fields_before')?>
@@ -272,10 +271,6 @@
 			echo '.star_bg:before, .star_bg_1:before{ background: url("'.$star_bg.'") no-repeat center center !important}';
 			echo '</style>';
 			?>
-			<?php else: ?>
-			<p class="review-nologged" id="review-form">
-					<?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getUrl('customer/account/login'), Mage::helper('customer')->getRegisterUrl()) ?>
-			</p>
-			<?php endif ?>
+
 	</div>
 </div>

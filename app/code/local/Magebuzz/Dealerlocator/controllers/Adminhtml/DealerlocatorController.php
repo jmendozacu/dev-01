@@ -66,12 +66,13 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
         try {
           //rename image in case image name has space
           $image_name = $_FILES['icon_image']['name'];
-          $new_image_name = Mage::helper('dealerlocator')->renameImage($image_name);
 
           $uploader = new Varien_File_Uploader('icon_image');
           $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
           $uploader->setAllowRenameFiles(TRUE);
           $uploader->setFilesDispersion(FALSE);
+					
+					$new_image_name = $uploader->getUploadedFileName();
 
           $path = Mage::getBaseDir('media') . DS . 'dealers' . DS . 'icons';
           if (!is_dir($path)) {
@@ -93,12 +94,13 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
         try {
           //rename image in case image name has space
           $image_name = $_FILES['dealer_map']['name'];
-          $new_image_name = Mage::helper('dealerlocator')->renameImage($image_name);
 
           $uploader = new Varien_File_Uploader('dealer_map');
           $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
           $uploader->setAllowRenameFiles(TRUE);
           $uploader->setFilesDispersion(FALSE);
+					
+					$new_image_name = $uploader->getUploadedFileName();
 
           $path = Mage::getBaseDir('media') . DS . 'dealers' . DS . 'map';
           if (!is_dir($path)) {
