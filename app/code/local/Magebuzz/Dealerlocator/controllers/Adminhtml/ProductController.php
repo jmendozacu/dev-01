@@ -45,6 +45,9 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
                     $query3 = "INSERT INTO " .$this->_getTableName('product_dealer')." (product_id,dealer_id,display) SELECT product_id, dealerlocator_id,display FROM product_dealer_temp  ON DUPlICATE KEY update product_dealer.display=product_dealer_temp.display" ;
                     $this->_getWriteConnection()->query($query3);
 
+                    $query4 = "DELETE FROM " .$this->_getTableName('product_dealer') ." WHERE display=0 ";
+                    $this->_getWriteConnection()->query($query4);
+
                 } catch (Exception $e) {
                     //do nothing here
                 }
