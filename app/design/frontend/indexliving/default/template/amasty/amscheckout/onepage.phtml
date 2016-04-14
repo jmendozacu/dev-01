@@ -223,8 +223,23 @@
             </style>
             <div class="three-columns">
                 <div class="first-column">
+                    <?php /*if (!$skipShipping) {*/?>
+                        <div id="shipping_area" class="column-section">
+                            <div class="area-header">
+                                <div class="amscheckout-img-shadow">
+                                    <div class="amscheckout-img">
+                                        <div class="amscheckout-shipping">&nbsp;</div>
+                                    </div>
+                                </div>
+                                <?php echo $this->htmlEscape($_areas['shipping']['area_label'])?>
+                            </div>
+                            <div class="shipping">
+                                <?php echo $this->getChildHtml("shipping") ?>
+                            </div>
+                        </div>
+                    <?php /*}*/?>
                     <?php if (!$skipBilling) {?>
-                    <div class="column-section">
+                    <div class="column-section" id = "billing-form-show" style="display: none">
                         <div class="area-header">
                             <div class="amscheckout-img-shadow">
                                 <div class="amscheckout-img">1</div>
@@ -236,21 +251,7 @@
                         </div>
                     </div><br/>
                     <?php }?>
-                    <?php if (!$skipShipping) {?>
-                    <div id="shipping_area" class="column-section" style="display:none;">
-                        <div class="area-header">
-                            <div class="amscheckout-img-shadow">
-                                <div class="amscheckout-img">
-                                    <div class="amscheckout-shipping">&nbsp;</div>
-                                </div>
-                            </div>
-                            <?php echo $this->htmlEscape($_areas['shipping']['area_label'])?>
-                        </div>
-                        <div class="shipping">
-                            <?php echo $this->getChildHtml("shipping") ?>
-                        </div>
-                    </div>
-                    <?php }?>
+
                 </div>
                 <div class="second-column">
                     <?php if (!$skipShippingMethod) {?>
