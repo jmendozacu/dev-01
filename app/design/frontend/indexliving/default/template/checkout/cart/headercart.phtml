@@ -90,7 +90,12 @@
           }
         if (transport.responseJSON.success == 'true') {
 					jQuery('#apply_qty_' + productId).hide();
+                    jQuery('#minicart-msg').show();
+                    jQuery('#minicart-msg').html(transport.responseJSON.notice);
+                if(transport.responseJSON.message == 'Item was updated successfully.'){
                     jQuery('#minicart-msg').hide();
+                }
+
         }
 				jQuery("#cartItemCountInHead .cart-item-count").remove();
 				jQuery("#cartItemCountInHeadMobile .cart-item-count").remove();

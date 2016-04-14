@@ -35,18 +35,18 @@ class Magebuzz_Extendcart_IndexController extends Mage_Core_Controller_Front_Act
 
 			try{
 				$cart = $this->_getCart();
-				
+
 				$quoteItem = $cart->getQuote()->getItemByProduct($product);
 				if (!$quoteItem) {
 						Mage::throwException($this->__('Quote item is not found.'));
 				}
-				if($productQty > $count){
-					$_response['success'] = 'false';
-					$_response['cart_item_count'] = Mage::getSingleton('checkout/cart')->getSummaryQty();
-					$_response['message'] = $this->__('  The requested quantity for %1$s is not available',$product->getName());
-					$this->getResponse()->setBody(json_encode($_response));
-					return;
-				}
+//				if($productQty > $count){
+//					$_response['success'] = 'false';
+//					$_response['cart_item_count'] = Mage::getSingleton('checkout/cart')->getSummaryQty();
+//					$_response['message'] = $this->__('  The requested quantity for %1$s is not available',$product->getName());
+//					$this->getResponse()->setBody(json_encode($_response));
+//					return;
+//				}
 				if ($productQty == 0) {
 						$cart->removeItem($productId);
 				} else {
@@ -57,20 +57,17 @@ class Magebuzz_Extendcart_IndexController extends Mage_Core_Controller_Front_Act
 					$quoteItem->setQty($productQty)->save();
 				}
 				$this->_getCart()->save();
-				
+
 				if (!$quoteItem->getHasError()) {
 					$_response['message'] = $this->__('Item was updated successfully.');
 				} else {
 					$_response['notice'] = $quoteItem->getMessage();
 				}
-				
+
         		$totalsBlock = Mage::app()->getLayout()->createBlock('checkout/cart_totals')->setTemplate('checkout/cart/totals.phtml');
-				
-				//$couponPointBlock = Mage::app()->getLayout()->createBlock('rewardpoints/coupon')->setTemplate('rewardpoints/cart_coupon.phtml');
-				
+
         		$_response['totals'] = $totalsBlock->toHtml();
-        //$_response['totals'] .= $couponPointBlock->toHtml();
-				
+
 				$cart_item_count = Mage::getSingleton('checkout/cart')->getSummaryQty();
 				$_response['success'] = 'true';
 				$_response['cart_item_count'] = $cart_item_count;
