@@ -204,8 +204,8 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
         var angle  = Math.atan(height/width);
         hr.setStyle({
             width     : Math.sqrt(width*width + height*height) + 1 + 'px',
-            top       : height/2  + 'px',
-            left      : -(Math.sqrt(width*width + height*height) - width)/2  + 'px',
+            top       : height/2 + 5  + 'px',
+            left      : -(Math.sqrt(width*width + height*height) - width)/2 + 10 + 'px',
             transform : "rotate(" + Math.floor(180-angle * 180/ Math.PI)+ "deg)"
         });
 
