@@ -66,6 +66,7 @@ Category default layout
         </reference>
 				<reference name="head">
 					<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+					<action method="addItem"><type>skin_js</type><name>js/stickyfilter.js</name></action>
 					<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
 				</reference>
         <reference name="left_first">
@@ -125,6 +126,7 @@ Category layered navigation layout
         </reference>
 				<reference name="head">
 					<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+					<action method="addItem"><type>skin_js</type><name>js/stickyfilter.js</name></action>
 					<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
 				</reference>
         <reference name="left_first">

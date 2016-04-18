@@ -44,12 +44,12 @@
             <p class="toggle-box-filter toggle-sort-by box-mobile"><span><?php echo $this->__('Sort By') ?></span></p>
             <dl id="narrow-by-list" class="box-filter-content">
                 <?php $_filters = $this->getFilters() ?>
-                <?php foreach ($_filters as $_filter): ?>
+                <?php $i=0; foreach ($_filters as $_filter): ?>
                 <?php if($_filter->getItemsCount()): ?>
-                    <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dt class="<?php echo $_filter->getBlockAlias();?><?php if($i == ($_filter->getItemsCount() - 2)):?> filter_sticky<?php endif?>" id="<?php echo $_filter->getBlockAlias();?>"><?php echo $this->__($_filter->getName()) ?></dt>
                     <dd><?php echo $_filter->getHtml() ?></dd>
                 <?php endif; ?>
-                <?php endforeach; ?>
+                <?php $i++; endforeach; ?>
             </dl>
             <script type="text/javascript">decorateDataList('narrow-by-list')</script>
         <?php endif; ?>
