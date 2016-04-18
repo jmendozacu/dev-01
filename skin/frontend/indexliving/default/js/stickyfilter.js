@@ -1,21 +1,23 @@
 jQuery(document).ready(function () {
 	var layerNavElementHeight = jQuery('.block-layered-nav').outerHeight();
 	var layerNavPos = jQuery('.block-layered-nav').offset().top;
-	var layerNavLastElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
+	var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
 	jQuery(this).scroll(function() {
 		var scrollTopPos = jQuery(this).scrollTop();
 		var screenBottomPos = screen.availHeight + scrollTopPos;
 		var layerNavBottomPos = layerNavElementHeight + layerNavPos;
-		var winScrollTopTranform = scrollTopPos - layerNavLastElementPos;
+		var winScrollTopTranform = scrollTopPos - layerNavStartStickyElementPos;
 		var transformYValue = "translateY("+scrollTopPos+"px)";
 		var footerBeforePos = jQuery('.footer-before-container').offset().top - layerNavPos;
-		var stopStickyPos = footerBeforePos - jQuery('.block-layered-nav dd.last').outerHeight();
+		var sidebarCompareHeight = jQuery('.sidebar .block-compare').outerHeight();
+		var layerNavLastElementHeight = jQuery('.block-layered-nav dd.last').outerHeight();
+		var stopStickyPos = footerBeforePos - sidebarCompareHeight - layerNavLastElementHeight;
 		if(screenBottomPos >= layerNavBottomPos && scrollTopPos <= stopStickyPos) {
 			transformYValue = "translateY("+winScrollTopTranform+"px)";
-			jQuery('.block-layered-nav').css('transform', transformYValue);
+			jQuery('.col-left-first').css('transform', transformYValue);
 		}else {
 			transformYValue = "translateY(0px)";
-			jQuery('.block-layered-nav').css('transform', transformYValue);
+			jQuery('.col-left-first').css('transform', transformYValue);
 		}
 	});
 });
