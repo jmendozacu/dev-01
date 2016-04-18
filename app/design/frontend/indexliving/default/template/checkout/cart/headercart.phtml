@@ -64,7 +64,7 @@
         </p>
       </div>
     <?php endif ?>
-    <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+    <?php if($_cartQty): ?>
     <div class="actions">
         <?php echo $this->getChildHtml('extra_actions') ?>
         <button type="button" title="<?php echo $this->__('Checkout') ?>" class="button r-button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
@@ -92,7 +92,7 @@
 					jQuery('#apply_qty_' + productId).hide();
                     jQuery('#minicart-msg').show();
                     jQuery('#minicart-msg').html(transport.responseJSON.notice);
-                if(transport.responseJSON.message == 'Item was updated successfully.'){
+            if(transport.responseJSON.message == 'Item was updated successfully.'){
                     jQuery('#minicart-msg').hide();
                 }
 
