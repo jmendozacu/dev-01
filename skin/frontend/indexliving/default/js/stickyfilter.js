@@ -9,8 +9,8 @@ jQuery(document).ready(function () {
 		var winScrollTopTranform = scrollTopPos - layerNavLastElementPos;
 		var transformYValue = "translateY("+scrollTopPos+"px)";
 		var footerBeforePos = jQuery('.footer-before-container').offset().top - layerNavPos;
-		var toolbarBottomPos = jQuery('.toolbar-bottom').offset().top;
-		if(screenBottomPos >= layerNavBottomPos && scrollTopPos <= footerBeforePos) {
+		var stopStickyPos = footerBeforePos - jQuery('.block-layered-nav dd.last').outerHeight();
+		if(screenBottomPos >= layerNavBottomPos && scrollTopPos <= stopStickyPos) {
 			transformYValue = "translateY("+winScrollTopTranform+"px)";
 			jQuery('.block-layered-nav').css('transform', transformYValue);
 		}else {
