@@ -42,7 +42,7 @@ class Magebuzz_Bannerads_Block_Adminhtml_Bannerads_Edit extends Mage_Adminhtml_B
   }
 
   protected function getAddNewImageUrl() {
-    return $this->getUrl('bannerads/adminhtml_images/new', array('from_block_id' => $this->getRequest()->getParam('id')));
+    return $this->getUrl('adminhtml/bannerads_images/new', array('from_block_id' => $this->getRequest()->getParam('id')));
   }
 
 }
