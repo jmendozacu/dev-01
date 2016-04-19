@@ -1,7 +1,12 @@
 jQuery(document).ready(function () {
 	var layerNavElementHeight = jQuery('.block-layered-nav').outerHeight();
 	var layerNavPos = jQuery('.block-layered-nav').offset().top;
-	var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
+	if(jQuery('.block-layered-nav dt.filter_sticky')){
+		var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
+	}else{
+		var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.last').offset().top;
+	}
+	
 	jQuery(this).scroll(function() {
 		var scrollTopPos = jQuery(this).scrollTop();
 		var screenBottomPos = screen.availHeight + scrollTopPos;
@@ -9,9 +14,14 @@ jQuery(document).ready(function () {
 		var winScrollTopTranform = scrollTopPos - layerNavStartStickyElementPos;
 		var transformYValue = "translateY("+scrollTopPos+"px)";
 		var footerBeforePos = jQuery('.footer-before-container').offset().top - layerNavPos;
-		var sidebarCompareHeight = jQuery('.sidebar .block-compare').outerHeight();
 		var layerNavLastElementHeight = jQuery('.block-layered-nav dd.last').outerHeight();
-		var stopStickyPos = footerBeforePos - sidebarCompareHeight - layerNavLastElementHeight;
+		if(jQuery('.sidebar .block-compare')){
+			var sidebarCompareHeight = jQuery('.sidebar .block-compare').outerHeight();
+			var stopStickyPos = footerBeforePos - sidebarCompareHeight - layerNavLastElementHeight;
+		}else{
+			var stopStickyPos = footerBeforePos - layerNavLastElementHeight;
+		}
+		
 		if(screenBottomPos >= layerNavBottomPos && scrollTopPos <= stopStickyPos) {
 			transformYValue = "translateY("+winScrollTopTranform+"px)";
 			jQuery('.col-left-first').css('transform', transformYValue);

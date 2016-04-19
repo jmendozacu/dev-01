@@ -4,7 +4,7 @@
    $_collectionSize = $this->getItems()->getSize();
   if($_collectionSize >0):
  ?>
-<h2 class="title-style1"><span><?php echo $this->__('our brands') ?></span><a class="box-desktop" title="view all" href="#"><?php echo $this->__('view all') ?></a></h2>
+<h2 class="title-style1"><span><?php echo $this->__('our brands') ?></span><a class="box-desktop" title="view all" href="<?php echo $this->getUrl('brands')?>"><?php echo $this->__('view all') ?></a></h2>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-brand-banner')->toHtml() ?>
 <div class="home-brand-content">
   <div id="grid-featured-brands">

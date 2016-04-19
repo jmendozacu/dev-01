@@ -77,8 +77,6 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
 										<?php echo $this->getChildHtml('alert_urls') ?>
                 </div>
 
-								<?php $_themeCustomHelper = Mage::helper('themecustom');?>
-								<?php if($_themeCustomHelper->isValidFeatureAttribute($_product)): ?>
 								<div class="warranty-info">
 									<div class="warranty">
 										<?php if(Mage::helper('core')->isModuleEnabled('MarginFrame_Shopby')){
@@ -86,7 +84,7 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
 										} ?>
 									</div>
 								</div>
-								<?php endif;?>
+
                 <?php echo $this->getChildHtml('other');?>
 
                 <?php if ($_product->isSaleable() && $this->hasOptions()):?>
