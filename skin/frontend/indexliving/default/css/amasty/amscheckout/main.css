@@ -572,7 +572,8 @@
     overflow: hidden;
     position: relative;
 }
-
+.amscheckout .column-section .buttons-set button.button{float:left; margin:0;}
+#billing-form-show{margin:15px 0 0;}
 #amscheckout-onepage .cart-table{
     width: 100%;
     float: none;

@@ -13,8 +13,8 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
             if ($product->getId() && (Mage::getSingleton('log/visitor')->getId() || Mage::getSingleton('customer/session')->isLoggedIn()))
                 {
                     try {
-                        $collection = $this->getLayout()->createBlock('catalog/product_compare_list')->getItems()->count();
-                        if($collection<4){
+                        $count = Mage::helper('catalog/product_compare')->getItemCount();
+                        if($count<4){
                             Mage::getSingleton('catalog/product_compare_list')->addProduct($product);
 
                             $response['status'] = 'SUCCESS';
@@ -53,7 +53,8 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
                         }
                     }
                     catch (Exception $e) {
-                        echo $e->getMessage();
+                        $response['status'] = 'ERROR';
+                        $response['error'] = $this->__('Can not add to comparison list.');
                     }
                 }
 

@@ -71,23 +71,23 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
           $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
           $uploader->setAllowRenameFiles(TRUE);
           $uploader->setFilesDispersion(FALSE);
-					
-					$new_image_name = $uploader->getUploadedFileName();
 
           $path = Mage::getBaseDir('media') . DS . 'dealers' . DS . 'icons';
           if (!is_dir($path)) {
             mkdir($path, 0777, TRUE);
           }
 
-          if (!file_exists($path . DS . $new_image_name)) {
-            $uploader->save($path, $new_image_name);
+          if (!file_exists($path . DS . $image_name)) {
+            $uploader->save($path, $image_name);
           }
+					$new_icon_image = $uploader->getUploadedFileName();
+					
         } catch (Exception $e) {
           // silence is gold
         }
-        $data['icon_image'] = $new_image_name;
-      } elseif ($model->getImage()) {
-        $data['icon_image'] = $model->getImage();
+        $data['icon_image'] = $new_icon_image;
+      } elseif ($model->getIconImage()) {
+        $data['icon_image'] = $model->getIconImage();
       }
 			
 			if (isset($_FILES['dealer_map']['name']) && $_FILES['dealer_map']['name'] != '') {
@@ -99,23 +99,22 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
           $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
           $uploader->setAllowRenameFiles(TRUE);
           $uploader->setFilesDispersion(FALSE);
-					
-					$new_image_name = $uploader->getUploadedFileName();
 
           $path = Mage::getBaseDir('media') . DS . 'dealers' . DS . 'map';
           if (!is_dir($path)) {
             mkdir($path, 0777, TRUE);
           }
 
-          if (!file_exists($path . DS . $new_image_name)) {
-            $uploader->save($path, $new_image_name);
+          if (!file_exists($path . DS . $image_name)) {
+            $uploader->save($path, $image_name);
           }
+					$new_dealermap_name = $uploader->getUploadedFileName();
         } catch (Exception $e) {
           // silence is gold
         }
-        $data['dealer_map'] = $new_image_name;
-      } elseif ($model->getImage()) {
-        $data['dealer_map'] = $model->getImage();
+        $data['dealer_map'] = $new_dealermap_name;
+      } elseif ($model->getDealerMap()) {
+        $data['dealer_map'] = $model->getDealerMap();
       }
 
       $post = $this->getRequest()->getPost();
