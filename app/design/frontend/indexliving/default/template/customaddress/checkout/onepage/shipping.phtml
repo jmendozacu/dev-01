@@ -163,6 +163,10 @@
                 </ul>
             </fieldset>
         </li>
+        <li class="control no-display">
+            <input type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Use Billing Address') ?>" onclick="shipping.setSameAsBilling(this.checked)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Use Billing Address') ?></label>
+        </li>
+
         <li class="control">
             <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Billing to this address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to this address') ?></label>
         </li>
@@ -170,8 +174,11 @@
         <li class="control">
             <input type="radio" name="shipping[same_as_billing]" id ="radio_use_billing" value="1" title="<?php echo $this->__('Billing to different address') ?>" onchange="Showbillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to different address') ?></label>
         </li>
-
-
+        <?php /*if ($this->isCustomerLoggedIn() && !$this->customerHasAddresses()):*/?><!--
+            <li class="same_as_shipping">
+                <input type="checkbox" name="billing[same_as_shipping]" id ="checkbox_same_as_shipping" value="1"checked="checked" title="<?php /*echo $this->__('Same as Shipping') */?>"   onclick="FetchtoShipping(this)" class="checkbox" /><label for="billing:same_as_shipping"><?php /*echo $this->__('Same as shipping') */?></label>
+            </li>
+        --><?php /*endif;*/?>
     </ul>
   <!--  <div class="buttons-set" id="shipping-buttons-container">
         <p class="required"><?php /*echo $this->__('* Required Fields') */?></p>
@@ -224,4 +231,24 @@ jQuery('.validate-account-number').keypress(function (e) {
         var id_billing_form = document.getElementById("billing-form-show");
         id_billing_form.style.display = "none";
     }
+    /*function  FetchtoShipping(f){
+        if(document.getElementsById("checkbox_same_as_shipping").checked == true){
+            alert("asdf");
+            /!*f.billing[company].value = f.shipping[company].value;
+             f.billing[email].value = f.shipping[email].value;
+             f.billing[street][].value = f.shipping[street][].value;
+             f.billing[vat_id].value = f.shipping[vat_id].value;
+             f.billing[region_id].value = f.shipping[region_id].value;
+             f.billing[region].value = f.shipping[region].value;
+             f.billing[city_id].value = f.shipping[city_id].value;
+             f.billing[city].value = f.shipping[city].value;
+             f.billing[subdistrict_id].value = f.shipping[subdistrict_id].value;
+             f.billing[postcode].value = f.shipping[postcode].value;
+             f.billing[fax].value = f.shipping[fax].value;
+             f.billing[telephone].value = f.shipping[telephone].value;*!/
+            /!*f.billing[save_in_address_book].value = f.shipping[save_in_address_book].value;*!/
+        }
+
+
+    }*/
 </script>
