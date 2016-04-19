@@ -2,7 +2,6 @@
     $_productCollection = $this->getLoadedProductCollection();
 		$_productCollection->clear();
 		$_productCollection->addAttributeToSelect('flip_image');
-		$_productCollection->addAttributeToSelect('ecommerce');
 		$_productCollection->load();
     $_helper            = $this->helper('catalog/output');
     $_collectionSize    = $_productCollection->count();
