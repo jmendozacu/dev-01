@@ -1,7 +1,12 @@
 jQuery(document).ready(function () {
 	var layerNavElementHeight = jQuery('.block-layered-nav').outerHeight();
 	var layerNavPos = jQuery('.block-layered-nav').offset().top;
-	var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
+	if(jQuery('.block-layered-nav dt.filter_sticky')){
+		var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
+	}else{
+		var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.last').offset().top;
+	}
+	
 	jQuery(this).scroll(function() {
 		var scrollTopPos = jQuery(this).scrollTop();
 		var screenBottomPos = screen.availHeight + scrollTopPos;
