@@ -19,7 +19,13 @@ padding: 0pt 10px 10px 0pt; float: left;
 .amshopby-featured-wrapper .brands-grid li .brand-info{border:1px solid #e6e6e6; padding:0 0 100px;}
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text{padding:15px; position:absolute; left:0; bottom:0; width:100%; background:#FFFFFF; border:1px solid #e6e6e6; }
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-name{font-family: 'DBYordXMed'; font-size:30px; color:#ffb300; margin:0;}
-.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-desc{font-family: 'DBYordXMed'; font-size:20px; color:#9c9c9c; margin:0;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-desc{
+	font-family: 'DBYordXMed'; 
+	font-size:20px; 
+	color:#9c9c9c; 
+	margin:0;
+}
+.amshopby-featured-wrapper .brands-grid li.over .brand-info .brand-text .brand-desc{}
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details{font-family: 'DBYordXMed'; font-size:24px; color:#000; text-decoration:none;}
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details:hover{color:#ffb300; }
 .amshopby-featured {
