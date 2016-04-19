@@ -164,11 +164,11 @@
             </fieldset>
         </li>
         <li class="control">
-            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Billing to this address (autocheck as default): billing address same as shipping address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to this address (autocheck as default): billing address same as shipping address') ?></label>
+            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Billing to this address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to this address') ?></label>
         </li>
 
         <li class="control">
-            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_billing" value="1" title="<?php echo $this->__('Billing to different address: billing address different from shipping address') ?>" onchange="Showbillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to different address: billing address different from shipping address') ?></label>
+            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_billing" value="1" title="<?php echo $this->__('Billing to different address') ?>" onchange="Showbillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to different address') ?></label>
         </li>
 
 
