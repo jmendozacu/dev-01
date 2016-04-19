@@ -2259,21 +2259,15 @@ span.weee {
 }
 
 .std ol {
-  list-style: decimal outside;
-  margin-bottom: 1.5em;
 }
 
 .std ol li {
-  margin-left: 2em;
 }
 
 .std ul {
-  list-style: disc outside;
-  margin-bottom: 1.5em;
 }
 
 .std ul li {
-  margin-left: 2em;
 }
 
 .std .note {

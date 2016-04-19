@@ -11,9 +11,18 @@ select.amshopby-select {
 .amshopby-logo{
 padding: 0pt 10px 10px 0pt; float: left;
 }
-
+.amshopby-featured-wrapper{}
+.amshopby-featured-wrapper .brands-grid{}
+.amshopby-featured-wrapper .brands-grid li{float:left; width:32%; margin-left:2%; margin-bottom:30px; position:relative;}
+.amshopby-featured-wrapper .brands-grid li.first{margin-left:0;}
+.amshopby-featured-wrapper .brands-grid li.last{margin-left:0; float:right;}
+.amshopby-featured-wrapper .brands-grid li .brand-info{border:1px solid #e6e6e6; padding:0 0 100px;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text{padding:15px; position:absolute; left:0; bottom:0; width:100%; background:#FFFFFF; border:1px solid #e6e6e6; }
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-name{font-family: 'DBYordXMed'; font-size:30px; color:#ffb300; margin:0;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-desc{font-family: 'DBYordXMed'; font-size:20px; color:#9c9c9c; margin:0;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details{font-family: 'DBYordXMed'; font-size:24px; color:#000; text-decoration:none;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details:hover{color:#ffb300; }
 .amshopby-featured {
-    padding: 5px 5px 5px 5px; 
 }
 
 .amshopby-link{
@@ -277,4 +286,21 @@ input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"
     dl#narrow-by-list2 {
         padding: 0px;
     }
+}
+
+@media only screen and (max-width: 600px) {
+  .amshopby-featured-wrapper{}
+	.amshopby-featured-wrapper .brands-grid{}
+	.amshopby-featured-wrapper .brands-grid li{float:left; width:100%; margin-left:0; margin-bottom:15px; position:relative;}
+	.amshopby-featured-wrapper .brands-grid li.first{margin-left:0;}
+	.amshopby-featured-wrapper .brands-grid li.last{margin-left:0;}
+}
+@media (min-width: 600px) and (max-width: 767px) {
+	.amshopby-featured-wrapper .brands-grid li{float:left; width:49%; margin-left:0; margin-bottom:15px; position:relative;}
+	.amshopby-featured-wrapper .brands-grid li:nth-child(2){float:right;}
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+	.amshopby-featured-wrapper .brands-grid li .brand-info{padding:0}
+	.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text{position:relative; border:0 none;}
 }
