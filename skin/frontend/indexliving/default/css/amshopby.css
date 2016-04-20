@@ -11,6 +11,7 @@ select.amshopby-select {
 .amshopby-logo{
 padding: 0pt 10px 10px 0pt; float: left;
 }
+.featured-brands .page-title{margin-bottom:45px;}
 .amshopby-featured-wrapper{}
 .amshopby-featured-wrapper .brands-grid{}
 .amshopby-featured-wrapper .brands-grid li{float:left; width:32%; margin-left:2%; margin-bottom:30px; position:relative;}
