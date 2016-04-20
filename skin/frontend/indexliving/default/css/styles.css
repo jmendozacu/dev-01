@@ -5267,7 +5267,10 @@ body.catalogsearch-result-index .page-title h1 {
 	margin:0 0 15px;
 }
 .product-view .product-shop .warranty-info .warranty{}
-.product-view .product-shop .warranty-info .warranty img{float:left; margin-right:15px;}
+.product-view .product-shop .warranty-info .warranty .amshopby-links-wrapper{}
+.product-view .product-shop .warranty-info .warranty .amshopby-links-wrapper ul{float:left; width:100%; margin:0 0 5px;}
+.product-view .product-shop .warranty-info .warranty .amshopby-links-wrapper ul li{float:left; width:16.5%; text-align:center;}
+.product-view .product-shop .warranty-info .warranty img{/* float:left; margin-right:15px; */}
 .product-view .product-shop .add-to-cart-wrapper {
   float:left;
 	width:100%;
