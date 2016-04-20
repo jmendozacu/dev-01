@@ -693,7 +693,7 @@
 //        }
 
         function completeCheckout(){
-            if($('checkbox_same_as_shipping').checked == true){
+            if(($('checkbox_same_as_shipping').checked == true)&&($('radio_use_billing').checked == false)){
                 arrElements = Form.getElements($('billing-new-address-form'));
                 for (var elemIndex in arrElements) {
                     if (arrElements[elemIndex].id) {

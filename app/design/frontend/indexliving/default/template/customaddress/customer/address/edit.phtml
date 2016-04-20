@@ -156,7 +156,7 @@
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
     Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
-        return /^0[0-9]/i.test(v);
+        return /[0-9]/i.test(v);
     });
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 
