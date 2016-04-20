@@ -219,6 +219,10 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
 				if ($is_error == 2) {
 					if (Mage::getSingleton('customer/session')->getWritingReview()) {
 						$result['show_review_popup'] = 1;
+						$result['customer_nickname'] = '';
+						if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+							$result['customer_nickname'] = trim(Mage::getSingleton('customer/session')->getCustomer()->getName());
+						}
 						Mage::getSingleton('customer/session')->setWritingReview(null);
 						$result['redirect'] = 2; // no redirect
 					}
