@@ -38,7 +38,7 @@ AmAjaxLogin.prototype =
 		
     /*start helper functions*/
     updateHeader : function() {
-        if($$('.header-container')[0]){
+        if($$('.page-header-container')[0]){
             var url = this.url.replace(this.url.substring(this.url.length-6, this.url.length), 'header');//   
             new Ajax.Request(url, {
                 method: 'post',
@@ -50,11 +50,12 @@ AmAjaxLogin.prototype =
                         holderDiv.innerHTML = response; 
                         text = ""; 
                         holderDiv.childElements().each(function(div){
-                           if(div.hasClassName("header-container")) text += div.innerHTML;
+                           if(div.hasClassName("page-header")) text += div.innerHTML;
                         })
-                        if(text) $$('.header-container')[0].innerHTML = text;
+                        if(text) $$('.page-header')[0].innerHTML = text;
                         AmAjaxLoginLoad('a[href*="customer/account/login/"]');    
                         AmAjaxLogoutLoad('a[href*="customer/account/logout/"]');      
+                        reRunSomeScripts();       
                     }       
                 }.bind(this),
             });
@@ -169,6 +170,8 @@ AmAjaxLogin.prototype =
 							jQuery('.reviewloggedin').fancybox({
 									afterShow:function(){
 											jQuery('#review-form-popup').customRadioCheckbox();
+											// Add customer name to field your name in review popup
+											jQuery('#nickname_field').val(response.customer_nickname);
 									}
 							});
 							$('review-open-popup').stopObserving('click', loadLoginWithAjax);
@@ -187,7 +190,7 @@ AmAjaxLogin.prototype =
 						location.reload();
 					}
 					else {
-							window.location = response.redirect;
+						window.location = response.redirect;
 					}    
 				}
 			}
@@ -263,7 +266,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                     this.hideAnimation();
-										
+										this.updateHeader(); // Update header first
 										//response.redirect = "2"; 	
 										
                     if (response.is_error == "1") {
@@ -273,7 +276,6 @@ AmAjaxLogin.prototype =
 											this.showMessage(response, false);
 										}
                      if(response.is_error == "2"){
-                        this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
                             window.location.reload();
                         }    
@@ -496,6 +498,36 @@ function AmAjaxLoginLoad(buttonClass){
             });
         }
 	})
+}
+
+function reRunSomeScripts() {
+	/* mini login */
+  jQuery('.togglelogin').click(function(){
+    jQuery('.box-header-content').hide();
+    if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
+      jQuery(this).addClass('active');
+      jQuery('#header-mini-login').show();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#header-mini-login').hide();
+    }
+  });
+  /* */
+
+  jQuery('.toggle-minicart').click(function(){
+    jQuery('.box-header-content').hide();
+    if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
+      jQuery(this).addClass('active');
+      jQuery('#mini-cart-info').show();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#mini-cart-info').hide();
+    }
+  });
 }
 
 function AmAjaxLogoutLoad(buttonClass){

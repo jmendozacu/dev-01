@@ -210,6 +210,9 @@
 .list-all-product-dealer .dealer-pager .pager .pages ol li.li-previous{display:block;}
 .list-all-product-dealer .dealer-pager .pager .pages strong{display:none;}
 
+.list-all-dealer-by-tag .dealer-pager .amount{background:url(images/dealerlocator/dealer-i-down.png) center right no-repeat;}
+.list-all-dealer-by-tag .dealer-pager.active .amount{background:url(images/dealerlocator/dealer-i-up.png) center right no-repeat;}
+
 
 .list-all-product-dealer .dealer-pager .pager .pages a.previous,
 .list-all-product-dealer .dealer-pager .pager .pages a.next{width:20px; display:block!important;}
