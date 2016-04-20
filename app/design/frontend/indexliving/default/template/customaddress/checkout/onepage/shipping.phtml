@@ -168,17 +168,18 @@
         </li>
 
         <li class="control">
-            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Billing to this address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to this address') ?></label>
+            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Billing to this address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="radio_use_shipping"><?php echo $this->__('Billing to this address') ?></label>
         </li>
 
         <li class="control">
-            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_billing" value="1" title="<?php echo $this->__('Billing to different address') ?>" onchange="Showbillingform(this)" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Billing to different address') ?></label>
+            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_billing" value="1" title="<?php echo $this->__('Billing to different address') ?>" onchange="Showbillingform(this)" class="checkbox" /><label for="radio_use_billing"><?php echo $this->__('Billing to different address') ?></label>
         </li>
-        <?php /*if ($this->isCustomerLoggedIn() && !$this->customerHasAddresses()):*/?><!--
-            <li class="same_as_shipping">
-                <input type="checkbox" name="billing[same_as_shipping]" id ="checkbox_same_as_shipping" value="1"checked="checked" title="<?php /*echo $this->__('Same as Shipping') */?>"   onclick="FetchtoShipping(this)" class="checkbox" /><label for="billing:same_as_shipping"><?php /*echo $this->__('Same as shipping') */?></label>
+        <?php if ($this->isCustomerLoggedIn() && !$this->customerHasAddresses()):?>
+            <li class="same_as_shipping no-display">
+                <input type="checkbox" name="billing[same_as_shipping]" id ="checkbox_same_as_shipping" value="1" checked="checked" title="<?php echo $this->__('Set Billing Address same as Shipping') ?>" onclick="shipping.setSameAsShipping(this.checked)" class="checkbox" />
+                <label for="billing:same_as_shipping"><?php echo $this->__('Set Billing Address same as Shipping') ?></label>
             </li>
-        --><?php /*endif;*/?>
+        <?php endif;?>
     </ul>
   <!--  <div class="buttons-set" id="shipping-buttons-container">
         <p class="required"><?php /*echo $this->__('* Required Fields') */?></p>
@@ -231,24 +232,35 @@ jQuery('.validate-account-number').keypress(function (e) {
         var id_billing_form = document.getElementById("billing-form-show");
         id_billing_form.style.display = "none";
     }
-    /*function  FetchtoShipping(f){
-        if(document.getElementsById("checkbox_same_as_shipping").checked == true){
-            alert("asdf");
-            /!*f.billing[company].value = f.shipping[company].value;
-             f.billing[email].value = f.shipping[email].value;
-             f.billing[street][].value = f.shipping[street][].value;
-             f.billing[vat_id].value = f.shipping[vat_id].value;
-             f.billing[region_id].value = f.shipping[region_id].value;
-             f.billing[region].value = f.shipping[region].value;
-             f.billing[city_id].value = f.shipping[city_id].value;
-             f.billing[city].value = f.shipping[city].value;
-             f.billing[subdistrict_id].value = f.shipping[subdistrict_id].value;
-             f.billing[postcode].value = f.shipping[postcode].value;
-             f.billing[fax].value = f.shipping[fax].value;
-             f.billing[telephone].value = f.shipping[telephone].value;*!/
-            /!*f.billing[save_in_address_book].value = f.shipping[save_in_address_book].value;*!/
+    function  setSameAsShipping(flag){
+        $('checkbox_same_as_shipping').checked = flag;
+        if(flag){
+            /*$('billing:company').value = $('shipping:company').value;
+            $('billing:city').value = $('shipping:city').value;
+            $('billing:mobile_customer').value = $('shipping:mobile_customer').value;
+            $('billing:city_id').value = $('shipping:city_id').value;
+            $('billing:country_id').value = $('shipping:country_id').value;
+            $('billing:region').value = $('shipping:region').value;
+            $('billing:region_id').value = $('shipping:region_id').value;
+            $('billing:subdistrict_id').value = $('shipping:subdistrict_id').value;
+            $('billing:street1').value = $('shipping:street1').value;
+            $('billing:vat_id').value = $('shipping:vat_id').value;
+            $('billing:postcode').value = $('shipping:postcode').value;
+            $('billing:fax').value = $('shipping:fax').value;
+            $('billing:telephone').value = $('shipping:telephone').value;*/
+            $('shipping-address-select') && this.newAddress(!$('shipping-address-select').value);
+            $('checkbox_same_as_shipping').checked = true;
+            arrElements = Form.getElements(this.form);
+            for (var elemIndex in arrElements) {
+                if (arrElements[elemIndex].id) {
+                    var sourceField = $(arrElements[elemIndex].id.replace(/^billing:/, 'shipping:'));
+                    if (sourceField){
+                        arrElements[elemIndex].value = sourceField.value;
+                    }
+                }
+            }
+            //$('shipping:country_id').value = $('billing:country_id').value;
+            shippingRegionUpdater.update();
         }
-
-
-    }*/
+    }
 </script>
