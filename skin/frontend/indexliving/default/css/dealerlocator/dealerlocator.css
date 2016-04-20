@@ -188,6 +188,8 @@
 	max-height: 400px;
   overflow-y: auto;  
   overflow-x: hidden; 
+}
+.list-all-product-dealer.list-all-dealer-by-tag .product-dealerscroll{
 	display:none;
 }
 .list-all-dealer.list-all-product-dealer .product-dealerscroll {max-height:464px;}
