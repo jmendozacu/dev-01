@@ -216,4 +216,16 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     // return did you mean from item 2nd
     return array_slice($result, 1, 4);
   }
+	
+	public function getDealerByTag($tag){
+    $tagModel = Mage::getModel('dealerlocator/tag');
+    $dealerModel = Mage::getModel('dealerlocator/dealerlocator');
+    $dealerIds = $tagModel->getCollection()->addFieldToFilter('tag', $tag)->getColumnValues('dealer_id');
+    $dealerCollection = $dealerModel;
+    if(count($dealerIds)>0){
+      $dealerCollection = $dealerModel->getCollection()
+      ->addFieldToFilter('dealerlocator_id', array('in' => $dealerIds));
+    }
+    return $dealerCollection;
+  }
 }
