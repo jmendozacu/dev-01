@@ -232,6 +232,7 @@
 .list-all-product-dealer .dealer-pager .limiter{display:none;}
 .list-all-product-dealer ul li{float:left; width:100%; padding:10px 0; border-bottom:1px solid #e6e6e6; cursor: pointer; position:relative;}
 .list-all-product-dealer.list-all-dealer-by-tag ul li{padding:0; border:0 none;}
+.list-all-product-dealer.list-all-dealer-by-tag ul li ul li{ border-bottom:1px solid #e6e6e6; padding:10px 0;}
 .list-all-product-dealer ul li .dealer-map{position:absolute; right:0; bottom:10px;}
 
 .list-all-product-dealer ul li h3{
