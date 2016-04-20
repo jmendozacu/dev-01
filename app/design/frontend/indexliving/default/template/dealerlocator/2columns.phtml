@@ -379,14 +379,12 @@ $dealers->clear(); ?>
 			'class': 'dealermap-container',
 			'id'   : 'dealermap-' + dealerMapId,
 			});
-			dealerMapContainer.insert('<div class="dealer-map-preview"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="javascript:hideBigMap('+dealerMapId+')"></a><img src="'+dealerMapUrl+'" alt="" /></div>');
+			dealerMapContainer.insert('<div class="dealer-map-preview"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="javascript:hideBigMap()"></a><img src="'+dealerMapUrl+'" alt="" /></div>');
 			$$('body')[0].insert(dealerMapContainer);
 		}
 	}
-	function hideBigMap(dealerMapId){
-		if ($('dealermap-' + dealerMapId)) {
-			$('dealermap-' + dealerMapId).remove();
-		}
+	function hideBigMap(){
+		jQuery('.dealermap-container').remove();
 	}
 
   function calcRoute() {
