@@ -693,7 +693,18 @@
 //        }
 
         function completeCheckout(){
+            if($('checkbox_same_as_shipping').checked == true){
+                arrElements = Form.getElements($('billing-new-address-form'));
+                for (var elemIndex in arrElements) {
+                    if (arrElements[elemIndex].id) {
+                        var sourceField = $(arrElements[elemIndex].id.replace(/^billing:/, 'shipping:'));
+                        if (sourceField){
+                            arrElements[elemIndex].value = sourceField.value;
+                        }
+                    }
+                }
 
+            }
             if (amscheckoutForm.validator.validate() && !checkoutRunning){
                 showLoading();
                 checkoutRunning = true;
