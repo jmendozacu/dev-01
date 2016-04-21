@@ -39,7 +39,9 @@
 		<div class="page-container">
 			<div class="box-title">
 				<h2><?php echo $this->__('Features') ?></h2>
-				<button type="button" title="<?php echo $this->quoteEscape($this->__('Product Download')) ?>" class="button btn-downloads" onclick="setLocation('#')"><span><span><?php echo $this->__('Product Download') ?></span></span></button>
+				<?php if($_helper->productAttribute($_product, $_product->getProductDownloadLink(), 'product_download_link') != ''):?>
+					<button type="button" title="<?php echo $this->quoteEscape($this->__('Product Download')) ?>" class="button btn-downloads" onclick="javascript:window.open('<?php echo $_helper->productAttribute($_product, $_product->getProductDownloadLink(), 'product_download_link') ?>');"><span><span><?php echo $this->__('Product Download') ?></span></span></button>
+					<?php endif ?>
 			</div>
 			<?php $i=0; foreach ($_additional as $_data): ?>
 				<?php if ($i++%2==0): ?>

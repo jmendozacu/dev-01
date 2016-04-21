@@ -237,6 +237,9 @@
 				new SubdistrictUpdater('country', 'region_id', 'city_id', 'subdistrict', 'subdistrict_id', 'zip', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
         <?php endif; ?>
     //]]>
+        Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
+            return /[0-9]/i.test(v);
+        });
         jQuery('.validate-account-number').keypress(function (e) {
             if(e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37){
                 return true;

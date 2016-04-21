@@ -164,7 +164,7 @@ hr.amconf-hr{
     width: 30px;
     height: 16px;
     background: url(../images/slider-up.png) 0 0 no-repeat transparent;
-    left:16px;
+    left:13px;
 		top:-30px!important;
 }
 
@@ -172,7 +172,7 @@ hr.amconf-hr{
     width: 30px;
     height: 16px; 
     background: url(../images/slider-down.png) 0 0 no-repeat transparent;
-    left:16px;
+    left:13px;
 		top:215px!important;
 }
 

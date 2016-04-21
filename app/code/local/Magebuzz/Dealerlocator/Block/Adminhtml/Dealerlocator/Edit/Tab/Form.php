@@ -43,7 +43,7 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Dealerlocator_Edit_Tab_Form extends
 		
     $fieldset->addField('dealer_map', 'image', array('label' => Mage::helper('dealerlocator')->__('Dealer Map'), 'required' => FALSE, 'name' => 'dealer_map',));
 
-    $fieldset->addField('dealer_tag', 'text', array('label' => Mage::helper('dealerlocator')->__('Dealer Tag'), 'required' => FALSE, 'name' => 'dealer_tag', 'after_element_html' => Mage::helper('dealerlocator')->__('<small>Example : magebuzz,MageBuzz,Azebiz</small>')));
+    $fieldset->addField('dealer_tag', 'text', array('label' => Mage::helper('dealerlocator')->__('Dealer Tag'), 'required' => TRUE, 'name' => 'dealer_tag', 'after_element_html' => Mage::helper('dealerlocator')->__('<small>Example : magebuzz,MageBuzz,Azebiz</small>')));
 
     $fieldset->addField('store_code', 'text', array('label' => Mage::helper('dealerlocator')->__('Store Code'), 'name' => 'store_code',));
 

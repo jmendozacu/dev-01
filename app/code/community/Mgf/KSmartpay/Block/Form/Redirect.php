@@ -30,6 +30,7 @@
 		$PayChannel = "";
 		$PayExpiredDate = "";
 
+		$reference = "";
         foreach ($KSmartpay->getStandardCheckoutFormFields('redirect') as $field=>$value) {
 			//echo "<li>" . $field . " :: " . $value . "</li>";
 			switch (strtolower(trim($field))) {
@@ -41,6 +42,8 @@
 			        break;
 			    case "invmerchant":
 			        $payOrderNo = trim($value);
+			        $transaction = Mage::getModel('KSmartpay/transaction');
+			        $reference = $transaction->reGenerateOrderId($payOrderNo);
 			        break;
 			    case "amount2":
 					$PayAmount = trim(substr($value, 0, 10) . "." . substr($value, 10));
@@ -80,7 +83,7 @@
 			//echo  "tttttttttttttttt<br/>";
 			$PaymentMethod = "KSmartPay";
 			$PaymentGatewayName = "K-Payment Gateway";
-			$PaymentGatewayUrl = trim($KSmartpay->getKSmartpayUrl());
+			$PaymentGatewayUrl = trim(Mage::getStoreConfig("payment/KSmartpay/paymentgatewayurl"));
 		}
 		if (preg_match('#^Krungsri#', $paybycard) === 1) {
 			//=> KrungsriA,KrungsriB,KigrungsriX,KrungsriY,KrungsriZ,KrungsriC,KrungsriD,KrungsriP,KrungsriQ,KrungsriR,KrungsriE,KrungsriF,KrungsriS,KrungsriT,KrungsriU,KrungsriG,KrungsriH,KrungsriL,KrungsriM,KrungsriN,KrungsriI,KrungsriJ,KrungsriO,KrungsriV,KrungsriW
@@ -140,7 +143,7 @@
 					else {
 					   //=> Form
 					   if (strtolower(trim($field)) != "txtchecksum") {
-					   		 if ((strtolower(trim($field)) == "shopid") || (strtolower(trim($field)) == "payterm2")) {
+					   		 if ((strtolower(trim($field)) == "shopid") || (strtolower(trim($field)) == "payterm2") || (strtolower(trim($field)) == "invmerchant")) {
 							 	if ((strtolower(trim($field)) == "shopid") && (trim($value) != "")) {
 						   			$form->addField($field, 'hidden', array('name'=>$field, 'value'=>trim($value)));
 						   			$xData .= trim($value);
@@ -149,6 +152,11 @@
 						   			$form->addField($field, 'hidden', array('name'=>$field, 'value'=>trim($value)));
 						   			$xData .= trim($value);
 								}
+								if ((strtolower(trim($field)) == "invmerchant") && (trim($reference) != "")) {
+						   			$form->addField($field, 'hidden', array('name'=>$field, 'value'=>trim($reference)));
+						   			$xData .= trim($reference);
+								}
+								
 							 }
 							 else {
 					   			$form->addField($field, 'hidden', array('name'=>$field, 'value'=>trim($value)));
@@ -192,9 +200,8 @@
 		$order = Mage::getModel('sales/order');
 		$order->loadByIncrementId($payOrderNo);
 		$payment = $order->getPayment();
-		var_dump($payment);
-		exit();
-		// $payment->setAdditionalInformation('transactionid',(int)$result);
+		
+		$payment->setAdditionalInformation('reference',$reference);
 		
 		$payment->setAdditionalInformation('bank',$PaymentMethod);
 		$payment->setAdditionalInformation('card',$paybycard);

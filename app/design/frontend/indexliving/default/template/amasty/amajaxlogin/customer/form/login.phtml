@@ -25,6 +25,15 @@
 				</ul>
 				<div class="am-password-login"><a onclick="AmAjaxLoginObj.forgotPassword();" class=""><?php echo $this->__('Forgot Your Password?') ?></a></div>
 				<button type="button" onclick="AmAjaxLoginObj.loginFormId('amajaxlogin-login-form-popup');" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Login')) ?>" class="button"><span><span><?php echo $this->__('Login') ?></span></span></button>
+				<?php if(Mage::helper('amajaxlogin/facebook')->isEnable()):?> 
+					<?php echo Mage::app()->getLayout()->createBlock('amajaxlogin/customer_account_dashboard_social', 'form_login_by_fb')->setTemplate('amasty/amajaxlogin/customer/account/dashboard/social.phtml')->toHtml(); ?>
+				<?php endif; ?>
+				<div class="or_use_that">
+					<span class="or_use_text"><span><?php echo $this->__('OR') ?></span></span>
+				</div>
+				<label class="reg"><?php echo $this->__('If you are not member Register here')?></label>
+				<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Create an Account')) ?>" class="button r-button btn-create-acc" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+				<div style="clear:both"></div>
 			</div>
     </form>
   

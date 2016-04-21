@@ -5267,7 +5267,10 @@ body.catalogsearch-result-index .page-title h1 {
 	margin:0 0 15px;
 }
 .product-view .product-shop .warranty-info .warranty{}
-.product-view .product-shop .warranty-info .warranty img{float:left; margin-right:15px;}
+.product-view .product-shop .warranty-info .warranty .amshopby-links-wrapper{}
+.product-view .product-shop .warranty-info .warranty .amshopby-links-wrapper ul{float:left; width:100%; margin:0 0 5px;}
+.product-view .product-shop .warranty-info .warranty .amshopby-links-wrapper ul li{float:left; width:16.5%; text-align:center;}
+.product-view .product-shop .warranty-info .warranty img{/* float:left; margin-right:15px; */}
 .product-view .product-shop .add-to-cart-wrapper {
   float:left;
 	width:100%;
@@ -7068,7 +7071,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart-table .cart-price .old-price .price{
 	color: #a0a0a0;
-	font-size: 10px;
+	font-size: 12px;
 	font-family: 'FuturaLight';
 }
 .cart-table .product-cart-actions .button, .cart-table .product-cart-actions .button:hover {
@@ -9869,7 +9872,7 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Wishlist
  * ============================================ */
-#wishlist-view-form a.link-print {float:right; clear:both; padding-left:30px; background:url(../images/icon-print.png) no-repeat left center; line-height:25px; margin-bottom:10px; } 
+#wishlist-view-form a.link-print {float:right; clear:both; padding-left:30px; background:url(../images/icon-print.png) no-repeat left center; line-height:25px; margin-bottom:10px; }
 #wishlist-table th {
   text-align: center;
 }
@@ -11465,6 +11468,26 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
   width: 100%;
   clear: both;
 }
+
+/* Shipping */
+.amscheckout .shipping .form-list label{
+  white-space: normal;
+  margin-bottom: 6px;
+}
+.amscheckout .shipping .form-list > .wide .input-box{
+  background: white;
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  padding: 5px 2px;
+  margin-bottom: 8px;
+}
+.amscheckout .shipping .form-list > .wide .input-box .address-select{
+  border: none;
+  line-height: 1.45 !important;
+  white-space: normal;
+  background-color: transparent;
+}
+
 
 @media only screen and (max-width: 979px) {
   body[class*="checkout-multishipping-"] .checkout-progress span {

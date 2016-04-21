@@ -198,17 +198,17 @@
         <div id="amscheckout-loading" class="amscheckout-loading" style="display: none;">&nbsp;</div>
         
         <div class="amscheckout-header">
-            <h1 class="lane"><?php echo $this->__("Checkout")?></h1>
-            <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-            <?php
-                if (!$this->isCustomerLoggedIn()){
-            ?>
-            <div>
-                <a class="am_login_link" <?php echo $hlr->isMobile() ? "href='".Mage::getUrl("customer/account/login")."'" : 'href="#" onclick="amShowDialog(); return false;"'; ?>><?php echo $this->__('Already registered? Click here to login.');?></a>
-            </div>
-            <?php
-                }
-            ?>
+					<h1 class="lane"><?php echo $this->__("Checkout")?></h1>
+					<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+					<?php if (!$this->isCustomerLoggedIn()): ?>
+					<?php if(Mage::getStoreConfig('amajaxlogin/general/enable')): ?>
+						<a class="am_login_link" href="javascript:void(0)" onclick="AmAjaxLoginObj.sendLoginAjax();"><?php echo $this->__('Already registered? Click here to login.');?></a>
+					<?php else:?>
+						<div>
+								<a class="am_login_link" <?php echo $hlr->isMobile() ? "href='".Mage::getUrl("customer/account/login")."'" : 'href="#" onclick="amShowDialog(); return false;"'; ?>><?php echo $this->__('Already registered? Click here to login.');?></a>
+						</div>
+					<?php endif ?>
+					<?php endif ?>
         </div>
 
         <input type="hidden" name="form_key" value="<?php print Mage::getSingleton('core/session')->getFormKey();?>"/>
@@ -584,10 +584,10 @@
                 $('shipping_area').show();
             });
 
-       /* if ($('shipping:same_as_billing'))
+        if ($('shipping:same_as_billing'))
             $('shipping:same_as_billing').observe("click", function(){
                 $('billing:use_for_shipping_yes').click();
-            });*/
+            });
 
         if (typeof(discountForm) == 'object') {
             discountForm.submit = function (isRemove) {
@@ -693,7 +693,24 @@
 //        }
 
         function completeCheckout(){
+            if(($('checkbox_same_as_shipping').checked == true)&&($('radio_use_billing').checked == false)){
+                arrElements = Form.getElements($('billing-new-address-form'));
+                for (var elemIndex in arrElements) {
+                    if (arrElements[elemIndex].id) {
+                        var sourceField = $(arrElements[elemIndex].id.replace(/^billing:/, 'shipping:'));
+                        if (sourceField){
+                            arrElements[elemIndex].value = sourceField.value;
+                        }
+                    }
+                }
 
+                new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+
+                new CityUpdater('billing:country_id', 'billing:region_id', 'billing:city', 'billing:city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
+
+                new SubdistrictUpdater('billing:country_id', 'billing:region_id', 'billing:city_id', 'billing:subdistrict', 'billing:subdistrict_id', 'billing:postcode', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
+
+            }
             if (amscheckoutForm.validator.validate() && !checkoutRunning){
                 showLoading();
                 checkoutRunning = true;
