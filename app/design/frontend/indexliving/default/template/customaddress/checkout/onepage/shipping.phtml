@@ -235,12 +235,11 @@
         <li class="control">
             <input type="radio" name="shipping[same_as_billing]" id ="radio_use_billing" value="1" title="<?php echo $this->__('Billing to different address') ?>" onchange="Showbillingform(this)" class="checkbox" /><label for="radio_use_billing"><?php echo $this->__('Billing to different address') ?></label>
         </li>
-        <?php if (($this->isCustomerLoggedIn() && !$this->customerHasAddresses())||(!$this->isCustomerLoggedIn())):?>
-            <li class="same_as_shipping no-display">
-                <input type="checkbox" name="billing[same_as_shipping]" id ="checkbox_same_as_shipping" value="1" checked="checked" title="<?php echo $this->__('Set Billing Address same as Shipping') ?>" class="checkbox" />
-                <label for="billing:same_as_shipping"><?php echo $this->__('Set Billing Address same as Shipping') ?></label>
-            </li>
-        <?php endif;?>
+        <li class="same_as_shipping">
+            <input type="checkbox" name="billing[same_as_shipping]" id ="checkbox_same_as_shipping" value="1" <?php if (($this->isCustomerLoggedIn() && !$this->customerHasAddresses())||(!$this->isCustomerLoggedIn())):?> checked="checked"<?php endif;?> title="<?php echo $this->__('Set Billing Address same as Shipping') ?>" class="checkbox" />
+            <label for="billing:same_as_shipping"><?php echo $this->__('Set Billing Address same as Shipping') ?></label>
+        </li>
+
     </ul>
   <!--  <div class="buttons-set" id="shipping-buttons-container">
         <p class="required"><?php /*echo $this->__('* Required Fields') */?></p>
