@@ -263,7 +263,7 @@
     //shippingForm.setElementsRelation('shipping:country_id', 'shipping:region', '<?php echo $this->getUrl('directory/json/childRegion') ?>', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Select State/Province...')) ?>');
     $('shipping-address-select') && shipping.newAddress(!$('shipping-address-select').value);
 
-    var shippingRegionUpdater = new RegionUpdater('shipping:country_id', 'shipping:region', 'shipping:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'shipping:postcode');
+        var shippingRegionUpdater = new RegionUpdater('shipping:country_id', 'shipping:region', 'shipping:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'shipping:postcode');
 		
 		var shippingCityUpdater = new CityUpdater('shipping:country_id', 'shipping:region_id', 'shipping:city', 'shipping:city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
 		
@@ -295,19 +295,6 @@ jQuery('.validate-account-number').keypress(function (e) {
     function  setSameAsShipping(flag){
         $('checkbox_same_as_shipping').checked = flag;
         if(flag){
-            /*$('billing:company').value = $('shipping:company').value;
-            $('billing:city').value = $('shipping:city').value;
-            $('billing:mobile_customer').value = $('shipping:mobile_customer').value;
-            $('billing:city_id').value = $('shipping:city_id').value;
-            $('billing:country_id').value = $('shipping:country_id').value;
-            $('billing:region').value = $('shipping:region').value;
-            $('billing:region_id').value = $('shipping:region_id').value;
-            $('billing:subdistrict_id').value = $('shipping:subdistrict_id').value;
-            $('billing:street1').value = $('shipping:street1').value;
-            $('billing:vat_id').value = $('shipping:vat_id').value;
-            $('billing:postcode').value = $('shipping:postcode').value;
-            $('billing:fax').value = $('shipping:fax').value;
-            $('billing:telephone').value = $('shipping:telephone').value;*/
             $('shipping-address-select') && this.newAddress(!$('shipping-address-select').value);
             $('checkbox_same_as_shipping').checked = true;
             arrElements = Form.getElements(this.form);
