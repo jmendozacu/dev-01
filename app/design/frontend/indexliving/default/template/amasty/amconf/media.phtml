@@ -45,7 +45,7 @@
             <?php endif; ?>
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views" style="width:<?php echo $smallImageSize ?>px">
+<div class="more-views" style="top:<?php echo ($imageWidth - 270)/2?>px; width:<?php echo $smallImageSize ?>px">
     <div style="position: relative;">
         <div id="amasty_gallery">
              <?php foreach ($this->getGalleryImages() as $_image): ?>
