@@ -11470,6 +11470,10 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 }
 
 /* Shipping */
+.amscheckout .shipping .form-list label{
+  white-space: normal;
+  margin-bottom: 6px;
+}
 .amscheckout .form-list .input-box{
   background: white;
   border: 1px solid #cfcfcf;
