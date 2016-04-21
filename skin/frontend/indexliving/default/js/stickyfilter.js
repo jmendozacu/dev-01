@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 	if(jQuery('.block-layered-nav').length > 0){
-		var layerNavElementHeight = jQuery('.block-layered-nav').outerHeight();
+		/* var layerNavElementHeight = jQuery('.block-layered-nav').outerHeight();
 		var layerNavPos = jQuery('.block-layered-nav').offset().top;
 		if(jQuery('.block-layered-nav dt.filter_sticky')){
 			var layerNavStartStickyElementPos = jQuery('.block-layered-nav dt.filter_sticky').offset().top;
@@ -30,6 +30,6 @@ jQuery(document).ready(function () {
 				transformYValue = "translateY(0px)";
 				jQuery('.col-left-first').css('transform', transformYValue);
 			}
-		});
+		}); */
 	}
 });
