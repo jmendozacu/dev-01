@@ -11486,7 +11486,7 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 }
 .amscheckout .shipping .form-list > .wide .input-box .address-select{
   border: none;
-  line-height: 1.45 !important;
+  height: auto;
   white-space: normal;
   background-color: transparent;
 }
