@@ -19,7 +19,7 @@ class Amasty_Checkoutfees_Block_Checkout_Total_Amcheckoutfees extends Mage_Check
         $storedData = $quote->getAmcheckoutfeesFees();
 
         if (!Mage::getStoreConfig('amcheckoutfees/general/enabled')) {
-            $quote->setAmcheckoutfeesFees([]);
+            $quote->setAmcheckoutfeesFees(0);
             $quote->save();
             $quote->setTotalsCollectedFlag(false)->collectTotals();
             $this->setFeesData(false);
