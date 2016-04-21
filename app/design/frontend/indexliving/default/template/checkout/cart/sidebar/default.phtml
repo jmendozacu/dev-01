@@ -83,7 +83,7 @@
     <div class="qty-minicart">
       <span class="qty-label"><?php echo $this->__('Qty') ?></span>
       <span class="qty-item">
-        <input maxlength="4" class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
+        <input maxlength="4" class="qty" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
         <?php if($product->getTypeId() == 'configurable'):?>
           <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
         <?php else: ?>
@@ -93,3 +93,15 @@
       </span>
     </div>
 </li>
+<script>
+    jQuery(document).ready(function(){
+        var productId = '<?php echo $_item->getProduct()->getId()?>';
+        jQuery("#header_cart_qty_" + productId).click(function(event){
+            jQuery('#apply_qty_' + productId).show();
+            event.stopPropagation();
+        });
+        jQuery(document).click(function(){
+            jQuery('#apply_qty_' + productId).hide();
+        });
+    });
+</script>
