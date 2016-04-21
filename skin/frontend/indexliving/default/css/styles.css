@@ -2594,7 +2594,7 @@ body.customer-account .data-table .summary-collapse:before {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-top: 7px solid #3399cc;
+  border-top: 7px solid #FFC222;
   border-bottom: none;
   position: static;
   display: inline-block;
@@ -2610,7 +2610,7 @@ body.customer-account .data-table .summary-collapse:hover:before {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-top: 7px solid #246b8f;
+  border-top: 7px solid #FFB900;
   border-bottom: none;
   position: static;
   display: inline-block;
@@ -2626,7 +2626,7 @@ body.customer-account .data-table .show-details .summary-collapse:before {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #3399cc;
+  border-bottom: 7px solid #FFC222;
   border-top: none;
   position: static;
   display: inline-block;
@@ -2642,7 +2642,7 @@ body.customer-account .data-table .show-details .summary-collapse:hover:before {
   display: block;
   border-right: 7px solid transparent;
   border-left: 7px solid transparent;
-  border-bottom: 7px solid #246b8f;
+  border-bottom: 7px solid #FFB900;
   border-top: none;
   position: static;
   display: inline-block;
@@ -7472,6 +7472,9 @@ body.catalogsearch-result-index .page-title h1 {
   padding-bottom: 10px;
 }
 .cart .cart-totals table .summary-details, .cart .cart-totals table .summary-total{color:#FF0000;}
+.cart .cart-totals table .summary-details{vertical-align: top; background-color: #efefef; font-size: 12px; border-top: 1px solid #ddd; }
+.cart .cart-totals table .summary-details td{padding: 10px 15px; }
+.cart .cart-totals table .summary-total.show-details{font-weight: bold;}
 .cart .cart-totals table tfoot {
   border-top: 1px solid #E6E6E6;
   border-bottom: 1px solid #E6E6E6;

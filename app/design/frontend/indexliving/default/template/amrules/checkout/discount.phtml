@@ -5,6 +5,18 @@
  * @package Amasty_Rules
  */
 ?>
+<tr class="summary-total" onclick="expandDetails(this, '.summary-details-amrules')" >
+    <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
+        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
+             <div class="summary-collapse"><?php echo $this->getTotal()->getTitle() ?></div>
+        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
+    </td>
+    <td style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
+        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
+            <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
+        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
+    </td>
+</tr>
 <?php if (is_array($this->getTotal()->getFullInfo())) : ?>
 <?php foreach ($this->getTotal()->getFullInfo() as $info): ?>
     <tr class="summary-details-amrules summary-details" style="display:none;">
@@ -18,15 +30,3 @@
     </tr>
 <?php endforeach; ?>
 <?php endif; ?>
-<tr class="summary-total" onclick="expandDetails(this, '.summary-details-amrules')" >
-    <td colspan="<?php echo $this->getColspan(); ?>" style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
-             <div class="summary-collapse"><?php echo $this->getTotal()->getTitle() ?></div>
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
-    </td>
-    <td style="<?php echo $this->getTotal()->getStyle() ?>" class="a-right">
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?><strong><?php endif; ?>
-            <?php echo $this->helper('checkout')->formatPrice($this->getTotal()->getValue()) ?>
-        <?php if ($this->getRenderingArea() == $this->getTotal()->getArea()): ?></strong><?php endif; ?>
-    </td>
-</tr>
