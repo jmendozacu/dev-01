@@ -7071,7 +7071,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart-table .cart-price .old-price .price{
 	color: #a0a0a0;
-	font-size: 10px;
+	font-size: 12px;
 	font-family: 'FuturaLight';
 }
 .cart-table .product-cart-actions .button, .cart-table .product-cart-actions .button:hover {
@@ -9872,7 +9872,7 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Wishlist
  * ============================================ */
-#wishlist-view-form a.link-print {float:right; clear:both; padding-left:30px; background:url(../images/icon-print.png) no-repeat left center; line-height:25px; margin-bottom:10px; } 
+#wishlist-view-form a.link-print {float:right; clear:both; padding-left:30px; background:url(../images/icon-print.png) no-repeat left center; line-height:25px; margin-bottom:10px; }
 #wishlist-table th {
   text-align: center;
 }
@@ -11468,6 +11468,21 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
   width: 100%;
   clear: both;
 }
+
+/* Shipping */
+.amscheckout .form-list .input-box{
+  background: white;
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  padding: 5px 2px;
+}
+.amscheckout .form-list .input-box .address-select{
+  border: none;
+  line-height: 1.45 !important;
+  white-space: normal;
+  background-color: transparent;
+}
+
 
 @media only screen and (max-width: 979px) {
   body[class*="checkout-multishipping-"] .checkout-progress span {
