@@ -216,9 +216,10 @@
                             </li>
                         <?php endif; ?>
                 <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
-                    <li class="no-display">
-                        <input type="checkbox" name="shipping[save_in_address_book]" value="1" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Save in address book')) ?>" id="shipping:save_in_address_book" onchange="shipping.setSameAsBilling(false);" checked="checked"class="checkbox"/>
-                        <label for="shipping:save_in_address_book"><?php echo $this->__('Save in address book') ?></label></li>
+                    <li class="control">
+                        <input type="checkbox" name="shipping[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="shipping:save_in_address_book" onchange="shipping.setSameAsBilling(false);"checked="checked" class="checkbox" />
+                        <label for="shipping:save_in_address_book"><?php echo $this->__('Save in address book') ?></label>
+                    </li>
                 <?php else:?>
                     <li class="no-display"><input type="hidden" name="shipping[save_in_address_book]" value="1" /></li>
                 <?php endif;?>
@@ -230,7 +231,7 @@
         </li>
 
         <li class="control">
-            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"<?php if($this->getAddress()->getSameAsBilling()): ?> checked="checked"<?php endif; ?> title="<?php echo $this->__('Billing to this address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="radio_use_shipping"><?php echo $this->__('Billing to this address') ?></label>
+            <input type="radio" name="shipping[same_as_billing]" id ="radio_use_shipping" value="1"checked="checked" title="<?php echo $this->__('Billing to this address') ?>"   onchange="Hidebillingform(this)" class="checkbox" /><label for="radio_use_shipping"><?php echo $this->__('Billing to this address') ?></label>
         </li>
 
         <li class="control">
