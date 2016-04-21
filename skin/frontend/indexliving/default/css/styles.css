@@ -11470,13 +11470,18 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 }
 
 /* Shipping */
-.amscheckout .form-list .input-box{
+.amscheckout .shipping .form-list label{
+  white-space: normal;
+  margin-bottom: 6px;
+}
+.amscheckout .shipping .form-list .input-box{
   background: white;
   border: 1px solid #cfcfcf;
   border-radius: 3px;
   padding: 5px 2px;
+  margin-bottom: 8px;
 }
-.amscheckout .form-list .input-box .address-select{
+.amscheckout .shipping .form-list .input-box .address-select{
   border: none;
   line-height: 1.45 !important;
   white-space: normal;
