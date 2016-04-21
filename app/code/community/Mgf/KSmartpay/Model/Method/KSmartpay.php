@@ -588,6 +588,7 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 			'installment_card'                 => $PaidbyCard,
 			);
 			
+
         $sReq = '';
 
         $rArr = array();

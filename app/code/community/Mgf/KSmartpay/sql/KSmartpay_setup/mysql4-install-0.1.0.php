@@ -9,7 +9,7 @@ $installer->run("
 	`entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`order_increment_id` varchar(100) not null,
 	`reference_number` varchar(100) not null,
-	`created` datetime default now(),
+	`created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`entity_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 ");
