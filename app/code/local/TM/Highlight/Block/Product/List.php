@@ -28,6 +28,13 @@ class TM_Highlight_Block_Product_List
     protected $_productCollection;
     protected $_defaultToolbarBlock = 'highlight/product_list_toolbar';
     protected $_toolbarBlock;
+		
+		/**
+     * Price template
+     *
+     * @var string
+     */
+    protected $_priceBlockDefaultTemplate = 'catalog/product/price.phtml';
 
     protected static $_productUrlModel = null;
 
@@ -86,6 +93,18 @@ class TM_Highlight_Block_Product_List
            $this->getNameInLayout()
         );
     }
+		/**
+		 * Prepares and returns block to render some product type
+		 *
+		 * @param string $productType
+		 * @return Mage_Core_Block_Template
+		 */
+		public function _preparePriceRenderer($productType)
+		{
+				return $this->_getPriceBlock($productType)
+						->setTemplate('catalog/product/price.phtml')
+						->setUseLinkForAsLowAs($this->_useLinkForAsLowAs);
+		}
 
     /**
      * Process cached form_key and uenc params
