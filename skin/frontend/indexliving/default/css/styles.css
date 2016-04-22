@@ -7525,7 +7525,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart .cart-totals table .summary-details, .cart .cart-totals table .summary-total{color:#FF0000;}
 .cart .cart-totals table .summary-details{vertical-align: top; background-color: #efefef; font-size: 12px; border-top: 1px solid #ddd; }
-.cart .cart-totals table .summary-details td{padding: 10px 15px; }
+.cart .cart-totals table .summary-details td{padding: 10px 28px; }
 .cart .cart-totals table .summary-total.show-details{font-weight: bold;}
 .cart .cart-totals table tfoot {
   border-top: 1px solid #E6E6E6;
