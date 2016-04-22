@@ -157,8 +157,8 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
             $status = false;
         //	throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
-        var_dump($response);
-        exit();
+        // var_dump($response);
+        // exit();
 		$Paidby = "";
 		if(isset($response["paidsrc"])) $Paidby  =$response["paidsrc"];
 		
