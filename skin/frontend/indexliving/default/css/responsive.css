@@ -8,7 +8,19 @@
  .product-viewed-mobile-tablet{display:none;}
  @media (min-width: 1200px) {
 	.compare-popup{min-width:1200px;}
-}
+	}
+ @media (min-width: 1200px) and (max-width: 1280px) {
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(1),
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(3){width:30%; position:relative;}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(3)::before{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;left: -3px;margin-top: -75px;}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(1)::after{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;right: -3px;margin-top: -75px;}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(2){width:40%;}
+		.services-page .service-content .showroom .showroom-desc .info::before,.services-page .service-content .showroom .showroom-desc .info::after{background:0 none;}
+		.services-page .service-content .showroom .showroom-desc{max-width:375px; margin-left:-187px;}
+		.services-page .service-content .showroom .showroom-desc .info{padding:10px; font-size:15px;}
+		.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:20px;}
+		.services-page .service-content .online-store .text-desc .details-info{padding:20px;}
+ }
  @media (max-width: 1199px) {
 	.checkout-list-step ul{width:100%;}
   /* home page*/
@@ -64,6 +76,16 @@
 		.block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
 			height:auto; min-height:0;
 		}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(1),
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(3){width:30%; position:relative;}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(3)::before{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;left: -3px;margin-top: -75px;}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(1)::after{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;right: -3px;margin-top: -75px;}
+		.services-page .service-content .showroom .wrap-bannerads ul li:nth-child(2){width:40%;}
+		.services-page .service-content .showroom .showroom-desc .info::before,.services-page .service-content .showroom .showroom-desc .info::after{background:0 none;}
+		.services-page .service-content .showroom .showroom-desc{max-width:375px; margin-left:-187px;}
+		.services-page .service-content .showroom .showroom-desc .info{padding:10px; font-size:15px;}
+		.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:20px;}
+		.services-page .service-content .online-store .text-desc .details-info{padding:20px;}
  }
   @media (max-width: 1155px){
     .cms-page-view .c_left br{display:none;}
@@ -137,6 +159,19 @@
 	}
 	.compare-popup .compare-list-table{overflow:scroll;}
 	.compare-popup .data-table td.title{display:none;}
+	.services-page .service-content .showroom .wrap-bannerads ul li{float:left; width:33%;}
+	.services-page .service-content .showroom .showroom-desc{position:relative; width:65%; margin:0 auto; left:0;}
+	.services-page .service-content .showroom .showroom-desc .info{padding:10px; font-size:15px;}
+	.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:10px;font-size:12px;}
+	.services-page .service-content .home-delivery .delivery-desc h1{font-size:16px;}
+	.services-page .service-content .home-delivery .delivery-desc h1 strong{font-size:18px;}
+	.services-page .service-content .home-delivery .delivery-desc p.text{font-size:15px; line-height:15px; padding:12px 0 0; margin:5px 0 0;}
+	.services-page .service-content .home-delivery .delivery-desc p.btn{margin:5px 0 0;}
+	.services-page .service-content .online-store .text-desc .details-info{padding:10px; font-size:12px;}
+	.services-page .service-content .online-store .text-desc .details-info p.text{font-size:15px; line-height:15px; padding:12px 0 0; margin:5px 0 0;}
+	.services-page .service-content .online-store .text-desc .details-info h1{font-size:16px;}
+	.services-page .service-content .online-store .text-desc .details-info h1 strong{font-size:18px;}
+	.services-page .service-content .online-store .text-desc .details-info::before{height:100px; margin-top:-50px;}
  }
  @media (max-width: 768px) {
   .tab-left:before{background:transparent; }
@@ -545,6 +580,20 @@
 	.compare-popup .compare-list-table{padding:10px; overflow:scroll; max-height:300px;}
 	.compare-popup-close{top:-25px; right:0;}
 	.compare-popup .data-table td.title{display:none;}
+	
+	.services-page .service-content .showroom .wrap-bannerads ul li{float:left; width:33%;}
+	.services-page .service-content .showroom .showroom-desc{position:relative; width:100%; margin:0; left:0;}
+	.services-page .service-content .showroom .showroom-desc .info{padding:10px; font-size:15px;}
+	.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:10px;font-size:12px;}
+	.services-page .service-content .home-delivery .delivery-desc h1{font-size:16px;}
+	.services-page .service-content .home-delivery .delivery-desc h1 strong{font-size:18px;}
+	.services-page .service-content .home-delivery .delivery-desc p.text{font-size:15px; line-height:15px; padding:12px 0 0; margin:5px 0 0;}
+	.services-page .service-content .home-delivery .delivery-desc p.btn{margin:5px 0 0;}
+	.services-page .service-content .online-store .text-desc .details-info{padding:10px; font-size:12px;}
+	.services-page .service-content .online-store .text-desc .details-info p.text{font-size:15px; line-height:15px; padding:12px 0 0; margin:5px 0 0;}
+	.services-page .service-content .online-store .text-desc .details-info h1{font-size:16px;}
+	.services-page .service-content .online-store .text-desc .details-info h1 strong{font-size:18px;}
+	.services-page .service-content .online-store .text-desc .details-info::before{height:100px; margin-top:-50px;}
  }
  @media (min-width: 640px) and (max-width: 767px) {
 	#customer-reviews .review-list li > div.review-rating{width:30%;}
@@ -706,6 +755,21 @@
 		max-width: 600px;
     margin-left: -300px;
 	}
+	/* Services Page */
+	.services-page .service-content .showroom .showroom-desc p.text{margin:7px 0 0; padding:14px 0 0; font-size:15px; line-height:15px;}
+	.services-page .service-content .showroom .showroom-desc{position:absolute; margin-top:-95px; left:0; top:50%; width:auto; margin-left:0;}
+	.services-page .service-content .showroom .showroom-desc h1{font-size:20px;}
+	.services-page .service-content .showroom .showroom-desc h1 label{font-size:15px;}
+	.services-page .service-content .showroom .showroom-desc h1 strong{font-size:24px;}
+	.services-page .service-content .showroom .showroom-desc .info{padding:5px 10px;}
+	.services-page .service-content .showroom .wrap-bannerads ul li{float:left; width:100%;}
+	.services-page .service-content .showroom .wrap-bannerads ul li img{width:100%;}
+	.services-page .service-content .home-delivery .delivery-desc{float:left; width:100%;}
+	.services-page .service-content .home-delivery .delivery-banner{float:left; width:100%;}
+	.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:20px;}
+	.services-page .service-content .online-store .text-desc{float:left; width:100%;}
+	.services-page .service-content .online-store .online-store-banner{float:left; width:100%;}
+	.services-page .service-content .online-store .text-desc .details-info{padding:20px;}
  }
  @media (max-width: 600px){
 	.compare-popup{
@@ -758,6 +822,21 @@
 		max-width: 370px;
     margin-left: -185px;
 	}
+	/* Services Page */
+	.services-page .service-content .showroom .showroom-desc p.text{margin:7px 0 0; padding:14px 0 0; font-size:15px; line-height:15px;}
+	.services-page .service-content .showroom .showroom-desc{position:absolute; margin-top:-95px; left:0; top:50%; width:auto; margin-left:0;}
+	.services-page .service-content .showroom .showroom-desc h1{font-size:20px;}
+	.services-page .service-content .showroom .showroom-desc h1 label{font-size:15px;}
+	.services-page .service-content .showroom .showroom-desc h1 strong{font-size:24px;}
+	.services-page .service-content .showroom .showroom-desc .info{padding:5px 10px;}
+	.services-page .service-content .showroom .wrap-bannerads ul li{float:left; width:100%;}
+	.services-page .service-content .showroom .wrap-bannerads ul li img{width:100%;}
+	.services-page .service-content .home-delivery .delivery-desc{float:left; width:100%;}
+	.services-page .service-content .home-delivery .delivery-banner{float:left; width:100%;}
+	.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:20px;}
+	.services-page .service-content .online-store .text-desc{float:left; width:100%;}
+	.services-page .service-content .online-store .online-store-banner{float:left; width:100%;}
+	.services-page .service-content .online-store .text-desc .details-info{padding:20px;}
  }
 @media (max-width: 450px){
   .main-home .home-brands .brand-banner li {width:100%; margin: 0 0 15px;}
