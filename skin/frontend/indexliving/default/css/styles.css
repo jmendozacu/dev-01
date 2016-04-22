@@ -3477,7 +3477,7 @@ body {
 .top-link-account a.active {background:#252525; color:#fff!important;}
 .top-link-account a.active:before {background:url(../images/icon-account-over.png) no-repeat 0px 7px !important;}
 .top-link-account a.active:after,
-.toggle-minicart.active:after  {content:""; width:0px; height:0px; position:absolute; z-index:12; bottom:-16px; right:20px; border-bottom:solid 13px #252525;  border-right:solid 7px transparent; border-left:solid 7px transparent;}
+.toggle-minicart.active:after  {content:""; width:0px; height:0px; position:absolute; z-index:12; bottom:-16px; right:20px; border-bottom:solid 13px #252525;  border-right:solid 7px transparent; border-left:solid 7px transparent;z-index: 20;}
 .toggle-minicart.active:after {bottom:-4px;}
 .top-link-account {position:relative;}
 #header-mini-login,
@@ -6957,11 +6957,12 @@ body.catalogsearch-result-index .page-title h1 {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .cart-table thead th{
-	background:#000000;
-	color:#FFFFFF;
+  color: #f4701e;
+  border-bottom: 4px solid #ffc222;
 	text-align:center;
 	font-family: 'DBYordXMed';
-	font-size:24px;
+	font-size:25px;
+  padding: 3px 0;
 }
 .cart-table .product-cart-info,
 .cart-table .product-cart-actions {

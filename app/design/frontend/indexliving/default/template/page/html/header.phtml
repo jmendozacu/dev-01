@@ -107,6 +107,7 @@
                 </a>
             </div>
             <div id="header-mini-login" class="box-header-content">
+                <a id="loginClose" title="Close" class="ajaxcart-close" href="javascript:void(0)"></a>
                 <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
                     <?php echo $this->getChildHtml('header_mini_login') ?>
                 <?php else: ?>
@@ -114,6 +115,7 @@
                 <?php endif; ?>
             </div>
             <div id="mini-cart-info" class="box-header-content mini-cart-info">
+                <a id="cartClose" title="Close" class="ajaxcart-close" href="javascript:void(0)"></a>
                 <?php echo $this->getChildHtml('header_cart_mini') ?>
             </div>
         </div>

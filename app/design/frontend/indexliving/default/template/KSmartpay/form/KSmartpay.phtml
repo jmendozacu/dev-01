@@ -112,7 +112,6 @@
         }
         //=> Loop cart items
         
-        
         if ($cartcondition==true) {
             if (count($AvaliableArray) < 1) {
                 $cartcondition = false;
@@ -121,11 +120,12 @@
         if (!$cartcondition) {
             unset($AvaliableArray);
         }
-
+        
+        $InstallmentArray = array();
+        $InstallmentZeroArray = array();
         if (count($AvaliableArray)>0) {
             //=> Start List
-            $InstallmentArray = array();
-            $InstallmentZeroArray = array();
+            
             foreach ($AvaliableArray as $PrdInstallmentItem) {
                 $termMax = (int)Mage::getStoreConfig('payment/'. $PrdInstallmentItem .'/paymenttermmax', $storeId);
                 $termRate = (double)Mage::getStoreConfig('payment/'. $PrdInstallmentItem .'/paymenttermrate', $storeId);
