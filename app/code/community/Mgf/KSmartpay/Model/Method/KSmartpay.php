@@ -183,23 +183,24 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 				
         		$PrdinstallmentsData = $product->getData('installments_attribute');
         		if ($PrdinstallmentsData != "")  {
-					$PrdInstallmentArray = explode(",", $PrdinstallmentsData);
-					foreach ($PrdInstallmentArray as $PrdInstallmentItem) {
+					$PrdInstallmentArray = explode(",", $PrdinstallmentsData); // 30 31 32 33
+					foreach ($PrdInstallmentArray as $PrdInstallmentItem){
 						//=> Check x - Start
     						//=> KBank A
     						if (Mage::getStoreConfigFlag('payment/KSmartpayA/active', $storeId)) {
+    							
     							if (Mage::getStoreConfig('payment/KSmartpayA/filterlimit', $storeId)==$PrdInstallmentItem) {
 									$PlanActive = true;
 									if (trim(Mage::getStoreConfig('payment/KSmartpayA/min_order_total')) != "") {
 										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KSmartpayA/min_order_total'));
 									}
-						
+								
 									if (trim(Mage::getStoreConfig('payment/KSmartpay/max_order_total')) != "") {
 										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KSmartpayA/max_order_total'));
 									}
-									
 									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/KSmartpayA/bjcmethod', $storeId);
+	    								// $xtext = Mage::getStoreConfig('payment/KSmartpayA/bjcmethod', $storeId);
+	    								$xtext = "KSmartpayA";
     									$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
 									}
     							}
@@ -215,9 +216,27 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 									if (trim(Mage::getStoreConfig('payment/KSmartpayB/max_order_total')) != "") {
 										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KSmartpayB/max_order_total'));
 									}
-									
 									if ($PlanActive) {
-    									$xtext = Mage::getStoreConfig('payment/KSmartpayB/bjcmethod', $storeId);
+    									// $xtext = Mage::getStoreConfig('payment/KSmartpayB/bjcmethod', $storeId);
+    									$xtext = "KSmartpayB";
+										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
+									}
+    							}
+    						}
+    						//=> KBank C
+    						if (Mage::getStoreConfigFlag('payment/KSmartpayC/active', $storeId)) {
+    							if (Mage::getStoreConfig('payment/KSmartpayC/filterlimit', $storeId)==$PrdInstallmentItem) {
+									$PlanActive = true;
+									if (trim(Mage::getStoreConfig('payment/KSmartpayC/min_order_total')) != "") {
+										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KSmartpayC/min_order_total'));
+									}
+						
+									if (trim(Mage::getStoreConfig('payment/KSmartpayC/max_order_total')) != "") {
+										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KSmartpayC/max_order_total'));
+									}
+									if ($PlanActive) {
+    									// $xtext = Mage::getStoreConfig('payment/KSmartpayC/bjcmethod', $storeId);
+    									$xtext = "KSmartpayC";
 										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
 									}
     							}
@@ -236,7 +255,8 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 									}
 									
 									if ($PlanActive) {
-    									$xtext = Mage::getStoreConfig('payment/KrungsriA/bjcmethod', $storeId);
+    									// $xtext = Mage::getStoreConfig('payment/KrungsriA/bjcmethod', $storeId);
+    									$xtext = "KrungsriA";
 										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
 									}
     							}
@@ -254,156 +274,176 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 									}
 									
 									if ($PlanActive) {
-    									$xtext = Mage::getStoreConfig('payment/KrungsriB/bjcmethod', $storeId);
+    									// $xtext = Mage::getStoreConfig('payment/KrungsriB/bjcmethod', $storeId);
+    									$xtext = "KrungsriB";
+										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
+									}
+    							}
+    						}
+    						//=> Krungsri B
+    						if (Mage::getStoreConfigFlag('payment/KrungsriC/active', $storeId)) {
+    							if (Mage::getStoreConfig('payment/KrungsriC/filterlimit', $storeId)==$PrdInstallmentItem) {
+									$PlanActive = true;
+									if (trim(Mage::getStoreConfig('payment/KrungsriC/min_order_total')) != "") {
+										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KrungsriC/min_order_total'));
+									}
+						
+									if (trim(Mage::getStoreConfig('payment/KrungsriC/max_order_total')) != "") {
+										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KrungsriC/max_order_total'));
+									}
+									
+									if ($PlanActive) {
+    									// $xtext = Mage::getStoreConfig('payment/KrungsriC/bjcmethod', $storeId);
+    									$xtext = "KrungsriC";
 										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
 									}
     							}
     						}
     						
-							//=> Ktc A
-    						if (Mage::getStoreConfigFlag('payment/KtcA/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/KtcA/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/KtcA/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KtcA/min_order_total'));
-									}
+							// //=> Ktc A
+    			// 			if (Mage::getStoreConfigFlag('payment/KtcA/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/KtcA/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/KtcA/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KtcA/min_order_total'));
+							// 		}
 						
-									if (trim(Mage::getStoreConfig('payment/KtcA/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KtcA/max_order_total'));
-									}
+							// 		if (trim(Mage::getStoreConfig('payment/KtcA/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KtcA/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/KtcA/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
-									}
-    							}
-    						}
-    						//=> Ktc B
-    						if (Mage::getStoreConfigFlag('payment/KtcB/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/KtcB/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/KtcB/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KtcB/min_order_total'));
-									}
-									if (trim(Mage::getStoreConfig('payment/KtcB/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KtcB/max_order_total'));
-									}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/KtcA/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
+							// 		}
+    			// 				}
+    			// 			}
+    			// 			//=> Ktc B
+    			// 			if (Mage::getStoreConfigFlag('payment/KtcB/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/KtcB/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/KtcB/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KtcB/min_order_total'));
+							// 		}
+							// 		if (trim(Mage::getStoreConfig('payment/KtcB/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KtcB/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/KtcB/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
-									}
-    							}
-    						}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/KtcB/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
+							// 		}
+    			// 				}
+    			// 			}
 							
 							
-							//=> Hsbc A
-    						if (Mage::getStoreConfigFlag('payment/HsbcA/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/HsbcA/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/HsbcA/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/HsbcA/min_order_total'));
-									}
+							// //=> Hsbc A
+    			// 			if (Mage::getStoreConfigFlag('payment/HsbcA/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/HsbcA/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/HsbcA/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/HsbcA/min_order_total'));
+							// 		}
 						
-									if (trim(Mage::getStoreConfig('payment/HsbcA/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/HsbcA/max_order_total'));
-									}
+							// 		if (trim(Mage::getStoreConfig('payment/HsbcA/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/HsbcA/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/HsbcA/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
-									}
-    							}
-    						}
-    						//=> Hsbc B
-    						if (Mage::getStoreConfigFlag('payment/HsbcB/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/HsbcB/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/HsbcB/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/HsbcB/min_order_total'));
-									}
-									if (trim(Mage::getStoreConfig('payment/HsbcB/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/HsbcB/max_order_total'));
-									}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/HsbcA/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
+							// 		}
+    			// 				}
+    			// 			}
+    			// 			//=> Hsbc B
+    			// 			if (Mage::getStoreConfigFlag('payment/HsbcB/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/HsbcB/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/HsbcB/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/HsbcB/min_order_total'));
+							// 		}
+							// 		if (trim(Mage::getStoreConfig('payment/HsbcB/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/HsbcB/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/HsbcB/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
-									}
-    							}
-    						}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/HsbcB/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
+							// 		}
+    			// 				}
+    			// 			}
 							
-							//=> SCB A
-    						if (Mage::getStoreConfigFlag('payment/ScbA/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/ScbA/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/ScbA/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/ScbA/min_order_total'));
-									}
+							// //=> SCB A
+    			// 			if (Mage::getStoreConfigFlag('payment/ScbA/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/ScbA/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/ScbA/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/ScbA/min_order_total'));
+							// 		}
 						
-									if (trim(Mage::getStoreConfig('payment/ScbA/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/ScbA/max_order_total'));
-									}
+							// 		if (trim(Mage::getStoreConfig('payment/ScbA/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/ScbA/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/ScbA/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
-									}
-    							}
-    						}
-    						//=> SCB B
-    						if (Mage::getStoreConfigFlag('payment/ScbB/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/ScbB/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/ScbB/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/ScbB/min_order_total'));
-									}
-									if (trim(Mage::getStoreConfig('payment/ScbB/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/ScbB/max_order_total'));
-									}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/ScbA/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
+							// 		}
+    			// 				}
+    			// 			}
+    			// 			//=> SCB B
+    			// 			if (Mage::getStoreConfigFlag('payment/ScbB/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/ScbB/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/ScbB/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/ScbB/min_order_total'));
+							// 		}
+							// 		if (trim(Mage::getStoreConfig('payment/ScbB/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/ScbB/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/ScbB/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
-									}
-    							}
-    						}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/ScbB/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
+							// 		}
+    			// 				}
+    			// 			}
 							
-							//=> BBL A
-    						if (Mage::getStoreConfigFlag('payment/BblA/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/BblA/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/BblA/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/BblA/min_order_total'));
-									}
+							// //=> BBL A
+    			// 			if (Mage::getStoreConfigFlag('payment/BblA/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/BblA/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/BblA/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/BblA/min_order_total'));
+							// 		}
 						
-									if (trim(Mage::getStoreConfig('payment/KtcA/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/BblA/max_order_total'));
-									}
+							// 		if (trim(Mage::getStoreConfig('payment/KtcA/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/BblA/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/BblA/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
-									}
-    							}
-    						}
-    						//=> BBL B
-    						if (Mage::getStoreConfigFlag('payment/BblB/active', $storeId)) {
-    							if (Mage::getStoreConfig('payment/BblB/filterlimit', $storeId)==$PrdInstallmentItem) {
-									$PlanActive = true;
-									if (trim(Mage::getStoreConfig('payment/BblB/min_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/BblB/min_order_total'));
-									}
-									if (trim(Mage::getStoreConfig('payment/BblB/max_order_total')) != "") {
-										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/BblB/max_order_total'));
-									}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/BblA/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext;
+							// 		}
+    			// 				}
+    			// 			}
+    			// 			//=> BBL B
+    			// 			if (Mage::getStoreConfigFlag('payment/BblB/active', $storeId)) {
+    			// 				if (Mage::getStoreConfig('payment/BblB/filterlimit', $storeId)==$PrdInstallmentItem) {
+							// 		$PlanActive = true;
+							// 		if (trim(Mage::getStoreConfig('payment/BblB/min_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/BblB/min_order_total'));
+							// 		}
+							// 		if (trim(Mage::getStoreConfig('payment/BblB/max_order_total')) != "") {
+							// 			$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/BblB/max_order_total'));
+							// 		}
 									
-									if ($PlanActive) {
-	    								$xtext = Mage::getStoreConfig('payment/BblB/bjcmethod', $storeId);
-										$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
-									}
-    							}
-    						}
+							// 		if ($PlanActive) {
+	    		// 						$xtext = Mage::getStoreConfig('payment/BblB/bjcmethod', $storeId);
+							// 			$ProductInstallmentArray[$PrdInstallmentItem] = $xtext; 
+							// 		}
+    			// 				}
+    			// 			}
 							
 						//=> Check x - End
 						
@@ -415,6 +455,7 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 					else {
 						$AvaliableArray = array_intersect($AvaliableArray,$ProductInstallmentArray);
 					}
+					
 					if (count($AvaliableArray) < 1) {
 						$cartcondition = false;
 					}
