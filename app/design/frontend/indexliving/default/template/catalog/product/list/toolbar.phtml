@@ -56,7 +56,7 @@
 				<div class="sort-by">
             <div class="box-desktop">
               <label><?php echo $this->__('Sort By') ?></label>
-              <div class="styled-select">
+              <div class="custom-select styled-select">
               <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sort By')) ?>">
                   <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
                       <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
@@ -64,7 +64,7 @@
                       </option>
                   <?php endforeach; ?>
               </select>
-              
+
               </div>
               <?php if($this->getCurrentDirection() == 'desc'): ?>
                   <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" class="sort-by-switcher sort-by-switcher--desc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
@@ -77,15 +77,15 @@
                     <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
                     <li <?php if($this->isOrderCurrent($_key)): ?> class="active" <?php endif; ?>>
                       <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>" title="<?php echo $this->__($_order) ?>"><?php echo $this->__($_order) ?></a>
-                    </li>  
+                    </li>
                     <?php endforeach; ?>
-                </ul>    
-            </div> 
+                </ul>
+            </div>
 				</div>
         <div class="count-container">
             <div class="limiter">
                 <label><?php echo $this->__('Show') ?></label>
-							<div class="styled-select">
+							<div class="custom-select styled-select">
                 <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
                 <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
                     <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
