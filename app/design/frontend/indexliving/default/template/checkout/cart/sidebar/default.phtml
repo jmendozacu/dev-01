@@ -103,5 +103,22 @@
         jQuery(document).click(function(){
             jQuery('#apply_qty_' + productId).hide();
         });
+        <?php if($product->getTypeId() == 'configurable'):?>
+          jQuery("#header_cart_qty_" + productId).keypress(function(e){
+            var key = e.which;
+            if(key == 13){
+              location.href='<?php echo $this->getProductUrl()?>';
+              jQuery('#apply_qty_' + productId).hide();
+            }
+          });
+        <?php else: ?>
+          jQuery("#header_cart_qty_" + productId).keypress(function(e){
+            var key = e.which;
+            if(key == 13){
+              headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>');
+              jQuery('#apply_qty_' + productId).hide();
+            }
+          });
+        <?php endif; ?>
     });
 </script>
