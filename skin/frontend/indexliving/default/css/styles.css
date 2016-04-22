@@ -3506,7 +3506,7 @@ body {
 .header-cart-box  .mini-products-list .old-price .price  {color:#a0a0a0; font-size:10px; font-family: 'FuturaLight';}
 .header-cart-box  .mini-products-list .qty-minicart { position: absolute; right: 0; top: 30px; width: 42px; text-align: center; }
 .header-cart-box  .mini-products-list .qty-minicart .qty-label{font-size: 11px;}
-.header-cart-box  .mini-products-list .qty-minicart .qty {width:100%; height:38px; color:#000; font-size:15px; line-height:1; text-align:center; background:#fff; border:solid 2px #FFC222; border-radius:3px;}
+.header-cart-box  .mini-products-list .qty-minicart .qty {width:100%; height:38px; color:#000; font-size:13px; line-height:1; text-align:center; background:#fff; border:solid 2px #FFC222; border-radius:3px;}
 .header-cart-box  .mini-products-list .qty-minicart .apply_update_qty {width:100%; height:24px; border:none; color:#fff; background:#FFC222; padding:0 10px; border-radius:3px; margin-top: 2px; margin-bottom: 5px; font-size: 11px;}
 .header-cart-box  .mini-products-list .qty-minicart .apply-change-qty-loading {position:absolute; top:50%; left:50%; margin-top:-10px; margin-left:-10px;}
 .header-cart-box  .summary {float:left; width:100%; font-family: 'RSU_Bold'; font-size:16px; padding:10px 15px; line-height:24px; background:#EFEFEF; color:#000; border-top:solid 1px #E6E6E6; border-bottom:solid 1px #E6E6E6; }
