@@ -290,25 +290,8 @@ jQuery('.validate-account-number').keypress(function (e) {
          id_billing_form.style.display = "block";
     }
     function Hidebillingform(flag) {
+        $('shipping:same_as_billing').checked = false;
         var id_billing_form = document.getElementById("billing-form-show");
         id_billing_form.style.display = "none";
-    }
-    function  setSameAsShipping(flag){
-        $('checkbox_same_as_shipping').checked = flag;
-        if(flag){
-            $('shipping-address-select') && this.newAddress(!$('shipping-address-select').value);
-            $('checkbox_same_as_shipping').checked = true;
-            arrElements = Form.getElements(this.form);
-            for (var elemIndex in arrElements) {
-                if (arrElements[elemIndex].id) {
-                    var sourceField = $(arrElements[elemIndex].id.replace(/^billing:/, 'shipping:'));
-                    if (sourceField){
-                        arrElements[elemIndex].value = sourceField.value;
-                    }
-                }
-            }
-            //$('shipping:country_id').value = $('billing:country_id').value;
-            shippingRegionUpdater.update();
-        }
     }
 </script>
