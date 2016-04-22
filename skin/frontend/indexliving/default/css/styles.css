@@ -6956,11 +6956,12 @@ body.catalogsearch-result-index .page-title h1 {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .cart-table thead th{
-	background:#000000;
-	color:#FFFFFF;
+  color: #f4701e;
+  border-bottom: 4px solid #ffc222;
 	text-align:center;
 	font-family: 'DBYordXMed';
-	font-size:24px;
+	font-size:28px;
+  padding: 5px 0;
 }
 .cart-table .product-cart-info,
 .cart-table .product-cart-actions {
