@@ -5719,6 +5719,50 @@ body.catalogsearch-result-index .page-title h1 {
     float: none;
   }
 }
+
+/* Services Page */
+.services-page{}
+.services-page .service-content{background:#252525; margin:45px 0;overflow:hidden;}
+.services-page .service-content p.text{float:left; width:100%; font-family: 'DBYordX'; color:#FFFFFF; font-size:20px; background-image:url(../images/services/text-bg.png); background-repeat:no-repeat; padding:17px 0 0; margin:10px 0 0;}
+.services-page .service-content p.btn{ margin:10px 0; float:left; width:100%; text-align:center;}
+.services-page .service-content p.btn a{text-decoration:none; background:#ffc222; color:#FFFFFF;  padding:5px 15px; font-family: 'FuturaT_Bold'; font-size:14px; text-transform:uppercase; border-radius:5px;}
+.services-page .service-content p.btn a:hover{background:#f4701e; }
+.services-page .service-content .showroom{text-align:center; position:relative;}
+.services-page .service-content .showroom .wrap-bannerads ul li{float:left; }
+.services-page .service-content .showroom .showroom-desc{
+	position: absolute;
+	top: 0;
+	width: 509px;
+	left: 50%;
+	margin-left: -254px;
+	color:#FFFFFF;
+}
+.services-page .service-content .showroom .showroom-desc .info{padding: 27px 60px; display:inline-block; position:relative;}
+.services-page .service-content .showroom .showroom-desc .info::before{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;left: -3px;margin-top: -75px;}
+.services-page .service-content .showroom .showroom-desc .info::after{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;right: -3px;margin-top: -75px;}
+.services-page .service-content .showroom .showroom-desc h1{font-size:40px; font-family: 'FuturaBT-Book'; margin:0; color:#ffc222}
+.services-page .service-content .showroom .showroom-desc h1 strong{font-family: 'FuturaT_Bold'; font-size:44px;}
+.services-page .service-content .showroom .showroom-desc h1 label{color:#FFFFFF;font-size:20px; font-family: 'FuturaBT-Book'; margin:0; float:left; width:100%}
+.services-page .service-content .showroom .showroom-desc h1 span{color:#FFFFFF;font-size:14px; font-family: 'FuturaBT-Book'; margin:0; float:left; width:100%}
+.services-page .service-content .showroom .showroom-desc p.text{background-position:top center;}
+.services-page .service-content .home-delivery {float:left; width:100%; text-align:right; position:relative}
+.services-page .service-content .home-delivery::before{background: #ffc222;content: "";width: 300px;height: 8px;position: absolute;top: -3px;left: 50%;margin-left: -150px;}
+.services-page .service-content .home-delivery .delivery-desc{float:left; text-align:right; width:49.5%; color:#FFFFFF;font-size:20px; text-transform:uppercase; font-family: 'FuturaBT-Book';}
+.services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:48px;}
+.services-page .service-content .home-delivery .delivery-desc h1{font-size:30px; font-family: 'FuturaBT-Book'; margin:0; color:#ffc222}
+.services-page .service-content .home-delivery .delivery-desc h1 strong{font-size:34px; font-family: 'FuturaT_Bold'; margin:0; color:#ffc222}
+.services-page .service-content .home-delivery .delivery-desc p.text{float:right; text-align:right; background-position:top right; max-width:225px;}
+.services-page .service-content .home-delivery .delivery-banner{float:right; width:50.5%;}
+.services-page .service-content .home-delivery  p.btn{text-align:right; float:right;}
+.services-page .service-content .online-store .text-desc{float:right; width:50.5%;}
+.services-page .service-content .online-store .text-desc .details-info{padding:48px 48px 0 48px;color:#FFFFFF;font-size:20px; font-family: 'FuturaBT-Book';  display:inline-block; position:relative;}
+.services-page .service-content .online-store .text-desc .details-info::before{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;left: -3px;margin-top: -75px;}
+.services-page .service-content .online-store .text-desc .details-info h1{font-size:40px; font-family: 'FuturaBT-Book'; margin:0; color:#ffc222}
+.services-page .service-content .online-store .text-desc .details-info h1 strong{font-family: 'FuturaT_Bold'; font-size:44px;}
+.services-page .service-content .online-store .text-desc .details-info p.text{margin:10px 0 0; padding:17px 0 0; background-position:top left;}
+.services-page .service-content .online-store .text-desc .details-info p.btn{float:left; text-align:left;}
+.services-page .service-content .online-store .online-store-banner{float:left; width:49.5%;}
+
 /* This is the "or" that separates the "Add to Cart" and "Add to X" links */
 .add-to-box .or {
   display: none;

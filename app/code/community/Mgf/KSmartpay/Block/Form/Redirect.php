@@ -175,18 +175,18 @@
 		        break;
 		    case "Krungsri":
 				//=> Build post form	
-				
+				// header("Access-Control-Allow-Origin: *");
 				//echo "ddddddddddddd<br/>";
 				$form->addField("mid", "hidden", array("name"=>"mid", "value"=>trim($payMerchantID)));
 				$form->addField("order_no", "hidden", array("name"=>"order_no", "value"=>trim($payOrderNo)));
 				$form->addField("card_type", "hidden", array("name"=>"card_type", "value"=>trim($paybycardcode)));
 				$form->addField("term1", "hidden", array("name"=>"term1", "value"=>trim($paybycardterm)));
 				$form->addField("interest1", "hidden", array("name"=>"interest1", "value"=>trim($payInstallRate)));
-				$form->addField("term2", "hidden", array("name"=>"term2", "value"=>trim("")));
-				$form->addField("interest2", "hidden", array("name"=>"interest2", "value"=>trim("")));
+				$form->addField("term2", "hidden", array("name"=>"term2", "value"=>trim("0")));
+				$form->addField("interest2", "hidden", array("name"=>"interest2", "value"=>trim("0")));
+				$PayAmountNumber = number_format($PayAmountNumber,2,'.','');
 				$form->addField("total_price", "hidden", array("name"=>"total_price", "value"=>$PayAmountNumber));
 				$form->addField("description", "hidden", array("name"=>"description", "value"=>trim($PayDescription)));
-				//echo "eeeeeeeeeeee<br/>";
 				//=> Build post form end
 		        break;
 		}		
