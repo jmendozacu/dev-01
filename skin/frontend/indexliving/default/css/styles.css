@@ -535,6 +535,12 @@ textarea {
     width: 18px;
     background:#fff;
 }
+.styled-select.custom-select::after, .styled-select.custom-select:after{
+  margin-top: -4px;
+}
+.styled-select.custom-select::before, .styled-select.custom-select:before{
+  display: none;
+}
 .toolbar .styled-select::after,
 .toolbar .styled-select:after {
   border-width:7px 6px 0 6px;
@@ -11610,4 +11616,30 @@ div.calendar table td.button {
   background: inherit;
   color: inherit;
   text-transform: none;
+}
+
+.custom-select{position:relative;display:block}
+.custom-select select{width:100%;margin:0;outline:none;padding:.6em .8em .5em .8em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:16px}
+.custom-select::after{content:" ";position:absolute;top:50%;right:1em;z-index:2;pointer-events:none;display:none}
+@supports ( -webkit-appearance: none ) or ( appearance: none )  or ( ( -moz-appearance: none ) and ( mask-type: alpha ) ){
+  .custom-select::after { display: block}
+  .custom-select select{padding-right:2em;background:none;border:1px solid transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none}
+  .custom-select select:focus{border-color:#aaa}
+}
+@-moz-document url-prefix(){
+  .custom-select { overflow:hidden}
+  .custom-select::after{display:block}
+  .custom-select select{overflow:-moz-hidden-unscrollable;padding-right:.4em;background:none;border:1px solid transparent;min-width:6em;width:130%;min-width:-moz-calc(0em);width:-moz-calc(100% + 2.4em);min-width:calc(0em);width:calc(100% + 2.4em)}
+  @supports ( mask-type: alpha ){
+    .custom-select { overflow:visible}
+    .custom-select select{-moz-appearance:none;width:100%;padding-right:2em}
+  }
+}
+.custom-select select:-moz-focusring{color:transparent;text-shadow:0 0 0 #000}
+@media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
+  .custom-select select::-ms-expand{display:none}
+.custom-select select:focus{border-color:#aaa}
+.custom-select select:focus::-ms-value{background:transparent;color:#222}
+.custom-select select{padding-right:2em;background:none;border:1px solid transparent}
+.custom-select::after{display:block}
 }
