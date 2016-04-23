@@ -2,6 +2,7 @@
 	.customwishlist-index-print .button-set,
 	.customwishlist-index-print button,
 	.customwishlist-index-print .my-wishlist input,
+	.customwishlist-index-print .customer-wishlist-item-quantity,
 	.customwishlist-index-print .my-wishlist .change-qty{
 		display: none;
 	}
