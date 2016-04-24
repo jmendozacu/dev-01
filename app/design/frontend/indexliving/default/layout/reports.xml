@@ -28,6 +28,13 @@
 -->
 <layout version="0.1.0">
     <default>
+			<!-- Mage_Reports -->
+			<reference name="before_body_end">
+				 <block type="reports/product_viewed" before="-" name="reports.product.viewed" template="reports/product_viewed.phtml" />
+			</reference>
+			<reference name="footer.before">
+				 <block type="reports/product_viewed" after="category.static.content" name="m.reports.product.viewed" template="reports/m_product_viewed.phtml" />
+			</reference>
     </default>
 		
 		<catalog_category_default>
