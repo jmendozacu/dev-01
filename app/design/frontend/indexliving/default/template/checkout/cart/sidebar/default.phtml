@@ -62,11 +62,11 @@
 
       <?php if($product->getFinalPrice() < $product->getPrice()): ?>
         <div class="price-box">
+					<p class="special-price">
+            <?php echo $this->helper('checkout')->formatPrice($product->getFinalPrice()); ?>
+          </p>
           <p class="old-price">
             <?php echo $this->helper('checkout')->formatPrice($product->getPrice()); ?>
-          </p>
-          <p class="special-price">
-            <?php echo $this->helper('checkout')->formatPrice($product->getFinalPrice()); ?>
           </p>
         </div>
       <?php else: ?>

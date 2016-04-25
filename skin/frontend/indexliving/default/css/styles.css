@@ -2037,7 +2037,7 @@ a.button {
 
 .price-box .special-price {
   color: #ff0000;
-  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .price-box .price-from .price, .products-grid .price-box .price-from .price, .products-list .price-box .price-from .price{
@@ -5285,7 +5285,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-options-bottom .change-qty {float:right; width:auto;}
 .product-view .product-shop .change-qty label,.product-view .product-shop .change-qty input{float:left;}
 .product-view .product-shop .change-qty label{width:100%; margin-bottom:5px;  color:#000000; font-family: "FuturaT_Bold"; font-size:15px; text-transform:uppercase;}
-.change-qty {min-width:91px;}
+.change-qty {min-width:95px;}
 .change-qty input{
 	height: 40px;
 	border: 1px solid #000000;

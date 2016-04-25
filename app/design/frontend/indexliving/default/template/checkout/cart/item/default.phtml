@@ -161,11 +161,11 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                 <?php else: ?>
 										<?php if($product->getFinalPrice() < $product->getPrice()): ?>
 											<div class="price-box">
-												<p class="old-price">
-													<?php echo $this->helper('checkout')->formatPrice($product->getPrice()); ?>
-												</p>
 												<p class="special-price">
 													<?php echo $this->helper('checkout')->formatPrice($product->getFinalPrice()); ?>
+												</p>
+												<p class="old-price">
+													<?php echo $this->helper('checkout')->formatPrice($product->getPrice()); ?>
 												</p>
 											</div>
 										<?php else: ?>

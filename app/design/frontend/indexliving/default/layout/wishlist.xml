@@ -106,13 +106,13 @@ Wishlist pages
         <label>Customer My Account My Wishlist</label>
         <!-- Mage_Wishlist -->
         <update handle="customer_account" />
-				<reference name="catalog_product_price_template">
+				<!-- <reference name="catalog_product_price_template">
             <action method="addPriceBlockType"><type>simple</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
             <action method="addPriceBlockType"><type>grouped</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
             <action method="addPriceBlockType"><type>configurable</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
             <action method="addPriceBlockType"><type>virtual</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
             <action method="addPriceBlockType"><type>bundled</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
-        </reference>
+        </reference> -->
         <reference name="my.account.wrapper">
             <block type="wishlist/customer_wishlist" name="customer.wishlist" template="wishlist/view.phtml">
                 <action method="setTitle" translate="title">
