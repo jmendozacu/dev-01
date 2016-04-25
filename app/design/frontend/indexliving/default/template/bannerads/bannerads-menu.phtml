@@ -21,11 +21,9 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
       <div class="div-banner">
         <ul class="banner-carousel">
           <?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
-            <?php $isBlockIds[] = $banner->getBannerId(); ?>
             <li
               <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
-              <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>"<?php endif ?>
-                onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banner->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
+              <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>"<?php endif ?>>
                 <img  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt=""/>
               </a>
             </li>
@@ -38,11 +36,9 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
       <div class="div-banner">
         <div class="banner"
              <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
-          <a <?php if ($banners->getBannerUrl() != ''): ?> href="<?php echo $banners->getBannerUrl(); ?>" <?php endif ?>
-            onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banners->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
+          <a <?php if ($banners->getBannerUrl() != ''): ?> href="<?php echo $banners->getBannerUrl(); ?>" <?php endif ?>>
             <img src="<?php echo $helper->getBannerImage($banners->getBannerImage()); ?>"
                  alt="<?php echo $banners->getBannerTitle(); ?>"/>
-            <?php $isBlockIds[] = $banners->getBannerId(); ?>
           </a>
         </div>
       </div>
@@ -54,12 +50,10 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
         <ul class="banner-carousel-menu" id="banner_carousel_menu_<?php echo $block->getBlockId() ?>">
           <?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
             <li>
-              <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>
-                onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banner->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
+              <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>>
                 <img  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt=""/>
               </a>
             </li>
-            <?php $isBlockIds[] = $banner->getBannerId(); ?>
           <?php endforeach ?>
         </ul>
       </div>
@@ -67,7 +61,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
          jQuery('#banner_carousel_menu_<?php echo $block->getBlockId();?>').bxSlider({
 					auto: true,
           slideWidth:240,
-          infiniteLoop:false,
+          infiniteLoop:true,
           controls: false,
           pager: true,
           captions: false,
