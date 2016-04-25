@@ -46,7 +46,7 @@
                 <?php $_filters = $this->getFilters() ?>
                 <?php $i=0; foreach ($_filters as $_filter): ?>
                 <?php if($_filter->getItemsCount()): ?>
-                    <dt class="<?php echo $_filter->getBlockAlias();?><?php if($i == (count($_filters) - 2)):?> filter_sticky<?php endif?>" id="<?php echo $_filter->getBlockAlias();?>"><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dt class="<?php echo $_filter->getBlockAlias();?>" id="<?php echo $_filter->getBlockAlias();?>"><?php echo $this->__($_filter->getName()) ?></dt>
                     <dd><?php echo $_filter->getHtml() ?></dd>
                 <?php endif; ?>
                 <?php $i++; endforeach; ?>
