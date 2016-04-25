@@ -71,9 +71,9 @@
         </div>
       <?php else: ?>
         <div class="price-box">
-        <p class="regular-price">
-          <?php echo $final_price = $this->helper('checkout')->formatPrice($product->getPrice()); ?>
-        </p>
+					<p class="regular-price">
+						<?php echo $final_price = $this->helper('checkout')->formatPrice($product->getPrice()); ?>
+					</p>
         </div>
       <?php endif; ?>
       <!-- end show product price -->
