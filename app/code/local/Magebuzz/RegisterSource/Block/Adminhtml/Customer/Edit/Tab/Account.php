@@ -3,7 +3,6 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Edit_Tab_Account extends 
 {
     public function initForm()
     {
-        Mage::log('asdfsdf');
         $form = new Varien_Data_Form();
         $form->setHtmlIdPrefix('_account');
         $form->setFieldNameSuffix('account');
