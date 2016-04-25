@@ -34,6 +34,32 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
 			->addFieldToFilter('deatbl.status', '1');
     return $productdealerCollection;
   }
+	
+	public function getProductDealerListTag() {
+    $dealerCollection = $this->getProductDealer();
+    $dealerIds = $dealerCollection->getColumnValues('dealerlocator_id');
+    $tagCollection = Mage::getModel('dealerlocator/tag')->getCollection()->addFieldToFilter('dealer_id', array('in' => $dealerIds));
+    $tags = array();
+    if (count($tagCollection)) {
+      foreach ($tagCollection as $tag) {
+        $_newTag = strtolower(trim($tag->getTag()));
+        if (!in_array($_newTag, $tags)) {
+          $tags[] = $_newTag;
+        }
+      }
+    }
+    return $tags;
+  }
+	
+	public function getProductDealerByTag($tag){
+    $tagModel = Mage::getModel('dealerlocator/tag');
+    $dealerIds = $tagModel->getCollection()->addFieldToFilter('tag', $tag)->getColumnValues('dealer_id');
+    $productdealerCollection = $this->getProductDealer();
+    if(count($dealerIds)>0){
+      $productdealerCollection->addFieldToFilter('dealerlocator_id', array('in' => $dealerIds));
+    }
+    return $productdealerCollection;
+  }
   
   public function getProductDealDefaultLatLong() {
     $helper = Mage::helper('dealerlocator');
