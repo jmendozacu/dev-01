@@ -172,6 +172,7 @@ Wishlist pages
         <remove name="customer_account_navigation" />
         <remove name="right.reports.product.viewed" />
         <remove name="reports.product.viewed" />
+        <remove name="m.reports.product.viewed" />
     </wishlist_index_share>
 
     <wishlist_index_configure translate="label">
