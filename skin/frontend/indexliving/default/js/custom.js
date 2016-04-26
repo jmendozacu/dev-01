@@ -98,6 +98,23 @@ function ss_plugin_loadpopup_js(em){
 }
 
 jQuery(document).ready(function () {
+	
+	jQuery(document).click(function(event) { 
+		// Hide login box when click anywhere outside this box
+		if(!jQuery(event.target).is('.togglelogin') && !jQuery(event.target).is('#header-mini-login')) {
+			if(jQuery('#header-mini-login').is(":visible")) {
+				jQuery('#header-mini-login').hide();
+				jQuery('.togglelogin').removeClass('active');
+			}
+		}
+		// Hide mini cart box
+		if(!jQuery(event.target).is('.toggle-minicart') && !jQuery(event.target).is('#mini-cart-info')) {
+			if(jQuery('#mini-cart-info').is(":visible")) {
+				jQuery('#mini-cart-info').hide();
+				jQuery('.toggle-minicart').removeClass('active');
+			}
+		}        
+	})
 
   checkItemInWishlist();
 
