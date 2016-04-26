@@ -218,57 +218,18 @@
                                            id="billing:telephone"/>
                                 </div>
                             </div>
+														<div class="field">
+                                <label for="billing[amcustomerattr][billing_tax]"><?php echo $this->__('Billing Tax') ?></label>
+                                <div class="input-box">
+                                    <input type="text"
+                                           name="billing[amcustomerattr][billing_tax]"
+                                           id="billing[amcustomerattr][billing_tax]"
+                                           title="<?php echo Mage::helper('core')->quoteEscape($this->__('Billing Tax')) ?>"
+                                           value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
+                                           class="input-text validate-length maximum-length-13 validate-digits"/>
+                                </div>
+                            </div>
                         </li>
-                        <?php /*if (!$this->isCustomerLoggedIn()): */?><!--
-
-                            <?php /*$_dob = $this->getLayout()->createBlock('customer/widget_dob') */?>
-                            <?php /*$_gender = $this->getLayout()->createBlock('customer/widget_gender') */?>
-                            <?php /*if ($_dob->isEnabled() || $_gender->isEnabled()): */?>
-                                <li class="fields">
-                                    <?php /*if ($_dob->isEnabled()): */?>
-                                        <div class="field">
-                                            <?php /*echo $_dob->setDate($this->getQuote()->getCustomerDob())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() */?>
-                                        </div>
-                                    <?php /*endif; */?>
-                                    <?php /*if ($_gender->isEnabled()): */?>
-                                        <div class="field">
-                                            <?php /*echo $_gender->setGender($this->getQuote()->getCustomerGender())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() */?>
-                                        </div>
-                                    <?php /*endif */?>
-                                </li>
-                            <?php /*endif */?>
-
-                            <?php /*$_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') */?>
-                            <?php /*if ($_taxvat->isEnabled()): */?>
-                                <li>
-                                    <?php /*echo $_taxvat->setTaxvat($this->getQuote()->getCustomerTaxvat())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() */?>
-                                </li>
-                            <?php /*endif */?>
-
-                            <li class="fields" id="register-customer-password">
-                                <div class="field">
-                                    <label for="billing:customer_password"
-                                           class="required"><em>*</em><?php /*echo $this->__('Password') */?></label>
-                                    <div class="input-box">
-                                        <input type="password" name="billing[customer_password]"
-                                               id="billing:customer_password"
-                                               title="<?php /*echo Mage::helper('core')->quoteEscape($this->__('Password')) */?>"
-                                               class="input-text required-entry validate-password"/>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <label for="billing:confirm_password"
-                                           class="required"><em>*</em><?php /*echo $this->__('Confirm Password') */?>
-                                    </label>
-                                    <div class="input-box">
-                                        <input type="password" name="billing[confirm_password]"
-                                               title="<?php /*echo Mage::helper('core')->quoteEscape($this->__('Confirm Password')) */?>"
-                                               id="billing:confirm_password"
-                                               class="input-text required-entry validate-cpassword"/>
-                                    </div>
-                                </div>
-                            </li>
-                        --><?php /*endif; */?>
                         <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()): ?>
                             <li class="no-display">
                                 <input type="checkbox" name="billing[save_in_address_book]" value="1"
