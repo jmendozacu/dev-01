@@ -465,12 +465,22 @@
 .amscheckout table#checkout-review-table .opc-product-info .item-options{float:left; width:100%;}
 .amscheckout table#checkout-review-table .opc-product-info .item-options dd{margin:0;}
 .amscheckout table#checkout-review-table .opc-product-info .opc-review-price{}
-.amscheckout table#checkout-review-table .opc-product-info .opc-review-price .price{
+.amscheckout table#checkout-review-table .opc-product-info .opc-review-price .price, 
+.amscheckout table#checkout-review-table .opc-product-info .opc-review-price .regular-price .price{
 	font-family: 'FuturaT_Bold';
 	font-size: 16px;
 	text-transform: uppercase;
 	color: #000;
 	font-weight: bold;
+}
+.amscheckout table#checkout-review-table .opc-product-info .opc-review-price .special-price .price{
+	color:#FF0000;
+}
+
+.amscheckout table#checkout-review-table .opc-product-info .opc-review-price .old-price .price{
+	color: #a0a0a0;
+	font-size: 12px;
+	font-family: 'FuturaLight';
 }
 
 .amscheckout table#checkout-review-table .opc-product-info .review-checkout-item-qty{
