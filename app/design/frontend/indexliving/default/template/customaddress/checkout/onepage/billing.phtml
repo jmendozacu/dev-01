@@ -226,7 +226,7 @@
                                            id="billing[amcustomerattr][billing_tax]"
                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Billing Tax')) ?>"
                                            value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
-                                           class="input-text validate-length maximum-length-13 validate-digits"/>
+                                           class="input-text validate-number validate-length maximum-length-13 validate-digits"/>
                                 </div>
                             </div>
                         </li>
@@ -300,6 +300,18 @@
             e.preventDefault();
 
         }
+
+    }).on("cut copy paste", function (e) {
+        e.preventDefault();
+    });
+		
+		jQuery('.validate-number').keypress(function (e) {
+			if (e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37) {
+				return true;
+			}
+			if (e.which != 8 && isNaN(String.fromCharCode(e.which))) {
+				e.preventDefault();
+			}
 
     }).on("cut copy paste", function (e) {
         e.preventDefault();
