@@ -14,10 +14,10 @@
         <div class="logo-item">
       
         <a href="<?php echo $item->getUrl()?>">
-          <?php if ($item->getImgBig()) : ?>
-              <img class="amshopby-featured" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgBig()?>" />
+          <?php if ($item->getImgMedium()) : ?>
+              <img class="amshopby-featured" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgMedium()?>" />
           <?php else: ?>
-            <?php echo $this->htmlEscape($item->getTitle())?>
+            <?php echo $itemTitle[0]?>
           <?php endif ?>
         </a>
       
