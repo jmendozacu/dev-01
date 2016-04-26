@@ -39,6 +39,8 @@ class MarginFrame_Shopby_Block_Featured extends Mage_Core_Block_Template
 
                 if ($item->getImgBig())
                     $item->setImgBig($base . $item->getImgBig());
+								if ($item->getImgMedium())
+                    $item->setImgMedium($base . $item->getImgMedium());
 
                 $item->setUrl($urlHelper->getOptionUrl($this->getAttributeCode(), $item->getOptionId()));
             }
