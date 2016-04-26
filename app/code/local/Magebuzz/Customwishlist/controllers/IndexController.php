@@ -14,7 +14,15 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		$this->loadLayout('print');
 		$this->renderLayout();
 	}
+	public function shareAction()
+	{
 
+		$this->_getWishlist();
+		$this->loadLayout();
+		$this->_initLayoutMessages('customer/session');
+		$this->_initLayoutMessages('wishlist/session');
+		$this->renderLayout();
+	}
 	public function checkcartAction()
     {
         if ($this->_isCheckFormKey && !$this->_validateFormKey()) {

@@ -91,7 +91,6 @@ Customer account home dashboard layout
             </block>
         </reference>
     </customwishlist_index_print>
-
     <customer_account_index>
         <reference name="right">
             <action method="unsetChild"><name>wishlist</name></action>
@@ -139,9 +138,9 @@ Wishlist pages
                         </action>
                         <block type="wishlist/customer_wishlist_item_options" name="customer.wishlist.item.options" />
                     </block>
-                    
+
                     <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.cart" template="wishlist/item/column/cart.phtml">
-                        
+
                     </block>
                     <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.remove" template="wishlist/item/column/remove.phtml" />
                 </block>
