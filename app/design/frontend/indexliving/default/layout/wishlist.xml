@@ -166,6 +166,12 @@ Wishlist pages
         <reference name="right">
             <action method="unsetChild"><name>wishlist_customer_sidebar</name></action>
         </reference>
+        <remove name="header" />
+        <remove name="footer" />
+        <remove name="breadcrumbs" />
+        <remove name="customer_account_navigation" />
+        <remove name="right.reports.product.viewed" />
+        <remove name="reports.product.viewed" />
     </wishlist_index_share>
 
     <wishlist_index_configure translate="label">
