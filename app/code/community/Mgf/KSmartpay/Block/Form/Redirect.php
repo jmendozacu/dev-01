@@ -105,7 +105,12 @@
 			}
 			
 			$payInstallRate = trim(Mage::getStoreConfig("payment/". trim($paybycard)  ."/paymenttermrate"));
-			$payInstallRate = $payInstallRate / 100;
+			if ($payInstallRate=="") {
+				$payInstallRate = 0;
+			} else {
+				$payInstallRate = $payInstallRate / 100;	
+			}
+			
 			
 		}
 		if (preg_match('#^Hsbc#', $paybycard) === 1) {

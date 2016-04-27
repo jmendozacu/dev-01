@@ -26,7 +26,7 @@
     <ul id="payment_form_<?php echo $_code ?>" style='display: none'>
         <li>
         <div class="installment_pay">
-            <p class="title">ผ่อนชำระด้วยบัตรเครดิต จากธนาคารต่างๆ ได้ดังนี้</p>
+            
         <?php
         $CurrentAmount = (double)Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal();
 
@@ -121,6 +121,16 @@
             unset($AvaliableArray);
         }
         
+        //check Full Credit
+        $fullcredit = array();
+        foreach (Mage::getStoreConfig('payment') as $key => $value) {
+            if(preg_match("/Full/", $key)){
+                if(Mage::getStoreConfig('payment/'.$key.'/active')){
+                    $fullcredit[$key] = $value;
+                }
+            }
+        }
+
         $InstallmentArray = array();
         $InstallmentZeroArray = array();
         if (count($AvaliableArray)>0) {
@@ -139,19 +149,21 @@
             //=> End List
         }
 
-        //echo "<p>Installments Plan</p>";
-        //print_r($AvaliableArray);
-
         //=> Sort by term
-        arsort($InstallmentZeroArray);
-        arsort($InstallmentArray);
+        krsort($InstallmentZeroArray);
+        krsort($InstallmentArray);
+        krsort($fullcredit);
 
         if ($Debug=="1") {
             echo "<!--";
+        // echo "<pre>";
             echo "<p>Zero Plan</p>";
             print_r($InstallmentZeroArray);
-            echo "<p>Installments xxxx</p>";
+            echo "<p>Installments </p>";
             print_r($InstallmentArray);
+            echo "<p>Full Credit </p>";
+            print_r($fullcredit);
+        // echo "</pre>";
             echo "-->";
         }
 
@@ -163,8 +175,12 @@
         $PlanZeroArray = array();
         $InstallmentPlanName = "";
         $InstallmentBankName = "";
-
+        $isheader = false;
         if ((count($InstallmentZeroArray)>0) || (count($InstallmentArray)>0)) {
+            if(!$isheader){
+                echo '<p class="title">ผ่อนชำระด้วยบัตรเครดิต จากธนาคาร ได้ดังนี้</p>';
+                $isheader = true;
+            }
             //=> Rate 0%
             echo "<div class=\"choose_bank_pay clearfix\"><ul>";
             if (count($InstallmentZeroArray)>0) {
@@ -187,20 +203,22 @@
                     $InstallmentPlanName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/title', $storeId);
                     $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
                     $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
-                    echo "<li><input type=\"radio\" onclick=\"". trim($InstallmentKey) ."_click();\" name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . "><div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $InstallmentPlanName ."</div><hr></li>";
-                    $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
-                    $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อน 0% กับ". $InstallmentBankName ."');" . PHP_EOL;
-                    $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
-                    if ($terms !="") {
-                        $termArray = explode(",",$terms);
-                        arsort($termArray);
-                        foreach($termArray  as $key => $val) {
-                            if ((int)$val>0) {
-                                $JavaScriptList .= "jQuery('#installment_termno').append(jQuery('<option>', {value:'". trim($InstallmentKey) . "|" . $val ."', text:' ผ่อน " . $val . " เดือน เดือนละ " . number_format($CurrentAmount /  $val, 2, ".", ",") ."'}));" . PHP_EOL;
-                            }
-                        }
-                    }
-                    $JavaScriptList .= "} " . PHP_EOL;
+                    $stringBinding = "ผ่อน 0% กับ $InstallmentBankName นาน $terms เดือน";
+                    echo "<li>".Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId)."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='0' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    <div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $stringBinding ."</div><hr></li>";
+                    // $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
+                    // $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อน 0% กับ". $InstallmentBankName ."');" . PHP_EOL;
+                    // $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
+                    // if ($terms !="") {
+                    //     $termArray = explode(",",$terms);
+                    //     arsort($termArray);
+                    //     foreach($termArray  as $key => $val) {
+                    //         if ((int)$val>0) {
+                    //             $JavaScriptList .= "jQuery('#installment_termno').append(jQuery('<option>', {value:'". trim($InstallmentKey) . "|" . $val ."', text:' ผ่อน " . $val . " เดือน เดือนละ " . number_format($CurrentAmount /  $val, 2, ".", ",") ."'}));" . PHP_EOL;
+                    //         }
+                    //     }
+                    // }
+                    // $JavaScriptList .= "} " . PHP_EOL;
 
                     $PlanNo ++;
                 }
@@ -208,7 +226,10 @@
 
             //=> Rate > 0
             if (count($InstallmentArray)>0) {
-
+                if(!$isheader){
+                    echo '<p class="title">ผ่อนชำระด้วยบัตรเครดิต จากธนาคาร ได้ดังนี้</p>';
+                    $isheader = true;
+                }
                 foreach ($InstallmentArray as $InstallmentKey => $InstallmentTerm) {
                     if ($PlanDefaultKey=="") {
                         $PlanDefaultKey =  $InstallmentKey;
@@ -217,26 +238,29 @@
                     $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
                     $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
                     $termRate = (double)Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymenttermrate', $storeId);
-                    echo "<li><input type=\"radio\" onclick=\"". trim($InstallmentKey) ."_click();\" name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . "><div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $InstallmentPlanName ."</div></li>";
-                    $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
-                    $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อนกับ". $InstallmentBankName ."');" . PHP_EOL;
-                    $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
-                    if ($terms !="") {
-                        $maxtemselect = "";
-                        $termArray = explode(",",$terms);
-                        arsort($termArray);
-                        foreach($termArray  as $key => $val) {
-                            if ((int)$val>0) {
-                                $JavaScriptList .= "jQuery('#installment_termno').append(jQuery('<option>', {value:'". trim($InstallmentKey) . "|" . $val ."', text:' ผ่อน " . number_format($termRate, 2, ".", ",") . "% นาน " . $val . " เดือน เดือนละ " . number_format(($CurrentAmount /  $val) + ($CurrentAmount * ($termRate / 100)), 2, ".", ",") ."'}));" . PHP_EOL;
-                                $maxtemselect = $val;
-                            }
-                        }
+                    $termRate = $termRate=="" ? '0':$termRate;
+                    $stringBinding = "ผ่อน $termRate% กับ $InstallmentBankName นาน $terms เดือน";
+                    echo "<li>".Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId)."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='$termRate' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    <div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $stringBinding ."</div><hr></li>";
+                    // $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
+                    // $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อนกับ". $InstallmentBankName ."');" . PHP_EOL;
+                    // $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
+                    // if ($terms !="") {
+                    //     $maxtemselect = "";
+                    //     $termArray = explode(",",$terms);
+                    //     arsort($termArray);
+                    //     foreach($termArray  as $key => $val) {
+                    //         if ((int)$val>0) {
+                    //             $JavaScriptList .= "jQuery('#installment_termno').append(jQuery('<option>', {value:'". trim($InstallmentKey) . "|" . $val ."', text:' ผ่อน " . number_format($termRate, 2, ".", ",") . "% นาน " . $val . " เดือน เดือนละ " . number_format(($CurrentAmount /  $val) + ($CurrentAmount * ($termRate / 100)), 2, ".", ",") ."'}));" . PHP_EOL;
+                    //             $maxtemselect = $val;
+                    //         }
+                    //     }
 
-                        //$JavaScriptList .= "jQuery('#installment_termno').val($maxtemselect);" . PHP_EOL;
+                    //     //$JavaScriptList .= "jQuery('#installment_termno').val($maxtemselect);" . PHP_EOL;
 
 
-                    }
-                    $JavaScriptList .= "} " . PHP_EOL;
+                    // }
+                    // $JavaScriptList .= "} " . PHP_EOL;
 
 
                     $PlanNo ++;
@@ -246,72 +270,131 @@
             echo "</ul></div>";
         }
 
-        //=> Recomment
-        $PlanZeroTitle = "";
-        $PlanZeroNo = 1;
-        $ZeroCount = count($PlanZeroArray);
-        if ($ZeroCount>0) {
-          foreach ($PlanZeroArray as $InstallmentKey => $InstallmentTerm) {
-            if ($PlanZeroNo==1) {
-              $PlanZeroTitle .= $InstallmentKey;
-            }
+        // //=> Recomment
+        // $PlanZeroTitle = "";
+        // $PlanZeroNo = 1;
+        // $ZeroCount = count($PlanZeroArray);
+        // if ($ZeroCount>0) {
+        //   foreach ($PlanZeroArray as $InstallmentKey => $InstallmentTerm) {
+        //     if ($PlanZeroNo==1) {
+        //       $PlanZeroTitle .= $InstallmentKey;
+        //     }
 
-            $PlanZeroNo++;
-          }
-        }
+        //     $PlanZeroNo++;
+        //   }
+        // }
 
-        if ($PlanZeroTitle != "") {
-            echo "<p class=\"reccommend_bank\" id=\"reccommend_bank\">ผ่อน 0% กับ ". $PlanZeroTitle ."</p>";
-        }
-        else {
-            $PlanZeroTitle = "";
-            $PlanZeroNo = 1;
-            $ZeroCount = count($InstallmentArray);
-            if ($ZeroCount>0) {
-                foreach ($InstallmentArray as $InstallmentKey => $InstallmentTerm) {
-                    if ($PlanZeroNo==1) {
-                        $PlanZeroTitle .= $InstallmentKey;
-                    }
-                    $PlanZeroNo++;
-                }
-            }
+        // if ($PlanZeroTitle != "") {
+        //     echo "<p class=\"reccommend_bank\" id=\"reccommend_bank\">ผ่อน 0% กับ ". $PlanZeroTitle ."</p>";
+        // }
+        // else {
+        //     $PlanZeroTitle = "";
+        //     $PlanZeroNo = 1;
+        //     $ZeroCount = count($InstallmentArray);
+        //     if ($ZeroCount>0) {
+        //         foreach ($InstallmentArray as $InstallmentKey => $InstallmentTerm) {
+        //             if ($PlanZeroNo==1) {
+        //                 $PlanZeroTitle .= $InstallmentKey;
+        //             }
+        //             $PlanZeroNo++;
+        //         }
+        //     }
 
-            echo "<p class=\"reccommend_bank\" id=\"reccommend_bank\">ผ่อนกับ ". $PlanZeroTitle ."</p>";
-        }
+        //     echo "<p class=\"reccommend_bank\" id=\"reccommend_bank\">ผ่อนกับ ". $PlanZeroTitle ."</p>";
+        // }
         //=> Select
         ?>
-        ท่านสามารถเลือกจำนวนเดือนที่ต้องการผ่อนชำระได้
+        
         <?php
         $terms = Mage::getStoreConfig('payment/'. $PlanDefaultKey .'/paymentterms', $storeId);
         $termRate = Mage::getStoreConfig('payment/'. trim($PlanDefaultKey) .'/paymenttermrate', $storeId);
         echo "<!--" . $termRate . "|" . $PlanDefaultKey . "|"  . $storeId . "-->";
-        echo "<div class=\"input-box box-select\"><select name=\"payment[check_no]\" id=\"installment_termno\">";
-        if ($terms !="") {
-            $termArray = explode(",",$terms);
-            arsort($termArray);
-            foreach($termArray  as $key => $val) {
-                if ((int)$val>0) {
-                    if ($PlanZeroTitle == "") {
-                        echo "<option value=\"" . $PlanDefaultKey . "|" . $val ."\"> ผ่อน " . $val . " เดือน เดือนละ " . number_format($CurrentAmount /  $val, 2, ".", ",") . "</option>";
-                    }
-                    else {
-                        echo "<option value=\"" . $PlanDefaultKey . "|" . $val ."\"> ผ่อน  ". number_format($termRate, 2, ".", ",") . "% นาน " . number_format($val, 0, ".", ",") . " เดือน เดือนละ " . number_format(($CurrentAmount /  $val) + ($CurrentAmount *  ($termRate / 100)), 2, ".", ",") . "</option>";
-                    }
-                }
+        echo "<p class='textdetail'></p>";
+        echo "<p class='textdetail-cal'></p>";
+        echo "<input type='hidden' id='installment_termno' name ='payment[check_no]' value='$PlanDefaultKey|$terms' />";
+        // echo "<div class=\"input-box box-select\"><select name=\"payment[check_no]\" id=\"installment_termno\">";
+        // if ($terms !="") {
+        //     $termArray = explode(",",$terms);
+        //     arsort($termArray);
+        //     foreach($termArray  as $key => $val) {
+        //         if ((int)$val>0) {
+        //             if ($PlanZeroTitle == "") {
+        //                 echo "<option value=\"" . $PlanDefaultKey . "|" . $val ."\"> ผ่อน " . $val . " เดือน เดือนละ " . number_format($CurrentAmount /  $val, 2, ".", ",") . "</option>";
+        //             }
+        //             else {
+        //                 echo "<option value=\"" . $PlanDefaultKey . "|" . $val ."\"> ผ่อน  ". number_format($termRate, 2, ".", ",") . "% นาน " . number_format($val, 0, ".", ",") . " เดือน เดือนละ " . number_format(($CurrentAmount /  $val) + ($CurrentAmount *  ($termRate / 100)), 2, ".", ",") . "</option>";
+        //             }
+        //         }
+        //     }
+        // }
+        // echo "</select></div>";
+
+
+        if(count($fullcredit) > 0){
+            echo '<hr><p class="title">ชำระเต็มจำนวนด้วยจากธนาคาร ได้ดังนี้</p>';
+            foreach($fullcredit as $key=>$value){
+                echo "<li>".Mage::getStoreConfig('payment/'.trim($key).'/infoimage',$storeId)."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-value='$key|0' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($key) ."\" value=\"". trim($key) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    <div class=\"installmentplan_". trim($key) ."\"> ". $value['title'] ."</div><hr></li>";
             }
         }
-        echo "</select></div>";
+
         ?>
         </div>
         </li>
     </ul>
     <script type="text/javascript">
     <?php echo $JavaScriptList;?>
+    function changeHidden(element){
+        
+        $this = jQuery(element);
+        $jQ = jQuery;
+        if(typeof $this.data('text') =="undefined"){
+            $jQ('.textdetail').hide();
+            $jQ('#installment_termno').val($this.data('value'));
+            $jQ('.textdetail-cal').hide();
+        } else {
+            $jQ('.textdetail').show();
+            $jQ('.textdetail-cal').show();
+            $jQ('.textdetail').html($this.data('text'));
+            $jQ('#installment_termno').val($this.data('value'));
+            $jQ('.textdetail-cal').html(cal($this.data('amount'),$this.data('terms'),$this.data('rate')));
+        }
+    }
+    jQuery(document).ready(function($){
+        $default = $('.calculate:checked');
+        if(typeof $default.data('text') =="undefined"){
+            $('.textdetail').hide();
+            $('#installment_termno').val($default.data('value'));
+            $('.textdetail-cal').hide();
+        } else {
+            $('.textdetail').html($default.data('text'));
+            $('#installment_termno').val($default.data('value'));
+            $('.textdetail-cal').html(cal($default.data('amount'),$default.data('terms'),$default.data('rate')));
+        }
+
+    });
+
+    function cal(amount,term,rate){
+        if(term == 0){
+            term = 1;
+        }
+        if(rate == 0){
+            return 'ผ่อนเดือนละ ' + parseFloat(amount/term).toFixed(2) + ' บาท';
+        }
+
+        return 'ผ่อนเดือนละ ' + (parseFloat(amount/term) + parseFloat(amount * (rate / 100))).toFixed(2) + ' บาท';
+    }
     </script>
 </fieldset>
 <style type="text/css">
 [class *='installmentplan']{
     float: right;
 }    
+.logo_payment_small {
+    padding-left: 20px;
+    height: 0px;
+    float: left;
+    position: absolute;
+}
 
 </style>
