@@ -92,6 +92,11 @@
 					</subdistrict>
 				</entities>
 			</customaddress_mysql4>
+			<directory>
+				<rewrite>
+					<region>Magebuzz_Customaddress_Model_Rewrite_Region</region>
+				</rewrite>
+          	</directory>
 		</models>
 		<resources>
 			<customaddress_setup>

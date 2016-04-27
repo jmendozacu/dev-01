@@ -14,7 +14,15 @@ class Magebuzz_Customaddress_Helper_Data extends Mage_Core_Helper_Abstract {
 				$locales[$v] = $v;
 		}
 		return $locales;
-  }
+  	}
+
+  	public function getTextColumnName(){
+  		$field_name = 'code'; 
+		if(Mage::app()->getLocale()->getLocaleCode() == "th_TH"){
+			$field_name = 'default_name';
+		}
+		return $field_name;
+  	}
 	
 	public function getCityJson() {
 		Varien_Profiler::start('TEST: '.__METHOD__);
@@ -68,13 +76,14 @@ class Magebuzz_Customaddress_Helper_Data extends Mage_Core_Helper_Abstract {
 		$cities = array();
 		
 		$collection = Mage::getSingleton('customaddress/city')->getCollection();
-			//->addFieldToFilter('region_id', $regionId); 
-	
+		//->addFieldToFilter('region_id', $regionId); 
+		
+		$field_name = Mage::helper('customaddress')->getTextColumnName();
 		foreach ($collection as $item) {
 			$itemData = $item->getData();
 			$cities[$itemData['region_id']][$itemData['city_id']] = array(
 				'code'	=> $itemData['city_id'],
-				'name'	=> $itemData['default_name']
+				'name'	=> $itemData[$field_name]
 			);
 		}
 		return $cities;
@@ -84,13 +93,14 @@ class Magebuzz_Customaddress_Helper_Data extends Mage_Core_Helper_Abstract {
 		$subdistricts = array();
 		
 		$collection = Mage::getSingleton('customaddress/subdistrict')->getCollection();
-			//->addFieldToFilter('region_id', $regionId); 
+		//->addFieldToFilter('region_id', $regionId); 
 	
+		$field_name = Mage::helper('customaddress')->getTextColumnName();
 		foreach ($collection as $item) {
 			$itemData = $item->getData();
 			$subdistricts[$itemData['city_id']][$itemData['subdistrict_id']] = array(
 				'code'	=> $itemData['subdistrict_id'],
-				'name'	=> $itemData['default_name'], 
+				'name'	=> $itemData[$field_name], 
 				'zipcode' => $itemData['zipcode']
 			);
 		}
@@ -113,7 +123,6 @@ class Magebuzz_Customaddress_Helper_Data extends Mage_Core_Helper_Abstract {
 				'label' => $subdistrict->getZipcode()
 			);
 		}
-
 		return $arrAllZip;
 	}
 }

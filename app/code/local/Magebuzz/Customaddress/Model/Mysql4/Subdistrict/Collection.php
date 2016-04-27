@@ -9,7 +9,8 @@ class Magebuzz_Customaddress_Model_Mysql4_Subdistrict_Collection extends Mage_Co
 	}
 	
 	public function toOptionArray() {
-		$options = $this->_toOptionArray('subdistrict_id', 'default_name', array('title' => 'default_name'));
+		$field_name = Mage::helper('customaddress')->getTextColumnName();
+		$options = $this->_toOptionArray('subdistrict_id', $field_name, array('title' => $field_name));
 		if (count($options) > 0) {
 			array_unshift($options, array(
 				'title '=> null,
