@@ -90,11 +90,7 @@
 											<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
 										<?php endif?>
 									<?php else: ?>
-										<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
 											<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
-										<?php else:?>
-											<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-										<?php endif?>
 									<?php endif; ?>	
                 </div>
             </li>
