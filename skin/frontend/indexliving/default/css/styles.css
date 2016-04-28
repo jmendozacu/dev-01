@@ -11647,3 +11647,22 @@ div.calendar table td.button {
   float: right;
   margin: 0 121px -25px 0;
 }
+
+.page-print.customwishlist-index-print .my-wishlist input,
+.page-print.customwishlist-index-print .customer-wishlist-item-quantity,
+.page-print.customwishlist-index-print .my-wishlist .change-qty{
+  display: none;
+}
+
+.page-print.customwishlist-index-print,
+.page-print.customwishlist-index-print .customer-wishlist-item-info .product-name,
+.page-print.customwishlist-index-print .my-wishlist .page-title h1{font-family: Tahoma, sans-serif; }
+.page-print.customwishlist-index-print #wishlist-table-print{width: 100%; border-top: 1px solid #444;}
+.page-print.customwishlist-index-print #wishlist-table-print th{height: 35px;}
+.page-print.customwishlist-index-print #wishlist-table-print tr{border-bottom: 1px solid #ccc;}
+.page-print.customwishlist-index-print #wishlist-table-print img{height: 112px; margin: 5px 0;}
+.page-print.customwishlist-index-print #wishlist-table-print .customer-wishlist-item-image{width: 140px;}
+
+.page-print.customwishlist-index-print .print-head{float: left;}
+.page-print.customwishlist-index-print .my-wishlist .page-title{float: right;}
+.page-print.customwishlist-index-print .my-wishlist .page-title h1{border-bottom: none; font-size: 16px; margin-top: 10px;}

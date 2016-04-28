@@ -1,10 +1,13 @@
 @media print{
-	.customwishlist-index-print .button-set,
-	.customwishlist-index-print button,
-	.customwishlist-index-print .my-wishlist input,
-	.customwishlist-index-print .customer-wishlist-item-quantity,
-	.customwishlist-index-print .my-wishlist .change-qty{
-		display: none;
+	@page{
+    size: 8.5in 5.5in;
+    size: portrait;
+  }
+  .page-print:last-child {
+    page-break-after: auto;
 	}
-
+	.page-print{
+		margin: 0;
+	}
+	.page-print.customwishlist-index-print .buttons-set{display: none;}
 }
