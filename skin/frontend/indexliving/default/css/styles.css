@@ -11525,18 +11525,21 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 }
 
 /* Shipping */
-.amscheckout .shipping .form-list label{
+.amscheckout .shipping .form-list label,
+.amscheckout .billing .form-list label{
   white-space: normal;
   margin-bottom: 6px;
 }
-.amscheckout .shipping .form-list > .wide .input-box{
+.amscheckout .shipping .form-list > .wide .input-box,
+.amscheckout .billing .form-list > .wide .input-box{
   background: white;
   border: 1px solid #cfcfcf;
   border-radius: 3px;
   padding: 5px 2px;
   margin-bottom: 8px;
 }
-.amscheckout .shipping .form-list > .wide .input-box .address-select{
+.amscheckout .shipping .form-list > .wide .input-box .address-select,
+.amscheckout .billing .form-list > .wide .input-box .address-select{
   border: none;
   height: auto;
   white-space: normal;
