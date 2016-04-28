@@ -225,8 +225,8 @@
                                            name="billing[taxclass]"
                                            id="billing[taxclass]"
                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Billing Tax')) ?>"
-                                           value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
-                                           class="input-text validate-number validate-length maximum-length-13 validate-digits"/>
+                                           value="<?php echo $this->escapeHtml($this->getAddress()->getTaxclass()) ?>"
+                                           class="input-text"/>
                                 </div>
                             </div>
                         </li>
