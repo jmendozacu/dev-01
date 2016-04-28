@@ -219,11 +219,11 @@
                                 </div>
                             </div>
 														<div class="field">
-                                <label for="billing[amcustomerattr][billing_tax]"><?php echo $this->__('Billing Tax') ?></label>
+                                <label for="billing[taxclass]"><?php echo $this->__('Billing Tax') ?></label>
                                 <div class="input-box">
                                     <input type="text"
-                                           name="billing[amcustomerattr][billing_tax]"
-                                           id="billing[amcustomerattr][billing_tax]"
+                                           name="billing[taxclass]"
+                                           id="billing[taxclass]"
                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Billing Tax')) ?>"
                                            value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
                                            class="input-text validate-number validate-length maximum-length-13 validate-digits"/>
