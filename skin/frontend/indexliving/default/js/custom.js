@@ -98,8 +98,8 @@ function ss_plugin_loadpopup_js(em){
 }
 
 jQuery(document).ready(function () {
-	
-	jQuery(document).click(function(event) { 
+
+	jQuery(document).click(function(event) {
 		// Hide login box when click anywhere outside this box
 		if(!jQuery(event.target).is('.togglelogin') && !jQuery(event.target).is('#header-mini-login')) {
 			if(!jQuery(event.target).closest('#header-mini-login').length) {
@@ -117,7 +117,7 @@ jQuery(document).ready(function () {
 					jQuery('.toggle-minicart').removeClass('active');
 				}
 			}
-		}        
+		}
 	})
 
   checkItemInWishlist();
@@ -475,7 +475,7 @@ jQuery(document).ready(function () {
 
     }
 
-    var mytabs = ".career_job .menuheaders";
+   var mytabs = ".career_job .menuheaders";
    jQuery(mytabs).click(function(){
 		 if(jQuery(this).hasClass('selected')){
 				jQuery(this).removeClass('selected');
@@ -483,16 +483,16 @@ jQuery(document).ready(function () {
 				jQuery(this).addClass('selected');
 			}
 	 });
-	jQuery('.block-recently-viewed .box-title span#product-viewed-minimize').click(function(){
+	jQuery('.block-recently-viewed .box-title').click(function(){
 		if (!jQuery(this).hasClass('active')){
-			jQuery(this).parent().next().slideToggle(300);
+			jQuery(this).next().slideToggle(300);
 			jQuery(this).addClass('active');
-			jQuery(this).html('+');
+			jQuery(this).children('#product-viewed-minimize').html('+');
 		}
 		else{
 			jQuery(this).removeClass('active');
-			jQuery(this).parent().next().slideToggle(300);
-			jQuery(this).html('-');
+			jQuery(this).next().slideToggle(300);
+			jQuery(this).children('#product-viewed-minimize').html('-');
 		}
 	});
     /* menu */
