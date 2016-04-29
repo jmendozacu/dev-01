@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Magebuzz_Customaddress>
-			<version>0.1.6</version>
+			<version>0.1.7</version>
 		</Magebuzz_Customaddress>
 	</modules>
 	<frontend>
@@ -150,6 +150,9 @@
 				<mobile_customer>
 					<to_quote_address>*</to_quote_address>
 				</mobile_customer>
+				<customer_taxclass>
+					<to_quote_address>*</to_quote_address>
+				</customer_taxclass>
 			</customer_address>
 			<sales_convert_quote_address>
 				<city_id>
@@ -168,6 +171,10 @@
 					<to_order_address>*</to_order_address>
 					<to_customer_address>*</to_customer_address>
 				</mobile_customer>
+				<customer_taxclass>
+					<to_order_address>*</to_order_address>
+					<to_customer_address>*</to_customer_address>
+				</customer_taxclass>
 			</sales_convert_quote_address>
 			<sales_convert_order_address>
 				<city_id>
