@@ -424,4 +424,106 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 			$this->_redirectReferer($currentUrl);
 	}
+	public function sendAction()
+	{
+		if (!$this->_validateFormKey()) {
+			return $this->_redirect('*/*/');
+		}
+
+		$wishlist = $this->_getWishlist();
+		if (!$wishlist) {
+			return $this->norouteAction();
+		}
+
+
+		$apikey = '2874b8f1-c874-4140-9e49-48574df9c0bc';
+		$value = Mage::getBaseUrl().'customwishlist/index/print/'; // can aso be a url, starting with http..
+
+// Convert the HTML string to a PDF using those parameters.  Note if you have a very long HTML string use POST rather than get.  See example #5
+		$result = file_get_contents("http://api.html2pdfrocket.com/pdf?apikey=" . urlencode($apikey) . "&value=" . urlencode($value));
+
+
+		file_put_contents(Mage::getBaseDir('export').'/wishlist.pdf', $result);
+
+		$emails  = explode(',', $this->getRequest()->getPost('emails'));
+		$message = nl2br(htmlspecialchars((string) $this->getRequest()->getPost('message')));
+		$error   = false;
+		if (empty($emails)) {
+			$error = $this->__('Email address can\'t be empty.');
+		}
+		else {
+			foreach ($emails as $index => $email) {
+				$email = trim($email);
+				if (!Zend_Validate::is($email, 'EmailAddress')) {
+					$error = $this->__('Please input a valid email address.');
+					break;
+				}
+				$emails[$index] = $email;
+			}
+		}
+		if ($error) {
+			Mage::getSingleton('wishlist/session')->addError($error);
+			Mage::getSingleton('wishlist/session')->setSharingForm($this->getRequest()->getPost());
+			$this->_redirect('*/*/share');
+			return;
+		}
+
+		$translate = Mage::getSingleton('core/translate');
+		/* @var $translate Mage_Core_Model_Translate */
+		$translate->setTranslateInline(false);
+
+		try {
+			$customer = Mage::getSingleton('customer/session')->getCustomer();
+
+			/*if share rss added rss feed to email template*/
+			if ($this->getRequest()->getParam('rss_url')) {
+				$rss_url = $this->getLayout()
+					->createBlock('wishlist/share_email_rss')
+					->setWishlistId($wishlist->getId())
+					->toHtml();
+				$message .= $rss_url;
+			}
+			$wishlistBlock = $this->getLayout()->createBlock('wishlist/share_email_items')->toHtml();
+
+			$emails = array_unique($emails);
+			/* @var $emailModel Mage_Core_Model_Email_Template */
+			$emailModel = Mage::getModel('core/email_template');
+
+			$sharingCode = $wishlist->getSharingCode();
+			foreach ($emails as $email) {
+				$emailModel->sendTransactional(
+					Mage::getStoreConfig('wishlist/email/email_template'),
+					Mage::getStoreConfig('wishlist/email/email_identity'),
+					$email,
+					null,
+					array(
+						'customer'       => $customer,
+						'salable'        => $wishlist->isSalable() ? 'yes' : '',
+						'items'          => $wishlistBlock,
+						'addAllLink'     => Mage::getUrl('*/shared/allcart', array('code' => $sharingCode)),
+						'viewOnSiteLink' => Mage::getUrl('*/shared/index', array('code' => $sharingCode)),
+						'message'        => $message
+					)
+				);
+			}
+
+			$wishlist->setShared(1);
+			$wishlist->save();
+
+			$translate->setTranslateInline(true);
+
+			Mage::dispatchEvent('wishlist_share', array('wishlist' => $wishlist));
+			Mage::getSingleton('customer/session')->addSuccess(
+				$this->__('Your Wishlist has been shared.')
+			);
+			$this->_redirect('*/*', array('wishlist_id' => $wishlist->getId()));
+		}
+		catch (Exception $e) {
+			$translate->setTranslateInline(true);
+
+			Mage::getSingleton('wishlist/session')->addError($e->getMessage());
+			Mage::getSingleton('wishlist/session')->setSharingForm($this->getRequest()->getPost());
+			$this->_redirect('*/*/share');
+		}
+	}
 }

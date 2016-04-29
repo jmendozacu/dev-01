@@ -193,5 +193,12 @@ Wishlist pages
         <reference name="content">
             <block type="wishlist/share_wishlist" name="customer.wishlist" template="wishlist/shared.phtml" />
         </reference>
+        <remove name="header" />
+        <remove name="footer" />
+        <remove name="breadcrumbs" />
+        <remove name="customer_account_navigation" />
+        <remove name="right.reports.product.viewed" />
+        <remove name="reports.product.viewed" />
+        <remove name="m.reports.product.viewed" />
     </wishlist_shared_index>
 </layout>
