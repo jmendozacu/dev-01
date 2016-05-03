@@ -5046,6 +5046,19 @@ body.catalogsearch-result-index .page-title h1 {
     padding-top: 0;
     margin-top: 0px;
   }
+
+  .block-layered-nav.amshopby-filters-left .block-content{
+    position: fixed;
+    width: 100%;
+    top: 100%;
+    margin: 0;
+    margin-top: -51px;
+    z-index: 112;
+    transition: top 0.4s ease;
+  }
+  .block-layered-nav.active .block-content {
+    top: 133px;
+  }
   .block-layered-nav .block-content > dl > dt {
     cursor: pointer;
     border-bottom-width: 0;
