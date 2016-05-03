@@ -23,6 +23,7 @@
 
 <fieldset class="form-list">
     <?php $_code=$this->getMethodCode() ?>
+    <?php echo Mage::getStoreConfig('payment/KSmartpay/customtext'); ?>
     <ul id="payment_form_<?php echo $_code ?>" style='display: none'>
         <li>
         <div class="installment_pay">
@@ -45,7 +46,7 @@
         $PaymentPlanList = Mage::getStoreConfig('payment/KSmartpay/paymentcode', $storeId);
         $PaymentPlanListArray = array();
         $PaymentPlanListArray = explode(",", $PaymentPlanList);
-
+        $AvaliableArray = array();
         foreach($session->getQuote()->getAllItems() as $item)
         {
 
@@ -113,12 +114,13 @@
         //=> Loop cart items
         
         if ($cartcondition==true) {
+
             if (count($AvaliableArray) < 1) {
                 $cartcondition = false;
             }
         }
         if (!$cartcondition) {
-            unset($AvaliableArray);
+            $AvaliableArray = array(); // remove Installment plan
         }
         
         //check Full Credit
