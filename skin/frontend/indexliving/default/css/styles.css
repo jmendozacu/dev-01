@@ -1511,7 +1511,13 @@ a.button {
   border: 1px solid #cccccc;
   background: #f4f4f4;
 }
-
+.checkout-agreements .banktransfer-instructions-content.agreement-content{border:0; height: auto;max-height: 500px !important;}
+.checkout-agreements .banktransfer-instructions-content .acc_name_bank{color:#000;font-size:14px;}
+.table-payment { text-align: left;border-right: none;border-bottom: none;}
+.table-payment tr, .table-payment th { border-bottom: solid 1px #e0e0e0; text-align: center;}
+.table-payment img {float: left;margin-right: 9px;}
+.amscheckout table.table-payment td {vertical-align: top; padding: 5px 0;text-align: left;}
+ .table-payment th{padding:7px;border-color: #383838;}
 /* -------------------------------------------- *
  * CVV Security Code
  */
