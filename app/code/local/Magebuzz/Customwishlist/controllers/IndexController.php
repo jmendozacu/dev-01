@@ -481,7 +481,13 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 			$sharingCode = $wishlist->getSharingCode();
 			foreach ($emails as $email) {
-				$email->createAttachment($pdffile);
+				$emailModel->getMail()->createAttachment(
+					$pdffile,
+					Zend_Mime::TYPE_OCTETSTREAM,
+					Zend_Mime::DISPOSITION_ATTACHMENT,
+					Zend_Mime::ENCODING_BASE64,
+					'file.log'
+				);
 				$emailModel->sendTransactional(
 					Mage::getStoreConfig('wishlist/email/email_template'),
 					Mage::getStoreConfig('wishlist/email/email_identity'),
