@@ -27,7 +27,7 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
-	<?php if(!$_product->isGrouped()): ?>
+	<?php if(!$_product->isGrouped() && $_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
 		<div class="change-qty">
 			<label for="qty"><?php echo $this->__('Qty') ?></label>
 			<input type="button" onclick="decQty('qty')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="productview_dec_qty_<?php echo $_product->getId()?>" />
