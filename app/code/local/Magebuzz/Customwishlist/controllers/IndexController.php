@@ -525,7 +525,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		$pdf->AddPage();
 		$pdf->writeHTML($html,true,false,true,false,'');
 		$pdf->lastPage();
-		$path = Mage::getBaseDir('base').'/var/report/report_'.time().'.pdf';
+		$path = Mage::getBaseDir('base').'/var/log/report_'.time().'.pdf';
 		$pdf->Output($path,'F');
 		return $pdf;
 	}
