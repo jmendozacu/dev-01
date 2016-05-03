@@ -483,16 +483,15 @@ jQuery(document).ready(function () {
 				jQuery(this).addClass('selected');
 			}
 	 });
+  jQuery('#product-viewed-minimize').html('');
 	jQuery('.block-recently-viewed .box-title').click(function(){
 		if (!jQuery(this).hasClass('active')){
 			jQuery(this).next().slideToggle(300);
 			jQuery(this).addClass('active');
-			jQuery(this).children('#product-viewed-minimize').html('+');
 		}
 		else{
 			jQuery(this).removeClass('active');
 			jQuery(this).next().slideToggle(300);
-			jQuery(this).children('#product-viewed-minimize').html('-');
 		}
 	});
     /* menu */
