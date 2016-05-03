@@ -1,0 +1,27 @@
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+    if($customer->getId()){
+        $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
+        $wishListItemCollection = $wishlist->getItemCollection();
+        echo "<table id=\"wishlist-table\" class=\"clean-table box-desktop\">";
+        echo "<tr><th>A</th><th>A</th><th>A</th><th>A</th></tr>";
+        foreach ($wishListItemCollection as $item)
+        {
+            echo "<tr>";
+            for($i=0;$i<4;$i++){
+                echo "<td>";
+                $item = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
+                if ($item->getId()) :
+                    ?>
+                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'small_image')->resize(113, 113); ?>" width="113" height="113" />
+                <?php endif;
+                echo "</td>";
+                echo  "<td>".$item->getName()."</td>";
+                echo  "<td>".$item->getPrice()."</td>";
+                echo  "<td>".$item->getQty()."</td>";
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+?>

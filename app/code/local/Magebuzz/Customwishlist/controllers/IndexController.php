@@ -434,17 +434,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		if (!$wishlist) {
 			return $this->norouteAction();
 		}
-
-
-		$apikey = '2874b8f1-c874-4140-9e49-48574df9c0bc';
-		$value = Mage::getBaseUrl().'customwishlist/index/print/'; // can aso be a url, starting with http..
-
-// Convert the HTML string to a PDF using those parameters.  Note if you have a very long HTML string use POST rather than get.  See example #5
-		$result = file_get_contents("http://api.html2pdfrocket.com/pdf?apikey=" . urlencode($apikey) . "&value=" . urlencode($value));
-
-
-		file_put_contents(Mage::getBaseDir('export').'/wishlist.pdf', $result);
-
+		$pdffile = $this->generatePdf();
 		$emails  = explode(',', $this->getRequest()->getPost('emails'));
 		$message = nl2br(htmlspecialchars((string) $this->getRequest()->getPost('message')));
 		$error   = false;
@@ -491,6 +481,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 			$sharingCode = $wishlist->getSharingCode();
 			foreach ($emails as $email) {
+				$email->createAttachment($pdffile);
 				$emailModel->sendTransactional(
 					Mage::getStoreConfig('wishlist/email/email_template'),
 					Mage::getStoreConfig('wishlist/email/email_identity'),
@@ -525,5 +516,17 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			Mage::getSingleton('wishlist/session')->setSharingForm($this->getRequest()->getPost());
 			$this->_redirect('*/*/share');
 		}
+	}
+	public function generatePdf(){
+		$wishlist = $this->_getWishlist();
+		$collections = $wishlist->getItemCollection();
+		$html = $this->getLayout()->createBlock('wishlist/customer_wishlist_items')->setTemplate('wishlist/printwishlist.phtml')->toHtml();
+		$pdf = new TCPDF_TCPDF();
+		$pdf->AddPage();
+		$pdf->writeHTML($html,true,false,true,false,'');
+		$pdf->lastPage();
+		$path = Mage::getBaseDir('base').'/var/log/report_'.time().'.pdf';
+		$pdf->Output($path,'F');
+		return $pdf;
 	}
 }
