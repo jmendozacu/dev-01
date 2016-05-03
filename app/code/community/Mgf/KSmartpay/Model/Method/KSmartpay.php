@@ -158,7 +158,7 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 				$isActive = false;
 			}
 		}
-		return $isActive;
+		//return $isActive;
 		//=> Filter Limited
 		$LoopNo = 1;
 		$cartcondition = true;

@@ -124,14 +124,14 @@
         }
         
         //check Full Credit
-        $fullcredit = array();
-        foreach (Mage::getStoreConfig('payment') as $key => $value) {
-            if(preg_match("/Full/", $key)){
-                if(Mage::getStoreConfig('payment/'.$key.'/active')){
-                    $fullcredit[$key] = $value;
-                }
-            }
-        }
+        // $fullcredit = array();
+        // foreach (Mage::getStoreConfig('payment') as $key => $value) {
+        //     if(preg_match("/Full/", $key)){
+        //         if(Mage::getStoreConfig('payment/'.$key.'/active')){
+        //             $fullcredit[$key] = $value;
+        //         }
+        //     }
+        // }
 
         $InstallmentArray = array();
         $InstallmentZeroArray = array();
@@ -154,7 +154,7 @@
         //=> Sort by term
         krsort($InstallmentZeroArray);
         krsort($InstallmentArray);
-        krsort($fullcredit);
+        // krsort($fullcredit);
 
         if ($Debug=="1") {
             echo "<!--";
