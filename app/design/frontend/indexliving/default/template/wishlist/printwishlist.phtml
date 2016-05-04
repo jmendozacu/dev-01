@@ -1,10 +1,12 @@
 <?php
+$column = Mage_Wishlist_Block_Customer_Wishlist_Items::getColumns();
 $customer = Mage::getSingleton('customer/session')->getCustomer();
     if($customer->getId()){
         $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
         $wishListItemCollection = $wishlist->getItemCollection();
-        echo "<table align = \"center\">";
-        echo "<tr><th></th><th>Product name</th><th>Price</th><th>Qty</th></tr><hr />";
+        echo "<h3>My Wishlist</h3><br />";
+        echo "<table cellspacing=\"0\" cellpadding=\"1\" border=\"1\" align = \"center\">";
+        echo "<tr style=\"background-color:#252525;color:#FFFFFF;\"><th></th><th>PRODUCTS</th><th>PRICE</th></tr>";
         foreach ($wishListItemCollection as $item)
         {
             echo "<tr>";
@@ -13,14 +15,13 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
                 $item = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
                 if ($item->getId()) :
                     ?>
-                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'small_image')->resize(90, 90); ?>" width="90" height="90" />
+                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'image')->resize(80, 80); ?>" width="90" height="90" />
                 <?php endif;
                 echo "</td>";
                 echo  "<td>".$item->getName()."</td>";
                 echo  "<td>".$item->getPrice()."</td>";
-                echo  "<td>".$item->getQty()."</td>";
             }
-            echo "</tr><hr />";
+            echo "</tr>";
         }
         echo "</table>";
     }
