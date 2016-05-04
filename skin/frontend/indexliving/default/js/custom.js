@@ -294,12 +294,16 @@ jQuery(document).ready(function () {
 		jQuery(this).addClass('active');
     jQuery('.box-top-menu').addClass('active');
     jQuery('.box-top-menu').css("overflow-y","initial");
+		jQuery('#header-nav .nav-primary li.level1.parent > .menu-content > ul.level1').css("max-height", widthHeight -44);
+		jQuery('#header-nav .nav-primary li.level1.parent > .menu-content > ul.level1').css("overflow-y","auto");
 	 }
 	 else{
 		jQuery(this).removeClass('active');
     jQuery(this).prev().removeClass('active');
     jQuery('.box-top-menu').removeClass('active');
     jQuery('.box-top-menu').css("overflow-y","auto");
+		jQuery('#header-nav .nav-primary li.level1.parent > .menu-content > ul.level1').css("max-height", "");
+		jQuery('#header-nav .nav-primary li.level1.parent > .menu-content > ul.level1').css("overflow-y","");
 	 }
   });
   /*top menu lv2 on mobile */
