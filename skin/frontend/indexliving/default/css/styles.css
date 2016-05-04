@@ -4793,7 +4793,7 @@ body.catalogsearch-result-index .page-title h1 {
 .products-list > li  .amconf-block{
   position:absolute;
 	top:160px;
-	left:100px;
+	left:20px;
 }
 
 .products-list .product-shop {
@@ -8512,6 +8512,9 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* CUSTOM */
 .availability.out-of-stock span {
   color: #a0a0a0;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-family: "FuturaT_Bold"
 }
 
 .product-view .product-options .swatch-attr {

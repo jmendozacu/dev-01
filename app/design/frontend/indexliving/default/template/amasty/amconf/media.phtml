@@ -100,9 +100,11 @@
 			<?php endif; ?>
 			<?php if (count($this->getGalleryImages()) > 0): ?>
 				<?php foreach ($this->getGalleryImages() as $_image): ?>
+					<?php if($_product->getImage() != $_image['file']): ?>
 					<li class="test">
 						<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(500); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
 					</li>
+					<?php endif; ?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</ul>
