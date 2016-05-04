@@ -325,11 +325,13 @@ jQuery(document).ready(function () {
 		jQuery('.box-top-menu .topheader-links li.language a').addClass('active');
     jQuery('.box-top-menu').addClass('active');
     jQuery('body').scrollTop(0);
+		jQuery('.box-top-menu').css("overflow-y","initial");
 	 }
 	 else{
 		jQuery('.box-top-menu .topheader-links li.language a').removeClass('active');
     jQuery('.box-menu-mobile .form-language').removeClass('active');
     jQuery('.box-top-menu').removeClass('active');
+		jQuery('.box-top-menu').css("overflow-y","auto");
 	 }
   });
   /* cat mobile */
