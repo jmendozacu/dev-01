@@ -38,10 +38,18 @@
 
 <?php
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+	$compared = false;
 
+	$collection = $this->helper('catalog/product_compare')->getItemCollection();
+	foreach($collection as $comparing_product) {
+		if ($comparing_product->getId() === $_product->getId()) {
+			$compared = true;
+		}
+	}
 ?>
 	<?php if($_compareUrl) : ?>
-		<li class="add-compare" ><a href="javascript:void(0)" id="remodal" class="link-compare" onclick="ajaxCompare('<?php echo $_compareUrl?>')" class="link-compare"><?php echo $this->__('Add to Compare') ?>
+		<li class="add-compare" >
+			<a href="javascript:void(0)" id="remodal" class="link-compare <?php if($compared):?>added-item<?php endif ?> " onclick="ajaxCompare('<?php echo $_compareUrl?>')"><?php echo $this->__('Add to Compare') ?>
 				<span id='ajax_compare_loading_<?php echo $_product->getId()?>' class="link_loader" style='display:none'><img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/></span>
 			</a>
 		</li>
@@ -56,6 +64,7 @@
 
 <script type="text/javascript">
 	function ajaxCompare(url){
+		$j('#remodal').addClass('added-item');
 		url = url.replace("catalog/product_compare/add","customcompare/product_compare/add");
 		$j('#ajax_cart_loading').show();
 		$j.ajax({
