@@ -38,6 +38,7 @@
 
 <?php
     $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+	$removeUrl = $this->helper('catalog/product_compare')->getRemoveUrl($_product);
 	$compared = false;
 
 	$collection = $this->helper('catalog/product_compare')->getItemCollection();
@@ -52,6 +53,15 @@
 			<a href="javascript:void(0)" id="remodal" class="link-compare <?php if($compared):?>added-item<?php endif ?> " onclick="ajaxCompare('<?php echo $_compareUrl?>')"><?php echo $this->__('Add to Compare') ?>
 				<span id='ajax_compare_loading_<?php echo $_product->getId()?>' class="link_loader" style='display:none'><img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/></span>
 			</a>
+			<input
+				type="checkbox"
+				name="checkbox-add-to-wishlist"
+				id="checkbox-compare"
+				class="link-compare <?php if($compared):?>added-item<?php endif ?> "
+				<?php if($compared){echo "checked=\"checked\"";}?>
+				onchange="ajaxCompare('<?php echo $_compareUrl?>')"
+			/>
+			<?php echo $this->__('Add to Compare') ?>
 		</li>
 	<?php endif; ?>
 		<li >
@@ -64,25 +74,64 @@
 
 <script type="text/javascript">
 	function ajaxCompare(url){
-		$j('#remodal').addClass('added-item');
-		url = url.replace("catalog/product_compare/add","customcompare/product_compare/add");
-		$j('#ajax_cart_loading').show();
+		if(document.getElementById('checkbox-compare').checked){
+			$j('#remodal').addClass('added-item');
+			url = url.replace("catalog/product_compare/add","customcompare/product_compare/add");
+			$j('#ajax_cart_loading').show();
+			$j.ajax({
+				url: url,
+				type: "POST",
+				dataType: 'json',
+				success: function (data) {
+					$j("#ajax_cart_loading").hide();
+					$j("#product-compare-list").html(data.bar);
+					//$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
+					$('ajaxcart-overlay').update(data.html);
+					$('ajaxcart-overlay').show();
+					setTimeout(function () {
+						Effect.Fade($('ajaxcart-overlay'));
+					}, 5000);
+				}
+			});
+		}else{
+			url = url.replace("catalog/product_compare/add", "customcompare/product_compare/remove");
+			$j.ajax({
+				url: url,
+				type: "POST",
+				dataType: 'json',
+				beforeSend: function(){
+					$j("#ajax_cart_loading").show();
+				},
+				success: function (data) {
+					$j("#ajax_cart_loading").hide();
+					$j("#product-compare-list").html(data.bar);
+					$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
+					$j('#ajaxcart-overlay').show();
+					setTimeout(function () {
+						Effect.Fade($('ajaxcart-overlay'));
+					}, 5000);
+				}
+			});
+		}
+	}
+	function removeajaxCompare(url) {
+		url = url.replace("catalog/product_compare/remove", "customcompare/product_compare/remove");
 		$j.ajax({
 			url: url,
 			type: "POST",
 			dataType: 'json',
+			beforeSend: function(){
+				$j("#ajax_cart_loading").show();
+			},
 			success: function (data) {
 				$j("#ajax_cart_loading").hide();
 				$j("#product-compare-list").html(data.bar);
-				//$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
-				$('ajaxcart-overlay').update(data.html);
-				$('ajaxcart-overlay').show();
+				$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
+				$j('#ajaxcart-overlay').show();
 				setTimeout(function () {
 					Effect.Fade($('ajaxcart-overlay'));
 				}, 5000);
 			}
 		});
-
-
-	}	
+	}
 </script>
