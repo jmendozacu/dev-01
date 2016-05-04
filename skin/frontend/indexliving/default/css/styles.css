@@ -5154,6 +5154,8 @@ body.catalogsearch-result-index .page-title h1 {
 	min-height:290px;
 }
 
+.catalog-category-view .products-grid--max-3-col .flip-container, .catalog-category-view .products-grid--max-3-col .front,  .catalog-category-view .products-grid--max-3-col .back{min-height: 263px;}
+
 .block-highlight .flip-container, .block-highlight .flip-container .front, .block-highlight .flip-container .back {
 	width: 100%;
 	height: 100%;
