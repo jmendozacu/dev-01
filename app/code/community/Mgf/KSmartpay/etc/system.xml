@@ -767,7 +767,7 @@
 </KSmartpayC>
 </groups>
 
-<groups>
+<!-- <groups>
     <KSmartpayFull translate="label" module="paygate">
         <comment>
             <![CDATA[ในกรณีที่ต้องเปิดใช้แผนการผ่อนแผนที่ 4 กรุณาลงรายละเอียดตามฟอร์มด้านล่างนี้]]>
@@ -880,7 +880,7 @@
         </infoimage>
     </fields>
 </KSmartpayFull>
-</groups>
+</groups> -->
             <!--groups>
                 <KSmartpayD translate="label" module="paygate">
                     <comment>
@@ -1812,7 +1812,7 @@
         </fields>
     </KrungsriC>
 </groups>
-    <groups>
+    <!-- <groups>
         <KrungsriFull translate="label" module="paygate">
             <comment>
                 <![CDATA[ในกรณีที่ต้องเปิดใช้แผนการผ่อนแผนที่ 4 กรุณาลงรายละเอียดตามฟอร์มด้านล่างนี้]]>
@@ -1905,7 +1905,7 @@
                 </infoimage>
             </fields>
         </KrungsriFull>
-    </groups>
+    </groups> -->
             <!--groups>
                 <KrungsriY translate="label" module="paygate">
                     <comment>
