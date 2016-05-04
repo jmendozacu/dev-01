@@ -5249,7 +5249,9 @@ body.catalogsearch-result-index .page-title h1 {
   margin-top: 0;
 }
 .product-view .product-shop .availability {
-  font-size: 16px;
+  font-size: 18px;
+	font-family:"FuturaT_Bold";
+	text-transform:uppercase;
 }
 .product-view .product-shop .price-box {
   margin-top: 0;
