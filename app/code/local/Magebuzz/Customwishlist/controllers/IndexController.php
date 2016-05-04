@@ -527,7 +527,6 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		$wishlist = $this->_getWishlist();
 		$html = $this->getLayout()->createBlock('wishlist/customer_wishlist_items')->setTemplate('wishlist/printwishlist.phtml')->toHtml();
 		$pdf = new TCPDF_TCPDF();
-
 		// set header and footer fonts
 		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
@@ -544,10 +543,11 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
 		$pdf->AddPage();
+		$pdf->SetTitle('My Wishlist');
 		$pdf->writeHTML($html,true,false,true,false,'');
 		$pdf->lastPage();
-		$path = Mage::getBaseDir('base').'/var/log/report_'.$wishlist->getId().'.pdf';
-		$pdf->Output($path,'F');
+		$path = Mage::getBaseDir('base').'/var/log/report_'.time().'.pdf';
+		$pdf->Output($path,'I');
 		return $pdf;
 	}
 }
