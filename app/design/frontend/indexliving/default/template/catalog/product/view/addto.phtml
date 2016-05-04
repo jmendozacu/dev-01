@@ -50,9 +50,6 @@
 ?>
 	<?php if($_compareUrl) : ?>
 		<li class="add-compare" >
-			<a href="javascript:void(0)" id="remodal" class="link-compare <?php if($compared):?>added-item<?php endif ?> " onclick="ajaxCompare('<?php echo $_compareUrl?>')"><?php echo $this->__('Add to Compare') ?>
-				<span id='ajax_compare_loading_<?php echo $_product->getId()?>' class="link_loader" style='display:none'><img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/></span>
-			</a>
 			<input
 				type="checkbox"
 				name="checkbox-add-to-wishlist"
