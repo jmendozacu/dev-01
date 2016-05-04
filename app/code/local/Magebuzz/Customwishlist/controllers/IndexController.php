@@ -482,11 +482,11 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			$sharingCode = $wishlist->getSharingCode();
 			foreach ($emails as $email) {
 				$emailModel->getMail()->createAttachment(
-					$pdffile,
+					file_get_contents(Mage::getBaseDir('base').'/var/log/report_'.$wishlist->getId().'.pdf'),
 					Zend_Mime::TYPE_OCTETSTREAM,
 					Zend_Mime::DISPOSITION_ATTACHMENT,
 					Zend_Mime::ENCODING_BASE64,
-					'file.log'
+					'report_'.$wishlist->getId().'.pdf'
 				);
 				$emailModel->sendTransactional(
 					Mage::getStoreConfig('wishlist/email/email_template'),
@@ -525,13 +525,28 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	}
 	public function generatePdf(){
 		$wishlist = $this->_getWishlist();
-		$collections = $wishlist->getItemCollection();
 		$html = $this->getLayout()->createBlock('wishlist/customer_wishlist_items')->setTemplate('wishlist/printwishlist.phtml')->toHtml();
 		$pdf = new TCPDF_TCPDF();
+
+		// set header and footer fonts
+		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+		$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+		// set default monospaced font
+		$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+		// set margins
+		$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+		$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+		$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+		// set auto page breaks
+		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
 		$pdf->AddPage();
 		$pdf->writeHTML($html,true,false,true,false,'');
 		$pdf->lastPage();
-		$path = Mage::getBaseDir('base').'/var/log/report_'.time().'.pdf';
+		$path = Mage::getBaseDir('base').'/var/log/report_'.$wishlist->getId().'.pdf';
 		$pdf->Output($path,'F');
 		return $pdf;
 	}
