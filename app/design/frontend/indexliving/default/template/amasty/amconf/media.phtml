@@ -115,12 +115,12 @@
 		jQuery(document).ready(function () {
 			jQuery('.product-image-mobile-slider').bxSlider({
 				auto: true,
-				loop:false,
+				infiniteLoop:<?php if (count($this->getGalleryImages()) > 1): ?> true <?php else:?> false <?php endif ?>,
 				mode: 'horizontal',
 				controls: false,
 				speed: 2000,
 				preloadImages: 'visible',
-				pager: true,
+				pager: <?php if (count($this->getGalleryImages()) > 1): ?> true <?php else:?> false <?php endif ?>,
 				captions: false
 			});
 		});        
