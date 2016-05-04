@@ -35,6 +35,11 @@ class Mgf_KBank_Block_Info_KBank extends Mage_Payment_Block_Info
         parent::_construct();
         $this->setTemplate('KBank/info/KBank.phtml');
     }
+
+    public function getPaymenttitle(){
+        return Mage::getStoreConfig('payment/KBank/title');
+    }
+
     /**
      * Retrieve credit card type name
      *

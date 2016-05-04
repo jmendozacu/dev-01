@@ -35,6 +35,11 @@ class Mgf_KSmartpay_Block_Info_KSmartpay extends Mage_Payment_Block_Info
         parent::_construct();
         $this->setTemplate('KSmartpay/info/KSmartpay.phtml');
     }
+
+    public function getPaymenttitle(){
+        return Mage::getStoreConfig('payment/KSmartpay/title');
+    }
+
     /**
      * Retrieve credit card type name
      *
