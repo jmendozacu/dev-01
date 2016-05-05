@@ -5855,9 +5855,9 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .add-to-links a.link-wishlist:hover,
 .product-view .add-to-links a.link-wishlist.added-item{background-position:0 0; /* color:#ffc222; */}
 
-.product-view .add-to-links input[type=checkbox] + label{background-position:0 -162px;}
-.product-view .add-to-links input[type=checkbox]:hover,
-.product-view .add-to-links input[type=checkbox]:checked + label{background-position:0 -40px;/*  color:#ffc222; */}
+.product-view .add-to-links a.link-compare{background-position:0 -162px;}
+.product-view .add-to-links a.link-compare:hover,
+.product-view .add-to-links a.link-compare.added-item{background-position:0 -40px;/*  color:#ffc222; */}
 
 .product-view .add-to-links a.link-share{background-position:0 -202px;}
 .product-view .add-to-links a.link-share:hover,
