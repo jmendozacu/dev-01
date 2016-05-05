@@ -39,11 +39,11 @@
 	<?php
 	$_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
 	$compared = false;
-
 	$collection = $this->helper('catalog/product_compare')->getItemCollection();
 	foreach($collection as $comparing_product) {
 		if ($comparing_product->getId() == $_product->getId()) {
 			$compared = true;
+			Mage::log($compared.'_______',null,'minh.log');
 		}
 	}
 	?>
