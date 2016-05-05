@@ -550,7 +550,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			mkdir(Mage::getBaseDir('media').'/wishlistpdf/', 0777, true);
 		}
 		$path = Mage::getBaseDir('media').'/wishlistpdf/my_wishlist_'.$wishlist->getId().'.pdf';
-		$pdf->Output($path,'F');
+		$pdf->Output($path,'I');
 		return $pdf;
 	}
 }

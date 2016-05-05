@@ -5,8 +5,8 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
         $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
         $wishListItemCollection = $wishlist->getItemCollection();
         echo "<h3>My Wishlist</h3><br />";
-        echo "<table cellspacing=\"0\" cellpadding=\"1\" border=\"1\" align = \"center\">";
-        echo "<tr style=\"background-color:#252525;color:#FFFFFF;\"><th></th><th>PRODUCTS</th><th>PRICE</th></tr>";
+        echo "<table cellspacing=\"0\" cellpadding=\"1\" align = \"center\">";
+        echo "<tr style=\"background-color:#252525;color:#FFFFFF;\"><th></th><th>PRODUCTS</th><th>PRICE</th><th>SPECAL PRICE</th></tr>";
         foreach ($wishListItemCollection as $item)
         {
             echo "<tr>";
@@ -20,6 +20,7 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
                 echo "</td>";
                 echo  "<td>".$item->getName()."</td>";
                 echo  "<td>".$item->getPrice()."</td>";
+                echo  "<td>".$item->getSpecialPrice()."</td>";
             }
             echo "</tr>";
         }
