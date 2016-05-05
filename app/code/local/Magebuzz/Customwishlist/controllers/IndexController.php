@@ -478,16 +478,16 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			$emails = array_unique($emails);
 			/* @var $emailModel Mage_Core_Model_Email_Template */
 			$emailModel = Mage::getModel('core/email_template');
-
+			$emailModel->getMail()->createAttachment(
+				file_get_contents(Mage::getBaseDir('media').'/wishlistpdf/my_wishlist_'.$wishlist->getId().'.pdf'),
+				Zend_Mime::TYPE_OCTETSTREAM,
+				Zend_Mime::DISPOSITION_ATTACHMENT,
+				Zend_Mime::ENCODING_BASE64,
+				'my_wishlist_'.$wishlist->getId().'.pdf'
+			);
 			$sharingCode = $wishlist->getSharingCode();
 				foreach ($emails as $email) {
-				$emailModel->getMail()->createAttachment(
-					file_get_contents(Mage::getBaseDir('media').'/wishlistpdf/report_'.$wishlist->getId().'.pdf'),
-					Zend_Mime::TYPE_OCTETSTREAM,
-					Zend_Mime::DISPOSITION_ATTACHMENT,
-					Zend_Mime::ENCODING_BASE64,
-					'report_'.$wishlist->getId().'.pdf'
-				);
+
 				$emailModel->sendTransactional(
 					Mage::getStoreConfig('wishlist/email/email_template'),
 					Mage::getStoreConfig('wishlist/email/email_identity'),
@@ -549,7 +549,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		if (!file_exists(Mage::getBaseDir('media').'/wishlistpdf/')) {
 			mkdir(Mage::getBaseDir('media').'/wishlistpdf/', 0777, true);
 		}
-		$path = Mage::getBaseDir('media').'/wishlistpdf/report_'.$wishlist->getId().'.pdf';
+		$path = Mage::getBaseDir('media').'/wishlistpdf/my_wishlist_'.$wishlist->getId().'.pdf';
 		$pdf->Output($path,'F');
 		return $pdf;
 	}
