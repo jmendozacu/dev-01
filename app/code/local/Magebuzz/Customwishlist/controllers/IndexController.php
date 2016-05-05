@@ -482,7 +482,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			$sharingCode = $wishlist->getSharingCode();
 				foreach ($emails as $email) {
 				$emailModel->getMail()->createAttachment(
-					file_get_contents(Mage::getBaseDir('base').'/var/log/report_'.$wishlist->getId().'.pdf'),
+					file_get_contents(Mage::getBaseDir('media').'/wishlistpdf/report_'.$wishlist->getId().'.pdf'),
 					Zend_Mime::TYPE_OCTETSTREAM,
 					Zend_Mime::DISPOSITION_ATTACHMENT,
 					Zend_Mime::ENCODING_BASE64,
@@ -546,8 +546,8 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		$pdf->SetTitle('My Wishlist');
 		$pdf->writeHTML($html,true,false,true,false,'');
 		$pdf->lastPage();
-		$path = Mage::getBaseDir('base').'/var/log/report_'.time().'.pdf';
-		$pdf->Output($path,'I');
+		$path = Mage::getBaseDir('media').'/wishlistpdf/report_'.$wishlist->getId().'.pdf';
+		$pdf->Output($path,'F');
 		return $pdf;
 	}
 }
