@@ -3,10 +3,15 @@
 		ajaxWishlistInit();
 	});
 	function ajaxWishlistInit() {
-		$$('a.link-wishlist').each(function(element) {			
+		$$('a.link-wishlist').each(function(element) {
 			var wishlistUrl = element.readAttribute('href');
 			//wishlistUrl = wishlistUrl.replace('wishlist/index/add','customwishlist/index/add');
 			element.writeAttribute('onclick', 'ajaxCart.ajaxAddToWishlist("'+wishlistUrl+'")');
+			element.writeAttribute('href', 'javascript:void(0)');
+		});
+		$$('a.link-wishlist-remove').each(function(element) {
+			var removewishlistUrl = element.readAttribute('href');
+			element.writeAttribute('onclick', 'ajaxCart.removeWishlistItemM("'+removewishlistUrl+'")');
 			element.writeAttribute('href', 'javascript:void(0)');
 		});
 	}
