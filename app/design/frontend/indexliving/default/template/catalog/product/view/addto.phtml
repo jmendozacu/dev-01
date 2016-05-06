@@ -33,13 +33,12 @@
 	{
 		$wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
 		$wishListItemCollection = $wishlist->getItemCollection();
-		$arritems_id = array();
-
+		$inwishlist = false;
 		foreach ($wishListItemCollection as $item) {
 			$_productwishlist = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
-			$arritems_id[] = $_productwishlist->getId();
 			if($_productwishlist->getId()==$_product->getId()){
 				$_currentwishlistitem = $item;
+				$inwishlist = true;
 			}
 		}
 	}
@@ -51,7 +50,7 @@
 	<?php if ($this->helper('wishlist')->isAllow()) : ?>
 		<li class="wishlist-ajax add-wishlist">
 			<a rel="" id="wishlist-detail-<?php echo $_product->getId()?>"
-			   href="<?php if(!in_array($_product->getId(),$arritems_id)){
+			   href="<?php if(!$inwishlist){
 						echo $_wishlistSubmitUrl;
 					}else{
 						echo $_wishlistRemoveUrl;
