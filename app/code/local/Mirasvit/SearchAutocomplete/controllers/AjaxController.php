@@ -23,6 +23,7 @@ class Mirasvit_Searchautocomplete_AjaxController extends Mage_Core_Controller_Fr
 {
     public function getAction()
     {
+        die('22');
         $this->loadLayout();
         $query = Mage::helper('catalogsearch')->getQuery();
         $query->setStoreId(Mage::app()->getStore()->getId());

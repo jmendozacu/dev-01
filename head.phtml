@@ -1,0 +1,101 @@
+<?php
+/**
+ * @copyright Copyright (c) 2016 www.magebuzz.com
+ */
+?>
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+    /* Open add popup form */
+    jQuery(".link-shoppinglist").colorbox({scrolling:false});
+  });
+
+  /* Function close popup */
+  function closePopup() {
+    jQuery.colorbox.close();
+  }
+  /* Function check create new group or not */
+  function setCreateGroup(arg) {
+    if (arg) {
+      jQuery('#form-create-group').show();
+      jQuery('select[name=select-group]').removeClass('validate-select');
+      jQuery('select[name=select-group]').attr('disabled', 'disabled');
+    } else {
+      jQuery('#form-create-group').hide();
+      jQuery('select[name=select-group]').addClass('validate-select');
+      jQuery('select[name=select-group]').removeAttr('disabled', 'disabled');
+    }
+    jQuery.colorbox.resize();
+  }
+  function setSendEmail(arg) {
+    if (arg) {
+      jQuery('#form-settings').show();
+      jQuery('select[name=email-reminder]').addClass('validate-select');
+    } else {
+      jQuery('#form-settings').hide();
+      jQuery('select[name=email-reminder]').removeClass('validate-select');
+    }
+    jQuery.colorbox.resize();
+  }
+
+  /* Function add a new group shopping list */
+  function submitcreatGroup() {
+    var list_name = encodeURI(jQuery('input[name=group-name]').val());
+    var customer_id = encodeURI(jQuery('input[name=customer_id]').val());
+    var status = 1;
+    jQuery.colorbox({
+      href: "<?php echo Mage::getUrl('shoppinglist/index/createGroup/'); ?>" + "?list_name=" + list_name + "&customer_id=" + customer_id + "&status=" + status
+    });
+  }
+  /* Function submit add form */
+  function submitAddItem() {
+    <?php $timeConfig = Mage::getStoreConfig('shoppinglist/general/time_auto_close');?>
+    //validate option for grouped product
+    var productType = encodeURI(jQuery('input[name=product_type_id]').val());
+    if (productType == 'grouped') {
+      var selected_subProduct = false;
+      var subProducts = jQuery('input.grouped-items').each(function () {
+        if (this.value > 0) {
+          selected_subProduct = true;
+        }
+      });
+      if (!selected_subProduct) {
+        jQuery('table#super-product-table').addClass('validation-failed');
+        jQuery('<div style="" id="advice-validate-select-select-group" class="validation-advice">Please specify the quantity of product(s).</div>').insertAfter('table#super-product-table');
+        return;
+      }
+    }
+    var qty = 0;
+    var data = jQuery('form#form-add-item').serialize();
+    var input_qty = encodeURI(jQuery('input[name=qty]').val());
+    if (input_qty == 'undefined') {
+      qty = 1;
+    }
+    else {
+      if (jQuery('input[name=qty]').val().length == 0) {
+        qty = 1;
+      }
+      else {
+        qty = encodeURI(jQuery('input[name=qty]').val());
+      }
+    }
+    jQuery.colorbox({
+      href: "<?php echo Mage::getUrl('shoppinglist/index/additem/'); ?>" + '?' + data + "&qty=" + qty,
+      <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>
+      onClosed: function () {
+        location.reload(true);
+      },
+      <?php endif?>
+    });
+    <?php if(Mage::getStoreConfig('shoppinglist/general/auto_close')==1):?>
+    window.setTimeout(function () {
+      closePopup();
+    }, <?php if($timeConfig >0 && $timeConfig != null){echo $timeConfig*1000 ;}else{ echo 5000;}?>);
+    <?php endif?>
+  }
+
+  function resizePopup() {
+    setTimeout(function () {
+      jQuery.colorbox.resize();
+    }, 500);
+  }
+</script>
