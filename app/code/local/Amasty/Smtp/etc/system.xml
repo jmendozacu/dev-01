@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_Smtp
+ */
+-->
+<config>
+    <sections>
+        <amsmtp translate="label" module="amsmtp">
+            <label>SMTP Email Settings</label>
+            <tab>amasty</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>191305</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>General Settings</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable SMTP For E-mail</label>
+                            <comment>When disabled, the extension has no impact on Magento e-mail sending routines.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <log translate="label comment">
+                            <label>Log Outgoing Mail</label>
+                            <comment>Makes it possible to see the list of all e-mails ever sent through Magento, including email contents.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </log>
+                        <debug translate="label comment">
+                            <label>Enable Debug Mode</label>
+                            <comment>When enabled, all debug information is logged. Recommended not to use on production sites.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </debug>
+                        <disable_delivery translate="label comment">
+                            <label>Disable E-mail Delivery</label>
+                            <comment>Set to "Yes" to not actually send e-mails. Useful when logging is enabled, for debug/development purposes.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disable_delivery>
+                    </fields>
+                </general>
+                <smtp>
+                    <label>SMTP Configuration</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <provider translate="label comment">
+                            <label>SMTP Provider</label>
+                            <comment>Pre-defined SMTP providers</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>amsmtp/system_config_source_providers</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </provider>
+                        <autofill>
+                            <!--<label>Autofill</label>-->
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>amsmtp/button</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autofill>
+                        <server translate="label comment">
+                            <class>separator-top</class>
+                            <label>Server Address</label>
+                            <comment>Either host name or IP address</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </server>
+                        <port translate="label comment">
+                            <label>Port</label>
+                            <comment>Usually is 25, 587 or 465. Please consult with your service provider.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </port>
+                        <auth translate="label">
+                            <label>Authentication Method</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>amsmtp/system_config_source_auth</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auth>
+                        <login translate="label">
+                            <label>Login</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </login>
+                        <passw translate="label">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </passw>
+                        <sec translate="label">
+                            <label>Connection Security</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>amsmtp/system_config_source_security</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sec>
+                        <test_email translate="label">
+                            <label>Send Test E-mail To</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_email>
+                        <check_connection translate="button_label">
+                            <label/>
+                            <button_label>Check Connection</button_label>
+                            <frontend_model>amsmtp/system_config_check</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </check_connection>
+                    </fields>
+                </smtp>
+                <clear>
+                    <label>Automatic Log Clearing</label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <email translate="label">
+                            <label>Clear Sent Emails Log After</label>
+                            <comment>Automatically remove old log records after specified number of days. If set to 0, will not auto clean.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </email>
+                        <debug translate="label">
+                            <label>Clear Debug Log After</label>
+                            <comment>Automatically remove old log records after specified number of days. If set to 0, will not auto clean.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </debug>
+                    </fields>
+                </clear>
+            </groups>
+        </amsmtp>
+    </sections>
+</config>
