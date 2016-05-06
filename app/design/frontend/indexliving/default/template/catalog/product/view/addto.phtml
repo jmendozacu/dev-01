@@ -26,13 +26,40 @@
 ?>
 
 <?php $_product = $this->getProduct(); ?>
-<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product);
+	$customer = Mage::getSingleton('customer/session')->getCustomer();
+	$_currentwishlistitem = '';
+	if($customer->getId())
+	{
+		$wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
+		$wishListItemCollection = $wishlist->getItemCollection();
+		$arritems_id = array();
 
+		foreach ($wishListItemCollection as $item) {
+			$_productwishlist = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
+			$arritems_id[] = $_productwishlist->getId();
+			if($_productwishlist->getId()==$_product->getId()){
+				$_currentwishlistitem = $item;
+			}
+		}
+	}
+	if($_currentwishlistitem!=''){
+		$_wishlistRemoveUrl = $this->helper('wishlist')->getRemoveUrl($_currentwishlistitem);
+	}
+?>
 <ul class="add-to-links">
 	<?php if ($this->helper('wishlist')->isAllow()) : ?>
 		<li class="wishlist-ajax add-wishlist">
-			<a id="wishlist-detail-<?php echo $_product->getId()?>" href="<?php echo $_wishlistSubmitUrl;?>"
-			   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a>
+			<a rel="" id="wishlist-detail-<?php echo $_product->getId()?>"
+			   href="<?php if(!in_array($_product->getId(),$arritems_id)){
+						echo $_wishlistSubmitUrl;
+					}else{
+						echo $_wishlistRemoveUrl;
+					}
+					?>"
+			   class="link-wishlist<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>-remove added-item<?php endif ?>">
+				<?php echo $this->__('Add to Wishlist') ?>
+			</a>
 		</li>
 	<?php endif;?>
 
@@ -43,7 +70,6 @@
 	foreach($collection as $comparing_product) {
 		if ($comparing_product->getId() == $_product->getId()) {
 			$compared = true;
-			Mage::log($compared.'_______',null,'minh.log');
 		}
 	}
 	?>
