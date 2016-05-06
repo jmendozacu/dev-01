@@ -525,7 +525,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			Mage::getSingleton('customer/session')->addSuccess(
 				$this->__('Your Wishlist has been shared.')
 			);
-			$this->_redirect('*/*', array('wishlist_id' => $wishlist->getId()));
+			$this->_redirect('*/*/share', array('wishlist_id' => $wishlist->getId()));
 		}
 		catch (Exception $e) {
 			$translate->setTranslateInline(true);
