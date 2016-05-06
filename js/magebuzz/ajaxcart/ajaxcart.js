@@ -342,7 +342,10 @@ AjaxCart.prototype = {
   removeWishlistItem: function(wishlist_item_id) {
     Effect.Fade($('item_'+wishlist_item_id));
   },
-	
+    removeWishlistItemM: function(url) {
+        remove_wishlist_url = url.replace('wishlist/index/remove', 'customwishlist/index/remove');
+        this.loggedInRemoveToWishlist(remove_wishlist_url);
+    },
   sendProductCartForm: function(event) {
     var actionUrl = this.productCartFormElement.readAttribute('action');
     var data_form = this.productCartFormElement.serialize();
@@ -465,8 +468,8 @@ AjaxCart.prototype = {
 			onCreate: function() {
 				this.ajaxLoading.show();
 			}.bind(this),
-
 			onComplete: function(transport) {
+
 				if (transport && transport.responseText) {
 					try {
 						response = eval('(' + transport.responseText + ')');
@@ -480,14 +483,36 @@ AjaxCart.prototype = {
 				this.optionsPopup.update(response.html);
 				this.optionsPopup.show();
 			}.bind(this)
+
 		});
 	},
-	
+
+    loggedInRemoveToWishlist: function(url) {
+        new Ajax.Request(url, {
+            onCreate: function() {
+                this.ajaxLoading.show();
+            }.bind(this),
+            onComplete: function(transport) {
+                if (transport && transport.responseText) {
+                    try {
+                        response = eval('(' + transport.responseText + ')');
+                        this.deactiveWishlistItem();
+                    }
+                    catch (e) {
+                        response = {};
+                    }
+                }
+                this.ajaxLoading.hide();
+                this.optionsPopup.update(response.html);
+                this.optionsPopup.show();
+            }.bind(this)
+        });
+    },
 	activeWishlistItem: function(wlitemadded) {
 		$$('.link-wishlist').each(function(link){
 			var linkHref = link.readAttribute('onclick');
 			var patt = /product\/\d+/igm;
-      var pattexec = patt.exec(linkHref);
+            var pattexec = patt.exec(linkHref);
 			if (typeof pattexec !== 'undefined' && pattexec !== null) {
 				var productId = pattexec.shift().slice(8);
 				if(wlitemadded.indexOf(productId) != -1){
@@ -498,7 +523,15 @@ AjaxCart.prototype = {
 			}
 		});
 	},
-	
+    deactiveWishlistItem: function() {
+        $$('.link-wishlist-remove').each(function(link){
+            var linkHref = link.readAttribute('onclick');
+            link.removeClassName('added-item');
+            link.removeClassName('link-wishlist-remove');
+            link.addClassName('link-wishlist');
+        });
+    },
+
 	ajaxRemoveCompareItem: function(url) {
 		new Ajax.Request(url, {
 				parameters: {isAjax: 1, method: 'POST'},

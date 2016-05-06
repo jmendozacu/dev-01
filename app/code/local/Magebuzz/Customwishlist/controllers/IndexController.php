@@ -394,6 +394,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	 */
 	public function removeAction()
 	{
+			$response = array();
 			$id = (int) $this->getRequest()->getParam('item');
 			$item = Mage::getModel('wishlist/item')->load($id);
 			$currentUrl = Mage::helper('core/url')->getCurrentUrl();
@@ -407,9 +408,8 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			try {
 					$item->delete();
 					$wishlist->save();
-					Mage::getSingleton('core/session')->addSuccess(
-							$this->__('Item has been removed.')
-					);
+					$response['status'] = 'SUCCESS';
+					$response['message'] = 'Product has been removed to your wishlist.';
 			} catch (Mage_Core_Exception $e) {
 					Mage::getSingleton('core/session')->addError(
 							$this->__('An error occurred while deleting the item from wishlist: %s', $e->getMessage())
@@ -422,7 +422,19 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 			Mage::helper('wishlist')->calculate();
 
-			$this->_redirectReferer($currentUrl);
+		$html =
+			'<div class="block" id="ajaxcart_content_option_product">
+			<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+			<div class="ajaxcart-heading">
+				<p class="added-success-message">'
+			. $response['message'] .
+			'</p>
+			</div>
+		</div>
+		';
+		$response['html'] = $html;
+
+		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
 	}
 	public function sendAction()
 	{
@@ -513,7 +525,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			Mage::getSingleton('customer/session')->addSuccess(
 				$this->__('Your Wishlist has been shared.')
 			);
-			$this->_redirect('*/*', array('wishlist_id' => $wishlist->getId()));
+			$this->_redirect('*/*/share', array('wishlist_id' => $wishlist->getId()));
 		}
 		catch (Exception $e) {
 			$translate->setTranslateInline(true);
