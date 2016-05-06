@@ -201,4 +201,34 @@ class Amasty_Smtp_Model_Core_Email_Template extends Amasty_Smtp_Model_Core_Email
 
         return $mail;
     }
+		
+		/*
+		* Amasty Customer Attribute extension
+		*/
+		public function sendTransactional($templateId, $sender, $email, $name,
+        $vars = array(), $storeId = null
+    ) {
+        if (isset($vars['order']) && !isset($vars['customer'])) {
+            // will try to add customer object
+            $order = $vars['order'];
+            if ($order->getCustomerId()) {
+                $customer = Mage::getModel('customer/customer')->load(
+                    $order->getCustomerId()
+                );
+                if ($customer->getId()) {
+                    $vars['customer'] = $customer;
+                }
+            } else {
+                $guest = Mage::getModel('amcustomerattr/guest')->load(
+                    $order->getId(), 'order_id'
+                );
+                if ($guest->getId()) {
+                    $vars['guest'] = $guest;
+                }
+            }
+        }
+        return parent::sendTransactional(
+            $templateId, $sender, $email, $name, $vars, $storeId
+        );
+    }
 }
