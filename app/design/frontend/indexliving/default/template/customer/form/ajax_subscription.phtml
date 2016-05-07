@@ -46,10 +46,10 @@
 		});
 		//<![CDATA[
 				var dataForm = new VarienForm('form-validate', true);				
-				var url = '<?php echo $this->getUrl('newsletter/manage/save') ?>';
+				var account_subscription_url = '<?php echo $this->getUrl('newsletter/manage/save') ?>';
 				$('subscription').observe('click', function() {
 					new Ajax.Request(
-						url,
+						account_subscription_url,
 						{
 							parameters: {
 								is_subscribed: $('check_is_subscribed').getValue()
