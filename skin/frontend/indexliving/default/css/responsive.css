@@ -223,7 +223,7 @@
   .box-home-decor .box-banner-right{width:100%; margin:0px;}
   .box-home-decor {padding-bottom:10px;}
   .box-home-decor:before {height:100%;}
-  .box-home-decor .decor-style {padding-right:0px;}
+  .box-home-decor .decor-style {padding-right:0px; padding-bottom:10px;}
   .box-home-decor .decor-banner {padding:10px;}
   .main-home .box-home-decor .decor-style li {float:left; margin-right:7px;}
   .main-home .box-home-decor .div-banner.banner-feature {overflow-x:auto; }
