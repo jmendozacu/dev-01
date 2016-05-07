@@ -238,6 +238,7 @@ jQuery(document).ready(function () {
   /* */
 
   jQuery('.toggle-minicart').click(function(){
+		jQuery('.header-cart-box .list-items').css("max-height", widthHeight - 195);
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
