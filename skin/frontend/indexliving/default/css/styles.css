@@ -8521,7 +8521,8 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 	text-transform: uppercase;
 	font-family: "FuturaT_Bold"
 }
-
+.product-view .availability.out-of-stock{text-align:center;}
+.product-view .availability.out-of-stock span{font-size:30px;}
 .product-view .product-options .swatch-attr {
   float: none;
   display: block;

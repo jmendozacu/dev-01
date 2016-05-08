@@ -223,7 +223,7 @@
   .box-home-decor .box-banner-right{width:100%; margin:0px;}
   .box-home-decor {padding-bottom:10px;}
   .box-home-decor:before {height:100%;}
-  .box-home-decor .decor-style {padding-right:0px;}
+  .box-home-decor .decor-style {padding-right:0px; padding-bottom:10px;}
   .box-home-decor .decor-banner {padding:10px;}
   .main-home .box-home-decor .decor-style li {float:left; margin-right:7px;}
   .main-home .box-home-decor .div-banner.banner-feature {overflow-x:auto; }
@@ -231,8 +231,8 @@
   .main-home .box-home-decor .box-banner-right li {width:48%; margin-right:4%; margin-bottom:0px; float:left;}
   .main-home .box-home-decor .box-banner-right li:nth-child(2){margin-right:0px;}
   .box-menu-home {float:left; width:100%;}
-  .box-home-list-products .nav-primary li.level0 {width:100%;}
-  .box-home-list-products .nav-primary li.level0 ul.level0{display:block!important;}
+  .box-home-list-products .nav-primary li.level0 {width:100%; margin:0 0 35px;}
+  .box-home-list-products .nav-primary li.level0 ul.level0{display:block!important; background:#f8f8f8;}
   .box-home-list-products .nav-primary li.level0 >a {float:left; margin:0px; width:100%; position:relative; background:#434343; color:#fff; padding: 5px 5px 5px 20px; line-height:25px; text-transform:uppercase; font-size:14px; }
   .box-home-list-products .nav-primary li.level0 >a:before {position:absolute; bottom:-10px; right:44px; content:""; width:0px; height:0px; border-top:solid 10px #434343; border-left:solid 8px transparent; border-right:solid 8px transparent; }
   .box-menu-home .nav-primary ul.level0 {float:left; width:100%; max-width:none; /* overflow-x:auto; */}
