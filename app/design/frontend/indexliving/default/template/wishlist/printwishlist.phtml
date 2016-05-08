@@ -5,25 +5,43 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
         $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
         $wishListItemCollection = $wishlist->getItemCollection();
         echo "<h3>My Wishlist</h3><br />";
-        echo "<table cellspacing=\"0\" cellpadding=\"1\" align = \"center\">";
-        echo "<tr style=\"background-color:#252525;color:#FFFFFF;\"><th></th><th>PRODUCTS</th><th>PRICE</th><th>SPECAL PRICE</th></tr>";
+        echo "<table >";
+        echo "<tr style=\"background-color:#252525;color:#FFFFFF;\"><th></th><th>PRODUCTS</th><th>SKU</th><th>PRICE</th><th>SPECAL PRICE</th></tr>";
         foreach ($wishListItemCollection as $item)
         {
             echo "<tr>";
             for($i=0;$i<4;$i++){
-                echo "<td>";
+                echo "<td >";
                 $item = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
                 if ($item->getId()) :
                     ?>
                     <img src="<?php echo Mage::helper('catalog/image')->init($item, 'image')->resize(80, 80); ?>" width="90" height="90" />
                 <?php endif;
-                echo "</td>";
-                echo  "<td>".$item->getName()."</td>";
-                echo  "<td>".$item->getPrice()."</td>";
-                echo  "<td>".$item->getSpecialPrice()."</td>";
+                echo  "</td>";
+                echo  "<td >".$item->getName()."</td>";
+                echo  "<td >".$item->getSku()."</td>";
+                echo  "<td >".$item->getPrice()."</td>";
+                echo  "<td >".$item->getSpecialPrice()."</td>";
             }
             echo "</tr>";
         }
         echo "</table>";
     }
+echo "<style>
+table, td {
+    border-bottom: 1px solid #c1c1c1;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    vertical-align:middle;
+}
+
+th {
+    height: 30px;
+
+}
+</style>";
 ?>
