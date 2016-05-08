@@ -28,12 +28,13 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product);
 	$customer = Mage::getSingleton('customer/session')->getCustomer();
+	$inwishlist = false;
 	$_currentwishlistitem = '';
 	if($customer->getId())
 	{
 		$wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer, true);
 		$wishListItemCollection = $wishlist->getItemCollection();
-		$inwishlist = false;
+
 		foreach ($wishListItemCollection as $item) {
 			$_productwishlist = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
 			if($_productwishlist->getId()==$_product->getId()){
