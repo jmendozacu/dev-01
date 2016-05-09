@@ -43,15 +43,9 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
     <?php if($_helper->getItemCount() > 0): ?>
         <ol id="compare-items">
         <?php foreach($_items as $_index => $_item): ?>
-						<?php
-							$iscurrent_product = false;
-							if($this->getProduct()->getId()==$_item->getProductId()){
-								$iscurrent_product =true;
-							}
-						?>
             <li class="item">
                 <input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
-                <a href="javascript:void(0)" onclick="removeajaxCompare('<?php echo $_helper->getRemoveUrl($_item) ?>',<?php if($iscurrent_product){echo $iscurrent_product;}else{echo '0';}?>)" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>" class="btn-remove" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the compare products?')) ?>');"><?php echo $this->__('Remove This Item') ?></a>
+                <a href="javascript:void(0)" onclick="removeajaxCompare('<?php echo $_helper->getRemoveUrl($_item) ?>')" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>" class="btn-remove" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the compare products?')) ?>');"><?php echo $this->__('Remove This Item') ?></a>
                 <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></p>
             </li>
         <?php endforeach; ?>
@@ -103,7 +97,7 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
 						}
 				});
 		}
-    function removeajaxCompare(url, iscurent_product) {
+    function removeajaxCompare(url) {
         url = url.replace("catalog/product_compare/remove", "customcompare/product_compare/remove");
         $j.ajax({
             url: url,
@@ -117,9 +111,10 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
                 $j('.block-compare').remove();
                 $j(".compare_bar").html(data.bar);
                 $j(".sider_bar").show();
-                if(iscurent_product){
-									$j('.link-compare').removeClass('added-item'); // Remove active 
-								}
+                /* $j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+                setTimeout(function () {
+                    $j('.col-main').find('.messages').remove();
+                }, 5000); */
 								$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
 								$j('#ajaxcart-overlay').show();
 								setTimeout(function () {
