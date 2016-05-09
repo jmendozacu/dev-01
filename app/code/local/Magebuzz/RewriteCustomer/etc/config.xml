@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magebuzz_RewriteCustomer>
+            <version>0.1.0</version>
+        </Magebuzz_RewriteCustomer>
+    </modules>
+
+    <frontend>
+        <routers>
+            <customer>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <magebuzz_rewritecustomer before="Mage_Customer_AccountController">Magebuzz_RewriteCustomer</magebuzz_rewritecustomer>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+</config>
