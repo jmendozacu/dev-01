@@ -415,8 +415,8 @@
   .sort-by-content li a{display:block; line-height:20px; padding-top:5px; padding-bottom:5px;}
 
 	.sidebar .block-compare{padding:10px;}
-	.sidebar .block-title strong{background-position:97% 40%; background-image:url(../images/arrow-down-2.png); background-repeat:no-repeat;}
-	.sidebar .block-title.active strong{background-position:97% 40%;  background-image:url(../images/arrow-up-2.png); background-repeat:no-repeat;}
+	.sidebar .block-title strong{background-position:97% 40%;}
+	.sidebar .block-title.active strong{background-position:97% 40%;}
 
   .block-layered-nav .block-content > dl > dt:after,
   .block-layered-nav .currently,

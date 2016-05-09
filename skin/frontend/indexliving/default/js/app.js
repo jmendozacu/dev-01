@@ -444,37 +444,6 @@ $j(document).ready(function () {
     // Options:
     //     destruct: defaults to false, but if true, the plugin will remove itself, display content, and remove event handlers
 
-
-    jQuery.fn.toggleSingle = function (options) {
-
-        // passing destruct: true allows
-        var settings = $j.extend({
-            destruct: false
-        }, options);
-
-        return this.each(function () {
-            if (!settings.destruct) {
-                $j(this).on('click', function () {
-                    $j(this)
-                        .toggleClass('active')
-                        .next()
-                        .toggleClass('no-display');
-                });
-                // Hide the content
-                $j(this).next().addClass('no-display');
-            } else {
-                // Remove event handler so that the toggle link can no longer be used
-                $j(this).off('click');
-                // Remove all classes that were added by this plugin
-                $j(this)
-                    .removeClass('active')
-                    .next()
-                    .removeClass('no-display');
-            }
-
-        });
-    }
-
     // ==============================================
     // UI Pattern - Toggle Content (tabs and accordions in one setup)
     // ==============================================
@@ -590,30 +559,7 @@ $j(document).ready(function () {
             }
         });
     }
-
-
-    // ==============================================
-    // Block collapsing (on smaller viewports)
-    // ==============================================
-
-    enquire.register('(max-width: ' + bp.medium + 'px)', {
-        setup: function () {
-            this.toggleElements = $j(
-                // This selects the menu on the My Account and CMS pages
-                '.col-left-first .block:not(.block-layered-nav) .block-title, ' +
-                    '.col-left-first .block-layered-nav .block-subtitle--filter, ' +
-                    '.sidebar:not(.col-left-first) .block .block-title'
-            );
-        },
-        match: function () {
-            this.toggleElements.toggleSingle();
-        },
-        unmatch: function () {
-            this.toggleElements.toggleSingle({destruct: true});
-        }
-    });
-
-
+		
     // ==============================================
     // OPC - Progress Block
     // ==============================================
