@@ -28,4 +28,11 @@ $_query  = Mage::helper('catalogsearch')->getQueryText();
         jQuery('#ul-list').css("max-height", widthHeight -100);
       }
     </script>  
+<?php else: ?>
+	<div class="top"></div>
+	<div class="all">		
+		<a href="<?php echo Mage::getUrl('catalogsearch/result', array('_query' => array('q' => $_query))) ?>"><span>
+		<?php echo $this->__('No result found for current store, click here to search for all stores');?>
+		</span></a>
+	</div>
 <?php endif ?>
