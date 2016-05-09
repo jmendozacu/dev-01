@@ -36,6 +36,7 @@
 		padding:20px 0;
 		font-size:20px;
 	}
+	.category-bestseller{padding:0;}
  }
  @media (min-width: 992px) and (max-width: 1199px) {
 		.product-view .product-img-box{
