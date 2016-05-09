@@ -11,11 +11,11 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
         {
             echo "<tr>";
             for($i=0;$i<4;$i++){
-                echo "<td >";
+                echo "<td >"."&nbsp;"."<br />";
                 $item = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
                 if ($item->getId()) :
                     ?>
-                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'image')->resize(80, 80); ?>" width="90" height="90" />
+                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'image')->resize(70,70); ?>" width="90" height="90" />
                 <?php endif;
                 echo  "</td>";
                 echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getName()."</td>";
@@ -37,7 +37,7 @@ table {
     width: 100%;
 }
 td {
-    height: 90px;
+    height: 110px;
 }
 th {
     height: 30px;
