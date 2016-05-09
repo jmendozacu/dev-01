@@ -655,7 +655,7 @@ $j(document).ready(function () {
                         // Space above .actions element
                         var actionSpacing = 10;
                         // The height of the absolutely positioned .actions element
-                        var actionHeight = $j(this).find('.product-info .actions').height();
+                        var actionHeight = 0;
 
                         // Add height of two elements. This is necessary since .actions is absolutely positioned and won't
                         // be included in the height of .product-info

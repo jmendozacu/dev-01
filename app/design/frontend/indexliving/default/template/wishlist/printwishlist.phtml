@@ -9,19 +9,20 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
         echo "<tr style=\"background-color:#252525;color:#FFFFFF;\"><th></th><th>PRODUCTS</th><th>SKU</th><th>PRICE</th><th>SPECAL PRICE</th></tr>";
         foreach ($wishListItemCollection as $item)
         {
+            Mage::log($item);
             echo "<tr>";
             for($i=0;$i<4;$i++){
-                echo "<td >";
+                echo "<td >"."&nbsp;"."<br />";
                 $item = Mage::getModel('catalog/product')->setStoreId($item->getStoreId())->load($item->getProductId());
                 if ($item->getId()) :
                     ?>
-                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'image')->resize(80, 80); ?>" width="90" height="90" />
+                    <img src="<?php echo Mage::helper('catalog/image')->init($item, 'image')->resize(70,70); ?>" width="90" height="90" />
                 <?php endif;
                 echo  "</td>";
                 echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getName()."</td>";
                 echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getSku()."</td>";
                 echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getPrice()."</td>";
-                echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getSpecialPrice()."</td>";
+                echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getFinalPrice()."</td>";
             }
             echo "</tr>";
         }
@@ -37,7 +38,7 @@ table {
     width: 100%;
 }
 td {
-    height: 90px;
+    height: 110px;
 }
 th {
     height: 30px;
