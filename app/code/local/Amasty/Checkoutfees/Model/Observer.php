@@ -376,7 +376,8 @@ class Amasty_Checkoutfees_Model_Observer
             // save into quote
             $quote->setData('amcheckoutfees_fees', $data);
             $quote->save();
-            $quote->setTotalsCollectedFlag(false)->collectTotals();
+            //commented this line because of conflict with single checkout page
+						//$quote->setTotalsCollectedFlag(false)->collectTotals();
         }
 
         return $observer;
