@@ -364,7 +364,8 @@ div.am-login:active {
 }
 #am-ajax-facebook iframe{overflow:hidden;}
 @media screen and (max-width: 565px) {
-  .account-mini-login .am-form-block {max-width:100%;}
+  .account-mini-login .am-form-block {max-width:100%; padding: 0 35px;}
+  .account-mini-login .am-form-block .am-facebook-image{padding:0 0 0 70px; width:180px;}
 }
 @media screen and (max-width: 375px) {
 }

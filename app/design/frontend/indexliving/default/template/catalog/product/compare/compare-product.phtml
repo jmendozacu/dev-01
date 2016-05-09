@@ -105,9 +105,6 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
 				});
 		}
     function removeajaxCompare(url,iscurent_product) {
-		if(iscurent_product){
-			$j('#remodal').removeClass('added-item');
-		}
 			url = url.replace("catalog/product_compare/remove", "customcompare/product_compare/remove");
 			$j.ajax({
 					url: url,
@@ -117,13 +114,16 @@ $_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
 						$j("#ajax_cart_loading").show();
 					},
 					success: function (data) {
-							$j("#ajax_cart_loading").hide();
-							$j("#product-compare-list").html(data.bar);
-							$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
-							$j('#ajaxcart-overlay').show();
-							setTimeout(function () {
-								Effect.Fade($('ajaxcart-overlay'));
-							}, 5000);
+						$j("#ajax_cart_loading").hide();
+						$j("#product-compare-list").html(data.bar);
+						if(iscurent_product){
+							$j('.link-compare').removeClass('added-item'); // Remove active 
+						}
+						$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
+						$j('#ajaxcart-overlay').show();
+						setTimeout(function () {
+							Effect.Fade($('ajaxcart-overlay'));
+						}, 5000);
 					}
 			});
     }
