@@ -4598,6 +4598,7 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-grid .product-info {
   padding-bottom: 95px;
+	overflow:hidden;
 }
 
 .products-grid .actions {
