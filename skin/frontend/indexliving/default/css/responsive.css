@@ -37,6 +37,8 @@
 		font-size:20px;
 	}
 	.category-bestseller{padding:0;}
+	.category-bestseller .block-content{padding:0; border:5px solid #FFD322}
+	.categories-list .category-grid .categories-links:hover .categories-list-lvl3{max-height:0;}
  }
  @media (min-width: 992px) and (max-width: 1199px) {
 		.product-view .product-img-box{
@@ -356,7 +358,7 @@
   .categories-list .category-grid li.category-item.category-products-list{position:relative;}
   .categories-list .category-grid li.category-item:nth-child(2n){margin-right:0px;}
   .categories-list .category-grid .categories-links a.link-has-sub,
-  .categories-list .category-grid .categories-links a.link-no-sub {font-size:14px; padding:8px 0;}
+  .categories-list .category-grid .categories-links a.link-no-sub {}
   .categories-list .category-grid .categories-links .categories-list-lvl3 ul li a {font-size:13px;}
   .categories-list .category-grid li.category-item.category-products-list .link-view-productlist {
 		font-size: 40px;
@@ -391,9 +393,9 @@
   .category-bestseller .categoryproducts.block-highlight {background:none; padding:0px;}
   .category-bestseller .categoryproducts.block-highlight .mCustomScrollBox { position:relative; }
   .category-bestseller .categoryproducts.block-highlight .mCustomScrollBox:before ,
-  .category-bestseller .categoryproducts.block-highlight .mCustomScrollBox:after{content:""; position:absolute; width:5px; height:100%; left:0px; top: -20px; background:#FFD322; z-index:1;}
-  .category-bestseller .categoryproducts.block-highlight .mCustomScrollBox:after {left:100%; margin-left:-5px;}
-  .category-bestseller .categoryproducts.block-highlight .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:20px; border-bottom:solid 5px #FFD322; border-top:solid 5px #FFD322;}
+  .category-bestseller .categoryproducts.block-highlight .mCustomScrollBox:after{}
+  .category-bestseller .categoryproducts.block-highlight .mCustomScrollBox:after {}
+  .category-bestseller .categoryproducts.block-highlight .mCSB_horizontal.mCSB_inside > .mCSB_container {margin-bottom:20px;}
   .category-products .products-grid .product-info  {padding-bottom:0!important;}
   .category-products .products-grid .actions  {margin:0;}
   .category-products .toolbar  {display:none;}

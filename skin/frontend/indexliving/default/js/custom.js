@@ -418,69 +418,78 @@ jQuery(document).ready(function () {
 			jQuery(this).removeClass('active');
 		}
 	});
+	if(widthWindow < 1199){
+		jQuery('.categories-list .category-grid li.category-item .categories-links .link-has-sub').click(function(){
+			if (!jQuery(this).hasClass('active')){
+				jQuery(this).next().css("max-height", 195);
+				jQuery(this).addClass('active');
+			}
+			else{
+				jQuery(this).removeClass('active');
+				jQuery(this).next().css("max-height", 0);
+			}
+		});
+	}
+	if(widthWindow <769){
+		/* box promo */
+		jQuery(".category-banners .div-banner").mCustomScrollbar({
+			axis:"x",
+			advanced:{autoExpandHorizontalScroll:true}
+		});
+		/* move sort-by-mobile on box filter */
+		var sortByHtml = jQuery(".toolbar .sort-by-mobile").html();
+		jQuery(".col-left-first .block-layered-nav .block-content").append(sortByHtml);
+		//jQuery('.toolbar .sort-by-mobile').remove();
+		/* toggle layered-nav */
+		jQuery('.toggle-box-filter.toggle-nav').click(function(){
+			jQuery('.box-filter-content').hide();
+			jQuery('.toggle-box-filter').removeClass('active');
+			if(!jQuery(this).hasClass('active')){
+				jQuery(this).addClass('active');
+				jQuery('#narrow-by-list').show();
+			}else{
+				jQuery(this).removeClass('active');
+				jQuery('#narrow-by-list').hide();
+			}
+			if(!jQuery('.block-layered-nav').hasClass('active')){
+				jQuery('.block-layered-nav').addClass('active');
+			}
+		});
+		/*  and sortby */
+		jQuery('.toggle-box-filter.toggle-sort-by').click(function(){
+			jQuery('.box-filter-content').hide();
+			jQuery('.toggle-box-filter').removeClass('active');
+			if(!jQuery(this).hasClass('active')){
+				jQuery(this).addClass('active');
+				jQuery('.sort-by-content').show();
+			}else{
+				jQuery(this).removeClass('active');
+				jQuery('.sort-by-content').hide();
+			}
+			if(!jQuery('.block-layered-nav').hasClass('active')){
+				jQuery('.block-layered-nav').addClass('active');
+			}
+		});
+		/* close-filter */
+		jQuery('#close-filter').click(function(){
+			jQuery('.block-layered-nav, .toggle-box-filter').removeClass('active');
+			jQuery('.box-filter-content').hide();
+		});
+		/* max-height box-filter-content*/
+		jQuery('.box-filter-content').css("max-height", widthHeight -100);
+		/* nav-myaccount mobile*/
+		jQuery('.current-myaccountpage').click(function(){
+		 if (!jQuery(this).hasClass('active')){
+			jQuery(this).next().slideDown(300);
+			jQuery(this).addClass('active');
+		 }
+		 else{
+			jQuery(this).removeClass('active');
+			jQuery(this).next().slideUp(300);
+		 }
+		});
 
-  /* var widthWindow = jQuery( window ).width();
-  var widthHeight = jQuery( window ).height(); */
-    if(widthWindow <769){
-      /* box promo */
-      jQuery(".category-banners .div-banner").mCustomScrollbar({
-        axis:"x",
-        advanced:{autoExpandHorizontalScroll:true}
-      });
-      /* move sort-by-mobile on box filter */
-      var sortByHtml = jQuery(".toolbar .sort-by-mobile").html();
-      jQuery(".col-left-first .block-layered-nav .block-content").append(sortByHtml);
-      //jQuery('.toolbar .sort-by-mobile').remove();
-      /* toggle layered-nav */
-      jQuery('.toggle-box-filter.toggle-nav').click(function(){
-        jQuery('.box-filter-content').hide();
-        jQuery('.toggle-box-filter').removeClass('active');
-        if(!jQuery(this).hasClass('active')){
-          jQuery(this).addClass('active');
-          jQuery('#narrow-by-list').show();
-        }else{
-          jQuery(this).removeClass('active');
-          jQuery('#narrow-by-list').hide();
-        }
-        if(!jQuery('.block-layered-nav').hasClass('active')){
-          jQuery('.block-layered-nav').addClass('active');
-        }
-      });
-      /*  and sortby */
-      jQuery('.toggle-box-filter.toggle-sort-by').click(function(){
-        jQuery('.box-filter-content').hide();
-        jQuery('.toggle-box-filter').removeClass('active');
-        if(!jQuery(this).hasClass('active')){
-          jQuery(this).addClass('active');
-          jQuery('.sort-by-content').show();
-        }else{
-          jQuery(this).removeClass('active');
-          jQuery('.sort-by-content').hide();
-        }
-        if(!jQuery('.block-layered-nav').hasClass('active')){
-          jQuery('.block-layered-nav').addClass('active');
-        }
-      });
-      /* close-filter */
-      jQuery('#close-filter').click(function(){
-        jQuery('.block-layered-nav, .toggle-box-filter').removeClass('active');
-        jQuery('.box-filter-content').hide();
-      });
-      /* max-height box-filter-content*/
-      jQuery('.box-filter-content').css("max-height", widthHeight -100);
-      /* nav-myaccount mobile*/
-      jQuery('.current-myaccountpage').click(function(){
-       if (!jQuery(this).hasClass('active')){
-        jQuery(this).next().slideDown(300);
-        jQuery(this).addClass('active');
-       }
-       else{
-        jQuery(this).removeClass('active');
-        jQuery(this).next().slideUp(300);
-       }
-      });
-
-    }
+	}
 
    var mytabs = ".career_job .menuheaders";
    jQuery(mytabs).click(function(){
