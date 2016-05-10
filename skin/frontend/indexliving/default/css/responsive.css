@@ -416,11 +416,12 @@
   .block-layered-nav .toggle-box-filter.active:before {content:""; width:0px; height:0px; position:absolute; bottom:-10px;  left:50%; margin-left:-6px; border-top: solid 10px #373737;  border-right: solid 6px transparent;  border-left: solid 6px transparent;}
   .block-layered-nav .toggle-box-filter.toggle-sort-by.active:before  {border-top-color:#AEAEAE;}
 
-  .block-layered-nav.amshopby-filters-left{background:url(../images/bkg_box_filter.png); top: 100%; transition: top 0.4s ease; position:fixed; z-index:11; width:100%; height:100%; left:0px;}
-  .block-layered-nav.active { top:43px; }
-  .block-layered-nav.active #title-filter-mobile {position:relative; display:block!important; color:#FFC222; text-align:center; padding: 5px; font-size:17px; line-height:30px; text-transform:uppercase; margin:0px; background:#252525;}
-  .block-layered-nav.active #title-filter-mobile #close-filter { position:absolute; height:100%; width:25px; position:absolute; top:0px; left:0px; text-indent:-9999px; background:url(../images/arrow-left-white.png) no-repeat center center;}
+  .block-layered-nav.amshopby-filters-left .layered-nav-content{background:url(../images/bkg_box_filter.png); top: 100%; transition: top 0.4s ease; position:fixed; z-index:10000; width:100%; height:100%; left:0px;}
+  .block-layered-nav .layered-nav-content.active { top:43px; }
+  .block-layered-nav .layered-nav-content.active #title-filter-mobile {position:relative; display:block!important; color:#FFC222; text-align:center; padding: 5px; font-size:17px; line-height:30px; text-transform:uppercase; margin:0px; background:#252525;}
+  .block-layered-nav .layered-nav-content.active #title-filter-mobile #close-filter { position:absolute; height:100%; width:25px; position:absolute; top:0px; left:0px; text-indent:-9999px; background:url(../images/arrow-left-white.png) no-repeat center center;}
 	.block-layered-nav .block-content dt.current,  .block-layered-nav .block-content dd.current{position:relative; z-index:222}
+	.filter-state{background:#e7e5e7; padding:20px 10px; margin:0 10px;}
   .category-products {float:left; width:100%;}
   .box-filter-content {display:none; float:left; width:100%; overflow-y:auto; }
   dl#narrow-by-list.box-filter-content{padding-bottom:32px !important;}
@@ -438,7 +439,6 @@
 	.sidebar .block-title.active strong{background-position:97% 40%;}
 
   .block-layered-nav .block-content > dl > dt:after,
-  .block-layered-nav .currently,
   .block-layered-nav .block-subtitle,
   .block-layered-nav .actions,
   .toolbar-bottom .sorter,

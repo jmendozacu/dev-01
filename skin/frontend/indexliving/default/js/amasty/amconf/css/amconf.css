@@ -277,6 +277,6 @@ hr.amconf-hr{
 	.products-grid li.item .amconf-block {
 		top: 55%;
     position: absolute;
-    z-index: 9999;
+    z-index: 99;
 	}
 }

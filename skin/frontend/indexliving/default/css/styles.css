@@ -2228,7 +2228,7 @@ span.weee {
  * Printer Friendly Page
  */
 .page-print {
-  width: 6.5in;
+ /*  width: 6.5in; */
   margin: 20px;
   background: #FFFFFF;
 }
@@ -5081,7 +5081,7 @@ body.catalogsearch-result-index .page-title h1 {
     z-index: 112;
     transition: top 0.4s ease;
   }
-  .block-layered-nav.active .block-content {
+  .block-layered-nav .layered-nav-content.active .block-content {
     top: 133px;
   }
   .block-layered-nav .block-content > dl > dt {
@@ -5121,13 +5121,17 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-layered-nav .currently ol {
   padding-left: 10px;
-  margin-bottom: 10px;
+ /*  margin-bottom: 10px; */
 }
 .block-layered-nav .currently ol li {
   margin-bottom: 5px;
+	font-family: 'FuturaBT-Book';
+	font-size:16px;
+	color:#000;
 }
 .block-layered-nav .currently ol li .label {
   font-weight: bold;
+	color:#636363;
 }
 .block-layered-nav .currently ol li:after {
   content: '';
@@ -6864,10 +6868,6 @@ body.catalogsearch-result-index .page-title h1 {
   }
 	#discount-coupon-form .input-text, .cart .giftcard .input-text{width:65%;}
 }
-@media only screen and (max-width: 599px) {
-  .product-cart-sku {
-    display: none;
-  }
 
   .display-both-prices .cart-forms,
   .display-both-prices .cart-totals-wrapper,
@@ -8863,7 +8863,8 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  .my-account .dashboard-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
  .my-account .form-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
 
-.data-table.orders-table th, .order-items.order-details .data-table th{
+.data-table.orders-table th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  } 
+.order-items.order-details .data-table th{
 	color: #f4701e;
 	border-bottom: 4px solid #ffc222;
 	text-align: center;
@@ -8876,16 +8877,16 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 	text-align:center;
 }
 #wishlist-table  th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  }
-.order-items.order-details .data-table th {text-align:center;}
-.order-items.order-details .data-table td ,
-.order-items.order-details .data-table td.number a{padding:10px 10px; text-align:center; color:#000; font-size:14px; font-family: 'FuturaT_Bold';}
-.order-items.order-details .data-table td.ship {font-family:tahoma;}
-.order-items.order-details .data-table td.status span {display:inline-block; text-align:center; min-width:84px; height:26px; line-height:26px; border:solid 1px #BEBEBE; border-radius:5px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
-.order-items.order-details .data-table td.status span.status-done { color:#A0D819;}
-.order-items.order-details .data-table  td,
-.order-items.order-details .data-table th{/* text-align:left; */ vertical-align:middle;}
-.order-items.order-details .data-table .a-right {text-align:right;}
-.order-items.order-details .data-table .product-name	{    
+.data-table.orders-table th {text-align:center;}
+.data-table.orders-table td ,
+.data-table.orders-table td.number a{padding:10px 10px; text-align:center; color:#000; font-size:14px; font-family: 'FuturaT_Bold';}
+.data-table.orders-table td.ship {font-family:tahoma;}
+.data-table.orders-table td.status span {display:inline-block; text-align:center; min-width:84px; height:26px; line-height:26px; border:solid 1px #BEBEBE; border-radius:5px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
+.data-table.orders-table td.status span.status-done { color:#A0D819;}
+.data-table.orders-table  td,
+.data-table.orders-table th{/* text-align:left; */ vertical-align:middle;}
+.data-table.orders-table .a-right {text-align:right;}
+.data-table.orders-table .product-name	{    
 		color: #000;
     font-size: 14px;
     font-weight: 600;
@@ -8903,13 +8904,14 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .order-items.order-details .data-table tfoot tr.discount td{
 	color:#FF0000;
 }	
-.order-items.order-details .data-table tr.ordered-bundle-item,
-.order-items.order-details .data-table tr.ordered-bundle-parent{border-bottom:0 none;}
-.order-items.order-details .data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
-.order-items.order-details .data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
-.order-items.order-details .data-table tr.ordered-bundle-item td .option-label,
-.order-items.order-details .data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
-.order-items.order-details .data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
+.data-table tr.ordered-bundle-item,
+.data-table tr.ordered-bundle-parent{border-bottom:0 none;}
+.data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
+.data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
+.data-table tr.ordered-bundle-item td .option-label,
+.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
+.data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
+.page-print .data-table tr.ordered-bundle-item.last td{border-bottom:0 none; padding-bottom:10px;}
 
 .dashboard .box-head {
   margin-top: 30px;
