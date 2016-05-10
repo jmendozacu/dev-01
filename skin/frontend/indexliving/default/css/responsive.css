@@ -39,6 +39,7 @@
 	.category-bestseller{padding:0;}
 	.category-bestseller .block-content{padding:0; border:5px solid #FFD322}
 	.categories-list .category-grid .categories-links:hover .categories-list-lvl3{max-height:0;}
+	.products-grid .product-info{min-height:167px;}
  }
  @media (min-width: 992px) and (max-width: 1199px) {
 		.product-view .product-img-box{

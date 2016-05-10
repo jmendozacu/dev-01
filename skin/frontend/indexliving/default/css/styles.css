@@ -8893,7 +8893,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 	color:#FF0000;
 }	
 .data-table.orders-table tr.ordered-bundle-item{}
-.data-table.orders-table tr.ordered-bundle-parent td,
+.data-table.orders-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
 .data-table.orders-table tr.ordered-bundle-item td{border:0 none; padding:0;}
 .data-table.orders-table tr.ordered-bundle-item td .option-label,
 .data-table.orders-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
@@ -9137,12 +9137,10 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 
 
 #my-orders-table .option-label {
-  margin-left: 10px;
   font-weight: 600;
   font-style: italic;
 }
 #my-orders-table .option-value {
-  margin-left: 20px;
 }
 #my-orders-table tr.bundle:not(:last-child) td {
   border-bottom: none;
