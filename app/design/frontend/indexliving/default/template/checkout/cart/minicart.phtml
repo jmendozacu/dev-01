@@ -63,7 +63,7 @@
         </p>
       </div>
     <?php endif ?>
-    <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+    <?php if($_cartQty): ?>
     <div class="actions">
         <?php echo $this->getChildHtml('extra_actions') ?>
         <button type="button" title="<?php echo $this->__('Checkout') ?>" class="button r-button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
