@@ -18,7 +18,7 @@
  * @website   http://magentothai.wordpress.com/
  */
 ?>
-<p>A<?php echo $this->htmlEscape($this->getMethod()->getPaymenttitle()) ?></p>
+<p><?php echo $this->getMethod()->getTitle().'  '.$this->getPlanText() ?><br/>
 <?php
 /*
 $PaymentSelect = $this->htmlEscape($this->getInfo()->getPoNumber());
