@@ -8874,6 +8874,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 		color: #636363;
     font-size: 14px;
     font-weight: 600;
+		margin:0;
 }
 .data-table.orders-table tfoot tr{background:#FFF;}
 .data-table.orders-table tfoot tr td{
@@ -8887,7 +8888,12 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table.orders-table tfoot tr.discount td{
 	color:#FF0000;
 }	
-
+.data-table.orders-table tr.ordered-bundle-item{}
+.data-table.orders-table tr.ordered-bundle-parent td,
+.data-table.orders-table tr.ordered-bundle-item td{border:0 none; padding:0;}
+.data-table.orders-table tr.ordered-bundle-item td .option-label,
+.data-table.orders-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
+.data-table.orders-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
 
 .dashboard .box-head {
   margin-top: 30px;
