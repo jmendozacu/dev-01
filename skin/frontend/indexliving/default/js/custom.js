@@ -216,7 +216,7 @@ jQuery(document).ready(function () {
     }
 	});
   /* mini login */
-  jQuery('.togglelogin').click(function(){
+  jQuery('.togglelogin').click(function(event){
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
