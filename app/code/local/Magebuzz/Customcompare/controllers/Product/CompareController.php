@@ -23,7 +23,7 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
                             Mage::helper('catalog/product_compare')->calculate();
                             Mage::dispatchEvent('catalog_product_compare_add_product', array('product' => $product));
                             $this->loadLayout();
-                            $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/compare-response.phtml')->toHtml();
+                            $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/compare-product.phtml')->toHtml();
                             $response['html'] =
                                 '<div class="block" id="ajaxcart_content_option_product">
 													<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
@@ -91,7 +91,7 @@ class MageBuzz_Customcompare_Product_CompareController extends Mage_Catalog_Prod
                     Mage::dispatchEvent('catalog_product_compare_remove_product', array('product'=>$item));
                     Mage::helper('catalog/product_compare')->calculate();
                     $this->loadLayout();
-                    $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/sidebar.phtml')->toHtml();
+                    $response['bar'] = $this->getLayout()->createBlock('catalog/product_compare_sidebar')->setTemplate('catalog/product/compare/compare-product.phtml')->toHtml();
                 }
             }
         }

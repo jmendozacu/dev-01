@@ -22,7 +22,7 @@
         <div class="amloading" id="amloading-co-payment-form"><span class="amscheckout-processing-small">&nbsp;</span></div>
         <div style="display: none;">:AM_REPLACE</div>
     </div>
-    <div class="call_center_img"><img src="/media/payment/call-center.png" alt="call center"></div>
+    <div class="call_center_img"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/payment/call-center.png' ?>" alt="call center"/></div>
 </div>
 <div class="tool-tip" id="payment-tool-tip" style="display:none;">
     <div class="btn-close"><a href="#" id="payment-tool-tip-close" title="<?php echo $this->__('Close') ?>"><?php echo $this->__('Close') ?></a></div>
