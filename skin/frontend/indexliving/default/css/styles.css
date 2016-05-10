@@ -6864,10 +6864,6 @@ body.catalogsearch-result-index .page-title h1 {
   }
 	#discount-coupon-form .input-text, .cart .giftcard .input-text{width:65%;}
 }
-@media only screen and (max-width: 599px) {
-  .product-cart-sku {
-    display: none;
-  }
 
   .display-both-prices .cart-forms,
   .display-both-prices .cart-totals-wrapper,
