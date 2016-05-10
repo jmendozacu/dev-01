@@ -30,12 +30,7 @@
                         <table>am_shiprestriction_attribute</table>
                     </attribute> 
                 </entities>
-            </amshiprestriction_mysql4>   
-            <shipping>
-                <rewrite>
-                    <shipping>Amasty_Shiprestriction_Model_Shipping_Shipping</shipping>
-                </rewrite>
-            </shipping>	
+            </amshiprestriction_mysql4>  
         </models>     
         <resources>
             <amshiprestriction_setup>

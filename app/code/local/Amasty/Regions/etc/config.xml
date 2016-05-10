@@ -32,12 +32,6 @@
                     </region_country>
                 </entities>
             </amregions_resource>
-
-            <enterprise_customersegment>
-                <rewrite>
-                    <observer>Amasty_Regions_Model_Customersegment_Observer</observer>
-                </rewrite>
-            </enterprise_customersegment>
         </models>
 
         <resources>
