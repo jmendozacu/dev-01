@@ -77,10 +77,9 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
             mkdir($path, 0777, TRUE);
           }
 
-          if (!file_exists($path . DS . $image_name)) {
             $uploader->save($path, $image_name);
-          }
-					$new_icon_image = $uploader->getUploadedFileName();
+
+          $new_icon_image = $uploader->getUploadedFileName();
 					
         } catch (Exception $e) {
           // silence is gold
@@ -90,7 +89,7 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
         $data['icon_image'] = $model->getIconImage();
       }
 			
-			if (isset($_FILES['dealer_map']['name']) && $_FILES['dealer_map']['name'] != '') {
+      if (isset($_FILES['dealer_map']['name']) && $_FILES['dealer_map']['name'] != '') {
         try {
           //rename image in case image name has space
           $image_name = $_FILES['dealer_map']['name'];
@@ -105,10 +104,8 @@ class Magebuzz_Dealerlocator_Adminhtml_DealerlocatorController extends Mage_Admi
             mkdir($path, 0777, TRUE);
           }
 
-          if (!file_exists($path . DS . $image_name)) {
-            $uploader->save($path, $image_name);
-          }
-					$new_dealermap_name = $uploader->getUploadedFileName();
+          $uploader->save($path, $image_name);
+          $new_dealermap_name = $uploader->getUploadedFileName();
         } catch (Exception $e) {
           // silence is gold
         }
