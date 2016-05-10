@@ -272,6 +272,10 @@ jQuery(document).ready(function () {
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
     jQuery('.box-top-menu').css("max-height", widthHeight -44);
+		if(jQuery('.box-header-content').hasClass('active')){
+			jQuery('.box-header-content').removeClass('active');
+			jQuery('#header-nav .nav-primary .arrow').removeClass('active');
+		}
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
