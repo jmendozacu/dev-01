@@ -27,7 +27,7 @@ class Magebuzz_OrderQty_Block_Adminhtml_Sales_Order_Create_Search_Grid extends M
         Mage::getSingleton('catalog/product_status')->addSaleableFilterToCollection($collection);
 
         $this->setCollection($collection);
-        return parent::_prepareCollection();
+        return $this;
     }
 
     /**
