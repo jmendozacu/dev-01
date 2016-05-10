@@ -42,24 +42,33 @@
         var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
 				var url = '<?php echo $this->getFormActionUrl() ?>';
 				$('newsletter-subscribe-btn').observe('click', function() {
-					new Ajax.Request(
-						url,
-						{
-							parameters: {
-								subscriber_email: $('subscriber_email').getValue()
-							},
-							method: 'GET',
-							onLoading: function() {
-								ajaxCart.ajaxLoading.show();
-							},
-							
-							onSuccess: function(transport){
-								ajaxCart.ajaxLoading.hide();
-								ajaxCart.optionsPopup.update(transport.responseJSON.html);
-								ajaxCart.optionsPopup.show();
+					if($('subscriber_email').getValue() == ''){
+						$('subscriber_email').insert({
+							after: "<div class='validation-advice' id='advice-required-entry-subscriber_email'><?php echo $this->__('This is a required field.')?></div>"
+						});
+					}else{
+						new Ajax.Request(
+							url,
+							{
+								parameters: {
+									subscriber_email: $('subscriber_email').getValue()
+								},
+								method: 'GET',
+								onLoading: function() {
+									if($('advice-required-entry-subscriber_email')){
+										$('advice-required-entry-subscriber_email').remove();
+									}
+									ajaxCart.ajaxLoading.show();
+								},
+								
+								onSuccess: function(transport){
+									ajaxCart.ajaxLoading.hide();
+									ajaxCart.optionsPopup.update(transport.responseJSON.html);
+									ajaxCart.optionsPopup.show();
+								}
 							}
-						}
-					)
+						)
+					}
 				});
     //]]>
     </script>
