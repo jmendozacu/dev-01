@@ -392,6 +392,39 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 	/**
 	 * Remove item
 	 */
+	public function removeInPageAction()
+	{
+			$id = (int) $this->getRequest()->getParam('item');
+			$item = Mage::getModel('wishlist/item')->load($id);
+			if (!$item->getId()) {
+					return $this->norouteAction();
+			}
+			$wishlist = $this->_getWishlist($item->getWishlistId());
+			if (!$wishlist) {
+					return $this->norouteAction();
+			}
+			try {
+				$item->delete();
+				$wishlist->save();
+				$productName = Mage::helper('core')->escapeHtml($item->getProduct()->getName());
+				Mage::getSingleton('customer/session')->addSuccess(Mage::helper('wishlist')->__("%s has been removed from wishlist", $productName));
+			} catch (Mage_Core_Exception $e) {
+					Mage::getSingleton('customer/session')->addError(
+							$this->__('An error occurred while deleting the item from wishlist: %s', $e->getMessage())
+					);
+			} catch (Exception $e) {
+					Mage::getSingleton('customer/session')->addError(
+							$this->__('An error occurred while deleting the item from wishlist.')
+					);
+			}
+
+			Mage::helper('wishlist')->calculate();
+
+			$this->_redirectReferer(Mage::getUrl('*/*'));
+	}
+	/**
+	 * Remove item
+	 */
 	public function removeAction()
 	{
 			$response = array();
