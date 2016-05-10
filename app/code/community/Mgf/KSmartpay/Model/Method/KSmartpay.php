@@ -105,7 +105,7 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 			->setOrder_Id($data->getOrder_Id()) 
 			->setHashValue($data->getHashValue())
 			;
-			
+		$info->setAdditionalInformation("code_selected",$data->getcheck_no());
         return $this;
 
     }
