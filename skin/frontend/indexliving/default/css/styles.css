@@ -7096,9 +7096,15 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart-table .product-cart-image .product-cart-info .item-options dt{
   font-weight:normal;
+	font-family: 'FuturaBT-Book', Helvetica, Tahoma, sans-serif;
+	font-size: 12px;
+	color: #999;
 }
 .cart-table .product-cart-image .product-cart-info .item-options dd{
   margin:0;
+	font-family: 'FuturaBT-Book', Helvetica, Tahoma, sans-serif;
+	font-size: 12px;
+	color: #999;
 }
 .cart-table .btn-empty {
   float: left;
@@ -7303,6 +7309,8 @@ body.catalogsearch-result-index .page-title h1 {
 	.cart-table tbody td .item-options dd{
 		margin:0;
 		font-style:normal;
+		clear:both;
+		padding:0;
 	}
 	.cart-table .product-cart-actions{position:relative;}
 	.cart-table .product-cart-actions .cart-qty-actions{position:absolute; right:30px; top:-60px;}
@@ -7439,7 +7447,7 @@ body.catalogsearch-result-index .page-title h1 {
 	#discount-coupon-form .discount-form .input-text{width:70%;}
 }
 @media only screen and (max-width: 479px) {
-	.cart-table .product-cart-actions .cart-qty-actions{right:-35px; top:-55px;}
+	.cart-table .product-cart-actions .cart-qty-actions{right:0; top:-55px;}
 	.cart-table .cart-price .price-box .special-price{padding-left:0;}
 	#discount-coupon-form .discount-form .input-text{width:60%;}
 }
