@@ -8,6 +8,7 @@
 <?php $_filters = $this->getActiveFilters() ?>
 <?php $_removeTxt = Mage::helper('catalog')->__('Remove This Item') ?>
 <?php if (!empty($_filters)): ?>
+<div class="block filter-state box-mobile">
 	<div class="currently">
 			<ol>
 					<?php foreach ($_filters as $_filter):?>
@@ -29,4 +30,5 @@
 					<?php endforeach; ?>
 			</ol>
 	</div>
+</div>
 <?php endif; ?>
