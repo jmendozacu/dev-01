@@ -140,7 +140,7 @@
     <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
         <?php $i=0; foreach ($_productCollection as $_item): ?>
 					<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>
-            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+            <li class="item <?php echo $_product->getTypeId();?><?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 									<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 									<?php $_imgSize = 210; ?>
@@ -167,7 +167,7 @@
                 </a>
                 <div class="product-info">
                     <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
-										<div class="desc">
+										<div class="desc box-desktop">
 											<?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
 											<?php
 												if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>50) {
@@ -176,6 +176,16 @@
 												}
 												?>
 											<?php echo $_shortDescriptionStripped ?>
+										</div>
+										<div class="desc box-mobile">
+											<?php $_mshortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+											<?php
+												if(iconv_strlen($_mshortDescriptionStripped,'UTF-8')>15) {
+													$_mshortDescriptionStripped = iconv_substr($_mshortDescriptionStripped, 0,15, 'UTF-8');
+													$_mshortDescriptionStripped .= '...';
+												}
+												?>
+											<?php echo $_mshortDescriptionStripped ?>
 										</div>
                     <?php
                     // Provides extra blocks on which to hang some features for products in the list

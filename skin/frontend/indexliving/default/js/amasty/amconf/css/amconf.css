@@ -269,5 +269,14 @@ hr.amconf-hr{
 .amconf-image-selected:before {
 }
 @media (max-width: 768px) {
-.products-grid li.item .amconf-block {top:43%;}
+	.products-grid li.item.configurable .grid-price{ position:static;}
+	.products-grid li.item.configurable .grid-price .save-price-percent{
+		bottom: 52px;
+    right: 10px;
+	}
+	.products-grid li.item .amconf-block {
+		top: 55%;
+    position: absolute;
+    z-index: 9999;
+	}
 }
