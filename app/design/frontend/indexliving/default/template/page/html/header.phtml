@@ -57,67 +57,7 @@
             <?php echo $this->getChildHtml('topSearch') ?>
         </div>
         <div class="box-right">
-            <span class="icon-account box-mobile toggle-header-content togglelogin"></span>
-            <span class="icon-minicart box-mobile toggle-header-content toggle-minicart"></span>
-            <ul class="top-links box-desktop">
-                <li class="top-link-account">
-                    <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-                        <a class="toggle-header-content togglelogin" href="javascript:void(0)"
-                           title="<?php echo $this->__('Login / Register'); ?>"><?php echo $this->__('Login / Register'); ?></a>
-                    <?php else: ?>
-                        <?php
-                            $userfacebook = Mage::getSingleton('customer/session')->getCustomer();
-                            $facebook_user_id = $userfacebook['amajaxlogin_fb_id'];
-                            if ($facebook_user_id) {
-                                $url_avatar = "https://graph.facebook.com/" . $facebook_user_id . "/picture?type=normal";
-                            }
-                        ?>
-                        <a class="myaccount-header toggle-header-content togglelogin <?php if ($facebook_user_id): ?>login-facebook<?php endif; ?>" href="javascript:void(0)" title="<?php echo $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>">
-                            <?php if ($facebook_user_id): ?>
-                                <img alt="<?php echo $this->__('avatar') ?>" src=<?php echo $this->__($url_avatar) ?>>
-                            <?php endif; ?>
-                            <span>
-                                <?php $_customerNameStripped = $this->escapeHtml(Mage::getSingleton('customer/session')->getCustomer()->getName()); ?>
-                                <?php
-                                if (iconv_strlen($_customerNameStripped, 'UTF-8') > 16) {
-                                    $_customerNameStripped = iconv_substr($_customerNameStripped, 0, 16, 'UTF-8');
-                                    $_customerNameStripped .= '...';
-                                }
-                                ?>
-                                <?php echo $_customerNameStripped; ?>
-                            </span>
-                        </a>
-                    <?php endif; ?>
-                </li>
-                <li class="wishlist"><a title="<?php echo $this->__("wishlist") ?>"
-                                        href="<?php echo Mage::getUrl('wishlist'); ?>"><?php echo $this->__("wishlist"); ?></a>
-                </li>
-            </ul>
-            <div class="header-minicart box-desktop">
-                <?php
-                $count = 0;
-                if ($this->helper('checkout/cart')->getSummaryCount()):
-                    $count = $this->helper('checkout/cart')->getSummaryCount();  //get total items in cart
-                endif;
-                ?>
-                <a class="mycart toggle-header-content toggle-minicart cart_item_count" href="javascript:void(0)"
-                   title="<?php echo $this->__('My cart') ?>">
-                    <span id="cartItemCountInHead" class="mini-cart-item-count"><span
-                            class="cart-item-count"><?php echo $count; ?></span></span>
-                </a>
-            </div>
-            <div id="header-mini-login" class="box-header-content">
-                <a id="loginClose" title="Close" class="ajaxcart-close" href="javascript:void(0)"></a>
-                <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-                    <?php echo $this->getChildHtml('header_mini_login') ?>
-                <?php else: ?>
-                    <?php echo $this->getChildHtml('mini-myaccount') ?>
-                <?php endif; ?>
-            </div>
-            <div id="mini-cart-info" class="box-header-content mini-cart-info">
-                <a id="cartClose" title="Close" class="ajaxcart-close" href="javascript:void(0)"></a>
-                <?php echo $this->getChildHtml('header_cart_mini') ?>
-            </div>
+          <?php echo $this->getChildHtml('header.box-right-content'); ?>  
         </div>
     </div>
 </header>
