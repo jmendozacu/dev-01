@@ -184,7 +184,6 @@ __MACOSX
 /app/etc/local.xml
 /app/etc/local.xml.additional
 /app/etc/local.xml.template
-/app/etc/modules/Cm_RedisSession.xml
 /app/etc/modules/Enterprise_*
 /app/etc/modules/Mage_*.xml
 /app/etc/modules/Phoenix_Moneybookers.xml
