@@ -57,7 +57,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 							<?php foreach ($_options as $_option) : ?>
 							<?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>
 									<dt><?php echo $this->escapeHtml($_option['label']) ?></dt>
-									<dd<?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
+									<dd <?php if (isset($_formatedOptionValue['full_view'])): ?> class="truncated"<?php endif; ?>><?php echo $_formatedOptionValue['value'] ?>
 									<?php if (isset($_formatedOptionValue['full_view'])): ?>
                                         <div class="truncated_full_value">
                                             <dl class="item-options">
@@ -67,8 +67,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                                         </div>
 									<?php endif; ?>
 							        </dd>
-                                <dt><?php echo $this->__('sku'); ?></dt>
-                                <dd><?php echo $this->escapeHtml($_option['sku']) ?></dd>
+                                    <dt><?php echo $this->__('sku'); ?></dt>
+                                    <dd><?php echo $this->escapeHtml($_option['sku']) ?></dd>
 							<?php endforeach; ?>
 					</dl>
 					<?php endif;?>
@@ -116,6 +116,8 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 							</div>
 							<?php endif; ?>
 					</dd>
+					<dt><?php echo $this->__('sku'); ?></dt>
+                    <dd><?php echo $this->escapeHtml($_option['sku']) ?></dd>
 					<?php endforeach; ?>
 			</dl>
 			<?php endif;?>
