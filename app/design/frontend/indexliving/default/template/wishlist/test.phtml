@@ -1,0 +1,84 @@
+<?php
+## Add this in top of your product list page ##
+$loggedin_cus_id=Mage::helper('customer')->getCustomer()->getEntityId() ;
+## Find logged in  sessions user id
+
+
+## Finding users wishlist ##
+$wishList = Mage::getSingleton('wishlist/wishlist')->loadByCustomer($loggedin_cus_id);//customer
+$wishListItemCollection = $wishList->getItemCollection();
+if (count($wishListItemCollection)) {
+    $arrProductIds = array();
+    foreach ($wishListItemCollection as $item) {
+        /* @var $product Mage_Catalog_Model_Product */
+        $product = $item->getProduct();
+        $arrProductIds[] = $product->getId();
+    }
+}
+
+/**************  Wishlist code *********************************************/
+$wishlistcoll =   Mage::helper('wishlist')->getWishlistItemCollection();
+$wishlistcollarray =   Mage::helper('wishlist')->getWishlistItemCollection()->getData();
+foreach($wishlistcoll as $item){
+    $itemarray[] = $item->getProductId();
+}
+
+## Add this in top of your product list page ##
+?>
+
+<?php // -----------------------------------------------------------------------
+## Under  foreach loop Add  below code in place of existing wishlist code ?>
+
+<?php if(Mage::getStoreConfig('ajax/wishlistcompare/enabledpro')){?>
+
+    <div style="float:left;">
+
+        <ul class="add-to-links">
+            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+
+                <?php  if (in_array($_product->getId(), $arrProductIds)) {
+                    $checkUser=1;
+                }else {
+                    $checkUser=0;
+                }
+
+                $wishlist = Mage::getModel('wishlist/item')->load($_product->getId(),'product_id');
+
+                if($wishlist->getId() && $checkUser==1) {
+
+                    if (in_array($_product->getId(), $itemarray))
+                    {
+                        $itemId = $wishlistcollarray[$count]['wishlist_item_id'];
+
+                        $itemLoad = Mage::getModel('wishlist/item')->load($itemId);
+                        ?>
+                        <li style="float: left; display: block; width: 100%; text-align: center;">
+                            <a href="#" onclick='removeWishlist("<?php echo $this->helper('wishlist')->getRemoveUrl($itemLoad) ?>","<?php echo $_product->getId()?>");return false;' class="link-wishlist">
+  <span class="fabShopSprite selected">
+  </span>
+                                <?php //echo $this->__('Remove to Wishlist') ?>
+                            </a>
+                        </li>
+
+                        <?php
+                        $count++;
+                    }
+                    ?>
+
+                <?php } else { ?>
+                    <li style="float: left; display: block; width: 100%; text-align: center;">
+                        <a href="#" onclick='ajaxWishlist("
+                        <?php echo $this->helper('wishlist')->getAddUrl($_product) ?>","<?php echo $_product->getId()?>");return false;' class="link-wishlist">
+  <span class="fabShopSprite" id="wishlist<?php echo $_product->getId()?>">
+  </span>
+                        </a>
+                    </li>
+                <?php } ?>
+            <?php endif; ?>
+        </ul>
+<span id='ajax_loading<?php echo $_product->getId()?>' style='display:none'>
+  <img src='<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif')?>'/>
+</span>
+    </div>
+<?php }  ?>
+<?php ##******************************************************?>

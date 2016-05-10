@@ -40,6 +40,11 @@ class Mgf_KBank_Block_Info_KBank extends Mage_Payment_Block_Info
         return Mage::getStoreConfig('payment/KBank/title');
     }
 
+    public function getPlanText(){
+        
+        return Mage::getStoreConfig('payment/KBank/infoimage');
+    }
+
     /**
      * Retrieve credit card type name
      *
