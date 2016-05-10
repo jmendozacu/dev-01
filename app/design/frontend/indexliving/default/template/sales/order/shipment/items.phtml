@@ -66,10 +66,12 @@
 <h3 class="table-caption"><?php echo $this->__('Items Shipped') ?></h3>
 <table class="data-table" id="my-shipment-table-<?php echo $_shipment->getId(); ?>">
     <col />
-    <col width="1" />
-    <col width="1" />
+    <col />
+    <col />
+    <col />
     <thead>
         <tr>
+            <th><?php echo $this->__('Product Image') ?></th>
             <th><?php echo $this->__('Product Name') ?></th>
             <th><?php echo $this->__('SKU') ?></th>
             <th class="a-center"><span class="nobr"><?php echo $this->__('Qty Shipped') ?></span></th>
