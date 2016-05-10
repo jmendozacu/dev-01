@@ -12,8 +12,11 @@ class Magebuzz_Customwishlist_Helper_Data extends Mage_Core_Helper_Abstract {
 			$wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customerId, true);
 			$collection = Mage::getModel('wishlist/item')->getCollection()
 					->addFieldToFilter('wishlist_id', $wishlist->getId())
-					->addFieldToFilter('product_id', $productId);
+					->addFieldToFilter('product_id', $productId);			
 			$is_in_wishlist = (bool) $collection->count();
+			if ($is_in_wishlist) {
+				$is_in_wishlist = $collection->getFirstItem()->getId();
+			}
 		}
 		return $is_in_wishlist;
 	}

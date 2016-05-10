@@ -360,6 +360,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		}
 		$this->_redirectReferer($currentUrl);
 	}
+	
   public function removeallAction() {
 		$customerId = Mage::getSingleton('customer/session')->getCustomerId();
 		$itemCollection = Mage::getModel('wishlist/item')->getCollection()->addCustomerIdFilter($customerId);
@@ -389,44 +390,38 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		Mage::helper('wishlist')->calculate();
 		$this->_redirectReferer($currentUrl);
   }
-	/**
-	 * Remove item
-	 */
-	public function removeInPageAction()
-	{
-			$id = (int) $this->getRequest()->getParam('item');
-			$item = Mage::getModel('wishlist/item')->load($id);
-			if (!$item->getId()) {
-					return $this->norouteAction();
-			}
-			$wishlist = $this->_getWishlist($item->getWishlistId());
-			if (!$wishlist) {
-					return $this->norouteAction();
-			}
-			try {
-				$item->delete();
-				$wishlist->save();
-				$productName = Mage::helper('core')->escapeHtml($item->getProduct()->getName());
-				Mage::getSingleton('customer/session')->addSuccess(Mage::helper('wishlist')->__("%s has been removed from wishlist", $productName));
-			} catch (Mage_Core_Exception $e) {
-					Mage::getSingleton('customer/session')->addError(
-							$this->__('An error occurred while deleting the item from wishlist: %s', $e->getMessage())
-					);
-			} catch (Exception $e) {
-					Mage::getSingleton('customer/session')->addError(
-							$this->__('An error occurred while deleting the item from wishlist.')
-					);
-			}
 
-			Mage::helper('wishlist')->calculate();
+	public function removeInPageAction() {
+		$id = (int) $this->getRequest()->getParam('item');
+		$item = Mage::getModel('wishlist/item')->load($id);
+		if (!$item->getId()) {
+				return $this->norouteAction();
+		}
+		$wishlist = $this->_getWishlist($item->getWishlistId());
+		if (!$wishlist) {
+				return $this->norouteAction();
+		}
+		try {
+			$item->delete();
+			$wishlist->save();
+			$productName = Mage::helper('core')->escapeHtml($item->getProduct()->getName());
+			Mage::getSingleton('customer/session')->addSuccess(Mage::helper('wishlist')->__("%s has been removed from wishlist", $productName));
+		} catch (Mage_Core_Exception $e) {
+				Mage::getSingleton('customer/session')->addError(
+						$this->__('An error occurred while deleting the item from wishlist: %s', $e->getMessage())
+				);
+		} catch (Exception $e) {
+				Mage::getSingleton('customer/session')->addError(
+						$this->__('An error occurred while deleting the item from wishlist.')
+				);
+		}
 
-			$this->_redirectReferer(Mage::getUrl('*/*'));
+		Mage::helper('wishlist')->calculate();
+
+		$this->_redirectReferer(Mage::getUrl('*/*'));
 	}
-	/**
-	 * Remove item
-	 */
-	public function removeAction()
-	{
+	
+	public function removeAction() {
 			$response = array();
 			$id = (int) $this->getRequest()->getParam('item');
 			$item = Mage::getModel('wishlist/item')->load($id);
@@ -469,6 +464,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 
 		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
 	}
+	
 	public function sendAction()
 	{
 		if (!$this->_validateFormKey()) {
@@ -568,6 +564,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 			$this->_redirect('*/*/share');
 		}
 	}
+	
 	public function generatePdf(){
 		$wishlist = $this->_getWishlist();
 		$html = $this->getLayout()->createBlock('wishlist/customer_wishlist_items')->setTemplate('wishlist/printwishlist.phtml')->toHtml();
@@ -598,5 +595,103 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		$path = Mage::getBaseDir('media').'/wishlistpdf/my_wishlist_'.$wishlist->getId().'.pdf';
 		$pdf->Output($path,'F');
 		return $pdf;
+	}
+	
+	public function updateAction() {
+		$response = array();
+		$wlitemadded = array();
+
+		if (!Mage::getSingleton('customer/session')->isLoggedIn()){
+			$response['status'] = 'ERROR';
+			$response['message'] = $this->__('Please Login First');
+		}
+
+		if (empty($response)) {
+			$session = Mage::getSingleton('customer/session');
+			$wishlist = $this->_getWishlist();
+
+			if (!$wishlist) {
+				$response['status'] = 'ERROR';
+				$response['message'] = $this->__('Unable to Create Wishlist');
+			} else {
+				$productId = (int) $this->getRequest()->getParam('product');
+				if (!$productId) {
+					$response['status'] = 'ERROR';
+					$response['message'] = $this->__('Product Not Found');
+				} else {
+					$product = Mage::getModel('catalog/product')->load($productId);
+					if (!$product->getId() || !$product->isVisibleInCatalog()) {
+						$response['status'] = 'ERROR';
+						$response['message'] = $this->__('Cannot specify product.');
+					} else {
+						try {
+							$requestParams = $this->getRequest()->getParams();
+							$buyRequest = new Varien_Object($requestParams);							
+
+							if ($wishlistId = Mage::helper('customwishlist')->checkItemInWishlist($productId)) {
+								//should remove item from wishlist
+								$item = Mage::getModel('wishlist/item')->load($wishlistId);
+								// if (!$item->getId()) {
+										// return $this->norouteAction();
+								// }
+
+								$item->delete();
+								$wishlist->save();									
+								$message = $this->__('Product has been removed from your wishlist.');
+								$response['status'] = 'SUCCESS';
+								$response['message'] = $message;															
+							} else {
+								//add item to wishlist																
+								$result = $wishlist->addNewItem($product, $buyRequest);
+								if (is_string($result)) {
+									Mage::throwException($result);
+								}
+								$wishlist->save();														
+								Mage::dispatchEvent(
+									'wishlist_add_product',
+									array(
+										'wishlist'  => $wishlist,
+										'product'   => $product,
+										'item'      => $result
+									)
+								);								
+								$message = $this->__('%1$s has been added to your wishlist.', $product->getName());
+								$response['status'] = 'SUCCESS';
+								$response['message'] = $message;
+							}
+							Mage::helper('wishlist')->calculate();	
+							// Get all wishlist item of current customer
+							$collection = Mage::getModel('wishlist/item')->getCollection()->addFieldToFilter('wishlist_id', $wishlist->getId());
+							$wlitemadded = $collection->getColumnValues('product_id');	
+							$response['wlitemadded'] = $wlitemadded;							
+						}
+						catch (Mage_Core_Exception $e) {
+							$response['status'] = 'ERROR';
+							$response['message'] = $this->__('An error occurred while adding item to wishlist: %s', $e->getMessage());
+						}
+						catch (Exception $e) {
+							mage::log($e->getMessage());
+							$response['status'] = 'ERROR';
+							$response['message'] = $this->__('An error occurred while adding item to wishlist.');
+						}
+					}
+				}
+			}
+
+		}
+		$html = 
+		'<div class="block" id="ajaxcart_content_option_product">
+			<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+			<div class="ajaxcart-heading">
+				<p class="added-success-message">' 		
+				. $response['message'] .
+				'</p>
+			</div>
+		</div>
+		';
+		$response['html'] = $html;
+		
+		$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
+		return;
 	}
 }
