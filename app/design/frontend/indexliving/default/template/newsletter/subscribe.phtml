@@ -43,6 +43,9 @@
 				var url = '<?php echo $this->getFormActionUrl() ?>';
 				$('newsletter-subscribe-btn').observe('click', function() {
 					if($('subscriber_email').getValue() == ''){
+						if($('advice-required-entry-subscriber_email')){
+							$('advice-required-entry-subscriber_email').remove();
+						}
 						$('subscriber_email').insert({
 							after: "<div class='validation-advice' id='advice-required-entry-subscriber_email'><?php echo $this->__('This is a required field.')?></div>"
 						});
