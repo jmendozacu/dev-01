@@ -5243,9 +5243,13 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .short-description {
   margin-bottom: 10px;
   clear: both;
-	font-family: 'Tahoma';
+	font-family: 'FuturaLight';
 	font-size:14px;
 	color:#5d5d5d;
+}
+.product-view .product-shop .product-sku {
+  font-family: 'FuturaLight';
+  color:#5d5d5d;
 }
 .product-view .product-shop .ratings {
   margin-bottom: 0;
