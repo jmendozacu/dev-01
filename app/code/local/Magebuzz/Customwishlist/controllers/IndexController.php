@@ -554,6 +554,7 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 		// set auto page breaks
 		$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
+		$pdf->setFont('cordiaupc','',14);
 		$pdf->AddPage();
 		$pdf->SetTitle('My Wishlist');
 		$pdf->writeHTML($html,true,false,true,false,'');
