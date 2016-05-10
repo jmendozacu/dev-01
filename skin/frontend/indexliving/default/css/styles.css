@@ -2228,7 +2228,7 @@ span.weee {
  * Printer Friendly Page
  */
 .page-print {
-  width: 6.5in;
+ /*  width: 6.5in; */
   margin: 20px;
   background: #FFFFFF;
 }
@@ -8904,13 +8904,14 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .order-items.order-details .data-table tfoot tr.discount td{
 	color:#FF0000;
 }	
-.order-items.order-details .data-table tr.ordered-bundle-item,
-.order-items.order-details .data-table tr.ordered-bundle-parent{border-bottom:0 none;}
-.order-items.order-details .data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
-.order-items.order-details .data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
-.order-items.order-details .data-table tr.ordered-bundle-item td .option-label,
-.order-items.order-details .data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
-.order-items.order-details .data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
+.data-table tr.ordered-bundle-item,
+.data-table tr.ordered-bundle-parent{border-bottom:0 none;}
+.data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
+.data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
+.data-table tr.ordered-bundle-item td .option-label,
+.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
+.data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
+.page-print .data-table tr.ordered-bundle-item.last td{border-bottom:0 none; padding-bottom:10px;}
 
 .dashboard .box-head {
   margin-top: 30px;
