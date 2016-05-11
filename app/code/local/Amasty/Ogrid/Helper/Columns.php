@@ -423,7 +423,7 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
                 
                 ),
                 'am_billing_telephone' => array(
-                    'header' => $this->__('Billing: Phone'),
+                    'header' => $this->__('TelePhone'),
                     'index' => 'am_billing_telephone',
                     'width' => 80,
                     'filter_index' => 'billing_order_address.telephone'
