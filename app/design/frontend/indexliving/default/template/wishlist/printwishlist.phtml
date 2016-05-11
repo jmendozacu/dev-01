@@ -21,8 +21,8 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
                 echo  "</td>";
                 echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getName()."</td>";
                 echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getSku()."</td>";
-                echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getPrice()."</td>";
-                echo  "<td >"."&nbsp;"."<br /><br /><br />".$item->getFinalPrice()."</td>";
+                echo  "<td >"."&nbsp;"."<br /><br /><br />".Mage::helper('core')->currency($item->getPrice(), true, false)."</td>";
+                echo  "<td >"."&nbsp;"."<br /><br /><br />".Mage::helper('core')->currency($item->getFinalPrice(), true, false)."</td>";
             }
             echo "</tr>";
         }
@@ -31,6 +31,7 @@ $customer = Mage::getSingleton('customer/session')->getCustomer();
 echo "<style>
 table, td {
     border-bottom: 1px solid #c1c1c1;
+    text-align: center;
 }
 
 table {

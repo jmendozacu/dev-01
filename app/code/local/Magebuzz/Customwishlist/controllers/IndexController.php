@@ -515,20 +515,18 @@ class Magebuzz_Customwishlist_IndexController extends Mage_Wishlist_IndexControl
 				$message .= $rss_url;
 			}
 			$wishlistBlock = $this->getLayout()->createBlock('wishlist/share_email_items')->toHtml();
-
 			$emails = array_unique($emails);
 			/* @var $emailModel Mage_Core_Model_Email_Template */
 			$emailModel = Mage::getModel('core/email_template');
-			$emailModel->getMail()->createAttachment(
-				file_get_contents(Mage::getBaseDir('media').'/wishlistpdf/my_wishlist_'.$wishlist->getId().'.pdf'),
-				Zend_Mime::TYPE_OCTETSTREAM,
-				Zend_Mime::DISPOSITION_ATTACHMENT,
-				Zend_Mime::ENCODING_BASE64,
-				'my_wishlist_'.$wishlist->getId().'.pdf'
-			);
 			$sharingCode = $wishlist->getSharingCode();
 				foreach ($emails as $email) {
-
+				$emailModel->getMail()->createAttachment(
+					file_get_contents(Mage::getBaseDir('media').'/wishlistpdf/my_wishlist_'.$wishlist->getId().'.pdf'),
+					Zend_Mime::TYPE_OCTETSTREAM,
+					Zend_Mime::DISPOSITION_ATTACHMENT,
+					Zend_Mime::ENCODING_BASE64,
+					'my_wishlist_'.$wishlist->getId().'.pdf'
+				);
 				$emailModel->sendTransactional(
 					Mage::getStoreConfig('wishlist/email/email_template'),
 					Mage::getStoreConfig('wishlist/email/email_identity'),
