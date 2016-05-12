@@ -355,11 +355,15 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 						$order->save();
 						
 						//=> Create Invoice
-						if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
-						
-							
-						
-						}
+			            if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
+			                $invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
+			                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+			                $invoice->register();
+			                $transactionSave = Mage::getModel('core/resource_transaction')
+			                    ->addObject($invoice)
+			                    ->addObject($invoice->getOrder());
+			                $transactionSave->save();
+			            }
 						//=> End Create Invoice
 						
 						$session = Mage::getSingleton('checkout/session');
