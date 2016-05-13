@@ -28,6 +28,12 @@
 									<?php endif ?>
 							</li>
 					<?php endforeach; ?>
+					<?php if($this->getRequest()->getParam('order')):?>
+						<li>
+							<span class="label"><?php echo $this->__('Sort by:')?></span>
+							<?php echo ucfirst($this->getRequest()->getParam('order')); ?>
+						</li>
+					<?php endif ?>
 			</ol>
 	</div>
 </div>
