@@ -33,9 +33,7 @@
 ?>
 <?php if($this->canShowBlock()): ?>
 <div class="block block-layered-nav<?php if (!$this->getLayer()->getState()->getFilters()): ?> block-layered-nav--no-filters<?php endif; ?>">
-		<div class="block filter-state box-mobile">
-			<?php echo $this->getStateHtml() ?>
-		</div>
+		<?php echo $this->getStateHtml() ?>
 		<div class="layered-nav-content">
 			<h2 id="title-filter-mobile" style="display:none;"><a id="close-filter" title="<?php echo $this->__('back')?>" href="javascript:void(0)"><?php echo $this->__('back')?></a><span><?php echo $this->__('Filter') ?></span></h2>
 			<div class="block-content">	

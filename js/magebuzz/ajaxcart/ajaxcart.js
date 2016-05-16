@@ -442,14 +442,8 @@ AjaxCart.prototype = {
   },
 	
 	ajaxAddToWishlist: function(url) {
-		// if (this.getCookie('addWishlistUrl') && this.getCookie('mgloggedin')) {
-			// url = decodeURI(this.getCookie('addWishlistUrl'));
-			// this.loggedInAddToWishlist(url);
-			// this.setCookie('addWishlistUrl', "", -1);
-			// location.reload();
-			// return;
-		// }
-		wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/add');
+		//wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/add');
+		wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/update');
 		if (!customerIsLoggedIn) {
 			if (AmAjaxLoginObj) { // If enable amasty ajaxlogin
 				//this.setCookie('addWishlistUrl', encodeURI(url), 365);
@@ -512,7 +506,7 @@ AjaxCart.prototype = {
 		$$('.link-wishlist').each(function(link){
 			var linkHref = link.readAttribute('onclick');
 			var patt = /product\/\d+/igm;
-            var pattexec = patt.exec(linkHref);
+      var pattexec = patt.exec(linkHref);
 			if (typeof pattexec !== 'undefined' && pattexec !== null) {
 				var productId = pattexec.shift().slice(8);
 				if(wlitemadded.indexOf(productId) != -1){

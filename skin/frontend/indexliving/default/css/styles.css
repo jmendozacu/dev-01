@@ -1974,7 +1974,7 @@ a.button {
 .payment-methods .form-list li:last-child {
   margin-bottom: 0;
 }
-#co-payment-form-update dt { padding: 15px 0; border-bottom: solid 1px #e6e6e6;}
+#co-payment-form-update dt { padding: 15px 0; /*border-bottom: solid 1px #e6e6e6;*/}
 #dt_method_Paysbuy, #dt_method_KSmart, #dt_method_ccsave{border-bottom: 0 !important;}
 #co-payment-form-update .radio{margin-top: 3px;}
 .logo_payment {padding-left: 20px;border-bottom: solid 1px #e6e6e6;padding-bottom: 15px;}
@@ -8863,7 +8863,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  .my-account .dashboard-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
  .my-account .form-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
 
-.data-table.orders-table th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  } 
+.data-table.orders-table th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  }
 .order-items.order-details .data-table th{
 	color: #f4701e;
 	border-bottom: 4px solid #ffc222;
@@ -8886,7 +8886,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table.orders-table  td,
 .data-table.orders-table th{/* text-align:left; */ vertical-align:middle;}
 .data-table.orders-table .a-right {text-align:right;}
-.data-table.orders-table .product-name	{    
+.data-table.orders-table .product-name	{
 		color: #000;
     font-size: 14px;
     font-weight: 600;
@@ -8900,10 +8900,10 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 	margin-bottom: 20px;
 	text-transform: uppercase;
 	width: 100%;
-}	
+}
 .order-items.order-details .data-table tfoot tr.discount td{
 	color:#FF0000;
-}	
+}
 .data-table tr.ordered-bundle-item,
 .data-table tr.ordered-bundle-parent{border-bottom:0 none;}
 .data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}

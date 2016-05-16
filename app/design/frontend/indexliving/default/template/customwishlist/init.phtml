@@ -9,10 +9,5 @@
 			element.writeAttribute('onclick', 'ajaxCart.ajaxAddToWishlist("'+wishlistUrl+'")');
 			element.writeAttribute('href', 'javascript:void(0)');
 		});
-		$$('a.link-wishlist-remove').each(function(element) {
-			var removewishlistUrl = element.readAttribute('href');
-			element.writeAttribute('onclick', 'ajaxCart.removeWishlistItemM("'+removewishlistUrl+'")');
-			element.writeAttribute('href', 'javascript:void(0)');
-		});
 	}
 </script>
