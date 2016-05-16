@@ -27,6 +27,7 @@
 
 <?php $_product = $this->getProduct(); ?>
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+<?php $wishlistItemId = Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())?>
 <ul class="add-to-links">
 	<?php if ($this->helper('wishlist')->isAllow()) : ?>
 		<li class="wishlist-ajax add-wishlist">
