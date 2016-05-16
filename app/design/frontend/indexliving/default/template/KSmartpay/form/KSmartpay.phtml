@@ -66,7 +66,6 @@
                 $product = Mage::getModel('catalog/product')->load($productid);
 
                 $PrdinstallmentsData = $product->getData('installments_attribute');
-
                 if ($PrdinstallmentsData != "")  {
                     $PrdInstallmentArray = explode(",", $PrdinstallmentsData);
                     foreach ($PrdInstallmentArray as $PrdInstallmentItem) {
@@ -274,7 +273,14 @@
                     $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
                     $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
                     $stringBinding = "ผ่อน 0% กับ $InstallmentBankName นาน $terms เดือน";
-                    echo "<li>".Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId)."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='0' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    $info = "";
+                    if(!($info = Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId))){
+                        if (preg_match('/^KrungsriF/', $InstallmentKey, $matches)) {
+                            $info = '<div class="logo_payment_small"><img src="/media/payment/logo-krungsrifc.png" alt=""></div>';
+                        }
+                    } 
+
+                    echo "<li>".$info."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='0' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
                     <div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $stringBinding ."</div><hr></li>";
                     // $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
                     // $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อน 0% กับ". $InstallmentBankName ."');" . PHP_EOL;
@@ -310,7 +316,13 @@
                     $termRate = (double)Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymenttermrate', $storeId);
                     $termRate = $termRate=="" ? '0':$termRate;
                     $stringBinding = "ผ่อน $termRate% กับ $InstallmentBankName นาน $terms เดือน";
-                    echo "<li>".Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId)."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='$termRate' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+$info = "";
+                    if(!($info = Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId))){
+                        if (preg_match('/^KrungsriF/', $InstallmentKey, $matches)) {
+                            $info = '<div class="logo_payment_small"><img src="/media/payment/logo-krungsrifc.png" alt=""></div>';
+                        }
+                    } 
+                    echo "<li>".$info."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='$termRate' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
                     <div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $stringBinding ."</div><hr></li>";
                     // $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
                     // $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อนกับ". $InstallmentBankName ."');" . PHP_EOL;
