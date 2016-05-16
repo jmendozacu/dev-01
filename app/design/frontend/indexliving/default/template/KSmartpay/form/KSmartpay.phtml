@@ -151,9 +151,77 @@
             //=> End List
         }
 
+        //ผ่อนน้อย ขึ้นก่อน
+        //กสิกรขึ้นก่อน
+        $resort = array();
+
+        while (count($InstallmentZeroArray) != 0) {
+            $min = 99999;
+            $keyRemove = "";
+            //Kbank
+            foreach ($InstallmentZeroArray as $key => $value) {
+                if($value <= $min){
+                    if (preg_match('/^KSmartpay/', $key, $matches)) {
+                        $min = $value;
+                        $keyRemove = $key;
+                    }
+                }
+            }
+
+            //KrungSri
+            if($keyRemove==""){
+                foreach ($InstallmentZeroArray as $key => $value) {
+                    if($value <= $min){
+                        if (preg_match('/^Krungsri/', $key, $matches)) {
+                            $min = $value;
+                            $keyRemove = $key;
+                        }
+                    }
+                }
+            }
+
+            if($keyRemove!=""){
+                $resort[$keyRemove]=$value;
+                unset($InstallmentZeroArray[$keyRemove]);  
+            }
+        }
+        $InstallmentZeroArray = $resort;
+
+        $resort = array();
+        while (count($InstallmentArray) != 0) {
+            $min = 99999;
+            $keyRemove = "";
+            //Kbank
+            foreach ($InstallmentArray as $key => $value) {
+                if($value <= $min){
+                    if (preg_match('/^KSmartpay/', $key, $matches)) {
+                        $min = $value;
+                        $keyRemove = $key;
+                    }
+                }
+            }
+
+            //KrungSri
+            if($keyRemove==""){
+                foreach ($InstallmentArray as $key => $value) {
+                    if($value <= $min){
+                        if (preg_match('/^Krungsri/', $key, $matches)) {
+                            $min = $value;
+                            $keyRemove = $key;
+                        }
+                    }
+                }
+            }
+            if($keyRemove!=""){
+                $resort[$keyRemove]=$value;
+                unset($InstallmentArray[$keyRemove]);  
+            }
+        }
+        $InstallmentArray = $resort;
+
         //=> Sort by term
-        krsort($InstallmentZeroArray);
-        krsort($InstallmentArray);
+        // krsort($InstallmentZeroArray);
+        // krsort($InstallmentArray);
         // krsort($fullcredit);
 
         if ($Debug=="1") {
