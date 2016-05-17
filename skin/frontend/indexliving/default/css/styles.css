@@ -8909,7 +8909,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
 .data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
 .data-table tr.ordered-bundle-item td .option-label,
-.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
+.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book';}
 .data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
 .page-print .data-table tr.ordered-bundle-item.last td{border-bottom:0 none; padding-bottom:10px;}
 
@@ -10782,7 +10782,7 @@ div.paypal-logo span > img {
 .career_job .menuheaders .thecontent{display: none;}
 .career_job .menuheaders.selected .thecontent{display: block;padding: 15px;}
 .career_job .menuheaders.selected .thecontent ul{margin-bottom:20px;}
-.content_cms.career h2{color:#000;padding:10px 15px;background:#F7F7F7;margin-bottom:0;margin-top:10px;border-bottom:solid 1px #ececec}
+.content_cms.career h2{color:#000;padding:10px 15px;background:#F7F7F7;margin-bottom:0;margin-top:10px;border-bottom:solid 1px #ececec;}
 
 /*history-company*/
 #tabs_history{padding:0;float:left;clear:both;width:99%;margin-bottom:0;margin-top:10px;border:1px solid #F3F3F3;}
@@ -11718,30 +11718,30 @@ div.calendar table td.button {
   text-transform: none;
 }
 
-.custom-select{position:relative;display:block}
-.custom-select select{width:100%;margin:0;outline:none;padding:.6em .8em .5em .8em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:16px}
-.custom-select::after{content:" ";position:absolute;top:50%;right:1em;z-index:2;pointer-events:none;display:none}
+.custom-select{position:relative;display:block;}
+.custom-select select{width:100%;margin:0;outline:none;padding:.6em .8em .5em .8em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;font-size:16px;}
+.custom-select::after{content:" ";position:absolute;top:50%;right:1em;z-index:2;pointer-events:none;display:none;}
 @supports ( -webkit-appearance: none ) or ( appearance: none )  or ( ( -moz-appearance: none ) and ( mask-type: alpha ) ){
-  .custom-select::after { display: block}
-  .custom-select select{padding-right:2em;background:none;border:1px solid transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none}
-  .custom-select select:focus{border-color:#aaa}
+  .custom-select::after { display: block;}
+  .custom-select select{padding-right:2em;background:none;border:1px solid transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;}
+  .custom-select select:focus{border-color:#aaa;}
 }
 @-moz-document url-prefix(){
-  .custom-select { overflow:hidden}
-  .custom-select::after{display:block}
-  .custom-select select{overflow:-moz-hidden-unscrollable;padding-right:.4em;background:none;border:1px solid transparent;min-width:6em;width:130%;min-width:-moz-calc(0em);width:-moz-calc(100% + 2.4em);min-width:calc(0em);width:calc(100% + 2.4em)}
+  .custom-select { overflow:hidden;}
+  .custom-select::after{display:block;}
+  .custom-select select{overflow:-moz-hidden-unscrollable;padding-right:.4em;background:none;border:1px solid transparent;min-width:6em;width:130%;min-width:-moz-calc(0em);width:-moz-calc(100% + 2.4em);min-width:calc(0em);width:calc(100% + 2.4em);}
   @supports ( mask-type: alpha ){
-    .custom-select { overflow:visible}
-    .custom-select select{-moz-appearance:none;width:100%;padding-right:2em}
+    .custom-select { overflow:visible;}
+    .custom-select select{-moz-appearance:none;width:100%;padding-right:2em;}
   }
 }
 .custom-select select:-moz-focusring{color:transparent;text-shadow:0 0 0 #000}
 @media screen and (-ms-high-contrast: active),(-ms-high-contrast: none){
-  .custom-select select::-ms-expand{display:none}
-.custom-select select:focus{border-color:#aaa}
-.custom-select select:focus::-ms-value{background:transparent;color:#222}
-.custom-select select{padding-right:2em;background:none;border:1px solid transparent}
-.custom-select::after{display:block}
+  .custom-select select::-ms-expand{display:none;}
+.custom-select select:focus{border-color:#aaa;}
+.custom-select select:focus::-ms-value{background:transparent;color:#222;}
+.custom-select select{padding-right:2em;background:none;border:1px solid transparent;}
+.custom-select::after{display:block;}
 }
 .button.share-wishlist {
   float: right;
