@@ -24,6 +24,18 @@ class Magebuzz_Shoppingcartgrid_Adminhtml_ShoppingcartController extends Mage_Ad
             $this->getLayout()->createBlock('magebuzz_shoppingcartgrid/adminhtml_customer_shoppingcart_grid')->toHtml()
         );
     }
+    public function exportShoppingCartCsvAction()
+    {
+        $fileName = 'shoppingcart.csv';
+        $grid = $this->getLayout()->createBlock('magebuzz_shoppingcartgrid/adminhtml_customer_shoppingcart_grid');
+        $this->_prepareDownloadResponse($fileName, $grid->getCsvFile());
+    }
 
+    public function exportShoppingCartExcelAction()
+    {
+        $fileName = 'shoppingcart.xml';
+        $grid = $this->getLayout()->createBlock('magebuzz_shoppingcartgrid/adminhtml_customer_shoppingcart_grid');
+        $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
+    }
 
 }

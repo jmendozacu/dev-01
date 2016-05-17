@@ -26,7 +26,6 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             array('customer'=>'customer_entity'),'customer.entity_id = wishlist_table.customer_id',array('customer.email')
         );
         $this->setCollection($collection);
-        //Mage::log($collection->getSelect()->__toString());
         parent::_prepareCollection();
         return $this;
     }
@@ -61,8 +60,8 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             'width'     => '120',
             'index'     => 'added_at'
         ));
-        $this->addExportType('*/*/exportInchooCsv', $helper->__('CSV'));
-        $this->addExportType('*/*/exportInchooExcel', $helper->__('Excel XML'));
+        $this->addExportType('*/*/exportWishlistCsv', $helper->__('CSV'));
+        $this->addExportType('*/*/exportWishlistExcel', $helper->__('Excel XML'));
 
         return parent::_prepareColumns();
     }

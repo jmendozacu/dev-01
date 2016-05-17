@@ -11,113 +11,72 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
     public function __construct()
     {
         parent::__construct();
-        $this->setId('magebuzz_shoppingcartgrid_grid');
-        $this->setDefaultSort('increment_id');
-        $this->setDefaultDir('DESC');
+        $this->setId('customwishlist_grid');
         $this->setSaveParametersInSession(true);
-        $this->setUseAjax(true);
+
     }
 
-    protected function _prepareCollection()
-    {
-        $collection = Mage::getResourceModel('sales/order_collection')
-            ->join(array('a' => 'sales/order_address'), 'main_table.entity_id = a.parent_id AND a.address_type != \'billing\'', array(
-                'city'       => 'city',
-                'country_id' => 'country_id'
-            ))
-            ->join(array('c' => 'customer/customer_group'), 'main_table.customer_group_id = c.customer_group_id', array(
-                'customer_group_code' => 'customer_group_code'
-            ))
-            ->addExpressionFieldToSelect(
-                'fullname',
-                'CONCAT({{customer_firstname}}, \' \', {{customer_lastname}})',
-                array('customer_firstname' => 'main_table.customer_firstname', 'customer_lastname' => 'main_table.customer_lastname'))
-            ->addExpressionFieldToSelect(
-                'products',
-                '(SELECT GROUP_CONCAT(\' \', x.name)
-                    FROM sales_flat_order_item x
-                    WHERE {{entity_id}} = x.order_id
-                        AND x.product_type != \'configurable\')',
-                array('entity_id' => 'main_table.entity_id')
-            )
-        ;
+    protected function _prepareCollection()    {
+        $storeIds = Mage::app()->getWebsite($this->getWebsiteId())->getStoreIds();
+        $quote = Mage::getModel('sales/quote')->setSharedStoreIds($storeIds);
+        $collection = $quote->getCollection();
+        $collection->getSelect()->join(array('sfqi'=>'sales_flat_quote_item'),'`sfqi`.`item_id` = `main_table`.`entity_id`',array('sfqi.sku','sfqi.name'));
 
         $this->setCollection($collection);
-        parent::_prepareCollection();
-        return $this;
+        return parent::_prepareCollection();
     }
 
     protected function _prepareColumns()
     {
-        $helper = Mage::helper('inchoo_orders');
-        $currency = (string) Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE);
-
-        $this->addColumn('increment_id', array(
-            'header' => $helper->__('Order #'),
-            'index'  => 'increment_id'
+        $this->addColumn('entity_id', array(
+            'header'    =>Mage::helper('customer')->__('ID#'),
+            'width'     =>'20px',
+            'align'     =>'right',
+            'index'     =>'entity_id'
         ));
-
-        $this->addColumn('purchased_on', array(
-            'header' => $helper->__('Purchased On'),
-            'type'   => 'datetime',
-            'index'  => 'created_at'
+        $this->addColumn('customer_email', array(
+            'header'    => Mage::helper('customer')->__('Customer Email'),
+            'width'     => '150',
+            'index'     => 'customer_email'
         ));
+        $this->addColumn('name', array(
+            'header'    =>Mage::helper('customer')->__('Product Name'),
+            'width'     =>'150px',
+            'index'     =>'name'
 
-        $this->addColumn('products', array(
-            'header'       => $helper->__('Products Purchased'),
-            'index'        => 'products',
-            'filter_index' => '(SELECT GROUP_CONCAT(\' \', x.name) FROM sales_flat_order_item x WHERE main_table.entity_id = x.order_id AND x.product_type != \'configurable\')'
         ));
+        $this->addColumn('sku', array(
+        'header'    =>Mage::helper('customer')->__('Sku'),
+        'width'     =>'50px',
+        'index'     =>'sku'
 
-        $this->addColumn('fullname', array(
-            'header'       => $helper->__('Name'),
-            'index'        => 'fullname',
-            'filter_index' => 'CONCAT(customer_firstname, \' \', customer_lastname)'
         ));
+        $this->addColumn('items_qty', array(
+            'header'    =>Mage::helper('customer')->__('Qty'),
+            'width'     =>'50px',
+            'index'     =>'items_qty'
 
-        $this->addColumn('city', array(
-            'header' => $helper->__('City'),
-            'index'  => 'city'
         ));
+        $this->addColumn('created_at', array(
+            'header'    =>Mage::helper('customer')->__('Create At'),
+            'width'     =>'50px',
+            'type'      =>'datetime',
+            'index'     =>'created_at'
 
-        $this->addColumn('country', array(
-            'header'   => $helper->__('Country'),
-            'index'    => 'country_id',
-            'renderer' => 'adminhtml/widget_grid_column_renderer_country'
         ));
+        $this->addColumn('updated_at', array(
+            'header'    =>Mage::helper('customer')->__('Update At'),
+            'width'     =>'50px',
+            'type'      =>'datetime',
+            'index'     =>'updated_at'
 
-        $this->addColumn('customer_group', array(
-            'header' => $helper->__('Customer Group'),
-            'index'  => 'customer_group_code'
         ));
+        $this->setFilterVisibility(false);
 
-        $this->addColumn('grand_total', array(
-            'header'        => $helper->__('Grand Total'),
-            'index'         => 'grand_total',
-            'type'          => 'currency',
-            'currency_code' => $currency
-        ));
-
-        $this->addColumn('shipping_method', array(
-            'header' => $helper->__('Shipping Method'),
-            'index'  => 'shipping_description'
-        ));
-
-        $this->addColumn('order_status', array(
-            'header'  => $helper->__('Status'),
-            'index'   => 'status',
-            'type'    => 'options',
-            'options' => Mage::getSingleton('sales/order_config')->getStatuses(),
-        ));
-
-        $this->addExportType('*/*/exportInchooCsv', $helper->__('CSV'));
-        $this->addExportType('*/*/exportInchooExcel', $helper->__('Excel XML'));
-
+        $this->addExportType('*/*/exportShoppingCartCsv', Mage::helper('customer')->__('CSV'));
+        $this->addExportType('*/*/exportShoppingCartExcel', Mage::helper('customer')->__('Excel XML'));
         return parent::_prepareColumns();
     }
 
-    public function getGridUrl()
-    {
-        return $this->getUrl('*/*/grid', array('_current'=>true));
-    }
+
 }

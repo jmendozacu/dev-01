@@ -19,7 +19,20 @@
       <setup>
         <module>Magebuzz_Shoppingcartgrid</module>
       </setup>
+      <connection>
+        <use>core_setup</use>
+      </connection>
     </magebuzz_shoppingcartgrid_setup>
+    <magebuzz_shoppingcartgrid_write>
+      <connection>
+        <use>core_write</use>
+      </connection>
+    </magebuzz_shoppingcartgrid_write>
+    <magebuzz_shoppingcartgrid_read>
+      <connection>
+        <use>core_read</use>
+      </connection>
+    </magebuzz_shoppingcartgrid_read>
   </resources>
 
   <blocks>
