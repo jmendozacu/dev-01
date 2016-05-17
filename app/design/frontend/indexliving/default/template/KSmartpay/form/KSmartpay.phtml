@@ -150,6 +150,36 @@
             //=> End List
         }
 
+        $default = Array ( 
+            "KSmartpayC" => "10" , 
+            "KSmartpayA" => "4",
+            "KSmartpayB" => "6",
+            "KrungsriC" => "10",
+            "KrungsriA" => "3",
+            "KrungsriB" => "6" 
+        );
+        if(count($InstallmentZeroArray)==0){
+            $InstallmentZeroArray = $default;
+        } else {
+            if (trim(Mage::getStoreConfig('payment/KSmartpay/min_amount')) != "") {
+                if($CurrentAmount > (double)Mage::getStoreConfig('payment/KSmartpay/min_amount')){
+                    $InstallmentZeroArray = array_merge($InstallmentZeroArray,$default);
+                }
+            }
+        }
+        if ($Debug=="1") {
+            echo "<!--";
+            echo "<pre>";
+            echo "<p>Zero Plan</p>";
+            print_r($InstallmentZeroArray);
+            echo "<p>Installments </p>";
+            print_r($InstallmentArray);
+            echo "<p>Full Credit </p>";
+            print_r($fullcredit);
+            echo "</pre>";
+            echo "-->";
+        }
+
         //ผ่อนน้อย ขึ้นก่อน
         //กสิกรขึ้นก่อน
         $resort = array();
@@ -222,19 +252,6 @@
         // krsort($InstallmentZeroArray);
         // krsort($InstallmentArray);
         // krsort($fullcredit);
-
-        if ($Debug=="1") {
-            echo "<!--";
-        // echo "<pre>";
-            echo "<p>Zero Plan</p>";
-            print_r($InstallmentZeroArray);
-            echo "<p>Installments </p>";
-            print_r($InstallmentArray);
-            echo "<p>Full Credit </p>";
-            print_r($fullcredit);
-        // echo "</pre>";
-            echo "-->";
-        }
 
         $PlanNo = 1;
         $PlanDefaultKey = "";
