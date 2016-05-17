@@ -15,8 +15,18 @@
 </div>
 <?php }?>
 <div class="order-review-button">
+	<div id='comment'>
+
+	</div>
     <button id="amscheckout-submit" type="button" title="<?php echo $this->__('Place Order') ?>" class="button" onclick="completeCheckout();">
         <span><span><?php echo $this->__('Place Order') ?></span></span>
     </button>
 </div>
+<script>
+jQuery(document).ready(function(){
+	var element = jQuery('#checkout_comment').parent().parent().parent();
+	jQuery('#checkout_comment').parent().parent().parent().remove();
+	jQuery('#comment').html(element);
+})
 
+</script>

@@ -175,6 +175,7 @@ SubdistrictUpdater.prototype = {
 	updateZipcode: function(zipcode) {
 		if (this.zipEl != null) {
 			this.zipEl.value = zipcode;
+			this.zipEl.focus();
 		}
 		else if (order && order.billingAddressContainer && this.subdistrictEl.id == 'order-billing_address_subdistrict_id') {
 			$('order-billing_address_postcode').value = zipcode;
