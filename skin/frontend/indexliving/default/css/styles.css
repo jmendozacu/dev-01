@@ -8909,7 +8909,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
 .data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
 .data-table tr.ordered-bundle-item td .option-label,
-.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book'}
+.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book';}
 .data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
 .page-print .data-table tr.ordered-bundle-item.last td{border-bottom:0 none; padding-bottom:10px;}
 
