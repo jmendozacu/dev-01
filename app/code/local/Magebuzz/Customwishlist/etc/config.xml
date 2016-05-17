@@ -116,4 +116,15 @@
 			</customwishlist>
 		</helpers>
 	</global>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<customwishlist before="Mage_Adminhtml">Magebuzz_Customwishlist_Adminhtml</customwishlist>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
 </config>

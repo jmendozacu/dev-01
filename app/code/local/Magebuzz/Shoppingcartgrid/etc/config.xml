@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+  <Magebuzz_Shoppingcartgrid>
+    <version>0.1.0</version>
+  </Magebuzz_Shoppingcartgrid>
+</modules>
+
+<global>
+  <models>
+    <magebuzz_shoppingcartgrid>
+      <class>Magebuzz_Shoppingcartgrid_Model</class>
+      <resourceModel>magebuzz_shoppingcartgrid_resource</resourceModel>
+    </magebuzz_shoppingcartgrid>
+  </models>
+
+  <resources>
+    <magebuzz_shoppingcartgrid_setup>
+      <setup>
+        <module>Magebuzz_Shoppingcartgrid</module>
+      </setup>
+    </magebuzz_shoppingcartgrid_setup>
+  </resources>
+
+  <blocks>
+    <magebuzz_shoppingcartgrid>
+      <class>Magebuzz_Shoppingcartgrid_Block</class>
+    </magebuzz_shoppingcartgrid>
+  </blocks>
+
+  <helpers>
+    <magebuzz_shoppingcartgrid>
+      <class>Magebuzz_Shoppingcartgrid_Helper</class>
+    </magebuzz_shoppingcartgrid>
+  </helpers>
+</global>
+
+<admin>
+  <routers>
+    <adminhtml>
+      <args>
+        <modules>
+          <magebuzz_shoppingcartgrid before="Mage_Adminhtml">Magebuzz_Shoppingcartgrid_Adminhtml</magebuzz_shoppingcartgrid>
+        </modules>
+      </args>
+    </adminhtml>
+  </routers>
+</admin>
+</config>

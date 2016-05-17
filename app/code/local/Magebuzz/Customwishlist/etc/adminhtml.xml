@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<config>
+    <menu>
+        <customer>
+            <children>
+                <magebuzz_customwishlist translate="title" module="customwishlist">
+                    <sort_order>11</sort_order>
+                    <title>Wishlist</title>
+                    <action>adminhtml/wishlistgrid/</action>
+                </magebuzz_customwishlist>
+            </children>
+        </customer>
+    </menu>
+</config>
