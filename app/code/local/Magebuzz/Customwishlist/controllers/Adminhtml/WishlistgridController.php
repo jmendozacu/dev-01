@@ -26,14 +26,14 @@ class Magebuzz_Customwishlist_Adminhtml_WishlistgridController extends Mage_Admi
         );
     }
 
-    public function exportInchooCsvAction()
+    public function exportWishlistCsvAction()
     {
         $fileName = 'wishlist.csv';
         $grid = $this->getLayout()->createBlock('customwishlist/adminhtml_customer_wishlistgrid_grid');
         $this->_prepareDownloadResponse($fileName, $grid->getCsvFile());
     }
 
-    public function exportInchooExcelAction()
+    public function exportWishlistExcelAction()
     {
         $fileName = 'wishlist.xml';
         $grid = $this->getLayout()->createBlock('customwishlist/adminhtml_customer_wishlistgrid_grid');
