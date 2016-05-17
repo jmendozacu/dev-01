@@ -107,9 +107,7 @@
 			$payInstallRate = trim(Mage::getStoreConfig("payment/". trim($paybycard)  ."/paymenttermrate"));
 			if ($payInstallRate=="") {
 				$payInstallRate = 0;
-			} else {
-				$payInstallRate = $payInstallRate / 100;	
-			}
+			} 
 			
 			
 		}

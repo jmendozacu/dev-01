@@ -191,7 +191,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 				// $order = Mage::getModel('sales/order');
 				// $order->loadByIncrementId($ReturnOrderNo);
 				
-				// if (strtolower($order->getStatus()) == "pending") {
+				// if (strtolower($order->getStatus()) == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
 				// 	//=> Pending
 				// 	if (($ReturnMessage=="success") && ($ReturnCode=="1")) {
 				// 		//=> Paid
@@ -434,7 +434,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 	        )*/
 	        	$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($response['body']['order_no']);
-				if (strtolower($order->getStatus()) == "pending") {
+				if (strtolower($order->getStatus()) == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
 
 					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
 					$payment = $order->getPayment();
@@ -533,7 +533,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		$order->loadByIncrementId($response['order_no']);
 		if($order->getId()){
 			if($response['msg'] == 'success'){
-				if (strtolower($order->getStatus()) == "pending") {
+				if (strtolower($order->getStatus()) == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
 
 					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
 					$payment = $order->getPayment();

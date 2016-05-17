@@ -150,6 +150,36 @@
             //=> End List
         }
 
+        $default = Array ( 
+            "KSmartpayC" => "10" , 
+            "KSmartpayA" => "4",
+            "KSmartpayB" => "6",
+            "KrungsriC" => "10",
+            "KrungsriA" => "3",
+            "KrungsriB" => "6" 
+        );
+        if(count($InstallmentZeroArray)==0){
+            $InstallmentZeroArray = $default;
+        } else {
+            if (trim(Mage::getStoreConfig('payment/KSmartpay/min_amount')) != "") {
+                if($CurrentAmount > (double)Mage::getStoreConfig('payment/KSmartpay/min_amount')){
+                    $InstallmentZeroArray = array_merge($InstallmentZeroArray,$default);
+                }
+            }
+        }
+        if ($Debug=="1") {
+            echo "<!--";
+            echo "<pre>";
+            echo "<p>Zero Plan</p>";
+            print_r($InstallmentZeroArray);
+            echo "<p>Installments </p>";
+            print_r($InstallmentArray);
+            echo "<p>Full Credit </p>";
+            print_r($fullcredit);
+            echo "</pre>";
+            echo "-->";
+        }
+
         //ผ่อนน้อย ขึ้นก่อน
         //กสิกรขึ้นก่อน
         $resort = array();
@@ -223,19 +253,6 @@
         // krsort($InstallmentArray);
         // krsort($fullcredit);
 
-        if ($Debug=="1") {
-            echo "<!--";
-        // echo "<pre>";
-            echo "<p>Zero Plan</p>";
-            print_r($InstallmentZeroArray);
-            echo "<p>Installments </p>";
-            print_r($InstallmentArray);
-            echo "<p>Full Credit </p>";
-            print_r($fullcredit);
-        // echo "</pre>";
-            echo "-->";
-        }
-
         $PlanNo = 1;
         $PlanDefaultKey = "";
 
@@ -272,7 +289,7 @@
                     $InstallmentPlanName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/title', $storeId);
                     $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
                     $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
-                    $stringBinding = "ผ่อน 0% กับ $InstallmentBankName นาน $terms เดือน";
+                    $stringBinding = "ดอกเบี้ย 0% นาน $terms เดือน";
                     $info = "";
                     if(!($info = Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId))){
                         if (preg_match('/^KrungsriF/', $InstallmentKey, $matches)) {
@@ -315,7 +332,7 @@
                     $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
                     $termRate = (double)Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymenttermrate', $storeId);
                     $termRate = $termRate=="" ? '0':$termRate;
-                    $stringBinding = "ผ่อน $termRate% กับ $InstallmentBankName นาน $terms เดือน";
+                    $stringBinding = "ดอกเบี้ย $termRate% นาน $terms เดือน";
 $info = "";
                     if(!($info = Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId))){
                         if (preg_match('/^KrungsriF/', $InstallmentKey, $matches)) {
@@ -461,11 +478,21 @@ $info = "";
             term = 1;
         }
         if(rate == 0){
-            return 'ผ่อนเดือนละ ' + parseFloat(amount/term).toFixed(2) + ' บาท';
+            return 'ผ่อนเดือนละ ' + parseFloat(amount/term).formatMoney(2) + ' บาท';
         }
 
-        return 'ผ่อนเดือนละ ' + (parseFloat(amount/term) + parseFloat(amount * (rate / 100))).toFixed(2) + ' บาท';
+        return 'ผ่อนเดือนละ ' + (parseFloat(amount/term) + parseFloat(amount * (rate / 100))).formatMoney(2) + ' บาท';
     }
+    Number.prototype.formatMoney = function(c, d, t){
+    var n = this, 
+        c = isNaN(c = Math.abs(c)) ? 2 : c, 
+        d = d == undefined ? "." : d, 
+        t = t == undefined ? "," : t, 
+        s = n < 0 ? "-" : "", 
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+        j = (j = i.length) > 3 ? j % 3 : 0;
+       return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+     };
     </script>
 </fieldset>
 <style type="text/css">

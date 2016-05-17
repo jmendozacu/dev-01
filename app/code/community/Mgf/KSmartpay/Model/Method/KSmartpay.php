@@ -195,7 +195,7 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 										$PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/KSmartpayA/min_order_total'));
 									}
 								
-									if (trim(Mage::getStoreConfig('payment/KSmartpay/max_order_total')) != "") {
+									if (trim(Mage::getStoreConfig('payment/KSmartpayA/max_order_total')) != "") {
 										$PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/KSmartpayA/max_order_total'));
 									}
 									if ($PlanActive) {
@@ -471,22 +471,23 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 		}
 		//=> Loop cart items
 		
-		if ($cartcondition==true) {
+		if ($cartcondition) {
 			if (count($AvaliableArray) < 1) {
 				$cartcondition = false;
+			}
+		} else {
+			if (trim(Mage::getStoreConfig('payment/KSmartpay/min_amount')) != "") {
+				if($CurrentAmount > (double)Mage::getStoreConfig('payment/KSmartpay/min_amount')){
+					$cartcondition = true;
+				}
 			}
 		}
 		if (!$cartcondition) {
 			unset($AvaliableArray);
 		}
-
 		//echo "<p>Installments Plan</p>";
 		//print_r($AvaliableArray);
 		//=> Filter Limited = End
-
-		
-		
-		
 		return $isActive && $cartcondition;
 		//return true;
     }			
