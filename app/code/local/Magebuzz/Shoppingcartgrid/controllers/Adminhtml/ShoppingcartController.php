@@ -12,7 +12,7 @@ class Magebuzz_Shoppingcartgrid_Adminhtml_ShoppingcartController extends Mage_Ad
     {
         $this->_title($this->__('Customer'))->_title($this->__('Shopping cart'));
         $this->loadLayout();
-        $this->_setActiveMenu('customer/shoppingcart');
+        $this->_setActiveMenu('customer');
         $this->_addContent($this->getLayout()->createBlock('magebuzz_shoppingcartgrid/adminhtml_customer_shoppingcart'));
         $this->renderLayout();
     }

@@ -14,7 +14,7 @@ class Magebuzz_Customwishlist_Adminhtml_WishlistgridController extends Mage_Admi
         $this->_title($this->__('Customer'))->_title($this->__('Customer Wishlist'));
         $this->loadLayout();
         $this->_setActiveMenu('customer');
-        $this->_addContent($this->getLayout()->createBlock('customwishlist/adminhtml_customer_wishlistgrid_grid'));
+        $this->_addContent($this->getLayout()->createBlock('customwishlist/adminhtml_customer_wishlistgrid'));
         $this->renderLayout();
     }
 

@@ -10,7 +10,7 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid extends Mage
     public function __construct()
     {
         $this->_blockGroup = 'customwishlist';
-        $this->_controller = 'adminhtml_wishlistgrid';
+        $this->_controller = 'adminhtml_customer_wishlistgrid';
         $this->_headerText = Mage::helper('customwishlist')->__('Customer Wishlist');
 
         parent::__construct();
