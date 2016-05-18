@@ -8532,7 +8532,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   color: #a0a0a0;
 	font-size: 18px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold"
+	font-family: "FuturaT_Bold","RSU_Bold";
 }
 .product-view .availability.out-of-stock{text-align:center;}
 .product-view .availability.out-of-stock span{font-size:30px;}
