@@ -39,6 +39,11 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             'renderer'     => 'Magebuzz_Customwishlist_Block_Adminhtml_Renderer_CustomerName',
             'filter_condition_callback' => array($this,'_customerNameFilter'),
         ));
+        $this->addColumn('email', array(
+            'header'    => Mage::helper('customer')->__('Email'),
+            'width'     => '150',
+            'index'     => 'email'
+        ));
         $this->addColumn('product_id', array(
             'header'    => Mage::helper('customer')->__('Product Name'),
             'width'     => '150',
@@ -48,11 +53,6 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             'header'    => Mage::helper('customer')->__('Qty'),
             'width'     => '150',
             'index'     => 'qty'
-        ));
-        $this->addColumn('email', array(
-            'header'    => Mage::helper('customer')->__('Email'),
-            'width'     => '150',
-            'index'     => 'email'
         ));
         $this->addColumn('added_at', array(
             'header'    => Mage::helper('customer')->__('Added At'),
