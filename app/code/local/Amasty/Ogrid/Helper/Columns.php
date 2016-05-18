@@ -96,13 +96,14 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
                 $this->_isColumnAvailable('am_shipping_city')
                 
                 ;
+        // Edit By Tiw
         $showBillingAddress = $this->_isColumnAvailable('am_billing_address') ||
                 $this->_isColumnAvailable('am_billing_country_id') || 
                 $this->_isColumnAvailable('am_billing_region') ||
                 $this->_isColumnAvailable('am_billing_postcode') ||
                 $this->_isColumnAvailable('am_billing_street') ||
                 $this->_isColumnAvailable('am_billing_company') ||
-                $this->_isColumnAvailable('am_billing_telephone') ||
+                $this->_isColumnAvailable('am_billing_mobile_customer') ||
                 $this->_isColumnAvailable('am_billing_city');
         
         $excludeStatuses = Mage::getStoreConfig('amogrid/general/exclude');
@@ -159,6 +160,7 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
             );
         }
         
+        // Edit By Tiw
         if ($showBillingAddress){
             $collection->getSelect()->joinLeft(
                 array(
@@ -172,6 +174,7 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
                     'billing_order_address.street as am_billing_street',
                     'billing_order_address.company as am_billing_company',
                     'billing_order_address.telephone as am_billing_telephone',
+                    'billing_order_address.mobile_customer as am_billing_mobile_customer',
                     'billing_order_address.city as am_billing_city',
                 )
             );
@@ -428,6 +431,14 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
                     'width' => 80,
                     'filter_index' => 'billing_order_address.telephone'
                 
+                ),
+                // Edit By Tiw
+                'am_billing_mobile_customer' => array(
+                    'header' => $this->__('Mobile'),
+                    'index' => 'am_billing_mobile_customer',
+                    'width' => 80,
+                    'filter_index' => 'billing_order_address.mobile_customer'
+
                 ),
                 'am_customer_email' => array(
                     'header' => $this->__('Customer Email'),
