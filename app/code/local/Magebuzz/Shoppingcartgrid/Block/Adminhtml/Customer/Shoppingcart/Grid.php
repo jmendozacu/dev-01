@@ -71,7 +71,6 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
             'index'     =>'updated_at'
 
         ));
-        $this->setFilterVisibility(false);
 
         $this->addExportType('*/*/exportShoppingCartCsv', Mage::helper('customer')->__('CSV'));
         $this->addExportType('*/*/exportShoppingCartExcel', Mage::helper('customer')->__('Excel XML'));
