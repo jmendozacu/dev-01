@@ -4613,7 +4613,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .products-grid .actions .button.btn-cart ,.products-list .actions .button.btn-cart ,
 .products-grid .actions .button.btn-view-details ,.products-list .button.btn-view-details ,
-.products-grid .actions  p, .products-list .actions  p {float:left; padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:18px; text-transform:uppercase; font-family: "FuturaT_Bold"; }
+.products-grid .actions  p, .products-list .actions  p {float:left; padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:18px; text-transform:uppercase; font-family: "FuturaT_Bold",'RSU_Bold'; }
 .products-grid .actions  p, .products-list .actions  p {color:#000;}
 
 .products-grid > li:hover .actions, .products-grid div.item:hover .actions {z-index:1; opacity:1;}
@@ -5491,7 +5491,7 @@ body.catalogsearch-result-index .page-title h1 {
 	text-align: center;
 	font-size: 26px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
+	font-family: "FuturaT_Bold","RSU_Bold";
 }
 .product-view .product-options-bottom .add-to-cart {float:left; width:100%;}
 .product-view .add-to-cart .qty-wrapper,
@@ -8532,7 +8532,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   color: #a0a0a0;
 	font-size: 18px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold"
+	font-family: "FuturaT_Bold","RSU_Bold";
 }
 .product-view .availability.out-of-stock{text-align:center;}
 .product-view .availability.out-of-stock span{font-size:30px;}
