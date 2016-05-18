@@ -72,6 +72,7 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
     }
     public function _customerNameFilter($collection, $column)
     {
+        Mage::log('run');
         if (!$value = $column->getFilter()->getValue()) {
             return $this;
         }

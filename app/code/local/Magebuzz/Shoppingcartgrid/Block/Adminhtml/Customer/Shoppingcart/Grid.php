@@ -28,10 +28,11 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
             ->addFieldToSelect('created_at')
             ->addFieldToFilter('reserved_order_id',array('null'=>true))
             ->addFieldToFilter('customer_email',array('notnull'=>true))
-        ;
+            ->addFieldToFilter('customer_dob',array('notnull'=>true))
+            ->addFieldToFilter('is_active',array('eq'=>'1'))
+            ->addFieldToFilter('main_table.store_id',array('eq'=>'1'));
         $collection->getSelect()->join(array('sfqi'=>'sales_flat_quote_item'),'`sfqi`.`quote_id` = `main_table`.`entity_id`',array('sfqi.sku','sfqi.name'));
         $this->setCollection($collection);
-        Mage::log($collection->getSelect()->__toString());
         return parent::_prepareCollection();
     }
 
