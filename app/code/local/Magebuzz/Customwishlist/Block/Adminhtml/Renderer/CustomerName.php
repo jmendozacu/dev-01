@@ -15,7 +15,6 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Renderer_CustomerName extends Mage
     public function render(Varien_Object $row) {
         $model = Mage::getModel('customer/customer')->load($row->getData('customer_id'));
         $name = $model->getName();
-        //Mage::log($row->getData('customer_id').''.$name);
         return $name;
     }
 }

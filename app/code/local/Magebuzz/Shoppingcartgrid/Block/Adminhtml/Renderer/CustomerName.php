@@ -23,7 +23,7 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Renderer_CustomerName extends Ma
                 return $firstName;
             }
         } else {
-            return Mage::helper('dailydeal')->__('NO NAME ASSIGNED');
+            return Mage::helper('customer')->__('NO NAME ASSIGNED');
         }
     }
 }

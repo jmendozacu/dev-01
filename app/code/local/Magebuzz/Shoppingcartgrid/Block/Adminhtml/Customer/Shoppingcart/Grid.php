@@ -11,9 +11,10 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
     public function __construct()
     {
         parent::__construct();
-        $this->setId('customwishlist_grid');
+        $this->setId('shoppingcart_grid');
+        $this->setDefaultSort('increment_id');
+        $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
-
     }
 
     protected function _prepareCollection()    {
@@ -39,9 +40,9 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
     protected function _prepareColumns()
     {
         $this->addColumn('customer_id', array(
-            'header'    => Mage::helper('customer')->__('Customer Name'),
-            'width'     => '150',
-            'renderer'     => 'Magebuzz_Shoppingcartgrid_Block_Adminhtml_Renderer_CustomerName',
+            'header'        => Mage::helper('customer')->__('Customer Name'),
+            'width'         => '150',
+            'renderer'      => 'Magebuzz_Shoppingcartgrid_Block_Adminhtml_Renderer_CustomerName',
             'filter_condition_callback' => array($this,'_customerNameFilter'),
         ));
         $this->addColumn('customer_email', array(
@@ -56,9 +57,9 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
 
         ));
         $this->addColumn('sku', array(
-        'header'    =>Mage::helper('customer')->__('Sku'),
-        'width'     =>'50px',
-        'index'     =>'sku'
+            'header'    =>Mage::helper('customer')->__('Sku'),
+            'width'     =>'50px',
+            'index'     =>'sku'
 
         ));
         $this->addColumn('created_at', array(
@@ -81,5 +82,16 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
         return parent::_prepareColumns();
     }
 
+    public function _customerNameFilter($collection, $column)
+    {
+        if (!$value = $column->getFilter()->getValue()) {
+            return $this;
+        }
+        $this->getCollection()->getSelect()
+            ->where("main_table.customer_firstname LIKE ?
+                OR main_table.customer_lastname LIKE ?"
+                , "%".$value."%");
+        return $this;
 
+    }
 }
