@@ -42,6 +42,7 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
         $this->addColumn('customer_id', array(
             'header'        => Mage::helper('customer')->__('Customer Name'),
             'width'         => '150',
+            'sortable'  => false,
             'renderer'      => 'Magebuzz_Shoppingcartgrid_Block_Adminhtml_Renderer_CustomerName',
             'filter_condition_callback' => array($this,'_customerNameFilter'),
         ));

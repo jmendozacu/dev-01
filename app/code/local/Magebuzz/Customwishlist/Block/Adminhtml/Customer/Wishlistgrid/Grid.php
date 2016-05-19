@@ -39,6 +39,7 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
         $this->addColumn('customer_id', array(
             'header' => Mage::helper('customer')->__('Customer Name'),
             'width' => '150',
+            'sortable'  => false,
             'renderer' => 'Magebuzz_Customwishlist_Block_Adminhtml_Renderer_CustomerName',
             'filter_condition_callback' => array($this,'_customerNameFilter')
         ));
@@ -50,6 +51,7 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
         $this->addColumn('product_id', array(
             'header' => Mage::helper('customer')->__('Product Name'),
             'width' => '150',
+            'sortable'  => false,
             'renderer' => 'Magebuzz_Customwishlist_Block_Adminhtml_Renderer_ProductName',
             'filter_condition_callback' => array($this,'_productNameFilter')
         ));
