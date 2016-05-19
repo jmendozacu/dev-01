@@ -33,17 +33,20 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
             ->addFieldToFilter('customer_email',array('notnull'=>true))
             ->addFieldToFilter('is_active',array('eq'=>'1'));
         $collection->getSelect()->join(array('sfqi'=>'sales_flat_quote_item'),'`sfqi`.`quote_id` = `main_table`.`entity_id`',array('sfqi.sku','sfqi.name'));
+        $collection->addExpressionFieldToSelect(
+            'customer_name',
+            'CONCAT({{customer_firstname}}, \' \', {{customer_lastname}})',
+            array('customer_firstname' => 'main_table.customer_firstname', 'customer_lastname' => 'main_table.customer_lastname'));
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
 
     protected function _prepareColumns()
     {
-        $this->addColumn('customer_id', array(
+        $this->addColumn('customer_name', array(
             'header'        => Mage::helper('customer')->__('Customer Name'),
             'width'         => '150',
-            'sortable'  => false,
-            'renderer'      => 'Magebuzz_Shoppingcartgrid_Block_Adminhtml_Renderer_CustomerName',
+            'index'     => 'customer_name',
             'filter_condition_callback' => array($this,'_customerNameFilter'),
         ));
         $this->addColumn('customer_email', array(
