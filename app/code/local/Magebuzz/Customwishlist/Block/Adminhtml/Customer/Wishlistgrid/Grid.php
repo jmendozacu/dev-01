@@ -27,7 +27,7 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             array('customer' => 'customer_entity'), 'customer.entity_id = wishlist_table.customer_id', array('customer.email')
         );
         /*create subquery to get customer name (using Zend_Db_Expr )-> join with maintable*/
-            $query_customer_name = "SELECT
+        $query_customer_name = "SELECT
                     FIRST .entity_id,
                     CONCAT(FIRST . VALUE, ' ', last. VALUE) as customer_name
                     FROM
@@ -37,7 +37,7 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
                     WHERE
                     FIRST .attribute_id = 5";
 
-        $collection->getSelect()->joinLeft(array('subtable_customer'=>new Zend_Db_Expr('('.$query_customer_name.')')),'subtable_customer.entity_id = wishlist_table.customer_id',array('subtable_customer.customer_name'));
+        $collection->getSelect()->joinLeft(array('subtable_customer' => new Zend_Db_Expr('(' . $query_customer_name . ')')), 'subtable_customer.entity_id = wishlist_table.customer_id', array('subtable_customer.customer_name'));
 
         $query_product_name = " SELECT
                         `value` AS product_name, entity_id
@@ -69,7 +69,8 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
                         )
                     )";
 
-        $collection->getSelect()->joinLeft(array('subtable_product'=>new Zend_Db_Expr('('.$query_product_name.')')),'subtable_product.entity_id = main_table.product_id',array('subtable_product.product_name'));
+        $collection->getSelect()->joinLeft(array('subtable_product' => new Zend_Db_Expr('(' . $query_product_name . ')')), 'subtable_product.entity_id = main_table.product_id', array('subtable_product.product_name'));
+        $collection->getSelect()->group('main_table.wishlist_item_id');
         //Mage::log($collection->getSelect()->__toString());
         $this->setCollection($collection);
         parent::_prepareCollection();
