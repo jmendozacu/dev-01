@@ -110,12 +110,12 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             'width' => '50px',
             'index' => 'qty'
         ));
-        $this->addColumn('added_at', array(
-            'header' => Mage::helper('customer')->__('Added At'),
-            'type' => 'datetime',
-            'width' => '120',
-            'index' => 'added_at'
-        ));
+//        $this->addColumn('added_at', array(
+//            'header' => Mage::helper('customer')->__('Added At'),
+//            'type' => 'datetime',
+//            'width' => '120',
+//            'index' => 'added_at'
+//        ));
         $this->addExportType('*/*/exportWishlistCsv', $helper->__('CSV'));
         $this->addExportType('*/*/exportWishlistExcel', $helper->__('Excel XML'));
 
