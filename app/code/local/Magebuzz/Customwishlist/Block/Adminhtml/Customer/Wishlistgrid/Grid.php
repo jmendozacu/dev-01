@@ -69,7 +69,9 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
                         )
                     )";
 
-        $collection->getSelect()->joinLeft(array('subtable_product' => new Zend_Db_Expr('(' . $query_product_name . ')')), 'subtable_product.entity_id = main_table.product_id', array('subtable_product.product_name'));
+        $collection->getSelect()->joinLeft(array('subtable_product_name' => new Zend_Db_Expr('(' . $query_product_name . ')')), 'subtable_product_name.entity_id = main_table.product_id', array('subtable_product_name.product_name'));
+        $query_product_sku =  "SELECT entity_id,sku FROM catalog_product_entity";
+        $collection->getSelect()->joinLeft(array('subtable_product_sku'=>new Zend_Db_Expr('('.$query_product_sku.')')),'subtable_product_sku.entity_id=main_table.product_id',array('subtable_product_sku.sku'));
         $collection->getSelect()->group('main_table.wishlist_item_id');
         //Mage::log($collection->getSelect()->__toString());
         $this->setCollection($collection);
@@ -96,9 +98,16 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
             'width' => '150',
             'index' => 'product_name',
         ));
+        $this->addColumn('sku', array(
+            'header'    =>Mage::helper('customer')->__('Sku'),
+            'width'     =>'50px',
+            'index'     =>'sku'
+
+        ));
         $this->addColumn('qty', array(
             'header' => Mage::helper('customer')->__('Qty'),
-            'width' => '150',
+            'type' => 'number',
+            'width' => '50px',
             'index' => 'qty'
         ));
         $this->addColumn('added_at', array(
