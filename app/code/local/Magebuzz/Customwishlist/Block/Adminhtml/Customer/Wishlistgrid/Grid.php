@@ -26,7 +26,51 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
         $collection->getSelect()->join(
             array('customer' => 'customer_entity'), 'customer.entity_id = wishlist_table.customer_id', array('customer.email')
         );
-        //Mage::log($collection2->getSelect()->__toString());
+        /*create subquery to get customer name (using Zend_Db_Expr )-> join with maintable*/
+            $query_customer_name = "SELECT
+                    FIRST .entity_id,
+                    CONCAT(FIRST . VALUE, ' ', last. VALUE) as customer_name
+                    FROM
+                        `customer_entity_varchar` FIRST
+                    INNER JOIN customer_entity_varchar last ON FIRST .entity_id = last.entity_id
+                    AND last.attribute_id = 7
+                    WHERE
+                    FIRST .attribute_id = 5";
+
+        $collection->getSelect()->joinLeft(array('subtable_customer'=>new Zend_Db_Expr('('.$query_customer_name.')')),'subtable_customer.entity_id = wishlist_table.customer_id',array('subtable_customer.customer_name'));
+
+        $query_product_name = " SELECT
+                        `value` AS product_name, entity_id
+                    FROM
+                        catalog_product_entity_varchar
+                    WHERE
+                        entity_type_id = (
+                            SELECT
+                                entity_type_id
+                            FROM
+                                eav_entity_type
+                            WHERE
+                                entity_type_code = 'catalog_product'
+                        )
+                    AND attribute_id = (
+                        SELECT
+                            attribute_id
+                        FROM
+                            eav_attribute
+                        WHERE
+                            attribute_code = 'name'
+                        AND entity_type_id = (
+                            SELECT
+                                entity_type_id
+                            FROM
+                                eav_entity_type
+                            WHERE
+                                entity_type_code = 'catalog_product'
+                        )
+                    )";
+
+        $collection->getSelect()->joinLeft(array('subtable_product'=>new Zend_Db_Expr('('.$query_product_name.')')),'subtable_product.entity_id = main_table.product_id',array('subtable_product.product_name'));
+        //Mage::log($collection->getSelect()->__toString());
         $this->setCollection($collection);
         parent::_prepareCollection();
         return $this;
@@ -36,24 +80,20 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
     {
         $helper = Mage::helper('customwishlist');
 
-        $this->addColumn('customer_id', array(
+        $this->addColumn('customer_name', array(
             'header' => Mage::helper('customer')->__('Customer Name'),
             'width' => '150',
-            'sortable'  => false,
-            'renderer' => 'Magebuzz_Customwishlist_Block_Adminhtml_Renderer_CustomerName',
-            'filter_condition_callback' => array($this,'_customerNameFilter')
+            'index' => 'customer_name',
         ));
         $this->addColumn('email', array(
             'header' => Mage::helper('customer')->__('Email'),
             'width' => '150',
             'index' => 'email'
         ));
-        $this->addColumn('product_id', array(
+        $this->addColumn('product_name', array(
             'header' => Mage::helper('customer')->__('Product Name'),
             'width' => '150',
-            'sortable'  => false,
-            'renderer' => 'Magebuzz_Customwishlist_Block_Adminhtml_Renderer_ProductName',
-            'filter_condition_callback' => array($this,'_productNameFilter')
+            'index' => 'product_name',
         ));
         $this->addColumn('qty', array(
             'header' => Mage::helper('customer')->__('Qty'),
@@ -75,48 +115,5 @@ class Magebuzz_Customwishlist_Block_Adminhtml_Customer_Wishlistgrid_Grid extends
     public function getGridUrl()
     {
         return $this->getUrl('*/*/grid', array('_current' => true));
-    }
-
-    public function _customerNameFilter($collection, $column)
-    {
-        if (!$value = $column->getFilter()->getValue()) {
-            return $this;
-        }
-        $resource = Mage::getSingleton('core/resource');
-        $readConnection = $resource->getConnection('core_read');
-        $query = "select entity_id from customer_entity_varchar WHERE customer_entity_varchar.value like '%" . $value . "%'";
-        $results = $readConnection->fetchAll($query);
-
-        $customer_ids = array();
-        foreach ($results as $item) {
-            array_push($customer_ids, $item['entity_id']);
-        }
-        json_encode($customer_ids);
-
-        $customer_ids_str = str_replace(array('[',']'),array('(',')'),json_encode($customer_ids));
-
-        $this->getCollection()->getSelect()
-            ->where("customer.entity_id IN " .$customer_ids_str);
-        return $this;
-    }
-    public function _productNameFilter($collection, $column){
-        if (!$value = $column->getFilter()->getValue()) {
-            return $this;
-        }
-        $resource = Mage::getSingleton('core/resource');
-        $readConnection = $resource->getConnection('core_read');
-        $query = "select entity_id from catalog_product_entity_varchar WHERE catalog_product_entity_varchar.value like '%" . $value . "%'";
-        $results = $readConnection->fetchAll($query);
-        $product_ids = array();
-        foreach ($results as $item) {
-            array_push($product_ids, $item['entity_id']);
-        }
-        json_encode($product_ids);
-
-        $product_ids_str = str_replace(array('[',']'),array('(',')'),json_encode($product_ids));
-        $this->getCollection()->getSelect()
-            ->where("main_table.product_id IN ".$product_ids_str);
-        return $this;
-
     }
 }

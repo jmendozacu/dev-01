@@ -37,6 +37,7 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
             'customer_name',
             'CONCAT({{customer_firstname}}, \' \', {{customer_lastname}})',
             array('customer_firstname' => 'main_table.customer_firstname', 'customer_lastname' => 'main_table.customer_lastname'));
+        //Mage::log($collection->getSelect()->__toString());
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
