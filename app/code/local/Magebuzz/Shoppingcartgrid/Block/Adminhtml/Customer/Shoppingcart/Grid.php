@@ -67,12 +67,12 @@ class Magebuzz_Shoppingcartgrid_Block_Adminhtml_Customer_Shoppingcart_Grid exten
             'index'     =>'sku'
 
         ));
-//        $this->addColumn('items_qty', array(
-//            'header' => Mage::helper('customer')->__('Qty'),
-//            'width' => '50px',
-//            'type' => 'number',
-//            'index' => 'items_qty'
-//        ));
+        $this->addColumn('items_qty', array(
+            'header' => Mage::helper('customer')->__('Qty'),
+            'width' => '50px',
+            'type' => 'number',
+            'index' => 'items_qty'
+        ));
         $this->addColumn('updated_at', array(
             'header'    =>Mage::helper('customer')->__('Update At'),
             'width'     =>'50px',
