@@ -22,6 +22,8 @@
 
 .wrap-bannerads div.banner .bx-viewport {
   /* background: #FFF; */
+  position: relative;
+  z-index: 1;
 }
 .wrap-bannerads .bx-viewport .banner-desc{position:absolute; right:0; bottom:15px; max-width:440px; max-height:280px; padding:48px; background:url(images/banner-desc-bg.png) top left repeat; text-align:left;}
 .wrap-bannerads .bx-viewport .banner-desc.top-left{top:0; left:0;}
