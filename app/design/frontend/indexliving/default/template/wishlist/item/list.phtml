@@ -30,7 +30,7 @@
 <?php
     $columns = Mage_Wishlist_Block_Customer_Wishlist_Items::getColumns();
 ?>
-<button type="button" title="<?php echo $this->__('Share Wishlist') ?>" class="button share-wishlist" onclick="popWin('<?php echo 'index/share/';?>','share','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Share Wishlist') ?></span></span></button>
+<button type="button" title="<?php echo $this->__('Share Wishlist') ?>" class="button share-wishlist" onclick="popWin('<?php echo Mage::getBaseUrl().'/wishlist/index/share';?>','share','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Share Wishlist') ?></span></span></button>
 <a href="<?php echo Mage::getBaseUrl().'customwishlist/index/print'; ?>" class="link-print" onclick="this.target='_blank';"><?php echo $this->__('Print Wishlist') ?></a>
 
 <table class="clean-table box-desktop" id="wishlist-table">
