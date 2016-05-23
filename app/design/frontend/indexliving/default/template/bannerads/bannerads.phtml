@@ -65,8 +65,23 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
           <?php endforeach ?>
         </ul>
       </div>
-			<?php if ($i > 1): ?>
-      <script type="text/javascript">              
+			<?php if ($i == 1): ?>
+      <script type="text/javascript">
+        jQuery(document).ready(function () {
+          jQuery('#banner_carousel_<?php echo $block->getBlockId()?>').bxSlider({
+            auto: false,
+            mode: 'fade',
+            controls: false,
+            speed: <?php echo Mage::helper('bannerads')->getTransitionSpeed()*1000?>,
+            preloadImages: 'visible',
+            pager: false,
+            captions: <?php if (($blockType == 4) || ($blockType == 6)) echo 'true'; else echo 'false'; ?>,
+            infiniteLoop: false
+          });
+        });
+      </script>
+      <?php elseif($i > 1): ?>
+      <script type="text/javascript">
         jQuery(document).ready(function () {
           jQuery('#banner_carousel_<?php echo $block->getBlockId()?>').bxSlider({
             auto: true,
@@ -81,7 +96,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
             pager: <?php if(Mage::helper('bannerads')->showSliderPager()):?> true<?php else:?> false<?php endif; ?>,
             captions: <?php if (($blockType == 4) || ($blockType == 6)) echo 'true'; else echo 'false'; ?>
           });
-        });        
+        });
       </script>
 			<?php endif; ?>
     <?php endif ?>
