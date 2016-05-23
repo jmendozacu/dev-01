@@ -150,7 +150,12 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
     {	
 		$isActive =  (bool)(int)Mage::getStoreConfig('payment/KSmartpay/active');
 		$CurrentAmount = (double)Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal();
-		
+		if(Mage::getSingleton('checkout/cart')->getQuote()->getTotals()['shipping']!=null){
+			$shipping = Mage::getSingleton('checkout/cart')->getQuote()->getTotals()['shipping']->getValue();
+		} else {
+			$shipping = 0;
+		}
+		$CurrentAmount = $CurrentAmount - $shipping;
 		//=> Allowed IP Address
 		if (trim(Mage::getStoreConfig('payment/KSmartpay/allowedip')) != "") {
 			$ClientIP = long2ip(Mage::helper('core/http')->getRemoteAddr(true)); 
