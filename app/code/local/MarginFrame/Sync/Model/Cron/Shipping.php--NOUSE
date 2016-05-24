@@ -1,0 +1,198 @@
+<?php
+
+class MarginFrame_Sync_Model_Cron_Shipping extends Mage_Core_Model_Abstract
+{
+	
+	public function Run() {
+		echo 111; die;
+		var_dump('MarginFrame_Sync_Model_Cron_Shipping::Run');
+
+		$collection = Mage::getResourceModel('sales/order_collection');
+		//table :: sales_flat_order
+		//======================================
+		$collection->getSelect()
+		->reset(Zend_Db_Select::COLUMNS)
+	    ->columns(
+	    	array(
+    		'order_id' => 'increment_id',
+    		'subtotal' => 'base_subtotal',
+    		'discount_amount' => 'discount_amount',
+    		'shipping_amount' => 'shipping_amount',
+    		'tax_amount' => 'tax_amount',
+    		'grand_total' => 'grand_total',
+    		'shipping_method' => 'shipping_method',
+    		'order_date' => 'created_at'
+    		)
+    	);
+
+	    //table :: sale_order_tax
+		//======================================
+		$collection
+		->getSelect()
+		->joinLeft(array('order_tax'=> 'sales_order_tax'),
+			'order_tax.order_id = main_table.entity_id',
+			array( 
+				'tax_id' => 'order_tax.tax_id'
+			)
+		);
+
+	    //table :: sales_flat_order_status_history
+		//======================================
+		$collection
+		->getSelect()
+		->joinLeft(array('order_status_history'=> 'sales_flat_order_status_history'),
+			'order_status_history.parent_id = main_table.entity_id',
+			array( 
+				'remark' => 'order_status_history.comment'
+			)
+		);
+		
+		//table :: sales_flat_invoice
+		//======================================
+		$collection
+		->getSelect()
+		->joinLeft(array('order_invoice'=> 'sales_flat_invoice'),
+			'order_invoice.order_id = main_table.entity_id',
+			array( 
+				'invoice_date' => 'order_invoice.created_at',
+				'invoice_no' => 'order_invoice.increment_id'
+			)
+		);
+		
+		//table :: sales_flat_order_payment
+		//======================================
+		$collection
+		->getSelect()
+		->joinLeft(array('order_payment'=> 'sales_flat_order_payment'),
+			'order_payment.parent_id = main_table.entity_id',
+			array( 
+				'payment_method' => 'order_payment.method'
+			)
+		);
+		//table :: sales_flat_order_item
+		//======================================
+		$collection
+		->getSelect()
+		->joinLeft(array('order_item'=> 'sales_flat_order_item'),
+			'order_item.order_id = main_table.entity_id',
+			array( 
+				'sku' => 'order_item.sku',
+				'product_name' => 'order_item.name',
+				'item_row_total' => 'order_item.row_total',
+				'item_price' => 'order_item.price',
+				'qty' => 'order_item.qty_ordered',
+				'order_no' => 'order_item.order_id'
+			)
+		)
+		->where('order_item.parent_item_id is null');
+		
+		//table :: sales_flat_order_address
+		//======================================
+		$collection
+		->getSelect()
+		->joinLeft(array('billing_address'=> 'sales_flat_order_address'),
+			'billing_address.entity_id = main_table.billing_address_id',
+			array( 
+				
+				'billing_postcode' => 'billing_address.postcode',
+				'billing_prefix' => 'billing_address.prefix',
+				'billing_firstname' => 'billing_address.firstname',
+				'billing_lastname' => 'billing_address.lastname',
+				'billing_company' => 'billing_address.company',
+				'billing_telephone' => 'billing_address.telephone',
+				'billing_ext' => ''; //'billing_address.telephone_ext',
+				//'billing_building' => 'billing_address.building',
+				'billing_street' => 'billing_address.street',
+				'billing_subdistrict' => 'billing_address.subdistrict_id',
+				'billing_district' => 'billing_address.city_id',
+				'billing_province' => 'billing_address.region_id',
+				'billing_country' => 'billing_address.country_id'
+			)
+		);
+		$collection
+		->getSelect()
+		->joinLeft(array('shipping_address'=> 'sales_flat_order_address'),
+			'shipping_address.entity_id = main_table.shipping_address_id',
+			array( 
+				
+				'shipping_prefix' => 'shipping_address.prefix',
+				'shipping_firstname' => 'shipping_address.firstname',
+				'shipping_lastname' => 'shipping_address.lastname',
+				'shipping_company' => 'shipping_address.company',
+				'shipping_telephone' => 'shipping_address.telephone',
+				'shipping_ext' => ''; //shipping_address.telephone_ext',
+				//'shipping_building' => 'shipping_address.building',
+				'shipping_street' => 'shipping_address.street',
+				'shipping_subdistrict' => 'shipping_address.subdistrict_id',
+				'shipping_district' => 'shipping_address.city_id',
+				'shipping_province' => 'shipping_address.region_id',
+				'shipping_country' => 'shipping_address.country_id'
+			)
+		);
+
+
+		$collection->getSelect()
+		->where('exported_name = ?', null);
+
+		var_dump((string)$collection->getSelect());
+
+		$read = Mage::getSingleton('core/resource')->getConnection('core_read');
+		//summary
+		$q = $read->fetchAll((string)$collection->getSelect()); 
+
+		var_dump($q); die;
+
+		//export to csv
+		$resarr[] = array_keys(current($q));
+		foreach ($q as $row) {
+			array_map('htmlentities', $row);
+			$row['order_date'] = Mage::getModel('core/date')->date('Y-m-d', strtotime($row['order_date']));
+
+			if($row['invoice_date']!= null)
+			{	
+				$row['invoice_date'] = Mage::getModel('core/date')->date('Y-m-d', strtotime($row['invoice_date']));
+			}
+			
+			$resarr[] = $row;
+		}
+		//echo '<pre>'.print_r($resarr, true).'</pre>';die;
+		foreach ($q as $oidarr) {
+			array_map('htmlentities', $row);
+			$oid[] = $oidarr['order_id'];
+		}
+
+		$oid = array_unique($oid);
+
+		if(!empty($resarr) && count($resarr) > 0){
+			//file csv
+			$filename = 'order_'.date('YmdHis').'.csv';
+			$filepath = Mage::getBaseDir('var').DS.'shipyours'.DS.'billing'.DS.'ready'.DS.$filename;
+			//file trg
+			$filenametrg = 'order_'.date('YmdHis').'.trg';
+			$filepathtrg = Mage::getBaseDir('var').DS.'shipyours'.DS.'billing'.DS.'ready'.DS.$filenametrg;
+			//create csv in var/billing
+			$csv = new Varien_File_Csv();
+			$savedatacsv = $csv->saveData($filepath, $resarr);
+			file_put_contents($filepathtrg,'');
+
+
+			//save data in exports_name
+			$oidsss = "'".implode("','", $oid)."'";
+			$query = "UPDATE sales_flat_order
+			  	SET exported_name ='{$filename}' 
+			  	WHERE increment_id in ({$oidsss});";
+			$write = Mage::getSingleton('core/resource')->getConnection('core_write');
+			$write->query($query);
+
+			Mage::log('====== FILE CREATED ======', null, 'mgfsync_billing.log');
+			Mage::log(' '.$filename.' : SUCCESS '. count($oid), null, 'mgfsync_billing.log');
+
+		}else{
+			Mage::log('====== NO NEW ORDER ======', null, 'mgfsync_billing.log');
+			//echo "No new order!!!";
+		}
+		
+		//echo '<pre>'.print_r($write, true).'</pre>';
+		
+   	}
+}

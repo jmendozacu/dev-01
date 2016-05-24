@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MarginFrame_Sync>
+            <version>0.0.9</version>
+        </MarginFrame_Sync>
+    </modules>
+	<crontab>
+        <jobs>            
+			<mgfsync_cron_billing_run>
+                <schedule><cron_expr>0 9,15 * * *</cron_expr></schedule>
+                <run><model>mgfsync/cron_billing::Run</model></run>
+            </mgfsync_cron_billing_run>
+            <mgfsync_cron_stock_run>
+                <schedule><cron_expr>10 7,19 * * *</cron_expr></schedule>
+                <run><model>mgfsync/cron_stock::Run</model></run>
+            </mgfsync_cron_stock_run>
+            <mgfsync_cron_delivery_run>
+                <schedule><cron_expr>*/30 * * * *</cron_expr></schedule>
+                <run><model>mgfsync/cron_delivery::Run</model></run>
+            </mgfsync_cron_delivery_run>
+        </jobs>
+    </crontab>
+	<global>
+        <models>
+            <mgfsync>
+                <class>MarginFrame_Sync_Model</class>
+                <resourceModel>mgfsync_mysql4</resourceModel>
+            </mgfsync>
+            <mgfsync_mysql4>
+                <class>MarginFrame_Sync_Model_Mysql4</class>
+            </mgfsync_mysql4>
+        </models>
+        <resources>
+            <mgfsync_setup>
+                <setup>
+                    <module>MarginFrame_Sync</module>
+                    <!-- <class>Mage_Core_Model_Resource_Setup</class>-->
+                    <!-- default setup since magento 1.6.x -->
+                    <!-- <class>Mage_Sales_Model_Resource_Setup</class> -->
+                    <!-- magento 1.3.x, 1.4.x & 1.5.x -->
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </mgfsync_setup>
+            <mgfsync_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </mgfsync_write>
+            <mgfsync_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </mgfsync_read>
+        </resources>
+        <blocks>
+            <mgfsync>
+				<class>MarginFrame_Sync_Block</class>
+			</mgfsync>
+        </blocks>
+        <helpers>
+            <mgfsync>
+                <class>MarginFrame_Sync_Helper</class>
+            </mgfsync>
+        </helpers>
+        <fieldsets>
+            <!--<customer_account>
+                <telephone_ext><create>1</create><update>1</update></telephone_ext>
+                <mobile_no><create>1</create><update>1</update></mobile_no>
+            </customer_account>-->
+            <customer_address>
+                 <telephone_ext><to_quote_address>*</to_quote_address></telephone_ext>
+                 <mobile_no><to_quote_address>*</to_quote_address></mobile_no>
+            </customer_address>
+            <sales_convert_order_address>
+                <telephone_ext><to_quote_address>*</to_quote_address></telephone_ext>
+                <mobile_no><to_quote_address>*</to_quote_address></mobile_no>
+            </sales_convert_order_address>
+            <sales_convert_quote_address>
+                <telephone_ext><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></telephone_ext>
+                <mobile_no><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></mobile_no>
+            </sales_convert_quote_address>
+            <sales_copy_order_billing_address>
+                <telephone_ext><to_order>*</to_order></telephone_ext>
+                <mobile_no><to_order>*</to_order></mobile_no>
+            </sales_copy_order_billing_address>
+            <sales_copy_order_shipping_address>
+                <telephone_ext><to_order>*</to_order></telephone_ext>
+                <mobile_no><to_order>*</to_order></mobile_no>
+            </sales_copy_order_shipping_address>
+            
+
+        </fieldsets>
+    </global>
+	<frontend>
+        <routers>
+			<mgfsync>
+                <use>standard</use>
+                <args>
+					<module>MarginFrame_Sync</module>
+					<frontName>sync</frontName>
+				</args>
+            </mgfsync>
+        </routers>
+    </frontend>
+</config>
