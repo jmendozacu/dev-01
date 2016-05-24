@@ -14,7 +14,8 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 	}
 
 	function testAction(){
-		echo "TEST";
+		$model = Mage::getModel('mgfsync/cron_stock');
+		echo $model::Run();
 	}
 
 	function tcancelAction(){

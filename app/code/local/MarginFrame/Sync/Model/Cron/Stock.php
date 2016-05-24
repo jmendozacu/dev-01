@@ -2,9 +2,12 @@
 class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 {
 	
-	public function Run() {
+	public function test(){
 		
-		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS.'ready'.DS;
+	}
+	public function Run() {
+		// /var/interface/stock
+		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS;
 
 		// Tiw
 		// Create folder
@@ -21,7 +24,7 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 		    // find .trg file
 		    if(strrpos($filename, '.trg')) {
 
-		    	// rename file .trg to .crv
+		    	// rename file .trg to .csv
 		    	$filenamecsv = str_replace('.trg', '.csv', $filename);
 
 				$row = 1;
@@ -31,13 +34,20 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				    Mage::log('open file : '.$dir.$filenamecsv, null, 'mgfsync_stock.log');
 
 				    $csvdata = array();
-				    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+				    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
 				        //$result[] = $data;
 				        //skip header row
 				        if($data[0] == 'sku' || $data[1] == 'qty'){
 				        	continue;
 				        }
-				        $csvdata[$data[0]] = $data[1];
+				        // array(
+				        // 	'sku'=>array(
+				        // 		'warehouse'=>'1100',
+				        // 		'qty'=>'10'
+				        // 	)
+				        // )
+				        $csvdata[$data[0]]['warehouse'] = $data[1];
+				        $csvdata[$data[0]]['qty'] = $data[1];
 				    }
 
 				    $orderqty = array();
@@ -70,7 +80,12 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 						;
 
 						$collection->load();
+						return $collection;
 
+						// array(
+						// 	'product_id-1' => '1',
+						// 	'product_id-2' => '2',
+						// )
 						foreach ($collection->getData() as $item) {
 							if(isset($orderqty[$item['product_id']])){
 								$orderqty[$item['product_id']] += $item['qty_ordered'];
@@ -83,7 +98,9 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 
 				  	// prepare to load products
 				    $product = Mage::getModel('catalog/product');
-				    foreach ($csvdata as $sku => $qty) {
+				    foreach ($csvdata as $sku => $item) {
+				    	$qty = $item['qty'];
+				    	$warehouse = $item['warehouse'];
 
 						$p = $product->loadByAttribute('sku', $sku);
 
