@@ -2,9 +2,6 @@
 class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 {
 	
-	public function test(){
-		
-	}
 	public function Run() {
 		// /var/interface/stock
 		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS;
@@ -25,7 +22,7 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 		    if(strrpos($filename, '.trg')) {
 
 		    	// rename file .trg to .csv
-		    	$filenamecsv = str_replace('.trg', '.csv', $filename);
+		    	$filenamecsv = str_replace('.trg', '.txt', $filename);
 
 				$row = 1;
 
@@ -37,9 +34,11 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
 				        //$result[] = $data;
 				        //skip header row
-				        if($data[0] == 'sku' || $data[1] == 'qty'){
-				        	continue;
-				        }
+				        // if($data[0] == 'ARTICLE' || $data[1] == 'Warehouse' || $data[2] == 'QTY'){
+				        // 	continue;
+				        // }
+				        if($row == 1){ $row++; continue; }
+
 				        // array(
 				        // 	'sku'=>array(
 				        // 		'warehouse'=>'1100',
@@ -47,10 +46,11 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				        // 	)
 				        // )
 				        $csvdata[$data[0]]['warehouse'] = $data[1];
-				        $csvdata[$data[0]]['qty'] = $data[1];
+				        $csvdata[$data[0]]['qty'] = $data[2];
 				    }
 
 				    $orderqty = array();
+
 				    if(count($csvdata) > 0) {
 
 				    	// get product_id, qty_ordered in state = new, pending_payment
@@ -80,12 +80,12 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 						;
 
 						$collection->load();
-						return $collection;
 
 						// array(
 						// 	'product_id-1' => '1',
 						// 	'product_id-2' => '2',
 						// )
+
 						foreach ($collection->getData() as $item) {
 							if(isset($orderqty[$item['product_id']])){
 								$orderqty[$item['product_id']] += $item['qty_ordered'];
@@ -100,6 +100,8 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				    $product = Mage::getModel('catalog/product');
 				    foreach ($csvdata as $sku => $item) {
 				    	$qty = $item['qty'];
+
+				    	// ignored
 				    	$warehouse = $item['warehouse'];
 
 						$p = $product->loadByAttribute('sku', $sku);
@@ -155,7 +157,7 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 					Mage::log('close file : '.$dir.$filenamecsv, null, 'mgfsync_stock.log');
 
 					// moved file to completed path
-					$newdir = str_replace(DS.'ready'.DS, DS.'completed'.DS, $dir);
+					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS.'save'.DS;
 
 					// Tiw
 					// Create folder
