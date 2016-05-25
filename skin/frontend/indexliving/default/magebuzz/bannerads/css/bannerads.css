@@ -58,6 +58,17 @@
   width: 70%;
   margin: 0 auto;
 }
+@media screen and (max-width: 1100px){
+  .wrap-bannerads .bx-viewport .banner-desc{
+    width: 40%;
+    padding: 25px;
+  }
+}
  @media (max-width: 767px) {
-  .wrap-bannerads .bx-viewport .banner-desc{display:none;}
+  .wrap-bannerads .bx-viewport .banner-desc{
+    position: static;
+    display:block;
+    max-width: none;
+    width: 100%;
+  }
 }
