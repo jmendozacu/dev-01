@@ -3672,6 +3672,8 @@ body {
 }
 .logo .small {
   display: block;
+  width: 119px;
+  height: 18px;
 }
 .logo .large {
 }
@@ -3689,6 +3691,8 @@ body {
   }
   .logo .large {
     display: block;
+    width: 201px;
+    height: 30px;
   }
   .box-top-menu.box-header-content {display:block!important;}
 }
