@@ -27,8 +27,8 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 				$row = 1;
 
 				if (($handle = fopen($dir.$filenamecsv, "r")) !== FALSE) {
-				    // Mage::log('=========================================================', null, 'mgfsync_store.log');
-				    // Mage::log('open file : '.$dir.$filenamecsv, null, 'mgfsync_store.log');
+				    Mage::log('=========================================================', null, 'mgfsync_store.log');
+				    Mage::log('open file : '.$dir.$filenamecsv, null, 'mgfsync_store.log');
 
 				    $csvdata = array();
 				    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
@@ -38,128 +38,104 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 				        // 	continue;
 				        // }
 
-				        // array(
-				        // 	'sku'=>array(
-				        // 		'warehouse'=>'1100',
-				        // 		'qty'=>'10'
-				        // 	)
-				        // )
-				        $csvdata[$data[1]][$data[0]] = trim($data[2]);
-				        // $csvdata['store'] = trim($data[1]);
-				        // $csvdata['status'] = trim($data[2]);
-				    }
-
-				    $orderqty = array();
-
-				    if(count($csvdata) > 0) {
-
-				    	// get product_id, qty_ordered in state = new, pending_payment
-						$collection = Mage::getResourceModel('sales/order_item_collection')
-						    // ->addAttributeToSelect('*')
-						    ->AddAttributeToSelect('product_id')
-						    ->AddAttributeToSelect('qty_ordered')
-						;
-
-						$collection
-						    ->getSelect()
-						    ->join(
-						        array('orders'=> 'sales_flat_order'),
-						        'orders.entity_id = main_table.order_id', 
-						        array(
-						            //'orders.customer_email',
-						            //'orders.customer_id',
-						            //'orders.state as order_state',
-						            //'orders.status as order_status'
-						        )
-						    )
-						;
-
-						$collection
-						    ->getSelect()
-						    ->where("orders.state in ('new', 'pending_payment')")
-						;
-
-						$collection->load();
-
-						// array(
-						// 	'product_id-1' => '1',
-						// 	'product_id-2' => '2',
-						// )
-
-						foreach ($collection->getData() as $item) {
-							if(isset($orderqty[$item['product_id']])){
-								$orderqty[$item['product_id']] += $item['qty_ordered'];
-							} else {
-								$orderqty[$item['product_id']] = $item['qty_ordered'];
-							}
-						}
+				        $csvdata[$data[0]][$data[1]] = trim($data[2]);
 
 				    }
 
 				  	// prepare to load products
 				    $product = Mage::getModel('catalog/product');
-				    foreach ($csvdata as $store => $sku) {
-				    	echo $status = $store['alto'];
-				    	echo $sku = $sku['alto'];
+				    $dealerAdds = array();
+				    $dealerDels = array();
 
-				    	echo '<pre>'.print_r($status, true).'</pre>'; die;
-				    	// ignored
-				    	$warehouse = $item['warehouse'];
+				    foreach ($csvdata as $sku => $data) {
 
-						$p = $product->loadByAttribute('sku', $sku);
+				    	$p = $product->loadByAttribute('sku', $sku);
 
-    					if ($p) {
-      						
-    						Mage::log('found sku : '.$sku.' || update qty : '.$qty, null, 'mgfsync_stock.log');
-      						// get product's stock data such quantity, in_stock etc
-     						$productId = $p->getIdBySku($sku);
+				    	if ($p) {
+				    	Mage::log('found sku : '.$sku, null, 'mgfsync_store.log');
 
-     						//calculate real stock
-     						if(isset($orderqty[$productId])){
-     							$qty = $qty - $orderqty[$productId];
-     						}
+				    		$productId = $p->getIdBySku($sku);
 
-      						$stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($productId);
-							$stockItemId = $stockItem->getId();
-							$stock = array();							
-							
-							// then set product's stock data to update
-							if (!$stockItemId) {
-								$stockItem->setData('product_id', $product->getId());
-								$stockItem->setData('stock_id', 1);
-							} else {
-								$stock = $stockItem->getData();
-							}
-							$stockItem->setData('qty', $qty);
-							if ($qty > 0) {
-								$stockItem->setData('is_in_stock', 1);
-							} else {
-								$stockItem->setData('is_in_stock', 0);
-							}
-							$stockItem->setData('manage_stock', 1);
-							$stockItem->setData('use_config_manage_stock', 1);
-							
-							// call save() method to save your product with updated data
-							try{
-								$stockItem->save();
-								$product->save($p);
-							} catch (Exception $ex) {
-								// handle the error here!!
-								Mage::log('error sku : '.$sku, null, 'mgfsync_stock.log');
-							}
-							unset($stockItem);
-							unset($p);
-						} else {
-							Mage::log("SKU not found : ".$sku, null, 'mgfsync_stock.log');
+				    		foreach ($data as $store_code => $status) {				    			
+					    		$productdealerModel = Mage::getModel('dealerlocator/productdealer');
+					    		
+								$dealerOlds = $productdealerModel->getCollection()
+									->addFieldToFilter('product_id', $productId)
+									->getColumnValues('dealer_id');
+
+					    		$s = Mage::getModel('dealerlocator/dealerlocator')->getCollection()
+					    			->addFieldToFilter('store_code', $store_code)
+					    			->getColumnValues('dealerlocator_id');
+
+					    		foreach ($s as $value) {
+					    			if ($status == 0) {
+					    				$dealerDels[] = $value;
+					    			}elseif ($status == 1) {
+					    				$dealerAdds[] = $value;
+					    			}
+					    		}
+
+					    		if(!$dealerAdds) {
+					    			$dealerAdds[] = 0;
+					    		}
+
+					    		if(!$dealerDels) {
+					    			$dealerDels[] = 0;
+					    		}
+			 
+				    		}
+				    		
+				    	} else {
+							Mage::log("SKU not found : ".$sku, null, 'mgfsync_store.log');
 						}
 
-				    }
+						$dealerAddsDiff = array_diff($dealerAdds, $dealerOlds);
+					    $dealerDelsDiff = array_intersect($dealerDels, $dealerOlds);
+
+						// call save() method to save your product with updated data
+						try {
+							//delete product dealer
+					        $productdealerIdDels = $productdealerModel->getCollection()
+					          	->addFieldToFilter('product_id', $productId)
+					          	->addFieldToFilter('dealer_id', array('in' => $dealerDelsDiff))
+					          	->getColumnValues('productdealer_id');
+
+					        if ($productdealerIdDels != null) {
+						        foreach($productdealerIdDels as $productdealerIdDel){
+						          	$productdealerModel->setId($productdealerIdDel)->delete();
+						        }
+						        Mage::log('disabled sku : '.$sku. 'in last store_code '.$store_code, null, 'mgfsync_store.log');
+						    }
+
+					        //add new dealer
+					        if($dealerAddsDiff != null){
+					          	foreach($dealerAddsDiff as $dealerAdd){
+						            $dataForSave['product_id'] = $productId;
+						            $dataForSave['dealer_id'] = $dealerAdd;
+						            $dataForSave['display'] = 1;
+						            $productdealerModel->setData($dataForSave);
+						            $productdealerModel->save();
+					          	}
+					          	Mage::log('active sku : '.$sku. 'in last store_code '.$store_code, null, 'mgfsync_store.log');
+					        }
+
+						} catch (Exception $ex) {
+							// handle the error here!!
+							Mage::log('error sku : '.$sku.'or store_code '.$store_code, null, 'mgfsync_store.log');
+						}
+						unset($dealerOlds);
+						unset($dealerDels);
+						unset($dealerAdds);
+						unset($p);
+						unset($s);
+				    	
+				    }					
 
 					fclose($handle);
-					Mage::log('close file : '.$dir.$filenamecsv, null, 'mgfsync_stock.log');
+					Mage::log('close file : '.$dir.$filenamecsv, null, 'mgfsync_store.log');
 
 					// moved file to completed path
-					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS.'save'.DS;
+					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'store'.DS.'save'.DS;
 
 					// Tiw
 					// Create folder
@@ -175,16 +151,16 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 					// Tiw
 					// check to remove file
 					if (!file_exists($dir.$filename)) {
-						Mage::log('removed : '.$dir.$filename, null, 'mgfsync_stock.log');
+						Mage::log('removed : '.$dir.$filename, null, 'mgfsync_store.log');
 					}else{
-						Mage::log('can not removed : '.$dir.$filename, null, 'mgfsync_stock.log');
+						Mage::log('can not removed : '.$dir.$filename, null, 'mgfsync_store.log');
 					}
 
 					// check to move file
 					if (!file_exists($dir.$filenamecsv)) {
-						Mage::log('moved to completed : '.$newdir.$filenamecsv, null, 'mgfsync_stock.log');
+						Mage::log('moved to completed : '.$newdir.$filenamecsv, null, 'mgfsync_store.log');
 					}else{
-						Mage::log('can not moved : '.$newdir.$filenamecsv, null, 'mgfsync_stock.log');
+						Mage::log('can not moved : '.$newdir.$filenamecsv, null, 'mgfsync_store.log');
 					}
 				}
 
