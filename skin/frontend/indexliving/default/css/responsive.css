@@ -806,10 +806,10 @@
   .banner-static-home li span:before {background-size: 70px auto; width:38px; background-position:0px -434px; }
   .banner-static-home li:nth-child(2) span:before { background-position: 0px -488px;  width: 42px;}
   .banner-static-home li:nth-child(2) span,
-  .banner-static-home li:nth-child(4) span{padding-left:42px;}
+  .banner-static-home li:nth-child(4) span{padding-left:57px;}
   .banner-static-home li:nth-child(3) span:before { background-position: -50px -434px;  width: 38px;}
   .banner-static-home li:nth-child(3) span {padding-left:40px;}
-  .banner-static-home li:nth-child(4) span:before { background-position: 0px -540px;  width: 42px;}
+  .banner-static-home li:nth-child(4) span:before { background-position: 0px -709px;  width: 48px;}
   .box-home-decor .title-decor label {font-size:35px; line-height:40px;}
   .box-home-decor .title-decor label strong {font-size:41px;}
   .box-home-decor .title-decor {font-size:25px;}
