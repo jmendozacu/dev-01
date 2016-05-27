@@ -1,10 +1,10 @@
 <?php
-class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
+class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 {
 	
 	public function Run() {
 		// /var/interface/stock
-		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS;
+		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'store'.DS;
 
 		// Tiw
 		// Create folder
@@ -27,8 +27,8 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				$row = 1;
 
 				if (($handle = fopen($dir.$filenamecsv, "r")) !== FALSE) {
-				    Mage::log('=========================================================', null, 'mgfsync_stock.log');
-				    Mage::log('open file : '.$dir.$filenamecsv, null, 'mgfsync_stock.log');
+				    // Mage::log('=========================================================', null, 'mgfsync_store.log');
+				    // Mage::log('open file : '.$dir.$filenamecsv, null, 'mgfsync_store.log');
 
 				    $csvdata = array();
 				    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
@@ -44,8 +44,9 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				        // 		'qty'=>'10'
 				        // 	)
 				        // )
-				        $csvdata[$data[0]]['warehouse'] = trim($data[1]);
-				        $csvdata[$data[0]]['qty'] = trim($data[2]);
+				        $csvdata[$data[1]][$data[0]] = trim($data[2]);
+				        // $csvdata['store'] = trim($data[1]);
+				        // $csvdata['status'] = trim($data[2]);
 				    }
 
 				    $orderqty = array();
@@ -97,9 +98,11 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 
 				  	// prepare to load products
 				    $product = Mage::getModel('catalog/product');
-				    foreach ($csvdata as $sku => $item) {
-				    	$qty = $item['qty'];
+				    foreach ($csvdata as $store => $sku) {
+				    	echo $status = $store['alto'];
+				    	echo $sku = $sku['alto'];
 
+				    	echo '<pre>'.print_r($status, true).'</pre>'; die;
 				    	// ignored
 				    	$warehouse = $item['warehouse'];
 
