@@ -127,6 +127,16 @@ $dealers->clear(); ?>
 										</div>
 										<ul id="dealer-list-<?php echo $tag; ?>" class="product-dealerscroll">
 											<?php foreach ($dealersByTag->getItems() as $dealer): ?>
+                                                <?php
+                                                    $resource = Mage::getSingleton('core/resource');
+                                                    $readConnection = $resource->getConnection('core_read');
+                                                    $query = 'SELECT store_id FROM ' . $resource->getTableName('dealerlocator/dealerlocator_store').' where dealer_id like '.$dealer->getId();
+                                                    $results = $readConnection->fetchAll($query);
+                                                    $store_id_allow = $results['0']['store_id'];
+                                                    $current_store_id = Mage::app()->getStore()->getStoreId();
+                                                    Mage::log($current_store_id);
+                                                ?>
+                                        <?php if($store_id_allow==0||$current_store_id==$store_id_allow):?>
 											<li
 												onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
 												<h3><?php echo $dealer->getTitle(); ?></h3>
@@ -144,7 +154,7 @@ $dealers->clear(); ?>
 													<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
 													<img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
 												<?php endif?>
-													
+
 												<input type="hidden" name="dealer-longitude" id="dealer_latitude_<?php echo $dealer->getId() ?>"
 															 value="<?php echo $dealer->getLatitude() ?>"/>
 												<input type="hidden" name="dealer-longitude" id="dealer_longitude_<?php echo $dealer->getId() ?>"
@@ -172,6 +182,7 @@ $dealers->clear(); ?>
 												</p>
 											</div>
 											</li>
+                                        <?php endif;?>
 											<?php endforeach; ?>
 										</ul>
 									<?php endif; ?>
@@ -193,10 +204,10 @@ $dealers->clear(); ?>
 										jQuery(this).next().mCustomScrollbar();
 									});
 								});
-							</script>	
+							</script>
           </div>
         <?php endif; ?>
-			<?php else: // Show all dealers with pager?>	
+			<?php else: // Show all dealers with pager?>
 				<div class="list-all-dealer list-all-product-dealer">
 					<?php if ($dealers->getSize()): ?>
 						<?php echo $this->getPagerHtml(); ?>
@@ -219,7 +230,7 @@ $dealers->clear(); ?>
 										<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
 										<img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
 									<?php endif?>
-										
+
 								<input type="hidden" name="dealer-longitude" id="dealer_latitude_<?php echo $dealer->getId() ?>"
 											 value="<?php echo $dealer->getLatitude() ?>"/>
 								<input type="hidden" name="dealer-longitude" id="dealer_longitude_<?php echo $dealer->getId() ?>"
@@ -370,7 +381,7 @@ $dealers->clear(); ?>
       infoWindow.open(map, marker);
     });
   }
-	
+
 	function showBigMap(dealerMapUrl, dealerMapId) {
 		if ($('dealermap-' + dealerMapId)) {
 			$('dealermap-' + dealerMapId).remove();
@@ -515,4 +526,4 @@ $dealers->clear(); ?>
     window.onload = initialize();
   </script>
 
-<?php endif; ?> 
+<?php endif; ?>
