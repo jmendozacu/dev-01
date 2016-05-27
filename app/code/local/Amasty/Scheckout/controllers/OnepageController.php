@@ -191,7 +191,8 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
 //            'fax' => '-',
             'taxvat' => '-',
             'customer_password' => 'email@example.com',
-            'confirm_password' => 'email@example.com'
+            'confirm_password' => 'email@example.com',
+            'mobile_customer' => '-',
         );
         
         $shippingDefaults = array(
@@ -208,6 +209,7 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
             'postcode' => '-',
             'telephone' => '-',
 //            'fax' => '-',
+            'mobile_customer' => '-',
         );
         
         $billing = $this->getRequest()->getPost('billing', array());
