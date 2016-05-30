@@ -7,8 +7,8 @@
 <?php $productDealers = $this->getProductDealer(); ?>
 
 <div class="product-dealer" style="overflow:hidden; display:none;" id="product-dealer">
-  <div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
-    <h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
+	<div class="product-dealer-body-2columns" id="product-dealer-gmap-container">
+		<h2 class="legend"><?php echo $this->__('Dealers') ?></h2>
 		<div class="gmap">
 			<div id="product_dealer_map_canvas" style="float:right;width:770px; height:450px"></div>
 		</div>
@@ -21,46 +21,21 @@
 							<li>
 								<?php $dealersByTag = $this->getProductDealerByTag($tag);?>
 								<?php if($dealersByTag->getSize()>0):?>
-								<?php $count_store = 0;?>
-								<?php foreach ($dealersByTag->getItems() as $dealer): ?>
-									<?php
-									$current_store_id = Mage::app()->getStore()->getStoreId();
-									$dealer_id = $dealer->getDealerId();
-									$product_id = Mage::registry('product')->getId();
-									$collection_productdealer = Mage::getModel('dealerlocator/productdealer')->getCollection();
-									$collection_productdealer->addFieldToFilter('dealer_id',$dealer_id)
-										->addFieldToFilter('product_id',$product_id)
-										->addFieldToFilter('store_id',array('in'=>array('0',$current_store_id)));
-										if($collection_productdealer->count()>0){
-											$count_store++;
-										}
-									?>
-								<?php endforeach;?>
 									<div class="dealer-pager">
 										<?php if($dealersByTag->getSize() >1): ?>
-											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s stores)', $tag, $count_store); ?></p>
+											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s stores)', $tag, $dealersByTag->getSize()); ?></p>
 										<?php else: ?>
-											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s store)', $tag, $count_store); ?></p>
+											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s store)', $tag, $dealersByTag->getSize()); ?></p>
 										<?php endif;?>
 									</div>
 									<ul id="dealer-list-<?php echo $tag; ?>" class="product-dealerscroll">
 										<?php foreach ($dealersByTag->getItems() as $dealer): ?>
-											<?php
-											$current_store_id = Mage::app()->getStore()->getStoreId();
-											$dealer_id = $dealer->getDealerId();
-											$product_id = Mage::registry('product')->getId();
-											$collection_productdealer = Mage::getModel('dealerlocator/productdealer')->getCollection();
-											$collection_productdealer->addFieldToFilter('dealer_id',$dealer_id)
-												->addFieldToFilter('product_id',$product_id)
-												->addFieldToFilter('store_id',array('in'=>array('0',$current_store_id)));
-											?>
-										<?php if($collection_productdealer->count()>0):?>
 											<li
 												onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
 												<h3><?php echo $dealer->getTitle(); ?></h3>
 												<h4><?php echo $dealer->getAddress(); ?></h4>
 												<?php if ($dealer->getPostalCode()): ?>
-												<h4><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></h4>
+													<h4><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></h4>
 												<?php endif; ?>
 												<?php if ($dealer->getPhone()): ?>
 													<h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
@@ -74,33 +49,32 @@
 												<?php endif?>
 
 												<input type="hidden" name="product-dealer-longitude" id="product_dealer_latitude_<?php echo $dealer->getId() ?>"
-															 value="<?php echo $dealer->getLatitude() ?>"/>
+													   value="<?php echo $dealer->getLatitude() ?>"/>
 												<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $dealer->getId() ?>"
-															 value="<?php echo $dealer->getLongitude() ?>"/>
+													   value="<?php echo $dealer->getLongitude() ?>"/>
 												<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $dealer->getId() ?>"
-															 value="<?php echo $dealer->getTitle() ?>"/>
+													   value="<?php echo $dealer->getTitle() ?>"/>
 												<input type="hidden" name="product-dealer-address" id="product_dealer_address_<?php echo $dealer->getId() ?>"
-															 value="<?php echo $dealer->getAddress() ?>"/>
+													   value="<?php echo $dealer->getAddress() ?>"/>
 												<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $dealer->getId() ?>">
-												<p><strong><?php echo $dealer->getTitle() ?></strong></p>
+													<p><strong><?php echo $dealer->getTitle() ?></strong></p>
 
-												<p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
-												<?php if ($dealer->getPostalCode()): ?>
-													<p><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></p>
-												<?php endif; ?>
-												<?php if ($dealer->getPhone()): ?>
-													<p><?php echo $this->__('Phone') ?>: <?php echo $dealer->getPhone() ?></p>
-												<?php endif; ?>
-												<?php if ($dealer->getWebsite()): ?>
-													<p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
-												<?php endif; ?>
-												<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
-														href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
-													<a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
-												</p>
-											</div>
+													<p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
+													<?php if ($dealer->getPostalCode()): ?>
+														<p><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></p>
+													<?php endif; ?>
+													<?php if ($dealer->getPhone()): ?>
+														<p><?php echo $this->__('Phone') ?>: <?php echo $dealer->getPhone() ?></p>
+													<?php endif; ?>
+													<?php if ($dealer->getWebsite()): ?>
+														<p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
+													<?php endif; ?>
+													<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
+															href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
+														<a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
+													</p>
+												</div>
 											</li>
-										<?php endif;?>
 										<?php endforeach; ?>
 									</ul>
 								<?php endif; ?>
@@ -122,7 +96,7 @@
 								jQuery(this).next().mCustomScrollbar();
 							});
 						});
-					</script>	
+					</script>
 				</div>
 			<?php endif;?>
 		<?php else:?>
@@ -130,14 +104,14 @@
 				<?php if ($productDealers->getSize()): ?>
 					<?php echo $this->getPagerHtml(); ?>
 					<?php $numProductDealer = 1;?>
-						<ul class="product-dealerscroll" id="product-dealer-list">
+					<ul class="product-dealerscroll" id="product-dealer-list">
 						<?php foreach ($productDealers as $productdealer): ?>
 							<li id="product-dealer-tr-<?php echo $numProductDealer; ?>"
 								onclick="showLocationOnMap('<?php echo $productdealer->getDealerId() ?>', '<?php echo $productdealer->getIconImage() ?>'); window.location='#product_dealer_map_canvas'">
 								<h3><?php echo $productdealer->getTitle(); ?></h3>
 								<h4><?php echo $productdealer->getAddress(); ?></h4>
 								<?php if ($productdealer->getPostalCode()): ?>
-								<h4><?php echo $this->__('Postcode') ?>: <?php echo $productdealer->getPostalCode() ?></h4>
+									<h4><?php echo $this->__('Postcode') ?>: <?php echo $productdealer->getPostalCode() ?></h4>
 								<?php endif; ?>
 								<?php if ($productdealer->getPhone()): ?>
 									<h4><?php echo $this->__('Phone: %s', $productdealer->getPhone()) ?></h4>
@@ -146,153 +120,153 @@
 									<!--<h4><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></h4>-->
 								<?php endif; ?>
 								<?php if($productdealer->getDealerMap()):?>
-										<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$productdealer->getDealerMap();?>
-										<img width="50" class="dealer-map dealer-map-<?php echo $productdealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $productdealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $productdealer->getTitle(); ?>"/>
-									<?php endif?>
+									<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$productdealer->getDealerMap();?>
+									<img width="50" class="dealer-map dealer-map-<?php echo $productdealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $productdealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $productdealer->getTitle(); ?>"/>
+								<?php endif?>
 								<input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
-										 value="<?php echo $productdealer->getLatitude() ?>"/>
+									   value="<?php echo $productdealer->getLatitude() ?>"/>
 								<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
-											 value="<?php echo $productdealer->getLongitude() ?>"/>
+									   value="<?php echo $productdealer->getLongitude() ?>"/>
 								<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $productdealer->getDealerId() ?>"
-											 value="<?php echo $productdealer->getTitle() ?>"/>
-											 
+									   value="<?php echo $productdealer->getTitle() ?>"/>
+
 								<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $productdealer->getDealerId() ?>">
 									<p><strong><?php echo $productdealer->getTitle() ?></strong></p>
 								</div>
 							</li>
 							<?php $numProductDealer = ($numProductDealer + 1);?>
 						<?php endforeach; ?>
-						</ul>
+					</ul>
 					<?php /*<script type="text/javascript">decorateTable('dealer-list')</script>*/?>
 				<?php else: ?>
 					<p class="note-msg"><?php echo $this->__('There are no dealers matching your selection.'); ?></p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
-  </div>
+	</div>
 </div>
 <?php
-  $productdealerdefaultlatlong = $this->getProductDealDefaultLatLong();
-?>  
-  
+$productdealerdefaultlatlong = $this->getProductDealDefaultLatLong();
+?>
+
 <script type="text/javascript">
-  function initMap() {
-    var mapDiv = document.getElementById('product_dealer_map_canvas');
-    var myOptions = {
-      zoom: 10,
-      <?php if (isset($productdealerdefaultlatlong['lat']) && isset($productdealerdefaultlatlong['long'])):?>
-      center: new google.maps.LatLng(<?php echo $productdealerdefaultlatlong['lat'] ?>, <?php echo $productdealerdefaultlatlong['long'] ?>),
-      <?php endif;?>
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    
-    map = new google.maps.Map(mapDiv, myOptions);
-    infoWindow = new google.maps.InfoWindow;
+	function initMap() {
+		var mapDiv = document.getElementById('product_dealer_map_canvas');
+		var myOptions = {
+			zoom: 10,
+			<?php if (isset($productdealerdefaultlatlong['lat']) && isset($productdealerdefaultlatlong['long'])):?>
+			center: new google.maps.LatLng(<?php echo $productdealerdefaultlatlong['lat'] ?>, <?php echo $productdealerdefaultlatlong['long'] ?>),
+			<?php endif;?>
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
 
-    var marker = this;
+		map = new google.maps.Map(mapDiv, myOptions);
+		infoWindow = new google.maps.InfoWindow;
 
-    // auto display dealer markers in the map
-    <?php if ($productDealers->getSize()): ?>
-      <?php foreach ($productDealers as $productDealer): ?>
-        var dealer_icon = '<?php echo $productDealer->getIconImage() ?>';
-        if(dealer_icon == ""){
-          dealer_icon = '<?php echo Mage::getStoreConfig('dealerlocator/google_map_options/default_dealer_icon'); ?>';
-        }
-        dealer_icon = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + dealer_icon;
-        
-        var id = '<?php echo $productDealer->getDealerId() ?>';
-        
-        var marker_<?php echo $productDealer->getDealerId() ?> = new google.maps.Marker({
-          position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
-          map: map,
-          icon: dealer_icon,
-          title: $('product_dealer_title_' + id).value
-        });
-        
-        google.maps.event.addListener(marker_<?php echo $productDealer->getDealerId(); ?>, "click", function () {
-          infoWindow.setContent($('product_dealer_highlight_' +<?php echo $productDealer->getDealerId()?>).innerHTML);
-          infoWindow.open(map, marker_<?php echo $productDealer->getDealerId(); ?>);
-        });
-        
-      <?php endforeach; ?>
-    <?php endif; ?>
-  }
-  
-  function showLocationOnMap(id, icon_image) {
-    window.location.hash = 'product-dealer-gmap-container';
-    var highlight = $('product_dealer_highlight_' + id);
-    var infoContent = $('product_dealer_highlight_' + id).innerHTML;
+		var marker = this;
 
-    if(icon_image == ""){
-        icon_image = '<?php echo Mage::getStoreConfig('dealerlocator/google_map_options/default_dealer_icon'); ?>';
-    }
-    icon_image = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + icon_image;
+		// auto display dealer markers in the map
+		<?php if ($productDealers->getSize()): ?>
+		<?php foreach ($productDealers as $productDealer): ?>
+		var dealer_icon = '<?php echo $productDealer->getIconImage() ?>';
+		if(dealer_icon == ""){
+			dealer_icon = '<?php echo Mage::getStoreConfig('dealerlocator/google_map_options/default_dealer_icon'); ?>';
+		}
+		dealer_icon = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + dealer_icon;
 
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
-      map: map,
-      icon: icon_image,
-      title: $('product_dealer_title_' + id).value
-    });
-    
-    infoWindow.setContent(infoContent);
-    infoWindow.open(map, marker);
+		var id = '<?php echo $productDealer->getDealerId() ?>';
 
-    google.maps.event.addListener(marker, 'click', function () {
-      infoWindow.setContent(infoContent);
-      infoWindow.open(map, marker);
-    });
-  }
+		var marker_<?php echo $productDealer->getDealerId() ?> = new google.maps.Marker({
+			position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
+			map: map,
+			icon: dealer_icon,
+			title: $('product_dealer_title_' + id).value
+		});
+
+		google.maps.event.addListener(marker_<?php echo $productDealer->getDealerId(); ?>, "click", function () {
+			infoWindow.setContent($('product_dealer_highlight_' +<?php echo $productDealer->getDealerId()?>).innerHTML);
+			infoWindow.open(map, marker_<?php echo $productDealer->getDealerId(); ?>);
+		});
+
+		<?php endforeach; ?>
+		<?php endif; ?>
+	}
+
+	function showLocationOnMap(id, icon_image) {
+		window.location.hash = 'product-dealer-gmap-container';
+		var highlight = $('product_dealer_highlight_' + id);
+		var infoContent = $('product_dealer_highlight_' + id).innerHTML;
+
+		if(icon_image == ""){
+			icon_image = '<?php echo Mage::getStoreConfig('dealerlocator/google_map_options/default_dealer_icon'); ?>';
+		}
+		icon_image = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + icon_image;
+
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
+			map: map,
+			icon: icon_image,
+			title: $('product_dealer_title_' + id).value
+		});
+
+		infoWindow.setContent(infoContent);
+		infoWindow.open(map, marker);
+
+		google.maps.event.addListener(marker, 'click', function () {
+			infoWindow.setContent(infoContent);
+			infoWindow.open(map, marker);
+		});
+	}
 </script>
 
 <script type="text/javascript">
 	//li page dealer
 	var selectLimitDealer;
-	
+
 	if(document.getElementsByClassName('pages')[0]){
 		selectLimitDealer = $('dealer-select-limiter');
-		
+
 		var pages = document.getElementsByClassName('pages');
 		var page = pages[0];
-		
+
 		var ols = page.select('ol');
 		var ol = ols[0];
 		ol.insert({
 			top: '<li><a class="previous"></a></li>'
 		});
-		
+
 		var liPageDealer = ol.select('li');
 	}
 	else{
 		selectLimitDealer = $('dealer-select-limiter');
 	}
-	
-	/* #################################### */	
-	
-  function showProductDealers(){
+
+	/* #################################### */
+
+	function showProductDealers(){
 		<?php if ($productDealers->getSize() && !Mage::helper('dealerlocator')->canShowTagFilter()): ?>
-			loadProductDealerPopupByValue();
+		loadProductDealerPopupByValue();
 		<?php endif;?>
 		jQuery("#btn_fancybox").addClass('active');
-    jQuery("#btn_fancybox").fancybox({
-      'href' : '#product-dealer',
-      'afterShow': function() {
+		jQuery("#btn_fancybox").fancybox({
+			'href' : '#product-dealer',
+			'afterShow': function() {
 				jQuery("ul.product-dealerscroll").mCustomScrollbar();
 				initMap();
 			},
 			'afterClose': function() {
 				jQuery("#btn_fancybox").removeClass('active');
 			}
-    });
-  }
-	
+		});
+	}
+
 	function showBigMap(dealerMapUrl, dealerMapId) {
 		if ($('dealermap-' + dealerMapId)) {
 			$('dealermap-' + dealerMapId).remove();
 		}else{
 			window.dealerMapContainer = new Element('div', {
-			'class': 'dealermap-container',
-			'id'   : 'dealermap-' + dealerMapId,
+				'class': 'dealermap-container',
+				'id'   : 'dealermap-' + dealerMapId,
 			});
 			dealerMapContainer.insert('<div class="dealer-map-preview"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="javascript:hideBigMap('+dealerMapId+')"></a><img src="'+dealerMapUrl+'" alt="" /></div>');
 			$$('body')[0].insert(dealerMapContainer);
@@ -303,96 +277,96 @@
 			$('dealermap-' + dealerMapId).remove();
 		}
 	}
-  //window.onload = initMap();
-	
+	//window.onload = initMap();
+
 	function loadProductDealerPopupByValue(){
 		//replace function onchange of select limit;
 		selectLimitDealer.writeAttribute("onchange", "loadProductDealerByLimit()");
-		
+
 		//replace amount pager
 		//$('product-dealer').down(3).writeAttribute('id', 'amount_page_dealer');
-		
+
 		//replace li page
 		if(liPageDealer){
 			for (var i = 0; i < liPageDealer.length; i++){
 				var li = liPageDealer[i];
 				var li_down = li.down();
 				var textContent = li.textContent;
-				
+
 				if(li_down){
 					if(li_down.hasClassName('next'))
 						textContent = 'next';
 					if(li_down.hasClassName('previous'))
 						textContent = 'previous';
 				}
-				
+
 				li.writeAttribute("id","li_page_"+textContent);
-				
+
 				if(li_down){
 					li_down.writeAttribute("href","javascript:loadProductDealerByPage('"+textContent+"')");
 				}
 			}
 		}
-		
+
 		var limit;
 		var p;
 		//get limit of product deal
 		limit = getLimitProductDealer();
-		
+
 		//get page of product deal
 		p = getPageProductDealer();
-		
+
 		//load product dealer by limit and p default
 		loadProductDealer(limit, p);
 	}
-	
+
 	function loadProductDealerByLimit(){
 		var limit;
 		var p;
 		limit = getLimitProductDealer();
 		p = getPageProductDealer();
-		
+
 		loadProductDealer(limit, p);
 	}
-	
+
 	function loadProductDealerByPage(textContent){
 		var limit;
 		var p;
 		var currentp = getPageProductDealer();
-		
+
 		limit = getLimitProductDealer();
 		p = textContent;
-		
+
 		if(textContent == 'next')
 			p =  parseInt(currentp) + 1;
-		
+
 		if(textContent == 'previous')
 			p =  parseInt(currentp) - 1;
-		
+
 		loadProductDealer(limit, p, currentp);
 	}
-	
+
 	function getLimitProductDealer(){
 		var limit;
 		var url_link = selectLimitDealer.value;
 		var params = {};
-		
+
 		url_link.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
 			params[key] = value;
 		});
-		
+
 		limit = params['limit'];
-		
+
 		return limit;
 	}
-	
+
 	function getPageProductDealer(){
 		//var pages = document.getElementsByClassName('pages')[0].down().next().select('li');
 		var p;
-		
+
 		if(liPageDealer){
 			var lis = liPageDealer;
-		
+
 			for (var i = 0; i < lis.length; i++){
 				var li = lis[i];
 				if(li.hasClassName('current'))
@@ -402,24 +376,24 @@
 		else{
 			p = 1;
 		}
-		
+
 		return p;
 	}
-	
+
 	function loadProductDealer(limit, p, currentp){
 		var num_row = '<?php echo $numProductDealer ?>';
 		for (var i = 1; i < num_row; i++){
 			if($('product-dealer-tr-'+i))
 				$('product-dealer-tr-'+i).hide();
 		}
-		
+
 		if(parseInt(limit) > parseInt(num_row)){
 			currentp = p;
 			p = 1;
 			/* $('li_page_'+p).update(p);
-			$('li_page_'+p).addClassName('current'); */
+			 $('li_page_'+p).addClassName('current'); */
 		}
-		
+
 		var begin = (p-1)*limit + 1;
 		var end = p*limit;
 		if(end > (num_row - 1))
@@ -428,11 +402,11 @@
 			if($('product-dealer-tr-'+num))
 				$('product-dealer-tr-'+num).show();
 		}
-		
+
 		//update amount page dealer
 		if($('amount_page_dealer'))
 			$('amount_page_dealer').update(begin+'-'+end+' of '+(num_row - 1));
-		
+
 		if(currentp){
 			if($('li_page_'+currentp)){
 				$('li_page_'+currentp).removeClassName('current');
@@ -443,7 +417,7 @@
 				$('li_page_'+p).addClassName('current');
 			}
 		}
-		
+
 		var totalPage = parseInt((num_row - 1)/(limit));
 		var maxPage = totalPage;
 		var du = (num_row - 1) % limit;
@@ -452,33 +426,33 @@
 		}
 		if(liPageDealer){
 			$('li_page_previous').show();
-			
+
 			$('li_page_next').show();
-			
+
 			/* if(p == 1){
-				$('li_page_previous').down().writeAttribute('href', 'javascript:void(0)');
-			}else{
-				$('li_page_previous').down().writeAttribute("href","javascript:loadProductDealerByPage('prev')");
-			}
-			if(p == maxPage){
-				$('li_page_next').down().writeAttribute('href', 'javascript:void(0)');
-			}else{
-				$('li_page_next').down().writeAttribute("href","javascript:loadProductDealerByPage('next')");
-			} */
+			 $('li_page_previous').down().writeAttribute('href', 'javascript:void(0)');
+			 }else{
+			 $('li_page_previous').down().writeAttribute("href","javascript:loadProductDealerByPage('prev')");
+			 }
+			 if(p == maxPage){
+			 $('li_page_next').down().writeAttribute('href', 'javascript:void(0)');
+			 }else{
+			 $('li_page_next').down().writeAttribute("href","javascript:loadProductDealerByPage('next')");
+			 } */
 			if(p == 1){
 				$('li_page_previous').hide();
 			}
 			else{
 				$('li_page_previous').show();
 			}
-			
+
 			if(p == maxPage){
 				$('li_page_next').hide();
 			}
 			else{
 				$('li_page_next').show();
 			}
-			
+
 			for (var i = 1; i <= liPageDealer.length - 2; i++){
 				if(i <= maxPage){
 					$('li_page_'+i).show();
