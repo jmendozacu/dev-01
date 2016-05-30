@@ -11,6 +11,7 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs_D
   }
   
   protected function _addColumnFilterToCollection($column) {
+
     if ($column->getId() == 'in_dealer') {
       $dealers = $this->getSelectedDealerSession();
       if (empty($dealers)) {
@@ -30,6 +31,7 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs_D
   }
   
   protected function _prepareCollection() {
+    $current_store_id = Mage::app()->getRequest()->getParam('store');
     $collection = Mage::getModel('dealerlocator/dealerlocator')->getCollection();
     $this->setCollection($collection);
     return parent::_prepareCollection();
@@ -107,9 +109,11 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs_D
     if(!$productId){
       return null;
     }
+    $current_store_id = Mage::app()->getRequest()->getParam('store');
     $productdealerCollection = Mage::getModel('dealerlocator/productdealer')
       ->getCollection()
       ->addFieldToFilter('product_id', $productId)
+      ->addFieldToFilter('store_id', $current_store_id)
       ->addFieldToFilter('display', 1);
     $dealers = $productdealerCollection->getColumnValues('dealer_id');
     return $dealers;
