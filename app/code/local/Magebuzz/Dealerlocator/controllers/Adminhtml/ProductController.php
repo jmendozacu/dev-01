@@ -4,12 +4,15 @@
 * Copyright (c) 2014 www.magebuzz.com
 */
 
-class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_Controller_Action {
-    public function indexAction() {
+class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_Controller_Action
+{
+    public function indexAction()
+    {
         $this->loadLayout()->renderLayout();
     }
 
-    public function saveAction() {
+    public function saveAction()
+    {
         if ($data = $this->getRequest()->getPost()) {
             if (isset($_FILES['csv_file']['name']) && $_FILES['csv_file']['name'] != '') {
                 try {
@@ -23,6 +26,7 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
                     $filepath = $path . $new_file_name;
                     $handler = new Varien_File_Csv();
                     $importData = $handler->getData($filepath);
+                    //Mage::log($importData);
                     $keys = $importData[0];
                     foreach ($keys as $key => $value) {
                         $keys[$key] = str_replace(' ', '_', strtolower($value));
@@ -36,16 +40,15 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
                         $model->setData($data)->save();
                     }
 
-                    $query1 = "Update "  . $this->_getTableName('product_dealer_temp') . " as pdt INNER JOIN `dealerlocator` as d ON pdt.`store_code` = d.`store_code` SET pdt.`dealerlocator_id`= d.`dealerlocator_id`" ;
+                    $query1 = "Update " . $this->_getTableName('product_dealer_temp') . " as pdt INNER JOIN `dealerlocator` as d ON pdt.`store_code` = d.`store_code` SET pdt.`dealerlocator_id`= d.`dealerlocator_id`";
                     $this->_getWriteConnection()->query($query1);
 
-                    $query2 = "Update " . $this->_getTableName('product_dealer_temp') ." as pdt INNER JOIN `catalog_product_entity` as cpe ON pdt.`product_sku`=cpe.`sku` set pdt.`product_id` =  cpe.`entity_id`" ;
+                    $query2 = "Update " . $this->_getTableName('product_dealer_temp') . " as pdt INNER JOIN `catalog_product_entity` as cpe ON pdt.`product_sku`=cpe.`sku` set pdt.`product_id` =  cpe.`entity_id`";
                     $this->_getWriteConnection()->query($query2);
 
-                    $query3 = "INSERT INTO " .$this->_getTableName('product_dealer')." (product_id,dealer_id,display) SELECT product_id, dealerlocator_id,display FROM product_dealer_temp  ON DUPlICATE KEY update product_dealer.display=product_dealer_temp.display" ;
+                    $query3 = "INSERT INTO " . $this->_getTableName('product_dealer') . " (product_id,dealer_id,display,store_id) SELECT product_id,dealerlocator_id,display,store_id FROM product_dealer_temp  ON DUPlICATE KEY update product_dealer.display=product_dealer_temp.display";
                     $this->_getWriteConnection()->query($query3);
-
-                    $query4 = "DELETE FROM " .$this->_getTableName('product_dealer') ." WHERE display=0 ";
+                    $query4 = "DELETE FROM " . $this->_getTableName('product_dealer') . " WHERE display=0 ";
                     $this->_getWriteConnection()->query($query4);
 
                 } catch (Exception $e) {
@@ -57,19 +60,22 @@ class Magebuzz_Dealerlocator_Adminhtml_ProductController extends Mage_Adminhtml_
         }
     }
 
-    protected function _getWriteConnection() {
+    protected function _getWriteConnection()
+    {
         $resource = Mage::getSingleton('core/resource');
         $writeConnection = $resource->getConnection('core_write');
         return $writeConnection;
     }
 
-    protected function _getReadConnection() {
+    protected function _getReadConnection()
+    {
         $resource = Mage::getSingleton('core/resource');
         $readConnection = $resource->getConnection('core_read');
         return $readConnection;
     }
 
-    protected function _getTableName($name) {
+    protected function _getTableName($name)
+    {
         return Mage::getSingleton('core/resource')->getTableName($name);
     }
 
