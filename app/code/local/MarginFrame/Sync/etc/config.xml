@@ -15,6 +15,10 @@
                 <schedule><cron_expr>10 7,19 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_stock::Run</model></run>
             </mgfsync_cron_store_run>
+            <mgfsync_cron_price_run>
+                <schedule><cron_expr>10 7,19 * * *</cron_expr></schedule>
+                <run><model>mgfsync/cron_price::Run</model></run>
+            </mgfsync_cron_price_run>
 			<mgfsync_cron_billing_run>
                 <schedule><cron_expr>0 9,15 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_billing::Run</model></run>

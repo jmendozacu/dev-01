@@ -31,6 +31,10 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 		Mage::getModel('mgfsync/cron_store')->Run();
 	}
 
+	function pricerunAction(){
+		Mage::getModel('mgfsync/cron_price')->Run();
+	}
+
 	function shippingrunAction(){
 		//var_dump('shippingrunAction');
 		//$shipping = Mage::getModel('mgfsync/cron_shipping');
