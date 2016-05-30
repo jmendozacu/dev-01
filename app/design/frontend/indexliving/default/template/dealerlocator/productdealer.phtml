@@ -21,60 +21,86 @@
 							<li>
 								<?php $dealersByTag = $this->getProductDealerByTag($tag);?>
 								<?php if($dealersByTag->getSize()>0):?>
+								<?php $count_store = 0;?>
+								<?php foreach ($dealersByTag->getItems() as $dealer): ?>
+									<?php
+									$current_store_id = Mage::app()->getStore()->getStoreId();
+									$dealer_id = $dealer->getDealerId();
+									$product_id = Mage::registry('product')->getId();
+									$collection_productdealer = Mage::getModel('dealerlocator/productdealer')->getCollection();
+									$collection_productdealer->addFieldToFilter('dealer_id',$dealer_id)
+										->addFieldToFilter('product_id',$product_id)
+										->addFieldToFilter('store_id',array('in'=>array('0',$current_store_id)));
+										if($collection_productdealer->count()>0){
+											$count_store++;
+										}
+									?>
+								<?php endforeach;?>
 									<div class="dealer-pager">
 										<?php if($dealersByTag->getSize() >1): ?>
-											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s stores)', $tag, $dealersByTag->getSize()); ?></p>
+											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s stores)', $tag, $count_store); ?></p>
 										<?php else: ?>
-											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s store)', $tag, $dealersByTag->getSize()); ?></p>
+											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s store)', $tag, $count_store); ?></p>
 										<?php endif;?>
 									</div>
 									<ul id="dealer-list-<?php echo $tag; ?>" class="product-dealerscroll">
 										<?php foreach ($dealersByTag->getItems() as $dealer): ?>
-										<li
-											onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
-											<h3><?php echo $dealer->getTitle(); ?></h3>
-											<h4><?php echo $dealer->getAddress(); ?></h4>
-											<?php if ($dealer->getPostalCode()): ?>
-											<h4><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></h4>
-											<?php endif; ?>
-											<?php if ($dealer->getPhone()): ?>
-												<h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
-											<?php endif; ?>
-											<?php if ($dealer->getWebsite()): ?>
-												<!--<h4><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></h4>-->
-											<?php endif; ?>
-											<?php if($dealer->getDealerMap()):?>
-												<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
-												<img width="50" class="product-dealer-map dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
-											<?php endif?>
-												
-											<input type="hidden" name="product-dealer-longitude" id="product_dealer_latitude_<?php echo $dealer->getId() ?>"
-														 value="<?php echo $dealer->getLatitude() ?>"/>
-											<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $dealer->getId() ?>"
-														 value="<?php echo $dealer->getLongitude() ?>"/>
-											<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $dealer->getId() ?>"
-														 value="<?php echo $dealer->getTitle() ?>"/>
-											<input type="hidden" name="product-dealer-address" id="product_dealer_address_<?php echo $dealer->getId() ?>"
-														 value="<?php echo $dealer->getAddress() ?>"/>
-											<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $dealer->getId() ?>">
-											<p><strong><?php echo $dealer->getTitle() ?></strong></p>
+											<?php
+											$current_store_id = Mage::app()->getStore()->getStoreId();
+											$dealer_id = $dealer->getDealerId();
+											$product_id = Mage::registry('product')->getId();
+											$collection_productdealer = Mage::getModel('dealerlocator/productdealer')->getCollection();
+											$collection_productdealer->addFieldToFilter('dealer_id',$dealer_id)
+												->addFieldToFilter('product_id',$product_id)
+												->addFieldToFilter('store_id',array('in'=>array('0',$current_store_id)));
+											?>
+										<?php if($collection_productdealer->count()>0):?>
+											<li
+												onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
+												<h3><?php echo $dealer->getTitle(); ?></h3>
+												<h4><?php echo $dealer->getAddress(); ?></h4>
+												<?php if ($dealer->getPostalCode()): ?>
+												<h4><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></h4>
+												<?php endif; ?>
+												<?php if ($dealer->getPhone()): ?>
+													<h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
+												<?php endif; ?>
+												<?php if ($dealer->getWebsite()): ?>
+													<!--<h4><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></h4>-->
+												<?php endif; ?>
+												<?php if($dealer->getDealerMap()):?>
+													<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
+													<img width="50" class="product-dealer-map dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
+												<?php endif?>
 
-											<p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
-											<?php if ($dealer->getPostalCode()): ?>
-												<p><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></p>
-											<?php endif; ?>
-											<?php if ($dealer->getPhone()): ?>
-												<p><?php echo $this->__('Phone') ?>: <?php echo $dealer->getPhone() ?></p>
-											<?php endif; ?>
-											<?php if ($dealer->getWebsite()): ?>
-												<p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
-											<?php endif; ?>
-											<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
-													href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
-												<a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
-											</p>
-										</div>
-										</li>
+												<input type="hidden" name="product-dealer-longitude" id="product_dealer_latitude_<?php echo $dealer->getId() ?>"
+															 value="<?php echo $dealer->getLatitude() ?>"/>
+												<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $dealer->getId() ?>"
+															 value="<?php echo $dealer->getLongitude() ?>"/>
+												<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $dealer->getId() ?>"
+															 value="<?php echo $dealer->getTitle() ?>"/>
+												<input type="hidden" name="product-dealer-address" id="product_dealer_address_<?php echo $dealer->getId() ?>"
+															 value="<?php echo $dealer->getAddress() ?>"/>
+												<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $dealer->getId() ?>">
+												<p><strong><?php echo $dealer->getTitle() ?></strong></p>
+
+												<p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
+												<?php if ($dealer->getPostalCode()): ?>
+													<p><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></p>
+												<?php endif; ?>
+												<?php if ($dealer->getPhone()): ?>
+													<p><?php echo $this->__('Phone') ?>: <?php echo $dealer->getPhone() ?></p>
+												<?php endif; ?>
+												<?php if ($dealer->getWebsite()): ?>
+													<p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
+												<?php endif; ?>
+												<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
+														href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
+													<a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
+												</p>
+											</div>
+											</li>
+										<?php endif;?>
 										<?php endforeach; ?>
 									</ul>
 								<?php endif; ?>
