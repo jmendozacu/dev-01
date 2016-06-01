@@ -33,7 +33,7 @@
                         <block type="page/html_pager" name="product_list_toolbar_pager"/>
                     </block>
                     <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
-                    <action method="setColumnCount"><coulumn>4</coulumn></action>
+                    <action method="setColumnCount"><coulumn>3</coulumn></action>
                 </block>
             </block>
             <block type="amshopby/top" name="amshopby.top" before="category.products" template="marginframe/amshopby/top.phtml"/>
