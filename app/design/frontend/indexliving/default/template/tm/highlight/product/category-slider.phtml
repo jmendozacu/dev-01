@@ -10,13 +10,18 @@
 <?php if (!$_collectionSize) : return; endif; ?>
 
 <?php 
+	/*
 	if ($this->getCategoryFilter()) {
-		$categoryFilterId = $this->getCategoryFilter();	
+		$categoryFilterId = $this->getCategoryFilter();
+		if(count($categoryFilterId)){
+			$categoryFilterId = $categoryFilterId[0];
+		}
 		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);	
 		$_categoryUrl = $_category->getUrl().'/?page=productlist';
 	}else{
 		$_categoryUrl = '#';
 	}
+	*/
 ?>
 <div class="page-container">
 	<div class="recommend-allcategory">
@@ -104,7 +109,7 @@
 					<?php endif ?>
 			</div>
 		</div>
-    <!--<a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>-->
+    <!--<a class="box-mobile a-button" title="<?php //echo $this->__('view all')?>" href="<?php //echo $_categoryUrl; ?>"><span><?php //echo $this->__('view all')?></span></a>-->
 	</div>
 </div>
 <script type="text/javascript">

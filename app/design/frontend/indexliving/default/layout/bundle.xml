@@ -205,7 +205,7 @@ Additional block for bundle product type
             <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
         </reference>
         <reference name="product.info">
-            <action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action>
+            <action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price_view.phtml</template></action>
             <block type="bundle/catalog_product_price" name="bundle.prices" as="bundle_prices" template="bundle/catalog/product/view/price.phtml">
                 <action method="setMAPTemplate"><tmpl>catalog/product/price_msrp_item.phtml</tmpl></action>
             </block>

@@ -14,7 +14,7 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 	}
 
 	function testAction(){
-		$model = Mage::getModel('mgfsync/cron_stock');
+		$model = Mage::getModel('mgfsync/cron_renameECOM');
 		echo $model::Run();
 	}
 
@@ -25,6 +25,18 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 
 	function stockrunAction(){
 		Mage::getModel('mgfsync/cron_stock')->Run();
+	}
+
+	function statusrunAction(){
+		Mage::getModel('mgfsync/cron_productstatus')->Run();
+	}
+
+	function storerunAction(){
+		Mage::getModel('mgfsync/cron_store')->Run();
+	}
+
+	function pricerunAction(){
+		Mage::getModel('mgfsync/cron_price')->Run();
 	}
 
 	function shippingrunAction(){
