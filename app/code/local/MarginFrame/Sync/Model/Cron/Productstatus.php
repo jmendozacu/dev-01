@@ -1,12 +1,12 @@
 <?php
-class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
+class MarginFrame_Sync_Model_Cron_Productstatus extends Mage_Core_Model_Abstract
 {
 	
 	public function Run() {
 		// /var/interface/stock
-		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'price'.DS;
+		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_status'.DS;
 
-		$filename_log = "mgfsync_price.log";
+		$filename_log = "mgfsync_productstatus.log";
 		// Tiw
 		// Create folder
 		if (!file_exists($dir)) {
@@ -33,12 +33,14 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 
 				    $csvdata = array();
 				    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
-
+				    	//skip header row
+				        if($data[0] == 'Article'){
+				        	continue;
+				        }
 				        $sku = trim($data[0]);
-				        $csvdata[$sku]['price'] = trim($data[1]);
-				        $csvdata[$sku]['special_price'] = trim($data[2]);
-				        $csvdata[$sku]['special_from_date'] = trim($data[3]);
-				        $csvdata[$sku]['special_to_date'] = trim($data[4]);
+				        $csvdata[$sku]['new'] = trim($data[1]);
+				        $csvdata[$sku]['discontinue'] = trim($data[2]);
+				        $csvdata[$sku]['dontmiss'] = trim($data[3]);
 				    }
 
 				    $storeId = 0;
@@ -51,30 +53,13 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 				    	->loadByAttribute('sku', $sku);
 				    	if ($product->getId()) {
 				    		Mage::log('found sku : '.$sku, null, $filename_log);
+				    		
+				    		$product->setData('new', $data['new']);
 
-				    		if ($data['price'] != 'Unset') {
-				    			$product->setPrice(number_format($data['price'],2));
-
-				    			if (strtolower($data['special_price']) != 'unset') {
-					    			$product->setSpecialPrice(number_format($data['special_price'],2));
-
-					    			$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
-									$product->setSpecialFromDateIsFormated(true);
-
-									$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
-									$product->setSpecialToDateIsFormated(true);
-					    		}else{
-					    			$product->setSpecialPrice(0);
-					    			
-					    			$product->setSpecialFromDate(false);
-									$product->setSpecialFromDateIsFormated(true);
-
-									$product->setSpecialToDate(false);
-									$product->setSpecialToDateIsFormated(true);
-					    		}
-				    		}else{
-				    			$product->setStatus(2);
-				    		}
+				    		$discontinue = $data['discontinue'] == 0 ? 1:2;
+				    		$product->setData('status', $discontinue);
+				    		$product->setData('dontmiss', $data['dontmiss']);
+				    		
 
 				    		// call save() method to save your product with updated data
 							try{
@@ -97,7 +82,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log);
 
 					// moved file to completed path
-					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'price'.DS.'save'.DS;
+					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_status'.DS.'save'.DS;
 
 					// Tiw
 					// Create folder

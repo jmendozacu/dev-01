@@ -55,7 +55,7 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 				    	Mage::log('found sku : '.$sku, null, 'mgfsync_store.log');
 
 				    		$productId = $p->getIdBySku($sku);
-
+				    		
 				    		foreach ($data as $store_code => $status) {				    			
 					    		$productdealerModel = Mage::getModel('dealerlocator/productdealer');
 					    		
@@ -88,10 +88,10 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 				    	} else {
 							Mage::log("SKU not found : ".$sku, null, 'mgfsync_store.log');
 						}
-
+						
 						$dealerAddsDiff = array_diff($dealerAdds, $dealerOlds);
 					    $dealerDelsDiff = array_intersect($dealerDels, $dealerOlds);
-
+					    
 						// call save() method to save your product with updated data
 						try {
 							//delete product dealer
