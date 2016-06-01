@@ -5760,7 +5760,7 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup .submit-fields ul li .input-box input,
 #review-form-popup .submit-fields ul li .input-box textarea{width:100%; border:1px solid #cbcbcb; border-radius:5px;}
 #review-form-popup .submit-fields .review-image label{font-family: 'FuturaT_Bold'; font-size:14px; color:#000000; text-transform:none;}
-#review-form-popup .submit-fields .review-image label span{font-family: 'HelveticaNeue'; font-size:12px; color:#767676; text-transform:none;}
+#review-form-popup .submit-fields .review-image label span{font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif ; font-size:12px; color:#767676; text-transform:none;}
 #review-form-popup .form-add .buttons-set.box-mobile{margin:0 10px 20px;}
 #review-form-popup .form-add .buttons-set button.button {margin:15px 0 0; float:left; width:auto; min-width:0;}
 #review-form-popup .review-nologged{padding:10px;}
@@ -11771,3 +11771,7 @@ div.calendar table td.button {
 .page-print.customwishlist-index-print .print-head{float: left;}
 .page-print.customwishlist-index-print .my-wishlist .page-title{float: right;}
 .page-print.customwishlist-index-print .my-wishlist .page-title h1{border-bottom: none; font-size: 16px; margin-top: 10px;}
+
+body:lang(th) .title-style1 span{
+  font-family: 'Index', Helvetica, Arial, sans-serif;
+}
