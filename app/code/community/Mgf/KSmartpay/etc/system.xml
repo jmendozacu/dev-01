@@ -796,6 +796,192 @@
             </groups>
 
             <groups>
+                <KSmartpayD translate="label" module="paygate">
+                    <comment>
+                        <![CDATA[ในกรณีที่ต้องเปิดใช้แผนการผ่อนแผนที่ 4 กรุณาลงรายละเอียดตามฟอร์มด้านล่างนี้]]>
+                    </comment>
+                    <label> KSmartpay แผนที่ #4</label>
+                    <sort_order>913</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <filterlimit>
+                            <label>Filter Limit</label>
+                            <comment>
+                                <![CDATA[ค่าของ installments_attribute ของแผน]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </filterlimit>
+
+                        <syncpayment>
+                            <label>Method</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </syncpayment>
+
+                        <bank translate="label">
+                            <label>ธนาคาร</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bank>
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <plannote translate="label">
+                            <label>รายละเอียด</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <![CDATA[แสดงรายละเอียดในหน้า Check Out เช่น ดอกเบี้ย 0% ผ่อนได้นานสูงสุด 10 งวดเป็นต้น]]>
+                            </comment>
+                        </plannote>
+
+                        <smpmerchantid>
+                            <label>Merchant No.</label>
+                            <comment>
+                                <![CDATA[Option for customized Payment template and Smartpay transaction)]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smpmerchantid>
+                        <smpterminalid>
+                            <label>Terminal ID</label>
+                            <comment>
+                                <![CDATA[Option for customized Payment template and Smartpay transaction)]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smpterminalid>
+                        <shopid>
+                            <label>SHOPID</label>
+                            <comment>
+                                <![CDATA[Option for customized Payment template and Smartpay transaction)]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shopid>
+
+
+                        <paymenttermrate>
+                            <label>% ดอกเบี้ย</label>
+                            <comment>
+                                <![CDATA[ใช้ในการเปรียบเทียบเงื่อนไขการแสดงผลหน้าสินค้า และคำนวณเงินผ่อนต่องวด]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </paymenttermrate>
+
+                        <paymenttermmax>
+                            <label>จำนวนงวดสูงสุด</label>
+                            <comment>
+                                <![CDATA[ใช้ในการเปรียบเทียบเงื่อนไขการแสดงผลหน้าสินค้า และคำนวณเงินผ่อนต่องวด]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </paymenttermmax>
+
+                        <paymentterms>
+                            <label>จำนวนงวดที่สามารถผ่อนได้</label>
+                            <comment>
+                                <![CDATA[ระบุงวดที่สามารถผ่อนได้ในแผน เช่น ผ่อนได้ 3,4,5,6,7 และ 12 งวด ให้ลงเป็น 3,4,5,6,7,12  หากไม่ระบุผู้ใช้จะไปเลือกงวดที่ Payment Gateway]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </paymentterms>
+
+                        <payment2>
+                            <label>PAYTERM2</label>
+                            <comment>
+                                <![CDATA[จำนวนงวดที่ให้ผ่อน ในกรณีที่ระบุ เมื่อไปที่หน้าจ่ายเงินของธนาคารผู้ใช้จะไม่สามารถเลือกงวดได้อีก แต่หากไม่ระบุหรือระบุเป็น 0 เมื่อไปที่หน้าจ่ายเงินของธนาคาร ผู้ใช้จะสามารถเลือกงวดผ่อนได้เอง]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment2>
+                        <min_order_total translate="label">
+                            <label>Minimum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </min_order_total>
+                        <max_order_total translate="label">
+                            <label>Maximum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </max_order_total>
+                        <infoimage translate="label">
+                            <label>Logo bank</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>29</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </infoimage>
+                    </fields>
+                </KSmartpayD>
+            </groups>
+
+            <groups>
                 <KrungsriA translate="label" module="paygate">
                     <comment>
                         <![CDATA[ในกรณีที่ต้องเปิดใช้แผนการผ่อนแผนที่ 1 กรุณาลงรายละเอียดตามฟอร์มด้านล่างนี้]]>
@@ -1354,6 +1540,191 @@
                 </KrungsriC>
             </groups>
 
+            <groups>
+                <KrungsriD translate="label" module="paygate">
+                    <comment>
+                        <![CDATA[ในกรณีที่ต้องเปิดใช้แผนการผ่อนแผนที่ 4 กรุณาลงรายละเอียดตามฟอร์มด้านล่างนี้]]>
+                    </comment>
+                    <label> Krungsri แผนที่ #4</label>
+                    <sort_order>922</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+
+                        <filterlimit>
+                            <label>Filter Limit</label>
+                            <comment>
+                                <![CDATA[ค่าของ installments_attribute ของแผน]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </filterlimit>
+
+                        <syncpayment>
+                            <label>Method</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </syncpayment>
+                        <bank translate="label">
+                            <label>ธนาคาร</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bank>
+
+
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+
+                        <plannote translate="label">
+                            <label>รายละเอียด</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                                <![CDATA[แสดงรายละเอียดในหน้า Check Out เช่น ดอกเบี้ย 0% ผ่อนได้นานสูงสุด 10 งวดเป็นต้น]]>
+                            </comment>
+                        </plannote>
+
+                        <smpmerchantid>
+                            <label>Merchant No.</label>
+                            <comment>
+                                <![CDATA[Option for customized Payment template and Smartpay transaction)]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smpmerchantid>
+                        <smpterminalid>
+                            <label>Terminal ID</label>
+                            <comment>
+                                <![CDATA[Option for customized Payment template and Smartpay transaction)]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smpterminalid>
+                        <shopid>
+                            <label>Card Type</label>
+                            <comment>
+                                <![CDATA[creditcard สำหรับบัตรเครดิต Visa, Master และ loancard สำหรับบัตรเงินผ่อน]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shopid>
+
+
+                        <paymenttermrate>
+                            <label>% ดอกเบี้ย</label>
+                            <comment>
+                                <![CDATA[ใช้ในการเปรียบเทียบเงื่อนไขการแสดงผลหน้าสินค้า และคำนวณเงินผ่อนต่องวด]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </paymenttermrate>
+
+                        <paymenttermmax>
+                            <label>จำนวนงวดสูงสุด</label>
+                            <comment>
+                                <![CDATA[ใช้ในการเปรียบเทียบเงื่อนไขการแสดงผลหน้าสินค้า และคำนวณเงินผ่อนต่องวด]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </paymenttermmax>
+
+                        <paymentterms>
+                            <label>จำนวนงวดที่สามารถผ่อนได้</label>
+                            <comment>
+                                <![CDATA[ระบุงวดที่สามารถผ่อนได้ในแผน เช่น ผ่อนได้ 3,4,5,6,7 และ 12 งวด ให้ลงเป็น 3,4,5,6,7,12  หากไม่ระบุผู้ใช้จะไปเลือกงวดที่ Payment Gateway]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </paymentterms>
+
+                        <payment2>
+                            <label>PAYTERM2</label>
+                            <comment>
+                                <![CDATA[จำนวนงวดที่ให้ผ่อน ในกรณีที่ระบุ เมื่อไปที่หน้าจ่ายเงินของธนาคารผู้ใช้จะไม่สามารถเลือกงวดได้อีก แต่หากไม่ระบุหรือระบุเป็น 0 เมื่อไปที่หน้าจ่ายเงินของธนาคาร ผู้ใช้จะสามารถเลือกงวดผ่อนได้เอง]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment2>
+                        <min_order_total translate="label">
+                            <label>Minimum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </min_order_total>
+                        <max_order_total translate="label">
+                            <label>Maximum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <validate>validate-number</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </max_order_total>
+                        <infoimage translate="label">
+                            <label>Logo bank</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>29</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </infoimage>
+                    </fields>
+                </KrungsriD>
+            </groups>
 <!-- <groups>
 <KrungsriFull translate="label" module="paygate">
 <comment>
