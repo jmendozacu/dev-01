@@ -37,7 +37,11 @@
 			<?php $i=0; foreach($_subcategories as $_subcategory): $i++;?>
 					<li class="category-item<?php if($i%3==0): ?> last<?php endif; ?>">
 						<?php $_subcategoryData = Mage::getModel('catalog/category')->load($_subcategory->getId()); ?>
-						<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						<?php if(isset($_subcategoryData['category_thumbnail']) && $_subcategoryData['category_thumbnail'] != ''): // Show category thumbnail image?>
+							<img src="<?php echo Mage::getBaseUrl('media').'/catalog/category/'.$_subcategoryData['category_thumbnail'] ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						<?php else: // Show category main image?>	
+							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						<?php endif;?>	
 						<div class="categories-links">
 						<?php $_categoryLevel3 = $_subcategory->getChildrenCategories(); ?>
 						<?php if (count($_categoryLevel3) > 0): ?>
