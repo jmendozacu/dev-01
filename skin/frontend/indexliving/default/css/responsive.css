@@ -373,6 +373,7 @@
     margin-top: -30px;
     margin-left: -88px;
 	}
+	body:lang(th) .categories-list .category-grid li.category-item.category-products-list .link-view-productlist {margin-top: -30px; margin-left: -71.5px;}
   .allcategory-banners h1 {font-size:36px; padding:0 10px;}
   .allcategory-banners h1 strong {font-size:40px;}
   .allcategory-banners h3 {font-size:20px; padding:0 10px;}
