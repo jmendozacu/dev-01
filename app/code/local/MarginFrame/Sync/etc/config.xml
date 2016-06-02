@@ -5,7 +5,7 @@
             <version>0.0.9</version>
         </MarginFrame_Sync>
     </modules>
-	<crontab>
+	<!-- <crontab>
         <jobs>
             <mgfsync_cron_stock_run>
                 <schedule><cron_expr>10 7,19 * * *</cron_expr></schedule>
@@ -28,7 +28,7 @@
                 <run><model>mgfsync/cron_delivery::Run</model></run>
             </mgfsync_cron_delivery_run>
         </jobs>
-    </crontab>
+    </crontab> -->
 	<global>
         <models>
             <mgfsync>

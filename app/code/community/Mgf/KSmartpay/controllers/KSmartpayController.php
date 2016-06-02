@@ -407,7 +407,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		$rest = $this->get_web_page($url);
 		
 		$response = json_decode($rest['content'],true);
-		
+		Mage::log(print_r($response,true),null,'foregroundcallback.log');
 
 		if($response['header']['msg']=="success"){
 			//success
@@ -524,6 +524,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
         $status = true;
 
 		$response = $this->getRequest()->getPost();		 		
+		Mage::log(print_r($response,true),null,'backgroundcallback.log');
 		if (empty($response))  {
             $status = false;
         	throw new Exception('Response doesn\'t contain GET /POST elements.', 20);

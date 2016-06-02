@@ -14,7 +14,7 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 	}
 
 	function testAction(){
-		$model = Mage::getModel('mgfsync/cron_renameECOM');
+		$model = Mage::getModel('mgfsync/cron_productmaster');
 		echo $model::Run();
 	}
 
