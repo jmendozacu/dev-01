@@ -1,21 +1,91 @@
 <?php
 class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 {
-	
 	public function Run() {
-		// /var/interface/stock
+		
 		$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_master'.DS;
-
+		$dirprepare = $dir.'prepare'.DS;
 		$filelogName = "mgfsync_productmaster.log";
-		// Tiw
+		
 		// Create folder
 		if (!file_exists($dir)) {
 			$file = new Varien_Io_File();
 			$file->mkdir($dir);
 		}
+		//create prepare for fast bluk import
+		if (!file_exists($dirprepare)) {
+
+			$file_prepare = new Varien_Io_File();
+			$file_prepare->mkdir($dirprepare);
+		} 
 
 		$dh  = opendir($dir);
 
+		$map_attribute = array(
+			'Article_CODE' 			=> 'sku',
+			'﻿LGROUP' 				=> 'lgroup',
+			'ECOMMERCE' 			=> 'ecommerce',
+			'Installation' 			=> 'installtion',
+			'MC-SAP1' 				=> array('multiselect'=> array('categories'=>'lv1')),
+			'MC-SAP2' 				=> array('multiselect'=> array('categories'=>'lv2')),
+			'MC-SAP3' 				=> array('multiselect'=> array('categories'=>'lv3')),
+			'SERIES' 				=> 'series',
+			'NAME_TH' 				=> 'name',
+			'NAME_EN' 				=> 'name',
+			'DESC_TH' 				=> 'description',
+			'DESC_EN' 				=> 'description',
+			'MAIN_MATERIAL_TH' 		=> 'material',
+			'MAIN_MATERIAL_EN' 		=> 'material',
+			'MATERIAL_TH' 			=> 'material_description',
+			'MATERIAL_EN' 			=> 'material_description',
+			'COLOR_TH' 				=> 'color',
+			'COLOR_EN' 				=> 'color',
+			'SIZE' 					=> 'size',
+			'KEYFEATURE_TH' 		=> 'key_feature',
+			'KEYFEATURE_EN' 		=> 'key_feature',
+			'GOODKNOW_TH' 			=> 'good_to_know',
+			'GOODKNOW_EN' 			=> 'good_to_know',
+			'INSTRUCTION_TH' 		=> 'care_instruction',
+			'INSTRUCTION_EN' 		=> 'care_instruction',
+			'PRICE' 				=> 'price',
+			'ItalianVeneer' 		=> 'italianveneer',
+			'JoyPrice' 				=> 'price_label',//joyprice
+			'DontMiss' 				=> 'price_label',//dontmiss
+			'GermanMelamine' 		=> array('multiselect'=> array('selling_point'=>'germanmelamine')),
+			'E1' 					=> array('multiselect'=> array('selling_point'=>'eyes')),
+			'SuperFlex' 			=> array('multiselect'=> array('selling_point'=>'superflex')),
+			'Crystallized' 			=> array('multiselect'=> array('selling_point'=>'crystallized')),
+			'Warranty25' 			=> array('multiselect'=> array('selling_point'=>'warranty25')),
+			'PianoHi' 				=> array('multiselect'=> array('selling_point'=>'pianohi')),
+			'V-Series'				=> array('multiselect'=> array('selling_point'=>'v-series')),
+			'CowLeather' 			=> array('multiselect'=> array('selling_point'=>'cowleather')),
+			'HiQuanlity' 			=> array('multiselect'=> array('selling_point'=>'hiquanlity')),
+			'TemperedGlass' 		=> array('multiselect'=> array('selling_point'=>'temperedglass')),
+			'SafetyGlassw' 			=> array('multiselect'=> array('selling_point'=>'safetyglass')),
+			'PICTURE'				=> 'image',
+			
+		);
+		$multiselect = array(
+			'GermanMelamine' 		=> 'germanmelamine',
+			'E1' 					=> 'eyes',
+			'SuperFlex' 			=> 'superflex',
+			'Crystallized' 			=> 'crystallized',
+			'Warranty25' 			=> 'warranty25',
+			'PianoHi' 				=> 'pianohi',
+			'ItalianVeneer' 		=> 'v-series',
+			'CowLeather' 			=> 'cowleather',
+			'HiQuanlity' 			=> 'hiquanlity',
+			'TemperedGlass' 		=> 'temperedglass',
+			'SafetyGlassw' 			=> 'safetyglass',
+		);
+
+		$product = Mage::getModel('catalog/product');
+		$collections = Mage::getModel('mgfsync/catcode')->getCollection();
+		$catcodes = array();
+		foreach ($collections->getData() as $catcode) {
+			$catcodes[$catcode['catalog_code']] = $catcode['entity_id'];
+		}
+		
 		while (false !== ($filename = readdir($dh))) {
 		    $files[] = $filename;
 
@@ -24,167 +94,193 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 
 		    	// rename file .trg to .csv
 		    	$filenamecsv = str_replace('.trg', '.txt', $filename);
-				$row = 1;
+				$rowNum = 0;
 
-				if (($handle = fopen($dir.$filenamecsv, "r")) !== FALSE) {
-				    Mage::log('=========================================================', null, $filelogName);
-				    Mage::log('open file : '.$dir.$filenamecsv, null, $filelogName);
+				$data = file_get_contents($dir.$filenamecsv);
 
-				    $csvdata = array();
-				    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
-				        //$result[] = $data;
-				        //LGROUP|ECOMMERCE|Installation|MC-SAP1|MC-SAP2|MC-SAP3|SERIES|Article_CODE|NAME_TH|NAME_EN|DESC_TH|DESC_EN|MAIN_MATERIAL_TH|MAIN_MATERIAL_EN|MATERIAL_TH|MATERIAL_EN|COLOR_TH|COLOR_EN|SIZE|KEYFEATURE_TH|KEYFEATURE_EN|GOODKNOW_TH|GOODKNOW_EN|INSTRUCTION_TH|INSTRUCTION_EN|PRICE|JoyPrice|GermanMelamine|E1|SuperFlex|Crystallized|Warranty25|PianoHi|ItalianVeneer|DontMiss|CowLeather|HiQuanlity|TemperedGlass|SafetyGlassw
-				        //skip header row
-				        if($data[0] == 'LGROUP' || $data[1] == 'ECOMMERCE' || $data[2] == 'QTY'){
-				        	continue;
-				        }
+				$data = iconv('UTF-16LE', 'UTF-8', $data);
+				//$data = iconv('ASCII//TRANSLIT', 'UTF-8', $data);
+				$data = preg_replace('~\R~u', "\r\n", $data);
+				$data = explode("\r\n", $data);
+				$col = array();
+				$header = array();
+				$index_header = array();
+				// $index_magento = array();
+				$sku_index = 0; 
 
-				        // array(
-				        // 	'sku'=>array(
-				        // 		'warehouse'=>'1100',
-				        // 		'qty'=>'10'
-				        // 	)
-				        // )
-				        $csvdata[$data[0]]['warehouse'] = trim($data[1]);
-				        $csvdata[$data[0]]['qty'] = trim($data[2]);
-				    }
-
-				    $orderqty = array();
-
-				    if(count($csvdata) > 0) {
-
-				    	// get product_id, qty_ordered in state = new, pending_payment
-						$collection = Mage::getResourceModel('sales/order_item_collection')
-						    // ->addAttributeToSelect('*')
-						    ->AddAttributeToSelect('product_id')
-						    ->AddAttributeToSelect('qty_ordered')
-						;
-
-						$collection
-						    ->getSelect()
-						    ->join(
-						        array('orders'=> 'sales_flat_order'),
-						        'orders.entity_id = main_table.order_id', 
-						        array(
-						            //'orders.customer_email',
-						            //'orders.customer_id',
-						            //'orders.state as order_state',
-						            //'orders.status as order_status'
-						        )
-						    )
-						;
-
-						$collection
-						    ->getSelect()
-						    ->where("orders.state in ('new', 'pending_payment')")
-						;
-
-						$collection->load();
-
-						// array(
-						// 	'product_id-1' => '1',
-						// 	'product_id-2' => '2',
-						// )
-
-						foreach ($collection->getData() as $item) {
-							if(isset($orderqty[$item['product_id']])){
-								$orderqty[$item['product_id']] += $item['qty_ordered'];
+				$import_TH = array();
+				$import_EN = array();
+				$indexTH = array();
+				$indexEN = array();
+				echo $filenamecsv;
+				foreach ($data as $row) {		
+					if($rowNum ==0 ){
+						//first row is attribute name
+						$header = explode("|", $row);
+						$i = 0;
+						foreach ($header as $key) {
+							$index_header[$key] = $i;
+							if(is_array($map_attribute[$key])){
+								foreach ($map_attribute[$key] as $h => $v) {
+									$index_magento[$i] = $h;
+								}
 							} else {
-								$orderqty[$item['product_id']] = $item['qty_ordered'];
+								$index_magento[$i] = $map_attribute[$key];	
 							}
+							
+							if(preg_match( "/_TH$/i", $key, $matches)){
+								$import_TH[] = $key;
+							} else {
+								$import_EN[] = $key;
+								if($key == "Article_CODE"){
+									$import_TH[] = $key;
+								}
+							}
+							$i++;
 						}
 
-				    }
-
-				  	// prepare to load products
-				    $product = Mage::getModel('catalog/product');
-				    foreach ($csvdata as $sku => $item) {
-				    	$qty = $item['qty'];
-
-				    	// ignored
-				    	$warehouse = $item['warehouse'];
-
-						$p = $product->loadByAttribute('sku', $sku);
-
-    					if ($p) {
-      						
-    						Mage::log('found sku : '.$sku.' || update qty : '.$qty, null, $filelogName);
-      						// get product's stock data such quantity, in_stock etc
-     						$productId = $p->getIdBySku($sku);
-
-     						//calculate real stock
-     						if(isset($orderqty[$productId])){
-     							$qty = $qty - $orderqty[$productId];
-     						}
-
-      						$stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($productId);
-							$stockItemId = $stockItem->getId();
-							$stock = array();							
-							
-							// then set product's stock data to update
-							if (!$stockItemId) {
-								$stockItem->setData('product_id', $product->getId());
-								$stockItem->setData('stock_id', 1);
+						//create header file for put content with type csv
+						
+						$file = fopen($dirprepare."Import_Produce_TH.csv","w+");
+						$str = "";
+						foreach ($import_TH as $value) {
+							if($index_magento[$index_header[$value]]=='multiselect'){
+								foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
+									if(in_array($k, $indexTH)){
+										continue;
+									} else {
+										$indexTH[] = $k;
+									}
+								}
 							} else {
-								$stock = $stockItem->getData();
+								$indexTH[] = $index_magento[$index_header[$value]];	
 							}
-							$stockItem->setData('qty', $qty);
-							if ($qty > 0) {
-								$stockItem->setData('is_in_stock', 1);
-							} else {
-								$stockItem->setData('is_in_stock', 0);
-							}
-							$stockItem->setData('manage_stock', 1);
-							$stockItem->setData('use_config_manage_stock', 1);
-							
-							// call save() method to save your product with updated data
-							try{
-								$stockItem->save();
-								$product->save($p);
-							} catch (Exception $ex) {
-								// handle the error here!!
-								Mage::log('error sku : '.$sku, null, $filelogName);
-							}
-							unset($stockItem);
-							unset($p);
-						} else {
-							Mage::log("SKU not found : ".$sku, null, $filelogName);
 						}
+						
+						// array_unshift($indexTH,'sku');
+						// $str = rtrim($str,',');
+						fputcsv($file,$indexTH);
+						fclose($file);
 
-				    }
+						$file = fopen($dirprepare."Import_Produce_EN.csv","w+");
+						$str = "";
+						foreach ($import_EN as $value) {
+							if($index_magento[$index_header[$value]]=='multiselect'){
+								foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
+									if(in_array($k, $indexEN)){
+										continue;
+									} else {
+										$indexEN[] = $k;
+									}
+								}
+							} else {
+								$indexEN[] = $index_magento[$index_header[$value]];	
+							}
+						}
+						
+						// $str = rtrim($str,',');
+    					fputcsv($file,$indexEN);
+						fclose($file);
+						//echo '<pre>';
+						// print_r($index_header);
+						// echo '</pre>';
+						
+					} else {
+						$cols = explode("|", $row);
+						if($cols[0]==''){
+							continue;
+						}
+						// echo '<pre>';
+						// print_r($cols);
+						// echo '</pre>';
+						// $col[$cols[$index_header['Article_CODE']]] = $cols;
+						$rowCsv_EN = array();
+						$rowCsv_TH = array();
+						foreach ($index_header as $key => $value) {
+							//for by column check in the row
+							// $dataRow = $col[];
+							if(isset($map_attribute[$key]['multiselect'])){
+								switch($index_magento[$value]){
+									case 'multiselect':
+										foreach ($map_attribute[$key]['multiselect'] as $km => $vm) {
+											if($km == 'selling_point'){
+												if(trim($cols[$value])=='1'){
+													$rowCsv_EN[array_search('selling_point', $indexEN)] .= ','.$multiselect[$key];	
+												}
+												$rowCsv_EN[array_search('selling_point', $indexEN)] = ltrim($rowCsv_EN[array_search('selling_point', $indexEN)],',');
+												$rowCsv_EN[array_search('selling_point', $indexEN)] = rtrim($rowCsv_EN[array_search('selling_point', $indexEN)],',');
+											} else {
+												$rowCsv_EN[array_search('categories', $indexEN)] .= ','.$catcodes[trim($cols[$value])];
+												$rowCsv_EN[array_search('categories', $indexEN)] = ltrim($rowCsv_EN[array_search('categories', $indexEN)],',');
+												$rowCsv_EN[array_search('categories', $indexEN)] = rtrim($rowCsv_EN[array_search('categories', $indexEN)],',');
+											}
+											//// price label
 
-					fclose($handle);
-					Mage::log('close file : '.$dir.$filenamecsv, null, $filelogName);
+										}
+										break;
+								}
+							} else {
+								if(preg_match( "/_TH$/i", $key)){
+									if(preg_match( "/COLOR_TH$/i", $key)){
+										$rowCsv_TH[]=$cols[$index_header['COLOR_EN']];
 
-					// moved file to completed path
-					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS.'save'.DS;
+									} else {
+										$rowCsv_TH[]=$cols[$value];
+									}
+								} else {
+									$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
+									if($key == "Article_CODE"){
+										$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $cols[$value];
+									}
+								}
+							}
 
-					// Tiw
-					// Create folder
-					if (!file_exists($newdir)) {
-						$file = new Varien_Io_File();
-						$file->mkdir($newdir);
+						}
+						echo '<pre>';
+						print_r($rowCsv_EN);
+						echo '</pre>';
+						$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
+						fputcsv($file,$rowCsv_EN);
+						fclose($file);
+
+						$file = fopen($dirprepare."Import_Produce_TH.csv","a+");
+						fputcsv($file,$rowCsv_TH);
+						fclose($file);
 					}
-
-					// Mage::log($newdir);
-					unlink($dir.$filename);
-					rename($dir.$filenamecsv, $newdir.$filenamecsv);
-
-					// Tiw
-					// check to remove file
-					if (!file_exists($dir.$filename)) {
-						Mage::log('removed : '.$dir.$filename, null, $filelogName);
-					}else{
-						Mage::log('can not removed : '.$dir.$filename, null, $filelogName);
-					}
-
-					// check to move file
-					if (!file_exists($dir.$filenamecsv)) {
-						Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filelogName);
-					}else{
-						Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filelogName);
-					}
+					$rowNum++;
+					
 				}
+
+				Mage::log('close file : '.$dir.$filenamecsv, null, $filelogName);
+
+				// moved file to completed path
+				$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_master'.DS.'save'.DS;
+
+				// Create folder
+				if (!file_exists($newdir)) {
+					$file = new Varien_Io_File();
+					$file->mkdir($newdir);
+				}
+
+				// Mage::log($newdir);
+				unlink($dir.$filename);
+				rename($dir.$filenamecsv, $newdir.$filenamecsv);
+
+				// Tiw
+				// check to remove file
+				if (!file_exists($dir.$filename)) {
+					Mage::log('removed : '.$dir.$filename, null, $filelogName);
+				}else{
+					Mage::log('can not removed : '.$dir.$filename, null, $filelogName);
+				}
+
+				// check to move file
+				if (!file_exists($dir.$filenamecsv)) {
+					Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filelogName);
+				}else{
+					Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filelogName);
+				}
+				
 
 		    }
 		}
