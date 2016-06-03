@@ -37,8 +37,14 @@
             </mgfsync>
             <mgfsync_mysql4>
                 <class>MarginFrame_Sync_Model_Mysql4</class>
+                <entities>
+                    <catcode>
+                        <table>catalogcode_mapping</table>
+                    </catcode>
+                </entities>
             </mgfsync_mysql4>
         </models>
+        
         <resources>
             <mgfsync_setup>
                 <setup>
