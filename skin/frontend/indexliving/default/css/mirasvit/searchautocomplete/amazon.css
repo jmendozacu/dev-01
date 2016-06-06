@@ -36,7 +36,7 @@
   display: inline-block;
   margin:auto;
   position:relative;
-  
+
 }
 .searchautocomplete .sprite {
   background: url('../../../images/mirasvit/sprite.png');
@@ -60,8 +60,8 @@
 }
 .searchautocomplete .nav .nav-search-in {
   position: absolute;
-  top: 8px;
-  left: 0px;
+  top: 0;
+  left: 0;
   z-index: 15;
 }
 .searchautocomplete .nav .nav-search-in .category {
@@ -88,9 +88,9 @@
   color: #5D5D5D;
   cursor: pointer;
   float: left;
-  font-size: 16px;
-  height: 30px;
-  line-height: 30px;
+  font-size: 14px;
+  height: 45px;
+  line-height: 46px;
   margin: 0px 0px 0px 2px;
   padding: 0px 25px 0px 10px;
   text-align: center;
@@ -98,7 +98,7 @@
 }
 .searchautocomplete .nav .nav-search-in .nav-down-arrow {
   right: 6px;
-  top: 10px;
+  top: 18px;
   position: absolute;
   width: 10px;
   height: 10px;
@@ -126,15 +126,14 @@
 .searchautocomplete .nav .nav-input input {
   z-index: 10;
   padding: 0px;
-  height: 30px;
+  height: 23px;
   line-height:30px;
   border: 0px;
-  font-family: tahoma;
   font-size: 14px;
   background: transparent;
   color: black;
   outline: 0px;
-  margin-left: 10px;
+  margin-left: 18px;
   width: 100%;
   color:#9C9C9C;
 }
@@ -151,7 +150,7 @@
   position:absolute;
   top:0px;
   right:0px;
-  background:url(images/icon-search.png) no-repeat center center #FFC222; 
+  background:url(images/icon-search.png) no-repeat center center #FFC222;
   -webkit-border-radius: 0px 3px 3px 0px;
   -moz-border-radius: 0px 3px 3px 0px;
   border-radius: 0px 3px 3px 0px;
@@ -185,7 +184,7 @@
   margin-bottom: 0px;
   border-bottom: 1px solid #E6E6E6;
   font-size:12px;
-  color:#444; 
+  color:#444;
   font-weight:normal;
 }
 .searchautocomplete .searchautocomplete-placeholder ul li:before,
@@ -206,7 +205,6 @@
   display: block;
   margin-bottom: 3px;
   font-size:14px;
-  font-family: 'FuturaBT-Book';
   text-transform:uppercase;
 }
 .searchautocomplete .searchautocomplete-placeholder ul li a .pull-right {
@@ -229,7 +227,6 @@
   font-size: 14px;
   color: #000;
   float: left;
-  font-family: 'FuturaT_Bold';
 }
 
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .regular-price .price-label,
@@ -242,12 +239,11 @@
   color: #999;
 }
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .old-price  {float:left; margin-top:2px;}
-.searchautocomplete .searchautocomplete-placeholder ul li .price-box .special-price {float:right; padding-right:0px; padding-left:10px;} 
+.searchautocomplete .searchautocomplete-placeholder ul li .price-box .special-price {float:right; padding-right:0px; padding-left:10px;}
 .searchautocomplete .searchautocomplete-placeholder ul li .price-box .old-price .price {
   font-size: 10px;
   color: #5D5D5D;
-  font-weight: normal;
-  font-family: 'FuturaLight';
+  font-weight: 300;
 }
 .searchautocomplete .searchautocomplete-placeholder ul li .highlight strong {
   /* color: #f00; */
