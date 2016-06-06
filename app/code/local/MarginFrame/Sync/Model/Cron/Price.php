@@ -4,6 +4,8 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 	
 	public function Run() {
 		// /var/interface/stock
+		$message = array();
+		$check = false ;
 		try {
 
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'price'.DS;
@@ -17,7 +19,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 			}
 
 			$dh  = opendir($dir);
-
+			
 			while (false !== ($filename = readdir($dh))) {
 			    $files[] = $filename;
 
@@ -47,6 +49,8 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					   
 			    		
 			    		$product = null;
+			    		
+			    		
 			    		Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 					    foreach ($csvdata as $sku => $data) {
 					    	$product = Mage::getModel('catalog/product')
@@ -81,8 +85,10 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					    		// call save() method to save your product with updated data
 								try{
 									$product->save();
-									$log = 'Success';
+									// $log = 'Success';
 								} catch (Exception $ex) {
+									$check = true;
+									$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
 									// handle the error here!!
 									Mage::log('error sku : '.$sku.'-'.$ex->getMessage(), null, $filename_log);
 								}
@@ -130,6 +136,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					}
 
 			    }
+			   
 			}
 
 		} catch(Exception $ex) {
@@ -140,10 +147,20 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
     	$readConnection = $resource->getConnection('core_read');
     	$writeConnection = $resource->getConnection('core_write');
 
-	    $query = "
-	    	INSERT INTO `tbl_sync_log` (sync_type, created_at, log)
-	    	VALUES ('Retail Price', NOW(), '$log')
-	    ";
+	    //
+	    if($check){
+	    	//success
+	    	 $query = "
+			    	INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
+			    	VALUES ('Retail Price', NOW(), 'Success','','$filenamecsv)')
+			    ";
+	    } else {
+	    	//fail 
+	    	$query = "
+			    	INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
+			    	VALUES ('Retail Price', NOW(), 'Fail','".json_encode($message)."','$filenamecsv)')
+			    ";
+	    }
 	    $writeConnection->query($query);
 
    	}
