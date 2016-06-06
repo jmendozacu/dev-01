@@ -79,7 +79,12 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 										$product->setSpecialToDateIsFormated(true);
 						    		}
 					    		}else{
-					    			$product->setStatus(2);
+					    			if (strtolower($data['special_price']) != 'unset') {
+					    				$product->setPrice(number_format($data['special_price'],2));
+					    			} else {
+					    				$product->setStatus(2);
+					    			}
+
 					    		}
 
 					    		// call save() method to save your product with updated data
