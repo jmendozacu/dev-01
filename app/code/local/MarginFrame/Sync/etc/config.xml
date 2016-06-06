@@ -2,16 +2,16 @@
 <config>
     <modules>
         <MarginFrame_Sync>
-            <version>0.0.9</version>
+            <version>0.1.0</version>
         </MarginFrame_Sync>
     </modules>
-	<!-- <crontab>
+	<crontab>
         <jobs>
-            <mgfsync_cron_stock_run>
-                <schedule><cron_expr>10 7,19 * * *</cron_expr></schedule>
+           <!--  <mgfsync_cron_stock_run>
+                <schedule><cron_expr>1 10,20,30,40,50 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_stock::Run</model></run>
-            </mgfsync_cron_stock_run>
-            <mgfsync_cron_store_run>
+            </mgfsync_cron_stock_run> -->
+            <!-- <mgfsync_cron_store_run>
                 <schedule><cron_expr>10 7,19 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_stock::Run</model></run>
             </mgfsync_cron_store_run>
@@ -26,9 +26,9 @@
             <mgfsync_cron_delivery_run>
                 <schedule><cron_expr>*/30 * * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_delivery::Run</model></run>
-            </mgfsync_cron_delivery_run>
+            </mgfsync_cron_delivery_run> -->
         </jobs>
-    </crontab> -->
+    </crontab>
 	<global>
         <models>
             <mgfsync>
