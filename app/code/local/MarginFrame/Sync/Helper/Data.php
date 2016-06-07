@@ -34,6 +34,32 @@ class MarginFrame_Sync_Helper_Data extends Mage_Core_Helper_Abstract
     }
     */
 	
+    public function reindex(){
+        $indexCollection = Mage::getModel('index/process')->getCollection();
+        $arr = array();
+        foreach ($indexCollection as $index) {
+            // $arr[$value->getData('process_id')] = $value->getData('indexer_code');
+            // Array
+            // (
+            //     [1] => catalog_product_attribute
+            //     [2] => catalog_product_price
+            //     [3] => catalog_url
+            //     [4] => catalog_product_flat
+            //     [5] => catalog_category_flat
+            //     [6] => catalog_category_product
+            //     [7] => catalogsearch_fulltext
+            //     [8] => cataloginventory_stock
+            //     [9] => tag_summary
+            //     [11] => magpleasure_searchcore
+            //     [17] => super
+            //     [18] => products_attributes_for_orders
+            //     [20] => amsorting_summary
+            //     [21] => amsegemnts_indexer
+            // )
+            $index->reindexAll();
+        }
+        return $arr;
+    }
 }
 
 ?>
