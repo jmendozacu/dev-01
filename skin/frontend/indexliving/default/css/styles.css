@@ -10732,7 +10732,7 @@ div.paypal-logo span > img {
 #tabs_history{padding:0;float:left;clear:both;width:99%;margin-bottom:0;margin-top:10px;border:1px solid #F3F3F3;}
 ul.tabs_history{margin:0;padding:0;float:left;list-style:none;min-height:45px;width:100%;background:#F3F3F3;}
 ul.tabs_history li{float:left;padding:0;min-height:45px;line-height:45px;border-left:none;overflow:hidden;position:relative;}
-ul.tabs_history li a{text-decoration:none;color:#454545;display:block;font-size:20px;outline:0;cursor:pointer;text-align:center;padding: 20px 13.71px;font-weight:400;font-weight:700;font-family: 'Index';}
+ul.tabs_history li a{text-decoration:none;color:#454545;display:block;font-size:20px;outline:0;cursor:pointer;text-align:center;padding: 20px 13.71px;font-weight:400;font-weight:bold;font-family: 'Index';}
 ul.tabs_history li a:hover {color:#ffc121;}
 ul.tabs_history li.active,ul.tabs_history li.active a,ul.tabs_history li.active a:hover{color:#ffc121;height:80px;}
 ul.tabs_history li.active, ul.tabs_history li{background-color:#F3F3F3;background-image: url("../images/tab-today.gif");background-repeat: no-repeat;background-position: -5px 58px;}
