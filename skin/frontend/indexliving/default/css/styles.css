@@ -632,13 +632,13 @@ ul {
   text-rendering: optimizeLegibility;
   text-transform: uppercase;
   font-style: normal;
+  font-weight: bold;
  }
 h1, .h1 {
   margin: 0;
   margin-bottom: 0.7em;
   color: #000;
   font-size: 28px;
-  font-weight: 400;
   line-height: 1.2;
 }
 body:lang(th) h1, .h1{
@@ -650,7 +650,6 @@ h2, .h2 {
   margin-bottom: 0.5em;
   color: #000;
   font-size: 24px;
-  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -659,7 +658,6 @@ h3, .h3 {
   margin-bottom: 10px;
   color: #000;
   font-size: 18px;
-  font-weight: 400;
   line-height: 1.4;
 }
 
@@ -668,7 +666,6 @@ h4, .h4 {
   margin-bottom: 10px;
   color: #000;
   font-size: 14px;
-  font-weight: bold;
   line-height: 1.4;
 }
 
@@ -677,7 +674,6 @@ h5, .h5 {
   margin-bottom: 10px;
   color: #000;
   font-size: 13px;
-  font-weight: bold;
   line-height: 1.4;
 }
 
@@ -686,7 +682,6 @@ h6, .h6 {
   margin-bottom: 5px;
   color: #000;
   font-size: 12px;
-  font-weight: bold;
   line-height: 1.4;
 }
 
@@ -1178,7 +1173,8 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 
 /* Primary Buttons */
-.button{
+.button,
+.customer-account .my-account .title-buttons .link-reorder{
   background: #ffc222;
   display: inline-block;
   padding: 9px 15px 7px;
@@ -1195,7 +1191,8 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .button:hover,
 .button:active,
-.button:focus {
+.button:focus,
+.customer-account .my-account .title-buttons .link-reorder:hover {
   background: #fab80a;
   cursor: pointer;
   color:#fff;
@@ -3598,7 +3595,7 @@ body {
 .box-home-decor .title-decor label strong { font-size:60px;}
 .box-home-decor .decor-style {float:left; width:17.5%; background:#434343; padding:0 13px;}
 .box-home-decor .decor-banner {float:left; width:82.5%; margin:2.5% 0; background:#252525; padding:24px 0;}
-.title-style3 {text-align:center; margin:0px; padding:10px 0; font-size:18px; color:#fff; line-height:30px; }
+.title-style3 {text-align:center; margin:0px; padding:10px 0; font-size:18px; color:#fff; line-height:30px; font-weight: bold;}
 .main-home .box-home-decor .decor-style ul {margin:0px;}
 .main-home .box-home-decor .decor-style li {margin-bottom:10px; position:relative;}
 .main-home .box-home-decor .decor-style li .banner-mask{
@@ -3623,7 +3620,7 @@ body {
 .main-home .box-home-decor .decor-style li:hover::before{content:""; }
 .main-home .box-home-decor .decor-style li:hover a{} */
 .main-home .box-home-decor .decor-style li a:hover{}
-.main-home .box-home-decor .decor-style .banner-title {color:#000; width:100%; text-align:center; margin:auto; font-size:19px;  line-height:22px; height:22px;  bottom:0px; padding:0 18px; text-transform:uppercase; }
+.main-home .box-home-decor .decor-style .banner-title {color:#000; width:100%; text-align:center; margin:auto; font-size:19px;  line-height:22px; height:22px;  bottom:0px; padding:0 18px; text-transform:uppercase; font-weight: bold; }
 .main-home .box-home-decor .decor-style li:nth-child(5) .banner-title  {height:44px;}
 .box-home-decor .box-slider {float:left; width: 64.243%; margin:0 1.481%;}
 .box-home-decor .box-banner-right {float:left;  width: 31.314%; margin-right:1.481%;}
@@ -4544,7 +4541,7 @@ body.catalogsearch-result-index .page-title h1 {
 .category-products .products-grid .link-wishlist{right:10px;}
 .products-grid .link-wishlist.added-item {background-position:-78px -791px;}
 .products-grid .product-name {line-height:18px; margin-bottom:5px;}
-.products-grid .product-name a {color:#000; font-size:15px; font-weight:800; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
+.products-grid .product-name a {color:#000; font-size:15px; font-weight: bold; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
 .products-grid .desc {font-size:12px; color:#434343; font-weight: 300; margin-bottom:5px;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
 .products-grid  .grid-price .save-price-percent{position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-weight: bold;}
@@ -4572,7 +4569,7 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid  .price-box {float:left; min-height:47px;}
 .products-grid .price-box .price,.products-list .price-box .price,
 .products-grid  .price-box .regular-price .price,.products-list  .price-box .regular-price .price,
-.products-grid  .price-box .special-price .price,.products-list  .price-box .special-price .price {color:#000; font-size:22px;  line-height:28px; float:left;}
+.products-grid  .price-box .special-price .price,.products-list  .price-box .special-price .price {color:#000; font-size:22px;  line-height:28px; float:left; font-weight: bold;}
 
 .products-grid  .price-box .special-price .price, .products-list  .price-box .special-price .price  {color:#FF0000;}
 .products-grid  .price-box .old-price .price,.products-list  .price-box .old-price .price  {color:#898989; font-size:12px; font-weight: 300; line-height:16px;}
@@ -8713,7 +8710,7 @@ body.customer-account .my-account .title-buttons .button {
 body.customer-account .my-account .title-buttons a,
 body.customer-account .my-account .title-buttons span.separator {
   position: relative;
-  top: -42px;
+  top: -72px;
 }
 body.customer-account .my-account .fieldset h2,
 body.customer-account .my-account .order-details h2 {
@@ -9970,7 +9967,8 @@ div.paypal-logo span > img {
 /* ============================================ *
  * Wishlist
  * ============================================ */
-#wishlist-view-form a.link-print {
+#wishlist-view-form a.link-print,
+.customer-account .my-account .title-buttons .link-print {
   float:right; clear:both; padding-left:30px; background:url(../images/icon-print.png) no-repeat left center; line-height:25px;
   margin: 10px 0 15px 20px;
 }
@@ -11716,7 +11714,7 @@ div.calendar table td.button {
 .box-payment .table-payment td{
   padding: 5px 0;
 }
-
+.customer-account .my-account .title-buttons .separator{display: none;}
 /*--- Setting Fonts For Store View Thai---*/
 
 
