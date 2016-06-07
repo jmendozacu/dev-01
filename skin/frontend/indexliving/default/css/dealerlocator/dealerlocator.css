@@ -171,7 +171,7 @@
   background-color: #ccc;
 }
 
-.view-dealers{background:#FFFFFF url(images/dealerlocator/i-dealer-blk.png) 10px center no-repeat; padding:3px 5px 3px 25px;  font-size:17px; color:#000000; border-radius:5px;}
+.view-dealers{background:#FFFFFF url(images/dealerlocator/i-dealer-blk.png) 10px center no-repeat; padding:6px 5px 3px 30px;  font-size:14px; color:#000000; border-radius:5px; margin-top: 8px;}
 .view-dealers.active{background:#000000 url(images/dealerlocator/i-dealer-sm-white.png) 10px center no-repeat; color:#FFFFFF;}
 .view-dealers span{background:url(images/dealerlocator/arrow-down.gif) right center no-repeat; padding-right:15px;}
 .view-dealers.active span{background:url(images/dealerlocator/arrow-down-active.png) right center no-repeat;}
@@ -424,6 +424,7 @@ td .dealer-label {
     padding: 10px;
 	}
 	.view-dealers{background-color:#F8F8F8; width:140px;margin:0 auto;clear: both;float: none!important;display: block;}
+  body:lang(th) .view-dealers{width: 176px;}
 }
 
 @media (min-width: 481px) and (max-width: 600px) {
