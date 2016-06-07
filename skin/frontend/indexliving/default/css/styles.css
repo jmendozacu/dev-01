@@ -3615,6 +3615,7 @@ body {
   bottom:0;
 }
 .main-home .box-home-decor .decor-style li:hover .banner-mask, .main-home .box-home-decor .banner-carousel li:hover .banner-mask{opacity:1;}
+.main-home .box-home-decor .banner-carousel li{position: relative;}
 
 /* .main-home .box-home-decor .decor-style li::before{content:""; }
 .main-home .box-home-decor .decor-style li:hover::before{content:""; }
