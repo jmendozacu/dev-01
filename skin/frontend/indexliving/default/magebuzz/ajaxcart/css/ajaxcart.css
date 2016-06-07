@@ -55,15 +55,15 @@
     padding: 20px;
     z-index: 9040;
 }
-#ajaxcart_content_option_product .added-success-message{background-image: url(../images/i-success-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-family: 'FuturaBT-Book'; font-size:15px; }
-#ajaxcart_content_option_product .added-error-message{background-image: url(../images/i-error-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-family: 'FuturaBT-Book'; font-size:15px; }
-#ajaxcart_content_option_product h2.product-name{font-family: 'FuturaT_Bold'; font-size:24px; color:#000; margin:10px 0; text-transform:uppercase;}
+#ajaxcart_content_option_product .added-success-message{background-image: url(../images/i-success-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-size:15px; }
+#ajaxcart_content_option_product .added-error-message{background-image: url(../images/i-error-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-size:15px; }
+#ajaxcart_content_option_product h2.product-name{font-weight: bold; font-size:24px; color:#000; margin:10px 0; text-transform:uppercase;}
 #ajaxcart_configurable_block .product-options{width:100%;}
 #ajaxcart_configurable_block .product-options dl{}
 #ajaxcart_configurable_block .product-options dt{width:30%; text-align:left;}
 #ajaxcart_configurable_block .product-options dd{padding:0; border:0 none; width:70%; text-align:left;}
-#ajaxcart_configurable_block .product-name{font-family: 'FuturaT_Bold'; font-size:24px; color:#000;  text-transform:uppercase;}
-#ajaxcart_configurable_block .product-options .price-box{font-family: 'FuturaT_Bold'; font-size:24px; color:#000;}
+#ajaxcart_configurable_block .product-name{font-weight: bold; font-size:24px; color:#000;  text-transform:uppercase;}
+#ajaxcart_configurable_block .product-options .price-box{font-weight: bold; font-size:24px; color:#000;}
 #ajaxcart_configurable_block .product-options .price-box .price{ font-size:24px;}
 #ajaxcart_configurable_block .product-options .price-box .special-price{padding:0 10px 0 0;}
 #ajaxcart_configurable_block #product_options .amconf-images-container .amconf-image-container{margin-right:10px;}
