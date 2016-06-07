@@ -23,6 +23,8 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
             <li
               <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
               <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>"<?php endif ?>>
+              <span class="banner-mask"></span>
+              <span class="banner-title"><?php echo $banner->getBannerTitle(); ?></span>
                 <img
                   alt="<?php echo $banner->getBannerTitle(); ?>"
                   src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>"/>
@@ -34,7 +36,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
     <!-- Display type random -->
     <?php elseif ($blockType == 2): ?>
       <div class="div-banner">
-				<?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
+        <?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
         <div class="banner"
              <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
           <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>>
@@ -43,7 +45,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
             <?php $isBlockIds[] = $banner->getBannerId(); ?>
           </a>
         </div>
-				<?php endforeach ?>
+        <?php endforeach ?>
       </div>
     <!-- Display type Slider -->
     <?php elseif (($blockType == 3) || ($blockType == 4) || ($blockType == 5) || ($blockType == 6)) : ?>
@@ -55,17 +57,17 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
               <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif;?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>>
                 <img alt="<?php echo $banner->getBannerTitle(); ?>" src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>"/>
               </a>
-							<?php if($banner->getBannerShowDesc() == '1' && $banner->getBannerDescription() != ''):?>
-							<div class="banner-desc <?php echo $banner->getBannerDescriptionPos()?>">
-								<?php echo $banner->getBannerDescription(); ?>
-							</div>
-							<?php endif; ?>
+              <?php if($banner->getBannerShowDesc() == '1' && $banner->getBannerDescription() != ''):?>
+              <div class="banner-desc <?php echo $banner->getBannerDescriptionPos()?>">
+                <?php echo $banner->getBannerDescription(); ?>
+              </div>
+              <?php endif; ?>
             </li>
             <?php $isBlockIds[] = $banner->getBannerId(); ?>
           <?php endforeach ?>
         </ul>
       </div>
-			<?php if ($i == 1): ?>
+      <?php if ($i == 1): ?>
       <script type="text/javascript">
         jQuery(document).ready(function () {
           jQuery('#banner_carousel_<?php echo $block->getBlockId()?>').bxSlider({
@@ -98,7 +100,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
           });
         });
       </script>
-			<?php endif; ?>
+      <?php endif; ?>
     <?php endif ?>
   <div style="clear: both;"></div>
   </div>
