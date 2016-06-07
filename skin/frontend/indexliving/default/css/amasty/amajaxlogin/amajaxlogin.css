@@ -98,7 +98,7 @@ box-sizing: content-box;
 	line-height: 28px;
 	color: #fff;
 	text-align: center;
-	font-size: 20px;
+	font-size: 16px;
 }
 #am-ajaxlogin-title .am-ajax-title-success{display:inline; background-image: url("../../../images/amasty/amajaxlogin/success.png"); background-repeat:no-repeat; background-position:center left; padding-left:35px;}
 #am-ajaxlogin-title .am-ajax-title-error{display:inline; background-image: url("../../../images/amasty/amajaxlogin/error.png"); background-repeat:no-repeat; background-position:center left; padding-left:35px;}
@@ -278,15 +278,29 @@ div.am-login:active {
 
 .am-ajax-error{
 	color: #df280a;
-	font-size:20px;
-	padding:20px;
+	font-size:14px;
+	padding:20px 20px 20px 50px;
+    position: relative;
 }
-
+.am-ajax-error:before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url('../../../images/i-error-msg.png') left center no-repeat;
+    top: 16px;
+    left: 25px;
+}
 
 .am-ajax-error img,
 .am-ajax-success img {
   display: inline-block;
   margin-right: 11px;
+}
+
+.am-ajax-error img{
+    display: none;
 }
 
 .am-ajax-success{

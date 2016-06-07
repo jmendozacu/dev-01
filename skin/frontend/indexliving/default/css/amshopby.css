@@ -19,33 +19,33 @@ padding: 0pt 10px 10px 0pt; float: left;
 .amshopby-featured-wrapper .brands-grid li.last{margin-left:0; float:right;}
 .amshopby-featured-wrapper .brands-grid li .brand-info{border:1px solid #e6e6e6; padding:0 0 100px;}
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text{padding:15px; position:absolute; left:0; bottom:0; width:100%; background:#FFFFFF; border:1px solid #e6e6e6; }
-.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-name{font-family: 'DBYordXMed'; font-size:30px; color:#ffb300; margin:0;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-name{font-size:20px; color:#ffb300; margin:0 0 6px; font-weight: bold;}
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-desc{
-	font-family: 'DBYordXMed'; 
-	font-size:20px; 
-	color:#9c9c9c; 
-	margin:0;
+	font-size:14px;
+    font-style: normal;
+	color:#9c9c9c;
+	margin:0 0 6px;
 }
 .amshopby-featured-wrapper .brands-grid li.over .brand-info .brand-text .brand-desc{}
-.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details{font-family: 'DBYordXMed'; font-size:24px; color:#000; text-decoration:none;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details{font-size:14px; color:#000; text-decoration:none; font-style: normal;}
 .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details:hover{color:#ffb300; }
 .amshopby-featured {
 }
 
 .amshopby-link{
     float:left;
-    padding-left:5px; 
+    padding-left:5px;
     padding-top:5px;
 }
 
 .amshopby-clearer {
-	display:block; 
-	clear:both; 
+	display:block;
+	clear:both;
 	overflow: hidden;
 }
-div.block-layered-nav dd{display:block;}  
-div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left; font-family:"FuturaBT-Book"; text-transform:uppercase; color:#444;}  
-div.block-layered-nav dd a:hover{color:#ffc222;} 
+div.block-layered-nav dd{display:block;}
+div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left; text-transform:uppercase; color:#444;}
+div.block-layered-nav dd a:hover{color:#ffc222;}
 div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover {padding-left:32px; background-image:url(../images/amshopby-cb1.gif); background-repeat: no-repeat;/*  background-position: left center; */  background-position: left 3px;}
 div.block-layered-nav dd a.amshopby-attr::before, div.block-layered-nav dd a.amshopby-attr-selected::before {border-style: none !important;}
 div.block-layered-nav dd a.amshopby-attr-selected {font-weight: bold; padding-left:32px; background-image:url(../images/amshopby-cb2.gif); background-repeat: no-repeat; /* background-position: left center; */     background-position: left 3px;}
@@ -104,7 +104,7 @@ div.block-layered-nav div.amshopby-slider div.handle {margin-left:-4px; width:8p
 }
 .amshopby-slider-price-from {
 	float: left;
-    
+
 }
 .amshopby-slider-price-to {
 	float: right;
@@ -132,7 +132,7 @@ div.block-layered-nav div.amshopby-slider div.handle {margin-left:-4px; width:8p
     position:absolute;
 }
 
-.amshopby-slider-price-range 
+.amshopby-slider-price-range
 {
 	text-align: center;
 	font-size: 0.9em;
@@ -201,18 +201,18 @@ div.amshopby-overlay div {
  * Slider Bar
  */
 .amshopby-slider-bar {
-	position:absolute; 
-	background: #999; 
-	height: 6px; 
-	top: 6px; 
-	z-index: 1;  
+	position:absolute;
+	background: #999;
+	height: 6px;
+	top: 6px;
+	z-index: 1;
 }
 
 /*
  * Subcategories block
  */
 .amshopby-subcategory-image {
-	overflow: auto; 
+	overflow: auto;
 }
 
 .btn-remove-inline { background-image: url('../images/am_btn_remove.gif'); background-repeat: no-repeat; width:13px; height:12px; margin-left: 4px; }
