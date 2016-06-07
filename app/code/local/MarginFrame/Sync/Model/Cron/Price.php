@@ -3,7 +3,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 {
 	
 	public function Run() {
-		// /var/interface/stock
+		// /var/interface/price
 		$message = array();
 		$check = false ;
 		try {
@@ -145,28 +145,11 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 			}
 
 		} catch(Exception $ex) {
-			$log = 'Error : '.$ex->getMessage();
+			$message[] = 'Error : '.$ex->getMessage();
 		}
 
-		$resource = Mage::getSingleton('core/resource');
-    	$readConnection = $resource->getConnection('core_read');
-    	$writeConnection = $resource->getConnection('core_write');
-
-	    //
-	    if($check){
-	    	//success
-	    	 $query = "
-			    	INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
-			    	VALUES ('Retail Price', NOW(), 'Success','','$filenamecsv)')
-			    ";
-	    } else {
-	    	//fail 
-	    	$query = "
-			    	INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
-			    	VALUES ('Retail Price', NOW(), 'Fail','".json_encode($message)."','$filenamecsv)')
-			    ";
-	    }
-	    $writeConnection->query($query);
+		$sync_type = 'Retail Price';
+		Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
 
    	}
 }

@@ -488,14 +488,17 @@ a, button {
 
 body,
 button,
-input,
-select,
-table,
-textarea {
-  font-family:Tahoma;
+table{
+  font-family: 'Index', Helvetica, Arial, sans-serif;
   color: #636363;
   font-size: 14px;
   line-height: 1.5;
+}
+
+input,
+select,
+textarea{
+  font-family: Tahoma, Helvetica, Arial, sans-serif;
 }
 
 .styled-select select {
@@ -619,82 +622,69 @@ ul {
 /* ============================================ *
  * Typography
  * ============================================ */
+ h1, .h1,
+ h2, .h2,
+ h3, .h3,
+ h4, .h4,
+ h5, .h5,
+ h6, .h6{
+  font-family: 'Index', Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  text-transform: uppercase;
+  font-style: normal;
+ }
 h1, .h1 {
   margin: 0;
   margin-bottom: 0.7em;
   color: #000;
- font-family: 'FuturaBT-Book';
   font-size: 28px;
   font-weight: 400;
-  font-style: normal;
   line-height: 1.2;
-  text-rendering: optimizeLegibility;
-  text-transform: uppercase;
 }
 
 h2, .h2 {
   margin: 0;
   margin-bottom: 0.5em;
   color: #000;
-  font-family: 'FuturaBT-Book';
   font-size: 24px;
   font-weight: 400;
-  font-style: normal;
   line-height: 1.2;
-  text-rendering: optimizeLegibility;
-  text-transform: uppercase;
 }
 
 h3, .h3 {
   margin: 0;
   margin-bottom: 10px;
   color: #000;
-  font-family: 'FuturaBT-Book';
   font-size: 18px;
   font-weight: 400;
-  font-style: normal;
   line-height: 1.4;
-  text-rendering: optimizeSpeed;
-  text-transform: uppercase;
 }
 
 h4, .h4 {
   margin: 0;
   margin-bottom: 10px;
   color: #000;
-  font-family: 'FuturaBT-Book';
   font-size: 14px;
   font-weight: bold;
-  font-style: normal;
   line-height: 1.4;
-  text-rendering: optimizeSpeed;
-  text-transform: uppercase;
 }
 
 h5, .h5 {
   margin: 0;
   margin-bottom: 10px;
   color: #000;
-  font-family: 'FuturaBT-Book';
   font-size: 13px;
   font-weight: bold;
-  font-style: normal;
   line-height: 1.4;
-  text-rendering: optimizeSpeed;
-  text-transform: uppercase;
 }
 
 h6, .h6 {
   margin: 0;
   margin-bottom: 5px;
   color: #000;
-  font-family: 'FuturaBT-Book';
   font-size: 12px;
   font-weight: bold;
-  font-style: normal;
   line-height: 1.4;
-  text-rendering: optimizeSpeed;
-  text-transform: uppercase;
 }
 
 /* ============================================ *
@@ -749,7 +739,7 @@ h6, .h6 {
 
 .main-container {/* overflow:hidden; */}
 .page-title.style2 { background:#EFEFEF; position:relative;}
-.page-title.style2 h1 {display:block; font-size:30px; color:#252525; font-family: 'DBYordXMed'; padding: 15px 0;  line-height:38px; margin:0px;   border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6; }
+.page-title.style2 h1 {display:block; font-size:30px; color:#252525; padding: 15px 0;  line-height:38px; margin:0px;   border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6; }
 .page-title.style2:before,
 .page-title.style2:after {content:""; width:50%; height:100%; position:absolute; top:0px; background:#EFEFEF; border-bottom:solid 1px #E6E6E6; border-top:solid 1px #E6E6E6;}
 .page-title.style2:before {left:100%;}
@@ -774,7 +764,7 @@ h6, .h6 {
 }
 .block-title strong {
   color: #000;
-  font-family: "FuturaT_Bold";
+  font-weight: bold;
   font-size: 20px;
 	text-transform:uppercase;
 	padding:0 0 5px;
@@ -856,7 +846,6 @@ body:not(.customer-account) .block:first-child .block-title {
     margin: 0;
     margin-bottom: 10px;
     color: #636363;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -902,7 +891,6 @@ body:not(.customer-account) .block:first-child .block-title {
     margin: 0;
     margin-bottom: 10px;
     color: #636363;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -965,7 +953,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-account li,
 .block-cms-menu li {
   text-transform: uppercase;
-  font-family: 'RSU_Bold';
+  font-weight: bold;
   margin:0;
   font-size:18px;
 }
@@ -1015,7 +1003,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-recently-viewed{position:fixed; width:150px; right: 0; bottom:0; z-index:999; transition:all 0.3s ease-in-out;}
 .block-recently-viewed:hover{cursor: pointer; cursor: hand;}
 .block-recently-viewed .box-title{background:#000; padding:5px; text-align:center;}
-.block-recently-viewed .box-title span{font-family: 'FuturaT_Bold', Helvetica, sans-serif; color:#FFFFFF; text-transform:uppercase; font-size:14px; padding:5px 0;}
+.block-recently-viewed .box-title span{font-weight: bold; color:#FFFFFF; text-transform:uppercase; font-size:14px; padding:5px 0;}
 .block-recently-viewed .box-title span#product-viewed-minimize{/* padding-left:15px; */cursor:pointer;margin: 3px 0 0;width: 18px;height: 18px;float: right;line-height: 15px;padding: 0;display: block; position: relative; color: black; }
 .block-recently-viewed .box-title span#product-viewed-minimize::after{
   content: '';
@@ -1038,7 +1026,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-recently-viewed .box-content{background:#FFFFFF; border:1px solid #e6e6e6; border-top:0 none; padding:10px; overflow:hidden;}
 .block-recently-viewed .box-content .mini-products-list li{float:left; width:100%; text-align:center;}
 .block-recently-viewed .box-content .mini-products-list .product-details{margin:0; text-align:center;}
-.block-recently-viewed .box-content .mini-products-list .product-details .product-name{font-family: 'FuturaBT-Book'; color:#000; text-transform:uppercase; font-size:14px; font-weight:bold;}
+.block-recently-viewed .box-content .mini-products-list .product-details .product-name{color:#000; text-transform:uppercase; font-size:14px; font-weight:bold;}
 .block-recently-viewed .box-content .mini-products-list .product-details .product-name a{text-decoration:none;}
 .block-recently-viewed .box-content .mini-products-list .product-details .product-name a:hover{color:#ffc222;}
 
@@ -1048,7 +1036,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .block-compare .block-content{padding-right:12px;}
 .block-compare .block-content li.item{margin:0; padding:10px 0; border-bottom:1px solid #dadada; overflow:hidden; position:relative;}
 .block-compare .block-content .product-name{margin:0!important;}
-.block-compare .block-content .product-name a{font-family: 'FuturaBT-Book'; font-size:14px; text-transform:uppercase; color:#000000;}
+.block-compare .block-content .product-name a{font-size:14px; text-transform:uppercase; color:#000000;}
 .block-compare .block-content .btn-remove{
 	background: url(../images/delete3-icon.png) no-repeat center center;
 	border: none;
@@ -1058,8 +1046,8 @@ body:not(.customer-account) .block:first-child .block-title {
 }
 .block-compare .actions .button{float:left; margin-right:10px;}
 .block-compare .actions .button span{background:url(../images/i-btn-compare.png) left center no-repeat; padding-left:25px;}
-.block-compare .actions .button span span{background:0 none; padding:0; font-family: 'FuturaT_Bold'; font-size:18px;}
-.block-compare .actions a{float:left; padding:4px 0; font-family: 'DBYordXMed'; font-size:20px; text-decoration:underline}
+.block-compare .actions .button span span{background:0 none; padding:0; font-weight: bold;font-size:18px;}
+.block-compare .actions a{float:left; padding:4px 0; font-size:20px; text-decoration:underline}
 .product-view .block-compare{
 	padding:15px 0;
 	border-top:1px solid #dadada;
@@ -1088,21 +1076,21 @@ body:not(.customer-account) .block:first-child .block-title {
 .compare-popup .compare-list-table .please-wait{position:absolute; top:50%; left:50%; margin-left:-64px; margin-top:-64px;}
 .compare-popup .compare-list-table .please-wait img{width:auto;}
 .compare-popup .data-table th{background:#FFFFFF;}
-.compare-popup .data-table td{padding:10px; border-bottom:1px solid #dadada; border-right:1px solid #dadada; font-family: 'Helvetica';}
-.compare-popup .data-table td.title{font-family: 'FuturaT_Bold'; font-size:14px; text-transform:uppercase; color:#000000;}
+.compare-popup .data-table td{padding:10px; border-bottom:1px solid #dadada; border-right:1px solid #dadada;}
+.compare-popup .data-table td.title{ font-size:14px; text-transform:uppercase; color:#000000;}
 .compare-popup .data-table td.last{border-right:0 none;}
 /* .compare-popup .data-table tr.last td{border-bottom:0 none;} */
 .compare-popup .data-table td .product-info{position:relative;}
 .compare-popup .data-table td .product-info .product-name{}
 .compare-popup .data-table td .product-info .product-image {width:100%; text-align:center;}
 .compare-popup .data-table td .product-info .product-image img{display:inline;}
-.compare-popup .data-table td .product-info .product-name a{font-family: 'FuturaBT-Book'; font-weight:bold; font-size:14px; text-transform:uppercase; text-decoration:none;}
+.compare-popup .data-table td .product-info .product-name a{font-weight:bold; font-size:14px; text-transform:uppercase; text-decoration:none;}
 .compare-popup .data-table td .product-info .ratings .rating-box{margin:0 10px 0 0;}
-.compare-popup .data-table td .product-info .price-box .price{font-family: 'FuturaT_Bold'; font-weight:bold; font-size:23px; text-transform:uppercase; text-decoration:none; color:#000000;}
+.compare-popup .data-table td .product-info .price-box .price{font-weight:bold; font-size:23px; text-transform:uppercase; text-decoration:none; color:#000000;}
 .compare-popup .data-table td .product-info .price-box .special-price{padding:0 1em 0 0;}
 .compare-popup .data-table td .product-info .price-box .special-price .price{color:#ff0000;}
 .compare-popup .data-table td .product-info .price-box .old-price .price{
-	font-family: 'FuturaLight';
+	font-weight: 300;
   font-size: 16px;
 	text-decoration: line-through;
 	color: #898989;
@@ -1124,7 +1112,6 @@ body:not(.customer-account) .block:first-child .block-title {
 	text-indent: 0;
 	padding-left: 40px;
 	font-size: 9px;
-	font-family: 'FuturaBT-Book';
 	color: #464646;
 	line-height: 32px;
 	text-decoration: none;
@@ -1194,8 +1181,7 @@ body:not(.customer-account) .block:first-child .block-title {
   padding: 7px 15px;
   border: 0;
   color: #FFFFFF;
-  font-size: 24px;
-  font-family: 'DBYordXMed';
+  font-size: 16px;
   font-weight: normal;
   line-height:26px;
   vertical-align: middle;
@@ -1252,7 +1238,6 @@ a.button {
   text-transform: uppercase;
   display: inline-block;
   color: #3399cc;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .button2 span:hover,
 .button2 span span:hover {
@@ -1265,7 +1250,7 @@ a.button {
 #wishlist-view-form .button.btn-add  >span {display:inline-block; padding-left:38px; position:relative;}
 .button.btn-cart > span:before,
 #wishlist-view-form .button.btn-add  >span:before {content:""; position:absolute; width:30px; height:30px; top:5px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
-.button.btn-cart{ font-family: "FuturaT_Bold"; font-size:14px; }
+.button.btn-cart{ font-weight: bold; font-size:14px; }
 .button.btn-cart:hover{background:#f4701e;}
 
 #wishlist-view-form  .button.btn-removeall > span{padding-left:20px; background:url(../images/icon-remove4.png) no-repeat center left;}
@@ -1409,8 +1394,8 @@ a.button {
 
 .breadcrumbs li {
   float: left;
-  font-size: 18px;
-  font-family: 'DBYordXMed';
+  font-size: 14px;
+  line-height: 24px;
   text-transform: uppercase;
 }
 
@@ -1771,7 +1756,6 @@ a.button {
   text-align: center;
   margin: 10px;
   text-transform: uppercase;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
 /* -------------------------------------------- *
@@ -1817,7 +1801,7 @@ a.button {
   font-size: 14px;
 	color:#FFFFFF;
 	text-transform:uppercase;
-	font-family: 'FuturaBT-Book';
+
 	border-radius:5px;
   overflow:hidden;
 }
@@ -2072,7 +2056,7 @@ a.button {
 .price-box .price-to .price, .products-grid .price-box .price-to .price, .products-list .price-box .price-to .price{
 	color: #898989;
 	font-size: 12px;
-	font-family: 'FuturaLight';
+	font-weight: 300;
 	line-height: 16px;
 }
 
@@ -2125,7 +2109,6 @@ span.weee {
  * ============================================ */
 .item-options {
   font-size: 14px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .item-options:after {
   content: '';
@@ -2334,16 +2317,15 @@ span.weee {
   padding:5px 0;
   color:#252525;
   font-size:24px;
-  font-family: 'DBYordXMed';
+
 }
 .amount-box {
   float:left;
   padding:5px 0;
   color:#252525;
   /* font-size:24px;
-  font-family: 'DBYordXMed'; */
+  */
   font-size:14px;
-  font-family: "FuturaBT-Book";
   line-height:30px;
   }
 .pager-no-toolbar  .pages ol {margin-top:5px; margin-bottom:5px;}
@@ -2354,7 +2336,6 @@ span.weee {
 
 .toolbar,
 .pager {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   color: #000;
   line-height: 30px;
   font-size: 14px;
@@ -2366,7 +2347,6 @@ span.weee {
   font-weight: normal;
   text-transform: uppercase;
 	font-size: 14px;
-	font-family:"FuturaBT-Book";
 	color:#000000;
 }
 
@@ -2445,7 +2425,7 @@ span.weee {
 }
 .pager .amount {
   float: left;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
   white-space: nowrap;
   margin: 0 15px 0 0;
 }
@@ -2501,7 +2481,7 @@ span.weee {
   height: 19px;
   padding: 0;
   color: #333;
-  font-family: 'FuturaBT-Book';
+
   margin-right:3px;
 }
 
@@ -2753,7 +2733,6 @@ form .legend {
   margin: 0;
   margin-bottom: 10px;
   color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
@@ -2809,7 +2788,7 @@ span.required:after {
   content: ' *';
   color: #df280a;
   font-weight: normal;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
   font-size: 12px;
 }
 
@@ -2896,6 +2875,8 @@ input[type=text] {
   height: 35px;
   padding: 0 8px;
   border-radius:4px;
+  text-rendering: optimizeLegibility;
+  font-size: 13px;
 }
 
 input[type=email],
@@ -3033,7 +3014,7 @@ p.required,
 
 form .form-instructions {
   font-style: italic;
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-size: 13px;
   color: #a0a0a0;
 }
@@ -3084,7 +3065,6 @@ form .form-instructions {
 .data-table th {
   background: #f4f4f4;
   text-transform: uppercase;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 1.4;
   white-space: nowrap;
 }
@@ -3096,7 +3076,7 @@ form .form-instructions {
 
 .data-table tbody td,
 .data-table tfoot td {
-  font-family: Georgia, Times, "Times New Roman", serif;
+
 }
 
 .data-table tfoot tr {
@@ -3206,7 +3186,6 @@ form .form-instructions {
   .linearize-table tbody td[data-rwd-label]:before {
     content: attr(data-rwd-label) ":";
     font-size: 12px;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     padding-right: 5px;
     text-transform: uppercase;
   }
@@ -3289,7 +3268,6 @@ form .form-instructions {
   .linearize-table-large tbody td[data-rwd-label]:before {
     content: attr(data-rwd-label) ":";
     font-size: 12px;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     padding-right: 5px;
     text-transform: uppercase;
     float:left;
@@ -3433,9 +3411,9 @@ body {
     display: none;
   }
 }
-.header-language-container .topheader-links {float:left; font-family: 'FuturaBT-Book';}
+.header-language-container .topheader-links {float:left; }
 .header-language-container .topheader-links li {float:left; margin-right:1px;}
-.topheader-links li a {transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s; display:block; min-width:128px; text-align:center; padding:10px; line-height:30px; font-size:12px; color:#fff; background:#434343;}
+.topheader-links li a {transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s; display:block; min-width:128px; text-align:center; padding:10px; line-height:32px; font-size:12px; color:#fff; background:#434343;}
 .topheader-links li a:hover {background:#FFC222; text-decoration:none;}
 .topheader-links li a span {display:inline-block; padding-left:20px; position:relative;}
 .topheader-links li a span:before {content:""; position:absolute; top:0px; left:0px; width:20px; height:100%; background:url(../images/icons.png) no-repeat 0px 0px;}
@@ -3446,14 +3424,14 @@ body {
 .topheader-links li.services a span:before {background-position:-36px -33px;}
 
 .header-language-container .box-right {float:right;}
-.call-us {float:left; padding:8px 0px; margin-right:20px; font-family: 'FuturaBT-Book';}
-.call-us label {line-height:22px; float:left; font-size:13px;  font-family: 'FuturaBT-Book';}
+.call-us {float:left; padding:8px 0px; margin-right:20px; }
+.call-us label {line-height:22px; float:left; font-size:13px;  }
 .call-us > div {display:block; text-align:right;}
-.call-us label  a { font-size:19px; font-family: 'FuturaT_Bold'; margin-left:5px; line-height:22px; font-weight:bold; text-decoration:none;}
+.call-us label  a { font-size:19px;  margin-left:5px; line-height:22px; font-weight:bold; text-decoration:none;}
 .call-us span {font-size:10px; line-height:12px; display:block;}
 
-.store-language-container{float:right; font-family: 'Lato', sans-serif;}
-.form-language .dropdown {min-width:50px;}}
+.store-language-container{float:right; }
+.form-language .dropdown {min-width:50px;}
 .form-language .dropdown dd,
 .form-language .dropdown dt,
 .form-language .dropdown ul { margin:0px; padding:0px; float:left; width:100%; }
@@ -3474,7 +3452,7 @@ body {
 .page-header-container{padding:37px 0; float:left; width:100%;}
 .page-header-container .box-right {float:right; }
 .page-header-container .box-right .top-links {float:left; margin:7px 25px 7px 0px;}
-.page-header-container .box-right .top-links > li {float:left; font-size:12px;  color:#252525; text-transform:uppercase; font-family: 'FuturaBT-Book';}
+.page-header-container .box-right .top-links > li {float:left; font-size:12px;  color:#252525; text-transform:uppercase; }
 .page-header-container .box-right .top-links > li > a {display:inline-block; line-height:30px; position:relative; color:#252525; }
 .page-header-container .box-right .top-links > li  >a:hover {color:#FFC222; text-decoration:none;}
 
@@ -3488,8 +3466,8 @@ body {
 .page-header-container .box-right .top-links li.wishlist a {padding-left:20px;}
 .page-header-container .box-right .top-links li.wishlist a:before{content:""; position:absolute; top:0px; left:0px; width:20px; height:100%; background:url(../images/icons.png) no-repeat 0px -69px;}
 .header-minicart .mycart {float:left; width:50px; height:50px; position:relative; border-radius:100%; background:url(../images/icons.png) no-repeat -59px -65px #FFC222;}
-.header-minicart .mycart span.cart-item-count {position:absolute; width:32px; height:32px; line-height:32px; top:-15px; right:-15px; border-radius:100%; background:#252525; color:#fff; text-align:center; font-size:11px;     font-family: 'Lato', sans-serif;}
-.box-top-menu {float:left;  width:100%; background:#FFC222; font-family: 'FuturaBT-Book'; text-transform:uppercase;}
+.header-minicart .mycart span.cart-item-count {position:absolute; width:32px; height:32px; line-height:32px; top:-15px; right:-15px; border-radius:100%; background:#252525; color:#fff; text-align:center; font-size:11px;     }
+.box-top-menu {float:left;  width:100%; background:#FFC222; text-transform:uppercase;}
 .box-top-menu .cateogry {float:left; width:24%; background:#252525; padding: 0 19px; position:relative;}
 .box-top-menu .cateogry .skip-cateogry{float:left; width:100%; text-align:left; background:url(../images/cat-arrow.png) no-repeat right center; font-size:17px; color:#FFC222; padding:5px 0px 5px 0px; line-height:35px; position:relative;  }
 .box-top-menu .cateogry .skip-cateogry.skip-active{	background:url(../images/cat-arrow-active.png) no-repeat right center;}
@@ -3518,37 +3496,37 @@ body {
 .mini-account  { float:left; width:100%; border-radius:5px;  box-shadow: 0px 0px 3px 1px #aaa;  border-top: 0 none; background: #FFFFFF; padding:0px;}
 .account-mini-login .box-title ,
 #mini-cart-info .box-title,
-.mini-account .box-title { width:100%;  margin:0px;  border-radius: 5px 5px 0 0; float:left; background:#252525; padding:10px; line-height:28px; color:#fff; text-align:center; font-size:20px; font-family: 'RSU_Bold'; }
+.mini-account .box-title { width:100%;  margin:0px;  border-radius: 5px 5px 0 0; float:left; background:#252525; padding:10px; line-height:28px; color:#fff; text-align:center; font-size:20px;  }
 #mini-cart-info {width:345px; top:90px; right:0px; overflow: initial;}
 .mini-account {width:200px; float:right;}
 .header-cart-box .block-content {float:left; width:100%;}
 .header-cart-box .block-content .item-wrap.empty {float:left; width:100%; min-height:480px; text-align:center;}
-.header-cart-box .block-content .item-wrap.empty span {display:block;margin-top:85px; padding:135px 20px 20px ; color:#C1C1C1; font-family: 'RSU_Bold'; font-size:22px; background:url(../images/icon-emptycart.png) no-repeat top center;}
+.header-cart-box .block-content .item-wrap.empty span {display:block;margin-top:85px; padding:135px 20px 20px ; color:#C1C1C1;  font-size:22px; background:url(../images/icon-emptycart.png) no-repeat top center;}
 .header-cart-box .list-items {padding:15px 15px 0;  max-height: 262px;  overflow-y: auto;}
 .header-cart-box .mini-products-list li.item{padding-bottom:10px; border-bottom:solid 1px #E6E6E6; margin:0px; margin-bottom:10px; position:relative;}
 .header-cart-box .mini-products-list li.item:nth-last-child(1){border-bottom:none;}
-.header-cart-box  .mini-products-list .product-details .product-name {font-size:14px; padding:0px; color:#000; font-family: 'FuturaBT-Book';     text-transform: uppercase;}
+.header-cart-box  .mini-products-list .product-details .product-name {font-size:14px; padding:0px; color:#000;     text-transform: uppercase;}
 .header-cart-box  .mini-products-list .product-details .product-desc{font-size: 12px;}
 .header-cart-box  .mini-products-list .item-options {float:left; width:100%;}
 .header-cart-box  .mini-products-list .item-options dt,
 .header-cart-box  .mini-products-list .item-options dd {font-size:12px; font-weight:normal; margin-bottom:0px;}
-.header-cart-box  .mini-products-list .price {font-family: 'FuturaT_Bold'; font-size:18px; color:#000;}
+.header-cart-box  .mini-products-list .price { font-size:18px; color:#000;}
 .header-cart-box  .mini-products-list .special-price .price {color:#ff0000;}
-.header-cart-box  .mini-products-list .old-price .price  {color:#a0a0a0; font-size:10px; font-family: 'FuturaLight';}
+.header-cart-box  .mini-products-list .old-price .price  {color:#a0a0a0; font-size:10px; font-weight: 300;}
 .header-cart-box  .mini-products-list .qty-minicart { position: absolute; right: 0; top: 30px; width: 48px; text-align: center; }
 .header-cart-box  .mini-products-list .qty-minicart .qty-label{font-size: 11px;}
 .header-cart-box  .mini-products-list .qty-minicart .qty {width:100%; height:38px; color:#000; font-size:13px; line-height:1; text-align:center; background:#fff; border:solid 2px #FFC222; border-radius:3px;}
 .header-cart-box  .mini-products-list .qty-minicart .apply_update_qty {width:100%; height:24px; border:none; color:#fff; background:#FFC222; padding:0 10px; border-radius:3px; margin-top: 2px; margin-bottom: 5px; font-size: 11px;}
 .header-cart-box  .mini-products-list .qty-minicart .apply-change-qty-loading {position:absolute; top:50%; left:50%; margin-top:-10px; margin-left:-10px;}
-.header-cart-box  .summary {float:left; width:100%; font-family: 'RSU_Bold'; font-size:16px; padding:10px 15px; line-height:24px; background:#EFEFEF; color:#000; border-top:solid 1px #E6E6E6; border-bottom:solid 1px #E6E6E6; }
-.header-cart-box  .header-cart-subtotal  {font-size:18px; font-family: 'FuturaT_Bold'; float:right;}
+.header-cart-box  .summary {float:left; width:100%;  font-size:16px; padding:10px 15px; line-height:24px; background:#EFEFEF; color:#000; border-top:solid 1px #E6E6E6; border-bottom:solid 1px #E6E6E6; }
+.header-cart-box  .header-cart-subtotal  {font-size:18px;  float:right;}
 .header-cart-box  .actions {float:left; width:100%; padding:10px 18px; text-align:right;}
-.header-cart-box  .actions .button {height:40px; line-height:43px; padding:0 10px; min-width:175px; text-align:center;border-radius:5px; font-family: 'RSU_Bold'; font-size:20px;}
+.header-cart-box  .actions .button {height:40px; line-height:43px; padding:0 10px; min-width:175px; text-align:center;border-radius:5px;  font-size:20px;}
 .myaccount-header > span{padding-right:15px;}
 .myaccount-header  > span:after {width:15px; height:100%; position:absolute; content:""; background:url(../images/arrow-mobile-light.png) no-repeat center center; top:0px; right:5px;}
 .mini-account li {float:left; text-align:left; width:100%; border-bottom:solid 1px #CBCBCB;}
 .mini-account li:nth-last-child(1){border-bottom:none;}
-.mini-account  a{ display:block;  position:relative; padding:10px 10px 10px 40px; line-height:20px; color:#535353; font-size:18px; font-family: 'RSU_Bold';}
+.mini-account  a{ display:block;  position:relative; padding:10px 10px 10px 40px; line-height:20px; color:#535353; font-size:18px; }
 .mini-account  a:before { content:""; position:absolute; width:24px; height:24px; left:12px; top:8px; background:url(../images/icon-mobile.png) no-repeat;}
 .mini-account li.li-account  a:before {background-position:0px -236px;}
 .mini-account li.li-information  a:before {background-position:0px -278px;}
@@ -3579,7 +3557,7 @@ body {
 /* home page */
 .main-home .std ul {list-style:none;}
 .main-home .std ul li {margin:0px;}
-.banner-static-home {float:left; width:100%; background:#EBEBEB; padding:16px 0; margin-top:-5px; text-align:center; font-family: 'FuturaBT-Book';}
+.banner-static-home {float:left; width:100%; background:#EBEBEB; padding:16px 0; margin-top:-5px; text-align:center; }
 .banner-static-home ul {float:left; width:100%; margin:0px;}
 .banner-static-home li {float:left; width:25%;}
 .banner-static-home li  span {display:inline-block; text-align:left; font-size:16px; text-transform:uppercase; color:#898989; line-height:18px; padding-left:50px; position:relative; }
@@ -3600,7 +3578,7 @@ body {
 .box-home-list-products .best-seller {margin-bottom:42px;}
 .box-home-list-products .banner-right {float:right; width: 23.584%;}
 .main-home .box-home-list-products .banner-right li{margin-bottom:10px;}
-.title-style1 {float:left; width:100%; margin-bottom:40px; font-family: 'FuturaBT-Book'; text-align:center; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
+.title-style1 {float:left; width:100%; margin-bottom:40px; text-align:center; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
 .title-style1:before {content:""; position:absolute; height:7px; width:165px; background:#FFC222; bottom:-6px; left:50%; margin-left:-82px;}
 .title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; }
 .title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#919191; font-size:14px; padding-right:15px; z-index:9}
@@ -3612,12 +3590,12 @@ body {
 .box-home-decor {float:left; width:100%; position:relative; }
 .box-home-decor:before {content:""; position:absolute; width:100%; height:56.5%; left:0px; top:0px; background:#FFC222;}
 .box-home-decor .home-decor-content {float:left; width:100%; position:relative; padding-top:96px;}
-.box-home-decor .title-decor {position:absolute; text-transform:uppercase; font-family: 'FuturaBT-Book'; color:#000; top:20px; right:0px; float:right; text-align:right; font-size:32px; line-height:36px;}
-.box-home-decor .title-decor label {display:block; font-size:55px; line-height:58px; font-family: 'FuturaBT-Book'; font-weight:normal;}
-.box-home-decor .title-decor label strong {font-family: 'FuturaBookBold'; font-size:60px;}
+.box-home-decor .title-decor {position:absolute; text-transform:uppercase; color:#000; top:20px; right:0px; float:right; text-align:right; font-size:32px; line-height:36px;}
+.box-home-decor .title-decor label {display:block; font-size:55px; line-height:58px; font-weight:normal;}
+.box-home-decor .title-decor label strong { font-size:60px;}
 .box-home-decor .decor-style {float:left; width:17.5%; background:#434343; padding:0 13px;}
 .box-home-decor .decor-banner {float:left; width:82.5%; margin:2.5% 0; background:#252525; padding:24px 0;}
-.title-style3 {text-align:center; margin:0px; padding:10px 0; font-size:23px; color:#fff; line-height:30px; font-family: 'FuturaBookBold';}
+.title-style3 {text-align:center; margin:0px; padding:10px 0; font-size:23px; color:#fff; line-height:30px; }
 .main-home .box-home-decor .decor-style ul {margin:0px;}
 .main-home .box-home-decor .decor-style li {margin-bottom:10px; position:relative;}
 .main-home .box-home-decor .decor-style li .banner-mask{
@@ -3642,7 +3620,7 @@ body {
 .main-home .box-home-decor .decor-style li:hover::before{content:""; }
 .main-home .box-home-decor .decor-style li:hover a{} */
 .main-home .box-home-decor .decor-style li a:hover{}
-.main-home .box-home-decor .decor-style .banner-title {color:#000; width:100%; text-align:center; margin:auto; font-size:19px; font-family: 'FuturaBookBold'; line-height:22px; height:22px;  bottom:0px; padding:0 18px; text-transform:uppercase; }
+.main-home .box-home-decor .decor-style .banner-title {color:#000; width:100%; text-align:center; margin:auto; font-size:19px;  line-height:22px; height:22px;  bottom:0px; padding:0 18px; text-transform:uppercase; }
 .main-home .box-home-decor .decor-style li:nth-child(5) .banner-title  {height:44px;}
 .box-home-decor .box-slider {float:left; width: 64.243%; margin:0 1.481%;}
 .box-home-decor .box-banner-right {float:left;  width: 31.314%; margin-right:1.481%;}
@@ -3857,8 +3835,8 @@ a.skip-link {
 .allcategory #allcategory_page_ajaxloader {position:absolute; z-index:2; top:50%; left:50%; margin-top:-64px; margin-left:-64px;}
 #allcategory_page_catchild {min-height:200px;}
 .select-categorylv1 {float:left; width:100%;}
-.select-categorylv1 label {font-size:24px; color:#252525; font-family: 'DBYordX'; float:left; line-height:40px; margin-right:20px;}
-.select-categorylv1 select {height:40px; line-height:36px; border:solid 2px #000; border-radius:5px; font-size:22px; color:#252525; font-family: 'DBYordX';}
+.select-categorylv1 label {font-size:24px; color:#252525;  float:left; line-height:40px; margin-right:20px;}
+.select-categorylv1 select {height:40px; line-height:36px; border:solid 2px #000; border-radius:5px; font-size:22px; color:#252525; }
 #allcategory_page_catchild  ul.level1{position:relative; float:left; width:100%; border-top:solid 1px #DADADA;  margin-top:30px; padding-top:30px; overflow:hidden;}
 #allcategory_page_catchild ul.level1:nth-child(1) {border-top:none; margin-top:0px;}
 
@@ -3879,10 +3857,10 @@ a.skip-link {
 	position:relative;
 	margin-top:5px;
 }
-#allcategory_page_catchild li.level1 > a {font-size:24px; color:#252525; font-family: 'DBYordXBd'; line-height:32px; display:block;}
+#allcategory_page_catchild li.level1 > a {font-size:24px; color:#252525; line-height:32px; display:block;}
 #allcategory_page_catchild a  { position:relative; z-index:1;}
 #allcategory_page_catchild a:hover {color:#FFC220;}
-#allcategory_page_catchild ul ul a {color:#252525; font-family:tahoma; font-size:14px; line-height:28px; }
+#allcategory_page_catchild ul ul a {color:#252525; font-size:14px; line-height:28px; }
 
 /* ============================================ *
  * Nav Primary
@@ -3898,7 +3876,7 @@ a.skip-link {
 .nav-primary .title-viewall span.level2:before { content:""; height:40px; width:40px; position:absolute; left:12px; top:5px; border-radius:100%; background:url(../images/icons.png) no-repeat center 14px;}
 .nav-primary .title-viewall span.level2:before {background-color:#FFD322; border-radius:100%;}
  @media (min-width: 769px) {
-  .nav-primary li.subcat li.level2 >a {font-size:20px; font-weight:bold; font-family: 'FuturaT_Bold';}
+  .nav-primary li.subcat li.level2 >a {font-size:20px; font-weight:bold; }
   .nav-primary li.level1:hover {background-color:#363636; }
  }
 
@@ -3940,7 +3918,7 @@ a.skip-link {
 .nav-primary li.level1:nth-child(10):hover > a:before {background-position: -65px -553px;}
 
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
-.nav-primary .menu-content .title-viewall a {float:right; font-size:14px; font-family: 'Lato', sans-serif; font-weight:bold; line-height:22px; color:#fff; padding-right:33px; position:relative;}
+.nav-primary .menu-content .title-viewall a {float:right; font-size:14px;  font-weight:bold; line-height:22px; color:#fff; padding-right:33px; position:relative;}
 .nav-primary .menu-content .title-viewall a:before {content:""; height:22px; width:22px; position:absolute; right:0px; top:0px; border-radius:100%; background:url(../images/arrow-right-white.png) no-repeat center center #FFC222;}
 .nav-primary .menu-content {position:absolute; visibility:hidden; opacity: 0; left:100%; top:0px; background-color:#fff; background-repeat:no-repeat; background-position: left top, right bottom;  background-size: 100% 100%,auto 100%;  overflow:hidden; width:316.666%; height:100%; border-bottom: solid 11px #FFC222; transition:.3s; -webkit-transition:.3s; -moz-transition:.3s; }
 .nav-primary li.level1:hover .menu-content { visibility:visible; opacity:1;}
@@ -3960,8 +3938,8 @@ a.skip-link {
 
 /* 404 Page */
 .page-not-found{max-width:70%; margin:10% auto; text-align:center;}
-.page-not-found h1{font-size:60px; font-family: 'FuturaT_Bold'; color:#000000;}
-.page-not-found h3{font-size:20px; font-family: 'FuturaT_Bold'; color:#000000;}
+.page-not-found h1{font-size:60px;  color:#000000;}
+.page-not-found h3{font-size:20px;  color:#000000;}
 .page-not-found .back-to-home{margin:18px 0 0; padding:18px 0 0; border-top:1px solid #e6e6e6;}
 .page-not-found .back-to-home button.button{}
 .page-not-found .back-to-home button.button span{}
@@ -4015,7 +3993,6 @@ a.skip-link {
   width: 100%;
   height: 45px;
   padding-right: 59px;
-  font-family: tahoma;
   font-size:14px;
   border:solid 2px #EAEAEA;
   border-right:none;
@@ -4151,7 +4128,7 @@ a.skip-link {
   font-size: 11px;
   line-height: 22px;
   text-align: center;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
 }
 
 .skip-link.skip-active .count {
@@ -4232,7 +4209,6 @@ a.skip-link {
 /* Subtotal */
 .cart-menu .subtotal {
   padding: 0 15px 15px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 24px;
   line-height: 1.2;
 }
@@ -4293,8 +4269,8 @@ a.skip-link {
 .newsletter-footer #newsletter-validate-detail {position:absolute; top:50%; margin-top:-23px; left:33.2%; width:42%;}
 .newsletter-footer  .block-content {float:left; width:100%; margin:0px; padding-right:64px; position:relative;}
 .newsletter-footer  .block-content .input-box {float:left; width:100%; padding-top:0px;}
-.newsletter-footer  .block-content .input-box input  { border:3px solid #363636; border-right:none; border-radius:3px 0 0 3px; width:100%; float:left; height:45px; line-height:29px; padding:7px 7px 7px 20px; font-family:tahoma; font-size:14px; color:#898989;}
-.newsletter-footer  .block-content .button {position:absolute; top:0px; right:0px; height:45px; min-width:64px; border-radius:0px 3px 3px 0px; background:#363636; font-family: 'RSU_Bold'; color:#fff; font-size:20px; padding:0 10px;}
+.newsletter-footer  .block-content .input-box input  { border:3px solid #363636; border-right:none; border-radius:3px 0 0 3px; width:100%; float:left; height:45px; line-height:29px; padding:7px 7px 7px 20px;  font-size:14px; color:#898989;}
+.newsletter-footer  .block-content .button {position:absolute; top:0px; right:0px; height:45px; min-width:64px; border-radius:0px 3px 3px 0px; background:#363636;  color:#fff; font-size:20px; padding:0 10px;}
 
 
 .footer {
@@ -4308,10 +4284,10 @@ a.skip-link {
 .footer .footer-links {float:right; width:67%;}
 .footer .footer-contacts .phone {float:left; width:100%; padding-bottom:8px; border-bottom:solid 1px #F4F4F4; position:relative;}
 .footer .footer-contacts .phone  img {max-width:55%; padding-right:4%; border-right:solid 1px #898989; display:inline-block;}
-.footer .footer-contacts .phone label { width:43%; padding-left:3%; display:inline-block; text-transform:uppercase; color:#363636; font-size:13px; font-weight:normal; line-height:22px; font-family: 'FuturaBT-Book'; }
-.footer .footer-contacts .phone label a {display:block; color:#363636; font-weight:bold; font-family: 'FuturaT_Bold'; font-size:19px;  }
+.footer .footer-contacts .phone label { width:43%; padding-left:3%; display:inline-block; text-transform:uppercase; color:#363636; font-size:13px; font-weight:normal; line-height:22px; }
+.footer .footer-contacts .phone label a {display:block; color:#363636; font-weight:bold;  font-size:19px;  }
 .footer .socials {float:left; width:100%; padding:8px 0 12px;  border-bottom:solid 1px #F4F4F4; text-align:center; }
-.footer .socials label {color:#000; font-family: 'RSU_Bold'; font-size:16px;}
+.footer .socials label {color:#000;  font-size:16px;}
 .footer .socials li {display:inline-block; width:30px; margin:0 6px;}
 .footer .socials li a {display:block; width:100%; text-indent:-9999px; height:30px; background:url(../images/social-icons.png) no-repeat 0 0px;}
 .footer .socials li.twitter a {background-position:-40px 0px;}
@@ -4321,16 +4297,16 @@ a.skip-link {
 .footer .payment img {display:inline-block; margin:0px 3px;}
 
 .footer .footer-links .box-links {float:left; width:25%;}
-.footer .footer-links .box-links h3  {color:#363636; font-size:15px; line-height:22px; font-family: 'FuturaT_Bold';  text-transform: capitalize;}
+.footer .footer-links .box-links h3  {color:#363636; font-size:15px; line-height:22px;   text-transform: capitalize;}
  @media (min-width: 769px){
   .footer .footer-links .box-links h3.title-shoppingonline {text-indent:-999px; background:url(../images/logo-shopping.png) no-repeat; background-size:114px auto;  min-height:57px; margin-top:-36px;}
   .footer .footer-links .box-links h3.title-indexliving {background:url(../images/logo.png) no-repeat; height:0; padding-top:22px; overflow: hidden; background-size: auto 21px;}
   .footer .footer-links .box-links ul {display:block!important; height:auto!important;}
 }
 .footer .footer-links .box-links li {display:block; line-height:24px; margin-bottom:5px;}
-.footer .footer-links .box-links li  a  {color:#363636; font-size:14px; font-family: 'FuturaBT-Book';}
+.footer .footer-links .box-links li  a  {color:#363636; font-size:14px; }
 .footer .footer-links .box-links li  a:hover {color:#FFC222;}
-.footer-bottom {float:left; width:100%; background:#252525; padding:15px 0;  color:#fff; font-size:12px; font-family: 'FuturaBT-Book'; text-transform:uppercase;}
+.footer-bottom {float:left; width:100%; background:#252525; padding:15px 0;  color:#fff; font-size:12px; text-transform:uppercase;}
 .footer-bottom address {float:left; line-height:12px; color:#fff; font-size:12px;}
 .footer-bottom ul {float:right;}
 .footer-bottom ul li {float:left;line-height:12px;  border-right:solid 1px #fff; margin-right:10px; padding-right:10px;}
@@ -4407,24 +4383,24 @@ a.skip-link {
 /* .category-overview .category-info{float:right; width:36%; padding:2.5%;} */
 .category-overview .category-info{float:right; width:36%; padding:3.5% 4%; position:relative;}
 .category-overview .category-info::before{background:url(../images/i-category-info.png) top left no-repeat; content: ""; height: 46px; width: 46px; position: absolute; top:37px; left:-22px;}
-.category-overview .category-info .page-title.category-title h1{color:#ffc222; font-size:32px; font-family: 'FuturaT_Bold';}
+.category-overview .category-info .page-title.category-title h1{color:#ffc222; font-size:32px; }
 .category-overview .category-info .category-description{color:#fff;}
 .categories-list{margin-top:90px;}
-.categories-list .selectcat-title h1{color:#000000; font-size:32px; font-family: 'FuturaT_Bold';}
+.categories-list .selectcat-title h1{color:#000000; font-size:32px; }
 .categories-list .category-grid{float:left; width:100%;}
 .categories-list .category-grid li.category-item{ float:left; width:32%; margin-right:2%; margin-bottom:2%; background:#252525; min-height:388px; max-height:388px; overflow:hidden; position:relative;}
 .categories-list .category-grid li.category-item.first, .categories-list .category-grid li.category-item.last{margin:0;}
 .categories-list .category-grid li.category-item.last{float:right;}
 .categories-list .category-grid li.category-item.category-products-list{text-align:center; cursor:pointer;}
-.categories-list .category-grid li.category-item.category-products-list .link-view-productlist{color:#ffc222; font-size:60px; font-family: 'FuturaT_Bold'; text-transform:uppercase; margin-top:30%; text-decoration:none; display:block;}
+.categories-list .category-grid li.category-item.category-products-list .link-view-productlist{color:#ffc222; font-size:60px;  text-transform:uppercase; margin-top:30%; text-decoration:none; display:block;}
 .categories-list .category-grid li a{}
 .categories-list .category-grid li a:hover{color:#ffc222;}
 .categories-list .category-grid .categories-links{position:absolute; bottom:0; background:#252525; text-align:center; width:100%; padding:0 10px; min-height:50px;}
-.categories-list .category-grid .categories-links a{color:#fff; font-family: 'FuturaBT-Book'; font-size:20px; text-decoration:none;}
+.categories-list .category-grid .categories-links a{color:#fff; font-size:20px; text-decoration:none;}
 .categories-list .category-grid .categories-links a.link-has-sub,
-.categories-list .category-grid .categories-links a.link-no-sub{color:#ffc222; font-size:20px; font-family: 'FuturaT_Bold'; text-transform:uppercase; display:block; padding:10px; }
+.categories-list .category-grid .categories-links a.link-no-sub{color:#ffc222; font-size:20px;  text-transform:uppercase; display:block; padding:10px; }
 .categories-list .category-grid .categories-links a.link-has-sub{}
-.categories-list .category-grid .categories-links a.link-view-all{border-top:1px solid #555; color:#fff; font-family: 'FuturaBT-Book'; font-size:14px; padding:5px 0; display:block; text-transform:uppercase; background:url(../images/i-viewall.png) 62% center no-repeat; padding-right:30px;}
+.categories-list .category-grid .categories-links a.link-view-all{border-top:1px solid #555; color:#fff; font-size:14px; padding:5px 0; display:block; text-transform:uppercase; background:url(../images/i-viewall.png) 62% center no-repeat; padding-right:30px;}
 .categories-list .category-grid .categories-links a.link-view-all:hover{color:#ffc222;}
 .categories-list .category-grid .categories-links .categories-list-lvl3{
 	max-height: 0;
@@ -4437,7 +4413,7 @@ a.skip-link {
 }
 .categories-list .category-grid .categories-links:hover .categories-list-lvl3{max-height:195px;}
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul{padding:10px 0;}
-.categories-list .category-grid .categories-links .categories-list-lvl3 ul li a{text-transform:uppercase;  font-family: 'FuturaBT-Book'; font-size:18px;}
+.categories-list .category-grid .categories-links .categories-list-lvl3 ul li a{text-transform:uppercase;  font-size:18px;}
 .categories-list .category-grid .categories-links .categories-list-lvl3 ul li a:hover{
 	text-decoration:underline;
 }
@@ -4450,15 +4426,15 @@ a.skip-link {
   display: none;
 }
 .allcategory-banners h1{font-size:54px; color:#000; margin:0; line-height:45px;}
-.allcategory-banners h1 strong{font-family:"FuturaT_Bold"; font-size:58px;}
+.allcategory-banners h1 strong{ font-size:58px;}
 .allcategory-banners h3{font-size:32px; color:#000; margin:0;}
-.allcategory-banners h3 strong{font-family:"FuturaT_Bold";  font-size:34px;}
+.allcategory-banners h3 strong{  font-size:34px;}
 .allcategory-banners .banners-list{margin:40px 0 0;}
 .allcategory-banners .banners-list > div{min-height:235px; text-align:right;}
 .allcategory-banners .banners-list .lb{float:left; width:35%; background:#000000; padding-top:60px; padding-right:60px;}
 .allcategory-banners .banners-list .lb h2{font-size:40px; color:#FFFFFF; margin:0;text-transform:none;}
-.allcategory-banners .banners-list .lb h2 strong{font-family:"FuturaT_Bold";}
-.allcategory-banners .banners-list .lb p{color:#ffc222;font-size:40px;font-family:"DBYordX";line-height:32px;position:relative;}
+.allcategory-banners .banners-list .lb h2 strong{}
+.allcategory-banners .banners-list .lb p{color:#ffc222;font-size:40px;line-height:32px;position:relative;}
 .allcategory-banners .banners-list .lb p:after{content:"";position:absolute;width:50px;height:10px;right:0;bottom:-15px;background:#FFF;}
 .allcategory-banners .banners-list .rb{float:right; width:65%;}
 .allcategory-banners h3{text-transform:none;}
@@ -4564,13 +4540,13 @@ body.catalogsearch-result-index .page-title h1 {
 .category-products .products-grid .link-wishlist{right:10px;}
 .products-grid .link-wishlist.added-item {background-position:-78px -791px;}
 .products-grid .product-name {line-height:18px; margin-bottom:5px;}
-.products-grid .product-name a {color:#000; font-size:15px; font-weight:800; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; font-family: 'FuturaBT-Book';}
-.products-grid .desc {font-size:12px; color:#434343; font-family: 'FuturaLight'; margin-bottom:5px;}
+.products-grid .product-name a {color:#000; font-size:15px; font-weight:800; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
+.products-grid .desc {font-size:12px; color:#434343; font-weight: 300; margin-bottom:5px;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
-.products-grid  .grid-price .save-price-percent{position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-grid  .grid-price .save-price-percent{position:absolute; padding:0 1px; text-align:center; bottom:9px; right:0px; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-weight: bold;}
 .products-grid  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
 
-.products-list  .product-desc {float:left; width:100%; margin-bottom:35px; font-family: 'FuturaBT-Book'; font-size:12px;}
+.products-list  .product-desc {float:left; width:100%; margin-bottom:35px; font-size:12px;}
 
 .products-list  .actions {float:right;}
 
@@ -4580,7 +4556,7 @@ body.catalogsearch-result-index .page-title h1 {
 
 .products-list  .grid-price {float:left;}
 .products-list  .grid-price .price-box{float:left; margin-right:20px;}
-.products-list  .grid-price .save-price-percent{float:left; text-align:center; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-family: 'FuturaExtraBold';}
+.products-list  .grid-price .save-price-percent{float:left; text-align:center; border:solid 2px #FF0000; font-size:8px; text-transform:uppercase; color:#434343; line-height:10px; font-weight: bold;}
 .products-list  .grid-price .save-price-percent strong {display:block; color:#FF0000; font-size:14px;line-height:16px;}
 
 .products-list .grid-price .price-box .special-price,
@@ -4592,10 +4568,10 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid  .price-box {float:left; min-height:47px;}
 .products-grid .price-box .price,.products-list .price-box .price,
 .products-grid  .price-box .regular-price .price,.products-list  .price-box .regular-price .price,
-.products-grid  .price-box .special-price .price,.products-list  .price-box .special-price .price {color:#000; font-size:22px; font-family: 'FuturaT_Bold'; line-height:28px; float:left;}
+.products-grid  .price-box .special-price .price,.products-list  .price-box .special-price .price {color:#000; font-size:22px;  line-height:28px; float:left;}
 
 .products-grid  .price-box .special-price .price, .products-list  .price-box .special-price .price  {color:#FF0000;}
-.products-grid  .price-box .old-price .price,.products-list  .price-box .old-price .price  {color:#898989; font-size:12px; font-family: 'FuturaLight'; line-height:16px;}
+.products-grid  .price-box .old-price .price,.products-list  .price-box .old-price .price  {color:#898989; font-size:12px; font-weight: 300; line-height:16px;}
 .products-grid  .price-box .special-price,/* .products-list  .price-box .special-price, */
 .products-grid  .price-box .old-price/* , .products-list  .price-box .old-price  */{float:left; margin:0px; clear:both; padding:0px;}
 
@@ -4621,7 +4597,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .products-grid .actions .button.btn-cart ,.products-list .actions .button.btn-cart ,
 .products-grid .actions .button.btn-view-details ,.products-list .button.btn-view-details ,
-.products-grid .actions  p, .products-list .actions  p {float:left; padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:18px; text-transform:uppercase; font-family: "FuturaT_Bold",'RSU_Bold'; }
+.products-grid .actions  p, .products-list .actions  p {float:left; padding:0px; width:100%; height:40px; line-height:40px; text-align:center; font-size:18px; text-transform:uppercase; font-weight: bold; }
 .products-grid .actions  p, .products-list .actions  p {color:#000;}
 
 .products-grid > li:hover .actions, .products-grid div.item:hover .actions {z-index:1; opacity:1;}
@@ -4966,7 +4942,6 @@ body.catalogsearch-result-index .page-title h1 {
   margin: 0;
   margin-bottom: 10px;
   color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -5010,7 +4985,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-layered-nav .block-content > dl > dt {
   color: #000;
-  font-family: "FuturaT_Bold";
+  font-weight: bold;
   font-size: 20px;
 	text-transform:uppercase;
 	padding:0 0 5px;
@@ -5119,7 +5094,6 @@ body.catalogsearch-result-index .page-title h1 {
   margin: 0;
   margin-bottom: 10px;
   color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -5133,7 +5107,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .block-layered-nav .currently ol li {
   margin-bottom: 5px;
-	font-family: 'FuturaBT-Book';
+
 	font-size:16px;
 	color:#000;
 }
@@ -5237,7 +5211,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .product-view .product-shop .product-name .h1 {
   color: #000;
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	font-size: 24px;
 }
 .product-view .product-shop .extra-info {
@@ -5255,12 +5229,12 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .short-description {
   margin-bottom: 10px;
   clear: both;
-	font-family: 'FuturaLight';
+	font-weight: 300;
 	font-size:14px;
 	color:#5d5d5d;
 }
 .product-view .product-shop .product-sku {
-  font-family: 'FuturaLight';
+  font-weight: 300;
   color:#5d5d5d;
 }
 .product-view .product-shop .ratings {
@@ -5269,7 +5243,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .product-view .product-shop .availability {
   font-size: 18px;
-	font-family:"FuturaT_Bold";
+
 	text-transform:uppercase;
 }
 .product-view .product-shop .price-box {
@@ -5289,7 +5263,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .price-box .special-price .price,
 .product-view .product-shop .price-box .full-product-price .price {
   color: #ff0000;
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	font-size: 30px;
 }
 .product-view .product-shop .price-box .special-price .price-label {
@@ -5343,7 +5317,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .change-qty{float:left; width:100%; margin-bottom:10px;}
 .product-view .product-options-bottom .change-qty {float:right; width:auto;}
 .product-view .product-shop .change-qty label,.product-view .product-shop .change-qty input{float:left;}
-.product-view .product-shop .change-qty label{width:100%; margin-bottom:5px;  color:#000000; font-family: "FuturaT_Bold"; font-size:15px; text-transform:uppercase;}
+.product-view .product-shop .change-qty label{width:100%; margin-bottom:5px;  color:#000000; font-weight: bold; font-size:15px; text-transform:uppercase;}
 .change-qty {min-width:95px;}
 .change-qty input{
 	height: 40px;
@@ -5355,7 +5329,7 @@ body.catalogsearch-result-index .page-title h1 {
 	font-size:18px;
   float:left;
 }
-.change-qty input.qty{background:#FFFFFF; color:#000000; width:55px; font-family: "FuturaT_Bold"; font-size:14px;}
+.change-qty input.qty{background:#FFFFFF; color:#000000; width:55px; font-weight: bold; font-size:14px;}
 
 @media only screen and (max-width: 850px) {
   .product-view .product-shop .price-box .price-excluding-tax .label,
@@ -5499,7 +5473,7 @@ body.catalogsearch-result-index .page-title h1 {
 	text-align: center;
 	font-size: 26px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold","RSU_Bold";
+	font-weight: bold;
 }
 .product-view .product-options-bottom .add-to-cart {float:left; width:100%;}
 .product-view .add-to-cart .qty-wrapper,
@@ -5588,7 +5562,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-features .box-title h2{
 	font-size: 30px;
 	text-transform: uppercase;
-  font-family: "FuturaT_Bold","RSU_Bold";
+  font-weight: bold;
 	color:#ffc222;
 	float:left;
 }
@@ -5602,20 +5576,20 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-features .products-features-grid li h3{
 	font-size: 22px;
 	text-transform: uppercase;
-  font-family: "FuturaT_Bold","RSU_Bold";
+  font-weight: bold;
 	color:#000000;
 	margin:0;
 }
 .product-view .product-features .products-features-grid li p{
 	font-size: 16px;
-	font-family:Tahoma;
+
 	color:#767676;
 }
 .product-view .box-collateral{overflow:hidden;}
 .product-view .box-collateral h2{
 	font-size: 30px;
 	text-transform: uppercase;
-  font-family: "FuturaT_Bold","RSU_Bold";
+  font-weight: bold;
 	color:#ffc222;
 }
 .product-view .box-collateral.box-description h2{
@@ -5626,7 +5600,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-review-wrap h2{
 	font-size: 30px;
 	text-transform: uppercase;
-  font-family: "FuturaT_Bold","RSU_Bold";
+  font-weight: bold;
 	color:#000000;
 }
 .product-view .review-box{}
@@ -5640,7 +5614,7 @@ body.catalogsearch-result-index .page-title h1 {
 	margin-top:8px;
 	font-size: 24px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 }
 .product-view .product-shop .extra-info .review-box{padding:0;}
 .product-view .product-shop .extra-info .review-box h2,
@@ -5652,8 +5626,8 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .extra-info .review-box .box-title .br .rating-links,
 .product-view .product-shop .extra-info .rating-summary-details{display:none;}
 .product-view .product-review-summary .review-box .box-title .bl{min-width:300px;}
-.product-view .product-review-summary .review-box .box-title .br .review-count{font-family: "FuturaT_Bold"; text-transform:capitalize; font-size:25px; color:#000000;}
-.product-view .product-review-summary .review-box .box-title .br .write-review-popup{background:#ffc222; padding:5px 15px; text-transform:uppercase;font-family: "FuturaT_Bold"; font-size:22px; color:#FFFFFF; text-decoration:none; margin:5px 0 0; display:inline-block; border-radius:5px;}
+.product-view .product-review-summary .review-box .box-title .br .review-count{font-weight: bold; text-transform:capitalize; font-size:25px; color:#000000;}
+.product-view .product-review-summary .review-box .box-title .br .write-review-popup{background:#ffc222; padding:5px 15px; text-transform:uppercase;font-weight: bold; font-size:22px; color:#FFFFFF; text-decoration:none; margin:5px 0 0; display:inline-block; border-radius:5px;}
 .product-view .product-review-summary .review-box .ratings-overview .rating-box { width:223px; height:35px; font-size:0; line-height:0; background:url(../images/rating_big_bg.png) 0 0 repeat-x; text-indent:-999em; overflow:hidden;}
 .product-view .product-review-summary .review-box .ratings-overview .rating-box .rating { float:left; height:35px; background:url(../images/rating_big_bg.png) 0 100% repeat-x; }
 .product-view .product-review-summary .review-box .ratings-overview .ratings .rating-box { float:left; margin-right:5px; }
@@ -5663,7 +5637,7 @@ body.catalogsearch-result-index .page-title h1 {
 	padding: 0 10px 0 0;
 }
 .product-view .product-review-summary table.ratings-table tbody th {
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	color: #000;
 	font-size: 14px;
 	padding: 0 10px 0 0;
@@ -5674,14 +5648,14 @@ body.catalogsearch-result-index .page-title h1 {
 #ajax_loader_review {position: absolute;  top: 50%;  left: 50%;  margin-left: -16px;  margin-right: -16px;}
 #review-form-popup .form-add{position:relative;}
 #review-form-popup .form-add #ajax_loader{position:absolute; top:50%; left:50%; margin-left:-16px;}
-#review-form-popup .form-add h2{background:#000000; padding:10px 0; text-align:center; font-family: 'FuturaT_Bold'; font-size:30px; text-transform:uppercase; color:#FFFFFF; border-radius:4px 4px 0 0;}
+#review-form-popup .form-add h2{background:#000000; padding:10px 0; text-align:center;  font-size:30px; text-transform:uppercase; color:#FFFFFF; border-radius:4px 4px 0 0;}
 #review-form-popup .form-add .show-message{padding:0 20px;}
 #review-form-popup .form-add .li_review{text-align:center;}
 #review-form-popup #product-review-table{}
 #review-form-popup #product-review-table .rating-field{text-align:center;}
 #review-form-popup #product-review-table .r-title,
 #review-form-popup #product-review-table .r-list-vote-options{display:inline-block; padding:0 20px;}
-#review-form-popup #product-review-table .r-title{font-family: 'FuturaT_Bold'; font-size:21px; color:#000000;}
+#review-form-popup #product-review-table .r-title{ font-size:21px; color:#000000;}
 #review-form-popup #product-review-table .r-list-vote-options .radio{width:25px; height:22px; background:url(../images/i-rating-none.png) top left no-repeat}
 #review-form-popup #product-review-table .r-list-vote-options .radio.radio-checked{background:url(../images/i-rating-selected.png) top left no-repeat}
 #review-form-popup #product-review-star{ text-align:center;}
@@ -5689,7 +5663,7 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup .rating_title {
   display: inline-block;
   min-width:150px;
-	font-family: 'FuturaT_Bold';
+
 	font-size:24px;
 	color:#000000;
 	text-align:left;
@@ -5740,7 +5714,6 @@ body.catalogsearch-result-index .page-title h1 {
 #review-form-popup .submit-fields .fileinputs span#uploadButton span {
     color: #fff;
     font-weight: bold;
-		font-family:'DBYordXMed';
 		font-size:24px;
     opacity: 1;
     text-transform: uppercase;
@@ -5758,12 +5731,12 @@ body.catalogsearch-result-index .page-title h1 {
 	width: 100%;
 	z-index: 9999;
 }
-#review-form-popup .submit-fields ul li label{font-family: 'FuturaBT-Book'; font-size:14px; color:#000000; text-transform:uppercase;}
+#review-form-popup .submit-fields ul li label{font-size:14px; color:#000000; text-transform:uppercase;}
 #review-form-popup .submit-fields ul li .input-box{}
 #review-form-popup .submit-fields ul li .input-box input,
 #review-form-popup .submit-fields ul li .input-box textarea{width:100%; border:1px solid #cbcbcb; border-radius:5px;}
-#review-form-popup .submit-fields .review-image label{font-family: 'FuturaT_Bold'; font-size:14px; color:#000000; text-transform:none;}
-#review-form-popup .submit-fields .review-image label span{font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif ; font-size:12px; color:#767676; text-transform:none;}
+#review-form-popup .submit-fields .review-image label{ font-size:14px; color:#000000; text-transform:none;}
+#review-form-popup .submit-fields .review-image label span{ font-size:12px; color:#767676; text-transform:none;}
 #review-form-popup .form-add .buttons-set.box-mobile{margin:0 10px 20px;}
 #review-form-popup .form-add .buttons-set button.button {margin:15px 0 0; float:left; width:auto; min-width:0;}
 #review-form-popup .review-nologged{padding:10px;}
@@ -5788,9 +5761,9 @@ body.catalogsearch-result-index .page-title h1 {
 /* Services Page */
 .services-page{}
 .services-page .service-content{background:#252525; margin:45px 0; display:inline-block}
-.services-page .service-content p.text{float:left; width:100%; font-family: 'DBYordX'; color:#FFFFFF; font-size:20px; background-image:url(../images/services/text-bg.png); background-repeat:no-repeat; padding:17px 0 0; margin:10px 0 0;}
+.services-page .service-content p.text{float:left; width:100%;  color:#FFFFFF; font-size:20px; background-image:url(../images/services/text-bg.png); background-repeat:no-repeat; padding:17px 0 0; margin:10px 0 0;}
 .services-page .service-content p.btn{ margin:10px 0; float:left; width:100%; text-align:center;}
-.services-page .service-content p.btn a{text-decoration:none; background:#ffc222; color:#FFFFFF;  padding:5px 15px; font-family: 'FuturaT_Bold'; font-size:14px; text-transform:uppercase; border-radius:5px;}
+.services-page .service-content p.btn a{text-decoration:none; background:#ffc222; color:#FFFFFF;  padding:5px 15px;  font-size:14px; text-transform:uppercase; border-radius:5px;}
 .services-page .service-content p.btn a:hover{background:#f4701e; }
 .services-page .service-content .showroom{text-align:center; position:relative;}
 .services-page .service-content .showroom .wrap-bannerads ul li{float:left; }
@@ -5806,25 +5779,25 @@ body.catalogsearch-result-index .page-title h1 {
 .services-page .service-content .showroom .wrap-bannerads ul li{position:relative;}
 .services-page .service-content .showroom .wrap-bannerads ul li:nth-child(3)::before{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute; z-index:999; top: 50%;left: -3px;margin-top: -75px;}
 .services-page .service-content .showroom .wrap-bannerads ul li:nth-child(1)::after{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;  z-index:999; top: 50%;right: -3px;margin-top: -75px;}
-.services-page .service-content .showroom .showroom-desc h1{font-size:40px; font-family: 'FuturaBT-Book'; margin:0; color:#ffc222}
-.services-page .service-content .showroom .showroom-desc h1 strong{font-family: 'FuturaT_Bold'; font-size:44px;}
-.services-page .service-content .showroom .showroom-desc h1 label{color:#FFFFFF;font-size:20px; font-family: 'FuturaBT-Book'; margin:0; float:left; width:100%}
-.services-page .service-content .showroom .showroom-desc h1 span{color:#FFFFFF;font-size:14px; font-family: 'FuturaBT-Book'; margin:0; float:left; width:100%}
+.services-page .service-content .showroom .showroom-desc h1{font-size:40px; margin:0; color:#ffc222}
+.services-page .service-content .showroom .showroom-desc h1 strong{ font-size:44px;}
+.services-page .service-content .showroom .showroom-desc h1 label{color:#FFFFFF;font-size:20px; margin:0; float:left; width:100%}
+.services-page .service-content .showroom .showroom-desc h1 span{color:#FFFFFF;font-size:14px; margin:0; float:left; width:100%}
 .services-page .service-content .showroom .showroom-desc p.text{background-position:top center;}
 .services-page .service-content .home-delivery {float:left; width:100%; text-align:right; position:relative}
 .services-page .service-content .home-delivery::before{background: #ffc222;content: "";width: 300px;height: 8px;position: absolute;top: -3px;left: 50%;margin-left: -150px;}
-.services-page .service-content .home-delivery .delivery-desc{float:left; text-align:right; width:49.5%; color:#FFFFFF;font-size:20px; text-transform:uppercase; font-family: 'FuturaBT-Book';}
+.services-page .service-content .home-delivery .delivery-desc{float:left; text-align:right; width:49.5%; color:#FFFFFF;font-size:20px; text-transform:uppercase; }
 .services-page .service-content .home-delivery .delivery-desc .delivery-info{padding:48px; display:inline-block;}
-.services-page .service-content .home-delivery .delivery-desc h1{font-size:30px; font-family: 'FuturaBT-Book'; margin:0; color:#ffc222}
-.services-page .service-content .home-delivery .delivery-desc h1 strong{font-size:34px; font-family: 'FuturaT_Bold'; margin:0; color:#ffc222}
+.services-page .service-content .home-delivery .delivery-desc h1{font-size:30px; margin:0; color:#ffc222}
+.services-page .service-content .home-delivery .delivery-desc h1 strong{font-size:34px;  margin:0; color:#ffc222}
 .services-page .service-content .home-delivery .delivery-desc p.text{float:right; text-align:right; background-position:top right; max-width:225px;}
 .services-page .service-content .home-delivery .delivery-banner{float:right; width:50.5%;}
 .services-page .service-content .home-delivery  p.btn{text-align:right; float:right;}
 .services-page .service-content .online-store .text-desc{float:right; width:50.5%;}
-.services-page .service-content .online-store .text-desc .details-info{padding:48px 48px 0 48px;color:#FFFFFF;font-size:20px; font-family: 'FuturaBT-Book';  display:inline-block; position:relative;}
+.services-page .service-content .online-store .text-desc .details-info{padding:48px 48px 0 48px;color:#FFFFFF;font-size:20px;  display:inline-block; position:relative;}
 .services-page .service-content .online-store .text-desc .details-info::before{background: #ffc222;content: "";height: 150px;width: 8px;position: absolute;top: 50%;left: -3px;margin-top: -75px;}
-.services-page .service-content .online-store .text-desc .details-info h1{font-size:40px; font-family: 'FuturaBT-Book'; margin:0; color:#ffc222}
-.services-page .service-content .online-store .text-desc .details-info h1 strong{font-family: 'FuturaT_Bold'; font-size:44px;}
+.services-page .service-content .online-store .text-desc .details-info h1{font-size:40px; margin:0; color:#ffc222}
+.services-page .service-content .online-store .text-desc .details-info h1 strong{ font-size:44px;}
 .services-page .service-content .online-store .text-desc .details-info p.text{margin:10px 0 0; padding:17px 0 0; background-position:top left;}
 .services-page .service-content .online-store .text-desc .details-info p.btn{float:left; text-align:left;}
 .services-page .service-content .online-store .online-store-banner{float:left; width:49.5%;}
@@ -5859,7 +5832,6 @@ body.catalogsearch-result-index .page-title h1 {
 	text-indent: 0;
 	padding-left: 40px;
 	font-size: 9px;
-	font-family: 'FuturaBT-Book';
 	color: #464646;
 	line-height: 32px;
 	text-decoration: none;
@@ -5883,7 +5855,7 @@ body.catalogsearch-result-index .page-title h1 {
 
 .product-view .add-to-links .shareproduct-content{position:absolute;background:#FFFFFF;border: 1px solid #e6e6e6; min-width:200px; right:0;z-index: 999;top:45px; border-radius:5px;}
 .product-view .add-to-links .shareproduct-content::after{content:""; background:url(../images/arrow-popup.png) 0 0 no-repeat; width:16px; height:14px; position:absolute; top:-14px; right:60px;}
-.product-view .add-to-links .shareproduct-content  h2{font-family: 'DBYordXMed'; font-size:28px; color:#FFFFFF; background:#000000; text-align:left; padding:10px 20px; text-transform:none; margin:0; border-radius:5px 5px 0 0;}
+.product-view .add-to-links .shareproduct-content  h2{font-size:28px; color:#FFFFFF; background:#000000; text-align:left; padding:10px 20px; text-transform:none; margin:0; border-radius:5px 5px 0 0;}
 .product-view .add-to-links .shareproduct-content  .popupsharing-content{padding:10px 20px;}
 .product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box{float:left; width:390px;}
 .product-view .add-to-links .shareproduct-content  .popupsharing-content .input-box input,
@@ -6071,7 +6043,6 @@ body.catalogsearch-result-index .page-title h1 {
     margin: 0;
     margin-bottom: 10px;
     color: #636363;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
     font-style: normal;
@@ -6230,7 +6201,6 @@ body.catalogsearch-result-index .page-title h1 {
 
 .grouped-items-table .name-wrapper {
   color: #3399cc;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .grouped-items-table .qty-wrapper {
   padding-top: 7px;
@@ -6263,7 +6233,7 @@ body.catalogsearch-result-index .page-title h1 {
   text-align: left;
 }
 .product-options dl dt label{
-	color:#000000; font-family: "FuturaT_Bold"; font-size:15px; text-transform:uppercase;
+	color:#000000; font-weight: bold; font-size:15px; text-transform:uppercase;
 }
 
 @media only screen and (max-width: 979px) {
@@ -6472,7 +6442,6 @@ body.catalogsearch-result-index .page-title h1 {
   margin: 0;
   margin-bottom: 0.5em;
   /* color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
   font-style: normal;
@@ -6482,7 +6451,7 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 0; */
 	font-size: 30px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	color:#ffc222;
 }
 .block-related .block-subtitle {
@@ -6760,7 +6729,7 @@ body.catalogsearch-result-index .page-title h1 {
 .checkout-list-step ul li.active > div{border-bottom:5px solid #ffc222;}
 .checkout-list-step ul li .step-number{display:inline-block; height:30px; width:30px; line-height:30px; background:#c1c1c1; border-radius:15px; color:#FFFFFF;}
 .checkout-list-step ul li.active .step-number{background:#ffc222;}
-.checkout-list-step ul li h6{font-family: 'DBYordXMed'; font-size:18px; color:#767676; font-weight: normal; text-transform: none;}
+.checkout-list-step ul li h6{font-size:18px; color:#767676; font-weight: normal; text-transform: none;}
 .checkout-list-step ul li.active h6{color:#000}
 .checkout-list-step ul li.active.complete > div{border:0 none;}
 .checkout-list-step ul li.active.complete .step-number{background:#000000}
@@ -6812,7 +6781,7 @@ body.catalogsearch-result-index .page-title h1 {
 	color:#FFFFFF;
 }
 .cart-forms .discount .discount-title h4{
-	font-family: 'DBYordXBd';
+
 	font-size:24px;
 	color:#ffc222;
 	margin:0;
@@ -6994,7 +6963,6 @@ body.catalogsearch-result-index .page-title h1 {
   }
 }
 .cart-table {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .cart-table th,
 .cart-table td,
@@ -7018,13 +6986,12 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-table tbody td {
   background-color: transparent;
   padding: 20px 0;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .cart-table thead th{
   color: #f4701e;
   border-bottom: 4px solid #ffc222;
 	text-align:center;
-	font-family: 'DBYordXMed';
+
 	font-size:25px;
   padding: 3px 0;
 }
@@ -7086,11 +7053,10 @@ body.catalogsearch-result-index .page-title h1 {
   margin-left: 70px;
 }
 .cart-table .product-cart-sku {
-  /* font-family: Georgia, Times, "Times New Roman", serif;
+  /*
   font-style: italic;
   font-size: 12px;
   margin: 5px 0 12px; */
-  font-family: 'FuturaBT-Book', Helvetica, Tahoma, sans-serif;
   font-size: 12px;
   color: #999;
 }
@@ -7104,13 +7070,11 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart-table .product-cart-image .product-cart-info .item-options dt{
   font-weight:normal;
-	font-family: 'FuturaBT-Book', Helvetica, Tahoma, sans-serif;
 	font-size: 12px;
 	color: #999;
 }
 .cart-table .product-cart-image .product-cart-info .item-options dd{
   margin:0;
-	font-family: 'FuturaBT-Book', Helvetica, Tahoma, sans-serif;
 	font-size: 12px;
 	color: #999;
 }
@@ -7176,14 +7140,14 @@ body.catalogsearch-result-index .page-title h1 {
   border-radius: 0;
 	color:#000;
 	font-size:14px;
-	font-family: 'FuturaT_Bold';
+
   text-align: center;
   width: 53px;
 }
 .cart-table .cart-price .price{
 	color:#000;
 	font-size:16px;
-	font-family: 'FuturaT_Bold';
+
 }
 .cart-table .cart-price .special-price .price{
 	color:#ff0000;
@@ -7191,7 +7155,7 @@ body.catalogsearch-result-index .page-title h1 {
 .cart-table .cart-price .old-price .price{
 	color: #a0a0a0;
 	font-size: 12px;
-	font-family: 'FuturaLight';
+	font-weight: 300;
 }
 .cart-table .product-cart-actions .button, .cart-table .product-cart-actions .button:hover {
 	float: left;
@@ -7210,7 +7174,7 @@ body.catalogsearch-result-index .page-title h1 {
   padding-left: 15px;
 }
 .cart-table .cart-footer-actions .button{
-	font-family: 'DBYordXMed';
+
 	font-size:20px;
 	color:#FFFFFF;
 	border-radius:5px;
@@ -7335,7 +7299,6 @@ body.catalogsearch-result-index .page-title h1 {
 /*   .cart-table td[data-rwd-label]:before {
     content: attr(data-rwd-label) ":";
     font-size: 12px;
-    font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
     padding-right: 5px;
     text-transform: uppercase;
   } */
@@ -7427,7 +7390,7 @@ body.catalogsearch-result-index .page-title h1 {
   .cart-table .product-cart-price:before {
     font-weight: 500;
     font-size: 15px;
-    font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
   }
   .cart-table .cart-footer-actions {
     text-align: center;
@@ -7514,7 +7477,6 @@ body.catalogsearch-result-index .page-title h1 {
   margin-top: 4px;
 }
 .shipping .form-list label {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
   text-transform: uppercase;
@@ -7528,13 +7490,12 @@ body.catalogsearch-result-index .page-title h1 {
   margin-bottom: 10px;
 }
 .shipping .sp-methods label {
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-size: 12px;
   font-style: italic;
   min-width: 100px;
 }
 .shipping .sp-methods label span {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
 }
@@ -7573,8 +7534,8 @@ body.catalogsearch-result-index .page-title h1 {
   clear: both;
 }
 .cart .cart-totals table {
-  /* font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif; */
-	font-family:Tahoma;
+ */
+
   font-size: 14px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -7607,7 +7568,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .cart .cart-totals table tfoot strong span,
 .cart .cart-totals table tfoot span.price {
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
 }
 .cart .cart-totals table tfoot strong {
   font-weight: bold;
@@ -7618,7 +7579,7 @@ body.catalogsearch-result-index .page-title h1 {
 	height: 55px;
 	padding: 0;
 	line-height: 55px;
-	font-family: 'DBYordXBd';
+
 	font-size:36px;
 	border-radius:5px;
 }
@@ -7649,7 +7610,6 @@ body.catalogsearch-result-index .page-title h1 {
 }
 #discount-coupon-form label,
 .cart .giftcard label {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
   text-align: left;
@@ -7679,7 +7639,7 @@ body.catalogsearch-result-index .page-title h1 {
 	height:40px;
 	line-height:40px;
 	padding:0 25px;
-	font-family: 'DBYordXBd';
+
 	font-size:20px;
 	border-radius:0 5px 5px 0;
 }
@@ -8083,7 +8043,6 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   margin: 0;
   margin-bottom: 10px;
   color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -8101,7 +8060,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .block-progress dd {
   padding-left: 15px;
   margin-bottom: 10px;
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-style: italic;
 }
 .block-progress dd address {
@@ -8114,7 +8073,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   padding: 0;
   margin: 0 0 3px 0;
   color: #636363;
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   text-transform: none;
   font-style: italic;
   float: left;
@@ -8332,11 +8291,11 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 }
 
 .checkout-success{padding:200px 0 0; background:url(../images/icon-checkout-complete.png) center 50px no-repeat;}
-.checkout-success .page-title h1{padding:0 0 15px; margin:0 0 10px; font-family: 'DBYordXMed'; font-size:30px; color:#252525; border-bottom:2px solid #ededed; }
-.checkout-success h2.sub-title{font-family: 'DBYordXMed'; font-size:30px; color:#252525;}
+.checkout-success .page-title h1{padding:0 0 15px; margin:0 0 10px; font-size:30px; color:#252525; border-bottom:2px solid #ededed; }
+.checkout-success h2.sub-title{font-size:30px; color:#252525;}
 .checkout-success p{margin:0 0 30px;}
 .checkout-success p.order-id {
-    font-family: 'DBYordXMed';
+
     font-size: 24px;
     color: #252525;
 }
@@ -8540,7 +8499,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   color: #a0a0a0;
 	font-size: 18px;
 	text-transform: uppercase;
-	font-family: "FuturaT_Bold","RSU_Bold";
+	font-weight: bold;
 }
 .product-view .availability.out-of-stock{text-align:center;}
 .product-view .availability.out-of-stock span{font-size:30px;}
@@ -8585,7 +8544,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* login page*/
 .account-login .col2-set .content h2,
 .account-create  h2.legend,
-.customer-account-forgotpassword  h2.legend{font-size:24px; color:#252525; font-family: 'DBYordX';}
+.customer-account-forgotpassword  h2.legend{font-size:24px; color:#252525; }
 .box-content-style1 {float:left; width:100%; background:#f6f6f6; border:solid 1px #E6E6E6; padding:22px; border-radius:3px;}
 .col2-set .col-1.registered-users,
 .forgot-password {width:42%; padding-top:30px; padding-right:15px;}
@@ -8599,14 +8558,14 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .col2-set .col-2.new-users .buttons-set a.button ,
 .forgot-password .buttons-set button.button{float:left; margin:0px; min-width:250px; height:40px; border-radius:5px;}
 .col2-set .col-1.registered-users .amajaxlogin-block {float:left; width:100%; border-top:solid 1px #E6E6E6; margin-top:35px;}
-.col2-set .col-1.registered-users .amajaxlogin-block .amajaxlogin-social-icon label {display:block!important; margin:10px 0;  font-size:24px; color:#252525; font-family: 'DBYordXMed'; }
+.col2-set .col-1.registered-users .amajaxlogin-block .amajaxlogin-social-icon label {display:block!important; margin:10px 0;  font-size:24px; color:#252525; }
 
 .account-login .col2-set .content  .register_boxtext  {color:#474747;}
-.account-login .col2-set .content  .register_boxtext h2 { color: #252525; margin:0px; font-size: 43px;  font-family: 'FuturaT_Bold';  line-height:43px;}
-.account-login .col2-set .content  .register_boxtext h1 {color:#FFC222;  margin:0px; font-size: 64px;  font-family: 'FuturaT_Bold';}
+.account-login .col2-set .content  .register_boxtext h2 { color: #252525; margin:0px; font-size: 43px;    line-height:43px;}
+.account-login .col2-set .content  .register_boxtext h1 {color:#FFC222;  margin:0px; font-size: 64px;  }
 .account-login .col2-set .content  .register_boxtext h4 {color:#474747; margin:0px 0 10px; font-size:18px; font-weight: normal;}
-.account-login .col2-set .content  .register_boxtext .box-texstyle1 {font-family: 'RSU_Bold'; font-size:16px; line-height:20px;}
-.account-login .col2-set .content  .register_boxtext h5   {font-family: 'DBYordXMed'; font-weight:normal; font-size:24px; margin:0px; color:#FFC222;}
+.account-login .col2-set .content  .register_boxtext .box-texstyle1 { font-size:16px; line-height:20px;}
+.account-login .col2-set .content  .register_boxtext h5   {font-weight:normal; font-size:24px; margin:0px; color:#FFC222;}
 .account-login .col2-set .content  .register_boxtext p {margin-bottom:10px;}
 .col2-set .col-2.new-users .buttons-set a.button {background:#444444;}
 
@@ -8628,10 +8587,10 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .registerpage_boxtext .box-right {float:right; width:31.8%; padding:15px; color:#fff; margin-top:45px;}
 .registerpage_boxtext .box-left  ul { list-style: initial; padding-left:20px;}
 .text-red {color:red;}
-.registerpage_boxtext .box-right h3 {color:#fff; margin:0px; font-size:28px; font-family: 'DBYordXMed'; line-height:26px; }
-.registerpage_boxtext .box-right .content-box {margin:12px 0; font-family: 'RSU_Bold'; font-size:18px; padding:12px 0; border-bottom:solid 1px #fff; border-top:solid 1px #fff; }
-.registerpage_boxtext .box-right .content-box label {font-family: 'RSU_Bold'; font-size:14px;  }
-.registerpage_boxtext .box-right .content-box .text-logo {color:#FFC222; font-size:18px; font-family: 'FuturaT_Bold';}
+.registerpage_boxtext .box-right h3 {color:#fff; margin:0px; font-size:28px; line-height:26px; }
+.registerpage_boxtext .box-right .content-box {margin:12px 0;  font-size:18px; padding:12px 0; border-bottom:solid 1px #fff; border-top:solid 1px #fff; }
+.registerpage_boxtext .box-right .content-box label { font-size:14px;  }
+.registerpage_boxtext .box-right .content-box .text-logo {color:#FFC222; font-size:18px; }
 
 
 .customer-account-create .scaffold-form label:first-child {
@@ -8640,7 +8599,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 
 .opc #opc-login p:not(.required) {
   font-style: italic;
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-size: 13px;
   color: #a0a0a0;
 }
@@ -8663,7 +8622,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   display: block;
 }
 .remember-me-popup p {
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
 }
 .remember-me-popup .remember-me-popup-close {
   position: absolute;
@@ -8702,7 +8661,7 @@ body.customer-account .my-account .page-title h1 {
   text-align: left;
   font-size:30px;
   color:#2278143;
-  font-family: 'DBYordXMed';
+
   font-weight:normal;
   line-height:43px;
   padding-bottom:14px;
@@ -8767,7 +8726,7 @@ body.customer-account .my-account .order-details h2 {
   border:none;
   font-size:24px;
   color:#000;
-  font-family: 'DBYordXMed';
+
   margin-bottom:5px;
 }
 body.customer-account .my-account .addresses-list h3 {
@@ -8782,7 +8741,6 @@ body.customer-account .data-table {
   margin-top: 5px;
 }
 body.customer-account .data-table td a {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   text-transform: uppercase;
   font-style: normal;
   font-size: 13px;
@@ -8844,15 +8802,15 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .customer-account  .buttons-set {float:left; width:100%; border-top:5px; margin-top:20px;}
 .customer-account .buttons-set .button {height:40px; float:left; border-radius:5px; min-width:250px; margin-left:0px;}
 .customer-account .buttons-set .button.back-link {line-height:26px; background:#252525; text-align:center; min-width:150px; margin-right:20px; }
-.box-edit-subscribed h3 {font-size:24px; color:#000; font-family: 'DBYordXMed'; }
+.box-edit-subscribed h3 {font-size:24px; color:#000; }
 .box-edit-subscribed .subscribed {float:left; background:#F8F8F8; padding: 10px 20px;}
 .fieldset-change-password {float:left; width:100%; border-top:solid 1px #B5B5B5; padding-top:20px; margin-bottom:0px;}
 /* ============================================ *
  * Dashboard
  * ============================================ */
- .welcome-msg .hello {color:#000; font-size:24px; font-family: 'DBYordXMed';}
- .box-points-dashboard {float:left; font-family: 'DBYordX'; line-height:23px; color:#000; font-size:19px; width:100%; padding:12px; padding-left:70px; background:url(../images/icon-points.png) no-repeat 12px center #F8F8F8;}
- .box-points-dashboard span {display:inline-block; line-height:23px; padding:0 8px; background:#252525; border-radius:12px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
+ .welcome-msg .hello {color:#000; font-size:24px; }
+ .box-points-dashboard {float:left;  line-height:23px; color:#000; font-size:19px; width:100%; padding:12px; padding-left:70px; background:url(../images/icon-points.png) no-repeat 12px center #F8F8F8;}
+ .box-points-dashboard span {display:inline-block; line-height:23px; padding:0 8px; background:#252525; border-radius:12px; color:#FFC222;  font-size:14px;}
  .box-account.box-info2 {float:left; width:49%; margin-right:2%;}
  .box-account.box-info2 + .box-account.box-info2 {margin-right:0px;}
  .box-account.box-info2 .box-content,
@@ -8864,19 +8822,19 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  .box-account .not.subscribed  .icon { background:url(../images/icon-check.png) no-repeat center center;}
 
  .bottom-main {float:left; width:100%; margin-top:40px;}
- .box-account.box-recent .box-head a  { float:right; line-height:28px; font-size: 18px; font-weight:normal; color:#F4701E; font-family: 'DBYordXMed';  }
+ .box-account.box-recent .box-head a  { float:right; line-height:28px; font-size: 18px; font-weight:normal; color:#F4701E;  }
 
  .dashboard-newsletter, .form-newsletter{}
  .my-account .dashboard-newsletter li.control, .my-account .form-newsletter li.control{position:relative}
  .my-account .dashboard-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
  .my-account .form-newsletter li.control #message_newsletter{position:absolute; top:-3px; left:170px;}
 
-.data-table.orders-table th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  }
+.data-table.orders-table th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px;  }
 .order-items.order-details .data-table th{
 	color: #f4701e;
 	border-bottom: 4px solid #ffc222;
 	text-align: center;
-	font-family: 'DBYordXMed';
+
 	font-size: 25px;
 	padding: 3px 10px;
 	background:transparent;
@@ -8884,26 +8842,24 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .order-items.order-details .data-table tbody td{
 	text-align:center;
 }
-#wishlist-table  th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px; font-family: 'DBYordXMed';  }
+#wishlist-table  th{background:#252525;  color:#fff; padding:10px 10px; line-height:32px; font-size: 24px;  }
 .data-table.orders-table th {text-align:center;}
 .data-table.orders-table td ,
-.data-table.orders-table td.number a{padding:10px 10px; text-align:center; color:#000; font-size:14px; font-family: 'FuturaT_Bold';}
-.data-table.orders-table td.ship {font-family:tahoma;}
-.data-table.orders-table td.status span {display:inline-block; text-align:center; min-width:84px; height:26px; line-height:26px; border:solid 1px #BEBEBE; border-radius:5px; color:#FFC222; font-family: 'RSU_Bold'; font-size:14px;}
+.data-table.orders-table td.number a{padding:10px 10px; text-align:center; color:#000; font-size:14px; }
+.data-table.orders-table td.ship {}
+.data-table.orders-table td.status span {display:inline-block; text-align:center; min-width:84px; height:26px; line-height:26px; border:solid 1px #BEBEBE; border-radius:5px; color:#FFC222;  font-size:14px;}
 .data-table.orders-table td.status span.status-done { color:#A0D819;}
 .data-table.orders-table  td,
 .data-table.orders-table th{/* text-align:left; */ vertical-align:middle;}
 .data-table.orders-table .a-right {text-align:right;}
 .data-table.orders-table .product-name	{
-		color: #000;
-    font-size: 14px;
-    font-weight: 600;
-		margin:0;
+	color: #000;
+  font-size: 14px;
+  font-weight: 600;
+	margin:0;
 }
 .order-items.order-details .data-table tfoot tr{background:#FFF;}
 .order-items.order-details .data-table tfoot tr td{
-	/* font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif; */
-	font-family: Tahoma;
 	font-size: 14px;
 	margin-bottom: 20px;
 	text-transform: uppercase;
@@ -8917,7 +8873,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .data-table tr.ordered-bundle-parent td{border:0 none; padding-bottom:0;}
 .data-table tr.ordered-bundle-item td{border:0 none; padding:0;}
 .data-table tr.ordered-bundle-item td .option-label,
-.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; font-family:'FuturaBT-Book';}
+.data-table tr.ordered-bundle-item td .option-value{font-style:normal!important; }
 .data-table tr.ordered-bundle-item.last td{border-bottom:1px solid silver; padding-bottom:10px;}
 .page-print .data-table tr.ordered-bundle-item.last td{border-bottom:0 none; padding-bottom:10px;}
 
@@ -8932,7 +8888,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   font-weight: normal;
   display: inline-block;
   margin-bottom: 0;
-  font-family: 'DBYordXMed';
+
   color:#000;
 }
 .dashboard .box-title h3,
@@ -8941,7 +8897,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   font-weight: normal;
   display: inline-block;
   margin-bottom: 0;
-  font-family: 'DBYordXMed';
+
   color:#000;
 }
 
@@ -8951,7 +8907,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
   font-size: 18px;
   font-weight:normal;
   color:#FFC222;
-  font-family: 'DBYordXMed';
+
   line-height:28px;
   padding-left:24px;
   background:url(../images/edit-icon.png) no-repeat left 3px;
@@ -8969,7 +8925,6 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 
 .dashboard .box-account p,
 .dashboard .box-account address {
-  font-family: "Helvetica",Arial,Tahoma,sans-serif;
   font-style: normal;
 }
 .dashboard .col2-set .col-1,
@@ -9021,7 +8976,6 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 }
 .dashboard .box-reviews li .details .ratings strong {
   float: left;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 13px;
   margin-right: 5px;
 }
@@ -9034,7 +8988,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
  * Address Book
  * ============================================ */
 .my-account .addresses-list {
-  /* font-family: Georgia, Times, "Times New Roman", serif; */
+  /*  */
   float:left;
   width:100%;
 }
@@ -9118,7 +9072,6 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 }
 
 .order-date {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   text-transform: uppercase;
 }
 
@@ -9262,7 +9215,7 @@ ol#cart-sidebar-reorder p.product-name {
     margin-top: 0;
   }
   .dashboard .welcome-msg {
-    font-family: Georgia, Times, "Times New Roman", serif;
+
   }
   .dashboard .welcome-msg .hello {
     font-style: italic;
@@ -9552,7 +9505,6 @@ div.paypal-logo span > img {
   margin-bottom: 0;
 }
 #customer-reviews .review-heading .pager .count-container .limiter label {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 10px;
   text-transform: uppercase;
 }
@@ -9568,7 +9520,6 @@ div.paypal-logo span > img {
   color: #636363;
 }
 #customer-reviews h3 {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   text-transform: uppercase;
@@ -9585,7 +9536,7 @@ div.paypal-logo span > img {
 #customer-reviews .review-list li > div{float:left; text-align:left}
 #customer-reviews .review-list li > div.review-rating{width:20%}
 #customer-reviews .review-list li .review-rating .review-name{
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	color:#f4701e;
 	font-size:14px;
 	text-transform:uppercase;
@@ -9593,17 +9544,17 @@ div.paypal-logo span > img {
 #customer-reviews .review-list li > div.review-image{width:15%; text-align:center;}
 #customer-reviews .review-list li > div.review-image img{max-width:150px;}
 #customer-reviews .review-list li > div.review-details{width:65%; text-align:justify;}
-#customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  font-family: 'FuturaBT-Book'; }
+#customer-reviews .review-list li .review-details .review-meta{float:right; width:100%; text-align:right;  }
 #customer-reviews .review-list li .review-details .review-meta .rating-title{
 	float:left;
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	color:#767676;
 	font-size:27px;
 	text-transform:uppercase;
 }
 #customer-reviews .review-list.no-review{}
 #customer-reviews .review-list.no-review .no-rating{
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	color:#cccccc;
 	font-size:25px;
 	text-align:center;
@@ -9613,7 +9564,7 @@ div.paypal-logo span > img {
     padding: 3px 15px 3px 0;
 }
 #customer-reviews .ratings-table tbody th{
-	font-family: "FuturaT_Bold";
+	font-weight: bold;
 	color:#000;
 	font-size:14px;
 }
@@ -9623,7 +9574,6 @@ div.paypal-logo span > img {
 }
 #customer-reviews .fieldset h4 {
   border-bottom: 1px solid #cccccc;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   padding-bottom: 5px;
@@ -9633,7 +9583,6 @@ div.paypal-logo span > img {
   display: none;
 }
 #customer-reviews .fieldset .form-list {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   margin: 10px 0;
@@ -9668,7 +9617,6 @@ div.paypal-logo span > img {
   width: 470px;
 }
 #customer-reviews dl {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
   margin-bottom: 10px;
@@ -9678,12 +9626,11 @@ div.paypal-logo span > img {
   text-transform: uppercase;
 }
 #customer-reviews dl dd {
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-size: 14px;
   margin: 10px 0;
 }
 #customer-reviews dl dd .ratings-table {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   width: 100%;
 }
@@ -9699,7 +9646,6 @@ div.paypal-logo span > img {
 }
 #customer-reviews dl dd .review-meta {
   color: #3399cc;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 10px;
   font-weight: normal;
   text-transform: uppercase;
@@ -9749,7 +9695,6 @@ div.paypal-logo span > img {
  * Ratings - Global
  * ============================================ */
 /* .ratings-table {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -9914,7 +9859,6 @@ div.paypal-logo span > img {
   user-select: none;
 }
 .slideshow-pager span {
-  font-family: arial;
   width: 44px;
   height: 44px;
   display: inline-block;
@@ -10018,7 +9962,6 @@ div.paypal-logo span > img {
 }
 
 .cycle-overlay {
-  font-family: tahoma, arial;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -10070,7 +10013,6 @@ div.paypal-logo span > img {
   width: 100%;
   height: 45px;
   font-size: 11px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 #wishlist-table textarea::-webkit-input-placeholder {
   text-transform: uppercase;
@@ -10133,7 +10075,7 @@ div.paypal-logo span > img {
   width: 100%;
   height:35px;
   line-height:35px;
-  font-family: "FuturaT_Bold";
+  font-weight: bold;
 }
 #wishlist-table td.customer-wishlist-item-info dt,
 #wishlist-table td.customer-wishlist-item-info dd{
@@ -10160,7 +10102,7 @@ div.paypal-logo span > img {
   white-space: nowrap;
 }
 #wishlist-table .price-box {
-  font-family: 'FuturaT_Bold';
+
   font-size: 14px;
   color: #000;
   min-width:125px;
@@ -10169,7 +10111,7 @@ div.paypal-logo span > img {
 #wishlist-table .price-box .price {
 
 }
-#wishlist-table  .price-box .old-price .price {font-size:10px; font-family: 'FuturaLight';}
+#wishlist-table  .price-box .old-price .price {font-size:10px; font-weight: 300;}
 #wishlist-table .giftregisty-add {
   margin-top: 5px;
 }
@@ -10296,7 +10238,6 @@ div.paypal-logo span > img {
 }
 .header-minicart .block-subtitle {
   color: #50A4CF;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 10px;
   font-weight: bold;
   line-height: 1.4;
@@ -10590,7 +10531,6 @@ div.paypal-logo span > img {
 .product-review .product-img-box p.label {
   border-bottom: 1px solid #cccccc;
   font-size: 16px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   margin-top: 20px;
   padding-bottom: 10px;
   text-transform: uppercase;
@@ -10603,11 +10543,9 @@ div.paypal-logo span > img {
   color: #3399CC;
   font-size: 16px;
   font-weight: 600;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   padding-bottom: 10px;
 }
 .product-review .ratings-table {
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .product-review .ratings-table th {
   padding-right: 10px;
@@ -10622,14 +10560,12 @@ div.paypal-logo span > img {
   border-bottom: 1px solid #cccccc;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   margin-top: 20px;
   padding: 10px 0;
   text-transform: uppercase;
 }
 .product-review .ratings-description dd {
   color: #737373;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 13px;
 }
 
@@ -10669,7 +10605,7 @@ div.paypal-logo span > img {
 .cms-page-view .std p,
 .cms-no-route .std p {
   color: #636363;
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-size: 14px;
   font-style: italic;
   line-height: 24px;
@@ -10685,7 +10621,7 @@ div.paypal-logo span > img {
 .cms-page-view .std li,
 .cms-no-route .std li {
   color: #636363;
-  font-family: Georgia, Times, "Times New Roman", serif;
+
   font-size: 14px;
   font-style: italic;
   line-height: 24px;
@@ -10717,14 +10653,14 @@ div.paypal-logo span > img {
   list-style: none;
   margin-left: 0;
   font-style: normal;
-  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+
 }
-.cms-page-view .std p, .cms-page-view p, .cms-page-view .std li{font-family: "Helvetica",Arial,Tahoma,sans-serif;font-style:normal;}
+.cms-page-view .std p, .cms-page-view p, .cms-page-view .std font-style:normal;}
 .cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
 .cms-page-view .c_right{float:right;}
 .cms-page-view .c_left{text-align: right; padding-top: 1%;}
-.cms-page-view .c_left h2, .tab-left h1, .tab-left h2{font-size:60px;font-family: 'FuturaBookBold';margin-bottom:0;font-weight: 900;}
-.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3, .tab-left h3, .content_cms.career h2, .cms-project .tab-left h2.th{font-family: 'DBYordX';color:#ffc121;font-size: 25px;}
+.cms-page-view .c_left h2, .tab-left h1, .tab-left h2{font-size:60px;margin-bottom:0;font-weight: 900;}
+.cms-page-view.cms-who-we-are .c_left  strong, .cms-page-view .content_cms h3, .tab-left h3, .content_cms.career h2, .cms-project .tab-left h2.th{color:#ffc121;font-size: 25px;}
 .cms-page-view .content_cms h3{font-size:29px;font-weight:500;margin-bottom:0}
 .cms-page-view .content_cms img{max-width:100%;}
 .cms-page-view .content_cms .frist_con{border-bottom: solid 1px #EEE; padding-bottom: 10px;margin-bottom:20px;}
@@ -10747,7 +10683,7 @@ div.paypal-logo span > img {
 .tab-left .tabsPage li,
 .tab-left .tabs li {float:left; width:100%; border-bottom:solid 2px #E3E3E3;list-style-type: none;}
 .tab-left .tabsPage li a,
-.tab-left .tabs li a {display:block; padding:10px 15px; line-height: 24px; font-family: 'FuturaBT-Book'; }
+.tab-left .tabs li a {display:block; padding:10px 15px; line-height: 24px; }
 .tab-left .tabsPage li a:hover,
 .tab-left .tabs li a:hover {text-decoration:none;}
 .tab-left .tabsPage li.active,
@@ -10804,7 +10740,7 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
 .tab-history-container {overflow: hidden;clear: both;float: left;padding: 0px;width:100%;border-bottom: 3px solid #F3F3F3;}
 .tab-history-content {padding: 25px;background: #F3F3F3;}
 .tab-history-content h3 { font-size: 18px;margin-bottom: 10px;color: #454545;}
-.tab-history-content h4{font-family: 'DBYordXBd';color:#000;font-size: 40px;}
+.tab-history-content h4{color:#000;font-size: 40px;}
 
 #accordion .toggle-tabs {
   display: none;
@@ -10813,7 +10749,6 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
   margin: 0;
   margin-bottom: 10px;
   color: #636363;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: normal;
@@ -10868,6 +10803,7 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
 }
 #accordion li .plusimage h2 {
   margin-right: 10px;
+
 }
 
 .page-sitemap .links {
@@ -10916,16 +10852,16 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
 .contacts-content .buttons-set {border:none; text-align:left;}
 .contacts-content .buttons-set p {width:100%; float:left; margin:0px;}
 .contacts-content .buttons-set button.button {  float: left; margin: 0px; min-width: 250px; height: 40px; border-radius: 5px;}
-.contacts-content h4 {font-family: 'DBYordX'; font-weight:normal; color:#252525; font-size:24px; text-transform:none; margin-bottom:18px;}
-.contacts-content h2  {font-size:36px; color:#FFC220; font-family: 'DBYordXMed'; font-weight:normal; margin:0px; line-height:36px; margin-top:-3px;}
-.contacts-content .contact-right .box-gray {float:left; width:100%; background:#F6F6F6; padding:10px; font-family: 'DBYordX';}
-.contacts-content .contact-right .box-gray label {display:block; line-height:26px; margin:0px; font-size:20px; font-family: 'DBYordXMed'; font-weight:normal; }
+.contacts-content h4 { font-weight:normal; color:#252525; font-size:24px; text-transform:none; margin-bottom:18px;}
+.contacts-content h2  {font-size:36px; color:#FFC220; font-weight:normal; margin:0px; line-height:36px; margin-top:-3px;}
+.contacts-content .contact-right .box-gray {float:left; width:100%; background:#F6F6F6; padding:10px; }
+.contacts-content .contact-right .box-gray label {display:block; line-height:26px; margin:0px; font-size:20px; font-weight:normal; }
 .contacts-content .contact-right .box-gray a {display:block; font-size:36px;  margin:0px; line-height:38px; font-weight:bold;color:#FFC220; padding-left:45px; background:url(../images/contatct1.png) no-repeat left center;}
 .contacts-content .contact-right .box-gray a:hover{text-decoration:none; }
 .contacts-content .contact-right .box-gray span {display:block; font-size:20px;  margin:0px; line-height:26px;}
 .contacts-content .contact-right .list-contacts {margin:20px 0;}
 .contacts-content .contact-right .list-contacts,
-.contacts-content .contact-right .list-contacts li{float:left; width:100%; font-family: 'DBYordX';}
+.contacts-content .contact-right .list-contacts li{float:left; width:100%; }
 .contacts-content .contact-right .list-contacts li {padding:10px 0px 10px 52px; font-size:20px; line-height:24px; position:relative; }
 .contacts-content .contact-right .list-contacts li:before {content:""; width:52px; height:100%; top:0px; left:0px; position:absolute;}
 .contacts-content .contact-right .list-contacts li  a {font-size:20px; color:#252525;}
@@ -10943,7 +10879,6 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
  * ============================================ */
 .price-box .minimal-price-link .label {
   color: #cf5050;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -11491,7 +11426,6 @@ body[class*="checkout-multishipping-"] .checkout-progress > li {
   border-bottom: 1px solid #cccccc;
   border-right: 1px solid #cccccc;
   margin-bottom: 10px;
-  font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 body[class*="checkout-multishipping-"] .checkout-progress > li.active {
   background-color: #dddddd;
@@ -11764,7 +11698,6 @@ div.calendar table td.button {
 
 .page-print.customwishlist-index-print,
 .page-print.customwishlist-index-print .customer-wishlist-item-info .product-name,
-.page-print.customwishlist-index-print .my-wishlist .page-title h1{font-family: Tahoma, sans-serif; }
 .page-print.customwishlist-index-print #wishlist-table-print{width: 100%; border-top: 1px solid #444;}
 .page-print.customwishlist-index-print #wishlist-table-print th{height: 35px;}
 .page-print.customwishlist-index-print #wishlist-table-print tr{border-bottom: 1px solid #ccc;}
@@ -11803,11 +11736,7 @@ body:lang(th) #customer-reviews .review-list.no-review .no-rating, body:lang(th)
 body:lang(th) .block-recently-viewed .box-title span, body:lang(th) .categories-list .category-grid .categories-links a.link-has-sub, body:lang(th) .categories-list .category-grid .categories-links a.link-no-sub,
 body:lang(th) .block-layered-nav .block-content > dl > dt, body:lang(th) .category-overview .category-info .page-title.category-title h1, body:lang(th) .products-grid .actions .button.btn-cart, body:lang(th) .title-style3,
 body:lang(th) .main-home .box-home-decor .decor-style .banner-title, body:lang(th) .box-home-decor .title-decor label, body:lang(th) .box-home-decor .title-decor label strong{
-  font-weight: 700;
-}
-
-body:lang(th) .product-view .product-shop .product-sku{
-  font-weight: 300;
+  font-weight: bold;
 }
 
 body:lang(th) .product-view .add-to-cart button.btn-cart span span, body:lang(th) .products-grid .actions .button.btn-cart { line-height: 45px;}

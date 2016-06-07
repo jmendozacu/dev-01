@@ -33,6 +33,29 @@ class MarginFrame_Sync_Helper_Data extends Mage_Core_Helper_Abstract
         }
     }
     */
+
+    public function logSync($check='', $sync_type='', $message='', $filenamecsv='')
+    {
+        $resource = Mage::getSingleton('core/resource');
+        // $readConnection = $resource->getConnection('core_read');
+        $writeConnection = $resource->getConnection('core_write');
+
+        //
+        if(!$check){
+            //success
+             $query = "
+                    INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
+                    VALUES ('Retail Price', NOW(), 'Success','','$filenamecsv)')
+                ";
+        } else {
+            //fail 
+            $query = "
+                    INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
+                    VALUES ('Retail Price', NOW(), 'Fail','".json_encode($message)."','$filenamecsv)')
+                ";
+        }
+        $writeConnection->query($query);
+    }
 	
     public function reindex(){
         $indexCollection = Mage::getModel('index/process')->getCollection();
