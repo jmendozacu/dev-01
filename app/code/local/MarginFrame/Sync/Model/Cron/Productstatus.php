@@ -6,6 +6,7 @@ class MarginFrame_Sync_Model_Cron_Productstatus extends Mage_Core_Model_Abstract
 		// /var/interface/product_status
 		$message = array();
 		$check = false ;
+		$filenamecsv ='';
 		try {
 			
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_status'.DS;
@@ -127,7 +128,7 @@ class MarginFrame_Sync_Model_Cron_Productstatus extends Mage_Core_Model_Abstract
 		}
 
 		$sync_type = 'Product Status';
-		Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
+		Mage::helper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
 
    	}
 }

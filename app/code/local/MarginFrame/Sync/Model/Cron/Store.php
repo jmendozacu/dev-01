@@ -6,6 +6,7 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 		// /var/interface/store
 		$message = array();
 		$check = false ;
+		$filenamecsv = '';
 		try {
 			
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'store'.DS;
@@ -176,11 +177,12 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 			}
 
 		} catch(Exception $ex) {
+			$check = true;
 			$message[] = 'Error : '.$ex->getMessage();
 		}
 
 		$sync_type = 'Store';
-		Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
+		Mage::helper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
 
    	}
 }

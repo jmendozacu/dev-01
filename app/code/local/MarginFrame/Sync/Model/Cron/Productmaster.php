@@ -4,6 +4,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 	public function Run() {
 		$message = array();
 		$check = false ;
+		$filenamecsv = '';
 		try {
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_master'.DS;
 			$dirprepare = $dir.'prepare'.DS;
@@ -51,8 +52,8 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				'INSTRUCTION_EN' 		=> 'care_instruction',
 				'PRICE' 				=> 'price',
 				'ItalianVeneer' 		=> 'italianveneer',
-				'JoyPrice' 				=> 'price_label',//joyprice
-				'DontMiss' 				=> 'price_label',//dontmiss
+				'JoyPrice' 				=> array('multiselect'=> array('price_tag'=>'joyprice')),//joyprice
+				'DontMiss' 				=> array('multiselect'=> array('price_tag'=>'dontmiss')),//dontmiss
 				'GermanMelamine' 		=> array('multiselect'=> array('selling_point'=>'germanmelamine')),
 				'E1' 					=> array('multiselect'=> array('selling_point'=>'eyes')),
 				'SuperFlex' 			=> array('multiselect'=> array('selling_point'=>'superflex')),
@@ -81,6 +82,10 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				'SafetyGlassw' 			=> 'safetyglass',
 			);
 
+			$price_tag = array(
+				'JoyPrice' => 'joyprice',
+				'DontMiss' => 'dontmiss'
+			);
 			$product = Mage::getModel('catalog/product');
 			$collections = Mage::getModel('mgfsync/catcode')->getCollection();
 			$catcodes = array();
@@ -211,12 +216,17 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 													}
 													$rowCsv_EN[array_search('selling_point', $indexEN)] = ltrim($rowCsv_EN[array_search('selling_point', $indexEN)],',');
 													$rowCsv_EN[array_search('selling_point', $indexEN)] = rtrim($rowCsv_EN[array_search('selling_point', $indexEN)],',');
+												} elseif($km == 'price_tag'){
+													if(trim($cols[$value])=='1'){
+														$rowCsv_EN[array_search('price_tag', $indexEN)] .= ','.$price_tag[$key];	
+													}
+													$rowCsv_EN[array_search('price_tag', $indexEN)] = ltrim($rowCsv_EN[array_search('price_tag', $indexEN)],',');
+													$rowCsv_EN[array_search('price_tag', $indexEN)] = rtrim($rowCsv_EN[array_search('price_tag', $indexEN)],',');
 												} else {
 													$rowCsv_EN[array_search('categories', $indexEN)] .= ','.$catcodes[trim($cols[$value])];
 													$rowCsv_EN[array_search('categories', $indexEN)] = ltrim($rowCsv_EN[array_search('categories', $indexEN)],',');
 													$rowCsv_EN[array_search('categories', $indexEN)] = rtrim($rowCsv_EN[array_search('categories', $indexEN)],',');
 												}
-												//// price label
 
 											}
 											break;
@@ -238,9 +248,6 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 								}
 
 							}
-							echo '<pre>';
-							print_r($rowCsv_EN);
-							echo '</pre>';
 							$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
 							fputcsv($file,$rowCsv_EN);
 							fclose($file);
@@ -251,7 +258,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 						}
 						$rowNum++;
 						
-					}
+					}	
 
 					Mage::log('close file : '.$dir.$filenamecsv, null, $filelogName);
 
@@ -295,7 +302,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 		}
 
 		$sync_type = 'Product Master';
-		Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
+		Mage::helper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
 
    	}
 }

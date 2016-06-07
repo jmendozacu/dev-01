@@ -9,7 +9,7 @@ class MarginFrame_Sync_Model_Cron_RenameECOM extends Mage_Core_Model_Abstract
 
 			$dirs = array();
 			$dirs[] = Mage::getBaseDir('var').DS.'export'.DS.'product_active'.DS;
-			$dirs[] =	Mage::getBaseDir('var').DS.'export'.DS.'product_master'.DS;
+			$dirs[] = Mage::getBaseDir('var').DS.'export'.DS.'product_master'.DS;
 			// Tiw
 
 			// Create folder
@@ -48,9 +48,9 @@ class MarginFrame_Sync_Model_Cron_RenameECOM extends Mage_Core_Model_Abstract
 			$message[] = 'Error : '.$ex->getMessage();
 		}
 
-		$sync_type = 'Rename ECOM';
-		$filenamecsv = '';
-		Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
+		// $sync_type = 'Rename ECOM';
+		// $filenamecsv = '';
+		// Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
 
    	}
 }

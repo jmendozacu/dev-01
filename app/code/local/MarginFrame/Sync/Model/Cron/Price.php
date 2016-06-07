@@ -6,6 +6,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 		// /var/interface/price
 		$message = array();
 		$check = false ;
+		$filenamecsv = '';
 		try {
 
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'price'.DS;
@@ -145,11 +146,12 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 			}
 
 		} catch(Exception $ex) {
+			$check = true;
 			$message[] = 'Error : '.$ex->getMessage();
 		}
 
 		$sync_type = 'Retail Price';
-		Mage::getHelper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
+		Mage::helper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
 
    	}
 }
