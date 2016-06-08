@@ -874,6 +874,7 @@
   .wrap-bannerads .bx-viewport .banner-desc .banner-actions a{width: 120px;}
   .wrap-bannerads .bx-viewport .banner-desc .banner-actions a, body:lang(th) .product-view .add-to-links > li > a{font-size: 11px;}
   body:lang(th) .view-dealers span{font-size: 14px;}
+  .product-view .add-to-links .shareproduct-content  h2{font-size: 20px;text-align: center;}
 }
 @media (max-width: 330px){
   .compare-popup{
