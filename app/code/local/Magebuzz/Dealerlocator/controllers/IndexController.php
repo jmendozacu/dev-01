@@ -42,7 +42,7 @@ class Magebuzz_Dealerlocator_IndexController extends Mage_Core_Controller_Front_
   public function indexAction() {
     $this->loadLayout();
     $head = $this->getLayout()->getBlock('head');
-    $head->setTitle('Store Locator');
+    $head->setTitle($this->__('Store Locator'));
     $google_key = Mage::getStoreConfig('dealerlocator/google_map_options/google_api_key');
     $googleJs = 'https://maps.googleapis.com/maps/api/js?key=' . $google_key . '&sensor=true&v=3.8';
     $head->addItem('external_js', $googleJs);
