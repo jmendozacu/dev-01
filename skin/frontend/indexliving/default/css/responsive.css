@@ -871,7 +871,9 @@
   .categories-list .category-grid li.category-item.last {width:100%; margin-right:0px!important; margin-bottom:2%!important; position:relative; min-height:308px;}
   .cms-home .div-banner li:last-child img { width: 100%;}
   #wishlist-view-form .button.btn-add + .button.btn-add {width:100%;}
-  .wrap-bannerads .bx-viewport .banner-desc .banner-actions a{width: 120px;font-size: 11px;}
+  .wrap-bannerads .bx-viewport .banner-desc .banner-actions a{width: 120px;}
+  .wrap-bannerads .bx-viewport .banner-desc .banner-actions a, body:lang(th) .product-view .add-to-links > li > a{font-size: 11px;}
+  body:lang(th) .view-dealers span{font-size: 14px;}
 }
 @media (max-width: 330px){
   .compare-popup{
