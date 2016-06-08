@@ -94,7 +94,7 @@
           <dealerlocator_tag>
             <table>dealerlocator_tag</table>
           </dealerlocator_tag>
-          
+
           <!-- data for product dealer -->
           <productdealer>
             <table>product_dealer</table>
@@ -133,7 +133,7 @@
       <dealerlocator>
         <class>Magebuzz_Dealerlocator_Block</class>
       </dealerlocator>
-      
+
       <!-- add new tab for product manager to set store locator -->
       <adminhtml>
         <rewrite>
@@ -152,7 +152,7 @@
   <default>
     <dealerlocator>
       <google_map_options>
-        <google_geo_api_url>http://maps.googleapis.com/maps/api/geocode/json</google_geo_api_url>
+        <google_geo_api_url>https://maps.googleapis.com/maps/api/geocode/json</google_geo_api_url>
         <show_search_form>1</show_search_form>
         <enable_search_suggestion>1</enable_search_suggestion>
         <default_dealer_icon>default/dealer_icon.png</default_dealer_icon>

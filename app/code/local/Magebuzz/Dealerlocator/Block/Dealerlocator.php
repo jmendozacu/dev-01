@@ -173,8 +173,8 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
   }
 
   /* update version 1.8
-  * function getListTag  
-  * Return : list Tag 
+  * function getListTag
+  * Return : list Tag
   */
   public function getListTag() {
     $dealerCollection = $this->_getDealers();
@@ -200,7 +200,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     if ($configUrl != '') {
       $url = Mage::getStoreConfig('dealerlocator/google_map_options/google_geo_api_url') . "?address=$address&sensor=false";
     } else {
-      $url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
+      $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
     }
 
     $rCURL = curl_init();
@@ -217,7 +217,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     // return did you mean from item 2nd
     return array_slice($result, 1, 4);
   }
-	
+
 	public function getDealerByTag($tag){
     $tagModel = Mage::getModel('dealerlocator/tag');
     $dealerModel = Mage::getModel('dealerlocator/dealerlocator');
