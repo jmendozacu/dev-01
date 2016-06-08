@@ -502,12 +502,13 @@ function AmAjaxLoginLoad(buttonClass){
 
 function reRunSomeScripts() {
 	/* mini login */
-  jQuery('.togglelogin').click(function(){
+  jQuery('.togglelogin').click(function(e){
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
       jQuery(this).addClass('active');
       jQuery('#header-mini-login').show();
+      event.stopPropagation();
     }
     else{
       jQuery(this).removeClass('active');
@@ -516,17 +517,30 @@ function reRunSomeScripts() {
   });
   /* */
 
-  jQuery('.toggle-minicart').click(function(){
+  jQuery('.toggle-minicart').click(function(e){
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');
       jQuery(this).addClass('active');
       jQuery('#mini-cart-info').show();
+      event.stopPropagation();
     }
     else{
       jQuery(this).removeClass('active');
       jQuery('#mini-cart-info').hide();
     }
+  });
+
+  jQuery('#loginClose').click(function(e){
+    jQuery('.box-header-content').hide();
+    jQuery('#header .top-link-account .toggle-header-content').removeClass('active');
+    jQuery('#header-mini-login').hide();
+  });
+
+  jQuery('#cartClose').click(function(){
+    jQuery('.box-header-content').hide();
+    jQuery('#header .header-minicart .toggle-header-content').removeClass('active');
+    jQuery('#header-mini-login').hide();
   });
 }
 
