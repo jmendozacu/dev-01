@@ -25,16 +25,21 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
     $productId = $data['id'];
     $current_store_id = Mage::app()->getStore()->getStoreId();
     $dealerlocatorTable = Mage::getSingleton('core/resource')->getTableName('dealerlocator');
+    $dealerStoreTable = Mage::getSingleton('core/resource')->getTableName('dealerlocator_store');
+		$storeIds = array(Mage_Core_Model_App::ADMIN_STORE_ID, Mage::app()->getStore()->getId());
     
     $productdealerModel = Mage::getModel('dealerlocator/productdealer');
     $productdealerCollection = $productdealerModel->getCollection()
       ->addFieldToFilter('product_id', $productId)
-      ->addFieldToFilter('store_id', $current_store_id)
+      ->addFieldToFilter('main_table.store_id', $current_store_id)
         ->addFieldToFilter('display', 1);
-
 
     $productdealerCollection->join(array('deatbl' => $dealerlocatorTable), 'deatbl.dealerlocator_id = main_table.dealer_id', array('deatbl.*'))
 			->addFieldToFilter('deatbl.status', '1');
+			
+		$productdealerCollection->join(array('dealerStore' => $dealerStoreTable), 'dealerStore.dealer_id=main_table.dealer_id', array('dealerStore.store_id'))
+			->addFieldToFilter('dealerStore.store_id', array('in' => $storeIds));
+			
     return $productdealerCollection;
   }
 	
