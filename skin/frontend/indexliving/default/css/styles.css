@@ -11758,5 +11758,6 @@ body:lang(th) .mini-account  a{ padding: 12px 10px 10px 40px; font-size: 15px;}
 body:lang(th) .mini-account .box-title{font-size: 16px;padding: 11px 10px 7px;}
 body:lang(th) .block-account li {font-size:15px}
 body:lang(th) .nav-primary li.level1 > a{padding: 14px 0 10px 68px;}
+body:lang(th) .nav-primary li.level1:hover > a{padding-left: 84px; }
 body:lang(th) .view-dealers span{font-size: 25px;}
 
