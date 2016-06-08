@@ -4604,7 +4604,7 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid .actions  p, .products-list .actions  p {color:#000;}
 
 .products-grid > li:hover .actions, .products-grid div.item:hover .actions {z-index:1; opacity:1;}
-.products-grid > li:hover .link-wishlist, .products-grid div.item:hover .link-wishlist{display:block;}
+.products-grid > li:hover .link-wishlist, .products-grid div.item:hover .link-wishlist{display:block;z-index: 9;}
 
 .products-grid .ratings .rating-box {
   margin: 0 auto;
