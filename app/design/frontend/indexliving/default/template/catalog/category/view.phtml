@@ -35,10 +35,16 @@
     $_helper    = $this->helper('catalog/output');
     $_category  = $this->getCurrentCategory();
     $_imgHtml   = '';
-    if ($_imgUrl = $_category->getImageUrl()) {
-        $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></p>';
-        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
-    }
+		$imageThumbnail = Mage::getResourceModel('catalog/category')->getAttributeRawValue($_category->getId(), "category_thumbnail", Mage::app()->getStore()->getId());		
+    if ($imageThumbnail) {
+			$_imgUrl = Mage::getBaseUrl('media').'catalog/category/'.$imageThumbnail;
+			$_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></p>';
+      $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'category_thumbnail');
+		}
+		// if ($_imgUrl = $_category->getImageUrl()) {
+        // $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></p>';
+        // $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    // }
 ?>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
 
