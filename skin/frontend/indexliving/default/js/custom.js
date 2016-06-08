@@ -105,7 +105,7 @@ function ss_plugin_loadpopup_js(em){
 	return false;
 }
 
-function closeWhenClickOutside( target, content, functionName, className){
+function closeWhenClickOutside( target, content, functionName, className, event){
   if(!jQuery(event.target).is(target) && !jQuery(event.target).is(content)) {
     if(!jQuery(event.target).closest(content).length) {
       if(jQuery(content).is(":visible")) {
@@ -120,11 +120,11 @@ jQuery(document).ready(function () {
 
 	jQuery(document).click(function(event) {
     //Hide login box
-    closeWhenClickOutside('.togglelogin','#header-mini-login', 'hide', 'active');
+    closeWhenClickOutside('.togglelogin','#header-mini-login', 'hide', 'active', event);
     // Hide mini cart box
-    closeWhenClickOutside('.toggle-minicart','#mini-cart-info', 'hide', 'active');
+    closeWhenClickOutside('.toggle-minicart','#mini-cart-info', 'hide', 'active', event);
     // Hide share
-    closeWhenClickOutside('#shareProductLink','#shareproduct-content', 'slideUp', 'active');
+    closeWhenClickOutside('#shareProductLink','#shareproduct-content', 'slideUp', 'active', event);
 	})
 
   checkItemInWishlist();
