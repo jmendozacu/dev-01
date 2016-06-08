@@ -38,7 +38,7 @@ $_url              = $this->getAjaxUrl();
         </select>
       </div>
     <?php endif ?>
-    <div class="nav-input UI-NAV-INPUT">
+    <div class="nav-input UI-NAV-INPUT" style="padding-left: 76px;">
       <input id="input-search" class="input-text UI-SEARCH" type="text" autocomplete="off" name="<?php echo $_helper->getQueryParamName() ?>" value="<?php echo $_helper->getEscapedQueryText() ?>" maxlength="<?php echo $_helper->getMaxQueryLength() ?>" placeholder="<?php echo $this->__(Mage::getStoreConfig('searchautocomplete/general/tip')) ?>" onfocus="this.placeholder = ''" title="<?php echo $this->__(Mage::getStoreConfig('searchautocomplete/general/tip')) ?>" />
     </div>
     <div class="searchautocomplete-loader UI-LOADER">
