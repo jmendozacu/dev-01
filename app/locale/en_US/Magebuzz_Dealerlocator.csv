@@ -5,7 +5,7 @@
 "Search", "Search"
 "Reset", "Reset"
 "Dealers", "Dealers"
-"Store", "Store"
+"Store","STORE LOCATOR"
 "Address", "Address"
 "Phone", "Phone"
 "Email", "Email"
@@ -52,3 +52,4 @@
 "Find Nearest Dealers", "Find Nearest Dealers"
 "No dealers are available.", "No dealers are available."
 "Did you mean?", "Did you mean?"
+"Store","STORE LOCATOR"
