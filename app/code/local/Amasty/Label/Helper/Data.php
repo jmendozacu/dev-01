@@ -12,7 +12,7 @@ class Amasty_Label_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getLabels($product, $mode = 'category', $useJs = false)
     {
-        $html = '';
+        $html = "<div class='product-label-{$mode}'>";
 
         $applied = false;
         foreach ($this->_getCollection() as $label) {
@@ -34,6 +34,8 @@ class Amasty_Label_Helper_Data extends Mage_Core_Helper_Abstract
                 }
             }
         }
+
+        $html .= "</div><span style='clear: both;'/>";
 
         return $html;
     }
