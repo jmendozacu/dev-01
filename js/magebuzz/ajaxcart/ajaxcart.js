@@ -441,11 +441,11 @@ AjaxCart.prototype = {
 		this.removeWishlistItem(wishlist_item_id);
   },
 	
-	ajaxAddToWishlist: function(url, islogin) {
+	ajaxAddToWishlist: function(url) {
 		//wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/add');
 		wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/update');
 		if (!customerIsLoggedIn) {
-			if (AmAjaxLoginObj || islogin) { // If enable amasty ajaxlogin
+			if (AmAjaxLoginObj) { // If enable amasty ajaxlogin
 				//this.setCookie('addWishlistUrl', encodeURI(url), 365);
 				var params = {add_to_wishlist: '1', wishlist_url: url};
 				AmAjaxLoginObj.sendLoginAjaxReview(params); // Open login popup form

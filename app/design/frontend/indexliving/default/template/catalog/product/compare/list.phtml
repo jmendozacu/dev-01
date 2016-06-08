@@ -59,9 +59,7 @@
 											<div class="compare-item-actions">
 												<?php if ($this->helper('wishlist')->isAllow()) : ?>
 													<ul class="add-to-links">
-															<li><a onclick="ajaxCart.ajaxAddToWishlist('<?php echo $this->getAddToWishlistUrl($_item) ?>',
-																<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>false <?php else:?>true <?php endif;?>
-																)" href="javascript:void(0)" class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_item->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a></li>
+															<li><a onclick="ajaxCart.ajaxAddToWishlist('<?php echo $this->getAddToWishlistUrl($_item) ?>')" href="javascript:void(0)" class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_item->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a></li>
 													</ul>
 												<?php endif; ?>
 												<?php $product = Mage::getModel('catalog/product')->load($_item->getId());?>
