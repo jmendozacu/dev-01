@@ -35,7 +35,7 @@ class Amasty_Label_Helper_Data extends Mage_Core_Helper_Abstract
             }
         }
 
-        $html .= "</div><span style='clear: both;'/>";
+        $html .= "</div><div style='clear: both;'></div>";
 
         return $html;
     }

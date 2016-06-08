@@ -11761,7 +11761,7 @@ body:lang(th) .view-dealers span{font-size: 16px;}
 
 .allcategories-list .category-grid .category-item img { height:346px; }
 
-.product-label-category {}
-.product-label-product { padding-left: 125px; }
+.product-label-category { position: absolute; }
+.product-label-product { padding-left: 15%; position: absolute; }
 .product-label-category table { position: relative; margin: 0 3px 0 0; }
 .product-label-product table { position: relative; margin: 0 5px 0 0; }
