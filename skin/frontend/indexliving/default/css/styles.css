@@ -11753,9 +11753,10 @@ body:lang(th) .product-view .add-to-cart button.btn-cart span span{line-height: 
 body:lang(th) .products-grid .actions .button.btn-cart { line-height: 2.4;}
 body:lang(th) .product-view .product-review-summary .review-box .box-title .br .write-review-popup{padding: 9px 15px 5px;}
 body:lang(th) .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{margin-top: 36%;}
-body:lang(th) .product-view .add-to-links > li > a{font-size: 12px;line-height:38px;}
+body:lang(th) .product-view .add-to-links > li > a{font-size: 19px;line-height:38px;}
 body:lang(th) .mini-account  a{ padding: 12px 10px 10px 40px; font-size: 15px;}
 body:lang(th) .mini-account .box-title{font-size: 16px;padding: 11px 10px 7px;}
 body:lang(th) .block-account li {font-size:15px}
 body:lang(th) .nav-primary li.level1 > a{padding: 14px 0 10px 68px;}
+body:lang(th) .view-dealers span{font-size: 25px;}
 
