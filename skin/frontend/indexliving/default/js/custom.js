@@ -126,6 +126,15 @@ jQuery(document).ready(function () {
 				}
 			}
 		}
+    // Hide share
+    if(!jQuery(event.target).is('#shareproduct-content') && !jQuery(event.target).is('#shareProductLink')) {
+      if(!jQuery(event.target).closest('#shareproduct-content').length) {
+        if(jQuery('#shareproduct-content').is(":visible")) {
+          jQuery('#shareproduct-content').slideUp();
+          jQuery('#shareProductLink').removeClass('active');
+        }
+      }
+    }
 	})
 
   checkItemInWishlist();
@@ -238,14 +247,14 @@ jQuery(document).ready(function () {
     }
   });
 
-  jQuery('#loginClose').on('click', function(){
+  jQuery('#loginClose').click(function(){
     jQuery('.box-header-content').hide();
     jQuery('#header .top-link-account .toggle-header-content').removeClass('active');
     jQuery('#header-mini-login').hide();
   });
   /* */
 
-  jQuery('.toggle-minicart').on('click', function(){
+  jQuery('.toggle-minicart').click(function(){
 		jQuery('.header-cart-box .list-items').css("max-height", widthHeight - 195);
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
@@ -259,14 +268,14 @@ jQuery(document).ready(function () {
     }
   });
 
-  jQuery('#cartClose').on('click', function(){
+  jQuery('#cartClose').click(function(){
     jQuery('.box-header-content').hide();
     jQuery('#header .header-minicart .toggle-header-content').removeClass('active');
     jQuery('#header-mini-login').hide();
   });
 
   /*icon search on mobile */
-  jQuery('#toggle-search').on('click', function(){
+  jQuery('#toggle-search').click(function(){
     jQuery('.box-header-content').hide();
     jQuery('.toggle-header-content').removeClass('active');
     jQuery('#header-search').show();
@@ -278,7 +287,7 @@ jQuery(document).ready(function () {
 
 
   /*icon menu on mobile */
-  jQuery('#toggle-menu').on('click', function(){
+  jQuery('#toggle-menu').click(function(){
     jQuery('.box-top-menu').css("max-height", widthHeight -44);
 		if(jQuery('.box-header-content').hasClass('active')){
 			jQuery('.box-header-content').removeClass('active');
