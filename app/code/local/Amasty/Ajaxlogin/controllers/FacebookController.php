@@ -40,9 +40,12 @@ class Amasty_Ajaxlogin_FacebookController extends Amasty_Ajaxlogin_AjaxloginCont
     }
     
      public function iframeAction() {
-         $block = Mage::app()->getLayout()->createBlock('amajaxlogin/social_facebook', 'amajaxlogin_facebook')
+         if (!Mage::getSingleton('customer/session')->isLoggedIn()){
+            $block = Mage::app()->getLayout()->createBlock('amajaxlogin/social_facebook', 'amajaxlogin_facebook')
                              ->setTemplate('amasty/amajaxlogin/social/facebook.phtml');
-         echo $block->toHtml();
+            echo $block->toHtml();
+         }
+         echo '';
      }
   
     public function replaceJs($result)
