@@ -113,6 +113,18 @@ function initUpdatableFieldEvent(field, section){
                 updateCheckout('shipping');
             });
         }
+				
+				if ($('billing_as_shipping_yes')) {
+            $('billing_as_shipping_yes').observe("click", function(){
+                updateCheckout('shipping');
+            });
+        }
+				
+				if ($('billing_as_shipping_no')) {
+            $('billing_as_shipping_no').observe("click", function(){
+                updateCheckout('billing');
+            });
+        }
         
 
         if (input.tagName.toLowerCase() == 'input'){

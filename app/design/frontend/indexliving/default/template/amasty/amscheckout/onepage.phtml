@@ -608,6 +608,16 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
             $('shipping:same_as_billing').observe("click", function () {
                 $('billing:use_for_shipping_yes').click();
             });
+						
+				if ($('billing_as_shipping_yes')) 
+					$('billing_as_shipping_yes').observe("click", function () {
+							$('billing-form-show').hide();
+					});
+					
+				if ($('billing_as_shipping_no')) 
+					$('billing_as_shipping_no').observe("click", function () {
+							$('billing-form-show').show();
+					});
 
         if (typeof(discountForm) == 'object') {
             discountForm.submit = function (isRemove) {
@@ -713,24 +723,24 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
         //        }
 
         function completeCheckout() {
-            if (($('checkbox_same_as_shipping').checked == true) && ($('radio_use_billing').checked == false)) {
-                arrElements = Form.getElements($('billing-new-address-form'));
-                for (var elemIndex in arrElements) {
-                    if (arrElements[elemIndex].id) {
-                        var sourceField = $(arrElements[elemIndex].id.replace(/^billing:/, 'shipping:'));
-                        if (sourceField) {
-                            arrElements[elemIndex].value = sourceField.value;
-                        }
-                    }
-                }
+            // if (($('checkbox_same_as_shipping').checked == true) && ($('billing_as_shipping_no').checked == false)) {
+                // arrElements = Form.getElements($('billing-new-address-form'));
+                // for (var elemIndex in arrElements) {
+                    // if (arrElements[elemIndex].id) {
+                        // var sourceField = $(arrElements[elemIndex].id.replace(/^billing:/, 'shipping:'));
+                        // if (sourceField) {
+                            // arrElements[elemIndex].value = sourceField.value;
+                        // }
+                    // }
+                // }
 
-                new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+                // new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
 
-                new CityUpdater('billing:country_id', 'billing:region_id', 'billing:city', 'billing:city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
+                // new CityUpdater('billing:country_id', 'billing:region_id', 'billing:city', 'billing:city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
 
-                new SubdistrictUpdater('billing:country_id', 'billing:region_id', 'billing:city_id', 'billing:subdistrict', 'billing:subdistrict_id', 'billing:postcode', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
+                // new SubdistrictUpdater('billing:country_id', 'billing:region_id', 'billing:city_id', 'billing:subdistrict', 'billing:subdistrict_id', 'billing:postcode', <?php echo Mage::helper('customaddress')->getSubdistrictJson() ?>);
 
-            }
+            // }
             if (amscheckoutForm.validator.validate() && !checkoutRunning) {
                 showLoading();
                 checkoutRunning = true;

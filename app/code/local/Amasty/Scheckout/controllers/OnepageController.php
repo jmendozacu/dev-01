@@ -17,19 +17,67 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
 //    
     protected function _amSaveBilling(){
         $billing = $this->getRequest()->getPost('billing', array());
-        
+				$shipping = $this->getRequest()->getPost('shipping', array());
+				$usingBillingCase = isset($shipping['same_as_billing']) ? (int)$shipping['same_as_billing'] : 0;
+        if (!$usingBillingCase) {
+					//billing is different 
+					$billing['email'] = $shipping['email'];
+					$billing['day'] = $shipping['day'];
+					$billing['month'] = $shipping['month'];
+					$billing['year'] = $shipping['year'];
+					$billing['gender'] = $shipping['gender'];
+					$billing['customer_password'] = $shipping['customer_password'];
+					$billing['confirm_password'] = $shipping['confirm_password'];
+					
+					$this->getRequest()->setPost('billing', $billing);	
+				}
+				else {
+					// $billingData = array_merge($billing, $shipping);
+					// $billingData = array_unique($billingData);
+					$this->getRequest()->setPost('billing', $shipping);	
+					$addressId = $billing = $this->getRequest()->getPost('shipping_address_id', false);
+					$this->getRequest()->setPost('billing_address_id', $addressId);
+				}
         $this->saveMethodAction();
             
         $this->saveBillingAction();
 
-        $usingShippingCase = isset($billing['use_for_shipping']) ? (int)$billing['use_for_shipping'] : 0;
+        // $usingShippingCase = isset($billing['use_for_shipping']) ? (int)$billing['use_for_shipping'] : 0;
 
-        if (!$usingShippingCase)
-            $this->saveShippingAction();
+        // if (!$usingShippingCase)
+            // $this->saveShippingAction();
     }
     
     protected function _amSaveShipping(){
+				$shipping = $this->getRequest()->getPost('shipping', array());
+				$billing = $this->getRequest()->getPost('billing', array());
+								
+				$this->saveMethodAction();
         $this->saveShippingAction();
+				
+				$usingBillingCase = isset($shipping['same_as_billing']) ? (int)$shipping['same_as_billing'] : 0;
+				if (!$usingBillingCase) {
+					//billing is different 
+					$billing['email'] = $shipping['email'];
+					$billing['day'] = $shipping['day'];
+					$billing['month'] = $shipping['month'];
+					$billing['year'] = $shipping['year'];
+					$billing['gender'] = $shipping['gender'];
+					$billing['customer_password'] = $shipping['customer_password'];
+					$billing['confirm_password'] = $shipping['confirm_password'];
+					
+					$this->getRequest()->setPost('billing', $billing);
+					$this->saveBillingAction();
+				}
+				else {
+					// billing is the same as shipping 
+					// // $billingData = array_merge($billing, $shipping);
+					// // $billingData = array_unique($billingData);
+					$this->getRequest()->setPost('billing', $shipping);
+					$addressId = $billing = $this->getRequest()->getPost('shipping_address_id', false);
+					$this->getRequest()->setPost('billing_address_id', $addressId);
+					$this->saveBillingAction();
+				}
     }
     
     protected function _amSaveShippingMethod(){
