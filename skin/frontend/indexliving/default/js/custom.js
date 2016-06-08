@@ -105,36 +105,26 @@ function ss_plugin_loadpopup_js(em){
 	return false;
 }
 
+function closeWhenClickOutside( target, content, functionName, className){
+  if(!jQuery(event.target).is(target) && !jQuery(event.target).is(content)) {
+    if(!jQuery(event.target).closest(content).length) {
+      if(jQuery(content).is(":visible")) {
+        (functionName == 'slideUp') ? jQuery(content).slideUp() : jQuery(content).hide();
+        jQuery(target).removeClass(className);
+      }
+    }
+  }
+}
+
 jQuery(document).ready(function () {
 
 	jQuery(document).click(function(event) {
-		// Hide login box when click anywhere outside this box
-		if(!jQuery(event.target).is('.togglelogin') && !jQuery(event.target).is('#header-mini-login')) {
-			if(!jQuery(event.target).closest('#header-mini-login').length) {
-				if(jQuery('#header-mini-login').is(":visible")) {
-					jQuery('#header-mini-login').hide();
-					jQuery('.togglelogin').removeClass('active');
-				}
-			}
-		}
-		// Hide mini cart box
-		if(!jQuery(event.target).is('.toggle-minicart') && !jQuery(event.target).is('#mini-cart-info')) {
-			if(!jQuery(event.target).closest('#mini-cart-info').length) {
-				if(jQuery('#mini-cart-info').is(":visible")) {
-					jQuery('#mini-cart-info').hide();
-					jQuery('.toggle-minicart').removeClass('active');
-				}
-			}
-		}
+    //Hide login box
+    closeWhenClickOutside('.togglelogin','#header-mini-login', 'hide', 'active');
+    // Hide mini cart box
+    closeWhenClickOutside('.toggle-minicart','#mini-cart-info', 'hide', 'active');
     // Hide share
-    if(!jQuery(event.target).is('#shareproduct-content') && !jQuery(event.target).is('#shareProductLink')) {
-      if(!jQuery(event.target).closest('#shareproduct-content').length) {
-        if(jQuery('#shareproduct-content').is(":visible")) {
-          jQuery('#shareproduct-content').slideUp();
-          jQuery('#shareProductLink').removeClass('active');
-        }
-      }
-    }
+    closeWhenClickOutside('#shareProductLink','#shareproduct-content', 'slideUp', 'active');
 	})
 
   checkItemInWishlist();
