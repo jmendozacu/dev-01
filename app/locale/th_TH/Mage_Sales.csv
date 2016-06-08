@@ -220,7 +220,7 @@
 "Shipping Address","ที่อยู่สำหรับจัดส่งสินค้า"
 "Get shipping methods and rates","ขอวิธีการจัดส่งสินค้าและอัตราค่าบริการ"
 "Gift","ของขวัญ"
-"Sorry, no quotes are available for this order at this time.","ขอโทษค่ะ ไม่มีการอ้างอิงที่ใช้ได้สำหรบคำสั่งซื้อนี้ขณะนี้"
+"Sorry, no quotes are available for this order at this time.","กรุณากรอกที่อยู่จัดส่ง ระบบจะทำการคำนวณระยะเวลาและค่าบริการจัดส่ง"
 "Information","ข้อมูล"
 "Account Information","ข้อมูลบัญชีผู้ใช้"
 "Payment Information","ข้อมูลการชำระเงิน"
