@@ -5,6 +5,14 @@ function checkItemInWishlist() {
     url: BASE_URL + '/custom/index/checkItem'
   }).done(function(res){
     //debugger;
+    jQuery.ajax({
+      url: BASE_URL + 'customer/account/isajaxlogin',
+      success: function(html) {
+        customerIsLoggedIn = html == 1 ? true : false;
+      },
+      async:false
+    });
+
     if(!customerIsLoggedIn){
       jQuery('.link-wishlist').each(function(){
         var wl_a = jQuery(this);
@@ -216,7 +224,7 @@ jQuery(document).ready(function () {
     }
 	});
   /* mini login */
-  jQuery('.togglelogin').click(function(event){
+  jQuery('.togglelogin').on('click', function(event){
     jQuery('.box-header-content').hide();
     if (!jQuery(this).hasClass('active')){
       jQuery('.toggle-header-content').removeClass('active');

@@ -7,7 +7,21 @@
 require_once 'Mage/Customer/controllers/AccountController.php';
 
 class Amasty_Ajaxlogin_AccountController extends Mage_Customer_AccountController {
-	/**
+
+	public function isajaxloginAction(){
+        $output = 0;
+        if ($this->_getSession()->isLoggedIn()){
+            $output = 1;
+        }
+	    $this->getResponse()->setHeader('Content-type', 'application/json');
+	    $this->getResponse()->setBody($output);
+	    
+	    //$jsonData = json_encode(array('status' => $output));
+	    //$this->getResponse()->setHeader('Content-type', 'application/json');
+	    //$this->getResponse()->setBody($jsonData);
+    }
+
+    /**
 	 * Login post action
 	 */
 	public function loginPostAction()

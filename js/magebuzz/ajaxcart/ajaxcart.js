@@ -444,7 +444,16 @@ AjaxCart.prototype = {
 	ajaxAddToWishlist: function(url) {
 		//wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/add');
 		wishlist_url = url.replace('wishlist/index/add', 'customwishlist/index/update');
-		if (!customerIsLoggedIn) {
+    
+    jQuery.ajax({
+      url: BASE_URL + 'customer/account/isajaxlogin',
+      success: function(html) {
+        customerIsLoggedIn = html == 1 ? true : false;
+      },
+      async:false
+    });
+
+    if (!customerIsLoggedIn) {
 			if (AmAjaxLoginObj) { // If enable amasty ajaxlogin
 				//this.setCookie('addWishlistUrl', encodeURI(url), 365);
 				var params = {add_to_wishlist: '1', wishlist_url: url};
@@ -455,6 +464,7 @@ AjaxCart.prototype = {
 		} else {
 			this.loggedInAddToWishlist(wishlist_url);
 		}
+
 	},
 	
 	loggedInAddToWishlist: function(url) {

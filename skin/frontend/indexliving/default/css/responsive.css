@@ -871,6 +871,7 @@
   .categories-list .category-grid li.category-item.last {width:100%; margin-right:0px!important; margin-bottom:2%!important; position:relative; min-height:308px;}
   .cms-home .div-banner li:last-child img { width: 100%;}
   #wishlist-view-form .button.btn-add + .button.btn-add {width:100%;}
+  .wrap-bannerads .bx-viewport .banner-desc .banner-actions a{width: 120px;font-size: 11px;}
 }
 @media (max-width: 330px){
   .compare-popup{

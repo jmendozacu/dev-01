@@ -84,7 +84,8 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 
 			$price_tag = array(
 				'JoyPrice' => 'joyprice',
-				'DontMiss' => 'dontmiss'
+				'DontMiss' => 'dontmiss',
+				'HotPrice' => 'hotprice'
 			);
 			$product = Mage::getModel('catalog/product');
 			$collections = Mage::getModel('mgfsync/catcode')->getCollection();
@@ -260,7 +261,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 						
 					}	
 
-					Mage::log('close file : '.$dir.$filenamecsv, null, $filelogName);
+					Mage::log('close file : '.$dir.$filenamecsv, null, $filelogName,true);
 
 					// moved file to completed path
 					$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_master'.DS.'save'.DS;
@@ -278,16 +279,16 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					// Tiw
 					// check to remove file
 					if (!file_exists($dir.$filename)) {
-						Mage::log('removed : '.$dir.$filename, null, $filelogName);
+						Mage::log('removed : '.$dir.$filename, null, $filelogName,true);
 					}else{
-						Mage::log('can not removed : '.$dir.$filename, null, $filelogName);
+						Mage::log('can not removed : '.$dir.$filename, null, $filelogName,true);
 					}
 
 					// check to move file
 					if (!file_exists($dir.$filenamecsv)) {
-						Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filelogName);
+						Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filelogName,true);
 					}else{
-						Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filelogName);
+						Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filelogName,true);
 					}
 					
 

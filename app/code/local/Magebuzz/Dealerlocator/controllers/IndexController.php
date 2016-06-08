@@ -15,7 +15,7 @@ class Magebuzz_Dealerlocator_IndexController extends Mage_Core_Controller_Front_
       if ($configUrl != '') {
         $url = Mage::getStoreConfig('dealerlocator/google_map_options/google_geo_api_url') . "?address=$address&sensor=false";
       } else {
-        $url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
       }
 
       $rCURL = curl_init();
@@ -42,9 +42,9 @@ class Magebuzz_Dealerlocator_IndexController extends Mage_Core_Controller_Front_
   public function indexAction() {
     $this->loadLayout();
     $head = $this->getLayout()->getBlock('head');
-    $head->setTitle('Store Locator');
+    $head->setTitle($this->__('Store Locator'));
     $google_key = Mage::getStoreConfig('dealerlocator/google_map_options/google_api_key');
-    $googleJs = 'http://maps.googleapis.com/maps/api/js?key=' . $google_key . '&sensor=true&v=3.8';
+    $googleJs = 'https://maps.googleapis.com/maps/api/js?key=' . $google_key . '&sensor=true&v=3.8';
     $head->addItem('external_js', $googleJs);
     $this->renderLayout();
   }

@@ -46,13 +46,13 @@ class MarginFrame_Sync_Helper_Data extends Mage_Core_Helper_Abstract
                 //success
                  $query = "
                         INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
-                        VALUES ('Retail Price', NOW(), 'Success','','".$filenamecsv."')
+                        VALUES ('".$sync_type."', NOW(), 'Success','','".$filenamecsv."')
                     ";
             } else {
                 //fail 
                 $query = "
                         INSERT INTO `tbl_sync_log` (sync_type, created_at, log,message,filename)
-                        VALUES ('Retail Price', NOW(), 'Fail','".json_encode($message)."','".$filenamecsv."')
+                        VALUES ('".$sync_type."', NOW(), 'Fail','".json_encode($message)."','".$filenamecsv."')
                     ";
             }
             $writeConnection->query($query);

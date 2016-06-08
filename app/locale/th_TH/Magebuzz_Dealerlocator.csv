@@ -17,7 +17,7 @@
 "Google Geo API URL", "Google Geo API URL"
 "Google API Key", "Google API Key"
 "Allow customer to search dealer", "Allow customer to search dealer"
-"Leave empty for default.<br/>Format: <b>https://maps.googleapis.com/maps/api/geocode/json</b>", "Leave empty for default.<br/>Format: <b>https://maps.googleapis.com/maps/api/geocode/json</b>"
+"Leave empty for default.<br/>Format: <b>http://maps.googleapis.com/maps/api/geocode/json</b>", "Leave empty for default.<br/>Format: <b>http://maps.googleapis.com/maps/api/geocode/json</b>"
 "Default Dealer Icon Image", "Default Dealer Icon Image"
 "Default Location Address", "Default Location Address"
 "Search Radius", "Search Radius"
@@ -52,4 +52,5 @@
 "Find Nearest Dealers", "Find Nearest Dealers"
 "No dealers are available.", "No dealers are available."
 "Did you mean?", "Did you mean?"
-"Store","STORE LOCATOR"
+"STORE","STORE LOCATOR"
+

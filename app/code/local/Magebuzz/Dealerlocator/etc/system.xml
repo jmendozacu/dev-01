@@ -25,7 +25,7 @@
           <fields>
             <google_geo_api_url translate="label">
               <label>Google Geo API URL</label>
-              <comment><![CDATA[Leave empty for default.<br/>Format: <b>http://maps.googleapis.com/maps/api/geocode/json</b>]]></comment>
+              <comment><![CDATA[Leave empty for default.<br/>Format: <b>https://maps.googleapis.com/maps/api/geocode/json</b>]]></comment>
               <frontend_type>text</frontend_type>
               <sort_order>10</sort_order>
               <show_in_default>1</show_in_default>

@@ -8,7 +8,7 @@ class MarginFrame_Sync_Model_Cron_RenameECOM extends Mage_Core_Model_Abstract
 		try {
 
 			$dirs = array();
-			$dirs[] = Mage::getBaseDir('var').DS.'export'.DS.'product_active'.DS;
+			$dirs[] = Mage::getBaseDir('var').DS.'export'.DS.'product_request'.DS;
 			$dirs[] = Mage::getBaseDir('var').DS.'export'.DS.'product_master'.DS;
 			// Tiw
 

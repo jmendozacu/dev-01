@@ -27,7 +27,9 @@
  * @var Mage_Page_Block_Html_Header $this
  */
 ?>
-
+<script type="text/javascript">
+    customerIsLoggedIn = <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>false <?php else:?>true <?php endif;?>;
+</script>
 <div class="header-language-background">
     <div class="header-language-container">
         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topheader-links')->toHtml() ?>

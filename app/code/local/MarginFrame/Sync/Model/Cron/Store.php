@@ -33,8 +33,8 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 					$row = 1;
 
 					if (($handle = fopen($dir.$filenamecsv, "r")) !== FALSE) {
-					    Mage::log('=========================================================', null, $filename_log);
-					    Mage::log('open file : '.$dir.$filenamecsv, null, $filename_log);
+					    Mage::log('=========================================================', null, $filename_log,true);
+					    Mage::log('open file : '.$dir.$filenamecsv, null, $filename_log,true);
 
 					    $csvdata = array();
 					    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
@@ -52,13 +52,18 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 					    $product = Mage::getModel('catalog/product');
 					    $dealerAdds = array();
 					    $dealerDels = array();
-
+					    $processes = Mage::getSingleton('index/process')->getCollection();
+						$temp = array();
+			    		foreach ($processes as $key => $value) {
+							$temp[$value->getProcessId()] = $value->getMode();
+							$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
+						}
 					    foreach ($csvdata as $sku => $data) {
 
 					    	$p = $product->loadByAttribute('sku', $sku);
 
 					    	if ($p) {
-					    	Mage::log('found sku : '.$sku, null, $filename_log);
+					    	Mage::log('found sku : '.$sku, null, $filename_log,true);
 
 					    		$productId = $p->getIdBySku($sku);
 					    		
@@ -92,7 +97,7 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 					    		}
 					    		
 					    	} else {
-								Mage::log("SKU not found : ".$sku, null, $filename_log);
+								Mage::log("SKU not found : ".$sku, null, $filename_log,true);
 							}
 							
 							$dealerAddsDiff = array_diff($dealerAdds, $dealerOlds);
@@ -110,7 +115,7 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 							        foreach($productdealerIdDels as $productdealerIdDel){
 							          	$productdealerModel->setId($productdealerIdDel)->delete();
 							        }
-							        Mage::log('disabled sku : '.$sku. 'in last store_code '.$store_code, null, $filename_log);
+							        Mage::log('disabled sku : '.$sku. 'in last store_code '.$store_code, null, $filename_log,true);
 							    }
 
 						        //add new dealer
@@ -123,14 +128,14 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 							            $productdealerModel->save();
 							            // $log = 'Success';
 						          	}
-						          	Mage::log('active sku : '.$sku. 'in last store_code '.$store_code, null, $filename_log);
+						          	Mage::log('active sku : '.$sku. 'in last store_code '.$store_code, null, $filename_log,true);
 						        }
 
 							} catch (Exception $ex) {
 								$check = true;
 								$message[] = 'error sku : '.$sku.'or store_code '.$store_code.'-'.$ex->getMessage();
 								// handle the error here!!
-								Mage::log('error sku : '.$sku.'or store_code '.$store_code, null, $filename_log);
+								Mage::log('error sku : '.$sku.'or store_code '.$store_code, null, $filename_log,true);
 							}
 							unset($dealerOlds);
 							unset($dealerDels);
@@ -139,9 +144,13 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 							unset($s);
 					    	
 					    }					
-
+					    foreach ($temp as $key => $mode) {
+							$process = Mage::getSingleton('index/process')->load($key);
+							$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
+						}
+						
 						fclose($handle);
-						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log);
+						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log,true);
 
 						// moved file to completed path
 						$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'store'.DS.'save'.DS;
@@ -160,16 +169,16 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 						// Tiw
 						// check to remove file
 						if (!file_exists($dir.$filename)) {
-							Mage::log('removed : '.$dir.$filename, null, $filename_log);
+							Mage::log('removed : '.$dir.$filename, null, $filename_log,true);
 						}else{
-							Mage::log('can not removed : '.$dir.$filename, null, $filename_log);
+							Mage::log('can not removed : '.$dir.$filename, null, $filename_log,true);
 						}
 
 						// check to move file
 						if (!file_exists($dir.$filenamecsv)) {
-							Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filename_log);
+							Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filename_log,true);
 						}else{
-							Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filename_log);
+							Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filename_log,true);
 						}
 					}
 

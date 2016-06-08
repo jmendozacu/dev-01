@@ -266,15 +266,15 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                     this.hideAnimation();
-										this.updateHeader(); // Update header first
-										//response.redirect = "2"; 	
+					this.updateHeader(); // Update header first
+					//response.redirect = "2"; 	
 										
                     if (response.is_error == "1") {
-											this.showMessage(response, true); // Show message wrong passwords
-										} else {
-											customerIsLoggedIn = true; // need to update this var after logging in
-											this.showMessage(response, false);
-										}
+						this.showMessage(response, true); // Show message wrong passwords
+					} else {
+						customerIsLoggedIn = true; // need to update this var after logging in
+						this.showMessage(response, false);
+					}
                      if(response.is_error == "2"){
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
                             window.location.reload();
