@@ -1,21 +1,21 @@
 @font-face {
 	font-family: 'Index';
-	src: url('fonts/live/index-light.eot');
-	src: local('☺'), url('fonts/live/index-light.woff') format('woff'), url('fonts/live/index-light.ttf') format('truetype'), url('fonts/live/index-light.svg') format('svg');
+	src: url('fonts/live/index-light-2.eot');
+	src: url('fonts/live/index-light-2.eot?#iefix') format('embedded-opentype'), local('☺'), url('fonts/live/index-light-2.woff') format('woff'), url('fonts/live/index-light-2.ttf') format('truetype'), url('fonts/live/index-light-2.svg') format('svg');
 	font-weight: 300;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Index';
-	src: url('fonts/live/index-medium.eot');
-	src: local('☺'), url('fonts/live/index-medium.woff') format('woff'), url('fonts/live/index-medium.ttf') format('truetype'), url('fonts/live/index-medium.svg') format('svg');
+	src: url('fonts/live/index-medium-2.eot');
+	src: url('fonts/live/index-medium-2.eot?#iefix') format('embedded-opentype'), local('☺'), url('fonts/live/index-medium-2.woff') format('woff'), url('fonts/live/index-medium-2.ttf') format('truetype'), url('fonts/live/index-medium-2.svg') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 @font-face {
 	font-family: 'Index';
-	src: url('fonts/live/index-bold.eot');
-	src: local('☺'), url('fonts/live/index-bold.woff') format('woff'), url('fonts/live/index-bold.ttf') format('truetype'), url('fonts/live/index-bold.svg') format('svg');
+	src: url('fonts/live/index-bold-2.eot');
+	src: url('fonts/live/index-bold-2.eot?#iefix') format('embedded-opentype'), local('☺'), url('fonts/live/index-bold-2.woff') format('woff'), url('fonts/live/index-bold-2.ttf') format('truetype'), url('fonts/live/index-bold-2.svg') format('svg');
 	font-weight: bold;
 	font-style: normal;
 }
