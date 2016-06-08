@@ -36,7 +36,7 @@
           <?php // Zend_Debug::dump($_lang->getData()); ?>
           <li <?php if($_lang->getId() == $this->getCurrentStoreId()):?> class="active"<?php endif; ?> >
             <a href="<?php echo $_lang->getCurrentUrl() ?>" title="<?php echo $this->htmlEscape($_lang->getName()) ?>">
-              <span><?php echo $_lang->getCode(); ?></span>
+              <span><?php echo $this->__($_lang->getCode()); ?></span>
             </a>  
           </li>
         <?php endforeach;?>

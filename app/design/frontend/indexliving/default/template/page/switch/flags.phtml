@@ -32,7 +32,7 @@
       <?php foreach ($this->getStores() as $_lang):?>
         <?php if($_lang->getId() == $this->getCurrentStoreId()):?>
           <a>
-            <span><?php echo $_lang->getCode(); ?></span>
+            <span><?php echo $this->__($_lang->getCode()); ?></span>
           </a>
         <?php endif; ?>
       <?php endforeach;?>
@@ -43,7 +43,7 @@
               <?php // Zend_Debug::dump($_lang->getData()); ?>
               <li>
                 <a href="<?php echo $_lang->getCurrentUrl() ?>" title="<?php echo $this->htmlEscape($_lang->getName()) ?>">
-                  <span><?php echo $_lang->getCode(); ?></span>
+                  <span><?php echo $this->__($_lang->getCode()); ?></span>
                 </a>  
               </li>
             <?php endforeach;?>
