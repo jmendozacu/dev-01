@@ -5141,7 +5141,7 @@ body.catalogsearch-result-index .page-title h1 {
 .flip-container, .front, .back {
 	width: 100%;
 	height: 100%;
-	min-height:290px;
+	min-height:263px;
 }
 
 .catalog-category-view .products-grid--max-3-col .flip-container, .catalog-category-view .products-grid--max-3-col .front,  .catalog-category-view .products-grid--max-3-col .back{min-height: 263px;}
@@ -6787,16 +6787,16 @@ body.catalogsearch-result-index .page-title h1 {
 	color:#FFFFFF;
 }
 .cart-forms .discount .discount-title h4{
-
 	font-size:24px;
 	color:#ffc222;
 	margin:0;
 	line-height:24px;
+  margin-top: 5px;
 }
 .cart-forms .discount .discount-form{
 	float:right;
 	width:60%;
-	margin:4px 0 0;
+	margin:6px 0 0;
 }
 .checkout-cart-index #postcode {
   width: 100%;
@@ -6997,8 +6997,7 @@ body.catalogsearch-result-index .page-title h1 {
   color: #f4701e;
   border-bottom: 4px solid #ffc222;
 	text-align:center;
-
-	font-size:16px;
+	font-size:18px;
   padding: 3px 0;
 }
 .cart-table .product-cart-info,
@@ -7146,14 +7145,13 @@ body.catalogsearch-result-index .page-title h1 {
   border-radius: 0;
 	color:#000;
 	font-size:14px;
-
   text-align: center;
   width: 53px;
 }
 .cart-table .cart-price .price{
 	color:#000;
 	font-size:16px;
-
+  font-weight: bold;
 }
 .cart-table .cart-price .special-price .price{
 	color:#ff0000;
@@ -9000,7 +8998,7 @@ body.customer-account .sidebar .block-reorder ol#cart-sidebar-reorder p.product-
 .my-account .addresses-additional .box-content .useasdefault {float:right; margin-top:20px;}
 .my-account .addresses-additional .box-content .useasdefault li {margin:4px 0;}
 .my-account .addresses-additional .box-content .useasdefault .checkbox + label {width:auto; max-width:none;}
-.my-account .addresses-additional .box-content .useasdefault li:nth-child(2) label {color:#F4701E;}
+.my-account .addresses-additional .box-content .useasdefault .checkbox.checkbox-checked + label {color:#F4701E;}
 
 .my-account .addresses-list .col-1,
 .my-account .addresses-list .col-2 {
@@ -10852,19 +10850,19 @@ ul.tabs_history li{background-image:url(../images/tab-line.jpg);background-posit
 .contacts-content .buttons-set {border:none; text-align:left;}
 .contacts-content .buttons-set p {width:100%; float:left; margin:0px;}
 .contacts-content .buttons-set button.button {  float: left; margin: 0px; min-width: 250px; height: 40px; border-radius: 5px;}
-.contacts-content h4 { font-weight:normal; color:#252525; font-size:24px; text-transform:none; margin-bottom:18px;}
-.contacts-content h2  {font-size:36px; color:#FFC220; font-weight:normal; margin:0px; line-height:36px; margin-top:-3px;}
+.contacts-content h4 { font-weight:normal; color:#252525; font-size:16px; text-transform:none; margin-bottom:18px;}
+.contacts-content h2  {font-size:28px; color:#FFC220; font-weight:normal; line-height:30px; margin-bottom: 8px;}
 .contacts-content .contact-right .box-gray {float:left; width:100%; background:#F6F6F6; padding:10px; }
-.contacts-content .contact-right .box-gray label {display:block; line-height:26px; margin:0px; font-size:20px; font-weight:normal; }
-.contacts-content .contact-right .box-gray a {display:block; font-size:36px;  margin:0px; line-height:38px; font-weight:bold;color:#FFC220; padding-left:45px; background:url(../images/contatct1.png) no-repeat left center;}
+.contacts-content .contact-right .box-gray label {display:block; line-height:26px; margin:0px; font-size:15px; font-weight:bold; }
+.contacts-content .contact-right .box-gray a {display:block; font-size:24px;  margin:0px; line-height:38px; font-weight:bold;color:#FFC220; padding-left:45px; background:url(../images/contatct1.png) no-repeat left 2px; margin-bottom: 3px; margin-top: 3px;}
 .contacts-content .contact-right .box-gray a:hover{text-decoration:none; }
-.contacts-content .contact-right .box-gray span {display:block; font-size:20px;  margin:0px; line-height:26px;}
+.contacts-content .contact-right .box-gray span {display:block; font-size:15px;  margin:0px; line-height:26px;}
 .contacts-content .contact-right .list-contacts {margin:20px 0;}
 .contacts-content .contact-right .list-contacts,
 .contacts-content .contact-right .list-contacts li{float:left; width:100%; }
-.contacts-content .contact-right .list-contacts li {padding:10px 0px 10px 52px; font-size:20px; line-height:24px; position:relative; }
+.contacts-content .contact-right .list-contacts li {padding:10px 0px 10px 52px; font-size:15px; line-height:24px; position:relative; }
 .contacts-content .contact-right .list-contacts li:before {content:""; width:52px; height:100%; top:0px; left:0px; position:absolute;}
-.contacts-content .contact-right .list-contacts li  a {font-size:20px; color:#252525;}
+.contacts-content .contact-right .list-contacts li  a {font-size:15px; color:#252525;}
 .contacts-content .contact-right .list-contacts li.address:before {background:url(../images/contact-icon2.png) no-repeat center 12px; }
 .contacts-content .contact-right .list-contacts li.google-map:before {background:url(../images/contact-icon3.png) no-repeat center 6px; }
 .contacts-content .contact-right .list-contacts li.brand:before {background:url(../images/contact-icon4.png) no-repeat center 6px; }
@@ -11564,9 +11562,10 @@ body[class*="checkout-multishipping-"] #review-buttons-container {
 }
 
 /* Shipping */
-.amscheckout .shipping .form-list label,
-.amscheckout .billing .form-list label{
+.amscheckout .shipping .form-list > .wide > label,
+.amscheckout .billing .form-list > .wide > label{
   white-space: normal;
+  margin-bottom: 8px;
 }
 .amscheckout .shipping .form-list .input-box,
 .amscheckout .billing .form-list .input-box{
