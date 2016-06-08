@@ -3914,7 +3914,7 @@ a.skip-link {
 .nav-primary li.level1:nth-child(5):hover > a:before{background-position: -64px -310px;}
 .nav-primary li.level1:nth-child(6):hover > a:before{background-position: -61px -355px;}
 .nav-primary li.level1:nth-child(7):hover  > a:before{background-position: -63px -408px;}
-.nav-primary li.level1:nth-child(8):hover>a:before{background:url(../images/icon-powerone.png) center center no-repeat #FFC222;width:60px;}
+.nav-primary li.level1:nth-child(8):hover>a:before{background:url(../images/icon-powerone-active.png) center center no-repeat ;}
 .nav-primary li.level1:nth-child(8):hover  > a{padding-left: 95px;}
 .nav-primary li.level1:nth-child(9):hover > a:before{background-position: -65px -503px;}
 .nav-primary li.level1:nth-child(10):hover > a:before {background-position: -65px -553px;}
