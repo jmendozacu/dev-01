@@ -13,7 +13,7 @@
             <codePool>local</codePool>
             <edition>community</edition>
             <depends>
-                <Amasty_Orderattach/>
+                <!--<Amasty_Orderattach/>-->
                 <Amasty_Ogrid/>
                 <Amasty_Oaction/>
                 <Amasty_Flags/>
