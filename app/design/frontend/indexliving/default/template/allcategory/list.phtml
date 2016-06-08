@@ -37,8 +37,13 @@
 			<?php $i=0; foreach($_subcategories as $_subcategory): $i++;?>
 					<li class="category-item<?php if($i%3==0): ?> last<?php endif; ?>">
 						<?php $_subcategoryData = Mage::getModel('catalog/category')->load($_subcategory->getId()); ?>
-
-							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />	
+						<?php if (count($_categoryLevel3) <= 0): ?>
+						<a class="link-no-sub-img" href="<?php echo $_categoryHelper->getCategoryUrl($_subcategoryData) ?>">
+							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						</a>
+						<?php else:?>
+							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						<?php endif; ?>
 						<div class="categories-links">
 						<?php $_categoryLevel3 = $_subcategory->getChildrenCategories(); ?>
 						<?php if (count($_categoryLevel3) > 0): ?>
