@@ -33,8 +33,8 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 					$row = 1;
 
 					if (($handle = fopen($dir.$filenamecsv, "r")) !== FALSE) {
-					    Mage::log('=========================================================', null, $filename_log);
-					    Mage::log('open file : '.$dir.$filenamecsv, null, $filename_log);
+					    Mage::log('=========================================================', null, $filename_log,true);
+					    Mage::log('open file : '.$dir.$filenamecsv, null, $filename_log,true);
 
 					    $csvdata = array();
 					    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
@@ -101,6 +101,13 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 
 					    }
 
+					    $processes = Mage::getSingleton('index/process')->getCollection();
+						$temp = array();
+			    		foreach ($processes as $key => $value) {
+							$temp[$value->getProcessId()] = $value->getMode();
+							$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
+						}
+
 					  	// prepare to load products
 					    $product = Mage::getModel('catalog/product');
 					    foreach ($csvdata as $sku => $item) {
@@ -113,7 +120,7 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 
 	    					if ($p) {
 	      						
-	    						Mage::log('found sku : '.$sku.' || update qty : '.$qty, null, $filename_log);
+	    						Mage::log('found sku : '.$sku.' || update qty : '.$qty, null, $filename_log,true);
 	      						// get product's stock data such quantity, in_stock etc
 	     						$productId = $p->getIdBySku($sku);
 
@@ -151,18 +158,24 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 									$check = true;
 									$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
 									// handle the error here!!
-									Mage::log('error sku : '.$sku, null, $filename_log);
+									Mage::log('error sku : '.$sku, null, $filename_log,true);
 								}
 								unset($stockItem);
 								unset($p);
 							} else {
-								Mage::log("SKU not found : ".$sku, null, $filename_log);
+								Mage::log("SKU not found : ".$sku, null, $filename_log,true);
 							}
 
 					    }
 
+					    foreach ($temp as $key => $mode) {
+							$process = Mage::getSingleton('index/process')->load($key);
+							$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
+						}
+						// Mage::helper('mgfsync/data')->reindex();
+
 						fclose($handle);
-						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log);
+						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log,true);
 
 						// moved file to completed path
 						$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS.'save'.DS;
@@ -181,16 +194,16 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 						// Tiw
 						// check to remove file
 						if (!file_exists($dir.$filename)) {
-							Mage::log('removed : '.$dir.$filename, null, $filename_log);
+							Mage::log('removed : '.$dir.$filename, null, $filename_log,true);
 						}else{
-							Mage::log('can not removed : '.$dir.$filename, null, $filename_log);
+							Mage::log('can not removed : '.$dir.$filename, null, $filename_log,true);
 						}
 
 						// check to move file
 						if (!file_exists($dir.$filenamecsv)) {
-							Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filename_log);
+							Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filename_log,true);
 						}else{
-							Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filename_log);
+							Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filename_log,true);
 						}
 					}
 

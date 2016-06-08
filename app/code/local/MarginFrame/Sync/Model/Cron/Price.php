@@ -9,7 +9,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 		$filenamecsv = '';
 		try {
 
-			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'price'.DS;
+			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'retail_price'.DS;
 
 			$filename_log = "mgfsync_price.log";
 			// Tiw
@@ -29,12 +29,11 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 
 			    	// rename file .trg to .csv
 			    	$filenamecsv = str_replace('.trg', '.txt', $filename);
-
 					$row = 1;
 
 					if (($handle = fopen($dir.$filenamecsv, "r")) !== FALSE) {
-					    Mage::log('=========================================================', null, $filename_log);
-					    Mage::log('open file : '.$dir.$filenamecsv, null, $filename_log);
+					    Mage::log('=========================================================', null, $filename_log,true);
+					    Mage::log('open file : '.$dir.$filenamecsv, null, $filename_log,true);
 
 					    $csvdata = array();
 					    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
@@ -44,21 +43,24 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					        $csvdata[$sku]['special_price'] = trim($data[2]);
 					        $csvdata[$sku]['special_from_date'] = trim($data[3]);
 					        $csvdata[$sku]['special_to_date'] = trim($data[4]);
+
 					    }
 
 					    $storeId = 0;
-					   
-			    		
 			    		$product = null;
-			    		
-			    		
+
+			    		$processes = Mage::getSingleton('index/process')->getCollection();
+						$temp = array();
+			    		foreach ($processes as $key => $value) {
+							$temp[$value->getProcessId()] = $value->getMode();
+							$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
+						}
 			    		Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 					    foreach ($csvdata as $sku => $data) {
 					    	$product = Mage::getModel('catalog/product')
 					    	->loadByAttribute('sku', $sku);
 					    	if ($product->getId()) {
-					    		Mage::log('found sku : '.$sku, null, $filename_log);
-
+					    		Mage::log('found sku : '.$sku, null, $filename_log,true);
 					    		if ($data['price'] != 'Unset') {
 					    			$product->setPrice(number_format($data['price'],2));
 
@@ -71,7 +73,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 										$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
 										$product->setSpecialToDateIsFormated(true);
 						    		}else{
-						    			$product->setSpecialPrice(0);
+						    			$product->setSpecialPrice(null);
 						    			
 						    			$product->setSpecialFromDate(false);
 										$product->setSpecialFromDateIsFormated(true);
@@ -82,6 +84,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					    		}else{
 					    			if (strtolower($data['special_price']) != 'unset') {
 					    				$product->setPrice(number_format($data['special_price'],2));
+					    				$product->setSpecialPrice(number_format($data['special_price'],2));
 					    			} else {
 					    				$product->setStatus(2);
 					    			}
@@ -96,23 +99,30 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 									$check = true;
 									$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
 									// handle the error here!!
-									Mage::log('error sku : '.$sku.'-'.$ex->getMessage(), null, $filename_log);
+									Mage::log('error sku : '.$sku.'-'.$ex->getMessage(), null, $filename_log,true);
+									$sync_type = 'Retail Price';
+									Mage::helper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
+									
 								}
-								
 					    		
 					    	} else {
-								 Mage::log("SKU not found : ".$sku, null, $filename_log);
+								 Mage::log("SKU not found : ".$sku, null, $filename_log,true);
 							}
 							
 					    	
 					    }
+					    foreach ($temp as $key => $mode) {
+							$process = Mage::getSingleton('index/process')->load($key);
+							$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
+						}
+						// Mage::helper('mgfsync/data')->reindex();
 					    unset($product);
 						fclose($handle);
 						
-						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log);
+						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log,true);
 
 						// moved file to completed path
-						$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'price'.DS.'save'.DS;
+						$newdir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'retail_price'.DS.'save'.DS;
 
 						// Tiw
 						// Create folder
@@ -128,16 +138,16 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 						// Tiw
 						// check to remove file
 						if (!file_exists($dir.$filename)) {
-							Mage::log('removed : '.$dir.$filename, null, $filename_log);
+							Mage::log('removed : '.$dir.$filename, null, $filename_log,true);
 						}else{
-							Mage::log('can not removed : '.$dir.$filename, null, $filename_log);
+							Mage::log('can not removed : '.$dir.$filename, null, $filename_log,true);
 						}
 
 						// check to move file
 						if (!file_exists($dir.$filenamecsv)) {
-							Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filename_log);
+							Mage::log('moved to completed : '.$newdir.$filenamecsv, null, $filename_log,true);
 						}else{
-							Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filename_log);
+							Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filename_log,true);
 						}
 					}
 
