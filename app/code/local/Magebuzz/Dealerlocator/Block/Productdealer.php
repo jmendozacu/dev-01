@@ -23,21 +23,28 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
   public function getProductDealer(){
     $data = $this->getRequest()->getParams();
     $productId = $data['id'];
-    $current_store_id = Mage::app()->getStore()->getStoreId();
     $dealerlocatorTable = Mage::getSingleton('core/resource')->getTableName('dealerlocator');
     $dealerStoreTable = Mage::getSingleton('core/resource')->getTableName('dealerlocator_store');
+		$productDealerTable = Mage::getSingleton('core/resource')->getTableName('productdealer');
 		$storeIds = array(Mage_Core_Model_App::ADMIN_STORE_ID, Mage::app()->getStore()->getId());
     
-    $productdealerModel = Mage::getModel('dealerlocator/productdealer');
-    $productdealerCollection = $productdealerModel->getCollection()
-      ->addFieldToFilter('product_id', $productId)
-      ->addFieldToFilter('main_table.store_id', $current_store_id)
-        ->addFieldToFilter('display', 1);
+    // $productdealerModel = Mage::getModel('dealerlocator/productdealer');
+    // $productdealerCollection = $productdealerModel->getCollection()
+      // ->addFieldToFilter('product_id', $productId)
+      // ->addFieldToFilter('main_table.store_id', $current_store_id)
+        // ->addFieldToFilter('display', 1);
 
-    $productdealerCollection->join(array('deatbl' => $dealerlocatorTable), 'deatbl.dealerlocator_id = main_table.dealer_id', array('deatbl.*'))
-			->addFieldToFilter('deatbl.status', '1');
+    // $productdealerCollection->join(array('deatbl' => $dealerlocatorTable), 'deatbl.dealerlocator_id = main_table.dealer_id', array('deatbl.*'))
+			// ->addFieldToFilter('deatbl.status', '1');
 			
-		$productdealerCollection->join(array('dealerStore' => $dealerStoreTable), 'dealerStore.dealer_id=main_table.dealer_id', array('dealerStore.store_id'))
+		// $productdealerCollection->join(array('dealerStore' => $dealerStoreTable), 'dealerStore.dealer_id=main_table.dealer_id', array('dealerStore.store_id'))
+			// ->addFieldToFilter('dealerStore.store_id', array('in' => $storeIds));
+			
+		$productdealerCollection = Mage::getModel('dealerlocator/dealerlocator')->getCollection() 
+			->join(array('productDealer' => $productDealerTable), 'productDealer.dealer_id = main_table.dealerlocator_id', array('productDealer.*'))
+			->join(array('dealerStore' => $dealerStoreTable), 'dealerStore.dealer_id=main_table.dealerlocator_id', array('dealerStore.store_id'))
+			->addFieldToFilter('productDealer.product_id', $productId)
+			->addFieldToFilter('productDealer.store_id', array('in' => $storeIds))
 			->addFieldToFilter('dealerStore.store_id', array('in' => $storeIds));
 			
     return $productdealerCollection;
