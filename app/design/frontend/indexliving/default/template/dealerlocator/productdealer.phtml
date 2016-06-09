@@ -20,16 +20,20 @@
 						<?php $i=0; foreach ($listTag as $tag): $i++; ?>
 							<li>
 								<?php $dealersByTag = $this->getProductDealerByTag($tag);?>
-								<?php if($dealersByTag->getSize()>0):?>
+								<?php $countDealerTag = count($dealersByTag); ?>
+								<?php if($countDealerTag):?>
 									<div class="dealer-pager">
-										<?php if($dealersByTag->getSize() >1): ?>
-											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s stores)', $tag, $dealersByTag->getSize()); ?></p>
+										<?php if($countDealerTag >1): ?>
+											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s stores)', $tag, $countDealerTag); ?></p>
 										<?php else: ?>
-											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s store)', $tag, $dealersByTag->getSize()); ?></p>
+											<p class="dealertag amount dealertag<?php echo $i;?>"><?php echo $this->__('%s (%s store)', $tag, $countDealerTag); ?></p>
 										<?php endif;?>
 									</div>
 									<ul id="dealer-list-<?php echo $tag; ?>" class="product-dealerscroll">
-										<?php foreach ($dealersByTag->getItems() as $dealer): ?>
+										<?php foreach ($productDealers->getItems() as $dealer): ?>
+											<?php if (!in_array($dealer->getId(), $dealersByTag)):?>
+												<?php continue; ?>
+											<?php endif;?>
 											<li
 												onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
 												<h3><?php echo $dealer->getTitle(); ?></h3>
