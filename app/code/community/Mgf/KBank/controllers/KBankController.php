@@ -92,9 +92,30 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
     }
 
     public function testAction(){
-    	$session= Mage::getSingleton('checkout/session');
-    	$session->getQuote()->getAllItems();
-    	Mage::helper('Paysbuy')->debug($session->getQuote()->getAllItems(),true);
+    	$order = Mage::getModel('sales/order');
+		// $order->loadByIncrementId('1606080012');
+
+		$message=Mage::helper('KBank')->__('Your payment is authorized by KBank ('. $KBankReturnData .').');
+						
+		if($order->getStatus() != Mage::getStoreConfig('payment/KBank/payment_success_status')){
+			$order->setState(Mage::getStoreConfig('payment/KBank/payment_success_status'), true, $message);
+			$order->save();
+			//=> Create Invoice
+			if (Mage::getStoreConfig('payment/KBank/payment_autoinvoice')=="1") {
+				$invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
+                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+                $invoice->register();
+                $transactionSave = Mage::getModel('core/resource_transaction')
+                    ->addObject($invoice)
+                    ->addObject($invoice->getOrder());
+                $transactionSave->save();
+			}
+			//=> End Create Invoice
+		} else {
+			$message .= 'Other -'.$order->getState().' : '.$message;
+			$order->setState($order->getStatus(), true, $message);
+			$order->save();
+		}
     }
     /**
      * When a customer cancel payment from KBank.
@@ -157,12 +178,11 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
             $status = false;
         //	throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
-        // var_dump($response);
-        // exit();
-		$Paidby = "";
-		if(isset($response["paidsrc"])) $Paidby  =$response["paidsrc"];
+        
+		$Paidby = "KBank";
+		// if(isset($response["paidsrc"])) $Paidby  =$response["paidsrc"];
 		
-		echo "<p>paid by : " . $Paidby  ."</p>";
+		// echo "<p>paid by : " . $Paidby  ."</p>";
 		//exit;
 		
 		
@@ -250,6 +270,7 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 					//=> Pending - End
 				}
 				else {
+					
 					//=> Other Status
 					$ResponseMessge = $order->getStatus() . " -> Add order history";
 					$message=Mage::helper('KBank')->__("Your payment is authorized by ". $Paidby ." (". $ReturnData .").");
@@ -331,6 +352,7 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 						"Transaction currency = ". $KBankCURISO ."\n\r" . 
 						"Exchange rate of transaction = ". $KBankFXRATE ."\n\r" . 
 						"Type of Card = ". $KBankFILLSPACE ."\n\r";
+
 				if (Mage::getStoreConfig('payment/KBank/smartpayactive')=="1") {
 					$KBankReturnData .= "MID = ". $KBankMID ."\n\r" .  
 						"Plan ID Value for Smartpay = ". $KBankPLANID ."\n\r" . 
@@ -345,28 +367,37 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 				
 				$KBankReturnData .= "MD5CHECKSUM = ". $KBankMD5CHECKSUM ."\n\r" .  
 										" Calulate MD5CHECKSUM = ". $KBankResultCode ."\n\r";
-		
+				
 				//echo "<p>My Data : $KBankReturnData</p>";
 		
 					if($KBankResultCode=="00")
 					{
-						$MerchantInvoiceNo = substr($KBankInvoice,-9);
-						
+						$MerchantInvoiceNo = substr($KBankInvoice,-10);
 						$order = Mage::getModel('sales/order');
 						$order->loadByIncrementId($MerchantInvoiceNo);
 						$state = Mage::getStoreConfig('payment/KBank/payment_success_status');
 						$message=Mage::helper('KBank')->__('Your payment is authorized by KBank ('. $KBankReturnData .').');
-						$order->setState($state, true, $message);
-						$order->save();
 						
-						//=> Create Invoice
-						if (Mage::getStoreConfig('payment/KBank/payment_autoinvoice')=="1") {
-						
-							
-						
+						if($order->getState() != Mage::getStoreConfig('payment/KBank/payment_success_status')){
+							$order->setState(Mage::getStoreConfig('payment/KBank/payment_success_status'), true, $message);
+							$order->save();
+							//=> Create Invoice
+							if (Mage::getStoreConfig('payment/KBank/payment_autoinvoice')=="1") {
+								$invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
+				                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+				                $invoice->register();
+				                $transactionSave = Mage::getModel('core/resource_transaction')
+				                    ->addObject($invoice)
+				                    ->addObject($invoice->getOrder());
+				                $transactionSave->save();
+							}
+							//=> End Create Invoice
+						} else {
+							$message .= 'Other -'.$order->getState().' : '.$message;
+							$order->setState($order->getState(), true, $message);
+							$order->save();
 						}
-						//=> End Create Invoice
-						
+
 						$session = Mage::getSingleton('checkout/session');
 						$session->setQuoteId($session->getKBankStandardQuoteId(true));
 						/**
