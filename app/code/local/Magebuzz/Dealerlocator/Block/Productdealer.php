@@ -83,16 +83,18 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
     $helper = Mage::helper('dealerlocator');
     $defaultLatLong = array();
 		$defaultLocation = $this->getProductDealer()->getFirstItem();
-		$address = $defaultLocation->getAddress();
-		if ($address == '') {
-			$address = $helper->getDefaultAddress();
+		if ($defaultLocation->getLongitude() && $defaultLocation->getLatitude()) {
+			$defaultLatLong = array(
+				'lat' => $defaultLocation->getLatitude(),
+				'long' => $defaultLocation->getLongitude(),				
+			);
 		}
-    //set default location by address
-    if ($address != '') {
-      $address = urlencode($address);
+		else {
+			$address = $helper->getDefaultAddress();
+			$address = urlencode($address);
       $json = $helper->getJsonData($address);
-      $defaultLatLong = array('lat' => strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'}), 'long' => strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'}));
-    }
+			$defaultLatLong = array('lat' => strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lat'}), 'long' => strval($json->{'results'}[0]->{'geometry'}->{'location'}->{'lng'}));
+		}
     
     //if it is empty, set to a default location to avoid problem
     if (empty($defaultLatLong)) {
