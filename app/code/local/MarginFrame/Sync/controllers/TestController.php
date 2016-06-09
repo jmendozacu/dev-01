@@ -16,11 +16,26 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 	function testAction(){
 		$model = Mage::getModel('mgfsync/cron_productmaster');
 		echo $model::Run();
-		// $profile = Mage::getModel('ecommerceteam_dataflow/profile_import')->getCollection();
+		// $processes = Mage::getSingleton('index/process')->getCollection();
+		// $temp = array();
+		// foreach ($processes as $key => $value) {
+		// 	// if($value->getModel() != Mage_Index_Model_Process::MODE_MANUAL){
+		// 		$temp[$value->getProcessId()] = $value->getMode();
+		// 		$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
+		// 	// }
+			
+		// }
 		// echo "<pre>";
 		// // print_r(Mage::helper('mgfsync/data')->reindex());
-		// print_r($profile->getData());
+		// // echo $process->getStatus();
+		// print_r($temp);
 		// echo "</pre>";
+
+		// foreach ($temp as $key => $mode) {
+		// 	$process = Mage::getSingleton('index/process')->load($key);
+		// 	$process->setData('mode',$mode)->save();
+		// }
+		
 	}
 
 	function tcancelAction(){
@@ -29,6 +44,7 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 	}
 
 	function stockrunAction(){
+
 		Mage::getModel('mgfsync/cron_stock')->Run();
 	}
 
@@ -44,8 +60,12 @@ class MarginFrame_Sync_TestController extends Mage_Core_Controller_Front_Action
 		Mage::getModel('mgfsync/cron_price')->Run();
 	}
 
-	function productrunAction(){
-		Mage::getModel('mgfsync/cron_price')->Run();
+	// function productrunAction(){
+	// 	Mage::getModel('mgfsync/cron_price')->Run();
+	// }
+
+	function ecomrunAction(){
+		Mage::getModel('mgfsync/cron_renameECOMecomrun')->Run();
 	}
 
 }

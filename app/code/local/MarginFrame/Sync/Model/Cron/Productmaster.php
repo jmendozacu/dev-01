@@ -87,13 +87,13 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				'DontMiss' => 'dontmiss',
 				'HotPrice' => 'hotprice'
 			);
+		
 			$product = Mage::getModel('catalog/product');
 			$collections = Mage::getModel('mgfsync/catcode')->getCollection();
 			$catcodes = array();
 			foreach ($collections->getData() as $catcode) {
 				$catcodes[$catcode['catalog_code']] = $catcode['entity_id'];
 			}
-			
 			while (false !== ($filename = readdir($dh))) {
 			    $files[] = $filename;
 
@@ -102,6 +102,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 
 			    	// rename file .trg to .csv
 			    	$filenamecsv = str_replace('.trg', '.txt', $filename);
+			    	Mage::log('open : '.$dir.$filenamecsv, null, $filelogName,true);
 					$rowNum = 0;
 
 					$data = file_get_contents($dir.$filenamecsv);
@@ -240,12 +241,20 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 										} else {
 											$rowCsv_TH[]=$cols[$value];
 										}
+									} elseif(preg_match( "/PICTURE$/i", $key)){
+										if($cols[$value]==''){
+											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$index_header['Article_CODE']].'.jpg';
+										} else {
+											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
+										}
 									} else {
 										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
 										if($key == "Article_CODE"){
 											$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $cols[$value];
 										}
 									}
+
+
 								}
 
 							}
@@ -273,7 +282,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}
 
 					// Mage::log($newdir);
-					unlink($dir.$filename);
+					// unlink($dir.$filename);
 					rename($dir.$filenamecsv, $newdir.$filenamecsv);
 
 					// Tiw

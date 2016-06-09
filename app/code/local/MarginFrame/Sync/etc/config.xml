@@ -9,17 +9,18 @@
         <jobs>
             <!-- UTC - 7 Hr-->
             <mgfsync_cron_stock_run>
-                <schedule><cron_expr>30,40,50,55 18 * * *</cron_expr></schedule>
+                <schedule><cron_expr>30,40,50,55 4 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_stock::Run</model></run>
             </mgfsync_cron_stock_run>
             
             <mgfsync_cron_store_run>
-                <schedule><cron_expr>30,40,50,55 18 * * *</cron_expr></schedule>
+                <schedule><cron_expr>30,40,50,55 4 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_store::Run</model></run>
             </mgfsync_cron_store_run>
 
             <mgfsync_cron_price_run>
-                <schedule><cron_expr>30,40,50,55 21 * * *</cron_expr></schedule>
+                <schedule><cron_expr>30,40,50,55 4 * * *</cron_expr></schedule>
+                <!-- <schedule><cron_expr>*/5 * * * *</cron_expr></schedule> -->
                 <run><model>mgfsync/cron_price::Run</model></run>
             </mgfsync_cron_price_run>
 
@@ -29,18 +30,18 @@
             </mgfsync_cron_rename_run> -->
 
             <mgfsync_cron_productmaster_run>
-                <schedule><cron_expr>30,35,40,45,50,55 1 * * *</cron_expr></schedule>
+                <schedule><cron_expr>30,35,40,45,50,55 8 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_productmaster::Run</model></run>
             </mgfsync_cron_productmaster_run>
 
 
             <mgfsync_cron_productstatus_run>
-                <schedule><cron_expr>30,35,40,45,50,55 1 * * *</cron_expr></schedule>
+                <schedule><cron_expr>30,35,40,45,50,55 8 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_productstatus::Run</model></run>
             </mgfsync_cron_productstatus_run>
 
             <mgfsync_cron_reindex_run>
-                <schedule><cron_expr>0,10 2 * * *</cron_expr></schedule>
+                <schedule><cron_expr>0,10 9 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_reindex::Run</model></run>
             </mgfsync_cron_reindex_run>
 

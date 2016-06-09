@@ -57,58 +57,54 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 						}
 			    		Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
 					    foreach ($csvdata as $sku => $data) {
-					    	$product = Mage::getModel('catalog/product')
-					    	->loadByAttribute('sku', $sku);
-					    	if ($product->getId()) {
-					    		Mage::log('found sku : '.$sku, null, $filename_log,true);
-					    		if ($data['price'] != 'Unset') {
-					    			$product->setPrice(number_format($data['price'],2));
+					    	try{
+						    	$product = Mage::getModel('catalog/product')
+						    	->loadByAttribute('sku', $sku);
+						    	if ($product) {
+						    		Mage::log('found sku : '.$sku, null, $filename_log,true);
+						    		if ($data['price'] != 'Unset') {
+						    			$product->setPrice(number_format($data['price'],2));
 
-					    			if (strtolower($data['special_price']) != 'unset') {
-						    			$product->setSpecialPrice(number_format($data['special_price'],2));
+						    			if (strtolower($data['special_price']) != 'unset') {
+							    			$product->setSpecialPrice(number_format($data['special_price'],2));
 
-						    			$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
-										$product->setSpecialFromDateIsFormated(true);
+							    			$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
+											$product->setSpecialFromDateIsFormated(true);
 
-										$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
-										$product->setSpecialToDateIsFormated(true);
+											$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
+											$product->setSpecialToDateIsFormated(true);
+							    		}else{
+							    			$product->setSpecialPrice(null);
+							    			
+							    			$product->setSpecialFromDate(false);
+											$product->setSpecialFromDateIsFormated(true);
+
+											$product->setSpecialToDate(false);
+											$product->setSpecialToDateIsFormated(true);
+							    		}
 						    		}else{
-						    			$product->setSpecialPrice(null);
-						    			
-						    			$product->setSpecialFromDate(false);
-										$product->setSpecialFromDateIsFormated(true);
+						    			if (strtolower($data['special_price']) != 'unset') {
+						    				$product->setPrice(number_format($data['special_price'],2));
+						    				$product->setSpecialPrice(number_format($data['special_price'],2));
+						    			} else {
+						    				$product->setVisibility(1);
+						    			}
 
-										$product->setSpecialToDate(false);
-										$product->setSpecialToDateIsFormated(true);
 						    		}
-					    		}else{
-					    			if (strtolower($data['special_price']) != 'unset') {
-					    				$product->setPrice(number_format($data['special_price'],2));
-					    				$product->setSpecialPrice(number_format($data['special_price'],2));
-					    			} else {
-					    				$product->setStatus(2);
-					    			}
 
-					    		}
-
-					    		// call save() method to save your product with updated data
-								try{
-									$product->save();
-									// $log = 'Success';
-								} catch (Exception $ex) {
-									$check = true;
-									$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
-									// handle the error here!!
-									Mage::log('error sku : '.$sku.'-'.$ex->getMessage(), null, $filename_log,true);
-									$sync_type = 'Retail Price';
-									Mage::helper('mgfsync/data')->logSync($check, $sync_type, $message, $filenamecsv);
-									
+						    		// call save() method to save your product with updated data
+										$product->save();
+										// $log = 'Success';
+						    	} else {
+									 Mage::log("SKU not found : ".$sku, null, $filename_log,true);
 								}
-					    		
-					    	} else {
-								 Mage::log("SKU not found : ".$sku, null, $filename_log,true);
+							} catch (Exception $ex) {
+								$check = true;
+								$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
+								// handle the error here!!
+								Mage::log('error sku : '.$sku.'-'.$ex->getMessage(), null, $filename_log,true);
+								
 							}
-							
 					    	
 					    }
 					    foreach ($temp as $key => $mode) {
