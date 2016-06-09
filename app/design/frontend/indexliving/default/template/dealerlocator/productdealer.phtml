@@ -48,6 +48,8 @@
 													<img width="50" class="product-dealer-map dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
 												<?php endif?>
 
+												<input type="hidden" name="dealer-icon" id="product_dealer_icon_<?php echo $dealer->getId() ?>"
+												value="<?php echo $dealer->getDealerIconImage() ?>"/>
 												<input type="hidden" name="product-dealer-longitude" id="product_dealer_latitude_<?php echo $dealer->getId() ?>"
 													   value="<?php echo $dealer->getLatitude() ?>"/>
 												<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $dealer->getId() ?>"
@@ -70,7 +72,7 @@
 														<p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
 													<?php endif; ?>
 													<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
-															href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
+															href="javascript:tohere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
 														<a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
 													</p>
 												</div>
@@ -123,6 +125,8 @@
 									<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$productdealer->getDealerMap();?>
 									<img width="50" class="dealer-map dealer-map-<?php echo $productdealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $productdealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $productdealer->getTitle(); ?>"/>
 								<?php endif?>
+								<input type="hidden" name="dealer-icon" id="product_dealer_icon_<?php echo $productdealer->getId() ?>"
+                   value="<?php echo $productdealer->getDealerIconImage() ?>"/>
 								<input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
 									   value="<?php echo $productdealer->getLatitude() ?>"/>
 								<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
@@ -134,19 +138,19 @@
 									<p><strong><?php echo $productdealer->getTitle() ?></strong></p>
 									
 									<p><?php echo $this->__('Address') ?>: <?php echo $productdealer->getAddress() ?></p>
-									<?php if ($productdealer->getPostalCode()): ?>
-										<p><?php echo $this->__('Postcode') ?>: <?php echo $productdealer->getPostalCode() ?></p>
-									<?php endif; ?>
-									<?php if ($productdealer->getPhone()): ?>
-										<p><?php echo $this->__('Phone') ?>: <?php echo $productdealer->getPhone() ?></p>
-									<?php endif; ?>
-									<?php if ($productdealer->getWebsite()): ?>
-										<p><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></p>
-									<?php endif; ?>
-									<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
-											href="javascript:fromhere(<?php echo $productdealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
-										<a href="javascript:fromhere(<?php echo $productdealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
-									</p>
+										<?php if ($productdealer->getPostalCode()): ?>
+											<p><?php echo $this->__('Postcode') ?>: <?php echo $productdealer->getPostalCode() ?></p>
+										<?php endif; ?>
+										<?php if ($productdealer->getPhone()): ?>
+											<p><?php echo $this->__('Phone') ?>: <?php echo $productdealer->getPhone() ?></p>
+										<?php endif; ?>
+										<?php if ($productdealer->getWebsite()): ?>
+											<p><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></p>
+										<?php endif; ?>
+										<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
+												href="javascript:fromhere(<?php echo $productdealer->getId() ?>)"> <?php echo $productdealer->__('To Here') ?></a> -
+											<a href="javascript:fromhere(<?php echo $productdealer->getId() ?>)"><?php echo $productdealer->__('From Here') ?></a>
+										</p>
 								</div>
 							</li>
 							<?php $numProductDealer = ($numProductDealer + 1);?>
@@ -165,6 +169,10 @@ $productdealerdefaultlatlong = $this->getProductDealDefaultLatLong();
 ?>
 
 <script type="text/javascript">
+	var map;
+  var infoWindow;
+  var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
 	function initMap() {
 		var mapDiv = document.getElementById('product_dealer_map_canvas');
 		var myOptions = {
@@ -189,18 +197,18 @@ $productdealerdefaultlatlong = $this->getProductDealDefaultLatLong();
 		}
 		dealer_icon = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/icons/'?>' + dealer_icon;
 
-		var id = '<?php echo $productDealer->getDealerId() ?>';
+		var id = '<?php echo $productDealer->getId() ?>';
 
-		var marker_<?php echo $productDealer->getDealerId() ?> = new google.maps.Marker({
+		var marker_<?php echo $productDealer->getId() ?> = new google.maps.Marker({
 			position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
 			map: map,
 			icon: dealer_icon,
 			title: $('product_dealer_title_' + id).value
 		});
 
-		google.maps.event.addListener(marker_<?php echo $productDealer->getDealerId(); ?>, "click", function () {
-			infoWindow.setContent($('product_dealer_highlight_' +<?php echo $productDealer->getDealerId()?>).innerHTML);
-			infoWindow.open(map, marker_<?php echo $productDealer->getDealerId(); ?>);
+		google.maps.event.addListener(marker_<?php echo $productDealer->getId(); ?>, "click", function () {
+			infoWindow.setContent($('product_dealer_highlight_' +<?php echo $productDealer->getId()?>).innerHTML);
+			infoWindow.open(map, marker_<?php echo $productDealer->getId(); ?>);
 		});
 
 		<?php endforeach; ?>
@@ -478,4 +486,63 @@ $productdealerdefaultlatlong = $this->getProductDealDefaultLatLong();
 			}
 		}
 	}
+	
+	function calcRoute() {
+    var start = $("saddr").value;
+    var end = $("daddr").value;
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request, function (result, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(result);
+      }
+      else {
+        // var message = '';
+        // if (reasons[status])
+        // message = reasons[status];
+        alert("Failed to obtain directions");
+      }
+    });
+  }
+	
+	//show direction form
+  function fromhere(id) {
+    var html = '<p>Directions: <a href="javascript:tohere(' + id + ')">To here<\/a> - <b>From here<\/b></p>' +
+      '<br>End address:<form action="javascript:calcRoute()">' +
+      '<input type="text" SIZE=40 MAXLENGTH=40 name="daddr" id="daddr" value="" /><br>' +
+      '<INPUT value="Get Directions" TYPE="SUBMIT"><br>' +
+      //  'Walk <input type="checkbox" name="walk" id="walk" /> &nbsp; Avoid Highways <input type="checkbox" name="highways" id="highways" />' +
+      '<input type="hidden" id="saddr" value="' + $('product_dealer_address_' + id).value +
+      '"/>';
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
+      map: map,
+      icon: $('product_dealer_icon_' + id).value,
+      title: $('product_dealer_title_' + id).value
+    });
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker);
+  }
+
+  function tohere(id) {
+    var html = '<p>Directions: <b>To here<\/b> - <a href="javascript:fromhere(' + id + ')">From here<\/a></p>' +
+      '<br>Start address:<form action="javascript:calcRoute()">' +
+      '<input type="text" SIZE=40 MAXLENGTH=40 name="saddr" id="saddr" value="" /><br>' +
+      '<INPUT value="Get Directions" TYPE="SUBMIT"><br>' +
+      //  'Walk <input type="checkbox" name="walk" id="walk" /> &nbsp; Avoid Highways <input type="checkbox" name="highways" id="highways" />' +
+      '<input type="hidden" id="daddr" value="' + $('product_dealer_address_' + id).value +
+      '"/>';
+
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng($('product_dealer_latitude_' + id).value, $('product_dealer_longitude_' + id).value),
+      map: map,
+      icon: $('product_dealer_icon_' + id).value,
+      title: $('product_dealer_title_' + id).value
+    });
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker);
+  }
 </script>

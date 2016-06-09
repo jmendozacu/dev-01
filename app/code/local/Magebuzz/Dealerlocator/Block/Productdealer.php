@@ -95,7 +95,7 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
     if (empty($defaultLatLong)) {
       $defaultLatLong = array('lat' => '29.737354', 'long' => '-95.416767');
     }
-
+	
     return $defaultLatLong;
   }
 }
