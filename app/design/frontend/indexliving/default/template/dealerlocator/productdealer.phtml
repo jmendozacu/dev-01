@@ -47,7 +47,7 @@
 													<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
 													<img width="50" class="product-dealer-map dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
 												<?php endif?>
-
+<!-- 
 												<input type="hidden" name="dealer-icon" id="product_dealer_icon_<?php echo $dealer->getId() ?>"
 												value="<?php echo $dealer->getDealerIconImage() ?>"/>
 												<input type="hidden" name="product-dealer-longitude" id="product_dealer_latitude_<?php echo $dealer->getId() ?>"
@@ -56,7 +56,7 @@
 													   value="<?php echo $dealer->getLongitude() ?>"/>
 												<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $dealer->getId() ?>"
 													   value="<?php echo $dealer->getTitle() ?>"/>
-												<input type="hidden" name="product-dealer-address" id="product_dealer_address_<?php echo $dealer->getId() ?>"
+												<input type="hidden" name="product-dealer-address" id="product_dealer_address_<?php echo $dealer->getId() ?>" -->
 													   value="<?php echo $dealer->getAddress() ?>"/>
 												<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $dealer->getId() ?>">
 													<p><strong><?php echo $dealer->getTitle() ?></strong></p>
@@ -125,14 +125,14 @@
 									<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$productdealer->getDealerMap();?>
 									<img width="50" class="dealer-map dealer-map-<?php echo $productdealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $productdealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $productdealer->getTitle(); ?>"/>
 								<?php endif?>
-								<input type="hidden" name="dealer-icon" id="product_dealer_icon_<?php echo $productdealer->getId() ?>"
+<!-- 								<input type="hidden" name="dealer-icon" id="product_dealer_icon_<?php echo $productdealer->getId() ?>"
                    value="<?php echo $productdealer->getDealerIconImage() ?>"/>
 								<input type="hidden" name="product-dealer-latitude" id="product_dealer_latitude_<?php echo $productdealer->getDealerId() ?>"
 									   value="<?php echo $productdealer->getLatitude() ?>"/>
 								<input type="hidden" name="product-dealer-longitude" id="product_dealer_longitude_<?php echo $productdealer->getDealerId() ?>"
 									   value="<?php echo $productdealer->getLongitude() ?>"/>
 								<input type="hidden" name="product-dealer-title" id="product_dealer_title_<?php echo $productdealer->getDealerId() ?>"
-									   value="<?php echo $productdealer->getTitle() ?>"/>
+									   value="<?php echo $productdealer->getTitle() ?>"/> -->
 
 								<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $productdealer->getDealerId() ?>">
 									<p><strong><?php echo $productdealer->getTitle() ?></strong></p>
