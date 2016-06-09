@@ -132,6 +132,21 @@
 
 								<div class="product-dealer-info" style="display:none;" id="product_dealer_highlight_<?php echo $productdealer->getDealerId() ?>">
 									<p><strong><?php echo $productdealer->getTitle() ?></strong></p>
+									
+									<p><?php echo $this->__('Address') ?>: <?php echo $productdealer->getAddress() ?></p>
+									<?php if ($productdealer->getPostalCode()): ?>
+										<p><?php echo $this->__('Postcode') ?>: <?php echo $productdealer->getPostalCode() ?></p>
+									<?php endif; ?>
+									<?php if ($productdealer->getPhone()): ?>
+										<p><?php echo $this->__('Phone') ?>: <?php echo $productdealer->getPhone() ?></p>
+									<?php endif; ?>
+									<?php if ($productdealer->getWebsite()): ?>
+										<p><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></p>
+									<?php endif; ?>
+									<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
+											href="javascript:fromhere(<?php echo $productdealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
+										<a href="javascript:fromhere(<?php echo $productdealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
+									</p>
 								</div>
 							</li>
 							<?php $numProductDealer = ($numProductDealer + 1);?>
