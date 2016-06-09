@@ -40,6 +40,10 @@
 			$_imgUrl = Mage::getBaseUrl('media').'catalog/category/'.$imageThumbnail;
 			$_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></p>';
       $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'category_thumbnail');
+		}else{
+			$_imgUrl = $_category->getImageUrl();
+			$_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></p>';
+			$_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
 		}
 		// if ($_imgUrl = $_category->getImageUrl()) {
         // $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></p>';
