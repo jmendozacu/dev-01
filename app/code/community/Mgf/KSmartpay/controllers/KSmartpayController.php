@@ -345,27 +345,50 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		
 					if($KSmartpayResultCode=="00")
 					{
-						$MerchantInvoiceNo = substr($KSmartpayInvoice,-9);
+						$MerchantInvoiceNo = substr($KSmartpayInvoice,-10);
 						
 						$order = Mage::getModel('sales/order');
 						$order->loadByIncrementId($MerchantInvoiceNo);
 						$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
-						$message=Mage::helper('KSmartpay')->__('Your payment is authorized by KSmartpay ('. $KSmartpayReturnData .').');
-						$order->setState($state, true, $message);
-						$order->save();
+						
 						
 						//=> Create Invoice
-			            if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
-			                $invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
-			                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
-			                $invoice->register();
-			                $transactionSave = Mage::getModel('core/resource_transaction')
-			                    ->addObject($invoice)
-			                    ->addObject($invoice->getOrder());
-			                $transactionSave->save();
-			            }
+			            // if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
+			            //     $invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
+			            //     $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+			            //     $invoice->register();
+			            //     $transactionSave = Mage::getModel('core/resource_transaction')
+			            //         ->addObject($invoice)
+			            //         ->addObject($invoice->getOrder());
+			            //     $transactionSave->save();
+			            // }
 						//=> End Create Invoice
-						
+
+						if($order->getState() != Mage::getStoreConfig('payment/KSmartpay/payment_success_status')){
+							$order->setState(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
+							$order->save();
+							//=> Create Invoice
+							if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
+								$invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
+				                $invoice->setRequestedCaptureCase(Mage_Sales_Model_Order_Invoice::CAPTURE_ONLINE);
+				                $invoice->register();
+				                $transactionSave = Mage::getModel('core/resource_transaction')
+				                    ->addObject($invoice)
+				                    ->addObject($invoice->getOrder());
+				                $transactionSave->save();
+							}
+							//=> End Create Invoice
+						} else {
+							$message .= 'Other -'.$order->getState().' : '.$message;
+							$order->setState($order->getState(), true, $message);
+							$order->save();
+						}
+
+
+						$message=Mage::helper('KSmartpay')->__('Your payment is authorized by KSmartpay ('. $KSmartpayReturnData .').');
+						$order->setStatus($state, true, $message);
+						$order->save();
+
 						$session = Mage::getSingleton('checkout/session');
 						$session->setQuoteId($session->getKSmartpayStandardQuoteId(true));
 						/**
