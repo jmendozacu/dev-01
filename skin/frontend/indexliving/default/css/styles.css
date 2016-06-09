@@ -3590,7 +3590,7 @@ body {
 .box-home-decor {float:left; width:100%; position:relative; }
 .box-home-decor:before {content:""; position:absolute; width:100%; height:56.5%; left:0px; top:0px; background:#FFC222;}
 .box-home-decor .home-decor-content {float:left; width:100%; position:relative; padding-top:96px;}
-.box-home-decor .title-decor {position:absolute; text-transform:uppercase; color:#000; top:20px; right:0px; float:right; text-align:right; font-size:32px; line-height:36px;}
+.box-home-decor .title-decor {position:absolute; text-transform:uppercase; color:#000; top:20px; right:0px; float:right; text-align:right; font-size:32px; line-height:36px; font-weight: normal;}
 .box-home-decor .title-decor label {display:block; font-size:55px; line-height:58px; font-weight:normal;}
 .box-home-decor .title-decor label strong { font-size:60px;}
 .box-home-decor .decor-style {float:left; width:17.5%; background:#434343; padding:0 13px;}
@@ -5014,10 +5014,8 @@ body.catalogsearch-result-index .page-title h1 {
   top: 50%;
   margin-top: -3px;
 }
-.block-layered-nav .block-content > dl > dt:hover {
-}
 .block-layered-nav .block-content > dl > dd {
-  margin: 0 0 10px;
+  margin: 0 0 30px;
 	padding-right:20px;
 }
 .block-layered-nav .block-content > dl > dd:last-child {
@@ -11743,7 +11741,7 @@ body:lang(th) .product-view .product-review-summary .review-box .box-title .br .
 body:lang(th) #customer-reviews .review-list.no-review .no-rating, body:lang(th) .categories-list .category-grid li.category-item.category-products-list .link-view-productlist,
 body:lang(th) .block-recently-viewed .box-title span, body:lang(th) .categories-list .category-grid .categories-links a.link-has-sub, body:lang(th) .categories-list .category-grid .categories-links a.link-no-sub,
 body:lang(th) .block-layered-nav .block-content > dl > dt, body:lang(th) .category-overview .category-info .page-title.category-title h1, body:lang(th) .products-grid .actions .button.btn-cart, body:lang(th) .title-style3,
-body:lang(th) .main-home .box-home-decor .decor-style .banner-title, body:lang(th) .box-home-decor .title-decor label, body:lang(th) .box-home-decor .title-decor label strong{
+body:lang(th) .main-home .box-home-decor .decor-style .banner-title, body:lang(th) .box-home-decor .title-decor label strong{
   font-weight: bold;
 }
 
