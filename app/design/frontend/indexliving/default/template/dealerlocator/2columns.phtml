@@ -155,6 +155,8 @@ $dealers->clear(); ?>
 													<img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
 												<?php endif?>
 
+                        <input type="hidden" name="dealer-icon" id="dealer_icon_<?php echo $dealer->getId() ?>"
+                               value="<?php echo $dealer->getDealerIconImage() ?>"/>
 												<input type="hidden" name="dealer-longitude" id="dealer_latitude_<?php echo $dealer->getId() ?>"
 															 value="<?php echo $dealer->getLatitude() ?>"/>
 												<input type="hidden" name="dealer-longitude" id="dealer_longitude_<?php echo $dealer->getId() ?>"
@@ -231,6 +233,8 @@ $dealers->clear(); ?>
 										<img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
 									<?php endif?>
 
+                <input type="hidden" name="dealer-icon" id="dealer_icon_<?php echo $dealer->getId() ?>"
+                               value="<?php echo $dealer->getDealerIconImage() ?>"/>
 								<input type="hidden" name="dealer-longitude" id="dealer_latitude_<?php echo $dealer->getId() ?>"
 											 value="<?php echo $dealer->getLatitude() ?>"/>
 								<input type="hidden" name="dealer-longitude" id="dealer_longitude_<?php echo $dealer->getId() ?>"
