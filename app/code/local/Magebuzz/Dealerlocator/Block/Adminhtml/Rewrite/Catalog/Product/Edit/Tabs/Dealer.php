@@ -110,10 +110,11 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Rewrite_Catalog_Product_Edit_Tabs_D
       return null;
     }
     $current_store_id = Mage::app()->getRequest()->getParam('store');
+		$storeIds = array($current_store_id, Mage_Core_Model_App::ADMIN_STORE_ID);
     $productdealerCollection = Mage::getModel('dealerlocator/productdealer')
       ->getCollection()
       ->addFieldToFilter('product_id', $productId)
-      ->addFieldToFilter('store_id', $current_store_id)
+      ->addFieldToFilter('store_id', array('in' => $storeIds))
       ->addFieldToFilter('display', 1);
     $dealers = $productdealerCollection->getColumnValues('dealer_id');
     return $dealers;
