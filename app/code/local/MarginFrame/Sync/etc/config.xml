@@ -19,13 +19,13 @@
             </mgfsync_cron_store_run>
 
             <mgfsync_cron_price_run>
-                <schedule><cron_expr>30,40,50,55 4 * * *</cron_expr></schedule>
+                <schedule><cron_expr>30,40,50,55 4,5 * * *</cron_expr></schedule>
                 <!-- <schedule><cron_expr>*/5 * * * *</cron_expr></schedule> -->
                 <run><model>mgfsync/cron_price::Run</model></run>
             </mgfsync_cron_price_run>
 
             <!-- <mgfsync_cron_rename_run>
-                <schedule><cron_expr>16 0,5,10,15,20,25,30 * * *</cron_expr></schedule>
+                <schedule><cron_expr>*/10 23 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_renameECOM::Run</model></run>
             </mgfsync_cron_rename_run> -->
 
