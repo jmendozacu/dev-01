@@ -178,8 +178,11 @@ class Amasty_Feed_Model_Mysql4_Product_Collection extends Mage_Catalog_Model_Res
     function addAttribute($code, $storeId){
 
         $ascode = $code;
-        if($storeId != $this->getStoreId()){
-            $ascode = $code . '_' . $storeId;
+        if(strrpos($code, '___') !== false){
+            $ascode = str_replace('___', '_', $code);
+            $code_storeid = explode('___', $code);
+            $code = $code_storeid[0];
+            $storeId = $code_storeid[1];
         }
 
         if (!$this->_checkJoin($ascode) && !in_array($code, $this->_skipAttributes))

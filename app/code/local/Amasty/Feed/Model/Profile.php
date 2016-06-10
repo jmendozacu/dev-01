@@ -185,18 +185,21 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
             }
         }
 
+        /*
         foreach ($fields['attrstore'] as $idx => $storeId) {
+            $code = $fields['attr'][$idx];
             if($storeId != $this->getStoreId()){
                 $collection->addAttribute($code, $storeId);
             }
         }
+        */
 
         foreach($this->_attributes as $code => $val){
             $collection->addAttribute($code, $this->getStoreId());            
         }
         
         $collection->addConditions();
-
+        
     }
     
     protected function _prepareProductParentCollection(){
@@ -551,14 +554,13 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
             foreach ($fields['type'] as $idx => $type) {
                 if ($type == "attribute"){
                     $code = $fields['attr'][$idx];
-                    
+                    $storeId = $fields['attrstore'][$idx];
                     if (isset($attributes[$code])) {
-                        $this->_loadAttribute($code);
+                        $this->_loadAttribute($code, $storeId);
                     }
 
                 } else if ($type == "custom_field"){
                     $customField = $this->getCustomField($fields['custom'][$idx]);
-
                     if ($customField) {
                         foreach($customField->getAdvencedAttributes() as $attr) {
                             $this->_loadAttribute($attr);
@@ -569,17 +571,19 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
         }
     }
     
-    protected function _loadAttribute($code){
+    protected function _loadAttribute($code, $storeId = null){
+        $ascode = '';
+        if($storeId != null && $storeId != $this->getStoreId()){
+            $ascode = '___' . $storeId;
+        }
         if ($this->_getAttributeHelper()->isCompoundAttribute($code)){
-
             $compoundAttribute = $this->_getCompoundAttribute($code);
-
             foreach($compoundAttribute->getAttributesCodes() as $compoundCode)
             {
-                $this->_attributes[$compoundCode] = true;
+                $this->_attributes[$compoundCode.$ascode] = true;
             }
          } else {
-             $this->_attributes[$code] = true;
+             $this->_attributes[$code.$ascode] = true;
          }
     }
     

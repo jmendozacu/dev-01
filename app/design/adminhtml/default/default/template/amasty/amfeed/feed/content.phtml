@@ -204,7 +204,7 @@ function amfeed_isUpload(el){
                 <table class="data" style="width:100%" cellpadding="0" cellspacing="0">
                 <thead>
                 <tr class="headings">
-                    <th style="width:110px"><?php echo $this->__('Header')?></th>
+                    <th style="width:200px"><?php echo $this->__('Header')?></th>
                     <th style="width:60px"><?php echo $this->__('Before')?></th>
                     <th style="width:95px"><?php echo $this->__('Type')?></th>
                     <th style="width:121px"><?php echo $this->__('Data Store')?></th>
@@ -222,7 +222,7 @@ function amfeed_isUpload(el){
                     <span class="field-row">
                     <table class="data" style="width: 100%" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td style="width:111px"><input class="input-text" name="csv[name][]"  value="<?php echo $this->getValueHtml('csv/name/'.$i)?>"/></td>
+                        <td style="width:201px"><input class="input-text" name="csv[name][]"  value="<?php echo $this->getValueHtml('csv/name/'.$i)?>"/></td>
                         <td style="width:61px"><input class="input-text" name="csv[before][]" value="<?php echo $this->getValueHtml('csv/before/'.$i)?>" /></td>
                         <td style="width:96px"><select style="width: 96px" name="csv[type][]" onchange="amfeed_changeType(this)">
                                 <?php foreach ($this->getFieldTypes() as $_value => $_label): ?>
