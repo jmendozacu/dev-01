@@ -129,10 +129,10 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 		$order = Mage::getModel('sales/order');
 		$order->loadByIncrementId($OrderID);
 		
-		$payment = $order->getPayment();
-		$payment->setAdditionalInformation('approvecode',"Cancel");
-		$payment->setAdditionalInformation('paidnote',$CancelResult);
-		$payment->save();
+		// $payment = $order->getPayment();
+		// $payment->setAdditionalInformation('approvecode',"Cancel");
+		// $payment->setAdditionalInformation('paidnote',$CancelResult);
+		// $payment->save();
 
 		$state = Mage_Sales_Model_Order::STATE_CANCELED;
 		$ResponseMessge = $order->getStatus() . " -> "  . $state;
@@ -150,13 +150,10 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 		}
 		
 		
-		if ($APICall =="bjc") {
-			echo $ResponseMessge;
-		}
-		else {
+		
 			Mage::getSingleton('checkout/session')->addError("Installment Payment has been cancelled and the transaction has been declined.");
 			$this->_redirect('checkout/cart');		
-		}
+		
     }
 
     /**
@@ -369,10 +366,10 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 										" Calulate MD5CHECKSUM = ". $KBankResultCode ."\n\r";
 				
 				//echo "<p>My Data : $KBankReturnData</p>";
-		
+					$MerchantInvoiceNo = substr($KBankInvoice,-10);
 					if($KBankResultCode=="00")
 					{
-						$MerchantInvoiceNo = substr($KBankInvoice,-10);
+						
 						$order = Mage::getModel('sales/order');
 						$order->loadByIncrementId($MerchantInvoiceNo);
 						$state = Mage::getStoreConfig('payment/KBank/payment_success_status');
@@ -408,8 +405,9 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 					}
 					else
 					{
+						// $ReturnOrderNo,"web", "" ,$ReturnData
 						$this->getCheckout()->setKBankErrorMessage('KBank UNSUCCESS ('. $KBankReturnData .')');   
-						$this->cancelAction();
+						$this->cancelAction($MerchantInvoiceNo,'web','',$KBankReturnData);
 						return false;
 					}				
 				
