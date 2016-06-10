@@ -22,7 +22,7 @@
 }
 
 .amfeed-field-advanced #condition_operator{
-    width: 80px;
+    /*width: 80px;*/
 }
 
 .amfeed-field-advanced #condition_value{
