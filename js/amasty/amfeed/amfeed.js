@@ -72,6 +72,8 @@ function am_feed()
                 var data = response.responseText;
                 if (!data || !data.isJSON()) {
                     _this.stop(true);
+                    console.log(':: System error ::');
+                    console.log(data);
                     alert('System error: ' + data);
                     window.location.reload();
                 }

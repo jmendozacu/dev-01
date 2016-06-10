@@ -58,7 +58,7 @@ class Amasty_Feed_Block_Adminhtml_Profile_Edit_Tab_General extends Mage_Adminhtm
             'class'    => 'required-entry',
             'required' => true,
             'name'     => 'filename',
-            'note'     => $hlp->__('Do not specify filename extension.'),
+            'note'     => $hlp->__('Do not specify filename extension.<br> You can use variables {yyyy}, {yy}, {m}, {mm}, {d}, {dd}. If you type filename-{yy}-{mm}-{dd} in the field, you will have filename of the kind: filename-13-08-15'),
         ));
         
         $fldInfo->addField('mode', 'select', array(

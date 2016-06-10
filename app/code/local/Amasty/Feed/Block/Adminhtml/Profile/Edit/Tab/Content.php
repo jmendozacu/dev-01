@@ -10,7 +10,7 @@ class Amasty_Feed_Block_Adminhtml_Profile_Edit_Tab_Content extends Amasty_Feed_B
     {
         parent::__construct();
         $this->setTemplate('amasty/amfeed/feed/content.phtml');
-        $this->_fields  = array('name', 'before', 'type', 'attr', 'custom', 'txt', 'after', 'format');
+        $this->_fields  = array('name', 'before', 'type', 'attrstore', 'attr', 'custom', 'txt', 'after', 'format');
         $this->_model   = 'amfeed_profile';        
     } 
 
@@ -49,6 +49,20 @@ class Amasty_Feed_Block_Adminhtml_Profile_Edit_Tab_Content extends Amasty_Feed_B
         }
         
         return $types;
+    }
+
+    public function getAllStores()
+    {
+        $store = array();
+        $allStores = Mage::app()->getStores();
+        foreach ($allStores as $_eachStoreId => $val) 
+        {
+            $_storeCode = Mage::app()->getStore($_eachStoreId)->getCode();
+            $_storeName = Mage::app()->getStore($_eachStoreId)->getName();
+            $_storeId = Mage::app()->getStore($_eachStoreId)->getId();
+            $store[$_storeId] = $_storeCode . ' : ' . $_storeName;
+        }
+        return $store;
     }
     
     public function getProductImageFormats()

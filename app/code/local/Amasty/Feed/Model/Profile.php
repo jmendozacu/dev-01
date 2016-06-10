@@ -184,11 +184,19 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
                 }
             }
         }
+
+        foreach ($fields['attrstore'] as $idx => $storeId) {
+            if($storeId != $this->getStoreId()){
+                $collection->addAttribute($code, $storeId);
+            }
+        }
+
         foreach($this->_attributes as $code => $val){
             $collection->addAttribute($code, $this->getStoreId());            
         }
         
         $collection->addConditions();
+
     }
     
     protected function _prepareProductParentCollection(){
@@ -333,8 +341,13 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
         
         switch($fields['type'][$idx]){
             case "attribute":
-                $attributeValue = $this->getAttributeValue($fields['attr'][$idx], $productData);
-                $value = $this->_modifyAttribute($attributeValue, $fields['attr'][$idx]);
+                $attr = $fields['attr'][$idx];
+                $storeId = $fields['attrstore'][$idx];
+                if($storeId != $this->getStoreId()){
+                    $attr = $attr . '_' . $storeId;
+                }
+                $attributeValue = $this->getAttributeValue($attr, $productData);
+                $value = $this->_modifyAttribute($attributeValue, $attr);
                 break;
             case "custom_field":
                 $customField = $this->getCustomField($fields['custom'][$idx]);
@@ -995,7 +1008,7 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
                         'operator' => array(),
                         'value' => array(),
                         'type' => array(),
-                        'other' => array()
+                        'other' => array(),
                     )
                 );
 
@@ -1246,4 +1259,31 @@ class Amasty_Feed_Model_Profile extends Amasty_Feed_Model_Filter
         $this->setDeliveryAt(null);
         $this->save();
     }
+
+    public function getFilename(){       
+        $format = $this->getData('filename');
+        //$now = Mage::getModel('core/date')->date();
+        $now = Mage::app()->getLocale()->storeTimeStamp($this->getStoreId());
+        if(strpos($format,'{') !== false){
+            $vars = array(
+                //'store_id' => $storeId, 
+                //'store'    => $storeId, 
+                'yy'       => date('y', $now), 
+                'yyyy'     => date('Y', $now), 
+                'mm'       => date('m', $now), 
+                'm'        => date('n', $now), 
+                'dd'       => date('d', $now), 
+                'd'        => date('j', $now), 
+                'hh'       => date('H', $now), 
+                //'rand'     => rand(1000,9999), 
+                //'counter'  => $counter, 
+            );          
+            foreach ($vars as $k => $v){
+                $format = str_replace('{'. $k .'}', $v, $format);
+            }
+        }
+
+        return $format;
+    }
+
 }

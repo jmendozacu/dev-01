@@ -207,7 +207,8 @@ function amfeed_isUpload(el){
                     <th style="width:110px"><?php echo $this->__('Header')?></th>
                     <th style="width:60px"><?php echo $this->__('Before')?></th>
                     <th style="width:95px"><?php echo $this->__('Type')?></th>
-                    <th style="width:200px"><?php echo $this->__('Value')?></th>
+                    <th style="width:121px"><?php echo $this->__('Data Store')?></th>
+                    <th style="width:200px"><?php echo $this->__('Data Value')?></th>
                     <th style="width:60px"><?php echo $this->__('After')?></th>
                     <th style="width:100px"><?php echo $this->__('Format')?></th>
                     <th style="width:60px"><?php echo $this->__('Max Length')?></th>
@@ -226,6 +227,11 @@ function amfeed_isUpload(el){
                         <td style="width:96px"><select style="width: 96px" name="csv[type][]" onchange="amfeed_changeType(this)">
                                 <?php foreach ($this->getFieldTypes() as $_value => $_label): ?>
                                     <option <?php echo $this->getSelectedHtml('csv/type/' . $i, $_value)?> value="<?php echo $_value ?>"><?php echo $this->htmlEscape($_label) ?></option>
+                                <?php endforeach ?>
+                                </select></td>
+                        <td style="width:120px"><select style="width: 121px" name="csv[attrstore][]">
+                                <?php foreach ($this->getAllStores() as $_value => $_label): ?>
+                                    <option <?php echo $this->getSelectedHtml('csv/attrstore/' . $i, $_value)?> value="<?php echo $_value ?>"><?php echo $this->htmlEscape($_label) ?></option>
                                 <?php endforeach ?>
                                 </select></td>
                         <td style="width:201px" id="attribute_values">
@@ -295,6 +301,11 @@ function amfeed_isUpload(el){
                         <td style="width:61px"><input class="input-text" name="csv[before][]"  /></td>
                         <td style="width:96px"><select style="width: 96px" name="csv[type][]" onchange="amfeed_changeType(this)">
                                 <?php foreach ($this->getFieldTypes() as $_value => $_label): ?>
+                                    <option value="<?php echo $_value ?>"><?php echo $this->htmlEscape($_label) ?></option>
+                                <?php endforeach ?>
+                                </select></td>
+                        <td style="width:120px"><select style="width: 121px" name="csv[attrstore][]">
+                                <?php foreach ($this->getAllStores() as $_value => $_label): ?>
                                     <option value="<?php echo $_value ?>"><?php echo $this->htmlEscape($_label) ?></option>
                                 <?php endforeach ?>
                                 </select></td>

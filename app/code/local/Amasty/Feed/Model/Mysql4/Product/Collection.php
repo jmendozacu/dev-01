@@ -177,7 +177,12 @@ class Amasty_Feed_Model_Mysql4_Product_Collection extends Mage_Catalog_Model_Res
 
     function addAttribute($code, $storeId){
 
-        if (!$this->_checkJoin($code) && !in_array($code, $this->_skipAttributes))
+        $ascode = $code;
+        if($storeId != $this->getStoreId()){
+            $ascode = $code . '_' . $storeId;
+        }
+
+        if (!$this->_checkJoin($ascode) && !in_array($code, $this->_skipAttributes))
         {
             switch ($code){
 //                case "special_price":
@@ -186,7 +191,7 @@ class Amasty_Feed_Model_Mysql4_Product_Collection extends Mage_Catalog_Model_Res
                     $this->joinPrice();
                     break;
                 default:
-                    $this->joinAttribute($code, 'catalog_product/' . $code, 'entity_id', null, 'left', $storeId);
+                    $this->joinAttribute($ascode, 'catalog_product/' . $code, 'entity_id', null, 'left', $storeId);
                     break;
             }
         }
