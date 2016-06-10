@@ -135,6 +135,7 @@ class Amasty_Feed_Block_Adminhtml_Profile_Edit_Tab_Content extends Amasty_Feed_B
             ord(';')  => $this->__('Semicolon (;)'),
             ord('|')  => $this->__('Pipe (|)'),
             ord("\t") => $this->__('Tab'),
+            ord("^") => $this->__('Tab (Excel)'),
         );
         return $chars;
     }

@@ -27,11 +27,15 @@ class Amasty_Feed_Model_Writer_Csv extends Amasty_Feed_Model_Writer_Abstract
     {
         $encl  = chr($this->_getFeed()->getCsvEnclosure());
         $delim = chr($this->_getFeed()->getCsvDelimiter());     
+        
+        //ipune: replace \r\n
         foreach($record as $inx => $val){
-            $record[$inx] = nl2br($val);
-            //$record[$inx] = str_replace(array("\r\n", "\n"), array(" ", " "), $val);
+            //$record[$inx] = nl2br($val);
+            $record[$inx] = str_replace(array("\t","\r\n", "\n"), array(" ", "\t", "\t"), $val);
         }
-        if($delim == "\t"){
+
+        //ipune: csv tab use for excel can read thai
+        if($delim == "^"){
             $cols = array();
             foreach($record as $inx => $val){
                 $val = ltrim($val,'\-');
@@ -40,8 +44,7 @@ class Amasty_Feed_Model_Writer_Csv extends Amasty_Feed_Model_Writer_Abstract
                 $val = ltrim($val,'\''); 
                 $cols[] = '"' . str_replace(array('"', '\\', "\t"), array('""', '\\\\', ''), $val) . '"';
             }
-            $row = implode($delim, $cols)."\n";
-
+            $row = implode("\t", $cols)."\n";
             if($isfirst){
                 $row = "\xFF\xFE".iconv("UTF-8","UCS-2LE", $row);
             }
@@ -50,11 +53,16 @@ class Amasty_Feed_Model_Writer_Csv extends Amasty_Feed_Model_Writer_Abstract
             }
             fwrite($this->fp, $row);
         }
-        else if ( $encl == 'n') {
+        
+        else if ($encl == 'n') {
             foreach($record as $inx => $val){
                 $record[$inx] = str_replace($delim, "", $val);
             }
-            fwrite($this->fp, implode($delim, $record) . "\n");
+            $row = implode($delim, $record);
+            if(!$isfirst){
+                $row = "\n" . $row;
+            }
+            fwrite($this->fp, $row);
         } else {
             fputcsv($this->fp, $record, $delim, $encl);
         }

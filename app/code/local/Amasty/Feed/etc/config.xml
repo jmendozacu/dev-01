@@ -196,7 +196,7 @@
         <amfeed>
            <system>
                 <max_memory>2</max_memory>
-                <batch_size>100</batch_size>
+                <batch_size>1000</batch_size>
 <!--                <parent_url>1</parent_url>
                 <image_url>1</image_url>-->
                 <!--<max_files></max_files>

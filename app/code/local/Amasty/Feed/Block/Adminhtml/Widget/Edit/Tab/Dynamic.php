@@ -132,11 +132,13 @@ class Amasty_Feed_Block_Adminhtml_Widget_Edit_Tab_Dynamic extends Mage_Adminhtml
         $val = Mage::registry($this->_model)->getData($key);
         
         $skip = $skipOnCreatedObject && !Mage::registry($this->_model)->isObjectNew();
-            
         
-        if (!$val && !$skip){
-            $val = $defVal;
+        if(strrpos($key, 'csv/txt/') === false){
+            if (!$val && !$skip){
+                $val = $defVal;
+            }
         }
+
         return $this->htmlEscape($val);
     }  
       
