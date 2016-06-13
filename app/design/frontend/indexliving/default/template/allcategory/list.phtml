@@ -1,8 +1,11 @@
 <?php
     $_helper    = $this->helper('catalog/output');
     $_category  = $this->getCurrentCategory();
+	$_subcategories = $_category->getChildrenCategories();
+	$_categoryHelper    = $this->helper('catalog/category');
+
     $_imgHtml   = '';
-    if ($_imgUrl = $_category->getImageUrl()) {
+    if ($_imgUrl = $_category->getImageUrl()) {      
         $_imgHtml = '<div class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></div>';
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }
@@ -10,11 +13,14 @@
 <div class="allcategories-list">
 	<div class="category-overview">
 		<?php if($_imgUrl): ?>
+			<a href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist">
 			<?php echo $_imgHtml ?>
+			</a>
 		<?php endif; ?>
 		<div class="category-info">
+			<a href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist">
 			<div class="page-title category-title">
-				<?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+				<?php if(false && $this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
 					<a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
 				<?php endif; ?>
 				<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
@@ -24,14 +30,11 @@
 					<?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
 				</div>
 			<?php endif; ?>
+			</a>
 		</div>
 	</div>
 	<div class="categories-list">
 		<div class="selectcat-title"><h1><?php echo $this->__('Select Category')?></h1></div>
-		<?php 
-			$_subcategories = $_category->getChildrenCategories();
-			$_categoryHelper    = $this->helper('catalog/category');
-		?>
 		<?php if (count($_subcategories) > 0): ?>
 			<ul class="category-grid">
 			<?php $i=0; foreach($_subcategories as $_subcategory): $i++;?>
