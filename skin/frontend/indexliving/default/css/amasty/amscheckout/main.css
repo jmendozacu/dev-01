@@ -450,11 +450,13 @@
 .amscheckout table#checkout-review-table .opc-product-image{float:left; max-width:100px;}
 .amscheckout table#checkout-review-table .opc-product-info{margin-left:150px;}
 .amscheckout table#checkout-review-table .opc-product-info .product-name{
-	font-size: 16px;
-	text-transform: uppercase;
-	color: #000;
-	font-weight: bold;
-	margin:0 0 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: bold;
+    margin:0 0 5px;
+    width: 85%;
+    word-wrap: break-word;
 }
 .amscheckout table#checkout-review-table .opc-product-info .item-options{float:left; width:100%;}
 .amscheckout table#checkout-review-table .opc-product-info .item-options dd{margin:0;}
