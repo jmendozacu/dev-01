@@ -133,6 +133,13 @@
     </admin>
 
     <frontend>
+        <layout>
+            <updates>
+                <amcustomform>
+                    <file>amasty/customform.xml</file>
+                </amcustomform>
+            </updates>
+        </layout>
         <routers>
             <amcustomform>
                 <use>standard</use>

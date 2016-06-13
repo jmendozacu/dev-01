@@ -19,13 +19,13 @@ if($captchaEnable){
     $captcha = $this->getCaptcha();
 }
 ?>
-
+<!--
 <script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar.js"></script>
 <script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar-setup.js"></script>
 <script type="text/javascript" src="<?php echo $this->getJsUrl('mage/captcha.js') ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $baseJsUrl?>calendar/calendar-win2k-1.css" media="all" />
 <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml();?>
-
+-->
 <style>
     .customer-forms ul {
         list-style: none !important;
@@ -115,6 +115,32 @@ if($captchaEnable){
     <?php if(!empty($data)){?>
     contactForm<?php echo $form->getId()?>.validator.validate();
     <?php } ?>
+
+    jQuery(function(){
+        jQuery('.picker-datetime').datetimepicker({
+            //yearOffset:543,
+            //lang:'th',
+            format:'d/m/Y H:i',
+            formatDate:'Y/m/d H:i',
+            //minDate:'-1970/01/02', // yesterday is minimum date
+            //maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        jQuery('.picker-date').datetimepicker({
+            //yearOffset:543,
+            //lang:'th',
+            timepicker:false,
+            format:'d/m/Y',
+            formatDate:'Y/m/d',
+            //minDate:'-1970/01/02', // yesterday is minimum date
+            //maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        jQuery('.picker-time').datetimepicker({
+            datepicker:false,
+            format:'H:i',
+            step:5
+        });
+
+    });
 
     //]]>
 </script>

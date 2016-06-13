@@ -9,6 +9,7 @@ class Amasty_Customform_Helper_Data extends Mage_Core_Helper_Abstract
     const INPUT_TYPE_TEXT        = 'text';
     const INPUT_TYPE_TEXTAREA    = 'textarea';
     const INPUT_TYPE_DATE        = 'date';
+    const INPUT_TYPE_TIME        = 'time';
     const INPUT_TYPE_DATETIME    = 'datetime';
     const INPUT_TYPE_MULTISELECT = 'multiselect';
     const INPUT_TYPE_SELECT      = 'select';
@@ -40,6 +41,10 @@ class Amasty_Customform_Helper_Data extends Mage_Core_Helper_Abstract
             array(
                 'value' => self::INPUT_TYPE_DATE,
                 'label' => $this->__('Date')
+            ),
+            array(
+                'value' => self::INPUT_TYPE_TIME,
+                'label' => $this->__('Time')
             ),
             array(
                 'value' => self::INPUT_TYPE_DATETIME,
