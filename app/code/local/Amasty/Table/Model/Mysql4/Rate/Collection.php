@@ -37,9 +37,10 @@ class Amasty_Table_Model_Mysql4_Rate_Collection extends Mage_Core_Model_Mysql4_C
                                  ),                                                                  
         ));
         
+				$cityId = Mage::getSingleton('checkout/type_onepage')->getQuote()->getShippingAddress()->getCityId();
         $this->addFieldToFilter('city', array(
                                 array(
-                                'like'  => $request->getDestCity(),
+                                'like'  => $cityId,
                                  ),
                                 array(
                                 'eq'    => '',
