@@ -116,28 +116,33 @@ if($captchaEnable){
     contactForm<?php echo $form->getId()?>.validator.validate();
     <?php } ?>
 
+    var datenow = '<?php echo Mage::getModel("core/date")->date("Y-m-d H:i:s"); ?>';
     jQuery(function(){
         jQuery('.picker-datetime').datetimepicker({
-            //yearOffset:543,
-            //lang:'th',
-            format:'d/m/Y H:i',
-            formatDate:'Y/m/d H:i',
-            //minDate:'-1970/01/02', // yesterday is minimum date
-            //maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+            value:datenow,
+            step:10,
+            //format:'Y-m-d H:i',
+            //formatDate:'Y-m-d H:i:s',
+            // onSelectDate:function(ct,$i){
+            //   alert(ct.dateFormat('d/m/Y'))
+            // }
         });
         jQuery('.picker-date').datetimepicker({
+            value:datenow,
             //yearOffset:543,
             //lang:'th',
             timepicker:false,
-            format:'d/m/Y',
-            formatDate:'Y/m/d',
+            //format:'d/m/Y',
+            formatDate:'Y-m-d',
             //minDate:'-1970/01/02', // yesterday is minimum date
             //maxDate:'+1970/01/02' // and tommorow is maximum date calendar
         });
         jQuery('.picker-time').datetimepicker({
+            value:datenow,
+            step:10,
             datepicker:false,
             format:'H:i',
-            step:5
+            formatDate:'Y-m-d H:i:s',
         });
 
     });
