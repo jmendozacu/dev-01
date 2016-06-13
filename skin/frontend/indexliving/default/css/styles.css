@@ -8501,8 +8501,16 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 	text-transform: uppercase;
 	font-weight: bold;
 }
+.availability.store-only  span {
+  color: #008800;
+	font-size: 18px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
 .product-view .availability.out-of-stock{text-align:center;}
 .product-view .availability.out-of-stock span{font-size:30px;}
+.product-view .availability.store-only{text-align:center;}
+.product-view .availability.store-only span{font-size:30px;}
 .product-view .product-options .swatch-attr {
   float: none;
   display: block;
