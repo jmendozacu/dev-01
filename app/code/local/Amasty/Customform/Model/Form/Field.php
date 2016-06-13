@@ -32,6 +32,7 @@ class Amasty_Customform_Model_Form_Field extends Mage_Core_Model_Abstract
             Amasty_Customform_Helper_Data::INPUT_TYPE_TEXT => Varien_Db_Ddl_Table::TYPE_VARCHAR,
             Amasty_Customform_Helper_Data::INPUT_TYPE_BOOLEAN => Varien_Db_Ddl_Table::TYPE_BOOLEAN,
             Amasty_Customform_Helper_Data::INPUT_TYPE_DATE => Varien_Db_Ddl_Table::TYPE_DATE,
+             Amasty_Customform_Helper_Data::INPUT_TYPE_DATETIME => Varien_Db_Ddl_Table::TYPE_DATETIME,
             Amasty_Customform_Helper_Data::INPUT_TYPE_SELECT => Varien_Db_Ddl_Table::TYPE_VARCHAR,
             Amasty_Customform_Helper_Data::INPUT_TYPE_TEXTAREA => Varien_Db_Ddl_Table::TYPE_TEXT,
             Amasty_Customform_Helper_Data::INPUT_TYPE_MULTISELECT => Varien_Db_Ddl_Table::TYPE_VARCHAR,
