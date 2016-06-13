@@ -109,6 +109,8 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
 														<?php echo $this->getChildHtml('addtocart') ?>
 														<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
 														<?php endif; ?>
+													<?php else:?>	
+														<p class="action availability out-of-stock"><span><?php echo $this->__('Store Only') ?></span></p>
 													<?php endif; ?>
 													<?php echo $this->getChildHtml('addto') ?>
 													<?php echo $this->getChildHtml('sharing') ?>
