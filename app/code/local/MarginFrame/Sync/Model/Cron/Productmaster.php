@@ -147,6 +147,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 								}
 								$i++;
 							}
+						
 
 							//create header file for put content with type csv
 							
@@ -171,6 +172,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 							fputcsv($file,$indexTH);
 							fclose($file);
 
+							$import_EN[] ='visibility';
 							$file = fopen($dirprepare."Import_Produce_EN.csv","w+");
 							$str = "";
 							foreach ($import_EN as $value) {
@@ -183,16 +185,18 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 										}
 									}
 								} else {
-									$indexEN[] = $index_magento[$index_header[$value]];	
+									if(isset($index_magento[$index_header[$value]])){
+										$indexEN[] = $index_magento[$index_header[$value]];	
+									} else {
+										$indexEN[] = $value;
+									}
 								}
 							}
 							
 							// $str = rtrim($str,',');
 	    					fputcsv($file,$indexEN);
 							fclose($file);
-							//echo '<pre>';
-							// print_r($index_header);
-							// echo '</pre>';
+							
 							
 						} else {
 							$cols = explode("|", $row);
@@ -258,6 +262,8 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 								}
 
 							}
+							$rowCsv_EN[] = '1'; //visibility
+							
 							$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
 							fputcsv($file,$rowCsv_EN);
 							fclose($file);
@@ -282,7 +288,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}
 
 					// Mage::log($newdir);
-					// unlink($dir.$filename);
+					unlink($dir.$filename);
 					rename($dir.$filenamecsv, $newdir.$filenamecsv);
 
 					// Tiw
