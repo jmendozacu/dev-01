@@ -17,13 +17,13 @@ class Amasty_Feed_Model_Writer_Csv extends Amasty_Feed_Model_Writer_Abstract
             
             if ($this->_getFeed()->getCsvHeader()) {
                 $fields = $this->_getFeed()->getFields();
-                $this->writeRecord($fields["name"], 1);
+                $this->writeRecord($fields["name"]);
             }
         }
         
         return parent::write();
     }
-    public function writeRecord($record, $isfirst = 0)
+    public function writeRecord($record, $islast = 0)
     {
         $encl  = chr($this->_getFeed()->getCsvEnclosure());
         $delim = chr($this->_getFeed()->getCsvDelimiter());     
@@ -59,9 +59,9 @@ class Amasty_Feed_Model_Writer_Csv extends Amasty_Feed_Model_Writer_Abstract
                 $record[$inx] = str_replace($delim, "", $val);
             }
             $row = implode($delim, $record);
-            if(!$isfirst){
-                $row = "\n" . $row;
-            }
+            //if(!$islast){
+                $row = $row ."\n";
+            //}
             fwrite($this->fp, $row);
         } else {
             fputcsv($this->fp, $record, $delim, $encl);
