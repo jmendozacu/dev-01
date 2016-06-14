@@ -45,7 +45,9 @@
 							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
 						</a>
 						<?php else:?>
+						<a class="link-no-sub-img" href="<?php echo $_categoryHelper->getCategoryUrl($_subcategoryData) ?>">
 							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						</a>
 						<?php endif; ?>
 						<div class="categories-links">
 						<?php $_categoryLevel3 = $_subcategory->getChildrenCategories(); ?>

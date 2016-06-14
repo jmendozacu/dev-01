@@ -78,18 +78,24 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
 					$this->getRequest()->setPost('billing_address_id', $addressId);
 					$this->saveBillingAction();
 				}
+				$this->_amSaveShippingMethod();
     }
     
     protected function _amSaveShippingMethod(){
-        $this->saveShippingMethodAction();
+        //$this->saveShippingMethodAction();
         
-        $quote = $this->getOnepage()->getQuote();
+        $hlr = Mage::helper("amscheckout");
+				$quote = $this->getOnepage()->getQuote();
+				$this->getRequest()->setPost('shipping_method', $hlr->getDefaultShippingMethod($quote));
+        $this->saveShippingMethodAction(); 
         
         $this->_mwRewardPoints();
             
-//        $this->getOnepage()->getQuote()->setTotalsCollectedFlag(false);
-//        $this->getOnepage()->getQuote()->collectTotals();
-//        $this->getOnepage()->getQuote()->save();
+				if (!$quote->getShippingAddress()->getShippingMethod()){
+            $hlr = Mage::helper("amscheckout");
+            $this->getRequest()->setPost('shipping_method', $hlr->getDefaultShippingMethod($quote));
+            $this->saveShippingMethodAction();
+        }
     }
     
     protected function _amSavePaymentMethod(){

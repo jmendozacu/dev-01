@@ -19,13 +19,13 @@ if($captchaEnable){
     $captcha = $this->getCaptcha();
 }
 ?>
-
+<!--
 <script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar.js"></script>
 <script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar-setup.js"></script>
 <script type="text/javascript" src="<?php echo $this->getJsUrl('mage/captcha.js') ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $baseJsUrl?>calendar/calendar-win2k-1.css" media="all" />
 <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml();?>
-
+-->
 <style>
     .customer-forms ul {
         list-style: none !important;
@@ -115,6 +115,37 @@ if($captchaEnable){
     <?php if(!empty($data)){?>
     contactForm<?php echo $form->getId()?>.validator.validate();
     <?php } ?>
+
+    var datenow = '<?php echo Mage::getModel("core/date")->date("Y-m-d H:i:s"); ?>';
+    jQuery(function(){
+        jQuery('.picker-datetime').datetimepicker({
+            value:datenow,
+            step:10,
+            //format:'Y-m-d H:i',
+            //formatDate:'Y-m-d H:i:s',
+            // onSelectDate:function(ct,$i){
+            //   alert(ct.dateFormat('d/m/Y'))
+            // }
+        });
+        jQuery('.picker-date').datetimepicker({
+            value:datenow,
+            //yearOffset:543,
+            //lang:'th',
+            timepicker:false,
+            //format:'d/m/Y',
+            formatDate:'Y-m-d',
+            //minDate:'-1970/01/02', // yesterday is minimum date
+            //maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        jQuery('.picker-time').datetimepicker({
+            value:datenow,
+            step:10,
+            datepicker:false,
+            format:'H:i',
+            formatDate:'Y-m-d H:i:s',
+        });
+
+    });
 
     //]]>
 </script>

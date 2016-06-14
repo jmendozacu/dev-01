@@ -35,6 +35,9 @@ class Amasty_Customform_Varien_Data_Form_Element_Factory
                 break;
 
             case Amasty_Customform_Helper_Data::INPUT_TYPE_DATE;
+                $element = new Varien_Data_Form_Element_Text(array('class' => 'picker-date'));
+                break;
+                /*
                 $element = new Varien_Data_Form_Element_Date(array(
                     'value'=>$field->getDefaultValue(),
                     'format'=>Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
@@ -42,6 +45,25 @@ class Amasty_Customform_Varien_Data_Form_Element_Factory
                     'readonly'=>'readonly'
                 ));
                 break;
+                */
+
+            case Amasty_Customform_Helper_Data::INPUT_TYPE_TIME;
+                $element = new Varien_Data_Form_Element_Text(array('class' => 'picker-time'));
+                break;
+
+            case Amasty_Customform_Helper_Data::INPUT_TYPE_DATETIME;
+                $element = new Varien_Data_Form_Element_Text(array('class' => 'picker-datetime'));
+                break;
+                /*
+                $element = new Varien_Data_Form_Element_Date(array(
+                    'value'=>$field->getDefaultValue(),
+                    'format'=>Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+                    'image' => Mage::getDesign()->getSkinUrl('images/grid-cal.gif',array('_package'=>'default')),
+                    'readonly'=>'readonly',
+                    'time' => true,
+                ));
+                break;
+                */
 
             case Amasty_Customform_Helper_Data::INPUT_TYPE_MULTISELECT;
                 $element = new Varien_Data_Form_Element_Multiselect(
