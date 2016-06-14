@@ -557,3 +557,4 @@
 "This product has only %s available items","สินค้าคงเหลือ %s ชิ้น"
 "Login / Register","เข้าสู่ระบบ / ลงทะเบียน"
 "Signup","สมัครสมาชิก"
+"There is already a customer registered using this email address. Please login using this email address or enter a different email address to register your account.","อีเมลนี้ได้ทำการลงทะเบียนเรียบร้อยแล้ว กรุณาลงชื่อเข้าใช้ หรือกรอกอีเมลใหม่เพื่อสมัครสมาชิกใหม่"
