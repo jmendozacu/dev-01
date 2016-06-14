@@ -505,7 +505,7 @@
 "[GLOBAL]","[GLOBAL]"
 "Warranty:&nbsp;","การประกัน: "
 "Lead time:&nbsp; ","การจัดส่ง: "
-"SKU:","รหัสสินค้า :"
+"SKU: ","รหัสสินค้า :"
 "Question","วิธีการสั่งซื้อสินค้า"
 "Qty:","จำนวน :"
 "Name Product","ชื่อสินค้า"
@@ -553,4 +553,3 @@
 "**The discount code will be sent to your email. And the conditions were prescribed.","รหัสส่วนลดจะถูกส่งเข้าอีเมล และเงื่อนไขเป็นไปตามบริษัทกำหนด"
 "STORE","STORE LOCATOR"
 "Checkout","ดำเนินการสั่งซื้อ"
-"Store Only","ซื้อได้ที่สาขา"
