@@ -29,9 +29,9 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				'﻿LGROUP' 				=> 'lgroup',
 				'ECOMMERCE' 			=> 'ecommerce',
 				'Installation' 			=> 'installtion',
-				'MC-SAP1' 				=> array('multiselect'=> array('categories'=>'lv1')),
-				'MC-SAP2' 				=> array('multiselect'=> array('categories'=>'lv2')),
-				'MC-SAP3' 				=> array('multiselect'=> array('categories'=>'lv3')),
+				'MC-SAP1' 				=> array('multiselect'=> array('category_ids'=>'lv1')),
+				'MC-SAP2' 				=> array('multiselect'=> array('category_ids'=>'lv2')),
+				'MC-SAP3' 				=> array('multiselect'=> array('category_ids'=>'lv3')),
 				'SERIES' 				=> 'series',
 				'NAME_TH' 				=> 'name',
 				'NAME_EN' 				=> 'name',
@@ -229,9 +229,9 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 													$rowCsv_EN[array_search('price_tag', $indexEN)] = ltrim($rowCsv_EN[array_search('price_tag', $indexEN)],',');
 													$rowCsv_EN[array_search('price_tag', $indexEN)] = rtrim($rowCsv_EN[array_search('price_tag', $indexEN)],',');
 												} else {
-													$rowCsv_EN[array_search('categories', $indexEN)] .= ','.$catcodes[trim($cols[$value])];
-													$rowCsv_EN[array_search('categories', $indexEN)] = ltrim($rowCsv_EN[array_search('categories', $indexEN)],',');
-													$rowCsv_EN[array_search('categories', $indexEN)] = rtrim($rowCsv_EN[array_search('categories', $indexEN)],',');
+													$rowCsv_EN[array_search('category_ids', $indexEN)] .= ','.$catcodes[trim($cols[$value])];
+													$rowCsv_EN[array_search('category_ids', $indexEN)] = ltrim($rowCsv_EN[array_search('category_ids', $indexEN)],',');
+													$rowCsv_EN[array_search('category_ids', $indexEN)] = rtrim($rowCsv_EN[array_search('category_ids', $indexEN)],',');
 												}
 
 											}
@@ -262,7 +262,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 								}
 
 							}
-							$rowCsv_EN[] = '1'; //visibility
+							$rowCsv_EN[] = '2'; //visibility
 							
 							$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
 							fputcsv($file,$rowCsv_EN);
