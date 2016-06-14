@@ -45,7 +45,7 @@
   <?php echo $this->getMessagesBlock()->toHtml() ?>
   <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form" class="scaffold-form">
     <?php echo $this->getBlockHtml('formkey'); ?>
-      <div class="col2-set"> 
+      <div class="col2-set">
         <div class="col-1 registered-users">
           <div class="content fieldset">
             <h2><?php echo $this->__('Please complete the form to login.') ?></h2>
@@ -70,7 +70,7 @@
                   <?php echo $this->getChildHtml('persistent.remember.me'); ?>
               </ul>
               <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
-            
+
               <div class="buttons-set">
                   <button type="submit" class="button" title="<?php echo $this->quoteEscape($this->__('Login')) ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
               </div>
@@ -82,7 +82,7 @@
           <div class="col-2 new-users">
               <div class="content">
                   <h2><?php echo $this->__('If you have not registered Register here') ?></h2>
-                  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index_loginpage_register_boxtext')->toHtml() ?>
+                  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index_registerpage_boxtext')->toHtml() ?>
               </div>
               <div class="buttons-set">
                   <a title="<?php echo $this->quoteEscape($this->__('Create an Account')) ?>" class="button" href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>"><span><span><?php echo $this->__('Create an Account') ?></span></span></a>

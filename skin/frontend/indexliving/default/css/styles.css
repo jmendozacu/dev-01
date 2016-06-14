@@ -8591,7 +8591,8 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .account-create .col2-set .col-2.new-users,
 .forgot-password {padding-top:0px;}
 .registerpage_boxtext  {float:left; width:100%; border:solid 10px #FFC222; background:#252525;}
-.registerpage_boxtext .box-left { width: 68.2%; float:left; padding:210px 10px 10px; background:url(../images/bkg-card.jpg) no-repeat center 20px #F8F8F8; color:#000; font-size:14px; }
+.registerpage_boxtext .box-left { width: 68.2%; float:left; padding:14px 10px 10px; /*background:url(../images/bkg-card.jpg) no-repeat center 20px #F8F8F8; */background:#F8F8F8; color:#000; font-size:14px; }
+.registerpage_boxtext .box-left img { padding-bottom: 18px;}
 .registerpage_boxtext .box-right {float:right; width:31.8%; padding:15px; color:#fff; margin-top:20px;}
 .registerpage_boxtext .box-left  ul { list-style: initial; padding-left:20px;}
 .text-red {color:red;}
