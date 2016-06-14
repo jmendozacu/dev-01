@@ -293,7 +293,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 					case "02":
 						$comment = "Awaiting Counter Service payment";
 				
-						$order->setState(Mage_Sales_Model_Order::STATE_HOLDED, true, $comment, 1)->save();
+						$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
 						
 						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
 						//$order->sendOrderUpdateEmail(true, $comment);
@@ -472,7 +472,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 					case "02":
 						$comment = "Awaiting Counter Service payment";
 				
-						$order->setState(Mage_Sales_Model_Order::STATE_HOLDED, true, $comment, 1)->save();
+						$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
 						
 						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
 						//$order->sendOrderUpdateEmail(true, $comment);
