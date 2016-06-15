@@ -263,11 +263,11 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     <?php endif; ?>
     <td class="product-cart-actions" data-rwd-label="<?php echo $this->__('Qty'); ?>">
 			<div class="cart-qty-actions">
-				<input type="button" onclick="decQty('cart_<?php echo $_item->getId() ?>_qty')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="dec_qty_<?php echo $_item->getId()?>" />
+				<input type="button" name="update_qty_cart[<?php echo $_item->getId() ?>][qty]" onclick="decQty('cart_<?php echo $_item->getId() ?>_qty')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="dec_qty_<?php echo $_item->getId()?>" />
         <input type="text" pattern="\d*" name="cart[<?php echo $_item->getId() ?>][qty]" id="cart_<?php echo $_item->getId() ?>_qty" value="<?php echo $this->getQty() ?>" size="4"
                data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
                title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" maxlength="4" />
-				<input type="button" onclick="incQty('cart_<?php echo $_item->getId() ?>_qty')" value="<?php echo $this->__('+')?>" class="update_qty btn_plus" id="inc_qty_<?php echo $_item->getId()?>" />			 
+				<input type="button" name="update_qty_cart[<?php echo $_item->getId() ?>][qty]" onclick="incQty('cart_<?php echo $_item->getId() ?>_qty')" value="<?php echo $this->__('+')?>" class="update_qty btn_plus" id="inc_qty_<?php echo $_item->getId()?>" />			 
 				<button type="submit" name="update_cart_action" data-cart-item-update value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('OK')); ?>" class="button btn-update"><span><span><?php echo $this->__('OK'); ?></span></span></button>
 			</div>
     </td>

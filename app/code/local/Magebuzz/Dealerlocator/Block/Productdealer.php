@@ -69,14 +69,12 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
   }
 	
 	public function getProductDealerByTag($tag){
+    $assignedDealerIds = $this->getProductDealer()->getColumnValues('dealer_id');
     $tagModel = Mage::getModel('dealerlocator/tag');
-    $dealerIds = $tagModel->getCollection()->addFieldToFilter('tag', $tag)->getColumnValues('dealer_id');
+    $dealerIds = $tagModel->getCollection()->addFieldToFilter('tag', $tag)
+			->addFieldToFilter('dealer_id', array('in' => $assignedDealerIds))
+			->getColumnValues('dealer_id');
 		return $dealerIds;
-    // $productdealerCollection = $this->getProductDealer();
-    // if(count($dealerIds)>0){
-      // $productdealerCollection->addFieldToFilter('dealerlocator_id', array('in' => $dealerIds));
-    // }
-    // return $productdealerCollection;
   }
   
   public function getProductDealDefaultLatLong() {

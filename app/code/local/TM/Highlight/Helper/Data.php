@@ -32,4 +32,13 @@ class TM_Highlight_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::getStoreConfig("highlight/pages/{$type}_url");
     }
+		
+    public function showOutStockProduct()
+    {
+      $storeId = Mage::app()->getStore()->getId();
+			if (Mage::getStoreConfig('highlight/advanced_settings/show_out_of_stock', $storeId)) {
+				return TRUE;
+			}
+			return FALSE;
+    }
 }

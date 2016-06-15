@@ -635,9 +635,13 @@ $j(document).ready(function () {
     // ==============================================
 
     if ($j('body.checkout-cart-index').length) {
-        $j('input[name^="cart"]').focus(function () {
-            $j(this).siblings('button').fadeIn();
-        });
+			$j('input[name^="cart"]').focus(function () {
+					$j(this).siblings('button').fadeIn();
+			});
+			
+			$j('input[name^="update_qty_cart"]').click(function () {
+					$j(this).siblings('button').fadeIn();
+			});
     }
 
 
