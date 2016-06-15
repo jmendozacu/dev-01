@@ -118,6 +118,8 @@
 	}
 
 	.category-highlight-products.product-viewed-mobile-tablet{padding-top: 30px;}
+
+	.footer .socials li.lineapp a{background: none;padding-top: 16px;}
  }
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {

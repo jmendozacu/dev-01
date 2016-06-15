@@ -4298,6 +4298,7 @@ a.skip-link {
 .footer .socials li.instagram a {background-position:-123px 0px;}
 .footer .payment{float:left; width:100%; padding:12px 0; text-align:center;}
 .footer .payment img {display:inline-block; margin:0px 3px;}
+.footer .socials li.lineapp{display: none;}
 
 .footer .footer-links .box-links {float:left; width:25%;}
 .footer .footer-links .box-links h3  {color:#363636; font-size:15px; font-weight: bold; line-height:22px;   text-transform: capitalize;}
