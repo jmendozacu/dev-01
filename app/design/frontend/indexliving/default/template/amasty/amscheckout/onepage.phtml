@@ -929,6 +929,11 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
         <?php } else { ?>
         document.body.fire('login:setMethod', {method: 'register'});
         <?php } ?>
+				
+				//reload shipping rate in review when load the page first time.
+				document.observe("dom:loaded", function() {
+					updateCheckout('shipping');
+				});
     </script>
 
 <?php } ?>
