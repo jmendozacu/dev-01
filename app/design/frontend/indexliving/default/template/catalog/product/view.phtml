@@ -200,6 +200,11 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
 		</div>
 		<?php endif; ?>
 		<!-- End product attribute banner image -->
+		<!-- Get related products with highlight extension -->
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-allcategory-related-products')->toHtml();?>
+		
+		<!-- Get you may also like products with highlight extension -->
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-allcategory-alsolike-products')->toHtml();?>
 		<div class="product-review-wrap">
 			<div class="product-review-summary">
 				<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>

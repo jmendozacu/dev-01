@@ -5456,11 +5456,12 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop,
 .product-img-box,
 .product-collateral,
-.product-view .block-related,
 .box-collateral {
   margin-bottom: 10px;
 }
-
+.product-view .block-related{
+	margin:30px 0;
+}
 .product-view {
   /* Set a min-height so that the floated elements break appropriately */
 }
