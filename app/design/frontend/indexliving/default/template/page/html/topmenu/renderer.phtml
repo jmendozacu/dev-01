@@ -131,14 +131,14 @@ foreach ($children as $child) {
       $html .= '</div>';
     }  
     
-    if($childLevel==2){
-      $html .= '<ul class="level' . $childLevel . '">';
-      $html .= $this->render($child, $childrenWrapClass);
-      if($catId && $catId != ''){
-        $category = Mage::getModel('catalog/category')->load($catId);
-      }
-      $html .= '</ul>';  
-    }  
+    // if($childLevel==2){
+    //   $html .= '<ul class="level' . $childLevel . '">';
+    //   $html .= $this->render($child, $childrenWrapClass);
+    //   if($catId && $catId != ''){
+    //     $category = Mage::getModel('catalog/category')->load($catId);
+    //   }
+    //   $html .= '</ul>';  
+    // }  
   }
 
   if (!empty($childrenWrapClass)) {
