@@ -11833,6 +11833,8 @@ body:lang(th) .nav-primary li.level1 > a{padding: 14px 0 10px 68px;}
 body:lang(th) .nav-primary li.level1:hover > a{padding-left: 84px; }
 body:lang(th) .view-dealers span{font-size: 16px;}
 
+body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;text-transform: uppercase;}
+
 .allcategories-list .category-grid .category-item img { height:346px; }
 
 .product-label-category { position: absolute; }
