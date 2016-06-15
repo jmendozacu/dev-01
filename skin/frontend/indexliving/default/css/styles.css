@@ -5456,11 +5456,12 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop,
 .product-img-box,
 .product-collateral,
-.product-view .block-related,
 .box-collateral {
   margin-bottom: 10px;
 }
-
+.product-view .block-related{
+	margin:30px 0;
+}
 .product-view {
   /* Set a min-height so that the floated elements break appropriately */
 }
@@ -7141,7 +7142,12 @@ body.catalogsearch-result-index .page-title h1 {
   min-width: 60px;
   text-align: center;
 }
-.cart-table .product-cart-actions .cart-qty-actions{width:93px; margin:0 auto;}
+.cart-table .product-cart-actions .cart-qty-actions{width:93px; margin:0 auto; position:relative;}
+.cart-table .product-cart-actions .cart-qty-actions .button.btn-update{
+	position: absolute;
+	top: 0;
+	right: -32px;
+}
 .cart-table .product-cart-actions .qty {
   height: 40px;
   border-color: #000000;
@@ -8665,7 +8671,9 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 /* ============================================ *
  * My Account Global Styles
  * ============================================ */
-
+body.customer-account .my-account .page-title{position: relative;}
+a.payment_transfer{position:absolute;top:10px;right:0;border:1px solid #333;padding:4px 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#FFF;background:#4f4e4e;}
+a.payment_transfer:hover{background:#000;text-decoration: none;}
 body.customer-account .my-account .page-title h1 {
   border: 0;
   text-align: left;
