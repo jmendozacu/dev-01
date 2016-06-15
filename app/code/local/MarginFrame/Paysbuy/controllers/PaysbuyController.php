@@ -140,7 +140,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
         }
 
 		Mage::getSingleton('checkout/session')->addError("Paysbuy Payment has been cancelled and the transaction has been declined.");
-		$this->_redirect('checkout/cart');
+		$this->_redirect('checkout/onepage/failure');
     }
 
     /**
@@ -239,7 +239,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
-							if (strtolower($CurrentOrderState)=="new") {							
+							if ($order->getState() ==Mage::getModel('payment/Paysbuy/order_status') ) {							
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
 								
 								//=> auto invoice
@@ -292,12 +292,14 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 						break;
 					case "02":
 						$comment = "Awaiting Counter Service payment";
-				
-						$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
-						
+						// echo "<pre>";
+						// print_r(Mage::getStoreConfig('payment/Paysbuy/order_status'));
+						// echo "</pre>";
+						// $order->setState(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
+						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
 						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
 						//$order->sendOrderUpdateEmail(true, $comment);
-						$this->_redirect('checkout/cart');
+						$this->_redirect('checkout/onepage/success', array('_secure'=>true));
 						break;
 					case "99":
 						$comment = "Payment Failed";
@@ -471,12 +473,13 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 						break;
 					case "02":
 						$comment = "Awaiting Counter Service payment";
-				
-						$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $comment, 1)->save();
-						
-						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
-						//$order->sendOrderUpdateEmail(true, $comment);
-						$this->_redirect('checkout/cart');
+						// echo "<pre>";
+						// print_r(Mage::getStoreConfig('payment/Paysbuy/order_status'));
+						// echo "</pre>";
+						// $order->setState(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
+						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
+						// $this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
+						//$o
 						break;
 					case "99":
 						$comment = "Payment Failed";
