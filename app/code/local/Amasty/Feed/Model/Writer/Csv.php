@@ -62,6 +62,7 @@ class Amasty_Feed_Model_Writer_Csv extends Amasty_Feed_Model_Writer_Abstract
             //if(!$islast){
                 $row = $row ."\n";
             //}
+            $row = iconv("UTF-8","TIS-620", $row);
             fwrite($this->fp, $row);
         } else {
             fputcsv($this->fp, $record, $delim, $encl);
