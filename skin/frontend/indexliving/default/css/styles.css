@@ -10690,6 +10690,61 @@ div.paypal-logo span > img {
 .cms-page-view .col_3 .img{margin-bottom:10px;}
 .cms-page-view .col_3 .img img{width:100%;}
 
+/*cms-custom-form*/
+.cms-page-view.cms-custom-form .std .fieldset{width: 45%;margin-right: 5%;float: left;}
+.cms-page-view.cms-custom-form .form-list .field, .cms-page-view.cms-custom-form .std li input, .cms-page-view.cms-custom-form .std select, .cms-page-view.cms-custom-form .std textarea{width: 100%;max-width: 100%;}
+.cms-page-view.cms-custom-form .customer-forms{
+    border: solid 1px #ececec;
+    padding:30px 40px 40px;
+  }
+.customer-forms-title{padding: 20px 40px;background: #F7F7F7;margin-bottom: 0;font-size: 20px;border: solid 1px #ececec;border-bottom: 0;}
+.cms-page-view.cms-custom-form .std .fieldset.bank{width: 95%;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect{height: 180px;overflow: hidden;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option{background: url("/media/bank/b-kbank.png") no-repeat 0 5px;padding: 12px 37px;border-bottom: 1px solid #ebebeb;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(2){background: url("/media/bank/b-bangkok.png") no-repeat 0 5px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(3){background: url("/media/bank/b-krungsri.png") no-repeat 0 5px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(4){background: url("/media/bank/b-scb.png") no-repeat 0 5px;border-bottom:0;}
+.customer-forms ul { list-style: none !important;}
+.customer-forms .buttons-set{padding-top: 30px;}
+.customer-forms .buttons-set button.button{float: left;}
+.customer-forms li {
+    font-style: normal !important;
+}
+.customer-forms img.v-middle {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    left: 2px;
+}
+.customer-forms .field-row > input{
+    float: left;
+}
+.customer-forms textarea.validation-failed,
+.customer-forms select.validation-failed{
+    border-color: #df280a;
+}
+.customer-forms textarea.validation-failed:focus,
+.customer-forms select.validation-failed:focus{
+    outline-color: #ef9384;
+}
+.customer-forms .validation-advice{
+    clear:both;
+}
+.customer-forms textarea{
+    width:365px;
+}
+.cms-page-view.cms-custom-form .std select, .cms-page-view.cms-custom-form .std textarea{font-family: "Index", Helvetica, Arial, sans-serif;font-weight: 300;}
+.cms-custom-form .fieldset:nth-child(7):after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.cms-custom-form .fieldset:nth-child(7) .field-row{width: 100%;margin-left: 0;}
+.customer-forms label.required:after,
+.customer-forms span.required:after {
+    content: ' *';
+    color: #df280a;
+    font-weight: normal;
+    font-family: "Index", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
 /* tab-cmspage tab-left*/
 .cms-franchise .std ul li, .cms-project .std ul li{margin-left: 0;}
 .tab-left {float:left; width:100%; position:relative;}

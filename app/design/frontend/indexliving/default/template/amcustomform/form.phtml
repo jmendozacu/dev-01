@@ -27,45 +27,12 @@ if($captchaEnable){
 <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml();?>
 -->
 <style>
-    .customer-forms ul {
-        list-style: none !important;
-    }
-    .customer-forms li {
-        font-style: normal !important;
-    }
-    .customer-forms img.v-middle {
-        display: inline-block;
-        vertical-align: middle;
-        position: relative;
-        left: 2px;
-    }
-    .customer-forms .field-row > input{
-        float: left;
-    }
-    .customer-forms textarea.validation-failed,
-    .customer-forms select.validation-failed{
-        border-color: #df280a;
-    }
-    .customer-forms textarea.validation-failed:focus,
-    .customer-forms select.validation-failed:focus{
-        outline-color: #ef9384;
-    }
-    .customer-forms .validation-advice{
-        clear:both;
-    }
-    .customer-forms textarea{
-        width:365px;
-    }
-    .customer-forms label.required:after,
-    .customer-forms span.required:after {
-        content: ' *';
-        color: #df280a;
-        font-weight: normal;
-        font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-        font-size: 12px;
-    }
+
 </style>
+
+<h2 class="customer-forms-title"><?php echo $this->__('Payment Confirmation') ?></h2>
 <div class="customer-forms">
+
         <form id="custom-form-<?php echo $form->getId()?>" action="<?php echo $this->getUrl('customform/form/submit/',array('preview'=>$this->getPreview())) ?>" method="post">
         <input type="hidden" name="form_id" value="<?php echo $form->getId() ?>">
 
