@@ -68,11 +68,15 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 						    			if (strtolower($data['special_price']) != 'unset') {
 							    			$product->setSpecialPrice(number_format($data['special_price'],2));
 
-							    			$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
-											$product->setSpecialFromDateIsFormated(true);
+							    			if (strtolower($data['special_from_date']) != 'unset') {
+						    					$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
+												$product->setSpecialFromDateIsFormated(true);
+						    				}
 
-											$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
-											$product->setSpecialToDateIsFormated(true);
+						    				if (strtolower($data['special_to_date']) != 'unset') {
+						    					$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
+												$product->setSpecialToDateIsFormated(true);
+						    				}
 							    		}else{
 							    			$product->setSpecialPrice(null);
 							    			
@@ -83,11 +87,22 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 											$product->setSpecialToDateIsFormated(true);
 							    		}
 						    		}else{
-						    			if (strtolower($data['special_price']) != 'unset') {
+						    			if (strtolower($data['special_price']) != 'unset' and $data['special_price'] != '0') {
 						    				$product->setPrice(number_format($data['special_price'],2));
 						    				$product->setSpecialPrice(number_format($data['special_price'],2));
+
+						    				if (strtolower($data['special_from_date']) != 'unset') {
+						    					$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
+												$product->setSpecialFromDateIsFormated(true);
+						    				}
+
+						    				if (strtolower($data['special_to_date']) != 'unset') {
+						    					$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
+												$product->setSpecialToDateIsFormated(true);
+						    				}
 						    			} else {
 						    				$product->setVisibility(1);
+						    				$product->setStatus(2);
 						    			}
 
 						    		}
