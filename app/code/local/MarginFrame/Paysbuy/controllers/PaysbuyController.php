@@ -94,6 +94,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			$session = Mage::getSingleton('checkout/session');
 			$refid = substr($response,2,strlen($response));
 			$session->setRefIdPaysbuy($refid);
+			$order->sendNewOrderEmail();
 			$this->getResponse()->setBody($this->getLayout()->createBlock('Paysbuy/form_redirect')->toHtml());
 		} else {
 			
@@ -268,7 +269,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 								
 								//=> end uto invoice
 								
-								//$order->sendOrderUpdateEmail(true, $comment);
+								$order->sendOrderUpdateEmail(true, $comment);
 								$session = Mage::getSingleton('checkout/session');
 								$session->setQuoteId($session->getPaysbuyStandardQuoteId(true));
 							}
@@ -299,6 +300,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
 						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
 						//$order->sendOrderUpdateEmail(true, $comment);
+						// $order->sendNewOrderEmail();
 						$this->_redirect('checkout/onepage/success', array('_secure'=>true));
 						break;
 					case "99":
@@ -449,7 +451,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 								
 								//=> end uto invoice
 																
-								//$order->sendOrderUpdateEmail(true, $comment);
+								$order->sendOrderUpdateEmail(true, $comment);
 								$session = Mage::getSingleton('checkout/session');
 								$session->setQuoteId($session->getPaysbuyStandardQuoteId(true));
 							}
@@ -479,7 +481,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 						// $order->setState(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
 						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
 						// $this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
-						//$o
+						$order->sendOrderUpdateEmail(true, $comment);
 						break;
 					case "99":
 						$comment = "Payment Failed";
