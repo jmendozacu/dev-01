@@ -567,6 +567,10 @@ function rerun_some_init_scripts() {
         jQuery('.box-filter-content').hide();
       });
     }
+		
+		if (ajaxCart) {
+			ajaxCart.replaceButtonAddToCart('button.btn-cart');
+		}
 }
 
 function amshopby_external_megatron() {
