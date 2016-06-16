@@ -28,7 +28,7 @@
 <?php $_orders = $this->getOrders(); ?>
 <div class="page-title">
     <h1><?php echo $this->__('My Orders') ?></h1>
-    <a href="/custom-form" class="payment_transfer"><?php echo $this->__('Money Transfer') ?></a>
+    <a href="/custom-form" class="payment_transfer"><?php echo $this->__('Payment Confirmation') ?></a>
 </div>
 <?php echo $this->getChildHtml('info');?>
 <?php if($_orders->getSize()): ?>
