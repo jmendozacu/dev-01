@@ -118,9 +118,12 @@
 	}
 
 	.category-highlight-products.product-viewed-mobile-tablet{padding-top: 30px;}
-	.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links li.lineapp a img{ -webkit-filter: grayscale(100%);filter: grayscale(100%);}
 
+	.footer .socials li.lineapp{display: inline-block;}
 	.footer .socials li.lineapp a{background: none;padding-top: 16px;}
+	.footer .socials li.lineapp a img{border-radius: 100%;}
+	.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links li.lineapp a img{-webkit-filter:grayscale(100%);filter:grayscale(100%);border-radius:100%;height:33px;width:33px;}
+
  }
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {
