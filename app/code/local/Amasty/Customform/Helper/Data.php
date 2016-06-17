@@ -54,14 +54,14 @@ class Amasty_Customform_Helper_Data extends Mage_Core_Helper_Abstract
                 'value' => self::INPUT_TYPE_SELECT,
                 'label' => $this->__('Dropdown')
             ),
-/*            array(
+            array(
                 'value' => self::INPUT_TYPE_RADIO,
                 'label' => $this->__('Radio Button')
             ),
             array(
                 'value' => self::INPUT_TYPE_CHECKBOXES,
                 'label' => $this->__('Checkboxes')
-            ),*/
+            ),
             array(
                 'value' => self::INPUT_TYPE_MULTISELECT,
                 'label' => $this->__('Multiple Select')
@@ -74,10 +74,10 @@ class Amasty_Customform_Helper_Data extends Mage_Core_Helper_Abstract
                 'value' => self::INPUT_TYPE_STATIC_TEXT,
                 'label' => $this->__('Static Text')
             ),
-/*            array(
+            array(
                 'value' => self::INPUT_TYPE_FILE,
                 'label' => $this->__('Single File Upload')
-            )*/
+            )
         );
     }
 

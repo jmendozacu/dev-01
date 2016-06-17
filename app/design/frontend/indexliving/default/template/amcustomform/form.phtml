@@ -19,6 +19,7 @@ if($captchaEnable){
     $captcha = $this->getCaptcha();
 }
 ?>
+
 <!--
 <script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar.js"></script>
 <script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar-setup.js"></script>
@@ -26,14 +27,15 @@ if($captchaEnable){
 <link rel="stylesheet" type="text/css" href="<?php echo $baseJsUrl?>calendar/calendar-win2k-1.css" media="all" />
 <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml();?>
 -->
-<style>
 
-</style>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('mage/captcha.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/amasty/customform/jquery.datetimepicker.css') ?>" />
+<script type="text/javascript" src="<?php echo $this->getJsUrl('amasty/customform/jquery.datetimepicker.full.min.js') ?>"></script>
 
 <h2 class="customer-forms-title"><?php echo $this->__('Payment Confirmation') ?></h2>
 <div class="customer-forms">
 
-        <form id="custom-form-<?php echo $form->getId()?>" action="<?php echo $this->getUrl('customform/form/submit/',array('preview'=>$this->getPreview())) ?>" method="post">
+        <form id="custom-form-<?php echo $form->getId()?>" action="<?php echo $this->getUrl('customform/form/submit/',array('preview'=>$this->getPreview())) ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="form_id" value="<?php echo $form->getId() ?>">
 
         <?php

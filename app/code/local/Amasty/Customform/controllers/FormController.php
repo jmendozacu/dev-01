@@ -23,10 +23,11 @@ class Amasty_Customform_FormController extends Mage_Core_Controller_Front_Action
 
     public function submitAction()
     {
+        set_time_limit(600);
+        ini_set('max_execution_time', 600);
 
         /** @var Mage_Customer_Model_Session $session */
         $session = Mage::getSingleton('customer/session');
-
 
         $postData = $this->getRequest()->getPost();
         $formId = $postData['form_id'];
@@ -51,6 +52,50 @@ class Amasty_Customform_FormController extends Mage_Core_Controller_Front_Action
             $session->setData('customer-form-data-'.$formId,$postData);
             $this->_redirectUrl($this->_getRefererUrl());
             return;
+        }
+
+        $uploadId = current(array_keys($_FILES));
+        if(isset($_FILES[$uploadId]['name']) && ($_FILES[$uploadId]['tmp_name'] != NULL))
+        {
+            //check error when upload
+            if(isset($_FILES[$uploadId]['error']) && $_FILES[$uploadId]['error'] > 0){
+                Mage::getSingleton('core/session')->addError($this->__('Image Saving Error!'));
+                $session->setData('customer-form-data-'.$formId,$postData);
+                $this->_redirectUrl($this->_getRefererUrl());
+                return;
+            }
+
+            try
+            {    
+
+                $path = Mage::getBaseDir('media') . DS ."amcustomform" . DS . $formId;
+                if (!file_exists($path)) {
+                    mkdir($path, 0777, true);
+                }
+
+                $uploader = new Varien_File_Uploader($uploadId);
+                $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png')); 
+                $uploader->setAllowRenameFiles(true);
+                // Set the file upload mode 
+                // false -> get the file directly in the specified folder
+                // true -> get the file in the product like folders 
+                //  (file.jpg will go in something like /media/f/i/file.jpg)
+                $uploader->setFilesDispersion(false);
+                $uploader->save($path, $_FILES[$uploadId]['name']);
+                if ($uploadFile = $uploader->getUploadedFileName()) {
+                    //save server file path
+                    $postData[$uploadId] = $path . $uploadFile;
+                }
+                else {
+                    throw new Exception("Image Saving Error!!");      
+                }
+            }
+            catch (Exception $e) {
+                $this->_getSession()->addError($e->getMessage());
+                $session->setData('customer-form-data-'.$formId, $postData);
+                $this->_redirectUrl($this->_getRefererUrl());
+                return;
+            }
         }
 
         try
