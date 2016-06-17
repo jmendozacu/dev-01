@@ -84,7 +84,7 @@ class Amasty_Customform_FormController extends Mage_Core_Controller_Front_Action
                 $uploader->save($path, $_FILES[$uploadId]['name']);
                 if ($uploadFile = $uploader->getUploadedFileName()) {
                     //save server file path
-                    $postData[$uploadId] = $path . $uploadFile;
+                    $postData[$uploadId] = $path . DS . $uploadFile;
                 }
                 else {
                     throw new Exception("Image Saving Error!!");      

@@ -50,18 +50,27 @@ class Amasty_Customform_Block_Adminhtml_Submit_Grid extends Mage_Adminhtml_Block
                 'filter_index'=>'main_table.id'
         ));
 
-        $this->addColumn('form_code',
-            array(
-                'header'=> $helper->__('Form Code'),
-                'index' => 'form_code',
-                'filter_index'=>'form.code'
-        ));
+        // $this->addColumn('form_code',
+        //     array(
+        //         'header'=> $helper->__('Form Code'),
+        //         'index' => 'form_code',
+        //         'filter_index'=>'form.code'
+        // ));
 
         $this->addColumn('form_title',
             array(
                 'header'=> $helper->__('Form Title'),
                 'index' => 'form_title',
                 'filter_index'=>'form_store.title'
+            ));
+
+        $this->addColumn('values',
+            array(
+                'header'=> $helper->__('Description'),
+                'index' => 'values',
+                'renderer'  => 'Amasty_Customform_Block_Adminhtml_Submit_Renderer_Fieldvalue',
+                //'filter' => false,
+                //'sort' => false,
             ));
 
         $this->addColumn('store',
