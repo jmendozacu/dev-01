@@ -12,7 +12,6 @@ class Amasty_Customform_Block_Adminhtml_Submit_Renderer_Fieldvalue extends Mage_
                 $datas = array();
             }
         }
-
         $desc = array();
         $i = 0;
         foreach ($datas as $data) {
@@ -21,11 +20,8 @@ class Amasty_Customform_Block_Adminhtml_Submit_Renderer_Fieldvalue extends Mage_
         	}
         	$i++;
         }
-
-        //return '<span style="color:;">'.implode('<br>', $desc).'</span>';
-        
         return implode('<br>', $desc);
-		
+        //return '<span style="color:;">'.implode('<br>', $desc).'</span>';
 	}
  
 }
