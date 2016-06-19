@@ -1,13 +1,6 @@
-<!--
 <?xml version="1.0" encoding="utf-8"?>
-/**
- * @author Amasty Team
- * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
- * @package Amasty_Customform
- */
--->
-<!-- <layout version="1.0.0">
-	<default>   
+<layout version="1.0.0">
+<!--	<default>   
 	    <reference name="head">
 			<action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
 	    	<action method="addJs"><script>lib/jquery/noconflict.js</script></action>
@@ -15,4 +8,5 @@
 	    	<action method="addJs"><stylesheet>amasty/customform/jquery.datetimepicker.full.min.js</stylesheet></action>
 	    </reference>
 	</default>
-</layout> -->
+-->
+</layout>
