@@ -47,7 +47,7 @@
     <ol class="products-list" id="products-list">
     <?php foreach ($_productCollection as $_item): ?>
         <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
-					<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>	
+					<?php $_product = Mage::getModel('catalog/product')->load($_item->getId());?>
             <?php // Product Image ?>
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 							<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
@@ -59,19 +59,19 @@
 											<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 														 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
 														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-										</div>				 
+										</div>
 										<div class="back">
 											<img class="lazy" id="product-collection-flipimage-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 														 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(400,400);?>"
 														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>" />
-										</div>				 
-									</div>				 
-								</div>				
+										</div>
+									</div>
+								</div>
 							<?php else: ?>
 								<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
                          data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
-                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />		
-							<?php endif;?>					 
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+							<?php endif;?>
             </a>
             <?php // Product description ?>
             <div class="product-shop">
@@ -151,18 +151,18 @@
 													<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 																 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
 																 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-												</div>				 
+												</div>
 												<div class="back">
 													<img class="lazy" id="product-collection-flipimage-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 																 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(400,400);?>"
 																 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>" />
-												</div>				 
-											</div>				 
-										</div>				 
+												</div>
+											</div>
+										</div>
 									<?php else: ?>
 										<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 														 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
-														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />		
+														 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
 									<?php endif;?>
                 </a>
                 <div class="product-info">
@@ -170,20 +170,20 @@
 										<div class="desc box-desktop">
 											<?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
 											<?php
-												if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>50) {
-													$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,50, 'UTF-8');
-													$_shortDescriptionStripped .= '...';
-												}
-												?>
+												// if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>50) {
+												// 	$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,50, 'UTF-8');
+												// 	$_shortDescriptionStripped .= '...';
+												// }
+											?>
 											<?php echo $_shortDescriptionStripped ?>
 										</div>
 										<div class="desc box-mobile">
 											<?php $_mshortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
 											<?php
-												if(iconv_strlen($_mshortDescriptionStripped,'UTF-8')>15) {
-													$_mshortDescriptionStripped = iconv_substr($_mshortDescriptionStripped, 0,15, 'UTF-8');
-													$_mshortDescriptionStripped .= '...';
-												}
+												// if(iconv_strlen($_mshortDescriptionStripped,'UTF-8')>15) {
+												// 	$_mshortDescriptionStripped = iconv_substr($_mshortDescriptionStripped, 0,15, 'UTF-8');
+												// 	$_mshortDescriptionStripped .= '...';
+												// }
 												?>
 											<?php echo $_mshortDescriptionStripped ?>
 										</div>
