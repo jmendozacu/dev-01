@@ -106,6 +106,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 			    	Mage::log('open : '.$dir.$filenamecsv, null, $filelogName,true);
 					$rowNum = 0;
 
+					echo $filenamecsv;
 					$data = file_get_contents($dir.$filenamecsv);
 
 					$data = iconv('UTF-16LE', 'UTF-8', $data);
@@ -115,198 +116,160 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					$col = array();
 					$header = array();
 					$index_header = array();
-					// $index_magento = array();
+					$index_magento = array();
 					$sku_index = 0; 
 
 					$import_TH = array();
 					$import_EN = array();
 					$indexTH = array();
 					$indexEN = array();
-					//echo $filenamecsv;
-					
-					$iiii = 0;
-
+						
 					$res_TH = array();
 					$res_EN = array();
 
-					$tmpval = "";
-					foreach ($data as $row) {		
-						
-						//check col
-						//$tmpcol = explode("|", $row);
-						//var_dump(count($tmpcol).':'.$iiii);
-						//$iiii++;
-
-						if($rowNum ==0 ){
-							//first row is attribute name
-							$header = explode("|", $row);
-							$i = 0;
-							foreach ($header as $key) {
-								$index_header[$key] = $i;
-								if(is_array($map_attribute[$key])){
-									foreach ($map_attribute[$key] as $h => $v) {
-										$index_magento[$i] = $h;
-									}
-								} else {
-									$index_magento[$i] = $map_attribute[$key];	
-								}
-								
-								if(preg_match( "/_TH$/i", $key, $matches)){
-									$import_TH[] = $key;
-								} else {
-									$import_EN[] = $key;
-									if($key == "Article_CODE"){
-										$import_TH[] = $key;
-									}
-								}
-								$i++;
+					//create header row
+					$row = $data[0];
+					$header = explode("|", $row);
+					$i = 0;
+					foreach ($header as $key) {
+						$index_header[$key] = $i;
+						if(is_array($map_attribute[$key])){
+							foreach ($map_attribute[$key] as $h => $v) {
+								$index_magento[$i] = $h;
 							}
-						
-
-							//create header file for put content with type csv
-							
-							//$file = fopen($dirprepare."Import_Produce_TH.csv","w+");
-							$str = "";
-							foreach ($import_TH as $value) {
-								if($index_magento[$index_header[$value]]=='multiselect'){
-									foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
-										if(in_array($k, $indexTH)){
-											continue;
-										} else {
-											$indexTH[] = $k;
-										}
-									}
-								} else {
-									$indexTH[] = $index_magento[$index_header[$value]];	
-								}
-							}
-							$res_TH[] = '"' . implode('","', $indexTH) . '"';
-							
-							// array_unshift($indexTH,'sku');
-							// $str = rtrim($str,',');
-							//fputcsv($file, $indexTH, ',', '"');
-							//fclose($file);
-
-							$import_EN[] ='visibility';
-							//$file = fopen($dirprepare."Import_Produce_EN.csv","w+");
-							$str = "";
-							foreach ($import_EN as $value) {
-								if($index_magento[$index_header[$value]]=='multiselect'){
-									foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
-										if(in_array($k, $indexEN)){
-											continue;
-										} else {
-											$indexEN[] = $k;
-										}
-									}
-								} else {
-									if(isset($index_magento[$index_header[$value]])){
-										$indexEN[] = $index_magento[$index_header[$value]];	
-									} else {
-										$indexEN[] = $value;
-									}
-								}
-							}
-							$res_EN[] = '"' . implode('","', $indexEN) . '"';
-							
-							// $str = rtrim($str,',');
-	    					//fputcsv($file, $indexEN, ',', '"');
-							//fclose($file);
-							
-							
 						} else {
-							$cols = explode("|", $row);
-							if($cols[0]==''){
-								continue;
+							$index_magento[$i] = $map_attribute[$key];	
+						}
+						
+						if(preg_match( "/_TH$/i", $key, $matches)){
+							$import_TH[] = $key;
+						} else {
+							$import_EN[] = $key;
+							if($key == "Article_CODE"){
+								$import_TH[] = $key;
 							}
-							// echo '<pre>';
-							// print_r($cols);
-							// echo '</pre>';
-							// $col[$cols[$index_header['Article_CODE']]] = $cols;
-							$rowCsv_EN = array_fill(0, count($indexEN) - 1, "");
-							$rowCsv_TH = array();
+						}
+						$i++;
+					}
+					foreach ($import_TH as $value) {
+						if($index_magento[$index_header[$value]]=='multiselect'){
+							foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
+								if(in_array($k, $indexTH)){
+									continue;
+								} else {
+									$indexTH[] = $k;
+								}
+							}
+						} else {
+							$indexTH[] = $index_magento[$index_header[$value]];	
+						}
+					}
+					$res_TH[] = '"' . implode('","', $indexTH) . '"';
+					$import_EN[] ='visibility';
+					foreach ($import_EN as $value) {
+						if($index_magento[$index_header[$value]]=='multiselect'){
+							foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
+								if(in_array($k, $indexEN)){
+									continue;
+								} else {
+									$indexEN[] = $k;
+								}
+							}
+						} else {
+							if(isset($index_magento[$index_header[$value]])){
+								$indexEN[] = $index_magento[$index_header[$value]];	
+							} else {
+								$indexEN[] = $value;
+							}
+						}
+					}
+					$res_EN[] = '"' . implode('","', $indexEN) . '"';
 
-							$i_selling_point = array_search('selling_point', $indexEN);
-							$i_price_tag = array_search('price_tag', $indexEN);
-							$i_category_ids = array_search('category_ids', $indexEN);
-							//var_dump($indexEN); die;
-							$rowCsv_EN[$i_category_ids] = "1,2,3";
-							foreach ($index_header as $key => $value) {
-								//for by column check in the row
-								// $dataRow = $col[];
-								if(isset($map_attribute[$key]['multiselect'])){
-									switch($index_magento[$value]){
-										case 'multiselect':
-											foreach ($map_attribute[$key]['multiselect'] as $km => $vm) {
-												if($km == 'selling_point'){
-													if(trim($cols[$value])=='1'){
-														$rowCsv_EN[$i_selling_point] .= ','.$multiselect[$key];	
-													}
-													$rowCsv_EN[$i_selling_point] = ltrim($rowCsv_EN[$i_selling_point],',');
-													$rowCsv_EN[$i_selling_point] = rtrim($rowCsv_EN[$i_selling_point],',');
-												} elseif($km == 'price_tag'){
-													if(trim($cols[$value])=='1'){
-														$rowCsv_EN[$i_price_tag] .= ','.$price_tag[$key];	
-													}
-													$rowCsv_EN[$i_price_tag] = ltrim($rowCsv_EN[$i_price_tag],',');
-													$rowCsv_EN[$i_price_tag] = rtrim($rowCsv_EN[$i_price_tag],',');
-												} elseif($km == 'category_ids'){
-													if(isset($catcodes[trim($cols[$value])])){
-														$rowCsv_EN[$i_category_ids] .= ','. implode(',', $catcodes[trim($cols[$value])]);
-														$rowCsv_EN[$i_category_ids] = ltrim($rowCsv_EN[$i_category_ids],',');
-														$rowCsv_EN[$i_category_ids] = rtrim($rowCsv_EN[$i_category_ids],',');
-													}
-													else {
-														$rowCsv_EN[$i_category_ids] .= "";
-													}
+					//unset header row
+					unset($data[0]);
+
+					//create data row
+					$rowCsv_EN = array();
+					$rowCsv_TH = array();
+					$cols = array();
+					$tmpval = "";
+					$i_selling_point = array_search('selling_point', $indexEN);
+					$i_price_tag = array_search('price_tag', $indexEN);
+					$i_category_ids = array_search('category_ids', $indexEN);
+
+					foreach ($data as $row) {
+						$cols = explode("|", $row);
+						if(count($header) != count($cols) || $cols[0] == ''){
+							continue;
+						}
+						$rowCsv_EN = array_fill(0, count($indexEN) - 1, "");
+						$rowCsv_TH = array_fill(0, count($indexTH) - 1, "");
+						//$rowCsv_EN[$i_category_ids] = "1,2,3";
+						foreach ($index_header as $key => $value) {
+							if(isset($map_attribute[$key]['multiselect'])){
+								switch($index_magento[$value]){
+									case 'multiselect':
+										foreach ($map_attribute[$key]['multiselect'] as $km => $vm) {
+											if($km == 'selling_point'){
+												if(trim($cols[$value])=='1'){
+													$rowCsv_EN[$i_selling_point] .= ','.$multiselect[$key];	
+												}
+												$rowCsv_EN[$i_selling_point] = ltrim($rowCsv_EN[$i_selling_point],',');
+												$rowCsv_EN[$i_selling_point] = rtrim($rowCsv_EN[$i_selling_point],',');
+											} elseif($km == 'price_tag'){
+												if(trim($cols[$value])=='1'){
+													$rowCsv_EN[$i_price_tag] .= ','.$price_tag[$key];	
+												}
+												$rowCsv_EN[$i_price_tag] = ltrim($rowCsv_EN[$i_price_tag],',');
+												$rowCsv_EN[$i_price_tag] = rtrim($rowCsv_EN[$i_price_tag],',');
+											} elseif($km == 'category_ids'){
+												$tmpval = trim($cols[$value]);
+												if(isset($catcodes[$tmpval]) && is_array($catcodes[$tmpval])){
+													$rowCsv_EN[$i_category_ids] .= ','. implode(',', $catcodes[$tmpval]);
+													$rowCsv_EN[$i_category_ids] = ltrim($rowCsv_EN[$i_category_ids],',');
+													$rowCsv_EN[$i_category_ids] = rtrim($rowCsv_EN[$i_category_ids],',');
 												}
 											}
-											break;
+										}
+										break;
+								}
+							} else {
+								if(preg_match( "/_TH$/i", $key)){
+									if(preg_match( "/COLOR_TH$/i", $key)){
+										$rowCsv_TH[]=$cols[$index_header['COLOR_EN']];
+									} else {
+										$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
+										$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
+										$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
+										$rowCsv_TH[] = $tmpval;
+									}
+								} elseif(preg_match( "/PICTURE$/i", $key)){
+									if($cols[$value]==''){
+										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$index_header['Article_CODE']].'.jpg';
+									} else {
+										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
 									}
 								} else {
-									if(preg_match( "/_TH$/i", $key)){
-										if(preg_match( "/COLOR_TH$/i", $key)){
-											$rowCsv_TH[]=$cols[$index_header['COLOR_EN']];
-										} else {
-											$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
-											$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
-											$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
-											$rowCsv_TH[] = $tmpval;
-										}
-									} elseif(preg_match( "/PICTURE$/i", $key)){
-										if($cols[$value]==''){
-											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$index_header['Article_CODE']].'.jpg';
-										} else {
-											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
-										}
-									} else {
-										if($key == "Article_CODE"){
-											$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $cols[$value];
-										}
-										else {
-											$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
-											$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
-											$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
-											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $tmpval;
-										}
+									if($key == "Article_CODE"){
+										$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $cols[$value];
+									}
+									else {
+										$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
+										$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
+										$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
+										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $tmpval;
 									}
 								}
-
 							}
-							$rowCsv_EN[] = '2'; //visibility
-							
-			
-							$res_EN[] = '"' . implode('","', $rowCsv_EN) . '"';
-							$res_TH[] = '"' . implode('","', $rowCsv_TH) . '"';
 
-							//$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
-							//fputcsv($file, $rowCsv_EN, ',', '"');
-							//fclose($file);
-
-							//$file = fopen($dirprepare."Import_Produce_TH.csv","a+");
-							//fputcsv($file, $rowCsv_TH, ',', '"');
-							//fclose($file);
 						}
+
+						$rowCsv_EN[] = '2'; //visibility
+						
+		
+						$res_EN[] = '"' . implode('","', $rowCsv_EN) . '"';
+						$res_TH[] = '"' . implode('","', $rowCsv_TH) . '"';
+
 						$rowNum++;
 						
 					}
@@ -326,7 +289,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}
 
 					// Mage::log($newdir);
-					/*
+
 					unlink($dir.$filename);
 					rename($dir.$filenamecsv, $newdir.$filenamecsv);
 
@@ -344,7 +307,6 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}else{
 						Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filelogName,true);
 					}
-					*/
 
 			    }
 			}
