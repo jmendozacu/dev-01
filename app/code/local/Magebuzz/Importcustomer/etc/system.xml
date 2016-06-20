@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<config>
+  <tabs>
+    <magebuzz translate="label">
+      <label>Magebuzz Add-on</label>
+      <sort_order>400</sort_order>
+    </magebuzz>
+  </tabs>
+  <sections>
+    <importcustomer translate="label" module="importcustomer">
+      <class>separator-top</class>
+      <label>Import Customer</label>
+      <tab>magebuzz</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>299</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general translate="label">
+          <label>Import</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <url translate="label">
+              <label>Datafeed URl</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment>url: ...media/importcustomer/customer.csv</comment>
+            </url>
+            <run translate="label">
+              <frontend_type>button</frontend_type>
+              <frontend_model>importcustomer/Adminhtml_Button</frontend_model>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </run>
+          </fields>
+        </general>
+      </groups>
+    </importcustomer>
+  </sections>
+</config>
