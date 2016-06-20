@@ -10,6 +10,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 		try {
 
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'retail_price'.DS;
+			$dirprepare = $dir.'prepare'.DS;
 
 			$filename_log = "mgfsync_price.log";
 			// Tiw
@@ -19,8 +20,25 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 				$file->mkdir($dir);
 			}
 
+			//create prepare for fast bluk import
+			if (!file_exists($dirprepare)) {
+
+				$file_prepare = new Varien_Io_File();
+				$file_prepare->mkdir($dirprepare);
+			} 
+
 			$dh  = opendir($dir);
 			
+			$dataImport[] = implode(',', array(
+				'sku',
+				'price',
+				'special_price',
+				'special_from_date',
+				'special_to_date',
+				// 'visibility',
+				// 'status'
+			));
+
 			while (false !== ($filename = readdir($dh))) {
 			    $files[] = $filename;
 
@@ -39,94 +57,72 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					    while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
 
 					        $sku = trim($data[0]);
+					        $csvdata[$sku]['sku'] = trim($data[0]);
 					        $csvdata[$sku]['price'] = trim($data[1]);
 					        $csvdata[$sku]['special_price'] = trim($data[2]);
 					        $csvdata[$sku]['special_from_date'] = trim($data[3]);
 					        $csvdata[$sku]['special_to_date'] = trim($data[4]);
 
 					    }
+					    
+					    //$file = fopen($dirprepare."Import_Price.csv","w+");
 
 					    $storeId = 0;
 			    		$product = null;
 
-			    		$processes = Mage::getSingleton('index/process')->getCollection();
-						$temp = array();
-			    		foreach ($processes as $key => $value) {
-							$temp[$value->getProcessId()] = $value->getMode();
-							$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
-						}
-			    		Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+			   //  		$processes = Mage::getSingleton('index/process')->getCollection();
+						// $temp = array();
+			   //  		foreach ($processes as $key => $value) {
+						// 	$temp[$value->getProcessId()] = $value->getMode();
+						// 	$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
+						// }
+			    		// Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+			    		// fputcsv($file,$dataImport);
 					    foreach ($csvdata as $sku => $data) {
-					    	try{
-						    	$product = Mage::getModel('catalog/product')
-						    	->loadByAttribute('sku', $sku);
-						    	if ($product) {
-						    		Mage::log('found sku : '.$sku, null, $filename_log,true);
-						    		if ($data['price'] != 'Unset') {
-						    			$product->setPrice(number_format($data['price'],2));
+					    	$row = array();
+					    	$row[0] = $sku;
+					    	if ($data['price'] != 'Unset') {
+					    		$row[1] = number_format($data['price'],2,'.','');
 
-						    			if (strtolower($data['special_price']) != 'unset') {
-							    			$product->setSpecialPrice(number_format($data['special_price'],2));
+				    			if (strtolower($data['special_price']) != 'unset') {
+					    			$row[2] = number_format($data['special_price'],2,'.','');
 
-							    			if (strtolower($data['special_from_date']) != 'unset') {
-						    					$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
-												$product->setSpecialFromDateIsFormated(true);
-						    				}
+					    			if (strtolower($data['special_from_date']) != 'unset') {
+										$row[3] = date('Y-m-d',strtotime($data['special_from_date']));
+				    				}
 
-						    				if (strtolower($data['special_to_date']) != 'unset') {
-						    					$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
-												$product->setSpecialToDateIsFormated(true);
-						    				}
-							    		}else{
-							    			$product->setSpecialPrice(null);
-							    			
-							    			$product->setSpecialFromDate(false);
-											$product->setSpecialFromDateIsFormated(true);
+				    				if (strtolower($data['special_to_date']) != 'unset') {
+										$row[4] = date('Y-m-d',strtotime($data['special_to_date']));
+				    				}
+					    		}else{
+					    			$row[2] = 'unset';
+					    			$row[3] = 'unset';
+					    			$row[4] = 'unset';
+					    		}
+					    		// $row[5] = '4';
+				    			// $row[6] = '1';
+				    		}else{
+				    			if (strtolower($data['special_price']) != 'unset' and $data['special_price'] != '0') {
+				    				$row[1] = number_format($data['special_price'],2,'.','');
+				    				$row[2] = number_format($data['special_price'],2,'.','');
+				    				if (strtolower($data['special_from_date']) != 'unset') {
+				    					$row[3] = date('Y-m-d',strtotime($data['special_from_date']));
+				    				}
 
-											$product->setSpecialToDate(false);
-											$product->setSpecialToDateIsFormated(true);
-							    		}
-						    		}else{
-						    			if (strtolower($data['special_price']) != 'unset' and $data['special_price'] != '0') {
-						    				$product->setPrice(number_format($data['special_price'],2));
-						    				$product->setSpecialPrice(number_format($data['special_price'],2));
-
-						    				if (strtolower($data['special_from_date']) != 'unset') {
-						    					$product->setSpecialFromDate(date('Y-m-d',strtotime($data['special_from_date'])));
-												$product->setSpecialFromDateIsFormated(true);
-						    				}
-
-						    				if (strtolower($data['special_to_date']) != 'unset') {
-						    					$product->setSpecialToDate(date('Y-m-d',strtotime($data['special_to_date'])));
-												$product->setSpecialToDateIsFormated(true);
-						    				}
-						    			} else {
-						    				$product->setVisibility(1);
-						    				$product->setStatus(2);
-						    			}
-
-						    		}
-
-						    		// call save() method to save your product with updated data
-										$product->save();
-										// $log = 'Success';
-						    	} else {
-									 Mage::log("SKU not found : ".$sku, null, $filename_log,true);
-								}
-							} catch (Exception $ex) {
-								$check = true;
-								$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
-								// handle the error here!!
-								Mage::log('error sku : '.$sku.'-'.$ex->getMessage(), null, $filename_log,true);
-								
-							}
-					    	
-					    }
-					    foreach ($temp as $key => $mode) {
-							$process = Mage::getSingleton('index/process')->load($key);
-							$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
-						}
-						// Mage::helper('mgfsync/data')->reindex();
+				    				if (strtolower($data['special_to_date']) != 'unset') {
+				    					$row[4] = date('Y-m-d',strtotime($data['special_to_date']));
+				    				}
+				    			} else {
+				    				// $row[5] = '1';
+				    				// $row[6] = '2';
+				    			}
+				    		}
+				    		$dataImport[] = implode(',',$row);
+				    		// fputcsv($file,$row);
+				    	}
+				    	$temp = implode("\n", $dataImport);
+				    	file_put_contents($dirprepare."Import_Price.csv",$temp);
+						
 					    unset($product);
 						fclose($handle);
 						

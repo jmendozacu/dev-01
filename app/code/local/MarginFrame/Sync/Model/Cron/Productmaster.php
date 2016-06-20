@@ -92,8 +92,9 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 			$collections = Mage::getModel('mgfsync/catcode')->getCollection();
 			$catcodes = array();
 			foreach ($collections->getData() as $catcode) {
-				$catcodes[$catcode['catalog_code']] = $catcode['entity_id'];
+				$catcodes[$catcode['catalog_code']][] = $catcode['entity_id'];
 			}
+			//var_dump($catcodes);
 			while (false !== ($filename = readdir($dh))) {
 			    $files[] = $filename;
 
@@ -121,8 +122,21 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					$import_EN = array();
 					$indexTH = array();
 					$indexEN = array();
-					echo $filenamecsv;
+					//echo $filenamecsv;
+					
+					$iiii = 0;
+
+					$res_TH = array();
+					$res_EN = array();
+
+					$tmpval = "";
 					foreach ($data as $row) {		
+						
+						//check col
+						//$tmpcol = explode("|", $row);
+						//var_dump(count($tmpcol).':'.$iiii);
+						//$iiii++;
+
 						if($rowNum ==0 ){
 							//first row is attribute name
 							$header = explode("|", $row);
@@ -151,7 +165,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 
 							//create header file for put content with type csv
 							
-							$file = fopen($dirprepare."Import_Produce_TH.csv","w+");
+							//$file = fopen($dirprepare."Import_Produce_TH.csv","w+");
 							$str = "";
 							foreach ($import_TH as $value) {
 								if($index_magento[$index_header[$value]]=='multiselect'){
@@ -166,14 +180,15 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 									$indexTH[] = $index_magento[$index_header[$value]];	
 								}
 							}
+							$res_TH[] = '"' . implode('","', $indexTH) . '"';
 							
 							// array_unshift($indexTH,'sku');
 							// $str = rtrim($str,',');
-							fputcsv($file,$indexTH);
-							fclose($file);
+							//fputcsv($file, $indexTH, ',', '"');
+							//fclose($file);
 
 							$import_EN[] ='visibility';
-							$file = fopen($dirprepare."Import_Produce_EN.csv","w+");
+							//$file = fopen($dirprepare."Import_Produce_EN.csv","w+");
 							$str = "";
 							foreach ($import_EN as $value) {
 								if($index_magento[$index_header[$value]]=='multiselect'){
@@ -192,10 +207,11 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 									}
 								}
 							}
+							$res_EN[] = '"' . implode('","', $indexEN) . '"';
 							
 							// $str = rtrim($str,',');
-	    					fputcsv($file,$indexEN);
-							fclose($file);
+	    					//fputcsv($file, $indexEN, ',', '"');
+							//fclose($file);
 							
 							
 						} else {
@@ -207,8 +223,14 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 							// print_r($cols);
 							// echo '</pre>';
 							// $col[$cols[$index_header['Article_CODE']]] = $cols;
-							$rowCsv_EN = array();
+							$rowCsv_EN = array_fill(0, count($indexEN) - 1, "");
 							$rowCsv_TH = array();
+
+							$i_selling_point = array_search('selling_point', $indexEN);
+							$i_price_tag = array_search('price_tag', $indexEN);
+							$i_category_ids = array_search('category_ids', $indexEN);
+							//var_dump($indexEN); die;
+							$rowCsv_EN[$i_category_ids] = "1,2,3";
 							foreach ($index_header as $key => $value) {
 								//for by column check in the row
 								// $dataRow = $col[];
@@ -218,22 +240,26 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 											foreach ($map_attribute[$key]['multiselect'] as $km => $vm) {
 												if($km == 'selling_point'){
 													if(trim($cols[$value])=='1'){
-														$rowCsv_EN[array_search('selling_point', $indexEN)] .= ','.$multiselect[$key];	
+														$rowCsv_EN[$i_selling_point] .= ','.$multiselect[$key];	
 													}
-													$rowCsv_EN[array_search('selling_point', $indexEN)] = ltrim($rowCsv_EN[array_search('selling_point', $indexEN)],',');
-													$rowCsv_EN[array_search('selling_point', $indexEN)] = rtrim($rowCsv_EN[array_search('selling_point', $indexEN)],',');
+													$rowCsv_EN[$i_selling_point] = ltrim($rowCsv_EN[$i_selling_point],',');
+													$rowCsv_EN[$i_selling_point] = rtrim($rowCsv_EN[$i_selling_point],',');
 												} elseif($km == 'price_tag'){
 													if(trim($cols[$value])=='1'){
-														$rowCsv_EN[array_search('price_tag', $indexEN)] .= ','.$price_tag[$key];	
+														$rowCsv_EN[$i_price_tag] .= ','.$price_tag[$key];	
 													}
-													$rowCsv_EN[array_search('price_tag', $indexEN)] = ltrim($rowCsv_EN[array_search('price_tag', $indexEN)],',');
-													$rowCsv_EN[array_search('price_tag', $indexEN)] = rtrim($rowCsv_EN[array_search('price_tag', $indexEN)],',');
-												} else {
-													$rowCsv_EN[array_search('category_ids', $indexEN)] .= ','.$catcodes[trim($cols[$value])];
-													$rowCsv_EN[array_search('category_ids', $indexEN)] = ltrim($rowCsv_EN[array_search('category_ids', $indexEN)],',');
-													$rowCsv_EN[array_search('category_ids', $indexEN)] = rtrim($rowCsv_EN[array_search('category_ids', $indexEN)],',');
+													$rowCsv_EN[$i_price_tag] = ltrim($rowCsv_EN[$i_price_tag],',');
+													$rowCsv_EN[$i_price_tag] = rtrim($rowCsv_EN[$i_price_tag],',');
+												} elseif($km == 'category_ids'){
+													if(isset($catcodes[trim($cols[$value])])){
+														$rowCsv_EN[$i_category_ids] .= ','. implode(',', $catcodes[trim($cols[$value])]);
+														$rowCsv_EN[$i_category_ids] = ltrim($rowCsv_EN[$i_category_ids],',');
+														$rowCsv_EN[$i_category_ids] = rtrim($rowCsv_EN[$i_category_ids],',');
+													}
+													else {
+														$rowCsv_EN[$i_category_ids] .= "";
+													}
 												}
-
 											}
 											break;
 									}
@@ -241,9 +267,11 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 									if(preg_match( "/_TH$/i", $key)){
 										if(preg_match( "/COLOR_TH$/i", $key)){
 											$rowCsv_TH[]=$cols[$index_header['COLOR_EN']];
-
 										} else {
-											$rowCsv_TH[]=$cols[$value];
+											$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
+											$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
+											$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
+											$rowCsv_TH[] = $tmpval;
 										}
 									} elseif(preg_match( "/PICTURE$/i", $key)){
 										if($cols[$value]==''){
@@ -252,29 +280,39 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
 										}
 									} else {
-										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
 										if($key == "Article_CODE"){
 											$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $cols[$value];
 										}
+										else {
+											$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
+											$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
+											$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
+											$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $tmpval;
+										}
 									}
-
-
 								}
 
 							}
 							$rowCsv_EN[] = '2'; //visibility
 							
-							$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
-							fputcsv($file,$rowCsv_EN);
-							fclose($file);
+			
+							$res_EN[] = '"' . implode('","', $rowCsv_EN) . '"';
+							$res_TH[] = '"' . implode('","', $rowCsv_TH) . '"';
 
-							$file = fopen($dirprepare."Import_Produce_TH.csv","a+");
-							fputcsv($file,$rowCsv_TH);
-							fclose($file);
+							//$file = fopen($dirprepare."Import_Produce_EN.csv","a+");
+							//fputcsv($file, $rowCsv_EN, ',', '"');
+							//fclose($file);
+
+							//$file = fopen($dirprepare."Import_Produce_TH.csv","a+");
+							//fputcsv($file, $rowCsv_TH, ',', '"');
+							//fclose($file);
 						}
 						$rowNum++;
 						
-					}	
+					}
+
+					file_put_contents($dirprepare."Import_Produce_EN.csv", implode("\n", $res_EN));
+					file_put_contents($dirprepare."Import_Produce_TH.csv", implode("\n", $res_TH));
 
 					Mage::log('close file : '.$dir.$filenamecsv, null, $filelogName,true);
 
@@ -288,6 +326,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}
 
 					// Mage::log($newdir);
+					/*
 					unlink($dir.$filename);
 					rename($dir.$filenamecsv, $newdir.$filenamecsv);
 
@@ -305,7 +344,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}else{
 						Mage::log('can not moved : '.$newdir.$filenamecsv, null, $filelogName,true);
 					}
-					
+					*/
 
 			    }
 			}
