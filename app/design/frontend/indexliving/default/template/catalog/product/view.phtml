@@ -102,6 +102,12 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
                 <?php echo $this->getChildHtml('other');?>
 
                 <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php
+                        if($_product->getTypeID()){
+                            $productType = $_product->getTypeID();
+                            if( $productType === 'bundle'){echo '<div class="bundle"></div>'; }
+                        }
+                    ?>
                     <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
                 <?php endif;?>
 								<div class="add-to-cart-wrapper">
@@ -189,13 +195,13 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
         </script>
 			</div>
     </div>
+    <?php echo $this->getChildHtml('related_products') ?>
 		<?php echo $this->getChildHtml('additional') ?>
 		<div class="product-essential product-description">
 			<div class="page-container">
 				<?php echo $this->getChildHtml('description') ?>
 			</div>
 		</div>
-		<?php echo $this->getChildHtml('related_products') ?>
 		<!-- Get attribute banner image in here -->
 		<?php if ($_product->getProductIdeaBanner() != 'no_selection' && $_product->getProductIdeaBanner()): ?>
 		<div class="product-essential product-idea-image">
