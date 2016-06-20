@@ -242,7 +242,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
 							if ($order->getState() ==Mage::getModel('payment/Paysbuy/order_status') ) {							
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
-								
+								$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status'), true, "New : " .  $comment, 1)->save();
 								//=> auto invoice
 								$isAutoCreateInvoice = Mage::getStoreConfig('payment/Paysbuy/autocreateinvoice');
 								if (((int)$isAutoCreateInvoice==1) && ($order->canInvoice()))  {
@@ -297,7 +297,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 						// print_r(Mage::getStoreConfig('payment/Paysbuy/order_status'));
 						// echo "</pre>";
 						// $order->setState(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
-						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
+						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status_counter'), true, $comment, 1)->save();
 						$this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
 						//$order->sendOrderUpdateEmail(true, $comment);
 						// $order->sendNewOrderEmail();
@@ -429,6 +429,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
 							if (strtolower($CurrentOrderState)=="new") {							
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
+								$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status'), true, "New : " .  $comment, 1)->save();
 								//=> auto invoice
 								$isAutoCreateInvoice = Mage::getStoreConfig('payment/Paysbuy/autocreateinvoice');
 								if (((int)$isAutoCreateInvoice==1) && ($order->canInvoice()))  {
@@ -479,7 +480,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 						// print_r(Mage::getStoreConfig('payment/Paysbuy/order_status'));
 						// echo "</pre>";
 						// $order->setState(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
-						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/order_status'), true, $comment, 1)->save();
+						$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status_counter'), true, $comment, 1)->save();
 						// $this->getCheckout()->setPaysbuyErrorMessage('Awaiting Counter Service payment');
 						// $order->sendOrderUpdateEmail(true, $comment);
 						break;
