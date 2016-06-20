@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<MarginFrame_Custom>
+			<version>0.1.0</version>
+		</MarginFrame_Custom>
+	</modules>
+	
+	<admin>
+        <routers>
+            <custom>
+                <use>admin</use>
+                <args>
+                    <module>MarginFrame_Custom</module>
+                    <frontName>custom</frontName>
+                </args>
+            </custom>
+        </routers>
+    </admin>
+
+	<global>
+		<helpers>
+			<custom>
+				<class>MarginFrame_Custom_Helper</class>
+			</custom>
+		</helpers>
+
+		<blocks>
+			<custom>
+				<class>MarginFrame_Custom_Block</class>
+			</custom>
+
+			<adminhtml>
+				<rewrite>
+					<catalog_product_grid>MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid</catalog_product_grid>
+				</rewrite>
+			</adminhtml>
+		</blocks>
+	</global>
+</config>
