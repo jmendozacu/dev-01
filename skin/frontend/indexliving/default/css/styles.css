@@ -10699,11 +10699,19 @@ div.paypal-logo span > img {
   }
 .customer-forms-title{padding: 20px 40px;background: #F7F7F7;margin-bottom: 0;font-size: 20px;border: solid 1px #ececec;border-bottom: 0;}
 .cms-page-view.cms-custom-form .std .fieldset.bank{width: 95%;}
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect{height: 180px;overflow: hidden;}
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option{background: url("/media/bank/b-kbank.png") no-repeat 0 5px;padding: 12px 37px;border-bottom: 1px solid #ebebeb;}
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(2){background: url("/media/bank/b-bangkok.png") no-repeat 0 5px;}
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(3){background: url("/media/bank/b-krungsri.png") no-repeat 0 5px;}
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(4){background: url("/media/bank/b-scb.png") no-repeat 0 5px;border-bottom:0;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect{height: 180px;overflow: hidden; border: 0;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option{background: url("/media/bank/muti-radio/b-kbank.png") no-repeat center -6px;padding: 12px 68px;border-bottom: 1px solid #ebebeb;position: relative;color: #000 !important;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(2){background: url("/media/bank/muti-radio/b-bangkok.png") no-repeat -10px -1px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(3){background: url("/media/bank/muti-radio/b-krungsri.png") no-repeat -10px -1px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(4){background: url("/media/bank/muti-radio/b-scb.png") no-repeat -10px -1px;border-bottom:0;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:first-child:checked{background: #FFF url("/media/bank/muti-radio/b-kbank-choose-01.png") no-repeat center -6px;color: #000;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(2):checked{background: #FFF url("/media/bank/muti-radio/b-bangkok-choose-01.png") no-repeat -10px -1px;color: #000;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(3):checked{background: #FFF url("/media/bank/muti-radio/b-krungsri-choose-01.png") no-repeat -10px -1px;color: #000;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(4):checked{background: #FFF url("/media/bank/muti-radio/b-scb-choose-01.png") no-repeat -10px -1px;border-bottom:0;color: #000;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:hover,
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:focus,
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:active,
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:checked{color:#000;}
 .customer-forms ul { list-style: none !important;}
 .customer-forms .buttons-set{padding-top: 30px;}
 .customer-forms .buttons-set button.button{float: left;}
