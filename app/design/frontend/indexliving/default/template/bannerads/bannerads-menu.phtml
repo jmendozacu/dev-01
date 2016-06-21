@@ -58,15 +58,17 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
         </ul>
       </div>
       <script type="text/javascript">
-         jQuery('#banner_carousel_menu_<?php echo $block->getBlockId();?>').bxSlider({
-					auto: true,
-          slideWidth:240,
-          infiniteLoop:true,
-          controls: false,
-          pager: true,
-          captions: false,
-          minSlides:1
-        });
+        jQuery(document).ready(function () {
+          jQuery('#banner_carousel_menu_<?php echo $block->getBlockId();?>').bxSlider({
+  					auto: true,
+            slideWidth:240,
+            infiniteLoop:true,
+            controls: false,
+            pager: true,
+            captions: false,
+            minSlides:1
+          });
+       });
       </script>
     <?php endif ?>
     <div style="clear: both;"></div>
