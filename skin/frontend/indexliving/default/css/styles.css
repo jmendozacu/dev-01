@@ -11851,3 +11851,12 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .product-label-category table { position: relative; margin: 0 3px 0 0; }
 .product-label-product table { position: relative; margin: 0 5px 0 0; }
 .bundle + #product-options-wrapper{ display: none; }
+
+/*--- Css For Delivery Page---*/
+.caculator{  border: solid 3px #fab80a;  padding: 25px 44px 25px 25px;  }
+.caculator .buttons-set button.button {  float: left;  margin-left: 5px;  min-width: 140px;  }
+.caculator .cancel{  background-color:#363636;  }
+.caculator .shipping-result {  float: left;  margin-left: 27px;  min-width: 140px;  background: #ffffff;  display: inline-block;  padding: 9px 15px 7px;  border: 0;  color: #ff0000;  font-size: 14px;  font-weight: bold;  line-height: 26px;  vertical-align: middle;  white-space: nowrap;  text-align: center;  text-transform: uppercase;  border-radius: 5px;  }
+.caculator .shipping-form-validate select {  margin-top: 0px;  width: 365px;  max-width: 100%;  height: 35px;  border-radius: 4px;  }
+.caculator .form-list .field {  float: none;  width: 260px;  margin-right: 18px;  }
+.caculator .shipping-area .field{  float: left;  }

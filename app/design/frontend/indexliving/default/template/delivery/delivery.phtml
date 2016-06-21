@@ -1,0 +1,141 @@
+<?php $media = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+
+
+?>
+<div class="banner">
+  <img src="<?php echo $media . 'delivery/banner-delivery.png' ?>" alt="">
+</div>
+<div class="info-shop">
+  <img src="<?php echo $media . 'delivery/info1-delivery.png' ?>" alt="">
+</div>
+<div class="caculator">
+  <div class="page-title">
+    <h2><?php echo $this->__('Index Online Store - Calculated Shipping Cost') ?></h2>
+  </div>
+  <!--Form Information-->
+  <ul class="form-list">
+  <form id="shipping-form-validate" method="post">
+    <div class="fieldset form">
+      <li class="fields shipping-type">
+        <h4>Shipping Type</h4>
+          <?php
+          $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'am_shipping_type'); //"am_shipping_type" is the attribute_code
+          $allOptions = $attribute->getSource()->getAllOptions(true, true);
+          ?>
+        <div class="field">
+          <div class="input-box">
+          <select class="validate-select" name="shipping_type" id="shipping_type">
+            <option value=""><?php echo $this->__('Choose an Option...') ?></option>
+            <?php foreach ($allOptions as $instance) :
+              if($instance['value'] && $instance['label']):?>
+            <option value="<?php echo $instance['value']; ?>">
+              <?php echo $instance['label'] ?>
+            </option>
+              <?php endif;?>
+            <?php endforeach;?>
+          </select>
+          </div>
+        </div>
+        </li>
+      <li class="fields shipping-budget">
+        <h4>Your Budget</h4>
+        <div class="field name-budget">
+          <div class="input-box">
+            <input type="text" class="input-text required-entry" maxlength="255" title="Budget" value="" name="budget" id="budget">
+          </div>
+        </div>
+      </li>
+      <li class="fields shipping-area">
+        <h4>Shipping Area</h4>
+          <div class="field">
+            <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+            <div class="input-box">
+              <select id="region_id" name="region_id" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="validate-select" style="display:none;">
+                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+              </select>
+              <input type="text" id="region" name="region" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+            <div class="input-box">
+              <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select" style="display:none;">
+                <option value=""><?php echo $this->__('Please select City') ?></option>
+              </select>
+              <input type="text" name="city" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('City')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
+            </div>
+          </div>
+          <div class="field" style="display: none">
+          <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+          <div class="input-box">
+            <?php echo $this->getCountryHtmlSelect() ?>
+          </div>
+        </div>
+      </li>
+    <!--Button & Link-->
+    <div class="buttons-set">
+      <p class="required">* <?php echo $this->__('Required Fields') ?></p>
+      <button class="button submit" title="Calculator" type="submit" ><span><span><?php echo $this->__('Calculator') ?></span></span></button>
+      <button class="button cancel" title="Cancel" type="reset" onclick="$j('.shipping-result').fadeOut();"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+      <div id="shipping-result" class="shipping-result" style="display: none">
+        Your shipping cost is <span class="result"></span>
+      </div>
+    </div>
+    </div>
+  </form>
+  </ul>
+</div>
+<div class="info-shop">
+  <img src="<?php echo $media . 'delivery/info2-delivery.png' ?>" alt="">
+</div>
+
+<script type="text/javascript">
+
+  new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+
+  new CityUpdater('country', 'region_id', 'city', 'city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
+
+</script>
+
+<script>
+  /**
+   * Created by Khuebt on 21/06/16.
+   */
+
+  var formId = 'shipping-form-validate';
+  var myForm = new VarienForm(formId, true);
+  var postUrl = '<?php echo $this->getUrl("delivery/index/result") ?>';
+
+  function doAjax() {
+    if (myForm.validator.validate()) {
+      $j('.shipping-result').fadeOut();
+      $j('#ajaxcart-overlay').show();
+      $j('#ajax_cart_loading').show();
+      var request = new Ajax.Request(
+        postUrl,
+        {
+          method:'post',
+          parameters: $(formId).serialize(true),
+          onSuccess: function(transport){
+            if(transport.responseText.isJSON()) {
+              var result = transport.responseText.evalJSON();
+              if (result.success) {
+                $j('#ajaxcart-overlay').hide();
+                $j('#ajax_cart_loading').hide();
+                $j('.result').text(result.cost);
+                $j('.shipping-result').show();
+              }
+            }
+          }
+        }
+      );
+    }
+  }
+
+  new Event.observe(formId, 'submit', function(e){
+    e.stop();
+    doAjax();
+  });
+
+
+</script>
