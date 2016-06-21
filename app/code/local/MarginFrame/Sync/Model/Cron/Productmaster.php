@@ -9,7 +9,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'product_master'.DS;
 			$dirprepare = $dir.'prepare'.DS;
 			$filelogName = "mgfsync_productmaster.log";
-			
+
 			// Create folder
 			if (!file_exists($dir)) {
 				$file = new Varien_Io_File();
@@ -95,6 +95,8 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				$catcodes[$catcode['catalog_code']][] = $catcode['entity_id'];
 			}
 			//var_dump($catcodes);
+			
+
 			while (false !== ($filename = readdir($dh))) {
 			    $files[] = $filename;
 
@@ -252,6 +254,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 								} else {
 									if($key == "Article_CODE"){
 										$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $cols[$value];
+										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $cols[$value];
 									}
 									else {
 										$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
@@ -273,7 +276,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 						$rowNum++;
 						
 					}
-
+					
 					file_put_contents($dirprepare."Import_Produce_EN.csv", implode("\n", $res_EN));
 					file_put_contents($dirprepare."Import_Produce_TH.csv", implode("\n", $res_TH));
 
