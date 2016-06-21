@@ -661,7 +661,7 @@ class Magebuzz_Importcustomer_Helper_Data extends Mage_Core_Helper_Abstract{
 			(
 				SELECT
 				'".$this->_getCustomerAddressEntityTypeId()."',
-        '".$this->_getCustomerAddressAttributeId('mobile')."',
+        '".$this->_getCustomerAddressAttributeId('mobile_customer')."',
 				MAX(cae.entity_id),				
         telephone
 				FROM ".$import_customer_temp." ict JOIN ".$customer_address_entity." cae
