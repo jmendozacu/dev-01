@@ -45,8 +45,8 @@ Default layout, loads most of the pages
     <default>
 
         <!-- Mage_Catalog -->
-        <reference name="left">
-            <!-- <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/> -->
+        <reference name="left_first">
+            <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
         </reference>
         <reference name="footer_links">
             <action method="addLink" translate="label title" module="catalog" ifconfig="catalog/seo/site_map"><label>Site Map</label><url helper="catalog/map/getCategoryUrl" /><title>Site Map</title></action>
@@ -66,6 +66,8 @@ Category default layout
         </reference>
 				<reference name="head">
 					<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+					<action method="addItem"><type>skin_js</type><name>js/sticky-sidebar.js</name></action>
+					<action method="addItem"><type>skin_js</type><name>js/stickyfilter.js</name></action>
 					<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
 				</reference>
         <reference name="left_first">
@@ -105,8 +107,12 @@ Category default layout
 
         </reference>
 				<reference name="footer.before">
-					<block type="cms/block" name="category.static.content" before="-">
+					<block type="cms/block" name="allcategory.related.products" before="-">
 						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>
+					</block>
+
+					<block type="cms/block" name="allcategory.alsolike.products" after="allcategory.related.products">
+						<action method="setBlockId"><block_id>index-allcategory-alsolike-products</block_id></action>
 					</block>
 				</reference>
     </catalog_category_default>
@@ -121,6 +127,8 @@ Category layered navigation layout
         </reference>
 				<reference name="head">
 					<action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+					<action method="addItem"><type>skin_js</type><name>js/sticky-sidebar.js</name></action>
+					<action method="addItem"><type>skin_js</type><name>js/stickyfilter.js</name></action>
 					<action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
 				</reference>
         <reference name="left_first">
@@ -164,8 +172,12 @@ Category layered navigation layout
             </block>
         </reference>
 				<reference name="footer.before">
-					<block type="cms/block" name="category.static.content" before="-">
+					<block type="cms/block" name="allcategory.related.products" before="-">
 						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>
+					</block>
+
+					<block type="cms/block" name="allcategory.alsolike.products" after="allcategory.related.products">
+						<action method="setBlockId"><block_id>index-allcategory-alsolike-products</block_id></action>
 					</block>
 				</reference>
     </catalog_category_layered>
@@ -175,19 +187,11 @@ Compare products page
 -->
 
     <catalog_product_compare_index translate="label">
-        <label>Catalog Product Compare List</label>
-        <!-- Mage_Catalog -->
-        <reference name="root">
-            <action method="setTemplate"><template>page/popup.phtml</template></action>
-        </reference>
-        <reference name="head">
-            <action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
-            <action method="addJs"><script>varien/product.js</script></action>
-            <action method="unsetChild"><name>head.viewport</name></action>
-        </reference>
-        <reference name="content">
-            <block type="catalog/product_compare_list" name="catalog.compare.list" template="catalog/product/compare/list.phtml"/>
-        </reference>
+			<reference name="head">
+					<action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>
+					<action method="addJs"><script>varien/product.js</script></action>
+			</reference>
+      <block type="catalog/product_compare_list" name="root" template="catalog/product/compare/list.phtml"  output="toHtml"/>
     </catalog_product_compare_index>
 
     <customer_account_index>
@@ -220,6 +224,13 @@ Product view
 						<action method="addItem"><type>skin_js</type><name>js/jquery.custom-radio-checkbox.js</name></action>
 						<action method="addItem"><type>skin_js</type><name>js/ajaxupload.js</name></action>
 						<action method="addItem"><type>skin_css</type><name>css/custom-radio-checkbox.css</name></action>
+        </reference>
+				<reference name="catalog_product_price_template">
+            <action method="addPriceBlockType"><type>simple</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>grouped</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>configurable</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>virtual</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>bundled</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
         </reference>
         <reference name="content">
             <block type="catalog/product_view" name="product.info" template="catalog/product/view.phtml">
@@ -258,6 +269,8 @@ Product view
                 </block>
 
                 <block type="catalog/product_view" name="product.info.addtocart" as="addtocart" template="catalog/product/view/addtocart.phtml"/>
+								
+								<block type="catalog/product_compare_sidebar" name="catalog.compare.insideproduct" as="compareInsideProduct" template="catalog/product/compare/compare-product.phtml"/>
 
                 <block type="core/text_list" name="product.info.extrahint" as="extrahint" translate="label">
                     <label>Product View Extra Hint</label>
@@ -298,11 +311,15 @@ Product view
                 <action method="unsetCallChild"><child>container2</child><call>ifEquals</call><if>0</if><key>alias_in_layout</key><key>options_container</key></action>
             </block>
         </reference>
-				<reference name="footer.before">
-					<block type="cms/block" name="category.static.content" before="-">
+				<!-- <reference name="footer.before">
+					<block type="cms/block" name="allcategory.related.products" before="-">
 						<action method="setBlockId"><block_id>index-allcategory-related-products</block_id></action>
 					</block>
-				</reference>
+
+					<block type="cms/block" name="allcategory.alsolike.products" after="allcategory.related.products">
+						<action method="setBlockId"><block_id>index-allcategory-alsolike-products</block_id></action>
+					</block>
+				</reference> -->
     </catalog_product_view>
 
 <!--

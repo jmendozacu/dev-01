@@ -1,0 +1,76 @@
+<?php
+/*
+* Copyright (c) 2014 www.magebuzz.com
+*/
+?>
+<?php
+$block = $this->getBannerads();
+$banners = $block->getImages();
+$blockType = $block->getDisplayType();
+$helper = Mage::helper('bannerads');
+//$isShowTitle = $helper->getTitleBanners();
+//$isShowDescription = $helper->getDescriptionBanners();
+$isBlockIds = array();
+$urlShow = Mage::getUrl('bannerads/reports/impression');
+$urlClick = Mage::getUrl('bannerads/reports/click');
+?>
+<?php if ($banners->getSize() > 0): ?>
+  <div class="wrap-bannerads">
+    <!-- Display type Show all -->
+    <?php if ($blockType == 1): ?>
+      <div class="div-banner">
+        <ul class="banner-carousel">
+          <?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
+            <li
+              <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
+              <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>"<?php endif ?>>
+                <img  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt=""/>
+              </a>
+            </li>
+          <?php endforeach ?>
+        </ul>
+      </div>
+    <?php endif ?>
+    <!-- Display type random -->
+    <?php if ($blockType == 2): ?>
+      <div class="div-banner">
+        <div class="banner"
+             <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
+          <a <?php if ($banners->getBannerUrl() != ''): ?> href="<?php echo $banners->getBannerUrl(); ?>" <?php endif ?>>
+            <img src="<?php echo $helper->getBannerImage($banners->getBannerImage()); ?>"
+                 alt="<?php echo $banners->getBannerTitle(); ?>"/>
+          </a>
+        </div>
+      </div>
+    <?php endif ?>
+    <!-- Display type Slider -->
+    <?php if ($blockType == 3): ?>
+      <div class="banner"
+           <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
+        <ul class="banner-carousel-menu" id="banner_carousel_menu_<?php echo $block->getBlockId() ?>">
+          <?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
+            <li>
+              <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>>
+                <img  src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>" alt=""/>
+              </a>
+            </li>
+          <?php endforeach ?>
+        </ul>
+      </div>
+      <script type="text/javascript">
+        jQuery(document).ready(function () {
+          jQuery('#banner_carousel_menu_<?php echo $block->getBlockId();?>').bxSlider({
+  					auto: true,
+            slideWidth:240,
+            infiniteLoop:false,
+            controls: false,
+            pager: true,
+            captions: false,
+            minSlides:1
+          });
+       });
+      </script>
+    <?php endif ?>
+    <div style="clear: both;"></div>
+  </div>
+<?php endif ?>

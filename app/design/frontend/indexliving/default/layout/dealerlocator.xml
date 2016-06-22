@@ -4,9 +4,9 @@
     <reference name="top.links">
       <action method="addLink" translate="label title" module="dealerlocator"
               ifconfig="dealerlocator/google_map_options/show_top_link">
-        <label>Dealers</label>
+        <label>Stores</label>
         <url>dealerlocator</url>
-        <title>Dealers</title>
+        <title>Stores</title>
         <prepare>true</prepare>
         <urlParams/>
         <position>0</position>
@@ -18,6 +18,8 @@
       <action method="addCss">
         <stylesheet>css/dealerlocator/dealerlocator.css</stylesheet>
       </action>
+      <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+      <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
     </reference>
     <reference name="root">
       <action method="setTemplate">
@@ -29,7 +31,7 @@
     </reference>
 		<reference name="breadcrumbs">
 			<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
-			<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Dealers</crumbName><crumbInfo><label>Dealers</label><title>Dealers</title></crumbInfo></action>
+			<action method="addCrumb" translate="crumbInfo.label crumbInfo.title"><crumbName>Stores</crumbName><crumbInfo><label>Stores</label><title>Stores</title></crumbInfo></action>
 		</reference>
     <reference name="content">
       <block type="dealerlocator/dealerlocator" name="dealerlocator">

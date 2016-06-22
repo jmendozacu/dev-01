@@ -2,15 +2,17 @@
 class Magebuzz_Customaddress_Model_Observer {	
 	public function addressSaveBefore(Varien_Event_Observer $observer) {
 		$address = $observer->getEvent()->getCustomerAddress();
-		$cityId = Mage::app()->getRequest()->getParam('city_id');
-		$city = Mage::app()->getRequest()->getParam('city');						
+		//$cityId = Mage::app()->getRequest()->getParam('city_id');
+		$city = Mage::app()->getRequest()->getParam('city');	
+		$cityId = $address->getData('city_id');
 		if($cityId && $cityId != 0){
 			$city = Mage::getModel('customaddress/city')->load($cityId)->getDefaultName();
 		}
 		$address->setData('city', $city);
 		
-		$subdistrictId = Mage::app()->getRequest()->getParam('subdistrict_id');
-		$subdistrict = Mage::app()->getRequest()->getParam('subdistrict');						
+		//$subdistrictId = Mage::app()->getRequest()->getParam('subdistrict_id');
+		$subdistrict = Mage::app()->getRequest()->getParam('subdistrict');					
+		$subdistrictId = $address->getData('subdistrict_id');
 		if ($subdistrictId && $subdistrictId != 0) {
 			$subdistrict = Mage::getModel('customaddress/subdistrict')->load($subdistrictId)->getDefaultName();
 		}

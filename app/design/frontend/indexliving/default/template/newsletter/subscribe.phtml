@@ -31,14 +31,48 @@
     <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
         <div class="block-content">
             <div class="input-box">
-               <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="newsletter" placeholder="<?php echo $this->__('Sign up for our newsletter') ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $this->__('Sign up for our newsletter') ?>'" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" />
+               <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="subscriber_email" placeholder="<?php echo $this->__('Sign up for our newsletter') ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $this->__('Sign up for our newsletter') ?>'" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" />
             </div>
-            <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+						<img id="newsletter-subscribe-processing" style="display:none;" alt="<?php echo $this->__('Loading...')?>" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif')?>" />
+            <button type="button" id="newsletter-subscribe-btn" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
         </div>
     </form>
     <script type="text/javascript">
     //<![CDATA[
         var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+				var url = '<?php echo $this->getFormActionUrl() ?>';
+				$('newsletter-subscribe-btn').observe('click', function() {
+					if($('subscriber_email').getValue() == ''){
+						if($('advice-required-entry-subscriber_email')){
+							$('advice-required-entry-subscriber_email').remove();
+						}
+						$('subscriber_email').insert({
+							after: "<div class='validation-advice' id='advice-required-entry-subscriber_email'><?php echo $this->__('This is a required field.')?></div>"
+						});
+					}else{
+						new Ajax.Request(
+							url,
+							{
+								parameters: {
+									subscriber_email: $('subscriber_email').getValue()
+								},
+								method: 'GET',
+								onLoading: function() {
+									if($('advice-required-entry-subscriber_email')){
+										$('advice-required-entry-subscriber_email').remove();
+									}
+									ajaxCart.ajaxLoading.show();
+								},
+								
+								onSuccess: function(transport){
+									ajaxCart.ajaxLoading.hide();
+									ajaxCart.optionsPopup.update(transport.responseJSON.html);
+									ajaxCart.optionsPopup.show();
+								}
+							}
+						)
+					}
+				});
     //]]>
     </script>
 </div>

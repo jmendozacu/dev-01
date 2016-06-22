@@ -1,30 +1,12 @@
-<?php
-$_indexes = $this->getIndexes();
-?>
-<div class="page-title">
-    <h1><?php echo ($this->getHeaderText()) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
-</div>
-
-<?php if ($this->isShowTabs()): ?>
-<ul class="searchindex-results">
+<?php $_indexes = $this->getIndexes(); ?>
 <?php foreach ($_indexes as $_index): ?>
-    <?php if (
-        ($_index->getCountResults()
-            && ($_index->getContentBlock()->getIsVisible() == true || $_index->getCode() == 'mage_catalog_product'))
-        || ($_index == $this->getCurrentIndex())): ?>
-        <?php if ($_index == $this->getCurrentIndex()): ?>
-        <li class="active">
-        <?php else: ?>
-        <li>
-        <?php endif ?>
-            <a href="<?php echo $this->getIndexUrl($_index) ?>">
-            <?php echo $this->__($_index->getTitle()) ?>
-            &nbsp;<span>(<?php echo $_index->getCountResults() ?>)</span></a>
-        </li>
-    <?php endif ?>
-<?php endforeach ?>
-</ul>
-<?php endif ?>
+    <?php if ($_index->getStoreId() == Mage::app()->getStore()->getStoreId()): ?>
+        <?php $countResult = $_index->getCountResults() ?>
+    <?php endif; ?>
+<?php endforeach; ?>
+<div class="page-title">
+    <h1><?php echo ($this->getHeaderText()) ? $this->getHeaderText() : $this->__("%s results for '%s'", $countResult, $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+</div>
 
 <?php echo $this->getChildHtml('related_searches') ?>
 

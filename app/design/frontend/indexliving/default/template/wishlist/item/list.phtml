@@ -28,8 +28,11 @@
     /* @var $this Mage_Wishlist_Block_Customer_Wishlist_Items */
 ?>
 <?php
-    $columns = $this->getColumns();
+    $columns = Mage_Wishlist_Block_Customer_Wishlist_Items::getColumns();
 ?>
+<a href="<?php echo Mage::getBaseUrl().'customwishlist/index/print'; ?>" class="link-print" onclick="this.target='_blank';"><?php echo $this->__('Print Wishlist') ?></a>
+<button type="button" title="<?php echo $this->__('Share Wishlist') ?>" class="button share-wishlist" onclick="popWin('<?php echo Mage::getBaseUrl().'/wishlist/index/share';?>','share','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Share Wishlist') ?></span></span></button>
+
 <table class="clean-table box-desktop" id="wishlist-table">
     <thead>
         <tr>
@@ -44,7 +47,9 @@
     </thead>
     <tbody>
         <?php if (count($this->getItems())): ?>
+
             <?php foreach ($this->getItems() as $item): ?>
+								<?php $product = $item->getProduct();?>
                 <tr id="item_<?php echo $item->getId();?>">
                     <?php
                         foreach ($columns as $key => $column):
@@ -57,7 +62,8 @@
                                 $_rwdLabel = ($column->getTitle()) ? $column->getTitle() : false;
                             }
                     ?>
-                        <td class="<?php echo 'wishlist-cell'.$key; ?> <?php echo $_blockName; ?>"<?php if($_rwdLabel): ?> data-rwd-label="<?php echo $_rwdLabel; ?>"<?php endif; ?>><?php $column->setItem($item); echo $column->toHtml($item);?></td>
+
+                            <td class="<?php echo 'wishlist-cell'.$key; ?> <?php echo $_blockName; ?>"<?php if($_rwdLabel): ?> data-rwd-label="<?php echo $_rwdLabel; ?>"<?php endif; ?>><?php $column->setItem($item); echo $column->toHtml($item);?></td>
                     <?php endforeach; ?>
                 </tr>
             <?php endforeach ?>

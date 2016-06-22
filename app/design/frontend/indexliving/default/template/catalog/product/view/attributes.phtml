@@ -39,21 +39,26 @@
 		<div class="page-container">
 			<div class="box-title">
 				<h2><?php echo $this->__('Features') ?></h2>
-				<button type="button" title="<?php echo $this->quoteEscape($this->__('Product Download')) ?>" class="button btn-downloads" onclick="setLocation('#')"><span><span><?php echo $this->__('Product Download') ?></span></span></button>
+				<?php if($_helper->productAttribute($_product, $_product->getProductDownloadLink(), 'product_download_link') != ''):?>
+					<button type="button" title="<?php echo $this->quoteEscape($this->__('Product Download')) ?>" class="button btn-downloads" onclick="javascript:window.open('<?php echo $_helper->productAttribute($_product, $_product->getProductDownloadLink(), 'product_download_link') ?>');"><span><span><?php echo $this->__('Product Download') ?></span></span></button>
+					<?php endif ?>
 			</div>
 			<?php $i=0; foreach ($_additional as $_data): ?>
+				<!-- debug value: <?php echo $_data['value']; ?> -->
 				<?php if ($i++%2==0): ?>
 					<ul class="products-features-grid">
 				<?php endif ?>
-					<li class="item<?php if(($i-1)%2==0): ?> first<?php elseif($i%2==0): ?> last<?php endif; ?>">
-						<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
-						<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
-					</li>
+					<?php if($_data['value'] != 'No' && $_data['value'] != 'N/A' && $_data['value'] != 'ไม่ใช่'):?>
+						<li class="item<?php if(($i-1)%2==0): ?> first<?php elseif($i%2==0): ?> last<?php endif; ?>">
+								<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
+								<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
+						</li>
+					<?php endif ?>
 				<?php if ($i%2==0 || $i==count($_additional)): ?>
 					</ul>
-				<?php endif ?>		
+				<?php endif ?>
 			<?php endforeach; ?>
 			<?php echo $this->getChildHtml('description') ?>
-		</div>	
-	</div>	
+		</div>
+	</div>
 <?php endif;?>

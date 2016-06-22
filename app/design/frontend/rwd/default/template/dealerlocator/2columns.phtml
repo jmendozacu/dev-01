@@ -8,7 +8,7 @@
 $dealers->clear(); ?>
 
 <div class="page-title">
-  <h1><?php echo $this->__('Dealer Locator'); ?></h1>
+  <h1><?php echo $this->__('Store Locator'); ?></h1>
 </div>
 
 <?php if ((!$dealers->getSize()) && (!Mage::getSingleton('core/session')->getData('dealer_query'))) : ?>
@@ -197,6 +197,8 @@ $dealers->clear(); ?>
                   </td>
                 <?php endif ?>
               </tr>
+              <input type="hidden" name="dealer-icon" id="dealer_icon_<?php echo $dealer->getId() ?>"
+                               value="<?php echo $dealer->getDealerIconImage() ?>"/>
               <input type="hidden" name="dealer-longitude" id="dealer_latitude_<?php echo $dealer->getId() ?>"
                      value="<?php echo $dealer->getLatitude() ?>"/>
               <input type="hidden" name="dealer-longitude" id="dealer_longitude_<?php echo $dealer->getId() ?>"

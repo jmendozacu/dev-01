@@ -1,0 +1,13 @@
+<script type="text/javascript">
+	document.observe("dom:loaded", function() {
+		ajaxWishlistInit();
+	});
+	function ajaxWishlistInit() {
+		$$('a.link-wishlist').each(function(element) {
+			var wishlistUrl = element.readAttribute('href');
+			//wishlistUrl = wishlistUrl.replace('wishlist/index/add','customwishlist/index/add');
+			element.writeAttribute('onclick', 'ajaxCart.ajaxAddToWishlist("'+wishlistUrl+'")');
+			element.writeAttribute('href', 'javascript:void(0)');
+		});
+	}
+</script>

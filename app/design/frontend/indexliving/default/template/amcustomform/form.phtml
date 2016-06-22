@@ -1,0 +1,120 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_Customform
+ */
+?>
+<?php
+/** @var Amasty_Customform_Block_Form $this */
+
+
+$form = $this->getFormModel();
+$configCaptcha = Mage::helper('amcustomform/captcha')->getConfigNode('enable');
+$captchaEnable = $form->getCaptcha() && $configCaptcha;
+$baseJsUrl = Mage::getBaseUrl('js');
+$session = Mage::getSingleton('customer/session');
+$data = $session->getData('customer-form-data-'.$this->getFormId());
+if($captchaEnable){
+    $captcha = $this->getCaptcha();
+}
+?>
+
+<!--
+<script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar.js"></script>
+<script type="text/javascript" src="<?php echo $baseJsUrl?>calendar/calendar-setup.js"></script>
+<script type="text/javascript" src="<?php echo $this->getJsUrl('mage/captcha.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $baseJsUrl?>calendar/calendar-win2k-1.css" media="all" />
+<?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml();?>
+-->
+
+<script type="text/javascript" src="<?php echo $this->getJsUrl('mage/captcha.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/amasty/customform/jquery.datetimepicker.css') ?>" />
+<script type="text/javascript" src="<?php echo $this->getJsUrl('amasty/customform/jquery.datetimepicker.full.min.js') ?>"></script>
+
+<h2 class="customer-forms-title"><?php echo $this->__('Payment Confirmation') ?></h2>
+<div class="customer-forms">
+
+        <form id="custom-form-<?php echo $form->getId()?>" action="<?php echo $this->getUrl('customform/form/submit/',array('preview'=>$this->getPreview())) ?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="form_id" value="<?php echo $form->getId() ?>">
+
+        <?php
+        foreach ($form->getActiveLines() as $line) {
+            /** @var Amasty_Customform_Model_Form_Line $line */
+        ?>
+            <div class="fieldset">
+                <ul class="form-list">
+                <?php
+                foreach ($line->getActiveFormFields() as $formField) {
+                    /** @var Amasty_Customform_Model_Form_Field $formField */
+                ?>
+                    <li class="fields">
+                        <div class="field">
+                            <?php $element = $this->createElement($formField); ?>
+                            <?php if($element->getMaxLength()>0){ ?>
+                            <?php $element->addClass('validate-length') ?>
+                            <?php $element->addClass('maximum-length-'.$element->getMaxLength()) ?>
+                            <?php } ?>
+                            <label for="form-field-<?php echo $formField->getId() ?>"><?php echo $formField->getField()->getCurrentStorable('label'); echo ($element->getRequired()) ? ' <span class="required"></span>' : ''; ?></label>
+                            <div class="input-box"><?php echo $element->toHtml(); ?></div>
+                        </div>
+                    </li>
+                <?php } ?>
+                </ul>
+            </div>
+        <?php } ?>
+        <?php if($captchaEnable){ ?>
+        <div class="fieldset">
+            <ul class="form-list">
+                <?php echo $captcha->toHtml() ?>
+            </ul>
+        </div>
+        <?php }?>
+
+        <div class="buttons-set">
+            <button type="submit"  title="<?php echo $this->__('Submit') ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+            <button type="button" onclick="window.location = '<?php echo $this->getUrl('customform/form/reset/',array('form_id'=>$this->getFormId())) ?>'" title="<?php echo $this->__('Reset') ?>" class="button"><span><span><?php echo $this->__('Reset') ?></span></span></button>
+        </div>
+        </form>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var contactForm<?php echo $form->getId()?> = new VarienForm('custom-form-<?php echo $form->getId()?>', true);
+    <?php  ?>
+    <?php if(!empty($data)){?>
+    contactForm<?php echo $form->getId()?>.validator.validate();
+    <?php } ?>
+
+    var datenow = '<?php echo Mage::getModel("core/date")->date("Y-m-d H:i:s"); ?>';
+    jQuery(function(){
+        jQuery('.picker-datetime').datetimepicker({
+            value:datenow,
+            step:10,
+            //format:'Y-m-d H:i',
+            //formatDate:'Y-m-d H:i:s',
+            // onSelectDate:function(ct,$i){
+            //   alert(ct.dateFormat('d/m/Y'))
+            // }
+        });
+        jQuery('.picker-date').datetimepicker({
+            value:datenow,
+            //yearOffset:543,
+            //lang:'th',
+            timepicker:false,
+            //format:'d/m/Y',
+            formatDate:'Y-m-d',
+            //minDate:'-1970/01/02', // yesterday is minimum date
+            //maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        jQuery('.picker-time').datetimepicker({
+            value:datenow,
+            step:10,
+            datepicker:false,
+            format:'H:i',
+            formatDate:'Y-m-d H:i:s',
+        });
+
+    });
+
+    //]]>
+</script>

@@ -110,6 +110,8 @@ class Amasty_Ajaxlogin_TwitterController extends Amasty_Ajaxlogin_AjaxloginContr
          $oauth_token = Mage::getSingleton('core/session')->getData('amajaxlogin_twitter_token');
          if($data && $oauth_token)
             $this->_login($data, $oauth_token, 'tw', $this->__('Twitter'));
+             $customer = Mage::getSingleton('customer/session')->getCustomer();
+             $customer->setCustomerSource('Twitter')->save();
      }
   
     public function replaceJs($result)

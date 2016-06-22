@@ -38,6 +38,7 @@
 			<p class="order-id"><?php echo $this->__('Your order # is: <span>%s</span>', $this->escapeHtml($this->getOrderId())) ?></p>
 	<?php endif;?>
 			<p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+			<p><?php echo $this->__('If you make your payment. Please ') ?><a href="/custom-form" target="_blank"><?php echo $this->__('click here') ?></a> <?php echo $this->__('In order to confirm the payment.') ?></p>
 	<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
 			<p>
 					<?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>

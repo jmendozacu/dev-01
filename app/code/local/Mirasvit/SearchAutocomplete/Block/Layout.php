@@ -86,7 +86,9 @@ class Mirasvit_SearchAutocomplete_Block_Layout extends Mage_Core_Block_Template
             $searchParentBlock = $this->getLayout()->getBlock('header');
         } else {
             $searchParentBlock = $searchBlock->getParentBlock();
-            $searchParentBlock->unsetChild($searchBlock->getBlockAlias());
+            if($searchBlock->getBlockAlias()!=null){
+                $searchParentBlock->unsetChild($searchBlock->getBlockAlias());
+            }
         }
 
         $searchBlock = $this->getLayout()->createBlock('searchautocomplete/form')

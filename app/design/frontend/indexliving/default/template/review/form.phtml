@@ -28,18 +28,17 @@
 	<div class="form-add">
 		<h2><?php echo $this->__('Write Your Own Review') ?></h2>
 		<div class="show-message"></div>
-		<?php if ($this->getAllowWriteReviewFlag()): ?>
-		<form action="<?php echo $this->getAction() ?>" method="post" id="review-form" enctype="multipart/form-data">
+		<form action="javascript:void(0)" method="post" id="review-form" enctype="multipart/form-data">
 		<?php echo $this->getBlockHtml('formkey'); ?>
 		<?php echo $this->getChildHtml('form_fields_before')?>
 		<div class="fieldset">
 			<?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
 				<span id="input-message-box"></span>
-				<div class="li_review" id="product-review-star">
+				<div class="li_review">
 					<script type="text/javascript">
 						var numCode = 0; var codeArray = new Array();
 					</script>
-					<ul>	
+					<ul id="product-review-star">
 					<?php foreach ($this->getRatings() as $_rating): ?>
 					<li>
 					<script type="text/javascript">
@@ -52,18 +51,18 @@
 							</div>
 							<?php foreach ($_rating->getOptions() as $_option): ?>
 							<div class="rating_wrap_start" onclick="ratingfollow('<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>','<?php echo $_option->getValue() ?>');">
-								<input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio"/>
-								<span id="Span_<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></span>
+								<input type="radio"  name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio"/>
+								<span class="rating_review" id="Span_<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>"></span>
 							</div>
 							<?php endforeach; ?>
 						</div>
 						</li>
 					<?php endforeach; ?>
 					</ul>
-					<input type="hidden" name="validate_rating" class="validate-rating" value="" />
 					<div style="clear:both;"></div>
 				</div>
 			<?php endif; ?>
+			<input type="hidden" name="validate_rating" class="validate-rating" value="" />
 			<div class="submit-fields">
 				<ul class="form-list">
 					<li class="inline-label">
@@ -72,10 +71,10 @@
 									<input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
 							</div>
 					</li>
-					<li class="inline-label">
+					<li class="inline-label" style="display:none">
 						<label for="summary_field" class="required"><em>*</em><?php echo $this->__('Title') ?></label>
 						<div class="input-box">
-								<input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+								<input type="text" name="title" id="summary_field" class="input-text required-entry" value="N/A" />
 						</div>
 					</li>
 					<li>
@@ -85,36 +84,45 @@
 							</div>
 					</li>
 					<li>
-						<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button box-desktop"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+						<button type="submit" onclick="submitbt()" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button box-desktop"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 					</li>
 				</ul>
+				<div id='ajax_loader_review' style="display: none">
+					<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
+				</div>
 				<div class="review-image">
 					<label for="attachment"><?php echo Mage::helper('review')->__('Upload Image ') ?><span><?php echo $this->__('(optional)')?></span></label>
 					<img width="48" height="48" id="loading-image" style="display:none;" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif')?>" title="<?php echo $this->__('Please wait...');?>"/>
 					<img id="preview-image" src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" style="max-width:100%,height:auto;"/>
 					<div class="input-box reviewImageInput">
-						<input name="MAX_FILE_SIZE" type="hidden" value="2000000" />
+						<input name="MAX_FILE_SIZE" type="hidden" value="" />
 						<div class="image-upload"> 
 							<div class="fileinputs">     
 								<span id="uploadButton"><span><?php echo $this->__('Choose Image')?></span></span>	
-								<input name="attachment" id="attachment" class="input-text" type="file" />      
+								<input name="attachment" id="attachment" class="input-text" type="file" />
 								<p id="upload-error-message" style="color: red;"></p> 		
 							</div>                               
 						</div>
 
-						<input id="image-name" name="image-name" type="hidden" value="" class="required-entry" />
+						<input id="image-name" name="image-name" type="hidden" value="" />
 					</div>
 				</div>
 				
 			</div>	
 			<div class="buttons-set box-mobile">
-				<button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+				<button type="submit" onclick="submitbt()" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
 			</div>
 		</div>
 		<div id='ajax_loader' style="display: none">
 			<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
 		</div>
 		</form>
+			<script type="text/javascript">
+				//< ![CDATA[
+				var customForm = new VarienForm('review-form');
+				//]]>
+			</script>
+
 			<script type="text/javascript">
 				function ratingfollow(checkRatingcode,checkValue){
 					$(checkRatingcode+"_"+checkValue).checked = true;
@@ -127,13 +135,13 @@
 						}
 					}
 				}
-			//<![CDATA[
+//			<![CDATA[
 					var dataForm = new VarienForm('review-form');
 					Validation.addAllThese(
 					[
 								 ['validate-rating', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Please select one of each of the ratings above')) ?>', function(v) {
-											var trs = $('product-review-table').select('tr');
-											var inputs;
+											var trs = $('product-review-star').select('li');
+										 	var inputs;
 											var error = 1;
 
 											for( var j=0; j < trs.length; j++ ) {
@@ -158,7 +166,7 @@
 									}]
 					]
 					);
-			//]]>
+//			]]>
 			$j(document).ready(function(){
 
 				$j('.rating > span').hover(function(){
@@ -192,10 +200,10 @@
 			var upload_field = $('attachment');
 			new AjaxUpload('attachment', {
 				action: '<?php echo $this->getUrl('customreview/product/autoupload')?>', //the php script that receives and saves the image
-				name: 'attachment', 
+				name: 'attachment',
 				onSubmit: function(file, extension) {
 					upload_field.hide();
-					loading_image.show();      
+					loading_image.show();
 				},
 				onChange: function(file, extension) {
 					$('upload-error-message').update('');
@@ -208,53 +216,65 @@
 						$('upload-error-message').update(data.message);
 						$('image-name').value = '';
 					}
-					else {        
+					else {
 						preview_image.src = data.imageUrl;
-						$('image-name').value = data.imageName; 
+						$('image-name').value = data.imageName;
 						preview_image.show();
 
 					}
 					loading_image.hide();
 					upload_field.show();
 				}
-			});   
+			});
 			</script>
 
 			<script type="text/javascript">
-				$j("form#review-form").submit(function(){
-					var frm = $j('#review-form');
-					var src= '<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>';
-					$j('#ajax_loader').show();
-					var formData = new FormData($j(this)[0]);
-					var mess = '<?php echo Mage::helper('core')->__('Your review has been accepted for moderation. ');?>';
-					$j.ajax({
-						url: frm.attr('action'),
-						type: 'POST',
-						data: formData,
-						cache: false,
-						contentType: false,
-						processData: false,
-						success: function (data) {
-							$j('#ajax_loader').hide();
-							$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ mess + '</span></li></ul></li></ul>');
-							$j('#preview-image').attr('src',src);
-							$j('#review-form').find('input:file').val('');
-							$j('#review-form')[0].reset();
-							$j.fancybox.close();
-						}
-					});
-				});
+				function submitbt(){
+					var customForm = new VarienForm('review-form', true);
+					if (customForm.validator.validate()) {
+						var url = '<?php echo $this->getUrl('customreview/product/post') ?>';
+						var src = '<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>';
+
+						var params = Form.serialize('review-form') + '&id=' + '<?php echo Mage::registry('current_product')->getId()?>';
+						var resultPopup = $('ajaxcart-overlay');
+						
+						new Ajax.Request(url, {
+							method:'post',
+							parameters: params,
+							onCreate: function() {
+								$('ajax_loader_review').show();
+							}.bind(this),
+							onComplete: function (transport) {
+								if (transport && transport.responseText) {
+									try {
+										response = eval('(' + transport.responseText + ')');
+									}
+									catch (e) {
+										response = {};
+									}
+								}
+								$('ajax_loader_review').hide();
+								if (response.html) {
+									resultPopup.update(response.html);
+									resultPopup.show();	
+								}
+								
+								$j.fancybox.close();
+								//$('review-form-popup').close();
+								
+							}.bind(this), 
+						});											
+					}
+				}
 			</script>
+
+
 			<?php
 			$star_bg = $this->getSkinUrl('images/star.png', array('_secure'=>true));
 			echo '<style>';
 			echo '.star_bg:before, .star_bg_1:before{ background: url("'.$star_bg.'") no-repeat center center !important}';
 			echo '</style>';
 			?>
-			<?php else: ?>
-			<p class="review-nologged" id="review-form">
-					<?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
-			</p>
-			<?php endif ?>
+
 	</div>
 </div>

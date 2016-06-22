@@ -1,0 +1,8 @@
+#amsmtp_smtp_provider {
+	width: 220px;
+}
+#row_amsmtp_smtp_autofill > td {
+	float: right;
+	margin-right: -140px;
+	margin-top: -6px;
+}

@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<MarginFrame_Paysbuy>
+			<version>1.0.0.0</version>
+		</MarginFrame_Paysbuy>
+	</modules>
+
+	<global>
+		<models>
+			<Paysbuy>
+				<class>MarginFrame_Paysbuy_Model</class>
+			</Paysbuy>
+		</models>
+		<helpers>
+			<Paysbuy>
+				<class>MarginFrame_Paysbuy_Helper</class>
+			</Paysbuy>
+		</helpers>
+		<blocks>
+			<Paysbuy>
+				<class>MarginFrame_Paysbuy_Block</class>
+			</Paysbuy>
+		</blocks>
+	</global>
+	<frontend>
+		<routers>
+			<Paysbuy>
+				<use>standard</use>
+				<args>
+					<module>MarginFrame_Paysbuy</module>
+					<frontName>Paysbuy</frontName>
+				</args>
+			</Paysbuy>
+		</routers>
+		<translate>
+			<modules>
+				<MarginFrame_Paysbuy>
+					<files>
+						<default>MarginFrame_Paysbuy.csv</default>
+					</files>
+				</MarginFrame_Paysbuy>
+			</modules>
+		</translate>
+	</frontend>
+
+	<default>
+		<payment>
+			<Paysbuy>
+				<active>1</active>
+				<model>Paysbuy/method_Paysbuy</model>
+				<order_status>1</order_status>
+				<payment_success_status>2</payment_success_status>
+				<title>Paysbuy Payment</title>
+				<allowspecific>0</allowspecific>
+			</Paysbuy>
+		</payment>
+			<method>
+			<Paysbuy>
+				<methodall>
+					<MT1>
+						<value>1</value>
+						<title>บัญชีเพยส์สบาย</title>
+					</MT1>
+					<MT2>
+						<value>2</value>
+						<title>บตัรเครดิต</title>
+					</MT2>
+					<MT3>
+						<value>3</value>
+						<title>บัญชีเพลพาล</title>
+					</MT3>
+					<MT4>
+						<value>4</value>
+						<title>อเมริกันเอ็กซ์เพรส</title>
+					</MT4>
+					<MT5>
+						<value>5</value>
+						<title>ออนไลน์ แบงค์กิ้ง</title>
+					</MT5>
+					<MT6>
+						<value>6</value>
+						<title>เงินสด</title>
+					</MT6>
+					<MT8>
+						<value>8</value>
+						<title>สมาร์ทเพริส์</title>
+					</MT8>
+					<MT9>
+						<value>9</value>
+						<title>การผ่อนชำระ</title>
+					</MT9>
+				</methodall>
+
+				<currency>
+					<TH>
+						<value>TH</value>
+						<language>T</language>
+						<fulltype>THB</fulltype>
+						<title>Thai Baht</title>
+					</TH>
+					<AU>
+						<value>AU</value>
+						<language>E</language>
+						<fulltype>AUD</fulltype>
+						<title>Australian Dollar</title>
+					</AU>
+					<GB>
+						<value>GB</value>
+						<language>E</language>
+						<fulltype>GBP</fulltype>
+						<title>POUND STERLING</title>
+					</GB>
+					<FR>
+						<value>FR</value>
+						<language>E</language>
+						<fulltype>EUR</fulltype>
+						<title>EURO</title>
+					</FR>
+					<HK>
+						<value>HK</value>
+						<language>E</language>
+						<fulltype>HKD</fulltype>
+						<title>Hong Kong Dollar</title>
+					</HK>
+					<JP>
+						<value>JP</value>
+						<language>J</language>
+						<fulltype>JPY</fulltype>
+						<title>YEN (100)</title>
+					</JP>
+					<NZ>
+						<value>NZ</value>
+						<language>E</language>
+						<fulltype>NZD</fulltype>
+						<title>New Zealand Dollar</title>
+					</NZ>
+					<SG>
+						<value>SG</value>
+						<language>E</language>
+						<fulltype>SGD</fulltype>
+						<title>Singapore Dollar</title>
+					</SG>
+					<CH>
+						<value>CH</value>
+						<language>E</language>
+						<fulltype>CHF</fulltype>
+						<title>Swiss Franc</title>
+					</CH>
+					<US>
+						<value>US</value>
+						<language>E</language>
+						<fulltype>USD</fulltype>
+						<title>US Dollar</title>
+					</US>
+				</currency>
+			</Paysbuy>
+		</method>
+		
+	</default>
+</config>

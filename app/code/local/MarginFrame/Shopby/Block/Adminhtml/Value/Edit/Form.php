@@ -137,7 +137,7 @@ class MarginFrame_Shopby_Block_Adminhtml_Value_Edit_Form extends Mage_Adminhtml_
             'label'     => $this->__('Category Image'),
             'name'      => 'img_big',
             'required'  => false,
-            'after_element_html' => $this->getImageHtml($this->model->getImgBig()),
+            'after_element_html' => $this->getImageHtml($this->model->getImgBig().'?'.strtotime(date('H:i:s'))),
         ));
         $fldMain->addField('remove_img_big', 'checkbox', array(
             'label'     => $this->__('Remove Image'),

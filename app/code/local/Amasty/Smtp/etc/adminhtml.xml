@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_Smtp
+ */
+-->
+<config>
+    <menu>
+        <system>
+            <children>
+                <tools>
+                    <children>
+                        <amsmtp_log translate="title" module="amsmtp">
+                            <title>SMTP Sent Emails Log</title>
+                            <action>adminhtml/amsmtp/log</action>
+                            <sort_order>2000</sort_order>
+                        </amsmtp_log>
+                        <amsmtp_debug translate="title" module="amsmtp">
+                            <title>SMTP Debug Log</title>
+                            <action>adminhtml/amsmtp/debug</action>
+                            <sort_order>2001</sort_order>
+                        </amsmtp_debug>
+                    </children>
+                </tools>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <tools>
+                                <children>
+                                    <amsmtp_log translate="title" module="amsmtp">
+                                        <title>SMTP Sent Emails Log</title>
+                                        <sort_order>2000</sort_order>
+                                    </amsmtp_log>
+                                    <amsmtp_debug translate="title" module="amsmtp">
+                                        <title>SMTP Debug Log</title>
+                                        <sort_order>2001</sort_order>
+                                    </amsmtp_debug>
+                                </children>
+                            </tools>
+                            <config>
+                                <children>
+                                    <amsmtp translate="title" module="amsmtp">
+                                        <title>Amasty: SMTP Email Settings</title>
+                                    </amsmtp>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

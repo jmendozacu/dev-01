@@ -38,6 +38,11 @@
 				<allcategory>
 					<class>Magebuzz_Allcategory_Helper</class>
 				</allcategory>
+                <bundle>
+                    <rewrite>
+                        <catalog_product_configuration>Magebuzz_Allcategory_Helper_Bundle_Catalog_Product_Configuration</catalog_product_configuration>
+                    </rewrite>
+                </bundle>
 			</helpers>
 			<blocks>
 				<allcategory>

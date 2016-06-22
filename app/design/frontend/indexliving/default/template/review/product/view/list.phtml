@@ -31,7 +31,7 @@
 <div class="box-collateral box-reviews" id="customer-reviews">
 	<?php if (count($_items)):?>
 		<div class="review-list" id="review-list">
-			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Review')?></h3>
+			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Reviews')?></h3>
 			<?php echo $this->getChildHtml('toolbar') ?>
 			<div class="page-container">
 				<ul>
@@ -62,14 +62,20 @@
 							</table>
 							<?php endif; ?>
 						</div>
+						<div class="review-details box-mobile">
+							<div class="review-meta">
+								<?php if($_review->getTitle() != 'N/A'):?><label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label><?php endif ?>
+								<?php $date = new DateTime($_review->getCreatedAt()); echo date('j F, Y',$date->getTimestamp());?>
+							</div>
+						</div>
 						<?php if(!isset($_review['img'])):?>
 							<div class="review-image"><img src="<?php echo $this->getSkinUrl('images/indexliving_review_img.png')?>" alt="" /></div>
 						<?php elseif(isset($_review['img'])):?>
 							<div class="review-image"><img src="<?php echo Mage::getBaseUrl().'media/review/'.$_review['img'] ?>" alt=""/></div>
 						<?php endif;?>
 						<div class="review-details">
-							<div class="review-meta">
-								<label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label>
+							<div class="review-meta box-desktop">
+								<?php if($_review->getTitle() != 'N/A'):?><label class="rating-title"><?php echo $this->escapeHtml($_review->getTitle()) ?></label><?php endif ?>
 								<?php $date = new DateTime($_review->getCreatedAt()); echo date('j F, Y',$date->getTimestamp());?>
 							</div>
 							<?php echo nl2br($this->escapeHtml($_review->getDetail())) ?>
@@ -82,6 +88,7 @@
 	<?php echo $this->getChildHtml('toolbar') ?>
 	<?php else: ?>
 		<div class="review-list no-review" id="review-list">
+			<h3 class="m-review-list-title" style="display:none;"><?php echo $this->__('Reviews')?></h3>
 			<p class="no-rating"><?php echo $this->__('Be the first to review this product') ?></p>
 		</div>	
 	<?php endif;?>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_Smtp
+ */
+-->
+<config>
+    <modules>
+        <Amasty_Smtp>
+            <version>1.2.7</version>
+        </Amasty_Smtp>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Amasty_Smtp after="Mage_Adminhtml">Amasty_Smtp</Amasty_Smtp>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <amsmtp>
+                    <file>amasty/amsmtp.xml</file>
+                </amsmtp>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <global>
+        <models>
+            <amsmtp>
+                <class>Amasty_Smtp_Model</class>
+                <resourceModel>amsmtp_resource</resourceModel>
+            </amsmtp>
+            <amsmtp_resource>
+                <class>Amasty_Smtp_Model_Resource</class>
+                <entities>
+                    <log>
+                        <table>amasty_amsmtp_log</table>
+                    </log>
+                    <debug>
+                        <table>amasty_amsmtp_debug</table>
+                    </debug>
+                </entities>
+            </amsmtp_resource>
+            <core>
+                <rewrite>
+                    <email_template>Amasty_Smtp_Model_Core_Email_Template</email_template>
+                    <email>Amasty_Smtp_Model_Core_Email</email>
+                    <email_queue>Amasty_Smtp_Model_Core_Email_Queue</email_queue>
+                </rewrite>
+            </core>
+        </models>
+        <resources>
+            <amsmtp_setup>
+                <setup>
+                    <module>Amasty_Smtp</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </amsmtp_setup>
+            <amsmtp_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </amsmtp_write>
+            <amsmtp_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </amsmtp_read>
+        </resources>
+        <blocks>
+            <amsmtp>
+                <class>Amasty_Smtp_Block</class>
+            </amsmtp>
+        </blocks>
+        <helpers>
+            <amsmtp>
+                <class>Amasty_Smtp_Helper</class>
+            </amsmtp>
+        </helpers>
+    </global>
+
+    <crontab>
+        <jobs>
+            <amsmtp_clear_debug_log>
+                <schedule>
+                    <cron_expr>0 1 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>amsmtp/debug::autoClear</model>
+                </run>
+            </amsmtp_clear_debug_log>
+            <amsmtp_clear_sent_log>
+                <schedule>
+                    <cron_expr>0 1 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>amsmtp/log::autoClear</model>
+                </run>
+            </amsmtp_clear_sent_log>
+        </jobs>
+    </crontab>
+
+    <default>
+        <amsmtp>
+            <general>
+                <enable>0</enable>
+                <debug>0</debug>
+                <log>1</log>
+                <disable_delivery>0</disable_delivery>
+            </general>
+            <smtp>
+                <port>25</port>
+            </smtp>
+            <clear>
+                <email>30</email>
+                <debug>30</debug>
+            </clear>
+        </amsmtp>
+    </default>
+</config>

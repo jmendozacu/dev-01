@@ -31,17 +31,19 @@
     //zend_debug::dump($_item);
     $product=Mage::getModel('catalog/product')->load($_item->getProductId());
     $collections = Mage::getModel('catalog/product')->getCollection();
-    $productModel = Mage::getModel('catalog/product');    
+    $productModel = Mage::getModel('catalog/product');
 ?>
+<span id="minicart-msg-<?php echo $_item->getProductId() ?>" style="display:none; color: red; font-weight: bold"></span>
 <li class="item">
-    <?php if ($this->hasProductUrl()): ?>
-        <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
+<?php if ($this->hasProductUrl()): ?>
+    <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></a>
     <?php else: ?>
         <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(50, 50)->setWatermarkSize('30x10'); ?>" width="50" height="50" alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" /></span>
     <?php endif; ?>
     <div class="product-details">
         <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the shopping cart?')) ?>');" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
         <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
+        <p class="product-desc"><?php echo $this->escapeHtml($product->getShortDescription()) ?></p>
         <?php if ($_options = $this->getOptionList()):?>
           <dl class="item-options">
             <?php foreach ($_options as $_option) : ?>
@@ -56,36 +58,67 @@
             <?php endforeach; ?>
           </dl>
         <?php endif; ?>
-        
-     
+
+
       <?php if($product->getFinalPrice() < $product->getPrice()): ?>
         <div class="price-box">
+					<p class="special-price">
+            <?php echo $this->helper('checkout')->formatPrice($product->getFinalPrice()); ?>
+          </p>
           <p class="old-price">
             <?php echo $this->helper('checkout')->formatPrice($product->getPrice()); ?>
-          </p>
-          <p class="special-price">
-            <?php echo $this->helper('checkout')->formatPrice($product->getFinalPrice()); ?>
           </p>
         </div>
       <?php else: ?>
         <div class="price-box">
-        <p class="regular-price">
-          <?php echo $final_price = $this->helper('checkout')->formatPrice($product->getPrice()); ?>
-        </p>
+					<p class="regular-price">
+						<?php echo $final_price = $this->helper('checkout')->formatPrice($product->getPrice()); ?>
+					</p>
         </div>
       <?php endif; ?>
-      <!-- end show product price -->  
+      <!-- end show product price -->
+    </div>
+
     <!-- qty -->
-      <div class="qty-minicart">
-        <span class="qty-item">
-          <input class="qty" onchange="applyChangeQty('<?php echo $_item->getProduct()->getId() ?>')" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
-          <?php if($product->getTypeId() == 'configurable'):?>
-            <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
-          <?php else: ?> 
-            <input style="display:none;" type="button" onclick="headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>')" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
-          <?php endif; ?>
-          <img class="apply-change-qty-loading" style="display:none;" id="apply_change_qty_loading_<?php echo $_item->getProduct()->getId() ?>" alt="<?php echo $this->__('Loading')?>" width="20" height="20" src="<?php echo $this->getSkinUrl('images/main-loading.gif')?>"/>
-        </span>
-      </div>    
+    <div class="qty-minicart">
+      <span class="qty-label"><?php echo $this->__('Qty') ?></span>
+      <span class="qty-item">
+        <input maxlength="4" class="qty" type="text" value="<?php echo $this->getQty() ?>" name="sidebar_cart_item" id="header_cart_qty_<?php echo $_item->getProduct()->getId()?>">
+        <?php if($product->getTypeId() == 'configurable'):?>
+          <input style="display:none;" type="button" onclick="location.href='<?php echo $this->getProductUrl()?>'" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
+        <?php else: ?>
+          <input style="display:none;" type="button" onclick="headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>')" id="apply_qty_<?php echo $_item->getProduct()->getId()?>" value="<?php echo $this->__('OK')?>" class="apply_update_qty" />
+        <?php endif; ?>
+        <img class="apply-change-qty-loading" style="display:none;" id="apply_change_qty_loading_<?php echo $_item->getProduct()->getId() ?>" alt="<?php echo $this->__('Loading')?>" width="20" height="20" src="<?php echo $this->getSkinUrl('images/main-loading.gif')?>"/>
+      </span>
     </div>
 </li>
+<script>
+    jQuery(document).ready(function(){
+        var productId = '<?php echo $_item->getProduct()->getId()?>';
+        jQuery("#header_cart_qty_" + productId).click(function(event){
+            jQuery('#apply_qty_' + productId).show();
+            event.stopPropagation();
+        });
+        jQuery(document).click(function(){
+            jQuery('#apply_qty_' + productId).hide();
+        });
+        <?php if($product->getTypeId() == 'configurable'):?>
+          jQuery("#header_cart_qty_" + productId).keypress(function(e){
+            var key = e.which;
+            if(key == 13){
+              location.href='<?php echo $this->getProductUrl()?>';
+              jQuery('#apply_qty_' + productId).hide();
+            }
+          });
+        <?php else: ?>
+          jQuery("#header_cart_qty_" + productId).keypress(function(e){
+            var key = e.which;
+            if(key == 13){
+              headerCartUpdateQty('<?php echo $_item->getProduct()->getId() ?>');
+              jQuery('#apply_qty_' + productId).hide();
+            }
+          });
+        <?php endif; ?>
+    });
+</script>

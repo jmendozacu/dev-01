@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Elias Interactive
+ *
+ * @category   Mage
+ * @package    Mage_Local
+ * @author	   cherdchai Hinjumpa , bugcherd@gmail.com   089-003-5240
+ * @website   http://magentothai.wordpress.com/
+ */
+-->
+
+<config>
+    <modules>
+        <Mgf_KSmartpay>
+            <version>0.1.0</version>
+        </Mgf_KSmartpay>
+    </modules>
+    <global>
+        <models>
+            <KSmartpay>
+                <class>Mgf_KSmartpay_Model</class>
+                <resourceModel>KSmartpay_resource</resourceModel>
+            </KSmartpay>
+
+            <KSmartpay_resource>
+                <class>Mgf_KSmartpay_Model_Resource</class>
+
+                <entities>
+                    <transaction>
+                        <table>ksmartpay_transaction</table>
+                    </transaction>
+                </entities>
+            </KSmartpay_resource>
+
+            
+        </models>
+
+        <resources>
+            <KSmartpay_setup>
+                <setup>
+                    <module>Mgf_KSmartpay</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </KSmartpay_setup>
+            <KSmartpay_write>
+                <use>core_write</use>
+            </KSmartpay_write>
+            <KSmartpay_read>
+                <use>core_read</use>
+            </KSmartpay_read>
+        </resources>
+
+        <helpers>
+            <KSmartpay>
+                <class>Mgf_KSmartpay_Helper</class>
+            </KSmartpay>
+        </helpers>
+
+        <blocks>
+            <KSmartpay><class>Mgf_KSmartpay_Block</class></KSmartpay>
+        </blocks>  
+
+        <fieldsets>
+           <sales_convert_quote_payment>
+            <cc_type>
+                <to_order_payment>*</to_order_payment>
+            </cc_type>                
+            <check_no>
+                <to_order_payment>*</to_order_payment>
+            </check_no>
+            <cc_number>
+                <to_order_payment>*</to_order_payment>
+            </cc_number>
+            <cc_owner>
+                <to_order_payment>*</to_order_payment>
+            </cc_owner>
+            <cc_exp_month>
+                <to_order_payment>*</to_order_payment>
+            </cc_exp_month>
+            <cc_exp_year>
+                <to_order_payment>*</to_order_payment>
+            </cc_exp_year>                                
+
+        </sales_convert_quote_payment>
+    </fieldsets>
+
+</global>
+<frontend>        
+    <routers>
+        <KSmartpay>
+            <use>standard</use>
+            <args>
+                <module>Mgf_KSmartpay</module>
+                <frontName>KSmartpay</frontName>
+            </args>
+        </KSmartpay>
+    </routers>
+    <translate>
+        <modules>
+            <Mgf_KSmartpay>
+                <files>
+                    <default>Mgf_KSmartpay.csv</default>
+                </files>
+            </Mgf_KSmartpay>
+        </modules>
+    </translate>        
+</frontend>
+
+<default>
+    <payment>
+        <KSmartpay>
+            <active>1</active>
+            <model>KSmartpay/method_KSmartpay</model>
+            <order_status>1</order_status>
+            <payment_success_status>2</payment_success_status>
+            <title>ผ่อนชำระด้วยบัตรเคดิต</title>
+            <allowspecific>0</allowspecific>
+        </KSmartpay>
+    </payment>
+</default>
+</config>

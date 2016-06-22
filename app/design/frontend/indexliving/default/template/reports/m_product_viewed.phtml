@@ -5,7 +5,7 @@
     $_columnCount       = $this->getColumnCount();
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
-<div class="category-highlight-products box-mobile">
+<div class="category-highlight-products product-viewed-mobile-tablet">
 	<div class="page-container">
 	<div class="recently-viewed-products-list">
 		<h2 class="title-style1"><span><?php echo $this->__('Recently View')?></span><a title="view all" href="#"><?php echo $this->__('view all')?></a></h2>
@@ -73,7 +73,7 @@
       jQuery("#m-recently-viewed-product-list").owlCarousel({	
         loop:true,
         margin:20,
-        nav:true,
+        nav:<?php if ($_collectionSize > 5):?> true <?php else:?> false <?php endif; ?>,
         responsive:{
           0:{
               items:10

@@ -1,8 +1,0 @@
-<config>
-    <modules>
-        <Loginradius_Sharing>
-            <active>true</active>
-            <codePool>community</codePool>
-            </Loginradius_Sharing>
-    </modules>
-</config>

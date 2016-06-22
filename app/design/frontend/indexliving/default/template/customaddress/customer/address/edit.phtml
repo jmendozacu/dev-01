@@ -22,15 +22,37 @@
             </li>
             <li class="fields">
                 <div class="field">
-                    <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                    <label for="mobile_customer" class="required"><em>*</em><?php echo $this->__('Mobile') ?></label>
                     <div class="input-box">
-                        <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Telephone')) ?>" class="input-text  <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="telephone" />
+                        <input type="tel"
+                               name="mobile_customer"
+                               id = "mobile_customer"
+                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Mobile')) ?>"
+                               value="<?php echo $this->escapeHtml($this->getAddress()->getMobileCustomer()) ?>"
+                               class="input-text validate-account-number" />
                     </div>
                 </div>
                 <div class="field">
                     <label for="fax"><?php echo $this->__('Fax') ?></label>
                     <div class="input-box">
                         <input type="text" name="fax" id="fax" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Fax')) ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="telephone" ><?php echo $this->__('Telephone') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="telephone" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Telephone')) ?>" class="input-text ?>" id="telephone" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="customer_taxclass"><?php echo $this->__('Tax Id') ?></label>
+                    <div class="input-box">
+                        <input type="tel"
+                               name="customer_taxclass"
+                               id = "customer_taxclass"
+                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Tax Class')) ?>"
+                               value="<?php echo $this->escapeHtml($this->getAddress()->getCustomerTaxclass()) ?>"
+                               class="input-text" />
                     </div>
                 </div>
             </li>
@@ -86,17 +108,17 @@
                       <input type="text" name="city" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>"  title="<?php echo Mage::helper('core')->quoteEscape($this->__('City')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
                     </div>
                 </div>
-								<div class="field">
+                <div class="field">
                     <label for="subdistrict" class="required"><em>*</em><?php echo $this->__('Subdistrict') ?></label>
                     <div class="input-box">
-											<select id="subdistrict_id" name="subdistrict_id" title="<?php echo $this->__('Subdistrict') ?>" class="validate-select" style="display:none;">
-												<option value=""><?php echo $this->__('Please select Subdistrict') ?></option>
-											</select>
-											<script type="text/javascript">
-											//<![CDATA[
-												$('subdistrict_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getSubdistrictId() ?>");
-											//]]>
-											</script>
+                        <select id="subdistrict_id" name="subdistrict_id" title="<?php echo $this->__('Subdistrict') ?>" class="validate-select" style="display:none;">
+                            <option value=""><?php echo $this->__('Please select Subdistrict') ?></option>
+                        </select>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('subdistrict_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getSubdistrictId() ?>");
+                        //]]>
+                        </script>
                       <input type="text" name="subdistrict" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subdistrict')) ?>" class="input-text" id="subdistrict" />
                     </div>
                 </div>                
@@ -144,6 +166,9 @@
 <script type="text/javascript">
 //<![CDATA[
     var dataForm = new VarienForm('form-validate', true);
+    Validation.add('validate-account-number', 'Please enter a valid phone number.', function (v) {
+        return /[0-9]/i.test(v);
+    });
     new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
 
 		new CityUpdater('country', 'region_id', 'city', 'city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
@@ -153,4 +178,19 @@
   jQuery(function () {
       jQuery('.checkout-style2').customRadioCheckbox();
   });
+jQuery('.validate-account-number').keypress(function (e) {
+    if(e.keyCode == 8 || e.keyCode == 39 || e.keyCode == 37){
+        return true;
+    }
+    if(jQuery(this).val().length > 19){
+        e.preventDefault();
+    }
+    if(e.which != 8 && isNaN(String.fromCharCode(e.which))){
+        e.preventDefault();
+
+    }
+
+}).on("cut copy paste", function (e) {
+    e.preventDefault();
+});
 </script>

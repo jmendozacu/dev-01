@@ -11,8 +11,8 @@ jQuery(document).ready(function () {
   
   jQuery(".box-list-products .category-products .block-content, .box-home-list-products .nav-primary li.level0 ul.level0").mCustomScrollbar({
     axis:"x",
-    advanced:{autoExpandHorizontalScroll:true}
+    advanced:{autoExpandHorizontalScroll:true},
+    callbacks:{onScroll: function() {jQuery(this).find('img.lazy').jail();}}
   });
-  
   
 });

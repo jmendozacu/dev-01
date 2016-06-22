@@ -44,7 +44,7 @@
   text-align: center;
   color: #fff;
   padding-top: 10px;
-  
+
 }
 
 .bx-wrapper .bx-pager .bx-pager-item,
@@ -88,7 +88,7 @@
 
 .bx-wrapper .bx-controls-direction a.bx-next {
   right: 10px;
-  background-position:-60px -208px; 
+  background-position:-60px -208px;
 }
 .bx-wrapper .bx-controls-direction a.bx-next:hover {
   background-position:0 -208px;
@@ -192,9 +192,9 @@
 .main-banners .wrap-bannerads div.banner .bx-viewport:after {content:""; z-index:1; width:1020px; position:absolute; top:0px; height:100%; background:url(images/sider-backgroundbanner.png);}
 .main-banners .wrap-bannerads div.banner .bx-viewport:before {left:50%; margin-left:510px;}
 .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:50%; margin-right:510px;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {background:url(images/slider-prev.png) center center no-repeat; left:50%; margin-left:-550px;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-next {background:url(images/slider-next.png) center center no-repeat; right:50%; margin-right:-550px;}
-.main-banners .bx-wrapper .bx-pager.bx-default-pager {bottom:64px;}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {background:url(images/slider-prev.png) center center no-repeat; top:50%; left:5px; position: absolute;}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-next {background:url(images/slider-next.png) center center no-repeat; top:50%; right:5px; position: absolute;}
+.main-banners .bx-wrapper .bx-pager.bx-default-pager {bottom:24px;}
 
 .banner-feature li a {position:relative; display:block;}
 .banner-feature li a  .banner-title {position:absolute; top:0px; left:0px;}
@@ -223,13 +223,13 @@
   .decor-banner .box-slider .bx-wrapper .bx-pager.bx-default-pager {padding-top:0px; margin-top:8px; }
 }
  @media (max-width: 767px) {
-  .allcategory-banners  .banner.banner-category {overflow-x:auto; width:100%;} 
+  .allcategory-banners  .banner.banner-category {overflow-x:auto; width:100%;}
   .allcategory-banners .banners-list .banner-carousel {max-width:none; }
   .allcategory-banners .banners-list .banner-carousel li {float:left; width:260px;}
 }
 
  @media (max-width: 480px) {
-  .main-banners .wrap-bannerads .bx-wrapper {padding-left:15px; padding-right:15px;} 
+  .main-banners .wrap-bannerads .bx-wrapper {padding-left:15px; padding-right:15px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:before {left:-15px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:-15px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:before,

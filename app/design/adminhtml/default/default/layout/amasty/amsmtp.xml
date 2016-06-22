@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2016 Amasty (https://www.amasty.com)
+ * @package Amasty_Smtp
+ */
+-->
+<layout>
+    <adminhtml_amsmtp_log>
+        <reference name="content">
+            <block type="amsmtp/adminhtml_log" name="amsmtp_log"></block>
+        </reference>
+    </adminhtml_amsmtp_log>
+    <adminhtml_amsmtp_view>
+        <reference name="content">
+            <block type="amsmtp/adminhtml_view" name="amsmtp_view"></block>
+        </reference>
+    </adminhtml_amsmtp_view>
+    <adminhtml_amsmtp_debug>
+        <reference name="content">
+            <block type="amsmtp/adminhtml_debug" name="amsmtp_debug"></block>
+        </reference>
+    </adminhtml_amsmtp_debug>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addCss">
+                <name>css/amasty/amsmtp_style.css</name>
+            </action>
+            <action method="addJs">
+                <script>amasty/amsmtp/smtp.js</script>
+            </action>
+        </reference>
+    </adminhtml_system_config_edit>
+</layout>

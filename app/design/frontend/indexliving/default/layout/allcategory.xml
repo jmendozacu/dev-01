@@ -30,7 +30,9 @@
 			</block>
 		</reference>
 		<reference name="footer.before">
-			<block type="cms/block" name="category.static.content" before="-">
+			<remove name="allcategory.related.products" />
+			<remove name="allcategory.alsolike.products" />
+			<block type="cms/block" name="allcategory.recommend.products" before="-">
 				<action method="setBlockId"><block_id>index-allcategory-recommend-products</block_id></action>
 			</block>
 		</reference>

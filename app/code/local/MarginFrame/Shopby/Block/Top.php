@@ -296,7 +296,9 @@ class MarginFrame_Shopby_Block_Top extends Mage_Core_Block_Template
             $category->setData('description', $brandPageBrand->getCurrentDescr());
             $category->setData('image', $brandPageBrand->getImgBig() ? '../../amshopby/' .$brandPageBrand->getImgBig() : null);
             $this->setCategoryCmsBlock($category, $brandPageBrand->getCmsBlockId());
-        }
+        }else{
+					$category->setData('name', '');
+				}
 
         $titles = array();
         $descriptions = array();
@@ -331,7 +333,6 @@ class MarginFrame_Shopby_Block_Top extends Mage_Core_Block_Template
                 $imageUrl = '../../amshopby/' . $opt->getImgBig();
             }
         }
-
         $position = Mage::getStoreConfig('amshopby/heading/add_title');
         $title = $this->insertContent($category->getName(), $titles, $position, Mage::getStoreConfig('amshopby/heading/h1_separator'));
         $category->setData('name', $title);

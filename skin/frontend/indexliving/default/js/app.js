@@ -312,10 +312,10 @@ $j(document).ready(function () {
     // Skip Links
     // =============================================
 
-    var skipContents = $j('.skip-content');
+    /* var skipContents = $j('.skip-content');
     var skipLinks = $j('.skip-link');
 
-    skipLinks.on('click', function (e) {
+    skipLinks.mouseover(function(e) {
         e.preventDefault();
 
         var self = $j(this);
@@ -339,7 +339,16 @@ $j(document).ready(function () {
             self.addClass('skip-active');
             elem.addClass('skip-active');
         }
-    });
+    }); */
+		
+		/* skipContents.mouseout(function(e) {
+			e.preventDefault();
+			var self = $j(this);
+			var isSkipContentOpen = self.hasClass('skip-active') ? 1 : 0;
+			if (isSkipContentOpen) {
+				self.removeClass('skip-active');
+			}
+		}); */
 
     $j('#header-cart').on('click', '.skip-link-close', function(e) {
         var parent = $j(this).parents('.skip-content');
@@ -413,6 +422,29 @@ $j(document).ready(function () {
     }
 
     // ==============================================
+    // UI Pattern - ToggleSingle
+    // ==============================================
+
+    // Use this plugin to toggle the visibility of content based on a toggle link/element.
+    // This pattern differs from the accordion functionality in the Toggle pattern in that each toggle group acts
+    // independently of the others. It is named so as not to be confused with the Toggle pattern below
+    //
+    // This plugin requires a specific markup structure. The plugin expects a set of elements that it
+    // will use as the toggle link. It then hides all immediately following siblings and toggles the sibling's
+    // visibility when the toggle link is clicked.
+    //
+    // Example markup:
+    // <div class="block">
+    //     <div class="block-title">Trigger</div>
+    //     <div class="block-content">Content that should show when </div>
+    // </div>
+    //
+    // JS: jQuery('.block-title').toggleSingle();
+    //
+    // Options:
+    //     destruct: defaults to false, but if true, the plugin will remove itself, display content, and remove event handlers
+		
+		// ==============================================
     // UI Pattern - ToggleSingle
     // ==============================================
 
@@ -581,30 +613,7 @@ $j(document).ready(function () {
             }
         });
     }
-
-
-    // ==============================================
-    // Block collapsing (on smaller viewports)
-    // ==============================================
-
-    enquire.register('(max-width: ' + bp.medium + 'px)', {
-        setup: function () {
-            this.toggleElements = $j(
-                // This selects the menu on the My Account and CMS pages
-                '.col-left-first .block:not(.block-layered-nav) .block-title, ' +
-                    '.col-left-first .block-layered-nav .block-subtitle--filter, ' +
-                    '.sidebar:not(.col-left-first) .block .block-title'
-            );
-        },
-        match: function () {
-            this.toggleElements.toggleSingle();
-        },
-        unmatch: function () {
-            this.toggleElements.toggleSingle({destruct: true});
-        }
-    });
-
-
+		
     // ==============================================
     // OPC - Progress Block
     // ==============================================
@@ -626,9 +635,13 @@ $j(document).ready(function () {
     // ==============================================
 
     if ($j('body.checkout-cart-index').length) {
-        $j('input[name^="cart"]').focus(function () {
-            $j(this).siblings('button').fadeIn();
-        });
+			$j('input[name^="cart"]').focus(function () {
+					$j(this).siblings('button').fadeIn();
+			});
+			
+			$j('input[name^="update_qty_cart"]').click(function () {
+					$j(this).siblings('button').fadeIn();
+			});
     }
 
 
@@ -700,7 +713,7 @@ $j(document).ready(function () {
                         // Space above .actions element
                         var actionSpacing = 10;
                         // The height of the absolutely positioned .actions element
-                        var actionHeight = $j(this).find('.product-info .actions').height();
+                        var actionHeight = 0;
 
                         // Add height of two elements. This is necessary since .actions is absolutely positioned and won't
                         // be included in the height of .product-info

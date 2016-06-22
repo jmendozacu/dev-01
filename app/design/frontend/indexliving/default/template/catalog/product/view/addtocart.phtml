@@ -27,16 +27,20 @@
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if($_product->isSaleable()): ?>
-	<?php if(!$_product->isGrouped()): ?>
+	<?php if(!$_product->isGrouped() && $_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
 		<div class="change-qty">
 			<label for="qty"><?php echo $this->__('Qty') ?></label>
 			<input type="button" onclick="decQty('qty')" value="<?php echo $this->__('-')?>" class="update_qty btn_minus" id="productview_dec_qty_<?php echo $_product->getId()?>" />
-			<input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+			<input type="text" name="qty" id="qty" maxlength="4" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
 			<input type="button" onclick="incQty('qty')" value="<?php echo $this->__('+')?>" class="update_qty btn_plus" id="productview_inc_qty_<?php echo $_product->getId()?>" />
 		</div>	
 	<?php endif; ?>
 	<div class="add-to-cart">
+		<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
 		<button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button r-button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
-	<?php echo $this->getChildHtml('', true, true) ?>
+		<?php echo $this->getChildHtml('', true, true) ?>
+		<?php else:?>
+			<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		<?php endif?>
 	</div>
 <?php endif; ?>

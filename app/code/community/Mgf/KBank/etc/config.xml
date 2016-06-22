@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Elias Interactive
+ *
+ * @category   Mage
+ * @package    Mage_Local
+ * @author	   cherdchai Hinjumpa , bugcherd@gmail.com   089-003-5240
+ * @website   http://magentothai.wordpress.com/
+ */
+-->
+
+<config>
+    <modules>
+        <Mgf_KBank>
+            <version>0.1.0</version>
+        </Mgf_KBank>
+    </modules>
+    <global>
+        <models>
+            <KBank>
+                <class>Mgf_KBank_Model</class>
+                <!-- <resourceModel>KBank_resource</resourceModel> -->
+            </KBank>
+
+            <!-- KBank_resource>
+                <class>Mgf_KBank_Model_Resource</class>
+
+                <entities>
+                    <transaction>
+                        <table>KBank_transaction</table>
+                    </transaction>
+                </entities>
+            </KBank_resource> -->
+        </models>
+
+        <helpers>
+            <KBank>
+                <class>Mgf_KBank_Helper</class>
+            </KBank>
+        </helpers>
+
+        <blocks>
+            <KBank><class>Mgf_KBank_Block</class></KBank>
+        </blocks>  
+
+    </global>
+
+    <frontend>        
+        <routers>
+            <KBank>
+                <use>standard</use>
+                <args>
+                    <module>Mgf_KBank</module>
+                    <frontName>KBank</frontName>
+                </args>
+            </KBank>
+        </routers>
+        <translate>
+            <modules>
+                <Mgf_KBank>
+                    <files>
+                        <default>Mgf_KBank.csv</default>
+                    </files>
+                </Mgf_KBank>
+            </modules>
+        </translate>        
+    </frontend>
+
+    <default>
+        <payment>
+            <KBank>
+                <active>1</active>
+                <model>KBank/method_KBank</model>
+                <order_status>1</order_status>
+                <payment_success_status>2</payment_success_status>
+                <title>ชำระด้วยบัตรเครดิต KBank</title>
+                <allowspecific>0</allowspecific>
+            </KBank>
+        </payment>
+    </default>
+</config>

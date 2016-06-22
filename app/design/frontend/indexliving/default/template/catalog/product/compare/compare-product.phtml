@@ -1,0 +1,141 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* @var $this Mage_Catalog_Block_Product_Compare_Sidebar */
+?>
+<?php
+$_helper = $this->helper('catalog/product_compare');
+$_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
+?>
+<div id="product-compare-list">
+<?php if ($_items): ?>
+	<div class="block block-list block-compare">
+			<div class="block-title">
+					<strong><span><?php echo $this->__('Compare Products') ?>
+							<?php if($_helper->getItemCount() > 0): ?>
+									<small><?php echo $this->__('(%d)', $_helper->getItemCount()) ?></small>
+							<?php endif; ?>
+					</span></strong>
+					<div class="mess_succes"></div>
+			</div>
+			<div class="block-content">
+			<?php if($_helper->getItemCount() > 0): ?>
+					<ol id="compare-items">
+					<?php foreach($_items as $_index => $_item): ?>
+							<li class="item">
+									<input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
+									<a href="javascript:void(0)" onclick="removeajaxCompare('<?php echo $_helper->getRemoveUrl($_item) ?>',<?php echo $_item->getProductId();?>)" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>" class="btn-remove" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the compare products?')) ?>');"><?php echo $this->__('Remove This Item') ?></a>
+									<p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></p>
+							</li>
+					<?php endforeach; ?>
+					</ol>
+					<script type="text/javascript">decorateList('compare-items')</script>
+					<div class="actions">
+							<button type="button" id="compare-all-items" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>" class="button" onclick="openComparePopup('<?php echo $_helper->getListUrl() ?>');"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+							<a href="javascript:void(0)" onclick="clearCompare('<?php echo $_helper->getClearListUrl() ?>');"><?php echo $this->__('Clear All') ?></a>
+					</div>
+			<?php else: ?>
+					<p class="empty"><?php echo $this->__('You have no items to compare.') ?></p>
+			<?php endif; ?>
+			</div>
+	</div>
+	<?php endif;?>
+</div>
+<div class="ajaxcart-overlay" style="display:none;"></div>
+
+<script type="text/javascript">
+		function closeComparePopup() {
+			$('ajaxcart-overlay').hide();
+		}
+		function openComparePopup(url) {
+			new Ajax.Request(url, {
+				parameters: {isAjax: 1, method: 'POST'},
+				onCreate: function() {
+					this.ajaxCart.ajaxLoading.show(); // using loading from ajax cart
+				}.bind(this),
+				onSuccess: function(transport) {
+					this.ajaxCart.ajaxLoading.hide(); // using loading from ajax cart
+					$('ajaxcart-overlay').update(transport.responseText);
+         			 $('ajaxcart-overlay').show();
+					ajaxCart.replaceButtonAddToCart('button.btn-cart-compare');
+				}
+			});
+		}
+		/**
+		 * Send remove item request, after that reload windows
+		 */
+		function removeCompareItemPopup(url)
+		{
+				new Ajax.Request(url, {
+						parameters: {isAjax: 1, method: 'POST'},
+						onLoading: function(){$('compare-list-please-wait').show();},
+						onSuccess: function(transport) {
+								$('compare-list-please-wait').hide();
+								window.location.reload();
+								//window.opener.location.reload();
+						}
+				});
+		}
+    function removeajaxCompare(url,curentProductId) {
+			url = url.replace("catalog/product_compare/remove", "customcompare/product_compare/remove");
+			$j.ajax({
+					url: url,
+					type: "POST",
+					dataType: 'json',
+					beforeSend: function(){
+						$j("#ajax_cart_loading").show();
+					},
+					success: function (data) {
+						$j("#ajax_cart_loading").hide();
+						$j("#product-compare-list").html(data.bar);
+						$j("#remodal-"+curentProductId).removeClass('added-item');
+						$j('#ajaxcart-overlay').html('<div class="compare-message" id="ajaxcart_content_option_product"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a><div class="ajaxcart-heading"><p class="added-success-message">' + data.message + '</p></div></div>');
+						$j('#ajaxcart-overlay').show();
+						setTimeout(function () {
+							Effect.Fade($('ajaxcart-overlay'));
+						}, 5000);
+					}
+			});
+    }
+
+    function clearCompare(url) {
+			$j("#ajax_cart_loading").show();
+			url = url.replace("catalog/product_compare/clear", "customcompare/product_compare/clear");
+			$j.ajax({
+				url: url,
+				type: "POST",
+				dataType: 'json',
+				success: function (data) {
+					$j("#ajax_cart_loading").hide();
+					$j("#product-compare-list").html(data.bar);
+					$j('.link-compare').removeClass('added-item'); // Remove active 
+					$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>' + data.message + '</span></li></ul></li></ul>');
+					setTimeout(function () {
+							$j('.col-main').find('.messages').remove();
+					}, 5000);
+				}
+			});
+    }
+</script>

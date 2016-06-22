@@ -28,6 +28,7 @@
 <?php $_orders = $this->getOrders(); ?>
 <div class="page-title">
     <h1><?php echo $this->__('My Orders') ?></h1>
+    <a href="/custom-form" class="payment_transfer"><?php echo $this->__('Payment Confirmation') ?></a>
 </div>
 <?php echo $this->getChildHtml('info');?>
 <?php if($_orders->getSize()): ?>
@@ -43,8 +44,8 @@
             <th class="id"><?php echo $this->__('Id') ?></th>
             <th class="date"><?php echo $this->__('Date') ?></th>
             <th class="number"><?php echo $this->__('Order #') ?></th>
+            <th class="total"><span class="nobr"><?php echo $this->__('Total (THB)') ?></span></th>
             <th class="ship"><?php echo $this->__('Ship To') ?></th>
-            <th class="total"><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
             <th class="status"><span class="nobr"><?php echo $this->__('Order Status') ?></span></th>
         </tr>
     </thead>
@@ -56,13 +57,13 @@
               <label class="th-title box-mobile"><?php echo $this->__('Id') ?></label>
               <div class="td-content">
                 <?php echo $i;?>
-              </div>  
+              </div>
             </td>
             <td class="date">
               <label class="th-title box-mobile"><?php echo $this->__('Date') ?></label>
               <div class="td-content">
                 <span class="nobr">
-                <?php 
+                <?php
                   $date = $this->formatDate($_order->getCreatedAtStoreDate()) ;
                   echo $date;
                 ?>

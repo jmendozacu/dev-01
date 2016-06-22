@@ -8,15 +8,37 @@ AmAjaxLogin.prototype =
     timer: 0,
     
     srcImageProgress : null,
+		
+		extraParams: '',
     
     initialize : function(options) {
         this.url = options['send_url'];
         this.options = options;
         this.srcImageProgress = options['src_image_progress'];
     },
+		
+		setCookie: function(cname, cvalue, exdays){
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = cname + "=" + cvalue + "; " + expires;
+		},
+		
+		getCookie: function(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++) {
+					var c = ca[i];
+					while (c.charAt(0)==' ') c = c.substring(1);
+					if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+			}
+			return "";
+		},
+		
+		
     /*start helper functions*/
     updateHeader : function() {
-        if($$('.header-container')[0]){
+        if($$('.page-header-container')[0]){
             var url = this.url.replace(this.url.substring(this.url.length-6, this.url.length), 'header');//   
             new Ajax.Request(url, {
                 method: 'post',
@@ -28,11 +50,12 @@ AmAjaxLogin.prototype =
                         holderDiv.innerHTML = response; 
                         text = ""; 
                         holderDiv.childElements().each(function(div){
-                           if(div.hasClassName("header-container")) text += div.innerHTML;
+                           if(div.hasClassName("page-header")) text += div.innerHTML;
                         })
-                        if(text) $$('.header-container')[0].innerHTML = text;
+                        if(text) $$('.page-header')[0].innerHTML = text;
                         AmAjaxLoginLoad('a[href*="customer/account/login/"]');    
                         AmAjaxLogoutLoad('a[href*="customer/account/logout/"]');      
+                        reRunSomeScripts();       
                     }       
                 }.bind(this),
             });
@@ -69,6 +92,13 @@ AmAjaxLogin.prototype =
         }*/
         if($('amprogress')) $('amprogress').remove();
     },
+		
+		setCookie: function(cname, cvalue, exdays){
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = cname + "=" + cvalue + "; " + expires;
+		},
     
       //add parametr from form on product view page
     addFormParam: function(id) {
@@ -84,7 +114,8 @@ AmAjaxLogin.prototype =
         return postData;
     },
     
-    showMessage: function(response) {
+    showMessage: function(response, isShowMessage) {
+			if(isShowMessage){
         if($('am-ajaxlogin-container'))$('am-ajaxlogin-container').remove();
         var container = document.createElement('div');
         container = $(container);
@@ -108,21 +139,21 @@ AmAjaxLogin.prototype =
         closeBox.innerHTML = '<span>X</span>';  
         loginBox.appendChild(closeBox);
         Event.observe(closeBox, 'click', function(){AmAjaxLoginObj.hideMessage()} );
-        
-        var titleBox = document.createElement('div');
-        titleBox = $(titleBox);
-        titleBox.id = 'am-ajaxlogin-title';
-        titleBox.innerHTML = response.title;
-        loginBox.appendChild(titleBox);
-        
+				
+				var titleBox = document.createElement('div');
+				titleBox = $(titleBox);
+				titleBox.id = 'am-ajaxlogin-title';
+				titleBox.innerHTML = response.title;
+				loginBox.appendChild(titleBox);
+					
         if(response.error){
-            var errorBox = document.createElement('div');
-            errorBox = $(errorBox);
-            errorBox.id = 'am-ajaxlogin-error';
-            text = response.error.replace(new RegExp('&lt;', 'g'), "<");
-	    text = text.replace(new RegExp('&gt;', 'g'), ">");
-            errorBox.innerHTML = text;
-            loginBox.appendChild(errorBox);    
+					var errorBox = document.createElement('div');
+					errorBox = $(errorBox);
+					errorBox.id = 'am-ajaxlogin-error';
+					text = response.error.replace(new RegExp('&lt;', 'g'), "<");
+					text = text.replace(new RegExp('&gt;', 'g'), ">");
+					errorBox.innerHTML = text;
+					loginBox.appendChild(errorBox);    
         }
         
         var messageBox = document.createElement('div');
@@ -130,20 +161,45 @@ AmAjaxLogin.prototype =
         messageBox.id = 'am-ajaxlogin-message';
         messageBox.innerHTML = response.message;  
         loginBox.appendChild(messageBox);
-        if(response.redirect && response.is_error == "2"){
-            if(response.redirect == "1") {
-                location.reload();
-            }
-            else {
-                window.location = response.redirect;
-            }    
-        }
-        
-        try {
-            eval(response.script);
-        } catch(e) {
-            console.debug(e);
-        }   
+				
+			}
+			if (response.redirect && response.is_error == "2") {
+				if (response.redirect == "2") { // after add to wishlist or review
+						if (response.show_review_popup == '1') {
+							$('review-open-popup').addClassName('reviewloggedin').setAttribute('href', '#review-form-popup');
+							jQuery('.reviewloggedin').fancybox({
+									afterShow:function(){
+											jQuery('#review-form-popup').customRadioCheckbox();
+											// Add customer name to field your name in review popup
+											jQuery('#nickname_field').val(response.customer_nickname);
+									}
+							});
+							$('review-open-popup').stopObserving('click', loadLoginWithAjax);
+							jQuery('.reviewloggedin').click();
+						}
+						
+						if (response.is_adding_to_wishlist == '1') {
+							//add to wishlist
+							if (response.wishlist_url)
+								ajaxCart.ajaxAddToWishlist(response.wishlist_url);
+						}
+					
+					
+				}else{
+					if(response.redirect == "1") {
+						location.reload();
+					}
+					else {
+						window.location = response.redirect;
+					}    
+				}
+			}
+			
+			try {
+					eval(response.script);
+			} catch(e) {
+					console.debug(e);
+			}   
     }, 
     
    hideMessage: function() {
@@ -171,10 +227,55 @@ AmAjaxLogin.prototype =
             onSuccess: function(transport) {
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
-                     this.hideAnimation();
-                     this.showMessage(response);
+                    this.hideAnimation();
+										if(response.is_error == "1"){
+											this.showMessage(response, true); // Show message wrong passwords
+										}else{
+											 this.showMessage(response, false);
+										}
+										if(response.is_error == "2"){
+											this.updateHeader();
+											if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
+													window.location.reload();
+											}    
+										}
+                }
+            }.bind(this),
+            onFailure: function()
+            {
+                this.hideAnimation();
+            }.bind(this)    
+        });
+        return false;    
+    }, 
+		
+		loginFormId: function(formId) {
+         var postData = this.addFormParam(formId);
+         if('' == postData) return false;
+         this.hideMessage();
+         this.showAnimation();
+         var url = this.url.replace(this.url.substring(this.url.length-6, this.url.length), 'login');//    replace ajax to login
+         new Ajax.Request(url, {
+            method: 'post',
+            postBody : postData,
+            onComplete: function()
+            {
+               this.hideAnimation();
+            }.bind(this),
+            onSuccess: function(transport) {
+                var response = transport.responseText.evalJSON()
+                if (transport.responseText.isJSON() && response) {
+                    this.hideAnimation();
+					this.updateHeader(); // Update header first
+					//response.redirect = "2"; 	
+										
+                    if (response.is_error == "1") {
+						this.showMessage(response, true); // Show message wrong passwords
+					} else {
+						customerIsLoggedIn = true; // need to update this var after logging in
+						this.showMessage(response, false);
+					}
                      if(response.is_error == "2"){
-                        this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
                             window.location.reload();
                         }    
@@ -202,7 +303,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, false);
                      if(response.is_error == "2"){
                         this.updateHeader();
                         if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
@@ -220,29 +321,56 @@ AmAjaxLogin.prototype =
     },
     
     sendLoginAjax : function() {
-            new Ajax.Request(this.url, {
-                method: 'post',
-                onCreate: function()
-                {
-                   this.showAnimation();
-                }.bind(this),
-                onComplete: function()
-                {
-                   this.hideAnimation();
-                }.bind(this),
-                onSuccess: function(transport) {
-                    var response = transport.responseText.evalJSON();
-                    if (transport.responseText.isJSON() && response) {
-                         this.hideAnimation();
-                         this.showMessage(response);
-                    }
-                }.bind(this),
-                onFailure: function()
-                {
-                    this.hideAnimation();
-                }.bind(this)    
-            });
-            return false;
+			new Ajax.Request(this.url, {
+					method: 'post',
+					onCreate: function()
+					{
+						 this.showAnimation();
+					}.bind(this),
+					onComplete: function()
+					{
+						 this.hideAnimation();
+					}.bind(this),
+					onSuccess: function(transport) {
+							var response = transport.responseText.evalJSON();
+							if (transport.responseText.isJSON() && response) {
+									 this.hideAnimation();
+									 this.showMessage(response, true);
+							}
+					}.bind(this),
+					onFailure: function()
+					{
+							this.hideAnimation();
+					}.bind(this)    
+			});
+			return false;
+    },
+		
+		sendLoginAjaxReview : function(params) {
+			new Ajax.Request(this.url, {
+					method: 'post',
+					parameters: params,
+					onCreate: function()
+					{
+						 this.showAnimation();
+					}.bind(this),
+					onComplete: function()
+					{
+						 this.hideAnimation();
+					}.bind(this),
+					onSuccess: function(transport) {
+							var response = transport.responseText.evalJSON();
+							if (transport.responseText.isJSON() && response) {
+									 this.hideAnimation();
+									 this.showMessage(response, true);
+							}
+					}.bind(this),
+					onFailure: function()
+					{
+							this.hideAnimation();
+					}.bind(this)    
+			});
+			return false;
     },
     
     /*end login functions*/
@@ -263,7 +391,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, true);
                 }
             }.bind(this),
             onFailure: function()
@@ -291,7 +419,7 @@ AmAjaxLogin.prototype =
                 var response = transport.responseText.evalJSON()
                 if (transport.responseText.isJSON() && response) {
                      this.hideAnimation();
-                     this.showMessage(response);
+                     this.showMessage(response, true);
                 }
             }.bind(this),
             onFailure: function()
@@ -326,7 +454,7 @@ AmAjaxLogin.prototype =
                  iframe = jQuery(iframe);
                  var answer = iframe.contents().find("plaintext").html();
                  response = answer.evalJSON();
-                 AmAjaxLoginObj.showMessage(response);
+                 AmAjaxLoginObj.showMessage(response, false);
                  if(response.is_error == "2"){
                     AmAjaxLoginObj.updateHeader();    
                  }    
@@ -356,7 +484,7 @@ AmAjaxLogin.prototype =
 
 function AmAjaxLoginLoad(buttonClass){
 	$$(buttonClass).each(function(link){
-		link.onclick = '';
+		link.onclick = '';		
         Event.observe(link, 'click', loadLoginWithAjax);
         if($$('a[href*="customer/account/logout/"]').length == 0){
             $$('ul.links li a[href$="customer/account/"]').each(function(link){
@@ -372,6 +500,50 @@ function AmAjaxLoginLoad(buttonClass){
 	})
 }
 
+function reRunSomeScripts() {
+	/* mini login */
+  jQuery('.togglelogin').click(function(e){
+    jQuery('.box-header-content').hide();
+    if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
+      jQuery(this).addClass('active');
+      jQuery('#header-mini-login').show();
+      event.stopPropagation();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#header-mini-login').hide();
+    }
+  });
+  /* */
+
+  jQuery('.toggle-minicart').click(function(e){
+    jQuery('.box-header-content').hide();
+    if (!jQuery(this).hasClass('active')){
+      jQuery('.toggle-header-content').removeClass('active');
+      jQuery(this).addClass('active');
+      jQuery('#mini-cart-info').show();
+      event.stopPropagation();
+    }
+    else{
+      jQuery(this).removeClass('active');
+      jQuery('#mini-cart-info').hide();
+    }
+  });
+
+  jQuery('#loginClose').click(function(e){
+    jQuery('.box-header-content').hide();
+    jQuery('#header .top-link-account .toggle-header-content').removeClass('active');
+    jQuery('#header-mini-login').hide();
+  });
+
+  jQuery('#cartClose').click(function(){
+    jQuery('.box-header-content').hide();
+    jQuery('#header .header-minicart .toggle-header-content').removeClass('active');
+    jQuery('#header-mini-login').hide();
+  });
+}
+
 function AmAjaxLogoutLoad(buttonClass){
 	$$(buttonClass).each(function(link){
 		link.onclick = '';
@@ -380,8 +552,16 @@ function AmAjaxLogoutLoad(buttonClass){
 }
 
 function loadLoginWithAjax(event) {
-     event.preventDefault();
-     AmAjaxLoginObj.sendLoginAjax();    
+		var element = Event.element(event);
+		
+    event.preventDefault();
+		if (element.hasClassName('write-review-popup')) {
+			var params = {review:'1'};
+			AmAjaxLoginObj.sendLoginAjaxReview(params);    
+		}
+		else {
+			AmAjaxLoginObj.sendLoginAjax();    
+		}
 }
 
 function loadLogoutWithAjax(event) {

@@ -1,0 +1,148 @@
+ for , for 
+ to money : , to money : 
+"Days. Leave 0 or blank for unlimited. After this number of day without activity, reward points in customer balance will be expired and cannot be used anymore.","Days. Leave 0 or blank for unlimited. After this number of day without activity, reward points in customer balance will be expired and cannot be used anymore."
+%s to money rate is not defined.,%s to money rate is not defined.
+* Required Fields,* Required Fields
+<strong>%s %s(s)</strong> earned from polling,<strong>%s %s(s)</strong> earned from polling
+<strong>%s %s(s)</strong> earned from purchasing product(s),<strong>%s %s(s)</strong> earned from purchasing product(s)
+<strong>%s %s(s)</strong> earned from referring friend(s),<strong>%s %s(s)</strong> earned from referring friend(s)
+<strong>%s %s(s)</strong> earned from reviewing product(s),<strong>%s %s(s)</strong> earned from reviewing product(s)
+<strong>%s %s(s)</strong> earned from tagging,<strong>%s %s(s)</strong> earned from tagging
+<strong>%s %s(s)</strong> earned from your friend\'s purchasing,<strong>%s %s(s)</strong> earned from your friend\'s purchasing
+<strong>%s %s(s)</strong> earned today :,<strong>%s %s(s)</strong> earned today :
+<strong>%s %s(s)</strong> spent for purchasing product(s),<strong>%s %s(s)</strong> spent for purchasing product(s)
+Action,Action
+Active,Active
+Activity Type,Activity Type
+Add Point,Add Point
+Admin Contact Email,Admin Contact Email
+Are you sure?,Are you sure?
+Balance Changed Email Template,Balance Changed Email Template
+Change Status,Change Status
+Commission History,Commission History
+Conditions (leave blank for all products),Conditions (leave blank for all products)
+Conditions,Conditions
+Config,Config
+Created At,Created At
+Current Balance : <Strong> %s %s(s)</strong>,Current Balance : <Strong> %s %s(s)</strong>
+Customer Groups,Customer Groups
+Delete,Delete
+Description,Description
+Direction,Direction
+Each Order,Each Order
+Earn Point Config,Earn Point Config
+Earn Point,Earn Point
+Point Earning Rate,Point Earning Rate
+Edit Rate,Edit Rate
+Edit Rule,Edit Rule
+Email already exist. Please choose other email.,Email already exist. Please choose other email.
+Email Notification,Email Notification
+Enable Module,Enable Module
+Enable Referal System,Enable Referal System
+Exchange rate : ,Exchange rate : 
+Expiration Time,Expiration Time
+First Order,First Order
+Flat Rate,Flat Rate
+From Date,From Date
+From,From
+General Information,General Information
+ID,ID
+Inactive,Inactive
+Invitation Form,Invitation Form
+Invitation History,Invitation History
+Invite Email Template,Invite Email Template
+Invite Message,Invite Message
+Invite,Invite
+Invited Email,Invited Email
+Leave 0 or blank for unlimited.,Leave 0 or blank for unlimited.
+Limit reached. Today you can\'t invite anymore,Limit reached. Today you can\'t invite anymore
+Magebuzz Add-ons,Magebuzz Add-ons
+Minimum allowed : %s %s,Minimum allowed : %s %s
+Minimum Point To Redeem,Minimum Point To Redeem
+Money to %s rate is not defined.,Money to %s rate is not defined.
+Money to ,Money to 
+Money,Money
+My Rewards,My Rewards
+New Rate,New Rate
+No data or deleted.,No data or deleted.
+Notification,Notification
+Number of %s to use : ,Number of %s to use : 
+Number of Point,Number of Point
+Percent Rate,Percent Rate
+Percent,Percent
+Point Each Poll,Point Each Poll
+Point earned for each referred customer limitation,Point earned for each referred customer limitation
+Point earned for each referred customer,Point earned for each referred customer
+Point earned from order of referred customer,Point earned from order of referred customer
+Point Earned,Point Earned
+Point Earned/Spent,Point Earned/Spent
+Point Unit Name,Point Unit Name
+Point,Point
+Points each day. Leave 0 or blank for unlimited.,Points each day. Leave 0 or blank for unlimited.
+Points earned for signing a new account,Points earned for signing a new account
+Points earned for signing up for newsletter,Points earned for signing up for newsletter
+Poll Point Limit,Poll Point Limit
+Priority,Priority
+Product Review Point Limit,Product Review Point Limit
+Product Tagging Point Limit,Product Tagging Point Limit
+Purge,Purge
+Rate and Rules,Rate and Rules
+Rate Information,Rate Information
+Rate Type,Rate Type
+Rate,Rate
+Receive Update Balance Email,Receive Update Balance Email
+Referal System Config,Referal System Config
+Reference ID,Reference ID
+Referral System is now disabled.,Referral System is now disabled.
+Referral System,Referral System
+Refresh System,Refresh System
+Reset Point,Reset Point
+Review Product,Review Product
+Reward Point Information Page,Reward Point Information Page
+Reward Point Rate,Reward Point Rate
+Reward Point Rule,Reward Point Rule
+Reward Point User,Reward Point User
+Reward Point,Reward Point
+Reward Points Policy,Reward Points Policy
+Rule,Rule
+Save Rate,Save Rate
+Save Rule,Save Rule
+Sender,Sender
+Settings,Settings
+Point Spending Rate,Point Spending Rate
+Statistic,Statistic
+Status,Status
+Store View,Store View
+Tag Product,Tag Product
+The rate config is conflicted with other settings. Try again.,The rate config is conflicted with other settings. Try again.
+The rate has been saved.,The rate has been saved.
+The rule has been saved.,The rule has been saved.
+There are <strong>%s</strong> rule(s) available :,There are <strong>%s</strong> rule(s) available :
+There is no rule available at this moment.,There is no rule available at this moment.
+Time,Time
+Title,Title
+To Date,To Date
+To,To
+Type,Type
+Use %s (%s %s(s)),Use %s (%s %s(s))
+Use %s(s) on spend,Use %s(s) on spend
+Use %s,Use %s
+User Email,User Email
+User ID,User ID
+User Reward Point Information,User Reward Point Information
+User Reward Point Rule(s),User Reward Point Rule(s)
+View Detail History,View Detail History
+View History,View History
+Warning : Refresh your system but delete all user's history.,Warning : Refresh your system but delete all user's history.
+You have made no invitation.,You have made no invitation.
+You have send invite to this email. Please choose other email.,You have send invite to this email. Please choose other email.
+You will receive at least %s %s for purchasing this product,You will receive at least %s %s for purchasing this product
+Your balance is <strong>%s %s(s)</strong>,Your balance is <strong>%s %s(s)</strong>
+Your current balance : %s %s,Your current balance : %s %s
+Your group name : ,Your group name : 
+Your invitation has been sent successfully,Your invitation has been sent successfully
+"Reward Points","คะแนนสะสม"
+"My Rewards","คะแนนสะสมของฉัน"
+"Reward Information","ข้อมูลคะแนนสะสม"
+"Your current balance is <strong>%s %s</strong>","คะแนนสะสมของคุณคือ <strong>%s %s</strong>"
+"With this product, you earn <span id='j2t-pts' class='blue-text'>%s</span> loyalty point(s).","คะแนนสะสม <span id='j2t-pts' class='blue-text'>%s</span> คะแนน."

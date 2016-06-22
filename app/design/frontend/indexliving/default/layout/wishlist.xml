@@ -59,6 +59,38 @@ Customer account pages, rendered for all tabs in dashboard
 Customer account home dashboard layout
 -->
 
+    <customwishlist_index_print translate="label">
+        <reference name="content">
+            <block type="wishlist/customer_wishlist" name="customer.wishlist" template="wishlist/view.phtml">
+                <action method="setTitle" translate="title">
+                    <title>Print Wishlist</title>
+                </action>
+                <block type="wishlist/customer_wishlist_items" name="customer.wishlist.items" as="items" template="wishlist/print.phtml">
+                    <block type="wishlist/customer_wishlist_item_column_image" name="customer.wishlist.item.image" template="wishlist/item/column/image.phtml" />
+                    <block type="wishlist/customer_wishlist_item_column_comment" name="customer.wishlist.item.info" template="wishlist/item/column/info.phtml">
+                        <action method="setTitle" translate="title">
+                            <title>Products</title>
+                        </action>
+                        <block type="wishlist/customer_wishlist_item_options" as="customer.wishlist.item.options" name="customer.wishlist.item.options" />
+                        <!-- <block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.update" template="wishlist/button/update.phtml" /> -->
+                    </block>
+                    <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.price" template="wishlist/item/column/price.phtml">
+                        <action method="setTitle" translate="title">
+                            <title>Price</title>
+                        </action>
+                        <block type="wishlist/customer_wishlist_item_options" name="customer.wishlist.item.options" />
+                    </block>
+                    <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.quantity" template="wishlist/item/column/quantity.phtml">
+                        <action method="setTitle" translate="title">
+                            <title>Qty</title>
+                        </action>
+                        <block type="wishlist/customer_wishlist_item_options" name="customer.wishlist.item.options" />
+                    </block>
+
+                </block>
+            </block>
+        </reference>
+    </customwishlist_index_print>
     <customer_account_index>
         <reference name="right">
             <action method="unsetChild"><name>wishlist</name></action>
@@ -73,6 +105,13 @@ Wishlist pages
         <label>Customer My Account My Wishlist</label>
         <!-- Mage_Wishlist -->
         <update handle="customer_account" />
+				<!-- <reference name="catalog_product_price_template">
+            <action method="addPriceBlockType"><type>simple</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>grouped</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>configurable</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>virtual</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+            <action method="addPriceBlockType"><type>bundled</type><block>catalog/product_price</block><template>catalog/product/price-details.phtml</template></action>
+        </reference> -->
         <reference name="my.account.wrapper">
             <block type="wishlist/customer_wishlist" name="customer.wishlist" template="wishlist/view.phtml">
                 <action method="setTitle" translate="title">
@@ -99,14 +138,14 @@ Wishlist pages
                         </action>
                         <block type="wishlist/customer_wishlist_item_options" name="customer.wishlist.item.options" />
                     </block>
-                    
+
                     <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.cart" template="wishlist/item/column/cart.phtml">
-                        
+
                     </block>
                     <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.remove" template="wishlist/item/column/remove.phtml" />
                 </block>
                 <block type="core/text_list" name="customer.wishlist.buttons" as="control_buttons">
-                    <!-- <block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.share" template="wishlist/button/share.phtml" /> -->
+                    <!--<block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.share" template="wishlist/button/share.phtml" />-->
                     <block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.update" template="wishlist/button/update.phtml" />
                     <block type="wishlist/customer_wishlist_button" name="customer.wishlist.button.toCart" template="wishlist/button/tocart.phtml" />
                 </block>
@@ -127,6 +166,13 @@ Wishlist pages
         <reference name="right">
             <action method="unsetChild"><name>wishlist_customer_sidebar</name></action>
         </reference>
+        <remove name="header" />
+        <remove name="footer" />
+        <remove name="breadcrumbs" />
+        <remove name="customer_account_navigation" />
+        <remove name="right.reports.product.viewed" />
+        <remove name="reports.product.viewed" />
+        <remove name="m.reports.product.viewed" />
     </wishlist_index_share>
 
     <wishlist_index_configure translate="label">
@@ -147,5 +193,12 @@ Wishlist pages
         <reference name="content">
             <block type="wishlist/share_wishlist" name="customer.wishlist" template="wishlist/shared.phtml" />
         </reference>
+        <remove name="header" />
+        <remove name="footer" />
+        <remove name="breadcrumbs" />
+        <remove name="customer_account_navigation" />
+        <remove name="right.reports.product.viewed" />
+        <remove name="reports.product.viewed" />
+        <remove name="m.reports.product.viewed" />
     </wishlist_shared_index>
 </layout>

@@ -1,0 +1,511 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @author     cherdchai Hinjumpa , bugcherd@gmail.com   089-003-5240
+ * @website   http://magentothai.wordpress.com/
+ */
+    $data= $this->getQuoteData() ;
+
+?>
+
+<fieldset class="form-list">
+    <?php $_code=$this->getMethodCode() ?>
+    <?php echo Mage::getStoreConfig('payment/KSmartpay/customtext'); ?>
+    <ul id="payment_form_<?php echo $_code ?>" style='display: none'>
+        <li>
+        <div class="installment_pay">
+            
+        <?php
+        $CurrentAmount = (double)Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal();
+
+        $JavaScriptList = "";
+        $UserSelect = $this->htmlEscape($this->getInfoData('po_number'));
+
+        //=> Filter Limited
+        $LoopNo = 1;
+        $cartcondition = true;
+        $AvaliableArray = array();
+        $storeId = Mage::app()->getStore()->getStoreId();
+        $session= Mage::getSingleton('checkout/session');
+
+
+        $Debug =  Mage::getStoreConfigFlag('payment/KSmartpay/debug', $storeId);
+        $PaymentPlanList = Mage::getStoreConfig('payment/KSmartpay/paymentcode', $storeId);
+        $PaymentPlanListArray = array();
+        $PaymentPlanListArray = explode(",", $PaymentPlanList);
+        $AvaliableArray = array();
+        foreach($session->getQuote()->getAllItems() as $item)
+        {
+
+           $productsku = $item->getSku();
+           $productname = $item->getName();
+           $productqty = $item->getQty();
+           $ItemRowPrice = $item->getRowTotal();
+           $ItemCount = 0;
+
+           if (($ItemRowPrice > 0) && ($cartcondition == true)) {
+                $ItemCount++;
+                $productid = $item->getProductId();
+                //=> Get Attibute data
+                $ProductInstallmentArray = array();
+                $attributeValue = null;
+                $attributeValue = "";
+                $product = Mage::getModel('catalog/product')->load($productid);
+
+                $PrdinstallmentsData = $product->getData('installments_attribute');
+                if ($PrdinstallmentsData != "")  {
+                    $PrdInstallmentArray = explode(",", $PrdinstallmentsData);
+                    foreach ($PrdInstallmentArray as $PrdInstallmentItem) {
+                        //=> Check x - Start
+                        foreach ($PaymentPlanListArray as $PaymentPlanListItem) {
+                            //=> Plan
+                            if (Mage::getStoreConfigFlag('payment/'. trim($PaymentPlanListItem) .'/active', $storeId)) {
+                                if (Mage::getStoreConfig('payment/'. trim($PaymentPlanListItem) .'/filterlimit', $storeId)==$PrdInstallmentItem) {
+                                    $PlanActive = true;
+                                    if (trim(Mage::getStoreConfig('payment/'. trim($PaymentPlanListItem) .'/min_order_total')) != "") {
+                                        $PlanActive = $PlanActive && ($CurrentAmount >= (double)Mage::getStoreConfig('payment/'. trim($PaymentPlanListItem) .'/min_order_total'));
+                                    }
+
+                                    if (trim(Mage::getStoreConfig('payment/KSmartpay/max_order_total')) != "") {
+                                        $PlanActive = $PlanActive && ($CurrentAmount <= (double)Mage::getStoreConfig('payment/'. trim($PaymentPlanListItem) .'/max_order_total'));
+                                    }
+
+                                    if ($PlanActive) {
+                                        $ProductInstallmentArray[$PrdInstallmentItem] = trim($PaymentPlanListItem);
+                                    }
+                                }
+                            }
+                        }
+                        //=> Check x - End
+                    }
+                    if ($LoopNo==1) {
+                        $AvaliableArray = array_merge($AvaliableArray,$ProductInstallmentArray);
+                    }
+                    else {
+                        $AvaliableArray = array_intersect($AvaliableArray,$ProductInstallmentArray);
+                    }
+                    if (count($AvaliableArray) < 1) {
+                        $cartcondition = false;
+                    }
+                    //=> Loop Installment array
+                    $LoopNo++;
+                }
+                else {
+                    $cartcondition = false;
+                }
+                //=> End Product  - installments_attribute
+            }
+            // => (Price > 0) and (is Installment)
+        }
+        //=> Loop cart items
+        
+        if ($cartcondition==true) {
+
+            if (count($AvaliableArray) < 1) {
+                $cartcondition = false;
+            }
+        }
+        if (!$cartcondition) {
+            $AvaliableArray = array(); // remove Installment plan
+        }
+        
+        //check Full Credit
+        // $fullcredit = array();
+        // foreach (Mage::getStoreConfig('payment') as $key => $value) {
+        //     if(preg_match("/Full/", $key)){
+        //         if(Mage::getStoreConfig('payment/'.$key.'/active')){
+        //             $fullcredit[$key] = $value;
+        //         }
+        //     }
+        // }
+
+        $InstallmentArray = array();
+        $InstallmentZeroArray = array();
+        if (count($AvaliableArray)>0) {
+            //=> Start List
+            
+            foreach ($AvaliableArray as $PrdInstallmentItem) {
+                $termMax = (int)Mage::getStoreConfig('payment/'. $PrdInstallmentItem .'/paymenttermmax', $storeId);
+                $termRate = (double)Mage::getStoreConfig('payment/'. $PrdInstallmentItem .'/paymenttermrate', $storeId);
+                if ($termRate>0) {
+                    $InstallmentArray[$PrdInstallmentItem] = $termMax;
+                }
+                else {
+                    $InstallmentZeroArray[$PrdInstallmentItem] = $termMax;
+                }
+            }
+            //=> End List
+        }
+
+        $default = Array ( 
+            "KSmartpayC" => "10" , 
+            // "KSmartpayA" => "4",
+            "KSmartpayD" => "3",
+            "KSmartpayB" => "6",
+            // "KrungsriC" => "10",
+            // // "KrungsriA" => "4",
+            // "KrungsriD" => "3",
+            // "KrungsriB" => "6" 
+        );
+        if(count($InstallmentZeroArray)==0){
+            $InstallmentZeroArray = $default;
+        } else {
+            if (trim(Mage::getStoreConfig('payment/KSmartpay/min_amount')) != "") {
+                if($CurrentAmount > (double)Mage::getStoreConfig('payment/KSmartpay/min_amount')){
+                    $InstallmentZeroArray = array_merge($InstallmentZeroArray,$default);
+                }
+            }
+        }
+        if ($Debug=="1") {
+            echo "<!--";
+            echo "<pre>";
+            echo "<p>Zero Plan</p>";
+            print_r($InstallmentZeroArray);
+            echo "<p>Installments </p>";
+            print_r($InstallmentArray);
+            echo "<p>Full Credit </p>";
+            print_r($fullcredit);
+            echo "</pre>";
+            echo "-->";
+        }
+
+        //ผ่อนน้อย ขึ้นก่อน
+        //กสิกรขึ้นก่อน
+        $resort = array();
+
+        while (count($InstallmentZeroArray) != 0) {
+            $min = 99999;
+            $keyRemove = "";
+            //Kbank
+            foreach ($InstallmentZeroArray as $key => $value) {
+                if($value <= $min){
+                    if (preg_match('/^KSmartpay/', $key, $matches)) {
+                        $min = $value;
+                        $keyRemove = $key;
+                    }
+                }
+            }
+
+            //KrungSri
+            if($keyRemove==""){
+                foreach ($InstallmentZeroArray as $key => $value) {
+                    if($value <= $min){
+                        if (preg_match('/^Krungsri/', $key, $matches)) {
+                            $min = $value;
+                            $keyRemove = $key;
+                        }
+                    }
+                }
+            }
+
+            if($keyRemove!=""){
+                $resort[$keyRemove]=$value;
+                unset($InstallmentZeroArray[$keyRemove]);  
+            }
+        }
+        $InstallmentZeroArray = $resort;
+
+        $resort = array();
+        while (count($InstallmentArray) != 0) {
+            $min = 99999;
+            $keyRemove = "";
+            //Kbank
+            foreach ($InstallmentArray as $key => $value) {
+                if($value <= $min){
+                    if (preg_match('/^KSmartpay/', $key, $matches)) {
+                        $min = $value;
+                        $keyRemove = $key;
+                    }
+                }
+            }
+
+            //KrungSri
+            if($keyRemove==""){
+                foreach ($InstallmentArray as $key => $value) {
+                    if($value <= $min){
+                        if (preg_match('/^Krungsri/', $key, $matches)) {
+                            $min = $value;
+                            $keyRemove = $key;
+                        }
+                    }
+                }
+            }
+            if($keyRemove!=""){
+                $resort[$keyRemove]=$value;
+                unset($InstallmentArray[$keyRemove]);  
+            }
+        }
+        $InstallmentArray = $resort;
+
+        //=> Sort by term
+        // krsort($InstallmentZeroArray);
+        // krsort($InstallmentArray);
+        // krsort($fullcredit);
+
+        $PlanNo = 1;
+        $PlanDefaultKey = "";
+
+        $ZeroMaxTerm = 0;
+        $PlanZeroTitle = "";
+        $PlanZeroArray = array();
+        $InstallmentPlanName = "";
+        $InstallmentBankName = "";
+        $isheader = false;
+        if ((count($InstallmentZeroArray)>0) || (count($InstallmentArray)>0)) {
+            if(!$isheader){
+                echo '<p class="title">ผ่อนชำระด้วยบัตรเครดิต จากธนาคาร ได้ดังนี้</p>';
+                $isheader = true;
+            }
+            //=> Rate 0%
+            echo "<div class=\"choose_bank_pay clearfix\"><ul>";
+            if (count($InstallmentZeroArray)>0) {
+                foreach ($InstallmentZeroArray as $InstallmentKey => $InstallmentTerm) {
+                    if ($PlanDefaultKey=="") {
+                        $PlanDefaultKey =  $InstallmentKey;
+                    }
+                    $InstallmentPlanMaxTerm = $InstallmentTerm;
+                    if ($ZeroMaxTerm < $InstallmentPlanMaxTerm) {
+                        $ZeroMaxTerm = $InstallmentPlanMaxTerm;
+                    }
+
+                    if ($ZeroMaxTerm == $InstallmentPlanMaxTerm) {
+                        $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
+                        if (!array_key_exists($InstallmentBankName,$PlanZeroArray)) {
+                            $PlanZeroArray[$InstallmentBankName] = $InstallmentKey;
+                        }
+                    }
+
+                    $InstallmentPlanName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/title', $storeId);
+                    $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
+                    $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
+                    $stringBinding = "ดอกเบี้ย 0% นาน $terms เดือน";
+                    $info = "";
+                    if(!($info = Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId))){
+                        if (preg_match('/^KrungsriF/', $InstallmentKey, $matches)) {
+                            $info = '<div class="logo_payment_small"><img src="/media/payment/logo-krungsrifc.png" alt=""></div>';
+                        }
+                    } 
+
+                    echo "<li>".$info."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='0' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    <div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $stringBinding ."</div><hr></li>";
+                    // $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
+                    // $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อน 0% กับ". $InstallmentBankName ."');" . PHP_EOL;
+                    // $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
+                    // if ($terms !="") {
+                    //     $termArray = explode(",",$terms);
+                    //     arsort($termArray);
+                    //     foreach($termArray  as $key => $val) {
+                    //         if ((int)$val>0) {
+                    //             $JavaScriptList .= "jQuery('#installment_termno').append(jQuery('<option>', {value:'". trim($InstallmentKey) . "|" . $val ."', text:' ผ่อน " . $val . " เดือน เดือนละ " . number_format($CurrentAmount /  $val, 2, ".", ",") ."'}));" . PHP_EOL;
+                    //         }
+                    //     }
+                    // }
+                    // $JavaScriptList .= "} " . PHP_EOL;
+
+                    $PlanNo ++;
+                }
+            }
+
+            //=> Rate > 0
+            if (count($InstallmentArray)>0) {
+                if(!$isheader){
+                    echo '<p class="title">ผ่อนชำระด้วยบัตรเครดิต จากธนาคาร ได้ดังนี้</p>';
+                    $isheader = true;
+                }
+                foreach ($InstallmentArray as $InstallmentKey => $InstallmentTerm) {
+                    if ($PlanDefaultKey=="") {
+                        $PlanDefaultKey =  $InstallmentKey;
+                    }
+                    $InstallmentPlanName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/title', $storeId);
+                    $InstallmentBankName = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/bank', $storeId);
+                    $terms = Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymentterms', $storeId);
+                    $termRate = (double)Mage::getStoreConfig('payment/'. trim($InstallmentKey) .'/paymenttermrate', $storeId);
+                    $termRate = $termRate=="" ? '0':$termRate;
+                    $stringBinding = "ดอกเบี้ย $termRate% นาน $terms เดือน";
+$info = "";
+                    if(!($info = Mage::getStoreConfig('payment/'.trim($InstallmentKey).'/infoimage',$storeId))){
+                        if (preg_match('/^KrungsriF/', $InstallmentKey, $matches)) {
+                            $info = '<div class="logo_payment_small"><img src="/media/payment/logo-krungsrifc.png" alt=""></div>';
+                        }
+                    } 
+                    echo "<li>".$info."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-text='$stringBinding' data-amount='$CurrentAmount' data-rate='$termRate' data-terms='$terms' data-value='$InstallmentKey|$terms' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($InstallmentKey) ."\" value=\"". trim($InstallmentKey) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    <div class=\"installmentplan_". trim($InstallmentKey) ."\"> ". $stringBinding ."</div><hr></li>";
+                    // $JavaScriptList .= "function ". trim($InstallmentKey) ."_click() {";
+                    // $JavaScriptList .= "jQuery('#reccommend_bank').html('ผ่อนกับ". $InstallmentBankName ."');" . PHP_EOL;
+                    // $JavaScriptList .= "jQuery('#installment_termno').children().remove();" . PHP_EOL;
+                    // if ($terms !="") {
+                    //     $maxtemselect = "";
+                    //     $termArray = explode(",",$terms);
+                    //     arsort($termArray);
+                    //     foreach($termArray  as $key => $val) {
+                    //         if ((int)$val>0) {
+                    //             $JavaScriptList .= "jQuery('#installment_termno').append(jQuery('<option>', {value:'". trim($InstallmentKey) . "|" . $val ."', text:' ผ่อน " . number_format($termRate, 2, ".", ",") . "% นาน " . $val . " เดือน เดือนละ " . number_format(($CurrentAmount /  $val) + ($CurrentAmount * ($termRate / 100)), 2, ".", ",") ."'}));" . PHP_EOL;
+                    //             $maxtemselect = $val;
+                    //         }
+                    //     }
+
+                    //     //$JavaScriptList .= "jQuery('#installment_termno').val($maxtemselect);" . PHP_EOL;
+
+
+                    // }
+                    // $JavaScriptList .= "} " . PHP_EOL;
+
+
+                    $PlanNo ++;
+                }
+
+            }
+            echo "</ul></div>";
+        }
+
+        // //=> Recomment
+        // $PlanZeroTitle = "";
+        // $PlanZeroNo = 1;
+        // $ZeroCount = count($PlanZeroArray);
+        // if ($ZeroCount>0) {
+        //   foreach ($PlanZeroArray as $InstallmentKey => $InstallmentTerm) {
+        //     if ($PlanZeroNo==1) {
+        //       $PlanZeroTitle .= $InstallmentKey;
+        //     }
+
+        //     $PlanZeroNo++;
+        //   }
+        // }
+
+        // if ($PlanZeroTitle != "") {
+        //     echo "<p class=\"reccommend_bank\" id=\"reccommend_bank\">ผ่อน 0% กับ ". $PlanZeroTitle ."</p>";
+        // }
+        // else {
+        //     $PlanZeroTitle = "";
+        //     $PlanZeroNo = 1;
+        //     $ZeroCount = count($InstallmentArray);
+        //     if ($ZeroCount>0) {
+        //         foreach ($InstallmentArray as $InstallmentKey => $InstallmentTerm) {
+        //             if ($PlanZeroNo==1) {
+        //                 $PlanZeroTitle .= $InstallmentKey;
+        //             }
+        //             $PlanZeroNo++;
+        //         }
+        //     }
+
+        //     echo "<p class=\"reccommend_bank\" id=\"reccommend_bank\">ผ่อนกับ ". $PlanZeroTitle ."</p>";
+        // }
+        //=> Select
+        ?>
+        
+        <?php
+        $terms = Mage::getStoreConfig('payment/'. $PlanDefaultKey .'/paymentterms', $storeId);
+        $termRate = Mage::getStoreConfig('payment/'. trim($PlanDefaultKey) .'/paymenttermrate', $storeId);
+        echo "<!--" . $termRate . "|" . $PlanDefaultKey . "|"  . $storeId . "-->";
+        echo "<p class='textdetail'></p>";
+        echo "<p class='textdetail-cal'></p>";
+        echo "<input type='hidden' id='installment_termno' name ='payment[check_no]' value='$PlanDefaultKey|$terms' />";
+        // echo "<div class=\"input-box box-select\"><select name=\"payment[check_no]\" id=\"installment_termno\">";
+        // if ($terms !="") {
+        //     $termArray = explode(",",$terms);
+        //     arsort($termArray);
+        //     foreach($termArray  as $key => $val) {
+        //         if ((int)$val>0) {
+        //             if ($PlanZeroTitle == "") {
+        //                 echo "<option value=\"" . $PlanDefaultKey . "|" . $val ."\"> ผ่อน " . $val . " เดือน เดือนละ " . number_format($CurrentAmount /  $val, 2, ".", ",") . "</option>";
+        //             }
+        //             else {
+        //                 echo "<option value=\"" . $PlanDefaultKey . "|" . $val ."\"> ผ่อน  ". number_format($termRate, 2, ".", ",") . "% นาน " . number_format($val, 0, ".", ",") . " เดือน เดือนละ " . number_format(($CurrentAmount /  $val) + ($CurrentAmount *  ($termRate / 100)), 2, ".", ",") . "</option>";
+        //             }
+        //         }
+        //     }
+        // }
+        // echo "</select></div>";
+
+
+        if(count($fullcredit) > 0){
+            echo '<hr><p class="title">ชำระเต็มจำนวนด้วยจากธนาคาร ได้ดังนี้</p>';
+            foreach($fullcredit as $key=>$value){
+                echo "<li>".Mage::getStoreConfig('payment/'.trim($key).'/infoimage',$storeId)."<input onclick='changeHidden(this)' type=\"radio\" class='calculate' data-value='$key|0' name=\"payment[cc_owner]\"  id=\"installmentplan_". trim($key) ."\" value=\"". trim($key) ."\"" . (($PlanNo==1) ? " checked" : "") . ">
+                    <div class=\"installmentplan_". trim($key) ."\"> ". $value['title'] ."</div><hr></li>";
+            }
+        }
+
+        ?>
+        </div>
+        </li>
+    </ul>
+    <script type="text/javascript">
+    <?php echo $JavaScriptList;?>
+    function changeHidden(element){
+        
+        $this = jQuery(element);
+        $jQ = jQuery;
+        if(typeof $this.data('text') =="undefined"){
+            $jQ('.textdetail').hide();
+            $jQ('#installment_termno').val($this.data('value'));
+            $jQ('.textdetail-cal').hide();
+        } else {
+            $jQ('.textdetail').show();
+            $jQ('.textdetail-cal').show();
+            $jQ('.textdetail').html($this.data('text'));
+            $jQ('#installment_termno').val($this.data('value'));
+            $jQ('.textdetail-cal').html(cal($this.data('amount'),$this.data('terms'),$this.data('rate')));
+        }
+    }
+    jQuery(document).ready(function($){
+        $default = $('.calculate:checked');
+        if(typeof $default.data('text') =="undefined"){
+            $('.textdetail').hide();
+            $('#installment_termno').val($default.data('value'));
+            $('.textdetail-cal').hide();
+        } else {
+            $('.textdetail').html($default.data('text'));
+            $('#installment_termno').val($default.data('value'));
+            $('.textdetail-cal').html(cal($default.data('amount'),$default.data('terms'),$default.data('rate')));
+        }
+
+    });
+
+    function cal(amount,term,rate){
+        if(term == 0){
+            term = 1;
+        }
+        if(rate == 0){
+            return 'ผ่อนเดือนละ ' + parseFloat(amount/term).formatMoney(2) + ' บาท';
+        }
+
+        return 'ผ่อนเดือนละ ' + (parseFloat(amount/term) + parseFloat(amount * (rate / 100))).formatMoney(2) + ' บาท';
+    }
+    Number.prototype.formatMoney = function(c, d, t){
+    var n = this, 
+        c = isNaN(c = Math.abs(c)) ? 2 : c, 
+        d = d == undefined ? "." : d, 
+        t = t == undefined ? "," : t, 
+        s = n < 0 ? "-" : "", 
+        i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+        j = (j = i.length) > 3 ? j % 3 : 0;
+       return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+     };
+    </script>
+</fieldset>
+<style type="text/css">
+[class *='installmentplan']{
+    float: right;
+}    
+.logo_payment_small {
+    padding-left: 20px;
+    height: 0px;
+    float: left;
+    position: absolute;
+}
+
+</style>

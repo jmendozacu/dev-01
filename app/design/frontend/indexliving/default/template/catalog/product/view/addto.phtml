@@ -27,80 +27,60 @@
 
 <?php $_product = $this->getProduct(); ?>
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-
+<?php $wishlistItemId = Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())?>
 <ul class="add-to-links">
 	<?php if ($this->helper('wishlist')->isAllow()) : ?>
 		<li class="wishlist-ajax add-wishlist">
-			<a id="wishlist-<?php echo $_product->getId()?>" href="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?><?php else:?><?php echo $this->helper('wishlist')->getAddUrl($_product) ?><?php endif ?>" data-remodal-target="<?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())== false):?><?php endif ?>"
-			   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a><?php ?>
-			<span class="detect-proId" style="display: none"><?php echo $_product->getId();?></span>
-			<div id='ajax_loader' style="display: none">
-				<img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/>
-			</div>
+			<a rel="" id="wishlist-detail-<?php echo $_product->getId()?>" href="<?php echo $_wishlistSubmitUrl; ?>" class="link-wishlist<?php if($wishlistItemId):?> added-item<?php endif ?>">
+				<?php echo $this->__('Add to Wishlist') ?>
+			</a>
 		</li>
 	<?php endif;?>
 
-<?php
-    $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
-?>
+	<?php
+	$_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+	$compared = false;
+	$collection = $this->helper('catalog/product_compare')->getItemCollection();
+	foreach($collection as $comparing_product) {
+		if ($comparing_product->getId() == $_product->getId()) {
+			$compared = true;
+		}
+	}
+	?>
 	<?php if($_compareUrl) : ?>
-		<li><a href="#" id="remodal" class="link_Addtocompare" onclick="ajaxCompare('<?php echo $_compareUrl?>','<?php echo $_product->getId()?>'); return false;" class="link-compare"><?php echo $this->__('Add to Compare') ?>
+		<li class="add-compare" >
+			<a href="javascript:void(0)" id="remodal-<?php echo $_product->getId(); ?>" class="link-compare <?php if($compared):?>added-item<?php endif; ?> " onclick="ajaxCompare('<?php echo $_compareUrl?>',<?php echo $_product->getId(); ?>)"><?php echo $this->__('Add to Compare') ?>
 				<span id='ajax_compare_loading_<?php echo $_product->getId()?>' class="link_loader" style='display:none'><img src='<?php echo $this->getSkinUrl('images/review/loader.gif')?>'/></span>
 			</a>
 		</li>
 	<?php endif; ?>
-		<li>
-			<a href="javascript:void(0)" id="shareProductLink" class="link-share"><?php echo $this->__('Share') ?></a>
-			<?php echo $this->getChildHtml('sharing') ?>
-		</li>
+	<li >
+		<a href="javascript:void(0)" id="shareProductLink" class="link-share"><?php echo $this->__('Share') ?></a>
+		<?php echo $this->getChildHtml('sharing') ?>
+	</li>
 </ul>
+<span class="mess_wishlish"></span>
 
-<div class="remodal" id="modal" style="display:none">
-	<span class="popup_compare"></span>
-</div>
 
 <script type="text/javascript">
-	function ajaxCompare(url,id){
-		url = url.replace("catalog/product_compare/add","customwishlist/index/compare");
-		url += '?isAjax/1/';
-		$j("#ajax_loader").show();
+	function ajaxCompare(url,productid){
+		$j('#remodal-'+productid).addClass('added-item');
+		url = url.replace("catalog/product_compare/add","customcompare/product_compare/add");
+		$j('#ajax_cart_loading').show();
 		$j.ajax({
 			url: url,
 			type: "POST",
 			dataType: 'json',
 			success: function (data) {
-				$j("#ajax_loader").hide();
-				$j(".popup_compare").html(data.popup);
-				$j(".remodal").fancybox().trigger('click');
-				$j(".remodal").show();
-				$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
+				$j("#ajax_cart_loading").hide();
+				$j("#product-compare-list").html(data.bar);
+				//$j('.col-main .mess_succes').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
+				$('ajaxcart-overlay').update(data.html);
+				$('ajaxcart-overlay').show();
+				setTimeout(function () {
+					Effect.Fade($('ajaxcart-overlay'));
+				}, 5000);
 			}
 		});
 	}
-
-	$j(".wishlist-ajax ").click(function(){
-		var proId = $j(this).find('.link-wishlist').attr('id');
-
-		<?php if(!$this->helper('customer')->isLoggedIn()):?>
-			window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
-		<?php endif; ?>
-		<?php if($this->helper('customer')->isLoggedIn()):?>
-		url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
-		url += 'product/'+$j(this).find('.detect-proId').text();
-		id = $j(this).find('.detect-proId').text();
-		$j("#ajax_loader").show();
-		$j.ajax({
-			url: url,
-			type: "POST",
-			dataType: 'json',
-			success: function (data) {
-				$j('#'+proId).attr('href','');
-				$j('#'+proId).addClass('added-item');
-				$j("#ajax_loader").hide();
-				$j('.col-main').prepend('<ul class="messages"><li class="success-msg"><ul><li><span>'+ data.message + '</span></li></ul></li></ul>');
-			}
-		});
-		<?php endif;?>
-	});
-
 </script>

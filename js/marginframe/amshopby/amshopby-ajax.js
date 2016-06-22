@@ -346,6 +346,8 @@ function amshopby_external(){
     if (typeof ConfigurableSwatchesList != 'undefined') {
         ConfigurableSwatchesList.init();
     }
+		
+		ajaxWishlistInit();
 }
 
 function amshopby_external_rwd() {
@@ -498,6 +500,28 @@ function amshopby_external_rwd() {
 
 function rerun_some_init_scripts() {
     var widthWindow = jQuery( window ).width();
+		jQuery('.block-layered-nav #narrow-by-list dt').click(function(){
+			if (!jQuery(this).hasClass('current')){
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).next().addClass('current');
+				jQuery(this).addClass('current');
+			}
+			else{
+				jQuery(this).next().slideToggle(300);
+				jQuery(this).next().removeClass('current');
+				jQuery(this).removeClass('current');
+			}
+		});
+		jQuery(".flip-container > .flipper > .front" ).hover(function() {
+				jQuery(this).animate({
+					'opacity' : 0
+				},150);
+			}, function() {
+				jQuery(this).animate({
+					'opacity' : 1
+				},150);
+			}
+		);
     if(widthWindow <768){ 
       /* box promo */
       jQuery(".category-banners .div-banner").mCustomScrollbar({
@@ -506,8 +530,7 @@ function rerun_some_init_scripts() {
       });
       /* move sort-by-mobile on box filter */
       var sortByHtml = jQuery(".toolbar .sort-by-mobile").html(); 
-      jQuery(".col-left-first .block-layered-nav .block-content.toggle-content ").append(sortByHtml);
-      jQuery('.toolbar .sort-by-mobile').remove();
+      jQuery(".col-left-first .block-layered-nav .block-content").append(sortByHtml);
       /* toggle layered-nav */
       jQuery('.toggle-box-filter.toggle-nav').click(function(){
         jQuery('.box-filter-content').hide();
@@ -519,8 +542,8 @@ function rerun_some_init_scripts() {
           jQuery(this).removeClass('active');
           jQuery('#narrow-by-list').hide();
         }
-        if(!jQuery('.block-layered-nav').hasClass('active')){
-          jQuery('.block-layered-nav').addClass('active');
+        if(!jQuery('.block-layered-nav .layered-nav-content').hasClass('active')){
+          jQuery('.block-layered-nav .layered-nav-content').addClass('active');
         }
       });
       /*  and sortby */
@@ -534,16 +557,20 @@ function rerun_some_init_scripts() {
           jQuery(this).removeClass('active');
           jQuery('.sort-by-content').hide();
         }
-        if(!jQuery('.block-layered-nav').hasClass('active')){
-          jQuery('.block-layered-nav').addClass('active');
+        if(!jQuery('.block-layered-nav .layered-nav-content').hasClass('active')){
+          jQuery('.block-layered-nav .layered-nav-content').addClass('active');
         }
       });
       /* close-filter */
       jQuery('#close-filter').click(function(){
-        jQuery('.block-layered-nav, .toggle-box-filter').removeClass('active');
+        jQuery('.block-layered-nav .layered-nav-content, .toggle-box-filter').removeClass('active');
         jQuery('.box-filter-content').hide();
       });
     }
+		
+		if (ajaxCart) {
+			ajaxCart.replaceButtonAddToCart('button.btn-cart');
+		}
 }
 
 function amshopby_external_megatron() {

@@ -28,6 +28,13 @@ class TM_Highlight_Block_Product_List
     protected $_productCollection;
     protected $_defaultToolbarBlock = 'highlight/product_list_toolbar';
     protected $_toolbarBlock;
+		
+		/**
+     * Price template
+     *
+     * @var string
+     */
+    protected $_priceBlockDefaultTemplate = 'catalog/product/price.phtml';
 
     protected static $_productUrlModel = null;
 
@@ -54,9 +61,12 @@ class TM_Highlight_Block_Product_List
         $categoryFilter = $this->getCategoryFilter();
         if (array_key_exists('current', $categoryFilter)) {
             unset($categoryFilter['current']);
+            $this->getCurrentCategory();
+            /*
             if ($category = Mage::registry('current_category')) {
                 $categoryFilter[] = $category->getId();
             }
+            */
         }
 
         $priceFilter = $this->getPriceFilter();
@@ -86,6 +96,18 @@ class TM_Highlight_Block_Product_List
            $this->getNameInLayout()
         );
     }
+		/**
+		 * Prepares and returns block to render some product type
+		 *
+		 * @param string $productType
+		 * @return Mage_Core_Block_Template
+		 */
+		public function _preparePriceRenderer($productType)
+		{
+				return $this->_getPriceBlock($productType)
+						->setTemplate('catalog/product/price.phtml')
+						->setUseLinkForAsLowAs($this->_useLinkForAsLowAs);
+		}
 
     /**
      * Process cached form_key and uenc params
@@ -198,9 +220,12 @@ class TM_Highlight_Block_Product_List
                     $collection = Mage::getResourceModel($collection);
                 }
             }
-
-            // Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
-            // Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
+						Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+            Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
+						if(!Mage::helper('highlight')->showOutStockProduct()) {
+							Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
+						}
+           
             $collection->setVisibility(Mage::getSingleton('catalog/product_visibility')->getVisibleInCatalogIds());
 
             $collection = $this->_addProductAttributesAndPrices($collection)
@@ -365,8 +390,54 @@ class TM_Highlight_Block_Product_List
             foreach (explode(',', $this->getData('category_filter')) as $categoryId) {
                 $this->_categoryFilter[$categoryId] = $categoryId;
             }
+            if (array_key_exists('current', $this->_categoryFilter)) {
+                $this->getCurrentCategory();
+            }
         }
         return $this->_categoryFilter;
+    }
+
+    function getCurrentCategory(){
+        if (array_key_exists('current', $this->_categoryFilter)) {
+            unset($this->_categoryFilter['current']);
+            if ($product = Mage::registry('current_product')) {
+                $categories = $product->getCategoryCollection()
+                    ->setPage(1, 1)
+                    ->addAttributeToSelect('name')
+                    ->addFieldToFilter('level', array('gteq' => 4))
+                    
+                    /*
+                    //excluded promotion catalog and all sub
+                    //->addFieldToFilter('parent_id',array('neq' => 862))
+                    //->addFieldToFilter('entity_id',array('neq' => 862))
+                    //only select cat
+                    ->addFieldToFilter('path',  array(
+                    array('like' => '1/44/289/%'),
+                    array('like' => '1/44/398/%'),
+                    array('like' => '1/44/290/%'),
+                    array('like' => '1/44/798/%'),
+                    array('like' => '1/44/942/%'),
+                    )
+                    )
+                    //exclude Princess Pa Foundation (ID: 1065)
+                    ->addFieldToFilter('parent_id',array('neq' => 1065))
+                    ->addFieldToFilter('entity_id',array('neq' => 1065)) 
+                    */
+
+                    ->setOrder('level', 'desc')
+                    //->load()
+                ;
+                foreach ($categories as $cat) {
+                    if(isset($_GET['debug'])){
+                        var_dump('current_product:'.$cat->getId().':'.$cat->getName().':'.$cat->getLevel().':'.$cat->getPath());
+                    }
+                    $this->_categoryFilter[] = $cat->getId();
+                }
+            }
+            else if ($category = Mage::registry('current_category')) {
+                $this->_categoryFilter[] = $category->getId();
+            }
+        }
     }
 
     public function addProductTypeFilter($type)

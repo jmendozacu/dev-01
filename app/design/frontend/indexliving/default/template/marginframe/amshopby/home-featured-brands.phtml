@@ -4,7 +4,7 @@
    $_collectionSize = $this->getItems()->getSize();
   if($_collectionSize >0):
  ?>
-<h2 class="title-style1"><span><?php echo $this->__('our brands') ?></span><a class="box-desktop" title="view all" href="#"><?php echo $this->__('view all') ?></a></h2>
+<h2 class="title-style1"><span><?php echo $this->__('our brands') ?></span><a class="box-desktop" title="view all" href="<?php echo $this->getUrl('brands')?>"><?php echo $this->__('view all') ?></a></h2>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-brand-banner')->toHtml() ?>
 <div class="home-brand-content">
   <div id="grid-featured-brands">
@@ -14,10 +14,10 @@
         <div class="logo-item">
       
         <a href="<?php echo $item->getUrl()?>">
-          <?php if ($item->getImgBig()) : ?>
-              <img class="amshopby-featured" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgBig()?>" />
+          <?php if ($item->getImgMedium()) : ?>
+              <img class="amshopby-featured" alt="<?php echo $itemTitle[0]?>" src="<?php echo $item->getImgMedium()?>" />
           <?php else: ?>
-            <?php echo $this->htmlEscape($item->getTitle())?>
+            <?php echo $itemTitle[0]?>
           <?php endif ?>
         </a>
       
@@ -30,23 +30,23 @@
   <?php $column_count = (int)($_collectionSize/$row_count); ?>
 
   jQuery("#grid-featured-brands").owlCarousel({
-    
+    nav: <?php if($_collectionSize > 6):?> true <?php else:?> false <?php endif?>,
     loop:true,
     margin:20,
     responsive:{
-        0:{
-            items:2,
-            nav:false,
-            margin:5
-        },
-        600:{
-            items:3,
-            nav:false
-        },
-        1000:{
-            items:6,
-            nav:true
-        }
+			0:{
+					items:2,
+					nav:false,
+					margin:5
+			},
+			600:{
+					items:3,
+					nav:false
+			},
+			1000:{
+					items:6,
+					nav:<?php if($_collectionSize > 6):?> true <?php else:?> false <?php endif?>
+			}
     }
   });
 </script>

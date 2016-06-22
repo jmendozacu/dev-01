@@ -45,7 +45,7 @@
             <?php endif; ?>
 
 <?php if (count($this->getGalleryImages()) > 0): ?>
-<div class="more-views" style="width:<?php echo $smallImageSize ?>px">
+<div class="more-views" style="top:<?php echo ($imageWidth - 270)/2?>px; width:<?php echo $smallImageSize ?>px">
     <div style="position: relative;">
         <div id="amasty_gallery">
              <?php foreach ($this->getGalleryImages() as $_image): ?>
@@ -76,7 +76,7 @@
 	<?php if ('true' == (string) Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
 		<div class="amlabel-div">
 		<?php echo Mage::helper('amlabel')->getLabels($_product, 'product') ?>
- <?php endif; ?>
+	<?php endif; ?>
 		<ul class="product-image-mobile-slider">
 			<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
 			<li class="main-image">
@@ -100,27 +100,29 @@
 			<?php endif; ?>
 			<?php if (count($this->getGalleryImages()) > 0): ?>
 				<?php foreach ($this->getGalleryImages() as $_image): ?>
-					<li>
+					<?php if($_product->getImage() != $_image['file']): ?>
+					<li class="test">
 						<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(500); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
 					</li>
+					<?php endif; ?>
 				<?php endforeach; ?>
-				<script type="text/javascript">              
-        jQuery(document).ready(function () {
-						jQuery('.product-image-mobile-slider').bxSlider({
-							auto: true,
-							mode: 'horizontal',
-							controls: false,
-							speed: 2000,
-							preloadImages: 'visible',
-							pager: true,
-							captions: false
-						});
-					});        
-				</script>
 			<?php endif; ?>
 		</ul>
-		
  <?php if ('true' == (string)Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
 		</div>
 	<?php endif; ?>
+	<script type="text/javascript">              
+		jQuery(document).ready(function () {
+			jQuery('.product-image-mobile-slider').bxSlider({
+				auto: true,
+				infiniteLoop:<?php if (count($this->getGalleryImages()) > 1): ?> true <?php else:?> false <?php endif ?>,
+				mode: 'horizontal',
+				controls: false,
+				speed: 2000,
+				preloadImages: 'visible',
+				pager: <?php if (count($this->getGalleryImages()) > 1): ?> true <?php else:?> false <?php endif ?>,
+				captions: false
+			});
+		});        
+	</script>
 </div>

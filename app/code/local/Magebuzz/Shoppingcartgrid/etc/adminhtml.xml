@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<config>
+    <menu>
+        <customer>
+            <children>
+                <magebuzz_shoppingcartgrid translate="title" module="magebuzz_shoppingcartgrid">
+                    <sort_order>10</sort_order>
+                    <title>Shoppingcart</title>
+                    <action>adminhtml/shoppingcart/</action>
+                </magebuzz_shoppingcartgrid>
+            </children>
+        </customer>
+    </menu>
+</config>

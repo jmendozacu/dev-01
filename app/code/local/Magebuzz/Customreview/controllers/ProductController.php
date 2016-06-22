@@ -45,78 +45,85 @@ class Magebuzz_Customreview_ProductController extends Mage_Review_ProductControl
 			}
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 		}
-    public function postAction()
-    {
-        if (!$this->_validateFormKey()) {
-            // returns to the product item page
-            $this->_redirectReferer();
-            return;
-        }
+    public function postAction() {
+			if (!$this->_validateFormKey()) {
+				// returns to the product item page
+				$this->_redirectReferer();
+				return;
+			}
 
-        if ($data = Mage::getSingleton('review/session')->getFormData(true)) {
-            $rating = array();
-            if (isset($data['ratings']) && is_array($data['ratings'])) {
-                $rating = $data['ratings'];
-            }
-        } else {
-            $data   = $this->getRequest()->getParams();
-            $rating = $this->getRequest()->getParam('ratings', array());
-        }
+			if ($data = Mage::getSingleton('review/session')->getFormData(true)) {
+				$rating = array();
+				if (isset($data['ratings']) && is_array($data['ratings'])) {
+					$rating = $data['ratings'];
+				}
+			} else {
+				$data   = $this->getRequest()->getParams();
+				$rating = $this->getRequest()->getParam('ratings', array());
+			}
 
-        if (($product = $this->_initProduct()) && !empty($data)) {
-            $session    = Mage::getSingleton('core/session');
-            /* @var $session Mage_Core_Model_Session */
-            $review     = Mage::getModel('review/review')->setData($data);
-            /* @var $review Mage_Review_Model_Review */
+			if (($product = $this->_initProduct()) && !empty($data)) {
+				$session    = Mage::getSingleton('core/session');
+				$review     = Mage::getModel('review/review')->setData($data);
+				$validate = $review->validate();
 
-            $validate = $review->validate();
-            if ($validate === true) {
-                try {
-                    $review->setEntityId($review->getEntityIdByCode(Mage_Review_Model_Review::ENTITY_PRODUCT_CODE))
-                        ->setEntityPkValue($product->getId())
-                        ->setStatusId(Mage_Review_Model_Review::STATUS_PENDING)
-                        ->setCustomerId(Mage::getSingleton('customer/session')->getCustomerId())
-                        ->setStoreId(Mage::app()->getStore()->getId())
-                        ->setStores(array(Mage::app()->getStore()->getId()))
-                        ->save();
+				if ($validate === true) {
+					try {
+						$review->setEntityId($review->getEntityIdByCode(Mage_Review_Model_Review::ENTITY_PRODUCT_CODE))
+							->setEntityPkValue($product->getId())
+							->setStatusId(Mage_Review_Model_Review::STATUS_PENDING)
+							->setCustomerId(Mage::getSingleton('customer/session')->getCustomerId())
+							->setStoreId(Mage::app()->getStore()->getId())
+							->setStores(array(Mage::app()->getStore()->getId()))
+							->save();
 
-                    foreach ($rating as $ratingId => $optionId) {
-                        Mage::getModel('rating/rating')
-                            ->setRatingId($ratingId)
-                            ->setReviewId($review->getId())
-                            ->setCustomerId(Mage::getSingleton('customer/session')->getCustomerId())
-                            ->addOptionVote($optionId, $product->getId());
-                    }
+						foreach ($rating as $ratingId => $optionId) {
+							Mage::getModel('rating/rating')
+								->setRatingId($ratingId)
+								->setReviewId($review->getId())
+								->setCustomerId(Mage::getSingleton('customer/session')->getCustomerId())
+								->addOptionVote($optionId, $product->getId());
+						}
 
-                    $review->aggregate();
-                    $session->addSuccess($this->__('Your review has been accepted for moderation.'));
-                }
-                catch (Exception $e) {
-                    $session->setFormData($data);
-                    $session->addError($this->__('Unable to post the review.'));
-                }
-            }
-            else {
-                $session->setFormData($data);
-                if (is_array($validate)) {
-                    foreach ($validate as $errorMessage) {
-                        $session->addError($errorMessage);
-                    }
-                }
-                else {
-                    $session->addError($this->__('Unable to post the review.'));
-                }
-            }
-        }
+						$review->aggregate();
+						$reviewId = $review->getId();
+						Mage::getModel('review/review')->load($reviewId)
+							->setImg($data['image-name'])->save();
 
-                $reviewId = $review->getId();
-                Mage::getModel('review/review')->load($reviewId)
-                    ->setImg($data['image-name'])->save();
-
-        if ($redirectUrl = Mage::getSingleton('review/session')->getRedirectUrl(true)) {
-            $this->_redirectUrl($redirectUrl);
-            return;
-        }
-        $this->_redirectReferer();
+						$result['success'] = true;
+						$result['message'] = $this->__('Your review has been accepted for moderation.');
+					}
+					catch (Exception $e) {
+						$session->setFormData($data);
+						$result['success'] = false;
+						$result['error'] = true;
+						$result['message'] = $this->__('Unable to post the review.');
+					}
+				}
+				else {
+					$session->setFormData($data);
+					$result['success'] = false;
+					$result['error'] = true;
+					$result['message'] = $this->__('Unable to post the review.');
+				}
+			}
+			$html = 
+			'<div class="block" id="ajaxcart_content_option_product">
+				<a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="ajaxCart.closeOptionsPopup();"></a>
+				<div class="ajaxcart-heading">';
+			if ($result['success']) {
+				$html .= '<p class="added-success-message">';
+			}
+			else {
+				$html .= '<p class="added-error-message">';
+			}
+			$html .= $result['message'] .
+					'</p>
+				</div>
+			</div>
+			';
+			$result['html'] = $html;
+			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+			return;
     }
 }

@@ -263,7 +263,7 @@
 .ampromo-label{
     float: right; 
     position: absolute; 
-    z-index: 500;
+    z-index: 1;
 }
 
 .ampromo-gift .product-image{

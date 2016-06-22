@@ -1,8 +1,11 @@
 <?php
     $_helper    = $this->helper('catalog/output');
     $_category  = $this->getCurrentCategory();
+	$_subcategories = $_category->getChildrenCategories();
+	$_categoryHelper    = $this->helper('catalog/category');
+	$_categoryLevel3 = array();
     $_imgHtml   = '';
-    if ($_imgUrl = $_category->getImageUrl()) {
+    if ($_imgUrl = $_category->getImageUrl()) {      
         $_imgHtml = '<div class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" /></div>';
         $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
     }
@@ -10,11 +13,14 @@
 <div class="allcategories-list">
 	<div class="category-overview">
 		<?php if($_imgUrl): ?>
+			<a href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist">
 			<?php echo $_imgHtml ?>
+			</a>
 		<?php endif; ?>
 		<div class="category-info">
+			<a href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist">
 			<div class="page-title category-title">
-				<?php if($this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
+				<?php if(false && $this->IsRssCatalogEnable() && $this->IsTopCategory()): ?>
 					<a href="<?php echo $this->getRssLink() ?>" class="link-rss"><?php echo $this->__('Subscribe to RSS Feed') ?></a>
 				<?php endif; ?>
 				<h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
@@ -24,20 +30,25 @@
 					<?php echo $_helper->categoryAttribute($_category, $_description, 'description') ?>
 				</div>
 			<?php endif; ?>
+			</a>
 		</div>
 	</div>
 	<div class="categories-list">
 		<div class="selectcat-title"><h1><?php echo $this->__('Select Category')?></h1></div>
-		<?php 
-			$_subcategories = $_category->getChildrenCategories();
-			$_categoryHelper    = $this->helper('catalog/category');
-		?>
 		<?php if (count($_subcategories) > 0): ?>
 			<ul class="category-grid">
 			<?php $i=0; foreach($_subcategories as $_subcategory): $i++;?>
 					<li class="category-item<?php if($i%3==0): ?> last<?php endif; ?>">
 						<?php $_subcategoryData = Mage::getModel('catalog/category')->load($_subcategory->getId()); ?>
-						<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						<?php if (count($_categoryLevel3) <= 0): ?>
+						<a class="link-no-sub-img" href="<?php echo $_categoryHelper->getCategoryUrl($_subcategoryData) ?>">
+							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						</a>
+						<?php else:?>
+						<a class="link-no-sub-img" href="<?php echo $_categoryHelper->getCategoryUrl($_subcategoryData) ?>">
+							<img src="<?php echo $_subcategoryData->getImageUrl() ?>" alt="<?php echo $_subcategoryData->getName() ?>" />
+						</a>
+						<?php endif; ?>
 						<div class="categories-links">
 						<?php $_categoryLevel3 = $_subcategory->getChildrenCategories(); ?>
 						<?php if (count($_categoryLevel3) > 0): ?>
@@ -66,7 +77,7 @@
 						</div>
 					</li>
 			<?php endforeach; ?>
-					<li class="category-item category-products-list <?php if (count($_subcategories)%2 == 0):?>last<?php endif;?>">
+					<li onclick="setLocation('<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist')" class="category-item category-products-list <?php if (count($_subcategories)%3 == 2):?>last<?php endif;?>">
 						<a class="link-view-productlist" href="<?php echo $_categoryHelper->getCategoryUrl($_category) ?>/?page=productlist">
 							<?php echo $this->__('View All') ?>
 						</a>

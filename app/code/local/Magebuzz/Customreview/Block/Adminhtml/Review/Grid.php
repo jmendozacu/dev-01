@@ -134,7 +134,12 @@ class Magebuzz_Customreview_Block_Adminhtml_Review_Grid extends Mage_Adminhtml_B
                 'filter'    => false,
                 'sortable'  => false
             ));
-
+        if(strpos(Mage::helper('core/url')->getCurrentUrl(),'pending')){
+            $this->addExportType('*/*/exportPendingCsv', Mage::helper('catalog')->__('CSV'));
+            $this->addExportType('*/*/exportPendingExcel', Mage::helper('catalog')->__('Excel'));
+        }
+        $this->addExportType('*/*/exportCsv', Mage::helper('catalog')->__('CSV'));
+        $this->addExportType('*/*/exportExcel', Mage::helper('catalog')->__('Excel'));
         $this->addRssList('rss/catalog/review', Mage::helper('catalog')->__('Pending Reviews RSS'));
 
         return $this;

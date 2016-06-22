@@ -1,0 +1,133 @@
+#ajaxcart-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+	display: block;
+	z-index: 9010;
+	background: linear-gradient(rgba(11, 11, 11, 0.1), rgba(11, 11, 11, 0.6)) repeat-x scroll 0 0 rgba(11, 11, 11, 0.2);
+}
+#ajax_cart_loading {
+    width: 68px;
+    height: 68px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -34px;
+    margin-left: -34px;
+    background: url('../images/loading.gif') no-repeat center;
+    text-align: center;
+    z-index: 10000;
+}
+
+#ajaxcart_content_option_product{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 430px;
+    margin-left: -215px;
+    margin-top: -100px;
+    text-align: center;
+    z-index: 9040;
+		max-height:480px;
+}
+#ajaxcart_content_option_product .ajaxcart-heading{
+    padding: 20px;
+    background-color: #252525;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+}
+#ajaxcart_content_option_product .ajaxcart-body{
+    padding: 10px 20px 20px 20px;
+    background-color: #fff;
+    border-radius: 0 0 3px 3px;
+}
+#ajaxcart_configurable_block{
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 430px;
+    margin-left: -215px;
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    z-index: 9040;
+}
+#ajaxcart_content_option_product .added-success-message{background-image: url(../images/i-success-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-size:15px; }
+#ajaxcart_content_option_product .added-error-message{background-image: url(../images/i-error-msg.png); background-repeat:no-repeat; background-position:left center; text-align:left; padding-left:35px; font-size:15px; }
+#ajaxcart_content_option_product h2.product-name{font-weight: bold; font-size:24px; color:#000; margin:10px 0; text-transform:uppercase;}
+#ajaxcart_configurable_block .product-options{width:100%;}
+#ajaxcart_configurable_block .product-options dl{}
+#ajaxcart_configurable_block .product-options dt{width:30%; text-align:left;}
+#ajaxcart_configurable_block .product-options dd{padding:0; border:0 none; width:70%; text-align:left;}
+#ajaxcart_configurable_block .product-name{font-weight: bold; font-size:24px; color:#000;  text-transform:uppercase;}
+#ajaxcart_configurable_block .product-options .price-box{font-weight: bold; font-size:24px; color:#000;}
+#ajaxcart_configurable_block .product-options .price-box .price{ font-size:24px;}
+#ajaxcart_configurable_block .product-options .price-box .special-price{padding:0 10px 0 0;}
+#ajaxcart_configurable_block #product_options .amconf-images-container .amconf-image-container{margin-right:10px;}
+#ajaxcart_configurable_block #product_options #super-product-table{}
+#ajaxcart_configurable_block #product_options #super-product-table th,
+#ajaxcart_configurable_block #product_options #super-product-table td{vertical-align:middle;}
+#ajaxcart_configurable_block #product_options #super-product-table td input.qty{height:35px; line-height:35px;}
+@media (max-width: 480px){
+	#ajaxcart_content_option_product {
+		width:300px;
+		margin-left:-150px;
+		padding:10px;
+	}
+	#ajaxcart_content_option_product .added-success-message{font-size:11px;}
+	#ajaxcart_content_option_product .ajaxcart-close{right:0; top:-25px;}
+
+	#ajaxcart_configurable_block {
+		width:300px;
+		margin-left:-150px;
+		padding:10px;
+		top:10%;
+	}
+	#ajaxcart_configurable_block .added-success-message{font-size:11px;}
+	#ajaxcart_configurable_block .ajaxcart-close{right:0; top:-25px;}
+}
+@media (max-width: 480px) and (orientation:landscape) {
+	#ajaxcart_content_option_product {
+			overflow-y: auto!important;
+			max-height: 300px;
+	}
+}
+
+#plus_one {
+    width: 256px;
+    height: 256px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -128px;
+    margin-left: -128px;
+    background: url('../images/cart.png') no-repeat center;
+}
+
+.ajaxcart-product-image {
+    display: inline;
+    margin: 10px 0;
+}
+
+.ajaxcart-buttons{margin:10px 0 0;}
+.ajaxcart-buttons button {
+    margin: 5px;
+}
+.ajaxcart-buttons button  > span::before{
+   transform:inherit;
+}
+.ajaxcart-buttons #ajaxcart_continue_shopping  > span::before{background:#ff8a00; transform:inherit;}
+.ajaxcart-close {
+	position: absolute;
+	top: -10px;
+	right: -25px;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	z-index: 8040;
+	background: url(../../../js/amasty/plugins/fancybox/fancybox-close.png) center center no-repeat;
+}
+.ajaxcart-close::after{background-color:transparent;}

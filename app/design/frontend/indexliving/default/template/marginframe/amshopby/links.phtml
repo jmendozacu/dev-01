@@ -7,12 +7,23 @@
 ?>
 <?php $links = $this->getLinks() ?>
 <?php if (count($links)): ?>
-<div class="amshopby-links-wrapper clearer" >
-<?php foreach ($links as $link): ?>
-<div class="amshopby-link"><a href="<?php echo $link['url']?>"><img 
-title="<?php echo $this->htmlEscape($link['title'])?>" 
-alt="<?php echo $this->htmlEscape($link['title'])?>" 
-src="<?php echo $link['img']?>"></a></div>
-<?php endforeach ?>
+<div class="warranty-info">
+	<div class="warranty">
+		<div class="amshopby-links-wrapper clearer">
+			<?php $i=0; foreach ($links as $link): ?>
+				<?php if ($i++%6==0): ?>
+					<ul>
+				<?php endif ?>
+					<li>
+						<a href="<?php echo $link['url']?>" title="<?php echo $this->htmlEscape($link['title'])?>" >
+							<img alt="<?php echo $this->htmlEscape($link['title'])?>" src="<?php echo $link['img']?>">
+						</a>
+					</li>
+				<?php if ($i%6==0 || $i==count($links)): ?>
+					</ul>
+				<?php endif ?>	
+			<?php endforeach ?>
+		</div>
+	</div>
 </div>
 <?php endif; ?>

@@ -11,31 +11,46 @@ select.amshopby-select {
 .amshopby-logo{
 padding: 0pt 10px 10px 0pt; float: left;
 }
-
+.featured-brands .page-title{margin-bottom:45px;}
+.amshopby-featured-wrapper{}
+.amshopby-featured-wrapper .brands-grid{}
+.amshopby-featured-wrapper .brands-grid li{float:left; width:32%; margin-left:2%; margin-bottom:30px; position:relative;}
+.amshopby-featured-wrapper .brands-grid li.first{margin-left:0;}
+.amshopby-featured-wrapper .brands-grid li.last{margin-left:0; float:right;}
+.amshopby-featured-wrapper .brands-grid li .brand-info{border:1px solid #e6e6e6; padding:0 0 100px;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text{padding:15px; position:absolute; left:0; bottom:0; width:100%; background:#FFFFFF; border:1px solid #e6e6e6; }
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-name{font-size:20px; color:#ffb300; margin:0 0 6px; font-weight: bold;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .brand-desc{
+	font-size:14px;
+    font-style: normal;
+	color:#9c9c9c;
+	margin:0 0 6px;
+}
+.amshopby-featured-wrapper .brands-grid li.over .brand-info .brand-text .brand-desc{}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details{font-size:14px; color:#000; text-decoration:none; font-style: normal;}
+.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text .view-brand-details:hover{color:#ffb300; }
 .amshopby-featured {
-    padding: 5px 5px 5px 5px; 
 }
 
 .amshopby-link{
     float:left;
-    padding-left:5px; 
+    padding-left:5px;
     padding-top:5px;
 }
 
 .amshopby-clearer {
-	display:block; 
-	clear:both; 
+	display:block;
+	clear:both;
 	overflow: hidden;
 }
-div.block-layered-nav dd{display:none;}  
-div.block-layered-nav dd.current{display:block;}  
-div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left; font-family:"FuturaBT-Book"; text-transform:uppercase; color:#444;}  
-div.block-layered-nav dd a:hover{color:#ffc222;} 
-div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover {padding-left:32px; background-image:url(../images/amshopby-cb1.gif); background-repeat: no-repeat; background-position: left center;}
+div.block-layered-nav dd{display:block;}
+div.block-layered-nav dd a {padding:0px 5px 0px 0px; display:block; float: left; text-transform:uppercase; color:#444;}
+div.block-layered-nav dd a:hover{color:#ffc222;}
+div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover {padding-left:32px; background-image:url(../images/amshopby-cb1.gif); background-repeat: no-repeat;/*  background-position: left center; */  background-position: left 3px;}
 div.block-layered-nav dd a.amshopby-attr::before, div.block-layered-nav dd a.amshopby-attr-selected::before {border-style: none !important;}
-div.block-layered-nav dd a.amshopby-attr-selected {font-weight: bold; padding-left:32px; background-image:url(../images/amshopby-cb2.gif); background-repeat: no-repeat; background-position: left center;}
+div.block-layered-nav dd a.amshopby-attr-selected {font-weight: bold; padding-left:32px; background-image:url(../images/amshopby-cb2.gif); background-repeat: no-repeat; /* background-position: left center; */     background-position: left 3px;}
 div.block-layered-nav dd a.amshopby-attr-inactive {pointer-events: none; color: #666666}
-div.block-layered-nav dd a img {/* padding: 0px 4px 5px;*/ float:left;}
+div.block-layered-nav dd a img {/* padding: 0px 4px 5px;*/ float:left; margin-right:10px;}
 
 div.block-layered-nav dd li.amshopby-cat-level-1 {margin:0 0 10px;}
 div.block-layered-nav dd li.amshopby-cat a, div.block-layered-nav dd li.amshopby-cat span.count{padding:0 5px; line-height:normal;}
@@ -85,11 +100,11 @@ div.block-layered-nav div.amshopby-slider div.handle {margin-left:-4px; width:8p
  * Slider labels
  */
 .amshopby-slider-price {
-	color: #798794;
+	color: #000;
 }
 .amshopby-slider-price-from {
 	float: left;
-    
+
 }
 .amshopby-slider-price-to {
 	float: right;
@@ -117,7 +132,7 @@ div.block-layered-nav div.amshopby-slider div.handle {margin-left:-4px; width:8p
     position:absolute;
 }
 
-.amshopby-slider-price-range 
+.amshopby-slider-price-range
 {
 	text-align: center;
 	font-size: 0.9em;
@@ -186,18 +201,18 @@ div.amshopby-overlay div {
  * Slider Bar
  */
 .amshopby-slider-bar {
-	position:absolute; 
-	background: #999; 
-	height: 6px; 
-	top: 6px; 
-	z-index: 1;  
+	position:absolute;
+	background: #999;
+	height: 6px;
+	top: 6px;
+	z-index: 1;
 }
 
 /*
  * Subcategories block
  */
 .amshopby-subcategory-image {
-	overflow: auto; 
+	overflow: auto;
 }
 
 .btn-remove-inline { background-image: url('../images/am_btn_remove.gif'); background-repeat: no-repeat; width:13px; height:12px; margin-left: 4px; }
@@ -208,22 +223,22 @@ div.amshopby-overlay div {
 
 div.block-layered-nav div.amshopby-slider div.handle.active { z-index: 3; }
 
-.amshopby-slider-ui { background: url(../images/amshopby-slider-bg.gif) repeat-x 0 50%; margin: 10px .4em; }
-.amshopby-slider-ui .ui-slider-handle { background-color: #f18200; border: 1px solid #de5400; box-sizing: border-box; outline: none; }
-.amshopby-slider-ui .ui-slider-range { background-color: #999999; }
+.amshopby-slider-ui { background:#e1e1e1; margin: 10px .4em; }
+.amshopby-slider-ui .ui-slider-handle { background-color: #000; box-sizing: border-box; outline: none; }
+.amshopby-slider-ui .ui-slider-range { background-color: #000; }
 
 .ui-widget-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
 .ui-slider { cursor: pointer; position: relative; text-align: left; }
-.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 0.8em; height: 1.2em; cursor: pointer; -ms-touch-action: none; touch-action: none; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 18px; height: 18px; border-radius:9px; cursor: pointer; -ms-touch-action: none; touch-action: none; }
 .ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
 
 /* support: IE8 - See #6727 */
 .ui-slider.ui-state-disabled .ui-slider-handle,
 .ui-slider.ui-state-disabled .ui-slider-range { filter: inherit; }
 
-.ui-slider-horizontal { height: .8em; }
-.ui-slider-horizontal .ui-slider-handle { top: -.2em; margin-left: -.4em; }
-.ui-slider-horizontal .ui-slider-range { top: 0.2em; height: 8px; }
+.ui-slider-horizontal { height:6px; }
+.ui-slider-horizontal .ui-slider-handle { top: -6px; margin-left: -.4em; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height:6px; }
 .ui-slider-horizontal .ui-slider-range-min { left: 0; }
 .ui-slider-horizontal .ui-slider-range-max { right: 0; }
 
@@ -236,8 +251,18 @@ div.block-layered-nav div.amshopby-slider div.handle.active { z-index: 3; }
 .amshopby-narrow-by-list table td { vertical-align: top; }
 
 input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"].input-text{
-    width: auto;
+    width: 46%;
+		float:left;
+		border-radius:0;
 }
+.price-separator{
+	float: left;
+	width: 8%;
+	padding: 0!important;
+	text-align: center;
+	line-height: 35px;
+}
+.amshopby-price-find{margin-top:15px; min-width:155px;}
 
 .amshopby-item-top{
     max-width: 225px;
@@ -268,4 +293,21 @@ input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"
     dl#narrow-by-list2 {
         padding: 0px;
     }
+}
+
+@media only screen and (max-width: 600px) {
+  .amshopby-featured-wrapper{}
+	.amshopby-featured-wrapper .brands-grid{}
+	.amshopby-featured-wrapper .brands-grid li{float:left; width:100%; margin-left:0; margin-bottom:15px; position:relative;}
+	.amshopby-featured-wrapper .brands-grid li.first{margin-left:0;}
+	.amshopby-featured-wrapper .brands-grid li.last{margin-left:0;}
+}
+@media (min-width: 600px) and (max-width: 767px) {
+	.amshopby-featured-wrapper .brands-grid li{float:left; width:49%; margin-left:0; margin-bottom:15px; position:relative;}
+	.amshopby-featured-wrapper .brands-grid li:nth-child(2){float:right;}
+}
+
+@media (min-width: 767px) and (max-width: 991px) {
+	.amshopby-featured-wrapper .brands-grid li .brand-info{padding:0}
+	.amshopby-featured-wrapper .brands-grid li .brand-info .brand-text{position:relative; border:0 none;}
 }

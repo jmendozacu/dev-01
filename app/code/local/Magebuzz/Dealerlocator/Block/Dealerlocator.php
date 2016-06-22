@@ -28,6 +28,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     $pager = $this->getLayout()->createBlock('page/html_pager', 'dealer.pager');
     $pager->setAvailableLimit($showPerPageOptions);
     $pager->setLimit(Mage::helper('dealerlocator')->getDefaultShowPerPage());
+    $pager->setTemplate('dealerlocator/pager.phtml');
     $collection = $this->_getDealers();
     $pager->setCollection($collection);
     $this->setChild('pager', $pager);
@@ -172,13 +173,14 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
   }
 
   /* update version 1.8
-  * function getListTag  
-  * Return : list Tag 
+  * function getListTag
+  * Return : list Tag
   */
   public function getListTag() {
     $dealerCollection = $this->_getDealers();
     $dealerIds = $dealerCollection->getColumnValues('dealerlocator_id');
     $tagCollection = Mage::getModel('dealerlocator/tag')->getCollection()->addFieldToFilter('dealer_id', array('in' => $dealerIds));
+    $tagCollection->getSelect()->order('tag', 'asc');
     $tags = array();
     if (count($tagCollection)) {
       foreach ($tagCollection as $tag) {
@@ -198,7 +200,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     if ($configUrl != '') {
       $url = Mage::getStoreConfig('dealerlocator/google_map_options/google_geo_api_url') . "?address=$address&sensor=false";
     } else {
-      $url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
+      $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
     }
 
     $rCURL = curl_init();
@@ -214,5 +216,17 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     }
     // return did you mean from item 2nd
     return array_slice($result, 1, 4);
+  }
+
+	public function getDealerByTag($tag){
+    $tagModel = Mage::getModel('dealerlocator/tag');
+    $dealerModel = Mage::getModel('dealerlocator/dealerlocator');
+    $dealerIds = $tagModel->getCollection()->addFieldToFilter('tag', $tag)->getColumnValues('dealer_id');
+    $dealerCollection = $dealerModel;
+    if(count($dealerIds)>0){
+      $dealerCollection = $dealerModel->getCollection()
+      ->addFieldToFilter('dealerlocator_id', array('in' => $dealerIds));
+    }
+    return $dealerCollection;
   }
 }

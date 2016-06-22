@@ -161,10 +161,12 @@ class Amasty_Label_Model_Observer
          */
         $label      = '';
         $controller = Mage::app()->getRequest()->getControllerName();
+        $moduleName = Mage::app()->getRequest()->getModuleName();
+
         Mage::register('amlabel_getting_product', true, true);
         $product = $observer->getProduct();
         if ($product) {
-            if (strpos($controller, 'cart') === false) {
+            if (strpos($controller, 'cart') === false && strpos($moduleName, 'ajaxcart') === false) {
                 $label = Mage::helper('amlabel')->getLabels($product, 'product', true);
             }
             if ($label) {

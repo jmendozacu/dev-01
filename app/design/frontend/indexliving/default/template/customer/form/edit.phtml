@@ -49,27 +49,28 @@
             <?php if ($_taxvat->isEnabled()): ?>
                 <li><?php echo $_taxvat->setTaxvat($this->getCustomer()->getTaxvat())->toHtml() ?></li>
             <?php endif ?>
-            
+
             <li>
+							<div class="field">
                 <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
                 <div class="input-box">
-                    <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                    <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
                 </div>
+							</div>
             </li>
+						<li>
+							<div class="field">
+								<label for="custom_joycard"><?php echo $this->__('JOYCARD') ?></label>
+								<div class="input-box">
+									<input placeholder="<?php echo $this->__('JOYCARD') ?>" type="text" name="custom_joycard" id="custom_joycard" value="<?php echo $this->escapeHtml($this->getCustomer()->getJoycard()) ?>" title="<?php echo $this->__('JOYCARD') ?>" class="input-text" />
+								</div>
+							</div>
+						</li>
             <li class="control change-password">
                 <input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="<?php echo $this->__('Change Password') ?>"<?php if($this->getCustomer()->getChangePassword()==1): ?> checked="checked"<?php endif; ?> class="checkbox" />
                 <label for="change_password"><?php echo $this->__('Change Password') ?></label>
             </li>
         </ul>
-        <div class="box-edit-subscribed">
-            <h3><?php echo $this->__('Newsletters') ?></h3>
-            <div class="subscribed">  
-              <p><?php echo $this->__("You are currently subscribed to 'General Subscription'.")?></p>
-              <input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo Mage::helper('core')->quoteEscape($this->__('General Subscription')) ?>"<?php if($this->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-              <label for="subscription"><?php echo $this->__('Newsletter Email') ?></label>
-            </div>  
-        </div>
-    </div>
     <div class="fieldset fieldset-change-password" style="display:none;">
         <h2 class="legend"><?php echo $this->__('Change Password') ?></h2>
         <ul class="form-list">
@@ -95,6 +96,13 @@
             </li>
         </ul>
     </div>
+        <div class="box-edit-subscribed">
+            <h3><?php echo $this->__('Newsletters') ?></h3>
+            <div class="subscribed">
+              <?php echo $this->getChildHtml('customer_newsletter')?>
+            </div>
+        </div>
+    </div>
     <div class="buttons-set">
         <a class="button back-link" href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><span><?php echo $this->__('Back') ?></span></a>
         <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
@@ -102,7 +110,13 @@
 </form>
 <script type="text/javascript">
 //<![CDATA[
-    var dataForm = new VarienForm('form-validate', true);
+		jQuery(document).ready(function() {
+			jQuery('#joycard').parent().hide();
+		});
+		jQuery("#custom_joycard").change(function() {
+			jQuery('#joycard').val(jQuery('#custom_joycard').val());
+		});
+    var customerAccountEditForm = new VarienForm('form-validate', true);
     function setPasswordForm(arg){
         if(arg){
             $('current_password').up(3).show();

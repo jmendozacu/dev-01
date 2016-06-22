@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magebuzz_OrderQty>
+            <version>0.1.0</version>
+        </Magebuzz_OrderQty>
+    </modules>
+    <global>
+        <blocks>
+            <orderqty_adminhtml>
+                <class>Magebuzz_OrderQty_Block_Adminhtml</class>
+            </orderqty_adminhtml>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_create_search_grid>Magebuzz_OrderQty_Block_Adminhtml_Sales_Order_Create_Search_Grid</sales_order_create_search_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
+</config>

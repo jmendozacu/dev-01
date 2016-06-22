@@ -185,9 +185,9 @@ class Mirasvit_SearchIndex_Model_Index extends Mage_Core_Model_Abstract
             }
         }
 
-        if ($storeId == null) {
-            $storeId = Mage::app()->getStore()->getId();
-        }
+//        if ($storeId == null) {
+//            $storeId = Mage::app()->getStore()->getId();
+//        }
 
         if (!isset($this->_matchedIds[$queryText])) {
             $this->_processSearch($queryText, $storeId);
@@ -275,7 +275,7 @@ class Mirasvit_SearchIndex_Model_Index extends Mage_Core_Model_Abstract
 
     public function joinMatched($collection, $mainTableKeyField = 'e.entity_id')
     {
-        $matchedIds = $this->getMatchedIds(null, $this->getStoreId());
+        $matchedIds = $this->getMatchedIds(null, null);
         $this->_createTemporaryTable($matchedIds);
 
         $collection->getSelect()->joinLeft(

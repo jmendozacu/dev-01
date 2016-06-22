@@ -12,7 +12,7 @@ class Amasty_Label_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getLabels($product, $mode = 'category', $useJs = false)
     {
-        $html = '';
+        $html = "<div class='product-label-{$mode}'>";
 
         $applied = false;
         foreach ($this->_getCollection() as $label) {
@@ -34,6 +34,8 @@ class Amasty_Label_Helper_Data extends Mage_Core_Helper_Abstract
                 }
             }
         }
+
+        $html .= "</div><div style='clear: both;'></div>";
 
         return $html;
     }
@@ -89,7 +91,7 @@ class Amasty_Label_Helper_Data extends Mage_Core_Helper_Abstract
 
         // need both w and h for correct script logic and enabled admin setting
         if ($useJs && !($imgWidth && $imgHeight)) {
-            Mage::log('UseJS enabled, but W&H do not filled.', null, 'Amasty_Label.log', true);
+            //Mage::log('UseJS enabled, but W&H do not filled.', null, 'Amasty_Label.log', true);
             return '';
         } else if ($useJs && ($imgWidth && $imgHeight)) {
             $textBlockStyle = 'style="width:' . $imgWidth . '%;height:' . $imgHeight . '%; background: url(' . $imgUrl . ') no-repeat 0 0; ' . $customStyle . '"';

@@ -9,7 +9,8 @@ class Magebuzz_Customaddress_Model_Mysql4_City_Collection extends Mage_Core_Mode
 	}
 	
 	public function toOptionArray() {		
-		$options = $this->_toOptionArray('city_id', 'default_name', array('title' => 'default_name'));
+		$field_name = Mage::helper('customaddress')->getTextColumnName();
+		$options = $this->_toOptionArray('city_id', $field_name, array('title' => $field_name));
 		if (count($options) > 0) {
 			array_unshift($options, array(
 				'title '=> null,

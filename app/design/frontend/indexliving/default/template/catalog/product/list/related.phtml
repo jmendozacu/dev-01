@@ -29,14 +29,15 @@
 <div class="block block-related">
 	<div class="page-container">
     <div class="block-title">
-        <h2><?php echo $this->__('Also Look At') ?></h2>
+        <h2><?php echo $this->__('In this set') ?></h2>
     </div>
     <div class="block-content">
-        <div id="product-list-related" class="recommend-product-list">
+        <div id="product-list-related" class="recommend-product-list products-grid">
         <?php foreach($this->getItems() as $_item): ?>
             <div class="item">
                 <div class="product">
-                    <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(210) ?>" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                  <a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(210) ?>" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+                  <h2 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->stripTags($_item->getName(), null, true) ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h2>
                 </div>
             </div>
         <?php endforeach ?>
@@ -46,7 +47,7 @@
 		<script type="text/javascript">
 			var widthWindow = jQuery( window ).width();
 			if(widthWindow > 768){
-				jQuery("#product-list-related").owlCarousel({	
+				jQuery("#product-list-related").owlCarousel({
 					loop:true,
 					margin:20,
 					nav:<?php if($itemCount > 4):?> true <?php else:?> false <?php endif;?>,

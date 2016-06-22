@@ -19,7 +19,7 @@ box-sizing: content-box;
     width: 100%;
     z-index: 100000;
 }
-#amprogress img {width:80px; height:80px; position:absolute; top:50%; margin-top:-40px; margin-left:-40px; left:50%;}
+#amprogress img {width:68px; height:68px; position:absolute; top:50%; margin-top:-34px; margin-left:-34px; left:50%;}
 .or_use_that {
     background: url(or_use_bg.png) repeat-x scroll left center;
     float: left;
@@ -35,7 +35,6 @@ box-sizing: content-box;
     color: #737373;
     display: inline-block;
     font-size: 18px;
-		font-family: 'RSU_Bold';
     text-transform: uppercase;
 }
 #amimg_container {
@@ -51,7 +50,7 @@ box-sizing: content-box;
 	position:fixed;
 	top:0;
 	left:0;
-	background: url("../../../images/amasty/amajaxlogin/overlay.png") top left repeat; 
+	background: url("../../../images/amasty/amajaxlogin/overlay.png") top left repeat;
 	z-index: 99999;
 }
 
@@ -63,10 +62,10 @@ box-sizing: content-box;
 }
 
 #am-ajaxlogin{
-	float: none;   
+	float: none;
 	width:95%;
-	top:20%;
-	max-width:430px;
+	top:10%;
+	max-width:302px;
 	position:relative;
 	text-align: center;
 	margin: 0 auto;
@@ -82,33 +81,35 @@ box-sizing: content-box;
     cursor: pointer;
 }
 #am-ajaxlogin-close span{
-  background-image: url("../../../images/amasty/amajaxlogin/btn-close.png"); 
-	background-repeat:no-repeat; 
+  background-image: url("../../../images/amasty/amajaxlogin/btn-close.png");
+	background-repeat:no-repeat;
 	background-position:center left;
-	width:18px;
-	height:18px;
+	width:20px;
+	height:20px;
 	display:block;
 	text-indent:-9999em;
 }
 
 #am-ajaxlogin-title{
-	font-size: 24px;
-	background-color: #f2f2f2;
-	color: #000;
-	font-family: 'RSU_Bold';
-	padding:17px 0;
+	width: 100%;
+	margin: 0px;
+	background: #252525;
+	padding: 10px;
+	line-height: 28px;
+	color: #fff;
+	text-align: center;
+	font-size: 16px;
 }
 #am-ajaxlogin-title .am-ajax-title-success{display:inline; background-image: url("../../../images/amasty/amajaxlogin/success.png"); background-repeat:no-repeat; background-position:center left; padding-left:35px;}
 #am-ajaxlogin-title .am-ajax-title-error{display:inline; background-image: url("../../../images/amasty/amajaxlogin/error.png"); background-repeat:no-repeat; background-position:center left; padding-left:35px;}
 #am-ajaxlogin-message{
-    background-color: rgb(247,248,250);
-    height: 100%;
+	height: 100%;
+	overflow:hidden;
 }
-
+#am-ajaxlogin-message .account-login{padding:10px 25px; overflow:hidden;}
+#am-ajaxlogin-message .account-login button.button{float:left; width:100%; margin:10px 0;}
 .am-form-block{
-	max-width: 280px;
 	text-align: left;
-	padding:0 15px;
 }
 .account-mini-login .am-form-block{padding:0 25px; max-width:302px; width: 100%;  margin-top: 10px; float:left;}
 .am-form-list input.input-text {
@@ -127,18 +128,18 @@ box-sizing: content-box;
 
 .am-form-list label {
   font-size: 13px;
-	font-family:Tahoma;
 	color: #595959;
 	font-weight:normal;
   margin-bottom:5px;
 }
 #amajaxlogin-login-form button.button{width:100%; margin:12px 0; padding:0px; border-radius:4px;}
 #amajaxlogin-login-form button.button.btn-create-acc{background:#444; margin: 5px 0 25px; }
+#amajaxlogin-login-form-popup button.button.btn-create-acc{background:#444; margin: 5px 0; }
 #amajaxlogin-login-form button.button span{width:100%; height:40px; line-height:40px;}
 .account-mini-login .or_use_that{margin:5px 0;}
 .account-mini-login .or_use_that .or_use_text span{color:#000;}
-.account-mini-login label.reg{color:#000; font-family:Tahoma; font-size:13px; font-weight:normal; text-align:center; float:left; width:100%;}
-.account-mini-login .am-form-block h3.box-title{font-family: 'RSU_Bold'; font-size:24px; color:#000; text-align:center;}
+.account-mini-login label.reg{color:#000;  font-size:13px; font-weight:normal; text-align:center; float:left; width:100%;}
+.account-mini-login .am-form-block h3.box-title{ font-size:24px; color:#000; text-align:center;}
 .am-form-list em {
     color: #EB340A;
     float: right;
@@ -172,24 +173,24 @@ box-sizing: content-box;
 }
 
 .amform-block-social div{
-    cursor: pointer; 
+    cursor: pointer;
     margin-bottom: 5px;
-    max-height: 32px;   
+    max-height: 32px;
 }
 
 #hideDiv{
     width:100%;
     height:100%;
-    z-index: 10; 
+    z-index: 10;
     position: absolute;
     display: block;
-    float: none;   
+    float: none;
 }
 
 .am-password-login {
     float:left;
     font-size: 13px;
-		font-family:Tahoma;
+
     color: #000;
 }
 
@@ -197,7 +198,7 @@ box-sizing: content-box;
     color: #000;
     text-decoration: none;
     border-bottom: 1px dashed #9ba0a4;
-    cursor: pointer;  
+    cursor: pointer;
 }
 
 ul.form-list label {
@@ -205,7 +206,7 @@ ul.form-list label {
 
 .am-password-login a:hover{
     text-decoration: none;
-    border-bottom: 0;  
+    border-bottom: 0;
 }
 
 .am-login-button {
@@ -277,11 +278,20 @@ div.am-login:active {
 
 .am-ajax-error{
 	color: #df280a;
-	font-family: 'RSU_Bold';
-	font-size:20px;
-	padding:20px;
+	font-size:14px;
+	padding:20px 20px 20px 50px;
+    position: relative;
 }
-
+.am-ajax-error:before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url('../../../images/i-error-msg.png') left center no-repeat;
+    top: 16px;
+    left: 25px;
+}
 
 .am-ajax-error img,
 .am-ajax-success img {
@@ -289,9 +299,12 @@ div.am-login:active {
   margin-right: 11px;
 }
 
+.am-ajax-error img{
+    display: none;
+}
+
 .am-ajax-success{
   color: #72ae1c;
-	font-family: 'RSU_Bold';
 	font-size:20px;
 	padding:20px;
 }
@@ -360,7 +373,8 @@ div.am-login:active {
 }
 #am-ajax-facebook iframe{overflow:hidden;}
 @media screen and (max-width: 565px) {
-  .account-mini-login .am-form-block {max-width:100%;}
+  .account-mini-login .am-form-block {max-width:100%;/*  padding: 0 35px; */}
+  .account-mini-login .am-form-block .am-facebook-image{padding:0 0 0 70px; width:180px;}
 }
 @media screen and (max-width: 375px) {
 }

@@ -11,27 +11,35 @@ body {
     margin:0;
 }
 @font-face {
-    font-family: 'RSU Light';
-    src: url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.eot');
-    src: local('?'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.woff') format('woff'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.ttf') format('truetype'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/RSU_light.svg') format('svg');
+    font-family: 'Index';
+    src: url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/live/index-medium.eot');
+    src: local('☺'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/live/index-medium.woff') format('woff'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/live/index-medium.ttf') format('truetype'), url('<?php echo Mage::getDesign()->getSkinUrl('css/fonts')?>/live/index-medium.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 #am-ajax-facebook iframe{}
 .am-facebook-image{
+    background-color: #3B5998;
     color: #FFFFFF;
-    font-family: 'RSU_Bold';
-    padding: 0 0 0 60px;
-    text-align: left;
-    width: 250px;
-		border:0 none;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+	line-height:42px;
+	font-size:15px;
+	height:40px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-family: 'Index', Helvetica, Arial, sans-serif;
+}
+.am-facebook-image:before{
+    content:"";
     background-repeat: no-repeat;
     background-position: top left;
     background-image: url("<?php echo  Mage::getDesign()->getSkinUrl('images/amasty/amajaxlogin/facebook.png',array('_area'=>'frontend'))?>");
-    cursor: pointer;
-    display: none;
-		line-height:40px;
-		font-size:18px;
+		width:41px;
+		height:40px;
+		float:left;
+    background-color: #354f88;
 }
 </style>
 

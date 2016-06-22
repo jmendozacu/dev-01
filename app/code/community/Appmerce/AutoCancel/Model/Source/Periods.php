@@ -60,6 +60,18 @@ class Appmerce_AutoCancel_Model_Source_Periods
                 'value' => 2880,
                 'label' => Mage::helper('autocancel')->__('2d'),
             ),
+						array(
+                'value' => 4320,
+                'label' => Mage::helper('autocancel')->__('3d'),
+            ),
+						array(
+                'value' => 7200,
+                'label' => Mage::helper('autocancel')->__('5d'),
+            ),
+						array(
+                'value' => 10080,
+                'label' => Mage::helper('autocancel')->__('7d'),
+            ),
         );
     }
 

@@ -36,8 +36,8 @@
 
             <block type="page/html_head" name="head" as="head">
                 <action method="addJs"><script>prototype/prototype.js</script></action>
-                <action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
-                <action method="addJs"><script>lib/jquery/noconflict.js</script></action>
+                <!--<action method="addJs"><script>lib/jquery/jquery-1.10.2.min.js</script></action>
+                <action method="addJs"><script>lib/jquery/noconflict.js</script></action>-->
                 <action method="addJs"><script>lib/ccard.js</script></action>
                 <action method="addJs"><script>prototype/validation.js</script></action>
                 <action method="addJs"><script>scriptaculous/builder.js</script></action>
@@ -50,7 +50,6 @@
                 <action method="addJs"><script>mage/translate.js</script></action>
                 <action method="addJs"><script>mage/cookies.js</script></action>
                 <action method="addItem"><type>skin_js</type><name>js/jquery.form.min.js</name></action>
-                <action method="addItem"><type>skin_js</type><name>js/remodal.js</name></action>
 
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
 
@@ -70,11 +69,12 @@
                 <action method="addItem"><type>skin_js</type><name>js/lib/imagesloaded.js</name></action>
                 <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</href></action>
                 <action method="addItem"><type>skin_js</type><name>js/minicart.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/tab.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
 
                 <!-- Add stylesheets with no media queries for use in IE 8 and below -->
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie8.css</name><params/><if><![CDATA[ (lte IE 8) & (!IEMobile)]]></if></action>
-                <action method="addItem"><type>skin_css</type><name>css/madisonisland-ie8.css</name><params/><if><![CDATA[ (lte IE 8) & (!IEMobile)]]></if></action>
+                <!-- <action method="addItem"><type>skin_css</type><name>css/madisonisland-ie8.css</name><params/><if><![CDATA[ (lte IE 8) & (!IEMobile)]]></if></action> -->
 
                 <!-- Add stylesheets with media queries for use by modern browsers -->
                 <action method="addItem"><type>skin_js</type><name>js/jquery.mCustomScrollbar.concat.min.js</name></action>
@@ -83,7 +83,6 @@
                 <action method="addItem"><type>skin_css</type><name>css/responsive.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                 <action method="addItem"><type>skin_css</type><name>css/madisonisland.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                 <action method="addItem"><type>skin_css</type><name>css/fonts.css</name></action>
-                <action method="addItem"><type>skin_css</type><name>css/remodal.css</name></action>
                 <action method="addItem"><type>skin_css</type><name>css/remodal-default-theme.css</name></action>
                 <!-- Sets viewport meta tag using text block -->
                 <block type="core/text" name="head.viewport">
@@ -121,7 +120,19 @@
 									</block>
 								</block>
                 <block type="core/template" name="header.myaccount.mini" as="mini-myaccount" template="page/html/mini-myaccount.phtml"/>
-                
+
+
+								<block type="core/template" name="header.box-right-content" as="header.box-right-content" template="page/html/header-box-right.phtml">
+									<block type="checkout/cart_sidebar" name="header.cart.mini" as="header_cart_mini" template="checkout/cart/headercart.phtml" before="-">
+										<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+										<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+										<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+										<block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+												<label>Shopping Cart Sidebar Extra Actions</label>
+										</block>
+									</block>
+									<block type="core/template" name="header.myaccount.mini" as="mini-myaccount" template="page/html/mini-myaccount.phtml"/>
+								</block>
             </block>
 
             <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
@@ -152,7 +163,7 @@
                 <label>Page Footer</label>
                 <action method="setElementClass"><value>footer-before-container</value></action>
             </block>
-						
+
 						<block type="page/html_wrapper" name="main.before" as="before_main" translate="label">
                 <label>Before Main Content</label>
                 <action method="setElementClass"><value>box-before-main</value></action>

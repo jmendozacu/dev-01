@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config>
+	<sections>
+		<subscription translate="label" module="subscription">
+			<label>Subscription</label>
+			<tab>magebuzz</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>299</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>General Setting</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable_custom_msg>
+              <label>Use success message</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </enable_custom_msg>
+						<use_static_block translate="label comment">
+              <label>Use static block for custom message</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <comment><![CDATA[If yes, the popup will show content from selected static block]]></comment>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+							<depends>
+							  <enable_custom_msg>1</enable_custom_msg>
+							</depends>								
+            </use_static_block>
+						<popup_static_block translate="label">
+              <label>Select static block</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>5</sort_order>
+              <source_model>subscription/system_config_staticblock</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <use_static_block>1</use_static_block>
+              </depends>
+            </popup_static_block>
+						<manual_custom_msg translate="label">
+              <label>Custom message</label>
+              <frontend_type>textarea</frontend_type>
+              <sort_order>7</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+							<depends>
+                <use_static_block>0</use_static_block>
+              </depends>
+            </manual_custom_msg>
+					</fields>
+				</general>
+			</groups>
+		</subscription>
+  </sections>
+</config>

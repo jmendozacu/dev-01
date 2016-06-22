@@ -30,6 +30,7 @@
     <PRODUCT_TYPE_configurable>
         <reference name="head">
             <action method="addItem"><type>skin_js</type><name>js/amasty/amconf/configurable.js</name><params/></action>
+            <!-- <action method="addItem"><type>skin_js</type><name>js/amasty/amconf/configdropdown.js</name><params/></action> -->
         </reference>
     </PRODUCT_TYPE_configurable>
 

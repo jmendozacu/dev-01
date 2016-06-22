@@ -2,16 +2,16 @@
 <config>
   <menu>
     <dealerlocator module="dealerlocator">
-      <title>Dealer Locator</title>
+      <title>Store Locator</title>
       <sort_order>71</sort_order>
       <children>
         <item1 module="dealerlocator">
-          <title>Manage Dealers</title>
+          <title>Manage Stores</title>
           <sort_order>0</sort_order>
           <action>dealerlocatoradmin/adminhtml_dealerlocator</action>
         </item1>
         <item2 module="dealerlocator">
-          <title>Import Dealers</title>
+          <title>Import Stores</title>
           <sort_order>1</sort_order>
           <action>dealerlocatoradmin/adminhtml_import/index</action>
         </item2>
@@ -20,6 +20,11 @@
           <sort_order>2</sort_order>
           <action>adminhtml/system_config/edit/section/dealerlocator</action>
         </item3>
+        <item4 module="dealerlocator">
+          <title>Import Store Code</title>
+          <sort_order>4</sort_order>
+          <action>dealerlocatoradmin/adminhtml_product/index</action>
+        </item4>
       </children>
     </dealerlocator>
   </menu>
@@ -35,23 +40,23 @@
               <config>
                 <children>
                   <dealerlocator>
-                    <title>Dealer Locator Permission Setting</title>
+                    <title>Store Locator Permission Setting</title>
                   </dealerlocator>
                 </children>
               </config>
             </children>
           </system>
           <dealerlocator module="dealerlocator">
-            <title>Dealer Locator</title>
+            <title>Store Locator</title>
             <sort_order>71</sort_order>
             <children>
               <item1 module="dealerlocator">
-                <title>Manage Dealers</title>
+                <title>Manage Stores</title>
                 <sort_order>0</sort_order>
                 <action>dealerlocatoradmin/adminhtml_dealerlocator</action>
               </item1>
               <item2 module="dealerlocator">
-                <title>Import Dealers</title>
+                <title>Import Stores</title>
                 <sort_order>1</sort_order>
                 <action>dealerlocatoradmin/adminhtml_import/index</action>
               </item2>
@@ -60,6 +65,11 @@
                 <sort_order>2</sort_order>
                 <action>adminhtml/system_config/edit/section/dealerlocator</action>
               </item3>
+              <item4 module="dealerlocator">
+                <title>Import Store Code</title>
+                <sort_order>4</sort_order>
+                <action>dealerlocatoradmin/adminhtml_product/index</action>
+              </item4>
             </children>
           </dealerlocator>
         </children>

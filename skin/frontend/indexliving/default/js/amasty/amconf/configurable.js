@@ -84,7 +84,7 @@ Product.Config.prototype.resetChildren = function(element){
 }
 
 Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId, key){
-    var imgContainer = new Element('div', {
+    var imgContainer = new Element('li', {
         'class': 'amconf-image-container',
         'id'   : 'amconf-images-container-' + attributeId,
     });
@@ -99,21 +99,29 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
             'class': 'amconf-color-container',
             'id'   : 'amconf-image-' + option.id,
         });
+				var divLabel = new Element('div', {
+            'class': 'amconf-color-label'
+        });
         div.setStyle({
             width: width + 'px',
             height: height + 'px'
         });
-
+				var labelMarin = (width + 10) + 'px';
         if(option.color){
-            div.setStyle({background: '#' + option.color});
+					div.setStyle({background: '#' + option.color});
+					//div.insert(option.label);
+					//div.insert(option.label);
         }
         else{
             div.setStyle({lineHeight: height + 'px'});
             div.addClassName('amconf-noimage-div');
             div.insert(option.label);
         }
+				divLabel.insert(option.label);
         imgContainer.appendChild(div);
+        imgContainer.appendChild(divLabel);
         div.observe('click', this.configureImage.bind(this));
+        divLabel.observe('click', this.configureImageLabel.bind(this));
 
         if(useTooltip){
             amcontentPart = 'background: #' + option.color + '">';
@@ -129,9 +137,17 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
             'width' : width,
             'height': height
         });
-
-        div.observe('click', this.configureImage.bind(this));
+				
+				var divLabel = new Element('div', {
+            'class': 'amconf-color-label'
+        });
+				
+				divLabel.insert(option.label);
         imgContainer.appendChild(div);
+				imgContainer.appendChild(divLabel);
+				
+				div.observe('click', this.configureImage.bind(this));
+				divLabel.observe('click', this.configureImageLabel.bind(this));
 
         if(useTooltip){
             amcontentPart = '"><img src="' + option.bigimage + '"/>'
@@ -188,8 +204,8 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
         var angle  = Math.atan(height/width);
         hr.setStyle({
             width     : Math.sqrt(width*width + height*height) + 1 + 'px',
-            top       : height/2  + 'px',
-            left      : -(Math.sqrt(width*width + height*height) - width)/2  + 'px',
+            top       : height/2 + 5  + 'px',
+            left      : -(Math.sqrt(width*width + height*height) - width)/2 + 10 + 'px',
             transform : "rotate(" + Math.floor(180-angle * 180/ Math.PI)+ "deg)"
         });
 
@@ -217,7 +233,7 @@ Product.Config.prototype.fillSelect = function(element){
     var attributeId = element.id.replace(/[a-z]*/, '');
     var options     = this.getAttributeOptions(attributeId);
     var savedValue  = element.value;
-	this.clearSelect(element);
+		this.clearSelect(element);
     element.options[0] = new Option(this.config.chooseText, '');
 
     if('undefined' != typeof(AmTooltipsterObject)) {
@@ -233,15 +249,38 @@ Product.Config.prototype.fillSelect = function(element){
         if ($('amconf-images-' + attributeId)) {
             $('amconf-images-' + attributeId).remove();
         }
+				window.labelDiv = new Element('div', {
+					'class': 'amconf-images-list-label styled-select',
+					'id'   : 'amconf-images-label-' + attributeId,
+				});
+				
+				labelDiv.insert(this.config.chooseText);
+				
+				window.holderDivList = new Element('div', {
+						'class': 'amconf-images-list-container',
+						'id'   : 'amconf-images-list-' + attributeId,
+				});
+				
+				if ($('amconf-images-list-' + attributeId)) {
+            $('amconf-images-list-' + attributeId).remove();
+        }
+				
+				if ($('amconf-images-label-' + attributeId)) {
+            $('amconf-images-label-' + attributeId).remove();
+        }
             
         if (this.config.attributes[attributeId].use_image) {
             holder = element.parentNode;
-            window.holderDiv = new Element('div', {
+            window.holderDiv = new Element('ul', {
                 'class': 'amconf-images-container',
                 'id'   : 'amconf-images-' + attributeId,
             });
-
-            holder.insertBefore(holderDiv, element);
+						
+						holderDiv.setStyle({'display': 'none'});
+						
+						holderDivList.appendChild(labelDiv);
+						holderDivList.appendChild(holderDiv);
+            holder.insertBefore(holderDivList, element);
         }
         
         var index = 1, key = '';
@@ -341,6 +380,7 @@ Product.Config.prototype.fillSelect = function(element){
             this.configureElement(element);
         }
     }
+		this.rebuildOpenOptions(element);
 }
 
 Product.Config.prototype.configureElement = function(element) 
@@ -368,9 +408,9 @@ Product.Config.prototype.configureElement = function(element)
     if(element.value){
         this.state[element.config.id] = element.value;
         if(element.nextSetting){
-            element.nextSetting.disabled = false;
-            this.fillSelect(element.nextSetting);
-            this.resetChildren(element.nextSetting);
+					element.nextSetting.disabled = false;
+					this.fillSelect(element.nextSetting);
+					this.resetChildren(element.nextSetting);
         }
     }
     else {
@@ -532,6 +572,24 @@ Product.Config.prototype.configureImage = function(event){
     
     $('attribute' + attributeId).value = optionId;
     this.configureElement($('attribute' + attributeId));
+		this.updateLabel(element);
+    /* fix for sm ajax cart*/
+    if($$('body.sm_market').length > 0){
+        jQuery('#attribute' + attributeId).trigger("change");
+    }
+}
+
+Product.Config.prototype.configureImageLabel = function(event){
+    var elementLabel = Event.element(event);
+    var element = elementLabel.previous();
+    attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
+    optionId = element.id.replace(/[a-z-]*/, '');
+    
+    this.selectImage(element);
+    
+    $('attribute' + attributeId).value = optionId;
+    this.configureElement($('attribute' + attributeId));
+		this.updateLabel(element);
     /* fix for sm ajax cart*/
     if($$('body.sm_market').length > 0){
         jQuery('#attribute' + attributeId).trigger("change");
@@ -540,13 +598,101 @@ Product.Config.prototype.configureImage = function(event){
 
 Product.Config.prototype.selectImage = function(element)
 {
-    attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
-    $('amconf-images-' + attributeId).childElements().each(function(child){
-        child.childElements().each(function(children){
-            children.removeClassName('amconf-image-selected');
-        });
-    });
-    element.addClassName('amconf-image-selected');
+	attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
+	$('amconf-images-' + attributeId).childElements().each(function(child){
+			child.childElements().each(function(children){
+					children.removeClassName('amconf-image-selected');
+			});
+	});
+	element.addClassName('amconf-image-selected');
+}
+
+Product.Config.prototype.updateLabel = function(element) {
+	attributeId = element.parentNode.id.replace(/[a-z-]*/, '');
+	var options     = this.getAttributeOptions(attributeId);
+	var opSelectedId = $('attribute' + attributeId).value;
+	//attributeId = element.closest('li.amconf-image-container').id.replace(/[a-z-]*/, '');
+	$('amconf-images-' + attributeId).childElements().each(function(child){
+		child.childElements().each(function(children){
+			if(children.hasClassName('amconf-image-selected')){
+				var selectedOption = new Element('div', {
+					'class': 'selectedItem',
+					'id': 'selectedItem' + attributeId
+				});
+				var selectedOptionLabel = new Element('div', {
+					'class': 'selectedItemLabel',
+					'id': 'selectedItemLabel' + attributeId
+				});
+				if ($('selectedItem' + attributeId)) {
+            $('selectedItem' + attributeId).remove();
+        }
+				if ($('selectedItemLabel' + attributeId)) {
+          $('selectedItemLabel' + attributeId).remove();
+        }
+				for(var i=0;i<options.length;i++){
+					if(options[i].id == opSelectedId){
+						if (options[i].color || !options[i].image) {
+							// Empty selected item
+							$('amconf-images-label-' + attributeId).update('');
+							
+							// Add new selected item
+							
+							var labelStyleWidth = children.getStyle('width');
+							var labelStyleHeight = children.getStyle('height');
+							var labelStyleBackground = children.getStyle('background');
+							
+							selectedOption.setStyle({
+									width: labelStyleWidth,
+									height: labelStyleHeight
+							});
+							selectedOption.setStyle({background: labelStyleBackground});
+							
+							selectedOptionLabel.insert(children.next().innerHTML);
+							
+						}else{
+							var imgSelected = new Element('img', {
+									'src'   :  children.getAttribute('src'),
+									'alt'   : children.getAttribute('alt'),
+									'title' : children.getAttribute('alt'),
+									'width' : children.getAttribute('width'),
+									'height': children.getAttribute('height')
+							});
+							selectedOption.insert(imgSelected);
+							selectedOptionLabel.insert(children.getAttribute('alt'));
+						}
+					}
+				}
+				
+				$('amconf-images-label-' + attributeId).innerHTML = '';
+				$('amconf-images-label-' + attributeId).appendChild(selectedOption);
+				$('amconf-images-label-' + attributeId).appendChild(selectedOptionLabel);
+				
+				// Close options list
+				$('amconf-images-' + attributeId).setStyle({
+						'display': 'none'
+				});		
+			}
+		});
+	});
+}
+
+
+Product.Config.prototype.rebuildOpenOptions = function(element) {
+	var attributeId = element.id.replace(/[a-z]*/, '');
+	if($('amconf-images-label-' + attributeId)){
+		$('amconf-images-label-' + attributeId).observe('click', function(event) {
+			if(this.next().visible()){
+				this.next().setStyle({'display': 'none'});
+			}else{
+				this.next().setStyle({'display': 'block'});
+			}
+			
+		});
+	}
+	/* // Using jQuery
+	jQuery('#amconf-images-label-' + attributeId).click(function(){
+		jQuery(this).next().slideToggle(300);
+	}); */
 }
 
 Product.Config.prototype.processEmpty = function()
