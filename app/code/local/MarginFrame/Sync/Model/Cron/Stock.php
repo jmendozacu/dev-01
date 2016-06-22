@@ -10,6 +10,7 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 		try {
 			
 			$dir = Mage::getBaseDir('var').DS.'interface'.DS.'import'.DS.'stock'.DS;
+			$dirprepare = $dir.'prepare'.DS;
 
 			$filename_log = "mgfsync_stock.log";
 			// Tiw
@@ -18,6 +19,13 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 				$file = new Varien_Io_File();
 				$file->mkdir($dir);
 			}
+
+			//create prepare for fast bluk import
+			if (!file_exists($dirprepare)) {
+
+				$file_prepare = new Varien_Io_File();
+				$file_prepare->mkdir($dirprepare);
+			} 
 
 			$dh  = opendir($dir);
 
@@ -62,6 +70,7 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 							$collection = Mage::getResourceModel('sales/order_item_collection')
 							    // ->addAttributeToSelect('*')
 							    ->AddAttributeToSelect('product_id')
+							    ->AddAttributeToSelect('sku')
 							    ->AddAttributeToSelect('qty_ordered')
 							;
 
@@ -91,88 +100,40 @@ class MarginFrame_Sync_Model_Cron_Stock extends Mage_Core_Model_Abstract
 							// 	'product_id-2' => '2',
 							// )
 
-							foreach ($collection->getData() as $item) {
-								if(isset($orderqty[$item['product_id']])){
-									$orderqty[$item['product_id']] += $item['qty_ordered'];
+							foreach ($collection->getData() as $item) {	
+								if(isset($orderqty[$item['sku']])){
+									$orderqty[$item['sku']] += number_format($item['qty_ordered']);
 								} else {
-									$orderqty[$item['product_id']] = $item['qty_ordered'];
+									$orderqty[$item['sku']] = number_format($item['qty_ordered']);
 								}
 							}
 
 					    }
 
-					    $processes = Mage::getSingleton('index/process')->getCollection();
-						$temp = array();
-			    		foreach ($processes as $key => $value) {
-							$temp[$value->getProcessId()] = $value->getMode();
-							$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
-						}
+					    $dataImport[] = implode(',', array(
+							'sku',
+							'qty',
+							'is_in_stock'
+						));
 
-					  	// prepare to load products
-					    $product = Mage::getModel('catalog/product');
 					    foreach ($csvdata as $sku => $item) {
 					    	$qty = $item['qty'];
-
-					    	// ignored
-					    	$warehouse = $item['warehouse'];
-
-							$p = $product->loadByAttribute('sku', $sku);
-
-	    					if ($p) {
-	      						
-	    						Mage::log('found sku : '.$sku.' || update qty : '.$qty, null, $filename_log,true);
-	      						// get product's stock data such quantity, in_stock etc
-	     						$productId = $p->getIdBySku($sku);
-
-	     						//calculate real stock
-	     						if(isset($orderqty[$productId])){
-	     							$qty = $qty - $orderqty[$productId];
-	     						}
-
-	      						$stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($productId);
-								$stockItemId = $stockItem->getId();
-								$stock = array();							
-								
-								// then set product's stock data to update
-								if (!$stockItemId) {
-									$stockItem->setData('product_id', $product->getId());
-									$stockItem->setData('stock_id', 1);
-								} else {
-									$stock = $stockItem->getData();
-								}
-								$stockItem->setData('qty', $qty);
-								if ($qty > 0) {
-									$stockItem->setData('is_in_stock', 1);
-								} else {
-									$stockItem->setData('is_in_stock', 0);
-								}
-								$stockItem->setData('manage_stock', 1);
-								$stockItem->setData('use_config_manage_stock', 1);
-								
-								// call save() method to save your product with updated data
-								try{
-									$stockItem->save();
-									$product->save($p);
-									// $log = 'Success';
-								} catch (Exception $ex) {
-									$check = true;
-									$message[] = 'error sku : '.$sku.'-'.$ex->getMessage();
-									// handle the error here!!
-									Mage::log('error sku : '.$sku, null, $filename_log,true);
-								}
-								unset($stockItem);
-								unset($p);
-							} else {
-								Mage::log("SKU not found : ".$sku, null, $filename_log,true);
-							}
-
+					    	$row = array();
+					    	$sku = trim($sku);
+					    	$row[0] = $sku;
+     						if(isset($orderqty[$sku])){
+     							$qty = $qty - $orderqty[$sku];
+     						}
+	     					$row[1] = $qty;
+	     					if($qty > 0 ){
+	     						$row[2] = '1';
+	     					} else {
+	     						$row[2] = '0';
+	     					}
+	     					$dataImport[] = implode(',',$row);
 					    }
-
-					    foreach ($temp as $key => $mode) {
-							$process = Mage::getSingleton('index/process')->load($key);
-							$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
-						}
-						// Mage::helper('mgfsync/data')->reindex();
+					    $temp = implode("\n", $dataImport);
+					    file_put_contents($dirprepare."Import_Stock.csv",$temp);
 
 						fclose($handle);
 						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log,true);
