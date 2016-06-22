@@ -8672,8 +8672,9 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
  * My Account Global Styles
  * ============================================ */
 body.customer-account .my-account .page-title{position: relative;}
-a.payment_transfer{position:absolute;top:10px;right:0;border:1px solid #333;padding:4px 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#FFF;background:#4f4e4e;}
-a.payment_transfer:hover{background:#000;text-decoration: none;}
+a.payment_transfer{position:absolute;top:10px;right:0;border:1px solid #e0a817;padding:4px 10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;color:#FFF;background:#FFC222;}
+a.payment_transfer:hover{background:#edc357;text-decoration: none;}
+body:lang(th) a.payment_transfer{padding: 6px 10px 3px;}
 body.customer-account .my-account .page-title h1 {
   border: 0;
   text-align: left;
@@ -11850,3 +11851,12 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .product-label-category table { position: relative; margin: 0 3px 0 0; }
 .product-label-product table { position: relative; margin: 0 5px 0 0; }
 .bundle + #product-options-wrapper{ display: none; }
+
+/*--- Css For Delivery Page---*/
+.caculator{  border: solid 3px #fab80a;  padding: 25px 44px 25px 25px;  }
+.caculator .buttons-set button.button {  float: left;  margin-left: 5px;  min-width: 140px;  }
+.caculator .cancel{  background-color:#363636;  }
+.caculator .shipping-result {  float: left;  margin-left: 27px;  min-width: 140px;  background: #ffffff;  display: inline-block;  padding: 9px 15px 7px;  border: 0;  color: #ff0000;  font-size: 14px;  font-weight: bold;  line-height: 26px;  vertical-align: middle;  white-space: nowrap;  text-align: center;  text-transform: uppercase;  border-radius: 5px;  }
+.caculator .shipping-form-validate select {  margin-top: 0px;  width: 365px;  max-width: 100%;  height: 35px;  border-radius: 4px;  }
+.caculator .form-list .field {  float: none;  width: 260px;  margin-right: 18px;  }
+.caculator .shipping-area .field{  float: left;  }
