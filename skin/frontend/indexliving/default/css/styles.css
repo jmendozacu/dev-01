@@ -4776,6 +4776,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .products-list > li .product-image img {
   max-width: 100%;
+	display:inline-block!important;
 }
 .products-list > li:last-child {
   padding-bottom: 0;
@@ -4783,9 +4784,9 @@ body.catalogsearch-result-index .page-title h1 {
 }
 
 .products-list > li  .amconf-block{
-  position:absolute;
+  /* position:absolute;
 	top:160px;
-	left:20px;
+	left:20px; */
 }
 
 .products-list .product-shop {
