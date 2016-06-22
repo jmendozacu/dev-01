@@ -338,7 +338,6 @@ lib/Net/IDNA2.php
 lib/Net/IDNA2/Exception.php
 lib/Net/IDNA2/Exception/Nameprep.php
 shell/.htaccess
-lib/Varien/Data/Form/Element/Counter.php
 media/shell/.htaccess
 media/shell/abstract.php
 media/shell/compiler.php
