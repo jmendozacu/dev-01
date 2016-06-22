@@ -236,14 +236,18 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 										break;
 								}
 							} else {
+
 								if(preg_match( "/_TH$/i", $key)){
 									if(preg_match( "/COLOR_TH$/i", $key)){
-										$rowCsv_TH[]=$cols[$index_header['COLOR_EN']];
+										$rowCsv_TH[array_search($index_magento[$value], $indexTH)]=$cols[$index_header['COLOR_EN']];
+
 									} else {
 										$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
 										$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
 										$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
-										$rowCsv_TH[] = $tmpval;
+										$rowCsv_TH[array_search($index_magento[$value], $indexTH)] = $tmpval;
+										
+										// exit();
 									}
 								} elseif(preg_match( "/PICTURE$/i", $key)){
 									if($cols[$value]==''){
