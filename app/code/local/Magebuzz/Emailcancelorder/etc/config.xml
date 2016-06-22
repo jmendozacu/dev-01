@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config translate="title" module="emailcancelorder">
+    <modules>
+        <Magebuzz_Emailcancelorder>
+            <version>1.0.0</version>
+        </Magebuzz_Emailcancelorder>
+    </modules>
+
+    <global>
+        <blocks>
+            <emailcancelorder>
+                <class>Magebuzz_Emailcancelorder_Block</class>
+            </emailcancelorder>
+        </blocks>
+        <helpers>
+            <emailcancelorder>
+                <class>Magebuzz_Emailcancelorder_Helper</class>
+            </emailcancelorder>
+        </helpers>
+        <models>
+            <emailcancelorder>
+                <class>Magebuzz_Emailcancelorder_Model</class>
+            </emailcancelorder>
+        </models>
+        <events>
+            <sales_order_save_commit_after>
+                <observers>
+                    <mail_status_change>
+                        <type>singleton</type>
+                        <class>emailcancelorder/observer</class>
+                        <method>invoicedStatusChange</method>
+                    </mail_status_change>
+                </observers>
+            </sales_order_save_commit_after>
+        </events>
+        <template>
+            <email>
+                <custom_order_tpl module="emailcancelorder">
+                    <label>Status Mail Invoice</label>
+                    <file>statusmail_processing.html</file>
+                    <type>html</type>
+                </custom_order_tpl>
+            </email>
+        </template>
+    </global>
+</config>
