@@ -2372,6 +2372,7 @@ span.weee {
 }
 
 .pager > .sort-by select, .pager .limiter select{ border:0 none; padding:2px; font-size:14px;}
+.box-desktop .custom-select.styled-select select{margin-right: 21px;}
 
 .pager > .sort-by .sort-by-switcher {
   width: 30px;
@@ -2522,7 +2523,7 @@ span.weee {
 .pages .previous:before {
    background:url(../images/pager_arrow_left.gif) no-repeat center center;
 }
-
+.pages a, .pages .current, .pages .current, .pages .current:hover{font-size:11px;width: auto;min-width:19px;}
 
 @media only screen and (max-width: 479px) {
   .pager .amount--has-pages {
@@ -7049,7 +7050,7 @@ body.catalogsearch-result-index .page-title h1 {
   padding-left: 0;
   padding-right: 0;
 }
-.cart-table .product-cart-image .product-image img {
+.cart-table .product-cart-image .product-image img, .cart-table .product-cart-image img {
 	float:left;
 	margin-right:20px;
 }

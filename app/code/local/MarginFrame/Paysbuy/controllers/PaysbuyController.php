@@ -37,6 +37,13 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
         return Mage::getSingleton('Paysbuy/standard');
     }
 
+    public function testAction(){
+    	$invoiceid = '1606220154';
+    	// echo $invoiceid;
+    	echo '<pre>';
+    	print_r($response);
+    	echo '</pre>';
+    }
     /**
      * When a customer chooses Paysbuy on Checkout/Payment page
      *
@@ -212,7 +219,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			"Method : " . $PaysbuyMethod .  "\n<br/>" . 
 			"Create Date : " . $PaysbuyCreateDate .  "\n<br/>" . 
 			"Paid Date : " . $PaysbuyPaymentDate . "\n\<br/>" .
-			"confirm CS : " . $confirmCS;
+			"confirm CS : " . $confirmCS . "\n\<br/>";
 		// echo "<p>My Data : $PaysbuyReturnData</p>";
 		
 
@@ -225,7 +232,13 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			$order = Mage::getModel('sales/order');
 			$order->loadByIncrementId($PaysbuyInvoice);
 			
-			if ($order->getId()) {				
+			if ($order->getId()) {		
+
+				$response = Mage::helper('Paysbuy')->checkTransection($PaysbuyInvoice);
+				foreach ($response as $key => $value) {
+					$PaysbuyReturnData .=$key .' : '.$value . "\n\<br/>" ;
+				}
+
 				$CurrentOrderStatus = $order->getStatus();
 				$CurrentOrderState = $order->getState();
 				
@@ -235,12 +248,12 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 				$order->save();				
 				
 				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
-
-				switch ($PaysbuyResultCode) {
+				
+				switch ($response['result']) {
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
-							if ($order->getState() ==Mage::getModel('payment/Paysbuy/order_status') ) {							
+							if ($order->getState() ==Mage::getStoreConfig('payment/Paysbuy/order_status') ) {							
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
 								$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status'), true, "New : " .  $comment, 1)->save();
 								//=> auto invoice
@@ -414,6 +427,12 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			$order->loadByIncrementId($PaysbuyInvoice);
 			
 			if ($order->getId()) {				
+				
+				$response = Mage::helper('Paysbuy')->checkTransection($PaysbuyInvoice);
+				foreach ($response as $key => $value) {
+					$PaysbuyReturnData .=$key .' : '.$value . "\n\<br/>" ;
+				}
+
 				$CurrentOrderStatus = $order->getStatus();
 				$CurrentOrderState = $order->getState();
 				
@@ -422,8 +441,9 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 				$order->addStatusToHistory($order->getStatus(), $PaysbuyReturnData, false);
 				$order->save();				
 				
+				
 				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
-				switch ($PaysbuyResultCode) {
+				switch ($response['result']) {
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
