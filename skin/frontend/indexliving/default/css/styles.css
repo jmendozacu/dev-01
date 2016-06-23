@@ -7049,7 +7049,7 @@ body.catalogsearch-result-index .page-title h1 {
   padding-left: 0;
   padding-right: 0;
 }
-.cart-table .product-cart-image .product-image img {
+.cart-table .product-cart-image .product-image img, .cart-table .product-cart-image img {
 	float:left;
 	margin-right:20px;
 }
