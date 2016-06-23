@@ -116,7 +116,7 @@ class Mirasvit_SearchIndex_Model_Index_Mage_Catalog_Product_Index extends Mirasv
 
     public function getCollection()
     {
-        $matchedIds = $this->getMatchedIds(null, $this->getStoreId());
+        $matchedIds = $this->getMatchedIds(null, null);
         $collection = Mage::getModel('catalogsearch/layer')->getProductCollection();
 
         return $collection;
@@ -131,7 +131,7 @@ class Mirasvit_SearchIndex_Model_Index_Mage_Catalog_Product_Index extends Mirasv
                 return parent::getCountResults();
             }
         } else {
-            $matchedIds = $this->getMatchedIds(null, $this->getStoreId());
+            $matchedIds = $this->getMatchedIds(null, null);
 
             return count($matchedIds);
         }

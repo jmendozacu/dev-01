@@ -102,13 +102,7 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
                 <?php echo $this->getChildHtml('other');?>
 
                 <?php if ($_product->isSaleable() && $this->hasOptions()):?>
-                    <?php
-                        if($_product->getTypeID()){
-                            $productType = $_product->getTypeID();
-                            if( $productType === 'bundle'){echo '<div class="bundle"></div>'; }
-                        }
-                    ?>
-                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                    <div<?php if($_product->getTypeID()){ $productType = $_product->getTypeID(); if( $productType === 'bundle'){echo ' class="bundle"'; }} ?>><?php echo $this->getChildChildHtml('container1', '', true, true) ?></div>
                 <?php endif;?>
 								<div class="add-to-cart-wrapper">
 									<?php echo $this->getChildHtml('product_type_data') ?>

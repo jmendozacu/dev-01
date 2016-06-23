@@ -2372,6 +2372,7 @@ span.weee {
 }
 
 .pager > .sort-by select, .pager .limiter select{ border:0 none; padding:2px; font-size:14px;}
+.box-desktop .custom-select.styled-select select{margin-right: 21px;}
 
 .pager > .sort-by .sort-by-switcher {
   width: 30px;
@@ -2522,7 +2523,7 @@ span.weee {
 .pages .previous:before {
    background:url(../images/pager_arrow_left.gif) no-repeat center center;
 }
-
+.pages a, .pages .current, .pages .current, .pages .current:hover{font-size:11px;width: auto;min-width:19px;}
 
 @media only screen and (max-width: 479px) {
   .pager .amount--has-pages {
@@ -4776,6 +4777,7 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .products-list > li .product-image img {
   max-width: 100%;
+	display:inline-block!important;
 }
 .products-list > li:last-child {
   padding-bottom: 0;
@@ -4783,9 +4785,9 @@ body.catalogsearch-result-index .page-title h1 {
 }
 
 .products-list > li  .amconf-block{
-  position:absolute;
+  /* position:absolute;
 	top:160px;
-	left:20px;
+	left:20px; */
 }
 
 .products-list .product-shop {
@@ -7048,7 +7050,7 @@ body.catalogsearch-result-index .page-title h1 {
   padding-left: 0;
   padding-right: 0;
 }
-.cart-table .product-cart-image .product-image img {
+.cart-table .product-cart-image .product-image img, .cart-table .product-cart-image img {
 	float:left;
 	margin-right:20px;
 }
@@ -11850,13 +11852,25 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .product-label-product { padding-left: 15%; position: absolute; }
 .product-label-category table { position: relative; margin: 0 3px 0 0; }
 .product-label-product table { position: relative; margin: 0 5px 0 0; }
-.bundle + #product-options-wrapper{ display: none; }
+.bundle #product-options-wrapper{ display: none; }
 
 /*--- Css For Delivery Page---*/
 .caculator{  border: solid 3px #fab80a;  padding: 25px 44px 25px 25px;  }
-.caculator .buttons-set button.button {  float: left;  margin-left: 5px;  min-width: 140px;  }
-.caculator .cancel{  background-color:#363636;  }
+.caculator .buttons-set{border: none}
+.caculator .buttons-set button.button { float: left;  min-width: 140px;  }
+.caculator .buttons-set .submit{ margin: 0; float: left;  min-width: 140px;  }
+.caculator .buttons-set .cancel{ margin-left: 10px; float: left;  min-width: 140px; background-color:#363636;  }
 .caculator .shipping-result {  float: left;  margin-left: 27px;  min-width: 140px;  background: #ffffff;  display: inline-block;  padding: 9px 15px 7px;  border: 0;  color: #ff0000;  font-size: 14px;  font-weight: bold;  line-height: 26px;  vertical-align: middle;  white-space: nowrap;  text-align: center;  text-transform: uppercase;  border-radius: 5px;  }
 .caculator .shipping-form-validate select {  margin-top: 0px;  width: 365px;  max-width: 100%;  height: 35px;  border-radius: 4px;  }
 .caculator .form-list .field {  float: none;  width: 260px;  margin-right: 18px;  }
 .caculator .shipping-area .field{  float: left;  }
+.caculator .page-title h2{  padding-bottom: 10px;  }
+.caculator .shipping-cost{  color: black;  font-size: 18px;  font-weight: 600;  }
+.caculator #shipping-form-validate h4{color:#fab80a; }
+.caculator .result{  font-size: 18px;  font-weight: 600;  color: #ffc222;  }
+.caculator .result-cost{  background:url(../images/DAYS.png) no-repeat 20px 20px #f6f6f6;  padding:20px;  width: 600px;  max-width: 100%;  margin-top: 30px;  text-align: justify;  }
+.caculator .result-info{  margin-left: 170px;  border-left: 1px solid #ccc;  padding-left: 25px;  }
+.caculator .result-info2{  padding-top: 35px;  }
+.caculator .line-hr{  float: left;  width: 100%;  height: 1px;  background: #e6e6e6;  margin: 10px 0 25px 0;  }
+.caculator .tip{  float: left;  margin: 5px 0 15px 0;  }
+.line-hr-bot{  float: left;  width: 100%;  height: 1px;  background: #e6e6e6;  margin: 35px 0 40px 0;  }

@@ -600,4 +600,14 @@ class TM_Highlight_Block_Product_List
             Mage::helper('highlight')->getPageUrlKey(static::PAGE_TYPE)
         );
     }
+		
+		public function getConfigurableHtmlListBlock($product) {
+			$html = '';
+			if(Mage::getStoreConfig('amconf/list/enable_list') == 1 && $product->isConfigurable()){
+				$html .= '<div class="options-list">';
+				$html .= Mage::helper('amconf')->getHtmlBlock($product, '');
+				$html .= '</div>';
+			}
+			return $html;
+		}
 }
