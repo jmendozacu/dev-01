@@ -7734,7 +7734,7 @@ body.catalogsearch-result-index .page-title h1 {
   width: auto;
   float: none;
 }
-.checkout-onepage-index .amscheckout-header a {font-size: 16px;}
+.checkout-onepage-index .amscheckout-header a {font-size: 20px;text-decoration: underline;}
 @media only screen and (min-width: 980px) {
   .checkout-onepage-index .col-main {
     float: left;
