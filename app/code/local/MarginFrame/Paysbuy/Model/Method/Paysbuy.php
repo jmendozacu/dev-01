@@ -58,7 +58,17 @@ class MarginFrame_Paysbuy_Model_Method_Paysbuy extends Mage_Payment_Model_Method
         return $url;
     }
 	
-
+    public function getPaysbuyTransectionUrl()
+    {
+		
+		$sandbox = Mage::getStoreConfig('payment/Paysbuy/sandbox');
+        if($sandbox){
+        	$url = 'https://demo.paysbuy.com/psb_ws/getTransaction.asmx?op=getTransactionByInvoice';
+        } else {
+        	$url = 'https://www.paysbuy.com/psb_ws/getTransaction.asmx?op=getTransactionByInvoice';
+        }
+        return $url;
+    }
     /**
      * Prepare info instance for save
      *
