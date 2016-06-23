@@ -157,14 +157,10 @@
         <?php } else { ?>
 					<input id="review-qty" class="input-text input-qty" disabled="disabled" name="review[<?php echo $_item->getId(); ?>][qty]" type="text" value="<?php echo $_item->getQty() ?>"/>
         <?php }?>
-				</div>	
-			</div>	
-    </td>
-</tr> 
+				</div>
+			</div>
 <?php foreach ($messages as $message): ?>
-<tr>
-    <td colspan="4">
-        <p class="item-msg <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
-    </td>
-</tr>
+        <p class="item-msg opc-product-info <?php echo $message['type'] ?>">* <?php echo $this->escapeHtml($message['text']) ?></p>
 <?php endforeach; ?>
+	</td>
+</tr>
