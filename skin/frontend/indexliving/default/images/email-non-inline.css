@@ -1,0 +1,6 @@
+    table.x_table-payment{text-align:left;border-right:none;border-bottom:none;}
+    .x_table-payment th,.x_table-payment tr{border-bottom:solid 1px #e0e0e0;text-align:center;}
+    .x_table-payment th{padding:7px;border-color:#383838;}
+    .x_table-payment td{padding-top:10px!important;text-align:left;}
+    .x_table-payment td img{margin-top:-4px!important;margin-bottom:7px!important;float:left;margin-right:9px;}
+    .x_padding-totals strong {font-weight: bold !important;color: #FF0000 !important;}
