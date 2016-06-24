@@ -456,7 +456,10 @@ AmAjaxLogin.prototype =
                  response = answer.evalJSON();
                  AmAjaxLoginObj.showMessage(response, false);
                  if(response.is_error == "2"){
-                    AmAjaxLoginObj.updateHeader();    
+                     if($$('body')[0].hasClassName('customer-account-index') || $$('body')[0].hasClassName('checkout-onepage-index')) {
+                         window.location.reload();
+                     }
+                         AmAjaxLoginObj.updateHeader();
                  }    
              } 
              

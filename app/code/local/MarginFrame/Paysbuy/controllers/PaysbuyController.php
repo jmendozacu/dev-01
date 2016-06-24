@@ -38,8 +38,8 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
     }
 
     public function testAction(){
-    	$invoiceid = '1606220154';
-    	// echo $invoiceid;
+    	$invoice = Mage::app()->getRequest()->getParam('invoice');
+    	$response = Mage::helper('Paysbuy')->checkTransection($invoice);
     	echo '<pre>';
     	print_r($response);
     	echo '</pre>';
