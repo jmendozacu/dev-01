@@ -10,4 +10,14 @@ class Magebuzz_Allcategory_Helper_Data extends Mage_Core_Helper_Abstract{
     }
     return $cat_child;
   }
+	
+	public function getSubcategoriesFromParent($parentCatId) {
+		$_subcategories = null;
+		$_categoryHelper = Mage::helper('catalog/category');
+		$parentCategory = Mage::getModel('catalog/category')->load($parentCatId);
+		if($parentCategory){
+			$_subcategories = $parentCategory->getChildrenCategories();
+		}
+		return $_subcategories;
+	}
 }
