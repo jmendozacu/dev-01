@@ -5,7 +5,7 @@ function checkItemInWishlist() {
     url: BASE_URL + '/custom/index/checkItem'
   }).done(function(res){
     //debugger;
-    new Ajax.Request({
+    jQuery.ajax({
       url: BASE_URL + 'customer/account/isajaxlogin',
       success: function(html) {
         customerIsLoggedIn = html == 1 ? true : false;
