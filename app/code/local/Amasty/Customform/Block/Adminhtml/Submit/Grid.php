@@ -69,8 +69,9 @@ class Amasty_Customform_Block_Adminhtml_Submit_Grid extends Mage_Adminhtml_Block
                 'header'=> $helper->__('Description'),
                 'index' => 'values',
                 'renderer'  => 'Amasty_Customform_Block_Adminhtml_Submit_Renderer_Fieldvalue',
+                'filter_index'=>'main_table.values',
                 //'filter' => false,
-                //'sort' => false,
+                'sortable' => false,
             ));
 
         $this->addColumn('store',
