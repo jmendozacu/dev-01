@@ -44,10 +44,10 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
       </div>
     <?php endif ?>
     <!-- Display type Slider -->
-    <?php if ($blockType == 3): ?>
+    <?php if ($blockType == 3):?>
       <div class="banner"
            <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
-        <ul class="banner-carousel-menu" id="banner_carousel_menu_<?php echo $block->getBlockId() ?>">
+        <ul class="banner-carousel-menu" id="banner_carousel_category<?php echo $this->getCategoryId()?>_menu_<?php echo $block->getBlockId();?>">
           <?php $i=0; foreach ($banners->getItems() as $banner): $i++;?>
             <li>
               <a <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>>
@@ -59,7 +59,7 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
       </div>
       <script type="text/javascript">
         jQuery(document).ready(function () {
-          jQuery('#banner_carousel_menu_<?php echo $block->getBlockId();?>').bxSlider({
+          jQuery('#banner_carousel_category<?php echo $this->getCategoryId()?>_menu_<?php echo $block->getBlockId();?>').bxSlider({
   					auto: true,
             slideWidth:240,
             infiniteLoop:false,
