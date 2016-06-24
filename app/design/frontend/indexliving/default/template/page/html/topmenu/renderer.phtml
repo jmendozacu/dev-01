@@ -124,7 +124,7 @@ foreach ($children as $child) {
           $category = Mage::getModel('catalog/category')->load($catId);
           if($category->getBannerAdsId() != ''){
             $html .= '<div class="bannerads-category">';
-            $html .= $this->getLayout()->createBlock('bannerads/blockdatacustom')->setBlockBannerId($category->getBannerAdsId())->setTemplate('bannerads/bannerads-menu.phtml')->toHtml();
+            $html .= $this->getLayout()->createBlock('bannerads/blockdatacustom')->setBlockBannerId($category->getBannerAdsId())->setCategoryId($catId)->setTemplate('bannerads/bannerads-menu.phtml')->toHtml();
             $html .= '</div>';
           }  
         }

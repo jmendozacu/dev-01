@@ -102,7 +102,6 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		
 		$order = Mage::getModel('sales/order');
 		$order->loadByIncrementId($OrderID);
-		
 		$payment = $order->getPayment();
 		$payment->setAdditionalInformation('approvecode',"Cancel");
 		$payment->setAdditionalInformation('paidnote',$CancelResult);
@@ -122,15 +121,10 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 			$order->addStatusToHistory($order->getStatus(), $message, false);	
 			$order->save();		
 		}
-		
-		
-		if ($APICall =="bjc") {
-			echo $ResponseMessge;
-		}
-		else {
-			Mage::getSingleton('checkout/session')->addError("Installment Payment has been cancelled and the transaction has been declined.");
-			$this->_redirect('checkout/cart');		
-		}
+
+		Mage::getSingleton('checkout/session')->addError("Installment Payment has been cancelled and the transaction has been declined.");
+		$this->_redirect('checkout/cart', array('_secure'=>true));		
+		// $this->_redirect('checkout/onepage/success', array('_secure'=>true));
     }
 
     /**
@@ -157,7 +151,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		$Paidby = "";
 		if(isset($response["paidsrc"])) $Paidby  =$response["paidsrc"];
 		
-		echo "<p>paid by : " . $Paidby  ."</p>";
+		// echo "<p>paid by : " . $Paidby  ."</p>";
 		//exit;
 		
 		
@@ -341,8 +335,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 				$KSmartpayReturnData .= "MD5CHECKSUM = ". $KSmartpayMD5CHECKSUM ."\n\r" .  
 										" Calulate MD5CHECKSUM = ". $KSmartpayResultCode ."\n\r";
 		
-				//echo "<p>My Data : $KSmartpayReturnData</p>";
-		
+				
 					if($KSmartpayResultCode=="00")
 					{
 						$MerchantInvoiceNo = substr($KSmartpayInvoice,-10);
@@ -399,8 +392,12 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 					}
 					else
 					{
+						// $OrderID, $APICall, $CancelResult, $ResponseMessage
+						$ReturnOrderNo = substr($KSmartpayInvoice,-10);
+						
 						$this->getCheckout()->setKSmartpayErrorMessage('KSmartpay UNSUCCESS ('. $KSmartpayReturnData .')');   
-						$this->cancelAction();
+						$this->cancelAction($ReturnOrderNo,"web", "" ,$KSmartpayReturnData);
+						
 						return false;
 					}				
 				
