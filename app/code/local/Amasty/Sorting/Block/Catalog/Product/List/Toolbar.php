@@ -26,13 +26,13 @@ class Amasty_Sorting_Block_Catalog_Product_List_Toolbar extends Amasty_Sorting_B
         parent::_construct();
         
         if ($this->reverse($this->_orderField))
-            $this->_direction = 'desc';
+            $this->_direction = 'asc';
     }
 
     public function getOrderUrl($order, $direction)
     {
         if ($order && $this->reverse($order)) {
-            $direction =  'desc'; 
+            $direction =  'asc'; 
         }
         return parent::getOrderUrl($order, $direction);
     }
@@ -42,7 +42,7 @@ class Amasty_Sorting_Block_Catalog_Product_List_Toolbar extends Amasty_Sorting_B
         $dir = parent::getCurrentDirection();
         $url = strtolower($this->getRequest()->getParam($this->getDirectionVarName()));   
         if (!$url && $this->reverse($this->getCurrentOrder())){
-            $dir = 'desc';
+            $dir = 'asc';
         }    
         return $dir;
     }  
