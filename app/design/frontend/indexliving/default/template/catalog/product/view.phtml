@@ -189,13 +189,13 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
         </script>
 			</div>
     </div>
-    <?php echo $this->getChildHtml('related_products') ?>
 		<?php echo $this->getChildHtml('additional') ?>
 		<div class="product-essential product-description">
 			<div class="page-container">
 				<?php echo $this->getChildHtml('description') ?>
 			</div>
 		</div>
+        <?php echo $this->getChildHtml('related_products') ?>
 		<!-- Get attribute banner image in here -->
 		<?php if ($_product->getProductIdeaBanner() != 'no_selection' && $_product->getProductIdeaBanner()): ?>
 		<div class="product-essential product-idea-image">
