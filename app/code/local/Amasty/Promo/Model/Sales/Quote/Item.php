@@ -156,4 +156,43 @@ class Amasty_Promo_Model_Sales_Quote_Item extends Mage_Sales_Model_Quote_Item
 
         return $buyRequest;
     }
+
+    public function compare($item)
+    {
+        if ($this->getProductId() != $item->getProductId()) {
+            return false;
+        }
+        foreach ($this->getOptions() as $option) {
+            if (in_array($option->getCode(), $this->_notRepresentOptions)
+              && !$item->getProduct()->hasCustomOptions()
+            ) {
+                continue;
+            }
+            if ($itemOption = $item->getOptionByCode($option->getCode())) {
+                $itemOptionValue = $itemOption->getValue();
+                $optionValue = $option->getValue();
+
+                // dispose of some options params, that can cramp comparing of arrays
+                if (is_string($itemOptionValue) && is_string($optionValue)) {
+                    $_itemOptionValue = @unserialize($itemOptionValue);
+                    $_optionValue = @unserialize($optionValue);
+                    if (is_array($_itemOptionValue) && is_array($_optionValue)) {
+                        $itemOptionValue = $_itemOptionValue;
+                        $optionValue = $_optionValue;
+                        // fix like version 1.9.24
+                        foreach (array('qty', 'uenc', 'form_key') as $key) {
+                            unset($itemOptionValue[$key], $optionValue[$key]);
+                        }
+                    }
+                }
+
+                if ($itemOptionValue != $optionValue) {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
 }
