@@ -14,7 +14,7 @@ class Amasty_Sorting_Model_Observer
         $searchBlocks[] = Mage::getConfig()->getBlockClassName('catalogsearch/advanced_result');
         if (in_array(get_class($block), $searchBlocks)) {
             $block->getChild('search_result_list')
-                ->setDefaultDirection('desc')
+                ->setDefaultDirection('asc')
                 ->setSortBy(Mage::getStoreConfig('amsorting/general/default_search'));
         }
 
