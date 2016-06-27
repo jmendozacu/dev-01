@@ -9,14 +9,14 @@
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
 
-<?php 
+<?php
 	/*
 	if ($this->getCategoryFilter()) {
 		$categoryFilterId = $this->getCategoryFilter();
 		if(count($categoryFilterId)){
 			$categoryFilterId = $categoryFilterId[0];
 		}
-		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);	
+		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);
 		$_categoryUrl = $_category->getUrl().'/?page=productlist';
 	}else{
 		$_categoryUrl = '#';
@@ -29,27 +29,27 @@
 		<div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
 			<div class="block-content recommend-product-list">
 					<div id="recommend-product-list" class="products-grid">
-					<?php $i=0; foreach ($_productCollection as $_product): ?>	
+					<?php $i=0; foreach ($_productCollection as $_product): ?>
 							<div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
 									<div class="prolabel-wrapper">
 										<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 											<a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
 											>
-											<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>	
+											<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
 												<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 													<div class="flipper">
 														<div class="front">
 															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
 													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
 											/>
-														</div>				 
+														</div>
 														<div class="back">
 															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(200); ?>"
 													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>"
 											/>
-														</div>				 
-													</div>				 
-												</div>			
+														</div>
+													</div>
+												</div>
 											<?php else:?>
 												<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
 													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
@@ -58,7 +58,7 @@
 											</a>
 										<?php if ($this->helper('wishlist')->isAllow()) : ?>
 											<div class="wishlist-ajax-slider add-wishlist">
-												<a id="wishlist-related-<?php echo $_product->getId()?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" 
+												<a id="wishlist-related-<?php echo $_product->getId()?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"
 												   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a>
 											</div>
 										<?php endif;?>
@@ -67,6 +67,7 @@
 									<div class="desc">
 										<?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
 										<?php
+											$_shortDescriptionStripped = strip_tags($_shortDescriptionStripped);
 											if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>30) {
 												$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,30, 'UTF-8');
 												$_shortDescriptionStripped .= '...';
@@ -86,7 +87,7 @@
 											<div class="save-price-percent"><span><?php echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
 										<?php endif; ?>
 									</div>
-									
+
 									<div class="actions">
 										<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
 											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
@@ -96,7 +97,7 @@
 											<?php endif?>
 										<?php else: ?>
 												<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
-										<?php endif; ?>	
+										<?php endif; ?>
 									</div>
 							</div>
 					<?php endforeach ?>
@@ -115,7 +116,7 @@
 <script type="text/javascript">
 	var widthWindow = jQuery( window ).width();
 	if(widthWindow > 768){
-		jQuery("#recommend-product-list").owlCarousel({	
+		jQuery("#recommend-product-list").owlCarousel({
 			loop:true,
 			margin:20,
 			nav:true,
