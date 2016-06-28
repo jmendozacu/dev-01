@@ -74,14 +74,16 @@ class Amasty_Customform_FormController extends Mage_Core_Controller_Front_Action
                 }
 
                 $uploader = new Varien_File_Uploader($uploadId);
-                $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png')); 
+                $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
+                $uploader->setAllowCreateFolders(true);
                 $uploader->setAllowRenameFiles(true);
                 // Set the file upload mode 
                 // false -> get the file directly in the specified folder
                 // true -> get the file in the product like folders 
                 //  (file.jpg will go in something like /media/f/i/file.jpg)
                 $uploader->setFilesDispersion(false);
-                $uploader->save($path, $_FILES[$uploadId]['name']);
+                $localnow = date('YmdHis', Mage::getModel('core/date')->timestamp(time()));
+                $uploader->save($path, $localnow . '_' . $_FILES[$uploadId]['name']);
                 if ($uploadFile = $uploader->getUploadedFileName()) {
                     //save server file path
                     $postData[$uploadId] = $path . DS . $uploadFile;
