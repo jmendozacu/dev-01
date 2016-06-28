@@ -8,12 +8,20 @@
 class Amasty_Customform_Block_Adminhtml_Submit_View extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     public function __construct()
-    {
+    {    
         parent::__construct();
+
         $this->setTemplate('amcustomform/submit/view.phtml');
         $this->_removeButton('reset');
-        $this->_removeButton('save');
         $this->_removeButton('delete');
+
+        //$this->_removeButton('save');
+        $this->_updateButton('save', 'label', $this->__('Verify'));
+    }
+
+    public function getSaveUrl(){
+        $id  = $this->getRequest()->getParam('id');
+        return $this->getUrl('*/*/save', array('id' => $id));
     }
 
     public function getSubmit()
@@ -27,7 +35,6 @@ class Amasty_Customform_Block_Adminhtml_Submit_View extends Mage_Adminhtml_Block
     {
         return $this->__('Billing Agreement #%s', 'Submit');
     }
-
 
     public function getCustomerLink(){
         $link = '';

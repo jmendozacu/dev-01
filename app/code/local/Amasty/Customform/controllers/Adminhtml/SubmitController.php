@@ -90,4 +90,31 @@ class Amasty_Customform_Adminhtml_SubmitController extends Mage_Adminhtml_Contro
 
         return $this;
     }
+
+    public function saveAction()
+    {
+        $formId = $this->getRequest()->getParam('id');
+        //$redirectBack = !! $this->getRequest()->getParam('back', false);
+
+        if($formId){
+            $submit = Mage::getModel('amcustomform/form_submit')->load($formId);
+            if ($submit->getId()) {
+                $submit->setVerify(1)->save();
+            }
+            else {
+                $this->_getSession()->addError($this->__('An error occurred while saving this form.'));
+                //$redirectBack = true;
+            }
+        }
+
+        //if ($redirectBack && $formId) {
+            $this->_redirect('*/*/edit', array(
+                'id' => $formId,
+                '_current' => true,
+            ));
+        //} else {
+        //    $this->_redirect('*/*/');
+        //}
+    }
+
 }

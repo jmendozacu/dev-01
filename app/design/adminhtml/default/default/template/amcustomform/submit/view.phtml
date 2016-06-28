@@ -27,9 +27,14 @@ $values = $submit->getValuesData();
         </tr>
     </table>
 </div>
+
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="editForm" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+</form>
+
 <p><?php echo $block->__('Form') ?>: <?php echo $form->getCode() ?></p>
 <p><?php echo $block->__('Submitted') ?>: <?php echo $submit->getSubmitted() ?></p>
-
+<p><?php echo $block->__('Verify') ?>: <span style="color:<?php echo ($submit->getVerify() ? 'green' : 'red') ?>"><?php echo ($submit->getVerify() ? 'Yes' : 'No') ?></span></p>
 <p><?php if(!$submit->getCustomerId()) {echo $block->__('Ip').": "; echo $submit->getIp();} ?></p>
 <p><?php if(!$submit->getCustomerId()) {echo $block->__('Customer').": "; echo "Not provided";} ?></p>
 <p><?php if($submit->getCustomerId()) {echo $block->__('Customer').": "; echo $this->getCustomerLink();} ?></p>
