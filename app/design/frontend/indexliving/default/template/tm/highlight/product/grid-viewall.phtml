@@ -17,6 +17,39 @@
 		$_categoryUrl = '#';
 	}
 ?>
+<style>
+    .amconf-noimage-div {
+        background-color: white;
+        border-radius: 0;
+        padding: 3px;
+    }
+    a.amconf-color-container {
+        display: inline-block;
+        text-align: center;
+        text-indent: -9999px;
+    }
+    dl{
+        padding-bottom: 15px;
+    }
+    .input-box{
+        height: 25px;
+    }
+    a.option_disabled {
+        pointer-events: none;
+        cursor: default;
+        position: relative;
+    }
+    a.option_disabled:before{
+        content: "";
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: rotate( -45deg );-webkit-transform: rotate( -45deg ); -moz-transform: rotate( -45deg );
+        background: black;
+    }
+</style>
 <h2 class="title-style1"><span><?php echo $this->__($this->getTitle()) ?></span><a title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all')?></a></h2>
 <div class="category-products block-highlight <?php echo $this->getClassName() ?>">
     <div class="block-content">
@@ -57,6 +90,83 @@
                         <?php endif;?>
                     </ul>
                 </div>
+
+                <?php if ($_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) : ?>
+                    <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
+                    <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
+                    <?php $y = 1; ?>
+                    <?php $numberAttributes = count($_attributes);?>
+                    <?php foreach ($_attributes as $_attribute): ?>
+                        <dl class="<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>">
+                            <dt class="viewall-customgroup-item-attribute-label"><label
+                                    class="required"><?php echo $_attribute->getLabel() ?></label></dt>
+                            <div class="input-box viewall-customgroup-item-attribute-input-box amconf-images-container"
+                                 id="viewall-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>">
+                                <?php $config = $productAttribute[$_attribute->getAttributeId()]; ?>
+                                <?php $i = count($config['options']);?>
+                                <?php foreach ($config['options'] as $value): ?>
+                                    <?php $imageOption = $this->getImageOptions($_attribute, $value); ?>
+                                    <?php $i = $i - 1; ?>
+                                    <?php ?>
+                                    <div class="amconf-image-container">
+                                        <input type="radio" style="display:none"
+                                               name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                               id="viewall-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                               class="validate-required<?php echo $_product->getId(); ?> <?php if ($i == 0): ?>validate-one-required<?php endif; ?>"
+                                               value="<?php echo $value['id'] ?>"/>
+                                        <?php if (!$imageOption['image'] || $imageOption['color']): ?>
+                                            <?php if ($imageOption['color']): ?>
+                                                <a
+                                                    style="background: #<?php echo $imageOption['color'] ?>;margin-right: -7px; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px; line-height: <?php echo $imageOption['h']?>"
+                                                    href="javascript:void(0)"
+                                                    class="amconf-color-container customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
+                                                    id="link-viewall-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                    data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                    data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                                    data-value="<?php echo $value['id'] ?>"
+                                                    data-label="<?php echo $value['label'] ?>"
+                                                    onclick="customgroupCheckAttributeViewAll('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>','<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
+                                                    <?php echo $value['label'] ?>
+                                                </a>
+                                            <?php else: ?>
+                                                <a
+                                                    style="margin-right: -7px; width: <?php echo $imageOption['w'] ? $imageOption['w'] : 29 ?>px; height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px; line-height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px;"
+                                                    href="javascript:void(0)"
+                                                    class="amconf-noimage-div customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
+                                                    id="link-viewall-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                    data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                    data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                                    data-value="<?php echo $value['id'] ?>"
+                                                    data-label="<?php echo $value['label'] ?>"
+                                                    onclick="customgroupCheckAttributeViewAll('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>','<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
+                                                    <?php echo $value['label'] ?></a>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <a href="javascript:void(0)"
+                                               class="customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
+                                               id="link-viewall-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                               data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                               data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                               data-value="<?php echo $value['id'] ?>"
+                                               data-label="<?php echo $value['label'] ?>"
+                                               onclick="customgroupCheckAttributeViewAll('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>', '<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
+                                                <img src="<?php echo $imageOption['image'] ?>" alt="<?php echo $value['label'] ?>"/>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <div style="display: none" class="validation-advice" data-pass="0"
+                                 data-validate="attribute<?php echo $_attribute->getAttributeId() ?>"
+                                 id="advice-required-entry-attribute">This is a required field.
+                            </div>
+                            <?php $y++; ?>
+                            <input style="display: none" value="" type="text"
+                                   name="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>"
+                                   id="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>">
+                        </dl>
+                    <?php endforeach; ?>
+                <?php endif ?>
 
                 <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                 <div class="desc">
@@ -108,3 +218,62 @@
     </div>
 </div>
 <a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>
+<script type="text/javascript">
+
+    var jQ = jQuery.noConflict();
+
+    function customgroupCheckAttributeViewAll(itemId, attributeId, value, positionAttribute, label) {
+
+        var inputbox = $('viewall-customgroup-item-' + itemId + '-attribute' + attributeId);
+        var divValidate = inputbox.next();
+        var radiocheck = $('viewall-customgroup-item-' + itemId + '-attribute' + attributeId + '-' + value);
+        var attributelinks = inputbox.select('a');
+        for (var i = 0; i < attributelinks.length; i++) {
+            var attributelink = attributelinks[i];
+            if (attributelink.hasClassName('customgroup-attribute-option-link-check'))
+                attributelink.removeClassName('customgroup-attribute-option-link-check');
+        }
+
+        var attribute_link_check = $('link-viewall-customgroup-item-' + itemId + '-attribute' + attributeId + '-' + value);
+        attribute_link_check.addClassName('customgroup-attribute-option-link-check');
+        radiocheck.checked = true;
+        $('product-position-' + itemId + '-' + positionAttribute).value = label + '-' + value;
+        var attributeSelected = null;
+
+        if (positionAttribute > 0) {
+
+            var positionattributeSelected = positionAttribute - 1;
+            attributeSelected = $('product-position-' + itemId + '-' + positionattributeSelected).value;
+        }
+
+        //update other action
+        var url = '<?php echo $this->getUrl("highlight/index/getOptionViewAllAvailable") ?>';
+        var request = new Ajax.Request(url, {
+            method: 'get',
+            parameters: {
+                productId: itemId,
+                attributeId: attributeId,
+                value: value,
+                positionAttribute: positionAttribute,
+                label: label,
+                attributeSelected: attributeSelected
+            },
+            onSuccess: function (transport) {
+                if (transport.responseJSON.success == 'true') {
+                    var key;
+                    for (key in transport.responseJSON.resultUpdate) {
+                        $(transport.responseJSON.resultUpdate[key]).removeClassName('option_disabled');
+                        $(transport.responseJSON.resultUpdate[key]).removeClassName('customgroup-attribute-option-link-check');
+                    }
+
+                    var keyRemove;
+                    for (keyRemove in transport.responseJSON.resultRemove) {
+                        $(transport.responseJSON.resultRemove[keyRemove]).addClassName('option_disabled');
+                        $(transport.responseJSON.resultRemove[keyRemove]).removeClassName('customgroup-attribute-option-link-check');
+                    }
+                }
+            }
+        });
+        divValidate.setAttribute('data-pass', 1);
+    }
+</script>
