@@ -10720,7 +10720,9 @@ div.paypal-logo span > img {
 .delivery-index-index .table_price_delivery .table_row .td.full, .delivery-index-index .table_price_delivery .table_row .td.white{width:100%;}
 .delivery-index-index .table_price_delivery .table_row .tr.white, .delivery-index-index .table_price_delivery .table_row .td.white{background:#FFF;}
 .delivery-index-index .table_price_delivery .table_row .td.free .free_txt {   color: #ffb300;  font-size: 18px;}
-.delivery-index-index .list_bullet{margin-top: 30px;}
+.delivery-index-index .list_bullet{margin-top:30px;margin-bottom:39px;padding-bottom:40px;border-bottom:solid 1px #e6e6e6;}
+.delivery-index-index .list_bullet li{position:relative;padding-left:24px;}
+.delivery-index-index .list_bullet li:before{content:"\2022";font-size:19px;line-height:21px;position:absolute;left:5px;color:#ffb300;}
 .delivery-index-index .mobile_show{display:none;}
 
 /*cms-custom-form*/
