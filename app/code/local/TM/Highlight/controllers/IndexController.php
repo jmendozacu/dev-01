@@ -61,4 +61,268 @@ class TM_Highlight_IndexController extends Mage_Core_Controller_Front_Action
         $this->_initLayoutMessages('checkout/session');
         $this->renderLayout();
     }
+    public function getOptionRelatedAvailableAction(){
+
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+
+        $storeId = Mage::app()->getStore()->getId();
+
+        $productId = $this->getRequest()->getParam('productId');
+        $attributeId = $this->getRequest()->getParam('attributeId');
+        $value = $this->getRequest()->getParam('value');
+        $positionAttribute = $this->getRequest()->getParam('positionAttribute');
+        $label = $this->getRequest()->getParam('label');
+        $attributeSelected = $this->getRequest()->getParam('attributeSelected');
+
+
+        $product = Mage::getModel('catalog/product')->load($productId);
+
+        $allowedProduct = $product->getTypeInstance(true)
+            ->getConfigurableAttributes($product);
+
+        $childProducts = Mage::getModel('catalog/product_type_configurable')
+            ->getUsedProductCollection($product)
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter($label, $value);
+        if($attributeSelected){
+            $arrayattributeSelected = explode('-',$attributeSelected);
+            $childProducts->addAttributeToFilter($arrayattributeSelected[0], $arrayattributeSelected['1']);
+        }
+
+        $arrayAttributeAdd = array();
+        $idTagARemove = array();
+        foreach($allowedProduct as $attribute){
+            $productAttribute   = $attribute->getProductAttribute();
+            $productAttributeId = $productAttribute->getId();
+            if(($positionAttribute + 1) == $attribute->getPosition()){
+                $id = array();
+                $prices = $attribute->getPrices();
+                if (is_array($prices)) {
+                    foreach($prices as $valueOption){
+                        $id[] =$valueOption['value_index'];
+                    }
+                }
+                $arrayValueOfAttribute = array();
+                $childProducts->addAttributeToSelect($attribute->getLabel());
+                foreach($childProducts as $_childProductAvailable){
+                    $valueOfAttribute =  Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProductAvailable->getId(), $attribute->getLabel(), $storeId);
+                    $arrayValueOfAttribute[] = $valueOfAttribute;
+                    $arrayAttributeAdd[$valueOfAttribute] = "link-related-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOfAttribute."" ;
+                }
+
+                $arrayOptionRemove = array_diff($id, $arrayValueOfAttribute);
+                foreach($arrayOptionRemove as $key =>$valueOptionInArray){
+                    if($valueOptionInArray){
+                        $idTagARemove[$valueOptionInArray] = "link-related-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOptionInArray."" ;
+                    }
+                }
+            }
+        }
+
+        $arrayAttributeAdd =  array_unique($arrayAttributeAdd);
+        $response['resultUpdate'] = $arrayAttributeAdd;
+        $response['resultRemove'] = $idTagARemove;
+        $response['success'] = 'true';
+
+        $this->getResponse()->setBody(json_encode($response));
+    }
+    public function getOptionMayLikeAvailableAction(){
+
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+
+        $storeId = Mage::app()->getStore()->getId();
+
+        $productId = $this->getRequest()->getParam('productId');
+        $attributeId = $this->getRequest()->getParam('attributeId');
+        $value = $this->getRequest()->getParam('value');
+        $positionAttribute = $this->getRequest()->getParam('positionAttribute');
+        $label = $this->getRequest()->getParam('label');
+        $attributeSelected = $this->getRequest()->getParam('attributeSelected');
+
+
+        $product = Mage::getModel('catalog/product')->load($productId);
+
+        $allowedProduct = $product->getTypeInstance(true)
+            ->getConfigurableAttributes($product);
+
+        $childProducts = Mage::getModel('catalog/product_type_configurable')
+            ->getUsedProductCollection($product)
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter($label, $value);
+        if($attributeSelected){
+            $arrayattributeSelected = explode('-',$attributeSelected);
+            $childProducts->addAttributeToFilter($arrayattributeSelected[0], $arrayattributeSelected['1']);
+        }
+
+        $arrayAttributeAdd = array();
+        $idTagARemove = array();
+        foreach($allowedProduct as $attribute){
+            $productAttribute   = $attribute->getProductAttribute();
+            $productAttributeId = $productAttribute->getId();
+            if(($positionAttribute + 1) == $attribute->getPosition()){
+                $id = array();
+                $prices = $attribute->getPrices();
+                if (is_array($prices)) {
+                    foreach($prices as $valueOption){
+                        $id[] =$valueOption['value_index'];
+                    }
+                }
+                $arrayValueOfAttribute = array();
+                $childProducts->addAttributeToSelect($attribute->getLabel());
+                foreach($childProducts as $_childProductAvailable){
+                    $valueOfAttribute =  Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProductAvailable->getId(), $attribute->getLabel(), $storeId);
+                    $arrayValueOfAttribute[] = $valueOfAttribute;
+                    $arrayAttributeAdd[$valueOfAttribute] = "link-maylike-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOfAttribute."" ;
+                }
+
+                $arrayOptionRemove = array_diff($id, $arrayValueOfAttribute);
+                foreach($arrayOptionRemove as $key =>$valueOptionInArray){
+                    if($valueOptionInArray){
+                        $idTagARemove[$valueOptionInArray] = "link-maylike-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOptionInArray."" ;
+                    }
+                }
+            }
+        }
+
+        $arrayAttributeAdd =  array_unique($arrayAttributeAdd);
+        $response['resultUpdate'] = $arrayAttributeAdd;
+        $response['resultRemove'] = $idTagARemove;
+        $response['success'] = 'true';
+
+        $this->getResponse()->setBody(json_encode($response));
+    }
+    public function getOptionViewAllAvailableAction(){
+
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+
+        $storeId = Mage::app()->getStore()->getId();
+
+        $productId = $this->getRequest()->getParam('productId');
+        $attributeId = $this->getRequest()->getParam('attributeId');
+        $value = $this->getRequest()->getParam('value');
+        $positionAttribute = $this->getRequest()->getParam('positionAttribute');
+        $label = $this->getRequest()->getParam('label');
+        $attributeSelected = $this->getRequest()->getParam('attributeSelected');
+
+
+        $product = Mage::getModel('catalog/product')->load($productId);
+
+        $allowedProduct = $product->getTypeInstance(true)
+            ->getConfigurableAttributes($product);
+
+        $childProducts = Mage::getModel('catalog/product_type_configurable')
+            ->getUsedProductCollection($product)
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter($label, $value);
+        if($attributeSelected){
+            $arrayattributeSelected = explode('-',$attributeSelected);
+            $childProducts->addAttributeToFilter($arrayattributeSelected[0], $arrayattributeSelected['1']);
+        }
+
+        $arrayAttributeAdd = array();
+        $idTagARemove = array();
+        foreach($allowedProduct as $attribute){
+            $productAttribute   = $attribute->getProductAttribute();
+            $productAttributeId = $productAttribute->getId();
+            if(($positionAttribute + 1) == $attribute->getPosition()){
+                $id = array();
+                $prices = $attribute->getPrices();
+                if (is_array($prices)) {
+                    foreach($prices as $valueOption){
+                        $id[] =$valueOption['value_index'];
+                    }
+                }
+                $arrayValueOfAttribute = array();
+                $childProducts->addAttributeToSelect($attribute->getLabel());
+                foreach($childProducts as $_childProductAvailable){
+                    $valueOfAttribute =  Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProductAvailable->getId(), $attribute->getLabel(), $storeId);
+                    $arrayValueOfAttribute[] = $valueOfAttribute;
+                    $arrayAttributeAdd[$valueOfAttribute] = "link-viewall-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOfAttribute."" ;
+                }
+
+                $arrayOptionRemove = array_diff($id, $arrayValueOfAttribute);
+                foreach($arrayOptionRemove as $key =>$valueOptionInArray){
+                    if($valueOptionInArray){
+                        $idTagARemove[$valueOptionInArray] = "link-viewall-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOptionInArray."" ;
+                    }
+                }
+            }
+        }
+
+        $arrayAttributeAdd =  array_unique($arrayAttributeAdd);
+        $response['resultUpdate'] = $arrayAttributeAdd;
+        $response['resultRemove'] = $idTagARemove;
+        $response['success'] = 'true';
+
+        $this->getResponse()->setBody(json_encode($response));
+    }
+    public function getOptionBestSellAvailableAction(){
+
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+
+        $storeId = Mage::app()->getStore()->getId();
+
+        $productId = $this->getRequest()->getParam('productId');
+        $attributeId = $this->getRequest()->getParam('attributeId');
+        $value = $this->getRequest()->getParam('value');
+        $positionAttribute = $this->getRequest()->getParam('positionAttribute');
+        $label = $this->getRequest()->getParam('label');
+        $attributeSelected = $this->getRequest()->getParam('attributeSelected');
+
+
+        $product = Mage::getModel('catalog/product')->load($productId);
+
+        $allowedProduct = $product->getTypeInstance(true)
+            ->getConfigurableAttributes($product);
+
+        $childProducts = Mage::getModel('catalog/product_type_configurable')
+            ->getUsedProductCollection($product)
+            ->addAttributeToSelect('*')
+            ->addAttributeToFilter($label, $value);
+        if($attributeSelected){
+            $arrayattributeSelected = explode('-',$attributeSelected);
+            $childProducts->addAttributeToFilter($arrayattributeSelected[0], $arrayattributeSelected['1']);
+        }
+
+        $arrayAttributeAdd = array();
+        $idTagARemove = array();
+        foreach($allowedProduct as $attribute){
+            $productAttribute   = $attribute->getProductAttribute();
+            $productAttributeId = $productAttribute->getId();
+            if(($positionAttribute + 1) == $attribute->getPosition()){
+                $id = array();
+                $prices = $attribute->getPrices();
+                if (is_array($prices)) {
+                    foreach($prices as $valueOption){
+                        $id[] =$valueOption['value_index'];
+                    }
+                }
+                $arrayValueOfAttribute = array();
+                $childProducts->addAttributeToSelect($attribute->getLabel());
+                foreach($childProducts as $_childProductAvailable){
+                    $valueOfAttribute =  Mage::getResourceModel('catalog/product')->getAttributeRawValue($_childProductAvailable->getId(), $attribute->getLabel(), $storeId);
+                    $arrayValueOfAttribute[] = $valueOfAttribute;
+                    $arrayAttributeAdd[$valueOfAttribute] = "link-bestsell-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOfAttribute."" ;
+                }
+
+                $arrayOptionRemove = array_diff($id, $arrayValueOfAttribute);
+                foreach($arrayOptionRemove as $key =>$valueOptionInArray){
+                    if($valueOptionInArray){
+                        $idTagARemove[$valueOptionInArray] = "link-bestsell-customgroup-item-".$productId."-attribute".$productAttributeId."-".$valueOptionInArray."" ;
+                    }
+                }
+            }
+        }
+
+        $arrayAttributeAdd =  array_unique($arrayAttributeAdd);
+        $response['resultUpdate'] = $arrayAttributeAdd;
+        $response['resultRemove'] = $idTagARemove;
+        $response['success'] = 'true';
+
+        $this->getResponse()->setBody(json_encode($response));
+    }
 }

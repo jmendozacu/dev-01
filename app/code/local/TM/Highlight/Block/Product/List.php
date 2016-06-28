@@ -12,6 +12,12 @@ class TM_Highlight_Block_Product_List
     extends TM_Highlight_Block_Product_List_Abstract
     implements Mage_Widget_Block_Interface
 {
+    const SMALL_SIZE = 20;
+    const BIG_SIZE = 100;
+    protected $_canShow = null;
+    protected $_currentProduct = null;
+    protected $_joinedAttributes;
+    protected $_nativeBlock = null;
     const DEFAULT_PRODUCTS_COUNT    = 4;
     const DEFAULT_COLUMN_COUNT      = 4;
     const PAGE_TYPE = false;
@@ -599,5 +605,239 @@ class TM_Highlight_Block_Product_List
         return Mage::getModel('core/url')->getDirectUrl(
             Mage::helper('highlight')->getPageUrlKey(static::PAGE_TYPE)
         );
+    }
+    public function getAllowProducts(Mage_Catalog_Model_Product $_product)
+    {
+//    if (!$this->hasAllowProducts()) {
+        if ($_product->getTypeId()== Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE){
+            $products = array();
+            $allProducts = $_product->getTypeInstance(true)
+                ->getUsedProducts(null, $_product);
+            foreach ($allProducts as $product) {
+                /**
+                 * Should show all products (if setting set to Yes), but not allow "out of stock" to be added to cart
+                 */
+                if ($product->isSaleable() || Mage::getStoreConfig('amconf/general/out_of_stock') ) {
+                    if ($product->getStatus() != Mage_Catalog_Model_Product_Status::STATUS_DISABLED)
+                    {
+                        if (in_array(Mage::app()->getStore()->getWebsiteId(), $product->getWebsiteIds())) {
+                            $products[] = $product;
+                        }
+                    }
+                }
+            }
+            $this->setAllowProducts($products);
+//    }
+        }
+        return $this->getData('allow_products');
+    }
+    public function getAllowAttributes(Mage_Catalog_Model_Product $product)
+    {
+        return $product->getTypeInstance(true)
+            ->getConfigurableAttributes($product);
+    }
+    protected function _validateAttributeValue($attributeId, &$value, &$options)
+    {
+        if(isset($options[$attributeId][$value['value_index']])) {
+            return true;
+        }
+
+        return false;
+    }
+    public function getCurrentStore()
+    {
+        return Mage::app()->getStore();
+    }
+    protected function _registerJsPrice($price)
+    {
+        return str_replace(',', '.', $price);
+    }
+    protected function _convertPrice($price, $round = false)
+    {
+        if (empty($price)) {
+            return 0;
+        }
+
+        $price = $this->getCurrentStore()->convertPrice($price);
+        if ($round) {
+            $price = $this->getCurrentStore()->roundPrice($price);
+        }
+
+        return $price;
+    }
+    protected function _preparePrice($price, $isPercent = false)
+    {
+        if ($isPercent && !empty($price)) {
+            $price = $this->getProduct()->getFinalPrice() * $price / 100;
+        }
+
+        return $this->_registerJsPrice($this->_convertPrice($price, true));
+    }
+    protected function _validateAttributeInfo(&$info)
+    {
+        if(count($info['options']) > 0) {
+            return true;
+        }
+        return false;
+    }
+    protected function _prepareOldPrice($price, $isPercent = false)
+    {
+        if ($isPercent && !empty($price)) {
+            $price = $this->getProduct()->getPrice() * $price / 100;
+        }
+
+        return $this->_registerJsPrice($this->_convertPrice($price, true));
+    }
+    protected function _getAdditionalConfig()
+    {
+        return array();
+    }
+    public function getAttributeOfConfigProduct(Mage_Catalog_Model_Product $_product){
+        $attributes = array();
+        $options    = array();
+        $store      = $this->getCurrentStore();
+        $taxHelper  = Mage::helper('tax');
+        $currentProduct =$_product;
+
+        $preconfiguredFlag = $currentProduct->hasPreconfiguredValues();
+        if ($preconfiguredFlag) {
+            $preconfiguredValues = $currentProduct->getPreconfiguredValues();
+            $defaultValues       = array();
+        }
+        foreach ($this->getAllowProducts($_product) as $product) {
+            $productId  = $product->getId();
+            foreach ($this->getAllowAttributes($_product) as $attribute) {
+
+                $productAttribute   = $attribute->getProductAttribute();
+
+                $productAttributeId = $productAttribute->getId();
+
+                $attributeValue     = $product->getData($productAttribute->getAttributeCode());
+
+                if (!isset($options[$productAttributeId])) {
+                    $options[$productAttributeId] = array();
+                }
+
+                if (!isset($options[$productAttributeId][$attributeValue])) {
+                    $options[$productAttributeId][$attributeValue] = array();
+                }
+//                sua cho nay
+//                $options[$productAttributeId][$attributeValue][] = $productId;
+                $options[$productAttributeId][$attributeValue] = $productId;
+            }
+        }
+
+
+
+        foreach ($this->getAllowAttributes($_product) as $attribute) {
+            $productAttribute = $attribute->getProductAttribute();
+
+            $attributeId = $productAttribute->getId();
+
+            $info = array(
+                'id'        => $productAttribute->getId(),
+                'code'      => $productAttribute->getAttributeCode(),
+                'label'     => $attribute->getLabel(),
+                'options'   => array()
+            );
+
+            $optionPrices = array();
+            $prices = $attribute->getPrices();
+            if (is_array($prices)) {
+                foreach ($prices as $value) {
+
+                    if(!$this->_validateAttributeValue($attributeId, $value, $options)) {
+                        continue;
+                    }
+                    $currentProduct->setConfigurablePrice(
+                        $this->_preparePrice($value['pricing_value'], $value['is_percent'])
+                    );
+
+                    $currentProduct->setParentId(true);
+                    Mage::dispatchEvent(
+                        'catalog_product_type_configurable_price',
+                        array('product' => $currentProduct)
+                    );
+                    $configurablePrice = $currentProduct->getConfigurablePrice();
+
+                    if (isset($options[$attributeId][$value['value_index']])) {
+                        $productsIndex = $options[$attributeId][$value['value_index']];
+                    } else {
+                        $productsIndex = array();
+                    }
+
+                    $info['options'][] = array(
+                        'id'        => $value['value_index'],
+                        'label'     => $value['label'],
+                        'price'     => $configurablePrice,
+                        'oldPrice'  => $this->_prepareOldPrice($value['pricing_value'], $value['is_percent']),
+                        'products'  => $productsIndex,
+                    );
+                    $optionPrices[] = $configurablePrice;
+                }
+            }
+            /**
+             * Prepare formated values for options choose
+             */
+            foreach ($optionPrices as $optionPrice) {
+                foreach ($optionPrices as $additional) {
+                    $this->_preparePrice(abs($additional-$optionPrice));
+                }
+            }
+            if($this->_validateAttributeInfo($info)) {
+                $attributes[$attributeId] = $info;
+            }
+
+            // Add attribute default value (if set)
+            if ($preconfiguredFlag) {
+                $configValue = $preconfiguredValues->getData('super_attribute/' . $attributeId);
+                if ($configValue) {
+                    $defaultValues[$attributeId] = $configValue;
+                }
+            }
+        }
+
+        $config = array(
+            'attributes'        => $attributes,
+            'template'          => str_replace('%s', '#{price}', $store->getCurrentCurrency()->getOutputFormat()),
+            'basePrice'         => $this->_registerJsPrice($this->_convertPrice($currentProduct->getFinalPrice())),
+            'oldPrice'          => $this->_registerJsPrice($this->_convertPrice($currentProduct->getPrice())),
+            'productId'         => $currentProduct->getId(),
+            'chooseText'        => Mage::helper('catalog')->__('Choose an Option...'),
+            //'taxConfig'         => $taxConfig
+        );
+
+        if ($preconfiguredFlag && !empty($defaultValues)) {
+            $config['defaultValues'] = $defaultValues;
+        }
+
+        $config = array_merge($config, $this->_getAdditionalConfig());
+//Zend_Debug::dump($config['attributes']);die();
+        return $config['attributes'];
+    }
+    public function getImageOptions($attribute, $option){
+        $attributeId = $attribute->getAttributeId();
+        $attr = Mage::getModel('amconf/attribute')->load($attributeId, 'attribute_id');
+        $smWidth     = $attr->getSmallWidth() != "0"? $attr->getSmallWidth() : self::SMALL_SIZE;
+        $smHeight    = $attr->getSmallHeight()!= "0"? $attr->getSmallHeight(): self::SMALL_SIZE;
+        $bigWidth    = $attr->getBigWidth()!= "0"?    $attr->getBigWidth()   : self::BIG_SIZE;
+        $bigHeight   = $attr->getBigHeight()!= "0"?   $attr->getBigHeight()  : self::BIG_SIZE;
+
+        $imgUrl     = Mage::helper('amconf')->getImageUrl($option['id'], $smWidth, $smHeight);
+        $tooltipUrl = Mage::helper('amconf')->getImageUrl($option['id'], $bigWidth, $bigHeight);
+        if($imgUrl == ""){
+            $imgUrl     = Mage::helper('amconf')->getPlaceholderUrl($attributeId, $smWidth, $smHeight);
+            $tooltipUrl = Mage::helper('amconf')->getPlaceholderUrl($attributeId, $bigWidth, $bigHeight);
+        }
+        $config['image'] = $imgUrl;
+        $config['bigimage'] = $tooltipUrl;
+
+        $swatchModel = Mage::getModel('amconf/swatch')->load($option['id']);
+        $config['color'] = $swatchModel->getColor();
+        $config['width'] = $smWidth;
+        $config['height'] = $smHeight;
+        $config['w'] = $attr->getData('cat_small_width');
+        $config['h'] =  $attr->getData('cat_small_height');
+        return $config;
     }
 }
