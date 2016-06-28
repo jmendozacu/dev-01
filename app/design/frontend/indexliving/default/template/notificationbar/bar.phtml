@@ -1,6 +1,6 @@
 <?php
 /**
- * @author		Sashas
+ * @author      Sashas
  * @category    Sashas
  * @package     Sashas_NotificationBar
  * @copyright   Copyright (c) 2014 Sashas IT Support Inc. (http://www.sashas.org)
@@ -11,7 +11,7 @@
 <style>
 <!--
 /*.sashas-notificationbar {
-	width:100%;
+    width:100%;
     position: <?php echo $this->getPosition();?>;
     z-index: 100;
     top: 0;
@@ -27,8 +27,8 @@
     opacity:<?php echo $this->getOpacity();?>;
 }
 .sashas-notificationbar #close {
-	cursor:pointer;
-	padding-left:2px;
+    cursor:pointer;
+    padding-left:2px;
 } */
 .sashas-notificationbar img{
     -webkit-box-shadow: 0 0 5px black;
@@ -36,20 +36,35 @@
     box-shadow: 0 0 5px black;
     opacity: 5;
 }
+a#close {
+    background: #252525;
+    color: #FFF;
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    float: right;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 33px;
+    position: relative;
+    top: 24px;
+    right: -10px;
+}
+a#close:hover{text-decoration: none;background: #FFC222;}
 <?php echo $this->getCss();?>
 -->
 </style>
-<div id="notification-bar" class="sashas-notificationbar"><sup><a id="close" href="javascript:void(0);" onclick="hidebar();">[close]</a></sup><?php //echo $this->__($this->getBarText())?>
+<div id="notification-bar" class="sashas-notificationbar"><sup><a id="close" href="javascript:void(0);" onclick="hidebar();">X</a></sup><?php //echo $this->__($this->getBarText())?>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('notification-popup')->toHtml();?>
 </div>
 <script  type="text/javascript" language="javascript">
 function hidebar() {
-	 $('notification-bar').hide();
-	 <?php if ($this->useSession()): ?>
-	 new Ajax.Request('<?php echo Mage::getUrl('notificationbar/notificationbar/closebar');?>', {
-		  method: 'get'
-		  });
-	 <?php endif;?>
+     $('notification-bar').hide();
+     <?php if ($this->useSession()): ?>
+     new Ajax.Request('<?php echo Mage::getUrl('notificationbar/notificationbar/closebar');?>', {
+          method: 'get'
+          });
+     <?php endif;?>
 }
 </script>
 
