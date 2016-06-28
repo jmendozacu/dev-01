@@ -655,9 +655,9 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
             $sReq .= '&'.$k.'='.$value;
 
         }
-
-		 
-
+        Mage::log(print_r($rArr,true),null,'formsentKSmartpay.log');
+		
+        
         return $rArr;
 
     }
@@ -880,7 +880,7 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 
 			$data['Order_Id'] = $InvoiceNo;
 			
-			$BJCPaymentUrl = Mage::getStoreConfig('payment/Bjcpayment/bjcpaymenturl');
+			// $BJCPaymentUrl = Mage::getStoreConfig('payment/Bjcpayment/bjcpaymenturl');
 
 			
 
@@ -890,9 +890,9 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 
 			
 
-			$data['Redirect_Url']   = $BJCPaymentUrl . "/" .  str_replace("{orderno}", trim($InvoiceNo),$this->_getKSmartpayConfig()->getKSmartpayRedirecturl());
+			// $data['Redirect_Url']   = $BJCPaymentUrl . "/" .  str_replace("{orderno}", trim($InvoiceNo),$this->_getKSmartpayConfig()->getKSmartpayRedirecturl());
 
-			$data['Response_Url'] = $BJCPaymentUrl . "/" .  str_replace("{orderno}", trim($InvoiceNo),$this->_getKSmartpayConfig()->getKSmartpayResponseurl());			
+			// $data['Response_Url'] = $BJCPaymentUrl . "/" .  str_replace("{orderno}", trim($InvoiceNo),$this->_getKSmartpayConfig()->getKSmartpayResponseurl());			
 
 									
 

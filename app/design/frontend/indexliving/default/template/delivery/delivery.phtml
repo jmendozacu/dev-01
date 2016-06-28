@@ -1,12 +1,9 @@
-<?php $media = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
-
-
-?>
+<?php $media = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>
 <div class="banner">
-  <img src="<?php echo $media . 'delivery/banner-delivery.png' ?>" alt="">
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('delivery-calculator-banner')->toHtml() ?>
 </div>
 <div class="info-shop">
-  <img src="<?php echo $media . 'delivery/info1-delivery.png' ?>" alt="">
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('delivery-calculator-info1')->toHtml(); ?>
 </div>
 <div class="caculator">
   <div class="page-title">
@@ -36,27 +33,30 @@
           </select>
           </div>
         </div>
-        </li>
+      </li>
+      <div class="line-hr"></div>
       <li class="fields shipping-budget">
         <h4>Your Budget</h4>
         <div class="field name-budget">
-          <div class="input-box">
-            <input type="text" class="input-text required-entry" maxlength="255" title="Budget" value="" name="budget" id="budget">
+          <div class="input-box" style="float: left;">
+            <input type="number" class="input-text required-entry validate-digits validate-digits-range digits-range-0-9999999999" maxlength="10" title="Budget" value="" name="budget" id="budget">
           </div>
+          <span style="margin: 10px 0 0 15px;float: left;">Baht</span>
         </div>
       </li>
+      <div class="line-hr"></div>
       <li class="fields shipping-area">
         <h4>Shipping Area</h4>
-          <div class="field">
+          <div class="field" style="float: left;width: auto;">
             <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
             <div class="input-box">
               <select id="region_id" name="region_id" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="validate-select" style="display:none;">
-                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                <option value=""><?php echo $this->__('Please select state or province') ?></option>
               </select>
               <input type="text" id="region" name="region" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
             </div>
           </div>
-          <div class="field">
+          <div class="field" style="float: left;width: auto;">
             <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
             <div class="input-box">
               <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select" style="display:none;">
@@ -66,29 +66,39 @@
             </div>
           </div>
           <div class="field" style="display: none">
-          <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
-          <div class="input-box">
-            <?php echo $this->getCountryHtmlSelect() ?>
+            <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+            <div class="input-box">
+              <?php echo $this->getCountryHtmlSelect() ?>
+            </div>
           </div>
-        </div>
       </li>
+      <li class="tip">Remark: To see the real shipping costs, add items to your cart, then select Check Out. You will be able to select a shpping method then cost will be displayed.</li>
     <!--Button & Link-->
-    <div class="buttons-set">
-      <p class="required">* <?php echo $this->__('Required Fields') ?></p>
-      <button class="button submit" title="Calculator" type="submit" ><span><span><?php echo $this->__('Calculator') ?></span></span></button>
-      <button class="button cancel" title="Cancel" type="reset" onclick="$j('.shipping-result').fadeOut();"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
-      <div id="shipping-result" class="shipping-result" style="display: none">
-        Your shipping cost is <span class="result"></span>
+      <div class="buttons-set">
+        <button class="button submit" title="Calculator" type="submit" ><span><span><?php echo $this->__('Calculator') ?></span></span></button>
+        <button class="button cancel" title="Cancel" type="reset" onclick="$j('.result').fadeOut();"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
       </div>
-    </div>
+      <div class="result-cost">
+        <div class="result-info">
+          <span class="shipping-cost">Your shipping cost : </span><span class="result" style="display: none"></span>
+          <div>The delivery fee will be charged depend on the distance of the location delivery area.
+            </div>
+        </div>
+        <div class="result-info2">
+          <ul><strong>Remark:</strong>
+            <li>- The delivery fee will be charged depend on the distance of the location delivery area.</li>
+            <li>- To see the real shipping costs, add items to your cart, then select Check Out. You will be able to select a shpping method then cost will be displayed.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </form>
   </ul>
 </div>
+<div class="line-hr-bot"></div>
 <div class="info-shop">
-  <img src="<?php echo $media . 'delivery/info2-delivery.png' ?>" alt="">
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('delivery-calculator-info2')->toHtml(); ?>
 </div>
-
 <script type="text/javascript">
 
   new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
@@ -98,9 +108,6 @@
 </script>
 
 <script>
-  /**
-   * Created by Khuebt on 21/06/16.
-   */
 
   var formId = 'shipping-form-validate';
   var myForm = new VarienForm(formId, true);
@@ -108,7 +115,7 @@
 
   function doAjax() {
     if (myForm.validator.validate()) {
-      $j('.shipping-result').fadeOut();
+      $j('.result').fadeOut();
       $j('#ajaxcart-overlay').show();
       $j('#ajax_cart_loading').show();
       var request = new Ajax.Request(
@@ -123,7 +130,11 @@
                 $j('#ajaxcart-overlay').hide();
                 $j('#ajax_cart_loading').hide();
                 $j('.result').text(result.cost);
-                $j('.shipping-result').show();
+                $j('.result').fadeIn();
+              }else{
+                $j('#ajaxcart-overlay').hide();
+                $j('#ajax_cart_loading').hide();
+                alert('No shipping cost available with this value!');
               }
             }
           }
@@ -136,6 +147,5 @@
     e.stop();
     doAjax();
   });
-
 
 </script>

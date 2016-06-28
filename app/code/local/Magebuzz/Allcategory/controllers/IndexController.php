@@ -12,14 +12,15 @@ class Magebuzz_Allcategory_IndexController extends Mage_Core_Controller_Front_Ac
     
     $cat2Id = $this->getRequest()->getParam('cat2Id');
     $helper = Mage::helper('allcategory');
+    $categoryHelper = Mage::helper('catalog/category');
     
-    $cat_level_3 = $helper->getCatChildByGroup($cat2Id);
-    if(count($cat_level_3)){
+    $subCatLvl3 = $helper->getSubcategoriesFromParent($cat2Id);
+    if(count($subCatLvl3) > 0){
       $result['success'] = true;
-      $result['cats_3'] = $cat_level_3;
       $_columnCount =4;
       $i=0;
-      foreach($result['cats_3'] as $cat3){
+      foreach($subCatLvl3 as $_catItem){
+				$cat3 = Mage::getModel('catalog/category')->load($_catItem->getId());
         if ($i++%$_columnCount==0){
           $result['html'] .= '<ul class="level1">';
         }
@@ -27,15 +28,18 @@ class Magebuzz_Allcategory_IndexController extends Mage_Core_Controller_Front_Ac
 					if(isset($cat3['category_icon']) && $cat3['category_icon'] != ''){
 						$result['html'] .= '<img class="category-icon" src="'.Mage::getBaseUrl('media').'/catalog/category/'.$cat3['category_icon'].'" />';
 					}
-          $result['html'] .= '<a href="'.Mage::getUrl($cat3['url_path']).'">'.$cat3['name'].'</a>';
-          $cat_level_4 = $helper->getCatChildByGroup($cat3['entity_id']);
-          $result['html'] .= '<ul class="level2">';
-            foreach($cat_level_4 as $cat4){
-              $result['html'] .= '<li class="level2">';
-                $result['html'] .= '<a href="'.Mage::getUrl($cat4['url_path']).'">'.$cat4['name'].'</a>';
-              $result['html'] .= '</li>';
-            }
-          $result['html'] .= '</ul>';
+          $result['html'] .= '<a href="'.$categoryHelper->getCategoryUrl($cat3).'">'.$cat3->getName().'</a>';
+          $subCatLvl4 = $helper->getSubcategoriesFromParent($_catItem->getId());
+					if(count($subCatLvl4) > 0){
+						$result['html'] .= '<ul class="level2">';
+							foreach($subCatLvl4 as $_subcatItem){
+								$cat4 = Mage::getModel('catalog/category')->load($_subcatItem->getId());
+								$result['html'] .= '<li class="level2">';
+									$result['html'] .= '<a href="'.$categoryHelper->getCategoryUrl($cat4).'">'.$cat4->getName().'</a>';
+								$result['html'] .= '</li>';
+							}
+						$result['html'] .= '</ul>';
+					}
         $result['html'] .= '</li>';
         if ($i%$_columnCount==0 || $i==count($cat_level_3)){
           $result['html'] .= '</ul>';

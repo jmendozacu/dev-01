@@ -175,7 +175,7 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
         }
         imgContainer.appendChild(div);
         div.observe('click', this.configureImage.bind(this));
-
+        div.observe('mouseover', this.configureImage.bind(this));
         if(useTooltip){
             amcontentPart = 'background: #' + option.color + '">';
         }
@@ -192,6 +192,7 @@ Product.Config.prototype.amconfCreateOptionImage = function(option, attributeId,
         });
 
         div.observe('click', this.configureImage.bind(this));
+        div.observe('mouseover', this.configureImage.bind(this));
         imgContainer.appendChild(div);
 
         if(useTooltip){
