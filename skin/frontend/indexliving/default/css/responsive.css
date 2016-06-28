@@ -129,6 +129,10 @@
 	.delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free{min-height: 58px;}
 
  }
+ @media (max-width: 819px) {
+ .delivery-index-index .box_right_img img { width: 100%;}
+ .delivery-index-index .box_right_img,.delivery-index-index .header_top .box_left_text{width:100%;background:#252525;}
+}
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {
   /* .box-desktop,
@@ -640,7 +644,8 @@
   @media (max-width:697px){
 	.delivery-index-index .total_buy, .delivery-index-index .desktop_show{display: none;}
 	.delivery-index-index .mobile_show{display:block;}
-	.delivery-index-index .th, .delivery-index-index .tr, .delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd{width:100%}
+	.delivery-index-index .th, .delivery-index-index .tr, .delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd,
+	.delivery-index-index .table_price_delivery .table_row .furniture_prd.one{width:100%}
 	.delivery-index-index .mobile_show .td.white.full, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free{min-height:22px;}
 	.delivery-index-index .table_price_delivery .table_row .th{margin-top:20px;}
  }

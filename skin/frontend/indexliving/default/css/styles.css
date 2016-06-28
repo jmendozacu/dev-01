@@ -10693,7 +10693,6 @@ div.paypal-logo span > img {
 .cms-page-view .col_3 .img{margin-bottom:10px;}
 .cms-page-view .col_3 .img img{width:100%;}
 
-.delivery-index-index .wrap-bannerads{display: none;}
 .delivery-index-index .header_top {display: table;width: 100%;background: #252525;margin-bottom: 46px;}
 .delivery-index-index .header_top .box_left_text .txt_content{padding:60px;text-align: right;position: relative;}
 .delivery-index-index .header_top .box_left_text, .delivery-index-index .box_right_img{width:50%;float:left;display: table-cell;}
@@ -10709,6 +10708,7 @@ div.paypal-logo span > img {
 .delivery-index-index .table_price_delivery .table_row .th h3{color:#FFF;}
 .delivery-index-index .table_price_delivery .table_row .total_buy{width: 18%;margin-right: 2%;float: left;}
 .delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd{width: 39%;float: left;margin-right: 2%;}
+.delivery-index-index .table_price_delivery .table_row .furniture_prd.one{width:80%;margin-right: 0;}
 .delivery-index-index .table_price_delivery .table_row .home_prd{margin-right: 0;}
 .delivery-index-index .table_price_delivery .table_row .tr{background:#f7f7f7;}
 .delivery-index-index .table_price_delivery .table_row .tr, .delivery-index-index .table_price_delivery .table_row .tr.white{margin-top:12px;}
