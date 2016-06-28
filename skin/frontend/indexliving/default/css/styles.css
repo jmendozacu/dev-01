@@ -10721,6 +10721,7 @@ div.paypal-logo span > img {
 .delivery-index-index .table_price_delivery .table_row .tr.white, .delivery-index-index .table_price_delivery .table_row .td.white{background:#FFF;}
 .delivery-index-index .table_price_delivery .table_row .td.free .free_txt {   color: #ffb300;  font-size: 18px;}
 .delivery-index-index .list_bullet{margin-top: 30px;}
+.delivery-index-index .mobile_show{display:none;}
 
 /*cms-custom-form*/
 .cms-page-view.cms-custom-form .std .fieldset{width: 45%;margin-right: 5%;float: left;}
