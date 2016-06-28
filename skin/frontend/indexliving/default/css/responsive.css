@@ -821,6 +821,10 @@
     margin-left: -260px;
 	}
  }
+   @media (max-width: 511px){
+	.delivery-index-index .caculator .result-cost { text-align: left;background-position: center 20px;}
+	.delivery-index-index .caculator .result-info{margin-left:0;border-top:1px solid #ccc;padding-left:0;margin-top:100px;padding-top:10px;border-left: 0;}
+ }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;}
 	.banner-static-home li span {font-size:10px; line-height:14px; padding-left:40px;}
