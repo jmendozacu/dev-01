@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  * @author		Sashas
  * @category    Sashas
@@ -21,20 +21,20 @@
     top: 50%;
 	/*  visibility: hidden;*/
     width: 300px;
-    z-index: 160010;
+    z-index: 160010;  
     /* Safari 3-4, iOS 1-3.2, Android 1.6- */
-    -webkit-border-radius: 5px;
+    -webkit-border-radius: 5px; 
 	/* Firefox 1-3.6 */
-	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;    
  	/* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
 	border-radius: 5px;
 }
 .sashas-notificationbar-popup #close {
-	cursor:pointer;
+	cursor:pointer; 
 	right: 20px;
 	position: absolute;
 	top:10px;
-}
+} 
 .sashas-notificationbar-fade {
 	    background-color: #000000;
 	    height: 100%;
@@ -43,7 +43,7 @@
 	    opacity: 0.5;
 	    padding: 0;
 	    position: fixed;
-	   /* top: 0;*/
+	    top: 0;
 	    visibility: visible;
 	   /* visibility: hidden;*/
 	    width: 100%;
@@ -60,14 +60,14 @@
 </div>
 <div id="notificationbar-fade" class="sashas-notificationbar-fade" onclick="hidepopup();"></div>
 <script  type="text/javascript" language="javascript">
-function hidepopup() {
-	 $('notificationbar-popup').hide();
-	 $('notificationbar-fade').hide();
+function hidepopup() { 
+	 $('notificationbar-popup').hide();	
+	 $('notificationbar-fade').hide();		
 	 <?php if ($this->useSession()): ?>
 	 new Ajax.Request('<?php echo Mage::getUrl('notificationbar/notificationbar/closepopup');?>', {
-		  method: 'get'
+		  method: 'get' 		  
 		  });
-	 <?php endif;?>
-}
+	 <?php endif;?>	 
+} 
 </script>
 <?php endif;?>

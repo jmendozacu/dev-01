@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  * @author		Sashas
  * @category    Sashas
@@ -10,8 +10,8 @@
 <?php if ($this->ShowBar()):?>
 <style>
 <!--
-/*.sashas-notificationbar {
-	width:100%;
+.sashas-notificationbar {
+	width:100%; 
     position: <?php echo $this->getPosition();?>;
     z-index: 100;
     top: 0;
@@ -20,37 +20,30 @@
     background: <?php echo $this->getColor();?>;
     text-align: center;
     line-height: 2.5;
-    overflow: hidden;
+    overflow: hidden; 
     -webkit-box-shadow: 0 0 5px black;
     -moz-box-shadow:    0 0 5px black;
-    box-shadow:         0 0 5px black;
-    opacity:<?php echo $this->getOpacity();?>;
+    box-shadow:         0 0 5px black;       
+    opacity:<?php echo $this->getOpacity();?>;    
 }
 .sashas-notificationbar #close {
-	cursor:pointer;
+	cursor:pointer; 	 
 	padding-left:2px;
-} */
-.sashas-notificationbar img{
-    -webkit-box-shadow: 0 0 5px black;
-    -moz-box-shadow: 0 0 5px black;
-    box-shadow: 0 0 5px black;
-    opacity: 5;
-}
+} 
+
 <?php echo $this->getCss();?>
 -->
 </style>
-<div id="notification-bar" class="sashas-notificationbar"><sup><a id="close" href="javascript:void(0);" onclick="hidebar();">[close]</a></sup><?php //echo $this->__($this->getBarText())?>
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('notification-popup')->toHtml();?>
-</div>
+<div id="notification-bar" class="sashas-notificationbar"><?php echo $this->__($this->getBarText())?><sup><a id="close" href="javascript:void(0);" onclick="hidebar();">[close]</a></sup></div>
 <script  type="text/javascript" language="javascript">
-function hidebar() {
-	 $('notification-bar').hide();
+function hidebar() { 
+	 $('notification-bar').hide();		
 	 <?php if ($this->useSession()): ?>
 	 new Ajax.Request('<?php echo Mage::getUrl('notificationbar/notificationbar/closebar');?>', {
-		  method: 'get'
+		  method: 'get' 		  
 		  });
 	 <?php endif;?>
-}
+} 
 </script>
 
 <?php endif;?>
