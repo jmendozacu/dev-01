@@ -68,14 +68,14 @@
 														<img class="lazy" id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 																	 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400,400);?>"
 																	 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-													</div>				 
+													</div>
 													<div class="back">
 														<img class="lazy" id="product-collection-flipimage-<?php echo $_product->getId(); ?>" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>"
 																	 data-src="<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(400,400);?>"
 																	 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>" />
-													</div>				 
-												</div>				 
-											</div>			
+													</div>
+												</div>
+											</div>
 											<?php else: ?>
 												<img class="lazy" src="<?php echo $this->getSkinUrl('images/mgt_lazy_image_loader/loader.gif'); ?>" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image') ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
 											<?php endif ?>
@@ -84,7 +84,7 @@
                     <ul class="add-to-links">
                         <?php if ($this->helper('wishlist')->isAllow()) : ?>
                             <li class="wishlist-ajax-gird add-wishlist">
-                                <a id="wishlist-<?php echo $_product->getId()?>"  href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" 
+                                <a id="wishlist-<?php echo $_product->getId()?>"  href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"
                                    class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a>
                             </li>
                         <?php endif;?>
@@ -188,7 +188,7 @@
                     if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
                   ?>
                   <?php if ($discount_percent) :?>
-                    <div class="save-price-percent"><span><?php echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
+                    <div class="save-price-percent"><span><?php //echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
                   <?php endif; ?>
                 </div>
 
@@ -201,7 +201,7 @@
 										<?php endif?>
 									<?php else: ?>
 											<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
-									<?php endif; ?>	
+									<?php endif; ?>
                 </div>
             </li>
         <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
