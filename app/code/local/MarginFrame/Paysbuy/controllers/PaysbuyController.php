@@ -248,7 +248,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 				$order->save();				
 				
 				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
-				
+				$PaysbuyAmount = sprintf('%.2f', $order->getGrandTotal());
 				switch ($response['result']) {
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
@@ -443,11 +443,12 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 				
 				
 				$dbAmt = sprintf('%.2f', $order->getGrandTotal());
+				$PaysbuyAmount = sprintf('%.2f', $order->getGrandTotal());
 				switch ($response['result']) {
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
-							if (strtolower($CurrentOrderState)=="new") {							
+							if ($order->getState() ==Mage::getStoreConfig('payment/Paysbuy/order_status') ) {						
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
 								$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status'), true, "New : " .  $comment, 1)->save();
 								//=> auto invoice

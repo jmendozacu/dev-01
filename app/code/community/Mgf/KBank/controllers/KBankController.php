@@ -375,8 +375,9 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 						$state = Mage::getStoreConfig('payment/KBank/payment_success_status');
 						$message=Mage::helper('KBank')->__('Your payment is authorized by KBank ('. $KBankReturnData .').');
 						
-						if($order->getState() != Mage::getStoreConfig('payment/KBank/payment_success_status')){
-							$order->setState(Mage::getStoreConfig('payment/KBank/payment_success_status'), true, $message);
+						if($order->getStatus() != Mage::getStoreConfig('payment/KBank/payment_success_status')){
+							$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $message, 1)->save(); 		
+							$order->setStatus(Mage::getStoreConfig('payment/KBank/payment_success_status'), true, $message);
 							$order->save();
 							//=> Create Invoice
 							if (Mage::getStoreConfig('payment/KBank/payment_autoinvoice')=="1") {
@@ -392,6 +393,7 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
 						} else {
 							$message .= 'Other -'.$order->getState().' : '.$message;
 							$order->setState($order->getState(), true, $message);
+							$order->setStatus(Mage::getStoreConfig('payment/KBank/payment_success_status'), true, $message);
 							$order->save();
 						}
 
