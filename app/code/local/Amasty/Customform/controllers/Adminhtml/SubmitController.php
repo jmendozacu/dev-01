@@ -108,7 +108,7 @@ class Amasty_Customform_Adminhtml_SubmitController extends Mage_Adminhtml_Contro
         }
 
         //if ($redirectBack && $formId) {
-            $this->_redirect('*/*/edit', array(
+            $this->_redirect('*/*/view', array(
                 'id' => $formId,
                 '_current' => true,
             ));
