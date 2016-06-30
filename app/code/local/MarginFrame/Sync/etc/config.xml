@@ -41,7 +41,7 @@
             </mgfsync_cron_productstatus_run>
 
             <mgfsync_cron_reindex_run>
-                <schedule><cron_expr>0,10 9 * * *</cron_expr></schedule>
+                <schedule><cron_expr>0 9 * * *</cron_expr></schedule>
                 <run><model>mgfsync/cron_reindex::Run</model></run>
             </mgfsync_cron_reindex_run>
 
