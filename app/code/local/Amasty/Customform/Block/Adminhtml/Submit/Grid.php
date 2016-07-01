@@ -90,6 +90,19 @@ class Amasty_Customform_Block_Adminhtml_Submit_Grid extends Mage_Adminhtml_Block
                 'filter_index'=>'main_table.submitted'
             ));
 
+        $this->addColumn('verify',
+            array(
+                'header'=> $helper->__('Verify'),
+                'index' => 'verify',
+                'filter_index'=>'main_table.verify',
+                'type' => 'options',
+                'options' => array(
+                                0 => $this->__('No'),
+                                1 => $this->__('Yes'),
+                            )
+            )
+        );
+
         $this->addColumn('action',
             array(
                 'header'    => $helper->__('Action'),

@@ -125,6 +125,14 @@
 	.product-view .add-to-links .shareproduct-content .popupsharing-content .social-sharing .sharing-links li.lineapp a img{-webkit-filter:grayscale(100%);filter:grayscale(100%);border-radius:100%;height:33px;width:33px;}
 
  }
+   @media (max-width: 922px) {
+	.delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free{min-height: 58px;}
+
+ }
+ @media (max-width: 819px) {
+ .delivery-index-index .box_right_img img { width: 100%;}
+ .delivery-index-index .box_right_img,.delivery-index-index .header_top .box_left_text{width:100%;background:#252525;}
+}
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {
   /* .box-desktop,
@@ -633,6 +641,14 @@
 	#customer-reviews .review-list li > div.review-details{width:53%; float:right;}
 	.product-view #customer-reviews .review-list li > div.review-details{	width:40%;	float:right; text-align:right;}
  }
+  @media (max-width:697px){
+	.delivery-index-index .total_buy, .delivery-index-index .desktop_show{display: none;}
+	.delivery-index-index .mobile_show{display:block;}
+	.delivery-index-index .th, .delivery-index-index .tr, .delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd,
+	.delivery-index-index .table_price_delivery .table_row .furniture_prd.one{width:100%}
+	.delivery-index-index .mobile_show .td.white.full, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free{min-height:22px;}
+	.delivery-index-index .table_price_delivery .table_row .th{margin-top:20px;}
+ }
  @media (max-width:640px){
   .main-home .box-list-products .products-grid li.item.last  {display:block; float:left; margin-right:0px;}
   .products-grid .button.btn-cart > span:before {top:0px; background-size:80px auto; background-position: 3px -674px}
@@ -810,6 +826,10 @@
     margin-left: -260px;
 	}
  }
+   @media (max-width: 511px){
+	.delivery-index-index .caculator .result-cost { text-align: left;background-position: center 20px;}
+	.delivery-index-index .caculator .result-info{margin-left:0;border-top:1px solid #ccc;padding-left:0;margin-top:100px;padding-top:10px;border-left: 0;}
+ }
  @media (max-width: 480px){
   .banner-static-home {padding:10px 0;}
 	.banner-static-home li span {font-size:10px; line-height:14px; padding-left:40px;}
@@ -887,4 +907,6 @@
 		max-width: 300px;
     margin-left: -150px;
 	}
+  .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td,
+  .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free{min-height: 58px;}
 }

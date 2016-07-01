@@ -104,7 +104,7 @@ hr.amconf-hr{
    /*  outline: 1px solid #000; */
 		/* border-radius:10px; */
 }
-.product-view .amconf-image-selected{border-radius:0; margin-right:10px;}
+.product-view .amconf-image-selected{border-radius:0;}
 .amconf-image-outofstock
 {
     opacity:0.6;
@@ -138,8 +138,14 @@ hr.amconf-hr{
 {
 	float:left;
 }
-.product-view .product-shop .amconf-image-container div.amconf-color-container{margin-right:10px; border:1px solid #dadada;}
-.amconf-image-container div.amconf-color-label{float:left}
+.product-view .product-shop .amconf-image-container div.amconf-color-container{border:1px solid #dadada;}
+.amconf-image-container div.amconf-color-label{
+	float: left;
+	display: block;
+	width: 90%;
+	text-align: left;
+	padding-left: 10px;
+}
 .amconf-image-title
 {
     margin-bottom:5px;

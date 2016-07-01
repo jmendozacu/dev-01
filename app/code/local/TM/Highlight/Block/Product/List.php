@@ -52,7 +52,8 @@ class TM_Highlight_Block_Product_List
         parent::_construct();
 
         $this->addData(array(
-            'cache_lifetime'    => 86400,
+            //'cache_lifetime'    => 86400,
+            'cache_lifetime'    => 0,
             'cache_tags'        => array(Mage_Catalog_Model_Product::CACHE_TAG),
         ));
     }

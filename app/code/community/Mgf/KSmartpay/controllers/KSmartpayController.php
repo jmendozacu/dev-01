@@ -357,8 +357,9 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 			            // }
 						//=> End Create Invoice
 
-						if($order->getState() != Mage::getStoreConfig('payment/KSmartpay/payment_success_status')){
-							$order->setState(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
+						if($order->getStatus() != Mage::getStoreConfig('payment/KSmartpay/payment_success_status')){
+							$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $message, 1)->save();
+							$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
 							$order->save();
 							//=> Create Invoice
 							if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
@@ -374,13 +375,14 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 						} else {
 							$message .= 'Other -'.$order->getState().' : '.$message;
 							$order->setState($order->getState(), true, $message);
+							$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
 							$order->save();
 						}
 
 
 						$message=Mage::helper('KSmartpay')->__('Your payment is authorized by KSmartpay ('. $KSmartpayReturnData .').');
-						$order->setStatus($state, true, $message);
-						$order->save();
+						// $order->setStatus($state, true, $message);
+						// $order->save();
 
 						$session = Mage::getSingleton('checkout/session');
 						$session->setQuoteId($session->getKSmartpayStandardQuoteId(true));
@@ -454,7 +456,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 	        )*/
 	        	$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($response['body']['order_no']);
-				if (strtolower($order->getStatus()) == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
+				if ($order->getState() == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
 
 					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
 					$payment = $order->getPayment();
@@ -554,7 +556,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		$order->loadByIncrementId($response['order_no']);
 		if($order->getId()){
 			if($response['msg'] == 'success'){
-				if (strtolower($order->getStatus()) == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
+				if ($order->getState() == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
 
 					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
 					$payment = $order->getPayment();
