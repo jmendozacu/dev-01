@@ -80,8 +80,7 @@
                     <?php $numberAttributes = count($_attributes);?>
                     <?php foreach ($_attributes as $_attribute): ?>
                         <dl class="<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>">
-                            <dt class="bestsell-customgroup-item-attribute-label"><label
-                                    class="required"><?php echo $_attribute->getLabel() ?></label></dt>
+                            <dt class="bestsell-customgroup-item-attribute-label"></dt>
                             <div class="input-box bestsell-customgroup-item-attribute-input-box amconf-images-container"
                                  id="bestsell-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>">
                                 <?php $config = $productAttribute[$_attribute->getAttributeId()]; ?>
@@ -99,7 +98,7 @@
                                         <?php if (!$imageOption['image'] || $imageOption['color']): ?>
                                             <?php if ($imageOption['color']): ?>
                                                 <a
-                                                    style="background: #<?php echo $imageOption['color'] ?>;margin-right: -7px; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px; line-height: <?php echo $imageOption['h']?>"
+                                                    style="background: #<?php echo $imageOption['color'] ?>;margin-right: -7px; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px; line-height: <?php echo $imageOption['h']?>; border-radius: 6px"
                                                     href="javascript:void(0)"
                                                     class="amconf-color-container customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
                                                     id="link-bestsell-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
