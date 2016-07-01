@@ -2750,6 +2750,7 @@ form .legend {
  */
 .input-box {
   padding-top: 2px;
+    text-align: center;
 }
 .input-box:after {
   content: '';
