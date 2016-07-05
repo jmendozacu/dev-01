@@ -34,6 +34,10 @@ class MarginFrame_Shopby_Block_Adminhtml_Value_Edit_Form extends Mage_Adminhtml_
 
         $this->prepareFieldsetNavigation();
 
+        if($this->model->getFilterId()==2){
+            $this->prepareFieldsetAtributeColor();
+        }
+
         //set form values
         $data = Mage::getSingleton('adminhtml/session')->getFormData();
         if ($data) {
@@ -42,6 +46,12 @@ class MarginFrame_Shopby_Block_Adminhtml_Value_Edit_Form extends Mage_Adminhtml_
         }
         elseif ($this->model) {
             $form->setValues($this->model->getData());
+            $optionId = $this->model->getOptionId();
+            $swatchModel = Mage::getModel('amconf/swatch')->load($optionId);
+            if($swatchModel->getColor()){
+                $form->getElement('color_swatch')->setValue($swatchModel->getColor());
+                $form->getElement('use_color_picker')->setValue(1);
+            }
         }
 
         return parent::_prepareForm();
@@ -188,7 +198,6 @@ class MarginFrame_Shopby_Block_Adminhtml_Value_Edit_Form extends Mage_Adminhtml_
             'name'      => 'remove_img_small',
             'value'     => 1,
         ));
-
         $fldNav->addField('img_small_hover', 'file', array(
             'label'     => $this->__('Active & Hover Image'),
             'name'      => 'img_small_hover',
@@ -200,6 +209,58 @@ class MarginFrame_Shopby_Block_Adminhtml_Value_Edit_Form extends Mage_Adminhtml_
             'name'      => 'remove_img_small_hover',
             'value'     => 1,
         ));
+
+    }
+
+    protected function prepareFieldsetAtributeColor()
+    {
+        $fldNav = $this->_form->addFieldset('attribute_color', array('legend'=> $this->__('Atribute Image')));
+        $fldNav->addType('color', 'MarginFrame_Shopby_Block_Adminhtml_Value_Renderer_Color');
+        $fldNav->addType('preview', 'MarginFrame_Shopby_Block_Adminhtml_Value_Renderer_Preview');
+
+        $fldNav->addField('use_color_picker', 'select', array(
+          'label'     => $this->__('Use Color Picker'),
+          'name'      => 'use_color_picker',
+          'values'    => array(
+            1 => 'Yes',
+            0 => 'No - Upload image'
+          )
+        ));
+
+        $fldNav->addField('amconf_icon', 'file', array(
+          'label'     => $this->__('Image'),
+          'name'      => 'amconf_icon',
+          'required'  => false,
+          'after_element_html' => $this->getImageColorHtml($this->model->getOptionId()),
+        ));
+        $fldNav->addField('amconf_icon_delete', 'checkbox', array(
+          'label'     => $this->__('Remove Image'),
+          'name'      => 'amconf_icon_delete',
+          'onclick'   => 'this.value = this.checked ? 1 : 0;',
+        ));
+
+        $fldNav->addField('color_swatch', 'color', array(
+          'name'      => 'color_swatch',
+          'label'     => $this->__('Color Swatches Picker'),
+        ));
+
+        $fldNav->addField('preview', 'preview', array(
+          'name'      => 'preview',
+          'label'     => $this->__('Preview'),
+        ));
+
+        $this->setChild('form_after', $this->getLayout()->createBlock('adminhtml/widget_form_element_dependence')
+          ->addFieldMap('use_color_picker', 'use_color_picker')
+          ->addFieldMap('color_swatch', 'color_swatch')
+          ->addFieldMap('preview', 'preview')
+          ->addFieldMap('amconf_icon', 'amconf_icon')
+          ->addFieldMap('amconf_icon_delete','amconf_icon_delete')
+          ->addFieldDependence('color_swatch', 'use_color_picker', 1)
+          ->addFieldDependence('preview', 'use_color_picker', 1)
+          ->addFieldDependence('amconf_icon', 'use_color_picker', 0)
+          ->addFieldDependence('amconf_icon_delete', 'use_color_picker', 0)
+        );
+
     }
 
     private function getImageHtml($img)
@@ -208,6 +269,19 @@ class MarginFrame_Shopby_Block_Adminhtml_Value_Edit_Form extends Mage_Adminhtml_
         if ($img){
             $html .= '<p style="margin-top: 5px">';
             $html .= '<img src="'.Mage::getBaseUrl('media') . 'amshopby/' . $img .'" />';
+            $html .= '</p>';
+        }
+        return $html;
+    }
+
+    private function getImageColorHtml($optionId)
+    {
+        $uploadDir = Mage::getBaseUrl('media') . 'amconf' . '/' . 'images' . '/';
+        $swatchModel = Mage::getModel('amconf/swatch')->load($optionId);
+        $html = '';
+        if ($optionId && $swatchModel->getExtension()){
+            $html .= '<p style="margin-top: 5px">';
+            $html .= '<img src="'.$uploadDir . $optionId .'.'.$swatchModel->getExtension() .'" />';
             $html .= '</p>';
         }
         return $html;
