@@ -38,6 +38,7 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Edit_Tab_Account extends 
             $form->getElement('website_id')->setDisabled('disabled');
             $form->getElement('created_in')->setDisabled('disabled');
             $form->getElement('customer_source')->setDisabled('disabled');
+            $fieldset->removeField('prefix');
         } else {
             $fieldset->removeField('created_in');
             $form->getElement('website_id')->addClass('validate-website-has-store');
