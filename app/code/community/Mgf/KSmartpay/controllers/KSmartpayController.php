@@ -357,7 +357,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 			            // }
 						//=> End Create Invoice
 
-						if($order->getStatus() != Mage::getStoreConfig('payment/KSmartpay/payment_success_status')){
+						if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
 							$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $message, 1)->save();
 							$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
 							$order->save();
@@ -456,9 +456,9 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 	        )*/
 	        	$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($response['body']['order_no']);
-				if ($order->getState() == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
-
-					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
+				if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
+					$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $message, 1)->save();
+					$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
 					$payment = $order->getPayment();
 				
 					$ReturnData = "Foreground Response <br> Your payment is authorized by Krungsri<br>".  
@@ -556,7 +556,9 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		$order->loadByIncrementId($response['order_no']);
 		if($order->getId()){
 			if($response['msg'] == 'success'){
-				if ($order->getState() == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
+				if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
+					$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $message, 1)->save();
+					$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
 
 					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
 					$payment = $order->getPayment();

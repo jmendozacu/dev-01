@@ -121,6 +121,12 @@ hr.amconf-hr{
 	position: relative;
 	text-align: center;
 	margin-right: 5px;
+	border-radius:10px;
+	padding: 1px;
+  border: 1px solid #fff;
+}
+.amconf-image-container:hover{
+	border: 1px solid #000;
 }
 .product-view .product-shop .amconf-image-container
 {

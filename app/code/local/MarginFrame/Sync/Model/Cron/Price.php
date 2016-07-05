@@ -35,7 +35,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 				'special_price',
 				'special_from_date',
 				'special_to_date',
-				// 'visibility',
+				'visibility',
 				// 'status'
 			));
 
@@ -81,7 +81,7 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 					    foreach ($csvdata as $sku => $data) {
 					    	$row = array();
 					    	$row[0] = $sku;
-					    	if ($data['price'] != 'Unset') {
+					    	if (strtolower($data['price']) != 'unset') {
 					    		$row[1] = number_format($data['price'],2,'.','');
 
 				    			if (strtolower($data['special_price']) != 'unset') {
@@ -89,34 +89,53 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 
 					    			if (strtolower($data['special_from_date']) != 'unset') {
 										$row[3] = date('Y-m-d',strtotime($data['special_from_date']));
+				    				} else {
+				    					$row[3] ='unset';
 				    				}
 
 				    				if (strtolower($data['special_to_date']) != 'unset') {
 										$row[4] = date('Y-m-d',strtotime($data['special_to_date']));
+				    				} else {
+				    					$row[4]='unset';
 				    				}
+
 					    		}else{
 					    			$row[2] = 'unset';
 					    			$row[3] = 'unset';
 					    			$row[4] = 'unset';
+					    			// $row[5] = 'unset';
 					    		}
 					    		// $row[5] = '4';
 				    			// $row[6] = '1';
 				    		}else{
+				    			// 110018247         |Unset        |Unset        |Unset   |Unset
 				    			if (strtolower($data['special_price']) != 'unset' and $data['special_price'] != '0') {
 				    				$row[1] = number_format($data['special_price'],2,'.','');
 				    				$row[2] = number_format($data['special_price'],2,'.','');
 				    				if (strtolower($data['special_from_date']) != 'unset') {
 				    					$row[3] = date('Y-m-d',strtotime($data['special_from_date']));
+				    				} else {
+				    					$row[3] ='unset';
 				    				}
 
 				    				if (strtolower($data['special_to_date']) != 'unset') {
 				    					$row[4] = date('Y-m-d',strtotime($data['special_to_date']));
+				    				} else {
+				    					$row[4] ='unset';
 				    				}
 				    			} else {
-				    				// $row[5] = '1';
-				    				// $row[6] = '2';
+				    				$row[1] = 'unset';
+				    				$row[2] = 'unset';
+					    			$row[3] = 'unset';
+					    			$row[4] = 'unset';
 				    			}
 				    		}
+				    		if($row[1] > 0){
+					    		$row[5] = '4';
+				    		} else {
+				    			$row[5] = '1';
+				    		} 
+
 				    		$dataImport[] = implode(',',$row);
 				    		// fputcsv($file,$row);
 				    	}

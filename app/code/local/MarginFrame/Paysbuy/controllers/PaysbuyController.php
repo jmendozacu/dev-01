@@ -37,12 +37,14 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
         return Mage::getSingleton('Paysbuy/standard');
     }
 
-    public function testAction(){
+    public function recheckOrderAction(){
+    	
     	$invoice = Mage::app()->getRequest()->getParam('invoice');
     	$response = Mage::helper('Paysbuy')->checkTransection($invoice);
     	echo '<pre>';
     	print_r($response);
     	echo '</pre>';
+    	Mage::log(print_r($response,true),null,'Paysbuy-recheckOrderAction.log',true);
     }
     /**
      * When a customer chooses Paysbuy on Checkout/Payment page
@@ -171,7 +173,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
 		
-		
+		Mage::log(print_r($response,true),null,'Paysbuy-successAction.log',true);
 		
 		// //=> Paysbuy Return Data
 		// [result] => 00ORD-16-04-04-00000014
@@ -253,7 +255,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
-							if ($order->getState() ==Mage::getStoreConfig('payment/Paysbuy/order_status') ) {							
+							if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){							
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
 								$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status'), true, "New : " .  $comment, 1)->save();
 								//=> auto invoice
@@ -359,7 +361,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 	
     public function  feedAction()
     {
-		Mage::log('feed start', null, 'mylogfile.log');
+		// Mage::log('feed start', null, 'mylogfile.log');
         if (!$this->getRequest()->isPost()) {
         	throw new Exception(' Wrong request type:  should be Post.', 10);
         }
@@ -372,7 +374,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
 		
-		
+		Mage::log(print_r($response,true),null,'Paysbuy-feedAction.log',true);
 		
 		//=> Paysbuy Return Data
 		//-> result = 00 = �����, 99 ��������, 22 = ���������ҧ���Թ��� �ٻẺ��� ResultCode + Invoice 
@@ -416,7 +418,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 			"confirm CS : " . $confirmCS;
 		//echo "<p>My Data : $PaysbuyReturnData</p>";
 		
-		Mage::log('My log entry : ' . $PaysbuyReturnData, null, 'mylogfile.log');
+		Mage::log('My log entry : ' . $PaysbuyReturnData, null, 'Paysbuy-feedAction.log',true);
 		
 		if ($PaysbuyResult !=="") {
 			//=> �ó��ա�� Return ��ҡ�Ѻ��
@@ -448,7 +450,7 @@ class MarginFrame_Paysbuy_PaysbuyController extends Mage_Core_Controller_Front_A
 					case "00":
 						if ($dbAmt == $PaysbuyAmount) {
 							$comment = "Received through Paysbuy Payment: " . $dbAmt;
-							if ($order->getState() ==Mage::getStoreConfig('payment/Paysbuy/order_status') ) {						
+							if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){							
 								$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $comment, 1)->save(); 		
 								$order->setStatus(Mage::getStoreConfig('payment/Paysbuy/payment_success_status'), true, "New : " .  $comment, 1)->save();
 								//=> auto invoice

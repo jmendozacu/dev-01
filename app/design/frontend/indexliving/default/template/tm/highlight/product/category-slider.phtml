@@ -181,6 +181,7 @@
 									<div class="desc">
 										<?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
 										<?php
+                                            $_shortDescriptionStripped = strip_tags($_shortDescriptionStripped);
 											if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>30) {
 												$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,30, 'UTF-8');
 												$_shortDescriptionStripped .= '...';

@@ -122,6 +122,10 @@ class Mgf_KSmartpay_Block_Form_KSmartpay extends Mage_Payment_Block_Form
     {
 		return $this->getMethod()->getQuoteData();
 	}
+    public function getCustomer(){
+        return Mage::getSingleton('checkout/session')->getQuote()->getCustomer();
+    }
+
 	public function getBillingAddress()
 	{
 		if ($this->getMethod())
