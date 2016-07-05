@@ -19,13 +19,14 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid extends Mage_Adminht
             ->addAttributeToSelect('group_id')
             ->addAttributeToSelect('customer_source')
             ->addAttributeToSelect('joycard')
-            ->addAttributeToSelect('mobile_customer')
+            ->addAttributeToSelect('telephone')
             ->joinAttribute('billing_postcode', 'customer_address/postcode', 'default_billing', null, 'left')
             ->joinAttribute('billing_city', 'customer_address/city', 'default_billing', null, 'left')
             ->joinAttribute('billing_telephone', 'customer_address/telephone', 'default_billing', null, 'left')
+            ->joinAttribute('billing_mobile', 'customer_address/mobile_customer', 'default_billing', null, 'left')
             ->joinAttribute('billing_region', 'customer_address/region', 'default_billing', null, 'left')
             ->joinAttribute('billing_country_id', 'customer_address/country_id', 'default_billing', null, 'left');
-
+            
         $this->setCollection($collection);
         return Mage_Adminhtml_Block_Widget_Grid::_prepareCollection();
     }
@@ -73,10 +74,16 @@ class Magebuzz_RegisterSource_Block_Adminhtml_Customer_Grid extends Mage_Adminht
             'options'   =>  $groups,
         ));
 
-        $this->addColumn('Telephone', array(
-            'header'    => Mage::helper('customer')->__('Mobile'),
+        $this->addColumn('billing_telephone', array(
+            'header'    => Mage::helper('customer')->__('Telephone'),
             'width'     => '100',
             'index'     => 'billing_telephone'
+        ));
+
+        $this->addColumn('billing_mobile', array(
+            'header'    => Mage::helper('customer')->__('Mobile'),
+            'width'     => '100',
+            'index'     => 'billing_mobile'
         ));
 
         // $this->addColumn('billing_postcode', array(
