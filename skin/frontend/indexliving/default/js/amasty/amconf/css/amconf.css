@@ -17,6 +17,7 @@
 
 .product-view .amconf-color-container{border-radius:0;/*  border:1px solid #ccc; */}
 .product-view .amconf-color-container{border-radius:0;/*  border:1px solid #ccc; */}
+.product-view .block-highlight .amconf-color-container{ border-radius:10px;}
 .product-view .product-options .amconf-images-container{
 	transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 }
