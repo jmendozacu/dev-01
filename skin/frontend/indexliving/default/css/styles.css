@@ -10694,6 +10694,26 @@ div.paypal-logo span > img {
 .cms-page-view .col_3 .img{margin-bottom:10px;}
 .cms-page-view .col_3 .img img{width:100%;}
 
+.cms-page-view.cms-how-to-buy .std ol{margin-left:20px;}
+.cms-page-view.cms-how-to-buy .std ol li{list-style-type: decimal;}
+.cms-page-view.cms-how-to-buy .std ol li ol li{list-style-type: none;}
+.how_to_buy_step { margin-bottom: 27px;}
+.how_to_buy_step li{float:left;width:15%;margin-right:5%;text-align:center;}
+.how_to_buy_step li a:hover{text-decoration: none;}
+.how_to_buy_step li a:hover .desc_step {color:#616161;}
+.how_to_buy_step li .number_step{background:#252525;color:#FFC222;font-weight:700;border-radius:100%;width:80px;height:80px;margin:auto auto 15px;font-size:24px;line-height:82px;}
+
+.cms-page-view.cms-payment .paymen_page .payment_list{margin-top: 20px;margin-bottom: 10px;}
+.cms-page-view.cms-payment .paymen_page .payment_list li{ padding: 10px;margin-bottom: 10px;}
+.cms-page-view.cms-payment .paymen_page .payment_list li a{color:#FFC222;background:#252525;padding:15px 30px;border-radius:30px;font-size:19px;width:40%;display:block;}
+.cms-page-view.cms-payment .paymen_page .payment_list li a:hover{background:#FFC222;color:#252525;text-decoration:none;  }
+.cms-page-view.cms-payment .paymen_page h3{margin-top:20px;}
+.cms-page-view.cms-payment .paymen_page .list_pay {margin: 10px 0;}
+.cms-page-view.cms-payment .paymen_page .list_pay ul{margin-left: 20px;}
+.cms-page-view.cms-payment .paymen_page .list_pay li{list-style-type: none;}
+.cms-page-view.cms-payment .paymen_page .list_pay li:before{content: "- ";}
+.cms-page-view.cms-payment .paymen_page .list_pay.red li{color:#FF0000;}
+
 .delivery-index-index .header_top {display: table;width: 100%;background: #252525;margin-bottom: 46px;}
 .delivery-index-index .header_top .box_left_text .txt_content{padding:60px;text-align: right;position: relative;}
 .delivery-index-index .header_top .box_left_text, .delivery-index-index .box_right_img{width:50%;float:left;display: table-cell;}
