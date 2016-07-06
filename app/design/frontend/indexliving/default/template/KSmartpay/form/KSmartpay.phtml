@@ -155,11 +155,16 @@
             // "KSmartpayA" => "4",
             "KSmartpayD" => "3",
             "KSmartpayB" => "6",
-            // "KrungsriC" => "10",
+            "KrungsriC" => "10",
             // // "KrungsriA" => "4",
-            // "KrungsriD" => "3",
-            // "KrungsriB" => "6" 
+            "KrungsriD" => "3",
+            "KrungsriB" => "6" 
         );
+        // $customer = $this->getCustomer();
+        // if ($customer->getEmail() == 'thanapol.s@marginframe.com'){
+        //     $default["KrungsriD"] = 3;
+        // }
+
         if(count($InstallmentZeroArray)==0){
             $InstallmentZeroArray = $default;
         } else {
@@ -169,6 +174,7 @@
                 }
             }
         }
+
         if ($Debug=="1") {
             echo "<!--";
             echo "<pre>";
