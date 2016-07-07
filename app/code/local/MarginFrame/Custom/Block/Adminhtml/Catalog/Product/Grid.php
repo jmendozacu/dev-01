@@ -27,7 +27,6 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid extends Mage_Admin
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('attribute_set_id')
             ->addAttributeToSelect('thumbnail')
-            ->addAttributeToSelect('image')
             ->addAttributeToSelect('type_id');
 
         if (Mage::helper('catalog')->isModuleEnabled('Mage_CatalogInventory')) {
@@ -91,8 +90,6 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid extends Mage_Admin
 
         $this->setCollection($collection);
 
-        //var_dump((string)$collection->getSelect());
-
         parent::_prepareCollection();
         $this->getCollection()->addWebsiteNamesToResult();
         return $this;
@@ -134,25 +131,7 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid extends Mage_Admin
             'align' => 'left',
             'index' => 'image',
             'width'     => '97',
-            'renderer' => 'MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Renderer_Image',
-            'filter' => false,
-            'sortable' => false,
-            'is_system' => true,
-        ));
-
-        $this->addColumn('hasimage', array(
-            'header' => Mage::helper('catalog')->__('Has Image'),
-            'align' => 'left',
-            'index' => 'hasimage',
-            'width'     => '10',
-            'renderer' => 'MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Renderer_Hasimage',
-            'type'  => 'options',
-            'options' => array(
-                'No' => 'No',
-                'Yes' => 'Yes',
-            ),
-            'filter' => false,
-            'sortable' => false,
+            'renderer' => 'MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Renderer_Image'
         ));
 
         $store = $this->_getStore();
@@ -262,7 +241,6 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid extends Mage_Admin
                 'filter'    => false,
                 'sortable'  => false,
                 'index'     => 'stores',
-                'is_system' => true,
         ));
 
         if (Mage::helper('catalog')->isModuleEnabled('Mage_Rss')) {
@@ -270,20 +248,6 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid extends Mage_Admin
         }
 
         return parent::_prepareColumns();
-    }
-
-    protected function _filterHasimageConditionCallback($collection, $column)
-    {
-        if (!$value = $column->getFilter()->getValue()) {
-            return $this;
-        }
-        if ($value == 'Yes') {
-            $this->getCollection()->addAttributeToFilter('image', array('notnull'=>'', 'neq'=>'no_selection'));
-        }
-        else {
-            $this->getCollection()->addAttributeToFilter('image', 'no_selection');
-        }
-        return $this;
     }
 
     protected function _prepareMassaction()
@@ -320,10 +284,6 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Grid extends Mage_Admin
                 'url'   => $this->getUrl('*/catalog_product_action_attribute/edit', array('_current'=>true))
             ));
         }
-
-        //$this->addExportType('*/*/exportcsv', Mage::helper('sales')->__('CSV'));
-        $this->addExportType('*/*/exportcsvtab', Mage::helper('sales')->__('CSV TAB'));
-
 
         Mage::dispatchEvent('adminhtml_catalog_product_grid_prepare_massaction', array('block' => $this));
         return $this;

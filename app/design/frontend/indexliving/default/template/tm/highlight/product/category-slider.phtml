@@ -204,6 +204,7 @@ if ($this->getCategoryFilter()) {
                             <?php endif; ?>
                         </div>
 
+
                         <?php if ($_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) : ?>
                             <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
                             <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
@@ -303,66 +304,62 @@ if ($this->getCategoryFilter()) {
                             <?php endforeach; ?>
                         <?php endif ?>
 
-                        <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>"
-                                                    title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
-                        </h2>
 
-                        <div class="desc">
-                            <?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
-                            <?php
-                            if (iconv_strlen($_shortDescriptionStripped, 'UTF-8') > 30) {
-                                $_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0, 30, 'UTF-8');
-                                $_shortDescriptionStripped .= '...';
-                            }
-                            ?>
-                            <?php echo $_shortDescriptionStripped ?>
-                        </div>
-                        <div class="grid-price">
-                            <?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
-                            <?php
-                            $final_price = $_product->getFinalPrice();
-                            $price = $_product->getPrice();
-                            $discount_percent = 0;
-                            if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
-                            ?>
-                            <?php if ($discount_percent) : ?>
-                                <div class="save-price-percent"><span><?php //echo $this->__('Save ') ?>
-                                        <strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+                <h2 class="product-name">
+                <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+                <?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                <?php $productName = $this->htmlEscape($_product->getName()); echo Mage::helper('core/string')->truncate($productName, $length = 31, $etc = '...', $remainder = '', $breakWords = true); ?>
+                </a>
+                </h2>
+									<div class="desc">
+										<?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+										<?php
+                                            $_shortDescriptionStripped = strip_tags($_shortDescriptionStripped);
+											if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>30) {
+												$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,30, 'UTF-8');
+												$_shortDescriptionStripped .= '...';
+											}
+											?>
+										<?php echo $_shortDescriptionStripped ?>
+									</div>
+									<div class="grid-price">
+										<?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
+										<?php
+											$final_price = $_product->getFinalPrice();
+											$price = $_product->getPrice();
+											$discount_percent = 0;
+											if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
+										?>
+										<?php if ($discount_percent) :?>
+											<div class="save-price-percent"><span><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
+										<?php endif; ?>
+									</div>
 
-                        <div class="actions">
-                            <?php if (!$_product->canConfigure() && $_product->isSaleable()): ?>
-                                <?php if ($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-                                    <button type="button"
-                                            title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>"
-                                            class="button btn-cart"
-                                            onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
-                                        <span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-                                <?php else: ?>
-                                    <p class="action availability out-of-stock">
-                                        <span><?php echo $this->__('Out of stock') ?></span></p>
-                                <?php endif ?>
-                            <?php else: ?>
-                                <button type="button"
-                                        title="<?php echo $this->quoteEscape($this->__('View Details')) ?>"
-                                        class="button btn-view-details"
-                                        onclick="setLocation('<?php echo $_product->getProductUrl() ?>')">
-                                    <span><span><?php echo $this->__('View Details') ?></span></span></button>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                <?php endforeach ?>
-            </div>
-            <div class="clearer"></div>
-            <?php if ($this->getPageUrl() && (string)$this->getPageTitle()) : ?>
-                <div class="page-link">
-                    <a href="<?php echo $this->getPageUrl() ?>"><?php echo $this->__((string)$this->getPageTitle()) ?></a>
-                </div>
-            <?php endif ?>
-        </div>
-    </div>
+									<div class="actions">
+										<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+												<button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+											<?php else:?>
+												<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+											<?php endif?>
+                    <?php elseif($_product->canConfigure() && $_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
+                    <?php else: ?>
+                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Store Only')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Store Only') ?></span></span></button>
+                    <?php endif; ?>
+									</div>
+							</div>
+					<?php endforeach ?>
+					</div>
+					<div class="clearer"></div>
+					<?php if ($this->getPageUrl() && (string)$this->getPageTitle()) : ?>
+						<div class="page-link">
+							<a href="<?php echo $this->getPageUrl() ?>"><?php echo $this->__((string)$this->getPageTitle()) ?></a>
+						</div>
+					<?php endif ?>
+			</div>
+		</div>
+
     <!--<a class="box-mobile a-button" title="<?php //echo $this->__('view all')?>" href="<?php //echo $_categoryUrl; ?>"><span><?php //echo $this->__('view all')?></span></a>-->
 </div>
 </div>

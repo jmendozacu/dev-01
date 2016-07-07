@@ -530,6 +530,13 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
     
     function getDefaultFields(){
         if (!$this->_defaultField){
+            $statuses = Mage::getSingleton('sales/order_config')->getStatuses();
+            unset($statuses['fraud']);
+            unset($statuses['payment_review']);
+            unset($statuses['paypal_canceled_reversal']);
+            unset($statuses['paypal_reversed']);
+            unset($statuses['pending_payment']);
+            unset($statuses['pending_paypal']);
             $this->_defaultField = array(
                 'am_real_order_id' => array(
                     'header'=> Mage::helper('sales')->__('Order #'),
@@ -569,17 +576,18 @@ class Amasty_Ogrid_Helper_Columns extends Mage_Core_Helper_Abstract
                     'currency' => 'order_currency_code',
                     'filter_index' => 'main_table.grand_total'
                 ),
+
                 'am_status' => array(
                     'header' => Mage::helper('sales')->__('Status'),
                     'index' => 'status',
                     'type'  => 'options',
                     'width' => '70px',
                     'filter_index' => 'main_table.status',
-                    'options' => array_merge(array(NULL => ""), Mage::getSingleton('sales/order_config')->getStatuses()),
+                    'options' => array_merge(array(NULL => ""), $statuses),
                 )
 
             );
-            
+
             if (!Mage::app()->isSingleStoreMode()) {
                 $this->_defaultField['am_store_id'] = array(
                     'header'    => Mage::helper('sales')->__('Purchased From (Store)'),

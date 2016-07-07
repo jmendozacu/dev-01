@@ -17,4 +17,13 @@
             </custom>
         </routers>
     </frontend>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <catalog_category_tabs>Magebuzz_Custom_Block_Adminhtml_Catalog_Category_Tabs</catalog_category_tabs>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+    </global>
 </config>

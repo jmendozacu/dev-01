@@ -357,9 +357,9 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 			            // }
 						//=> End Create Invoice
 
-						if($order->getStatus() != Mage::getStoreConfig('payment/KSmartpay/payment_success_status')){
-							$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $message, 1)->save();
-							$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
+						if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
+							$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $KSmartpayReturnData, 1)->save();
+							$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $KSmartpayReturnData);
 							$order->save();
 							//=> Create Invoice
 							if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
@@ -373,7 +373,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 							}
 							//=> End Create Invoice
 						} else {
-							$message .= 'Other -'.$order->getState().' : '.$message;
+							$message .= 'Other -'.$order->getState().' : '.$KSmartpayReturnData;
 							$order->setState($order->getState(), true, $message);
 							$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $message);
 							$order->save();
@@ -454,25 +454,22 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 	            [install_amt1] => 1487.3
 	            [install_amt2] => 0
 	        )*/
+		        $ReturnData = "Foreground Response <br> Your payment is authorized by Krungsri<br>".  
+								"Approval Code = ". $response['body']['approval_code'] ."<br>" . 
+								"Slip No = ". $response['body']['slip_no'] ."<br>" . 
+								"Credit Card Number = ". $response['body']['card'] ."<br>" . 
+								"Transaction Date = ". $response['body']['t_date'] ."<br>" . 
+								"Total Price = ". $response['body']['total_price'] ."<br>" . 
+								"Interest1 = ". $response['body']['interest1'] ."<br>" . 
+								"term1 = ". $response['body']['term1'] ."<br>" . 
+								"Install_amt1 = ". $response['body']['install_amt1'] ."<br>";
 	        	$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($response['body']['order_no']);
-				if ($order->getState() == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
-
-					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
+				if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
+					$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $ReturnData, 1)->save();
+					$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $ReturnData)->save();
 					$payment = $order->getPayment();
 				
-					$ReturnData = "Foreground Response <br> Your payment is authorized by Krungsri<br>".  
-							"Approval Code = ". $response['body']['approval_code'] ."<br>" . 
-							"Slip No = ". $response['body']['slip_no'] ."<br>" . 
-							"Credit Card Number = ". $response['body']['card'] ."<br>" . 
-							"Transaction Date = ". $response['body']['t_date'] ."<br>" . 
-							"Total Price = ". $response['body']['total_price'] ."<br>" . 
-							"Interest1 = ". $response['body']['interest1'] ."<br>" . 
-							"term1 = ". $response['body']['term1'] ."<br>" . 
-							"Install_amt1 = ". $response['body']['install_amt1'] ."<br>";
-					$order->setState($state, true, $ReturnData);
-					$order->save();
-
 					//=> Create Invoice
 		            if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
 		                $invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();
@@ -552,16 +549,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
         	throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
 
-        $order = Mage::getModel('sales/order');
-		$order->loadByIncrementId($response['order_no']);
-		if($order->getId()){
-			if($response['msg'] == 'success'){
-				if ($order->getState() == Mage::getStoreConfig('payment/KSmartpay/order_status')) {
-
-					$state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
-					$payment = $order->getPayment();
-				
-					$ReturnData = "Background Response <br> Your payment is authorized by Krungsri<br>".  
+        $ReturnData = "Background Response <br> Your payment is authorized by Krungsri<br>".  
 							"Approval Code = ". $response['approval_code'] ."<br>" . 
 							"Slip No = ". $response['slip_no'] ."<br>" . 
 							"Credit Card Number = ". $response['card'] ."<br>" . 
@@ -570,9 +558,18 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 							"Interest1 = ". $response['interest1'] ."<br>" . 
 							"term1 = ". $response['term1'] ."<br>" . 
 							"Install_amt1 = ". $response['install_amt1'] ."<br>";
-					$order->setState($state, true, $ReturnData);
-					$order->save();
 
+        $order = Mage::getModel('sales/order');
+		$order->loadByIncrementId($response['order_no']);
+		if($order->getId()){
+			if($response['msg'] == 'success'){
+				if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
+					$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true, "New : " .  $ReturnData, 1)->save();
+					$order->setStatus(Mage::getStoreConfig('payment/KSmartpay/payment_success_status'), true, $ReturnData);
+					$order->save();
+					// $state = Mage::getStoreConfig('payment/KSmartpay/payment_success_status');
+					// $payment = $order->getPayment();
+				
 					//=> Create Invoice
 		            if (Mage::getStoreConfig('payment/KSmartpay/payment_autoinvoice')=="1") {
 		                $invoice = Mage::getModel('sales/service_order',$order)->prepareInvoice();

@@ -133,7 +133,9 @@ __MACOSX
 /app/design/adminhtml/default/default/template/sales/order/create/totals.phtml
 /app/design/adminhtml/default/default/template/sales/order/creditmemo
 /app/design/adminhtml/default/default/template/sales/order/invoice
+!/app/design/adminhtml/default/default/template/sales/order/invoice/create/items.phtml
 /app/design/adminhtml/default/default/template/sales/order/shipment
+!/app/design/adminhtml/default/default/template/sales/order/shipment/create/items.phtml
 /app/design/adminhtml/default/default/template/sales/order/totals
 /app/design/adminhtml/default/default/template/sales/order/giftoptions.phtml
 /app/design/adminhtml/default/default/template/sales/order/totalbar.phtml
