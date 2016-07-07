@@ -10675,6 +10675,9 @@ div.paypal-logo span > img {
   font-style: normal;
 
 }
+
+.cms-who-we-are .page-title.style2 { display: none;}
+
 .cms-page-view .std p, .cms-page-view p, .cms-page-view .std font-style:normal;}
 .cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
 .cms-page-view .c_right{float:right;}
