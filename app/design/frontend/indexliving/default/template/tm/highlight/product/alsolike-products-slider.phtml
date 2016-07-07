@@ -1,22 +1,22 @@
 <?php
-    $_productCollection = $this->getLoadedProductCollection();
-		$_productCollection->clear();
-		$_productCollection->addAttributeToSelect('flip_image');
-		$_productCollection->load();
-    $_helper            = $this->helper('catalog/output');
-    $_collectionSize    = $_productCollection->count();
-    $_columnCount       = $this->getColumnCount();
+$_productCollection = $this->getLoadedProductCollection();
+$_productCollection->clear();
+$_productCollection->addAttributeToSelect('flip_image');
+$_productCollection->load();
+$_helper = $this->helper('catalog/output');
+$_collectionSize = $_productCollection->count();
+$_columnCount = $this->getColumnCount();
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
 
 <?php
-	if ($this->getCategoryFilter()) {
-		$categoryFilterId = $this->getCategoryFilter();
-		$_category  = Mage::getModel('catalog/category')->load($categoryFilterId);
-		$_categoryUrl = $_category->getUrl().'/?page=productlist';
-	}else{
-		$_categoryUrl = '#';
-	}
+if ($this->getCategoryFilter()) {
+    $categoryFilterId = $this->getCategoryFilter();
+    $_category = Mage::getModel('catalog/category')->load($categoryFilterId);
+    $_categoryUrl = $_category->getUrl() . '/?page=productlist';
+} else {
+    $_categoryUrl = '#';
+}
 ?>
 <style>
     .amconf-noimage-div {
@@ -24,231 +24,369 @@
         border-radius: 0;
         padding: 3px;
     }
+
     a.amconf-color-container {
         display: inline-block;
         text-align: center;
         text-indent: -9999px;
     }
-    dl{
+
+    dl {
         padding-bottom: 15px;
     }
-    .input-box{
+
+    .input-box {
         height: 25px;
     }
+
     a.option_disabled {
         pointer-events: none;
         cursor: default;
         position: relative;
     }
-    a.option_disabled:before{
+
+    a.option_disabled:before {
         content: "";
         width: 1px;
         height: 100%;
         position: absolute;
         top: 0px;
         left: 50%;
-        transform: rotate( -45deg );-webkit-transform: rotate( -45deg ); -moz-transform: rotate( -45deg );
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
         background: black;
     }
 
 </style>
 <div class="page-container">
-	<div class="recommend-allcategory">
-		<h2 class="title-style1"><span><?php echo $this->__($this->getTitle()) ?></span></h2>
-		<div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
-			<div class="block-content recommend-product-list">
-					<div id="alsolike-product-list" class="products-grid">
-					<?php $i=0; foreach ($_productCollection as $_product): ?>
-							<div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
-									<div class="prolabel-wrapper">
-										<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
-											<a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"
-											>
-											<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
-												<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-													<div class="flipper">
-														<div class="front">
-															<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
-													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
-											/>
-														</div>
-														<div class="back">
-<!--															<img src="--><?php //echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(200); ?><!--"-->
-<!--													alt="--><?php //echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?><!--"-->
-<!--											/>-->
-                                                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(200); ?>"
-                                                                 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>"
-                                                                />
-														</div>
-													</div>
-												</div>
-											<?php else:?>
-												<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
-													alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
-											/>
-											<?php endif;?>
-											</a>
-										<?php if ($this->helper('wishlist')->isAllow()) : ?>
-											<div class="wishlist-ajax-slider add-wishlist">
-												<a id="wishlist-related-<?php echo $_product->getId()?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"
-												   class="link-wishlist <?php if(Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())):?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a>
-											</div>
-										<?php endif;?>
-									</div>
+    <div class="recommend-allcategory">
+        <h2 class="title-style1"><span><?php echo $this->__($this->getTitle()) ?></span></h2>
+
+        <div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
+            <div class="block-content recommend-product-list">
+                <div id="alsolike-product-list" class="products-grid">
+                    <?php $i = 0;
+                    foreach ($_productCollection as $_product): ?>
+                        <div
+                            class="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>">
+                            <div class="prolabel-wrapper">
+                                <?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 
                                 <?php if ($_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) : ?>
-                                    <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
-                                    <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
-                                    <?php $y = 1; ?>
-                                    <?php $numberAttributes = count($_attributes);?>
-                                    <?php foreach ($_attributes as $_attribute): ?>
-                                        <dl class="<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>">
-                                            <dt class="maylike-customgroup-item-attribute-label"></dt>
-                                            <div class="input-box maylike-customgroup-item-attribute-input-box amconf-images-container"
-                                                 id="maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>">
-                                                <?php $config = $productAttribute[$_attribute->getAttributeId()]; ?>
-                                                <?php $i = count($config['options']);?>
-                                                <?php foreach ($config['options'] as $value): ?>
-                                                    <?php $imageOption = $this->getImageOptions($_attribute, $value); ?>
-                                                    <?php $i = $i - 1; ?>
-                                                    <?php ?>
-                                                    <div class="amconf-image-container">
-                                                        <input type="radio" style="display:none"
-                                                               name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
-                                                               id="maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                               class="validate-required<?php echo $_product->getId(); ?> <?php if ($i == 0): ?>validate-one-required<?php endif; ?>"
-                                                               value="<?php echo $value['id'] ?>"/>
-                                                        <?php if (!$imageOption['image'] || $imageOption['color']): ?>
-                                                            <?php if ($imageOption['color']): ?>
-                                                                <a
-                                                                    style="background: #<?php echo $imageOption['color'] ?>;margin-right: -7px; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px; line-height: <?php echo $imageOption['h']?>; border-radius: 6px"
-                                                                    href="javascript:void(0)"
-                                                                    class="amconf-color-container customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
-                                                                    id="link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                                    data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                                    data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
-                                                                    data-value="<?php echo $value['id'] ?>"
-                                                                    data-label="<?php echo $value['label'] ?>"
-                                                                    onclick="customgroupCheckAttributeMayLike('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>','<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
-                                                                    <?php echo $value['label'] ?>
-                                                                </a>
-                                                            <?php else: ?>
-                                                                <a
-                                                                    style="margin-right: -7px; width: <?php echo $imageOption['w'] ? $imageOption['w'] : 29 ?>px; height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px; line-height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px;"
-                                                                    href="javascript:void(0)"
-                                                                    class="amconf-noimage-div customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
-                                                                    id="link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                                    data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                                    data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
-                                                                    data-value="<?php echo $value['id'] ?>"
-                                                                    data-label="<?php echo $value['label'] ?>"
-                                                                    onclick="customgroupCheckAttributeMayLike('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>','<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
-                                                                    <?php echo $value['label'] ?></a>
-                                                            <?php endif; ?>
-                                                        <?php else: ?>
-                                                            <a href="javascript:void(0)"
-                                                               class="customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
-                                                               id="link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                               data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
-                                                               data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
-                                                               data-value="<?php echo $value['id'] ?>"
-                                                               data-label="<?php echo $value['label'] ?>"
-                                                               onclick="customgroupCheckAttributeMayLike('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>', '<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
-                                                                <img src="<?php echo $imageOption['image'] ?>" alt="<?php echo $value['label'] ?>"/>
-                                                            </a>
-                                                        <?php endif; ?>
+<!--                                image parent product configuraiton-->
+                                <a href="<?php echo $this->getProductUrl($_product) ?>"
+                                   title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                   class="parent-product-image-confi-maylike-<?php echo $_product->getId() ?> "
+                                   style="display: none"
+                                    >
+                                    <?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+                                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                            <div class="flipper">
+                                                <div class="front">
+                                                    <img
+                                                        src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+                                                        alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                                        />
+                                                </div>
+                                                <div class="back">
+                                                    <img src=
+                                                         "<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(200); ?>"
+                                                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>"
+                                                        />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php else: ?>
+                                        <img
+                                            src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+                                            alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                            />
+                                    <?php endif; ?>
+                                </a>
+                                <script type="text/javascript">
+                                    function loadparentimage() {
+                                        $j(".parent-product-image-confi-maylike-<?php echo $_product->getId() ?>").show();
+                                    }
+                                    window.onload = loadparentimage();
+                                </script>
+                                <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
+                                <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
+                                <?php $y = 1; ?>
+                                <?php $numberAttributes = count($_attributes); ?>
+                                <?php foreach ($_attributes as $_attribute): ?>
+                                <?php $config = $productAttribute[$_attribute->getAttributeId()]; ?>
+                                <?php $i = count($config['options']); ?>
+                                <?php foreach ($config['options'] as $value): ?>
+
+                                <?php
+                                $child_product_id = $value['products'];
+                                $child_product_collection = Mage::getModel('catalog/product')->load($child_product_id);
+                                $child_image = $child_product_collection['image'];
+                                ?>
+                                            <!-- image child product configuraiton-->
+                                            <a href="<?php echo $this->getProductUrl($child_product_collection) ?>"
+                                               title="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'small_image'), null, true) ?>"
+                                               class="product-image-maylike-<?php echo $child_product_id?>" style="display: none"
+                                                >
+                                                <?php if ($child_product_collection->getFlipImage() != 'no_selection' && $child_product_collection->getFlipImage()): ?>
+                                                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                                        <div class="flipper">
+                                                            <div class="front">
+                                                                <img
+                                                                    src="<?php echo $this->helper('catalog/image')->init($child_product_collection, 'small_image')->resize(200); ?>"
+                                                                    alt="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'small_image'), null, true) ?>"
+                                                                    />
+                                                            </div>
+                                                            <div class="back">
+                                                                <img src=
+                                                                     "<?php echo $this->helper('catalog/image')->init($child_product_collection, 'image')->resize(200); ?>"
+                                                                     alt="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'image'), null, true) ?>"
+                                                                    />
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                            <div style="display: none" class="validation-advice" data-pass="0"
-                                                 data-validate="attribute<?php echo $_attribute->getAttributeId() ?>"
-                                                 id="advice-required-entry-attribute">This is a required field.
-                                            </div>
-                                            <?php $y++; ?>
-                                            <input style="display: none" value="" type="text"
-                                                   name="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>"
-                                                   id="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>">
-                                        </dl>
-                                    <?php endforeach; ?>
-                                <?php endif ?>
+                                                <?php else: ?>
+                                                    <img
+                                                        src="<?php echo $this->helper('catalog/image')->init($child_product_collection, 'small_image')->resize(200); ?>"
+                                                        alt="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'small_image'), null, true) ?>"
+                                                        />
+                                                <?php endif; ?>
+                                            </a>
+                                        <?php endforeach ?>
+                                    <?php endforeach ?>
+                                <?php else: ?>
+                                <!-- image manual product-->
 
-									<h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
-									<div class="desc">
-										<?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
-										<?php
-											if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>30) {
-												$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,30, 'UTF-8');
-												$_shortDescriptionStripped .= '...';
-											}
-											?>
-										<?php echo $_shortDescriptionStripped ?>
-									</div>
-									<div class="grid-price">
-										<?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
-										<?php
-											$final_price = $_product->getFinalPrice();
-											$price = $_product->getPrice();
-											$discount_percent = 0;
-											if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
-										?>
-										<?php if ($discount_percent) :?>
-											<div class="save-price-percent"><span><?php// echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
-										<?php endif; ?>
-									</div>
+                                <a href="<?php echo $this->getProductUrl($_product) ?>"
+                                   title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                   class="product-image"
+                                    >
+                                    <?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+                                        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                            <div class="flipper">
+                                                <div class="front">
+                                                    <img
+                                                        src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+                                                        alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                                        />
+                                                </div>
+                                                <div class="back">
+                                                    <!--															<img src="-->
+                                                    <?php //echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(200); ?><!--"-->
+                                                    <!--													alt="-->
+                                                    <?php //echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?><!--"-->
+                                                    <!--											/>-->
+                                                    <img
+                                                        src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(200); ?>"
+                                                        alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>"
+                                                        />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php else: ?>
+                                        <img
+                                            src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(200); ?>"
+                                            alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                            />
+                                    <?php endif; ?>
+                                </a>
+                                <?php endif;?>
+                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                    <div class="wishlist-ajax-slider add-wishlist">
+                                        <a id="wishlist-related-<?php echo $_product->getId() ?>"
+                                           href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"
+                                           class="link-wishlist <?php if (Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())): ?>added-item<?php endif ?>"><?php echo $this->__('Add to Wishlist') ?></a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
 
-									<div class="actions">
-										<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
-											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-												<button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
-											<?php else:?>
-												<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-											<?php endif?>
-										<?php else: ?>
-												<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
-										<?php endif; ?>
-									</div>
-							</div>
-					<?php endforeach ?>
-					</div>
-					<div class="clearer"></div>
-					<?php if ($this->getPageUrl() && (string)$this->getPageTitle()) : ?>
-						<div class="page-link">
-							<a href="<?php echo $this->getPageUrl() ?>"><?php echo $this->__((string)$this->getPageTitle()) ?></a>
-						</div>
-					<?php endif ?>
-			</div>
-		</div>
-    <!--<a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>-->
-	</div>
+                            <?php if ($_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) : ?>
+                                <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
+                                <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
+                                <?php $y = 1; ?>
+                                <?php $numberAttributes = count($_attributes); ?>
+                                <?php foreach ($_attributes as $_attribute): ?>
+                                    <dl class="<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>">
+                                        <dt class="maylike-customgroup-item-attribute-label"></dt>
+                                        <div
+                                            class="input-box maylike-customgroup-item-attribute-input-box amconf-images-container"
+                                            id="maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>">
+                                            <?php $config = $productAttribute[$_attribute->getAttributeId()]; ?>
+                                            <?php $i = count($config['options']); ?>
+                                            <?php foreach ($config['options'] as $value): ?>
+                                                <?php
+                                                $child_product_id = $value['products'];
+                                                $child_product_collection = Mage::getModel('catalog/product')->load($child_product_id);
+                                                $child_image = $child_product_collection['image'];
+                                                ?>
+                                                <?php $imageOption = $this->getImageOptions($_attribute, $value); ?>
+                                                <?php $i = $i - 1; ?>
+                                                <?php ?>
+                                                <div class="amconf-image-container">
+                                                    <input type="radio" style="display:none"
+                                                           name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                                           id="maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                           class="validate-required<?php echo $_product->getId(); ?> <?php if ($i == 0): ?>validate-one-required<?php endif; ?>"
+                                                           value="<?php echo $value['id'] ?>"/>
+                                                    <?php if (!$imageOption['image'] || $imageOption['color']): ?>
+                                                        <?php if ($imageOption['color']): ?>
+                                                            <a
+                                                                style="background: #<?php echo $imageOption['color'] ?>;margin-right: -7px; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px; line-height: <?php echo $imageOption['h'] ?>; border-radius: 6px"
+                                                                href="javascript:void(0)"
+                                                                class="amconf-color-container customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
+                                                                id="link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                                data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                                data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                                                data-value="<?php echo $value['id'] ?>"
+                                                                data-label="<?php echo $value['label'] ?>"
+                                                                onclick="customgroupCheckAttributeMayLike('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>','<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
+                                                                <?php echo $value['label'] ?>
+                                                            </a>
+                                                        <?php else: ?>
+                                                            <a
+                                                                style="margin-right: -7px; width: <?php echo $imageOption['w'] ? $imageOption['w'] : 29 ?>px; height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px; line-height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px;"
+                                                                href="javascript:void(0)"
+                                                                class="amconf-noimage-div customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
+                                                                id="link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                                data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                                data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                                                data-value="<?php echo $value['id'] ?>"
+                                                                data-label="<?php echo $value['label'] ?>"
+                                                                onclick="customgroupCheckAttributeMayLike('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>','<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
+                                                                <?php echo $value['label'] ?></a>
+                                                        <?php endif; ?>
+                                                    <?php else: ?>
+                                                        <a href="javascript:void(0)"
+                                                           class="customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
+                                                           id="link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                           data-id="customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
+                                                           data-name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
+                                                           data-value="<?php echo $value['id'] ?>"
+                                                           data-label="<?php echo $value['label'] ?>"
+                                                           onclick="customgroupCheckAttributeMayLike('<?php echo $_product->getId() ?>','<?php echo $_attribute->getAttributeId() ?>','<?php echo $value['id'] ?>', '<?php echo $_attribute->getPosition() ?>', '<?php echo $_attribute->getProductAttribute()->getAttributeCode() ?>');">
+                                                            <img src="<?php echo $imageOption['image'] ?>"
+                                                                 alt="<?php echo $value['label'] ?>"/>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    $j(document).ready(function(){
+                                                        $j("#link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>").mouseover(function(){
+                                                            $j(".product-image-maylike-<?php echo $child_product_id?>").show();
+                                                            $j(".parent-product-image-confi-maylike-<?php echo $_product->getId() ?>").hide();
+                                                        });
+                                                        $j("#link-maylike-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>").mouseout(function(){
+                                                            $j(".product-image-maylike-<?php echo $child_product_id?>").hide();
+                                                            $j(".parent-product-image-confi-maylike-<?php echo $_product->getId() ?>").show();
+                                                        });
+                                                    });
+                                                </script>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <div style="display: none" class="validation-advice" data-pass="0"
+                                             data-validate="attribute<?php echo $_attribute->getAttributeId() ?>"
+                                             id="advice-required-entry-attribute">This is a required field.
+                                        </div>
+                                        <?php $y++; ?>
+                                        <input style="display: none" value="" type="text"
+                                               name="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>"
+                                               id="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>">
+                                    </dl>
+                                <?php endforeach; ?>
+                            <?php endif ?>
+
+                            <h2 class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>"
+                                                        title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                            </h2>
+
+                            <div class="desc">
+                                <?php $_shortDescriptionStripped = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+                                <?php
+                                if (iconv_strlen($_shortDescriptionStripped, 'UTF-8') > 30) {
+                                    $_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0, 30, 'UTF-8');
+                                    $_shortDescriptionStripped .= '...';
+                                }
+                                ?>
+                                <?php echo $_shortDescriptionStripped ?>
+                            </div>
+                            <div class="grid-price">
+                                <?php echo $this->getPriceHtml($_product, true, $this->getPriceSuffix()) ?>
+                                <?php
+                                $final_price = $_product->getFinalPrice();
+                                $price = $_product->getPrice();
+                                $discount_percent = 0;
+                                if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
+                                ?>
+                                <?php if ($discount_percent) : ?>
+                                    <div class="save-price-percent"><span><?php // echo $this->__('Save ') ?>
+                                            <strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="actions">
+                                <?php if (!$_product->canConfigure() && $_product->isSaleable()): ?>
+                                    <?php if ($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                                        <button type="button"
+                                                title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>"
+                                                class="button btn-cart"
+                                                onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
+                                            <span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                    <?php else: ?>
+                                        <p class="action availability out-of-stock">
+                                            <span><?php echo $this->__('Out of stock') ?></span></p>
+                                    <?php endif ?>
+                                <?php else: ?>
+                                    <button type="button"
+                                            title="<?php echo $this->quoteEscape($this->__('View Details')) ?>"
+                                            class="button btn-view-details"
+                                            onclick="setLocation('<?php echo $_product->getProductUrl() ?>')">
+                                        <span><span><?php echo $this->__('View Details') ?></span></span></button>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+                <div class="clearer"></div>
+                <?php if ($this->getPageUrl() && (string)$this->getPageTitle()) : ?>
+                    <div class="page-link">
+                        <a href="<?php echo $this->getPageUrl() ?>"><?php echo $this->__((string)$this->getPageTitle()) ?></a>
+                    </div>
+                <?php endif ?>
+            </div>
+        </div>
+        <!--<a class="box-mobile a-button" title="<?php echo $this->__('view all')?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all')?></span></a>-->
+    </div>
 </div>
 <script type="text/javascript">
-	var widthWindow = jQuery( window ).width();
-	if(widthWindow > 768){
-		jQuery("#alsolike-product-list").owlCarousel({
-			loop:false,
-			margin:20,
-			nav:true,
-			responsive:{
-				0:{
-						items:10
-				},
-				600:{
-						items:3
-				},
-				768:{
-						items:3
-				},
-				1000:{
-						items:5
-				}
-			}
-		});
-	}else{
-		jQuery('.recommend-product-list').mCustomScrollbar({
-			axis:"x",
-			advanced:{autoExpandHorizontalScroll:true}
-		});
-	}
+    var widthWindow = jQuery(window).width();
+    if (widthWindow > 768) {
+        jQuery("#alsolike-product-list").owlCarousel({
+            loop: false,
+            margin: 20,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 10
+                },
+                600: {
+                    items: 3
+                },
+                768: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+    } else {
+        jQuery('.recommend-product-list').mCustomScrollbar({
+            axis: "x",
+            advanced: {autoExpandHorizontalScroll: true}
+        });
+    }
 </script>
 <script type="text/javascript">
 
