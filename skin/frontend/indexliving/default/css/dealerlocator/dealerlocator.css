@@ -308,17 +308,18 @@ td .dealer-label {
 	background: linear-gradient(rgba(11, 11, 11, 0.1), rgba(11, 11, 11, 0.6)) repeat-x scroll 0 0 rgba(11, 11, 11, 0.2);
 }
 .dealer-map-preview{
-	position: absolute;
-	left: 50%;
-	top: 40%;
-	width: 450px;
-	margin-left: -225px;
-	margin-top: -100px;
-	text-align: center;
-	z-index: 9040;
-	max-height: 480px;
-	background:#FFFFFF;
-	padding:5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 999px;
+    height: 731px;
+    margin-left: -499.5px;
+    margin-top: -365.5px;
+    text-align: center;
+    z-index: 9040;
+    max-height: 480px;
+    background: #FFFFFF;
+    padding: 5px;
 }
 
 @media (max-width: 480px) {

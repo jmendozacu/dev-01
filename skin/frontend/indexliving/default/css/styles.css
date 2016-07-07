@@ -4516,7 +4516,7 @@ body.catalogsearch-result-index .page-title h1 {
   clear: both;
 }
 .products-grid .prolabel-wrapper {position:relative;}
-
+.cms-home .products-grid .prolabel-wrapper{min-height: 200px;}
 .products-grid .product-image {
   max-width: 100%;
   margin-bottom: 15px;
@@ -4549,7 +4549,7 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid .product-name a {color:#000; font-size:15px; font-weight: bold; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
 .products-grid .desc {font-size:12px; color:#434343; font-weight: 300; margin-bottom:5px; height: 18px;display: none;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
-..products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 4px 5px 1px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
+.products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 4px 5px 1px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
 .products-grid  .grid-price .save-price-percent strong, .catalog-product-view .product-view .product-shop .save-price-percent strong{display:block; color:#FFF; font-size:14px;line-height:16px;}
 .catalog-product-view .product-view .product-shop .price-info{position: relative;}
 .products-grid  .grid-price .save-price-percent{right:0px;  bottom:12px; }
@@ -5156,7 +5156,7 @@ body.catalogsearch-result-index .page-title h1 {
 	height: 100%;
 	min-height:195px;
 }
-
+.catalog-category-view .block-highlight #alsolike-product-list  .flip-container, .catalog-category-view .block-highlight #recommend-product-list  .flip-container{min-height: 200px;}
 .block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
 	width: 100%;
 	height: 100%;
@@ -10675,6 +10675,9 @@ div.paypal-logo span > img {
   font-style: normal;
 
 }
+
+.cms-who-we-are .page-title.style2 { display: none;}
+
 .cms-page-view .std p, .cms-page-view p, .cms-page-view .std font-style:normal;}
 .cms-page-view .c_left, .cms-page-view .c_right{width: 48%;float:left;}
 .cms-page-view .c_right{float:right;}
@@ -10693,6 +10696,26 @@ div.paypal-logo span > img {
 .cms-page-view .col_3 .desc p{font-size: 12px;line-height: 18px;}
 .cms-page-view .col_3 .img{margin-bottom:10px;}
 .cms-page-view .col_3 .img img{width:100%;}
+
+.cms-page-view.cms-how-to-buy .std ol{margin-left:20px;}
+.cms-page-view.cms-how-to-buy .std ol li{list-style-type: decimal;}
+.cms-page-view.cms-how-to-buy .std ol li ol li{list-style-type: none;}
+.how_to_buy_step { margin-bottom: 27px;}
+.how_to_buy_step li{float:left;width:15%;margin-right:5%;text-align:center;}
+.how_to_buy_step li a:hover{text-decoration: none;}
+.how_to_buy_step li a:hover .desc_step {color:#616161;}
+.how_to_buy_step li .number_step{background:#252525;color:#FFC222;font-weight:700;border-radius:100%;width:80px;height:80px;margin:auto auto 15px;font-size:24px;line-height:82px;}
+
+.cms-page-view.cms-payment .paymen_page .payment_list{margin-top: 20px;margin-bottom: 10px;}
+.cms-page-view.cms-payment .paymen_page .payment_list li{ padding: 10px;margin-bottom: 10px;}
+.cms-page-view.cms-payment .paymen_page .payment_list li a{color:#FFC222;background:#252525;padding:15px 30px;border-radius:30px;font-size:19px;width:40%;display:block;}
+.cms-page-view.cms-payment .paymen_page .payment_list li a:hover{background:#FFC222;color:#252525;text-decoration:none;  }
+.cms-page-view.cms-payment .paymen_page h3{margin-top:20px;}
+.cms-page-view.cms-payment .paymen_page .list_pay {margin: 10px 0;}
+.cms-page-view.cms-payment .paymen_page .list_pay ul{margin-left: 20px;}
+.cms-page-view.cms-payment .paymen_page .list_pay li{list-style-type: none;}
+.cms-page-view.cms-payment .paymen_page .list_pay li:before{content: "- ";}
+.cms-page-view.cms-payment .paymen_page .list_pay.red li{color:#FF0000;}
 
 .delivery-index-index .header_top {display: table;width: 100%;background: #252525;margin-bottom: 46px;}
 .delivery-index-index .header_top .box_left_text .txt_content{padding:60px;text-align: right;position: relative;}
