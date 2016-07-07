@@ -1,24 +1,30 @@
 @font-face {
-	font-family: 'Index';
-	src: url('fonts/live/index-light-2.eot');
-	src: url('fonts/live/index-light-2.eot?#iefix') format('embedded-opentype'), url('fonts/live/index-light-2.woff') format('woff'), url('fonts/live/index-light-2.ttf') format('truetype'), url('fonts/live/index-light-2.svg') format('svg');
-	font-weight: 300;
-	font-style: normal;
+    font-family: 'Index';
+    src: url('fonts/livev2/index-light.eot');
+    src: url('fonts/livev2/index-light.eot?#iefix') format('embedded-opentype'),
+         url('fonts/livev2/index-light.woff') format('woff'),
+         url('fonts/livev2/index-light.ttf') format('truetype'),
+         url('fonts/livev2/index-light.svg#AftaserifRegular') format('svg');
+    font-weight: 300;
+    font-style: normal;
 }
 @font-face {
-	font-family: 'Index';
-	src: url('fonts/live/index-medium-2.eot');
-	src: url('fonts/live/index-medium-2.eot?#iefix') format('embedded-opentype'), url('fonts/live/index-medium-2.woff') format('woff'), url('fonts/live/index-medium-2.ttf') format('truetype'), url('fonts/live/index-medium-2.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'Index';
+    src: url('fonts/livev2/index-medium.eot');
+    src: url('fonts/livev2/index-medium.eot?#iefix') format('embedded-opentype'),
+         url('fonts/livev2/index-medium.woff') format('woff'),
+         url('fonts/livev2/index-medium.ttf') format('truetype'),
+         url('fonts/livev2/index-medium.svg#AftaserifRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
-	font-family: 'Index';
-	src: url('fonts/live/index-bold-2.eot');
-	src: url('fonts/live/index-bold-2.eot?#iefix') format('embedded-opentype'),
-	url('fonts/live/index-bold-2.woff') format('woff'),
-	url('fonts/live/index-bold-2.ttf') format('truetype'),
-	url('fonts/live/index-bold-2.svg') format('svg');
-	font-weight: bold;
-	font-style: normal;
+    font-family: 'Index';
+    src: url('fonts/livev2/index-bold.eot');
+    src: url('fonts/livev2/index-bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/livev2/index-bold.woff') format('woff'),
+         url('fonts/livev2/index-bold.ttf') format('truetype'),
+         url('fonts/livev2/index-bold.svg#AftaserifRegular') format('svg');
+    font-weight: bold;
+    font-style: normal;
 }
