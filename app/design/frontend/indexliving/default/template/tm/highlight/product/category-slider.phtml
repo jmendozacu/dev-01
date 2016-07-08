@@ -229,7 +229,7 @@ if ($this->getCategoryFilter()) {
                                             <?php $imageOption = $this->getImageOptions($_attribute, $value); ?>
                                             <?php $i = $i - 1; ?>
                                             <?php ?>
-                                            <div class="amconf-image-container">
+                                            <div class="amconf-image-container" style="margin-right:0; width: <?php echo $imageOption['w'] + 4 ?>px; height: <?php echo $imageOption['h'] + 4 ?>px;">
                                                 <input type="radio" style="display:none"
                                                        name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]"
                                                        id="related-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
@@ -238,7 +238,7 @@ if ($this->getCategoryFilter()) {
                                                 <?php if (!$imageOption['image'] || $imageOption['color']): ?>
                                                     <?php if ($imageOption['color']): ?>
                                                         <a
-                                                            style="background: #<?php echo $imageOption['color'] ?>;margin-right: -7px; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px; line-height: <?php echo $imageOption['h'] ?>; border-radius: 6px"
+                                                            style="background: #<?php echo $imageOption['color'] ?>; width: <?php echo $imageOption['w'] ?>px; height: <?php echo $imageOption['h'] ?>px;"
                                                             href="javascript:void(0)"
                                                             class="amconf-color-container customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
                                                             id="link-related-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
@@ -252,7 +252,7 @@ if ($this->getCategoryFilter()) {
                                                         </a>
                                                     <?php else: ?>
                                                         <a
-                                                            style="margin-right: -7px; width: <?php echo $imageOption['w'] ? $imageOption['w'] : 29 ?>px; height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px; line-height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px;"
+                                                            style="width: <?php echo $imageOption['w'] ? $imageOption['w'] : 29 ?>px; height: <?php echo $imageOption['h'] ? $imageOption['h'] : 29 ?>px;"
                                                             href="javascript:void(0)"
                                                             class="amconf-noimage-div customgroup-attribute-option-link <?php if ($y - 1 != 0): ?> option_disabled <?php endif; ?> "
                                                             id="link-related-customgroup-item-<?php echo $_product->getId() ?>-attribute<?php echo $_attribute->getAttributeId() ?>-<?php echo $value['id'] ?>"
