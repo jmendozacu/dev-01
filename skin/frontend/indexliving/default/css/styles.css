@@ -2752,6 +2752,8 @@ form .legend {
   padding-top: 2px;
     text-align: center;
 }
+.customer-account .wide .input-box{text-align: left;}
+
 .input-box:after {
   content: '';
   display: table;
