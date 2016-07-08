@@ -51,6 +51,9 @@ CityUpdater.prototype = {
 				}
 			}
 			
+			// Sort Alphabetize
+			this.sortAlphabetize();
+			
 			if (this.cityTextEl) {
 				this.cityTextEl.style.display = 'none';
 			}
@@ -65,6 +68,28 @@ CityUpdater.prototype = {
 			Validation.reset(this.citySelectEl);
 		}
 	}, 
+	
+	sortAlphabetize: function () {
+		elem = this.citySelectEl;
+		var tmpAry = new Array();
+		var currentVal = $(elem).value;
+		for (var i=0;i<$(elem).options.length;i++) {
+				if (i == 0) continue;
+				tmpAry[i-1] = new Array();
+				tmpAry[i-1][0] = $(elem).options[i].text;
+				tmpAry[i-1][1] = $(elem).options[i].value;
+		}
+		tmpAry.sort();
+		while ($(elem).options.length > 0) {
+			 $(elem).options[0] = null;
+		}
+		for (var i=1;i<=tmpAry.length;i++) {
+				var op = new Option(tmpAry[i-1][0], tmpAry[i-1][1]);
+				$(elem).options[i] = op;
+		}
+		$(elem).value = currentVal;
+		return;
+	},
 	
 	updateCity: function() {		
 		var sIndex = this.citySelectEl.selectedIndex;
@@ -125,6 +150,9 @@ SubdistrictUpdater.prototype = {
 				}
 			}
 			
+			// Sort Alphabetize
+			this.sortAlphabetize();
+			
 			if (this.subdistrictTextEl) {
 				this.subdistrictTextEl.style.display = 'none';
 			}
@@ -139,6 +167,28 @@ SubdistrictUpdater.prototype = {
 			Validation.reset(this.subdistrictEl);
 		}
 	}, 
+	
+	sortAlphabetize: function () {
+		elem = this.subdistrictEl;
+		var tmpAry = new Array();
+		var currentVal = $(elem).value;
+		for (var i=0;i<$(elem).options.length;i++) {
+				if (i == 0) continue;
+				tmpAry[i-1] = new Array();
+				tmpAry[i-1][0] = $(elem).options[i].text;
+				tmpAry[i-1][1] = $(elem).options[i].value;
+		}
+		tmpAry.sort();
+		while ($(elem).options.length > 0) {
+			 $(elem).options[0] = null;
+		}
+		for (var i=1;i<=tmpAry.length;i++) {
+				var op = new Option(tmpAry[i-1][0], tmpAry[i-1][1]);
+				$(elem).options[i] = op;
+		}
+		$(elem).value = currentVal;
+		return;
+	},
 	
 	updateSubdistrict: function() {		
 		var sIndex = this.subdistrictEl.selectedIndex;		
