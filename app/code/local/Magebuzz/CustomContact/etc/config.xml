@@ -67,6 +67,13 @@
 		</connection>
 	  </customcontact_read>
 	</resources>
+	<template>
+			<email>
+				<contacts_email_email_template>
+						<type>html</type>
+				</contacts_email_email_template>
+			</email>
+		</template>
   </global>
   <admin>
 	<routers>
