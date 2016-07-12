@@ -1253,6 +1253,8 @@ a.button {
 .button.btn-cart{ font-weight: bold; font-size:14px; }
 .button.btn-cart:hover{background:#f4701e;}
 
+.customer-address-form .my-account .fieldset .form-list .wide .input-box{text-align: left;}
+
 #wishlist-view-form  .button.btn-removeall > span{padding-left:20px; background:url(../images/icon-remove4.png) no-repeat center left;}
 @media only screen and (max-width: 770px) {
   .col2-set .buttons-set .button,
