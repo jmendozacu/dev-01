@@ -168,6 +168,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 					}
 					$res_TH[] = '"' . implode('","', $indexTH) . '"';
 					$import_EN[] ='visibility';
+					$import_EN[] ='status';
 					foreach ($import_EN as $value) {
 						if($index_magento[$index_header[$value]]=='multiselect'){
 							foreach ($map_attribute[$value]['multiselect'] as $k => $v) {
@@ -271,8 +272,8 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 
 						}
 
-						$rowCsv_EN[] = '2'; //visibility
-						
+						$rowCsv_EN[] = '1'; //visibility
+						$rowCsv_EN[] = '2'; //status
 		
 						$res_EN[] = '"' . implode('","', $rowCsv_EN) . '"';
 						$res_TH[] = '"' . implode('","', $rowCsv_TH) . '"';
