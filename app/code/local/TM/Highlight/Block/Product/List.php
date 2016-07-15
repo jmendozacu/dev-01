@@ -20,6 +20,7 @@ class TM_Highlight_Block_Product_List
     protected $_nativeBlock = null;
     const DEFAULT_PRODUCTS_COUNT    = 4;
     const DEFAULT_COLUMN_COUNT      = 4;
+    const DEFAULT_PRODUCTS_LIMIT    = 4;
     const PAGE_TYPE = false;
 
     protected $_attributeCode;
@@ -245,6 +246,8 @@ class TM_Highlight_Block_Product_List
             if (!$this->getToolbarBlockName()) {
                 $this->getToolbarBlock()->setData('_current_limit', $this->getProductsCount());
             }
+            
+            $collection->getSelect()->limit($this->getProductsLimit());
 
             $this->applyDefaultPriceBlock();
             $this->applySkuFilter($collection);
@@ -290,6 +293,17 @@ class TM_Highlight_Block_Product_List
     protected function _getProductCollection()
     {
         return $this->getCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductsLimit()
+    {
+        if (!isset($this->_data['limit'])) {
+            $this->_data['limit'] = self::DEFAULT_PRODUCTS_LIMIT;
+        }
+        return $this->_data['limit'];
     }
 
     /**
