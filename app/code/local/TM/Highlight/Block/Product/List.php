@@ -227,12 +227,16 @@ class TM_Highlight_Block_Product_List
                     $collection = Mage::getResourceModel($collection);
                 }
             }
-						Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
+
+            //add flip_image
+            $collection->addAttributeToSelect('flip_image');
+
+			Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
             Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
-						if(!Mage::helper('highlight')->showOutStockProduct()) {
-							Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
-						}
-           
+			if(!Mage::helper('highlight')->showOutStockProduct()) {
+				Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($collection);
+			}
+
             $collection->setVisibility(Mage::getSingleton('catalog/product_visibility')->getVisibleInCatalogIds());
 
             $collection = $this->_addProductAttributesAndPrices($collection)
