@@ -336,17 +336,19 @@ if ($this->getCategoryFilter()) {
 									</div>
 
 									<div class="actions">
-										<?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
-											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
-												<button type="button" title="<?php echo $this->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+										<?php if($_product->isSaleable()): ?>
+											<?php if(!$_product->canConfigure()): ?>
+												<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
 											<?php else:?>
+												<button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
+											<?php endif;?>
+										<?php else: ?>
+											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()):?>
+												<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
+											<?php else: ?>
 												<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-											<?php endif?>
-                    <?php elseif($_product->canConfigure() && $_product->isSaleable()): ?>
-                        <button type="button" title="<?php echo $this->quoteEscape($this->__('View Details')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('View Details') ?></span></span></button>
-                    <?php else: ?>
-                        <button type="button" title="<?php echo $this->quoteEscape($this->__('Store Only')) ?>" class="button btn-view-details" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Store Only') ?></span></span></button>
-                    <?php endif; ?>
+											<?php endif; ?>
+										<?php endif; ?>
 									</div>
 							</div>
 					<?php endforeach ?>
