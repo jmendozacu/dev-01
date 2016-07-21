@@ -11380,8 +11380,9 @@ body:lang(th) .view-dealers span{font-size: 16px;}
 
 /* fix mobile */
 .box-mobile{display: none;}
-.searchautocomplete{width: 470px}
+.searchautocomplete{width: 430px}
 body:lang(th) .searchautocomplete{width: 398px}
+.main-banners .wrap-bannerads{background-color: #333;}
 .main-bannerads .wrap-bannerads{background-color: #333;}
 .box-home-list-products .block-highlight .mCustomScrollbar .mCSB_container{width: 759px !important;}
 
