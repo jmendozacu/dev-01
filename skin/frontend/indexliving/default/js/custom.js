@@ -93,7 +93,10 @@ function applyChangeCheckoutCartQty(inputId){
 jQuery(document).ready(function(){
     jQuery("#custom-form-1 .fieldset").addClass("clearfix");
     jQuery("#custom-form-1 .fieldset:nth-child(6)").addClass("bank");
+    jQuery("#custom-form-1 .fieldset:nth-child(6)").addClass("bank_radio");
     jQuery("#custom-form-1 .fieldset:nth-child(9)").addClass("bank");
+    jQuery("#custom-form-1 .fieldset:nth-child(10)").addClass("bank");
+    jQuery("#custom-form-1 .fieldset:nth-child(11)").addClass("hide");
 });
 //////
 
