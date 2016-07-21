@@ -909,6 +909,16 @@
   body:lang(th) .view-dealers span{font-size: 14px;}
   .product-view .add-to-links .shareproduct-content  h2{font-size: 20px;text-align: center;}
 }
+@media (max-width: 435px){
+	.cart-table .cart-footer-actions .button span{padding-left: 25px;}
+	.cart-table .cart-footer-actions .button.btn-empty span{background-position: -10px -275px;}
+	.cart-table .cart-footer-actions .button.btn-continue span{ background-position: -7px -326px;}
+}
+@media (max-width: 345px){
+	.cart-table .cart-footer-actions .button{font-size: 15px;}
+	.cart-table .cart-footer-actions .button.btn-empty span{  background-position: -10px -278px;}
+	.cart-table .cart-footer-actions .button.btn-continue span{background-position: -7px -329px;}
+}
 @media (max-width: 330px){
   .compare-popup{
 		max-width: 300px;
