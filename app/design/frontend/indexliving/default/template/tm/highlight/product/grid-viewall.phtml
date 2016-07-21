@@ -89,8 +89,8 @@ if ($this->getCategoryFilter()) {
                                     </div>
                                     <div class="back">
                                         <img src=
-                                             "<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(200); ?>"
-                                             alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'image'), null, true) ?>"
+                                             "<?php echo $this->helper('catalog/image')->init($_product, 'flip_image')->resize(200); ?>"
+                                             alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'flip_image'), null, true) ?>"
                                             />
                                     </div>
                                 </div>
@@ -138,8 +138,8 @@ if ($this->getCategoryFilter()) {
                                     </div>
                                     <div class="back">
                                         <img src=
-                                             "<?php echo $this->helper('catalog/image')->init($child_product_collection, 'image')->resize(200); ?>"
-                                             alt="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'image'), null, true) ?>"
+                                             "<?php echo $this->helper('catalog/image')->init($child_product_collection, 'flip_image')->resize(200); ?>"
+                                             alt="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'flip_image'), null, true) ?>"
                                             />
                                     </div>
                                 </div>
