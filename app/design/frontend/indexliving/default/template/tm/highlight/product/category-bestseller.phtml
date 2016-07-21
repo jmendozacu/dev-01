@@ -66,7 +66,9 @@ $_columnCount = $this->getColumnCount();
                            class="parent-product-image-confi-bestsell-<?php echo $_product->getId() ?> "
                            style="display: none"
                             >
-                            <?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+                            <?php 
+                            $flipimg = $_product->getFlipImage();
+                            if ($flipimg != 'no_selection' && $flipimg && strpos($flipimg, 'indexliving_image_placeholder') === false): ?>
                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                                     <div class="flipper">
                                         <div class="front">
@@ -115,7 +117,9 @@ $_columnCount = $this->getColumnCount();
                            title="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'small_image'), null, true) ?>"
                            class="product-image-bestsell-<?php echo $child_product_id?>" style="display: none"
                             >
-                            <?php if ($child_product_collection->getFlipImage() != 'no_selection' && $child_product_collection->getFlipImage()): ?>
+                            <?php 
+                            $flipimg = $child_product_collection->getFlipImage();
+                            if ($flipimg != 'no_selection' && $flipimg && strpos($flipimg, 'indexliving_image_placeholder') === false): ?>
                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                                     <div class="flipper">
                                         <div class="front">
@@ -148,7 +152,9 @@ $_columnCount = $this->getColumnCount();
                         <a href="<?php echo $this->getProductUrl($_product) ?>"
                            title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                            class="product-image">
-                            <?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+                            <?php 
+                            $flipimg = $_product->getFlipImage();
+                            if ($flipimg != 'no_selection' && $flipimg && strpos($flipimg, 'indexliving_image_placeholder') === false): ?>
                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                                     <div class="flipper">
                                         <div class="front">
