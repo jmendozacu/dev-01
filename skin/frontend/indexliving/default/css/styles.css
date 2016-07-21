@@ -3454,8 +3454,8 @@ body {
 .page-header-container{padding:37px 0; float:left; width:100%;}
 .page-header-container .box-right {float:right; }
 .page-header-container .box-right .top-links {float:left; margin:7px 25px 7px 0px;}
-.page-header-container .box-right .top-links > li {float:left; font-size:12px;  color:#252525; text-transform:uppercase; }
-.page-header-container .box-right .top-links > li > a {display:inline-block; line-height:30px; position:relative; color:#252525; }
+.page-header-container .box-right .top-links > li {float:left; font-size:14px;  color:#252525; text-transform:uppercase; }
+.page-header-container .box-right .top-links > li > a {display:inline-block; line-height:25px; position:relative; color:#252525; }
 .page-header-container .box-right .top-links > li  >a:hover {color:#FFC222; text-decoration:none;}
 
 .page-header-container .box-right .top-links > li:nth-child(1) > a {padding-left:25px; padding-right:10px; border-radius:4px; position:relative;}
@@ -4546,7 +4546,7 @@ body.catalogsearch-result-index .page-title h1 {
 .category-products .products-grid .link-wishlist{right:10px;}
 .products-grid .link-wishlist.added-item {background-position:-78px -791px;}
 .products-grid .product-name {line-height:21px; margin-bottom:5px;height:42px;overflow: hidden;}
-.products-grid .product-name a {color:#000; font-size:15px; font-weight: bold; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
+.products-grid .product-name a {color:#000; font-size:17px; font-weight: bold; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
 .products-grid .desc {font-size:12px; color:#434343; font-weight: 300; margin-bottom:5px; height: 18px;display: none;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
 .products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 4px 5px 1px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
@@ -5220,7 +5220,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .product-name .h1 {
   color: #000;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 26px;
 }
 .product-view .product-shop .extra-info {
   float: left;
