@@ -36,11 +36,7 @@
 		</div>	
 	<?php endif; ?>
 	<div class="add-to-cart">
-		<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
 		<button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button r-button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
 		<?php echo $this->getChildHtml('', true, true) ?>
-		<?php else:?>
-			<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-		<?php endif?>
 	</div>
 <?php endif; ?>

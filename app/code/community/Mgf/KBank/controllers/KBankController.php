@@ -176,7 +176,7 @@ class Mgf_KBank_KBankController extends Mage_Core_Controller_Front_Action
             $status = false;
         //	throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
         }
-        
+        Mage::log(print_r($response,true),null,'KBank-Fullcredit.log',true);
 		$Paidby = "KBank";
 		// if(isset($response["paidsrc"])) $Paidby  =$response["paidsrc"];
 		

@@ -35,10 +35,14 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 				'special_price',
 				'special_from_date',
 				'special_to_date',
-				'visibility',
+				// 'visibility',
+				'price_tag',
 				// 'status'
 			));
-
+			$dataNotvisibility[] = implode(',', array(
+				'sku',
+				'visibility',
+			));
 			while (false !== ($filename = readdir($dh))) {
 			    $files[] = $filename;
 
@@ -131,16 +135,27 @@ class MarginFrame_Sync_Model_Cron_Price extends Mage_Core_Model_Abstract
 				    			}
 				    		}
 				    		if($row[1] > 0){
-					    		$row[5] = '4';
+					    		// $row[5] = 'null';
 				    		} else {
-				    			$row[5] = '1';
+				    			// $row[5] = '1';
+				    			$dataNotvisibility[] = implode(',',
+				    				array($row[0],'1')
+				    			);
 				    		} 
+				    		if($row[2] > 0){
+				    			$row[5] ='dontmiss';
+				    		} else {
+				    			$row[5] ='unset';
+				    		}
 
 				    		$dataImport[] = implode(',',$row);
 				    		// fputcsv($file,$row);
 				    	}
 				    	$temp = implode("\n", $dataImport);
 				    	file_put_contents($dirprepare."Import_Price.csv",$temp);
+
+				    	$temp2  = implode("\n", $dataNotvisibility);
+				    	file_put_contents($dirprepare."Import_PriceNotVisibility.csv",$temp2);
 						
 					    unset($product);
 						fclose($handle);

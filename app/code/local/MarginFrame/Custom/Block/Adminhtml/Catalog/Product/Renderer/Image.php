@@ -3,8 +3,9 @@ class MarginFrame_Custom_Block_Adminhtml_Catalog_Product_Renderer_Image extends 
 {
     public function render(Varien_Object $row)
     {
-        $val = Mage::helper('catalog/image')->init($row, 'thumbnail')->resize(97);
-        $out = "<img src=". $val ." width='97px'/>";
+        $value = $row->getData($this->getColumn()->getIndex());
+        $image = Mage::helper('catalog/image')->init($row, 'image')->resize(97);
+        $out = "<img src=". $image ." width='97px' /><span style='font-size:10px'>".$value."</span>";
         return $out;
     }
 }

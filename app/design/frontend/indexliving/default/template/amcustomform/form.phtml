@@ -39,6 +39,9 @@ if($captchaEnable){
         <input type="hidden" name="form_id" value="<?php echo $form->getId() ?>">
 
         <?php
+
+        $radioRequiredLast = array();
+
         foreach ($form->getActiveLines() as $line) {
             /** @var Amasty_Customform_Model_Form_Line $line */
         ?>
@@ -55,7 +58,17 @@ if($captchaEnable){
                             <?php $element->addClass('validate-length') ?>
                             <?php $element->addClass('maximum-length-'.$element->getMaxLength()) ?>
                             <?php } ?>
-                            <label for="form-field-<?php echo $formField->getId() ?>"><?php echo $formField->getField()->getCurrentStorable('label'); echo ($element->getRequired()) ? ' <span class="required"></span>' : ''; ?></label>
+
+                            <?php
+                                $radioRequired = 0;
+                                if($element->getInputType() == 'radio' && $element->getRequired() == 1){
+                                    $element->setRequired(0);
+                                    $radioRequire = 1;
+                                    $radioRequiredLast[] = $element->getName();
+                                }
+                            ?>
+
+                            <label for="form-field-<?php echo $formField->getId() ?>"><?php echo $formField->getField()->getCurrentStorable('label'); echo ($element->getRequired() || $radioRequire) ? ' <span class="required"></span>' : ''; ?></label>
                             <div class="input-box"><?php echo $element->toHtml(); ?></div>
                         </div>
                     </li>
@@ -87,6 +100,11 @@ if($captchaEnable){
 
     var datenow = '<?php echo Mage::getModel("core/date")->date("Y-m-d H:i:s"); ?>';
     jQuery(function(){
+        <?php 
+        foreach($radioRequiredLast as $name) :?>
+            jQuery("input[type='radio'][name=<?php echo $name?>").last().addClass('validate-one-required-by-name');
+        <?php endforeach; ?>
+
         jQuery('.picker-datetime').datetimepicker({
             value:datenow,
             step:10,

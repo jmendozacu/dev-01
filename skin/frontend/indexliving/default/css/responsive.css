@@ -103,6 +103,8 @@
   .cms-page-view .c_left, .cms-page-view .c_right{width:100%;float:none;}
   .cms-page-view .c_right{text-align: center;}
   .cms-page-view .content_cms img { display: inline-block;}
+  .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label.inline{padding-left: 24px;}
+  .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio .input-box{background-position: -18px -2px;}
 	.products-grid .flip-container, .products-grid .flip-container .front, .products-grid .flip-container .back,
 	.products-list .flip-container, .products-list .flip-container .front, .products-list .flip-container .back{height:auto; min-height:0;}
 	.products-grid .flip-container .back,
@@ -132,6 +134,8 @@
  @media (max-width: 819px) {
  .delivery-index-index .box_right_img img { width: 100%;}
  .delivery-index-index .box_right_img,.delivery-index-index .header_top .box_left_text{width:100%;background:#252525;}
+ .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio .input-box {  background-position: -23px -2px;}
+ .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label.inline{padding-top: 15px;font-size: 12px;}
 }
  @media (min-width: 769px){ }
  @media (min-width: 769px) and (max-width: 991px) {
@@ -641,6 +645,9 @@
 	#customer-reviews .review-list li > div.review-details{width:53%; float:right;}
 	.product-view #customer-reviews .review-list li > div.review-details{	width:40%;	float:right; text-align:right;}
  }
+ 	.cms-page-view.cms-custom-form .std .bank_radio li.fields{width: 100%;overflow: auto}
+	.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio .input-box {  width: 593px; }
+  }
   @media (max-width:697px){
 	.delivery-index-index .total_buy, .delivery-index-index .desktop_show{display: none;}
 	.delivery-index-index .mobile_show{display:block;}
@@ -901,6 +908,16 @@
   .wrap-bannerads .bx-viewport .banner-desc .banner-actions a, body:lang(th) .product-view .add-to-links > li > a{font-size: 11px;}
   body:lang(th) .view-dealers span{font-size: 14px;}
   .product-view .add-to-links .shareproduct-content  h2{font-size: 20px;text-align: center;}
+}
+@media (max-width: 435px){
+	.cart-table .cart-footer-actions .button span{padding-left: 25px;}
+	.cart-table .cart-footer-actions .button.btn-empty span{background-position: -10px -275px;}
+	.cart-table .cart-footer-actions .button.btn-continue span{ background-position: -7px -326px;}
+}
+@media (max-width: 345px){
+	.cart-table .cart-footer-actions .button{font-size: 15px;}
+	.cart-table .cart-footer-actions .button.btn-empty span{  background-position: -10px -278px;}
+	.cart-table .cart-footer-actions .button.btn-continue span{background-position: -7px -329px;}
 }
 @media (max-width: 330px){
   .compare-popup{

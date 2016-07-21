@@ -1,22 +1,22 @@
 var enableAddAttributeValuesToProductLink = true;
 
 AmConfigurableData = Class.create();
-AmConfigurableData.prototype = 
+AmConfigurableData.prototype =
 {
     currentIsMain : "",
     optionProducts : null,
     optionDefault : new Array(),
-    
+
     initialize : function(optionProducts)
     {
         this.optionProducts = optionProducts;
     },
-    
+
     hasKey : function(key)
     {
         return ('undefined' != typeof(this.optionProducts[key]));
     },
-    
+
     getData : function(key, param)
     {
         if (this.hasKey(key) && 'undefined' != typeof(this.optionProducts[key][param]))
@@ -25,13 +25,13 @@ AmConfigurableData.prototype =
         }
         return false;
     },
-    
+
     saveDefault : function(param, data)
     {
         this.optionDefault['set'] = true;
         this.optionDefault[param] = data;
     },
-    
+
     getDefault : function(param)
     {
         if ('undefined' != typeof(this.optionDefault[param]))
@@ -52,11 +52,11 @@ Product.Config.prototype.initialize = function(config){
         } else {
             this.settings   = $$('.super-attribute-select' + '-' + config.productId);
         }
-     
+
         this.state      = new Hash();
         this.priceTemplate = new Template(this.config.template);
         this.prices     = config.prices;
-        
+
         // Set default values from config
         if (config.defaultValues) {
             this.values = config.defaultValues;
@@ -66,8 +66,8 @@ Product.Config.prototype.initialize = function(config){
             var attributeId = element.id.replace(/[a-z]*/, '');
              $('label-' + attributeId).hide();
          }.bind(this))
-        
-        
+
+
         // Overwrite defaults by inputs values if needed
         if (config.inputsInitialized) {
             this.values = {};
@@ -78,8 +78,8 @@ Product.Config.prototype.initialize = function(config){
                 }
             }.bind(this));
         }
-            
-        // Put events to check select reloads 
+
+        // Put events to check select reloads
         this.settings.each(function(element){
             Event.observe(element, 'change', this.configure.bind(this))
         }.bind(this));
@@ -96,7 +96,7 @@ Product.Config.prototype.initialize = function(config){
                 this.state[attributeId] = false;
             }
         }.bind(this))
-   //If Ajax Cart     
+   //If Ajax Cart
     if('undefined' != typeof(AmAjaxObj)) {
             var length = this.settings.length;
             for (var i = 0; i < length-1; i++) {
@@ -107,13 +107,13 @@ Product.Config.prototype.initialize = function(config){
                        if(elementNext  && elementNext.config && (elementNext.config['id'] == element.config['id'])){
                             this.settings.splice (i,1);
                             i--;
-                            break;    
-                       }    
-                   }    
+                            break;
+                       }
+                   }
               }
-            }    
-         }  
-            
+            }
+         }
+
         // Init settings dropdown
         var childSettings = [];
         for(var i=this.settings.length-1;i>=0;i--){
@@ -293,13 +293,13 @@ Product.Config.prototype.fillSelect = function(element){
             holderDiv.id = 'amconf-images-' + attributeId + '-' + this.config.productId;
             holder.insertBefore(holderDiv, element);
         }
-        
+
         var index = 1, key = '';
         this.settings.each(function(select, ch){
             // will check if we need to reload product information when the first attribute selected
             if (parseInt(select.value))
             {
-                key += select.value + ',';   
+                key += select.value + ',';
             }
         });
         for(var i=0;i<options.length;i++){
@@ -322,7 +322,7 @@ Product.Config.prototype.fillSelect = function(element){
                 {
                     this.amconfCreateOptionImage(options[i], attributeId, key, holderDiv);
                 }
-                
+
                 options[i].allowedProducts = allowedProducts;
                 element.options[index] = new Option(this.getOptionLabel(options[i], options[i].price), options[i].id);
                 element.options[index].config = options[i];
@@ -339,7 +339,7 @@ Product.Config.prototype.fillSelect = function(element){
             var lastContainer = document.createElement('div');
             lastContainer = $(lastContainer); // fix for IE
             lastContainer.setStyle({clear : 'both'});
-            holderDiv.appendChild(lastContainer);    
+            holderDiv.appendChild(lastContainer);
         }
     }
 }
@@ -380,7 +380,7 @@ Product.Config.prototype.selectImage = function(image)
     image.addClassName('amconf-image-selected');
 }
 
-Product.Config.prototype.configureElement = function(element) 
+Product.Config.prototype.configureElement = function(element)
 {
     var me = this;
     var optionId = element.value;
@@ -565,7 +565,7 @@ Event.observe(window, 'load', function(){
                      imageObj.src = path;
                  }
              }
-         } 
+         }
      }
 });
 

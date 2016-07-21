@@ -429,7 +429,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 		$rest = $this->get_web_page($url);
 		
 		$response = json_decode($rest['content'],true);
-		Mage::log(print_r($response,true),null,'foregroundcallback.log');
+		Mage::log(print_r($response,true),null,'foregroundcallback.log',true);
 
 		if($response['header']['msg']=="success"){
 			//success
@@ -508,17 +508,23 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
 					//=> Other Status - End		
 				}
 		} else {
+
 			//Fail
 			$order = Mage::getModel('sales/order');
 			$order->loadByIncrementId($orderID);
 			$state = Mage_Sales_Model_Order::STATE_CANCELED;
 			if($order->getId()){
 				$ResponseMessage = $order->getStatus() . " -> "  . $state;
+				if($order->getState() == Mage_Sales_Model_Order::STATE_NEW){
+					$ResponseMessage .='[New]';
+				}
 				if($order->canCancel()) {
 					$message=Mage::helper('KSmartpay')->__("Cancelled ::: " .  $ResponseMessage);
-					$order->cancel();
-					$order->setState($state, true, $message);
+					$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true, $message);
 					$order->save();
+					$order->cancel()->save();
+					Mage::getSingleton('checkout/session')->addError(" Payment has been cancelled and the transaction has been declined.");
+					$this->_redirect('checkout/cart');
 				}
 				else {
 					$ResponseMessage .= " (Order can not cancel)";
@@ -543,7 +549,7 @@ class Mgf_KSmartpay_KSmartpayController extends Mage_Core_Controller_Front_Actio
         $status = true;
 
 		$response = $this->getRequest()->getPost();		 		
-		Mage::log(print_r($response,true),null,'backgroundcallback.log');
+		Mage::log(print_r($response,true),null,'backgroundcallback.log',true);
 		if (empty($response))  {
             $status = false;
         	throw new Exception('Response doesn\'t contain GET /POST elements.', 20);
