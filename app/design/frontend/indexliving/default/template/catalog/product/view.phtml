@@ -110,22 +110,31 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
 
 									<?php if (!$this->hasOptions()):?>
 											<div class="add-to-box">
-													<?php if($_product->isSaleable()): ?>
+													<?php if($_product->isSaleable()):?>
 														<?php echo $this->getChildHtml('addtocart') ?>
 														<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
 														<?php endif; ?>
-													<?php else: ?>
+													<?php else:?>
 														<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()):?>
 															<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
-														<?php else: ?>
-															<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+														<?php else:?>	
+															<?php if($_product->getEcommerce()): // Ecommerce = No ?>
+																<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
+															<?php else:?>
+																<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+															<?php endif; ?>
 														<?php endif; ?>
 													<?php endif; ?>
 													<?php echo $this->getChildHtml('addto') ?>
 													<?php echo $this->getChildHtml('sharing') ?>
 											</div>
 											<?php echo $this->getChildHtml('extra_buttons') ?>
-									<?php elseif (!$_product->isSaleable()): ?>
+									<?php elseif (!$_product->isSaleable()):?>
+											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()):?>
+												<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
+											<?php else:?>	
+													<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+											<?php endif; ?>
 											<div class="add-to-box">
 													<?php echo $this->getChildHtml('addto') ?>
 											</div>

@@ -10764,7 +10764,7 @@ div.paypal-logo span > img {
   }
 .customer-forms-title{padding: 20px 40px;background: #F7F7F7;margin-bottom: 0;font-size: 20px;border: solid 1px #ececec;border-bottom: 0;}
 .cms-page-view.cms-custom-form .std .fieldset.bank{width: 95%;}
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect{height: 180px;overflow: hidden; border: 0;}
+/*.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect{height: 180px;overflow: hidden; border: 0;}
 .cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option{background: url("/media/bank/muti-radio/b-kbank.png") no-repeat center -6px;padding: 12px 68px;border-bottom: 1px solid #ebebeb;position: relative;color: #000 !important;}
 .cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(2){background: url("/media/bank/muti-radio/b-bangkok.png") no-repeat -10px -1px;}
 .cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:nth-child(3){background: url("/media/bank/muti-radio/b-krungsri.png") no-repeat -10px -1px;}
@@ -10776,7 +10776,18 @@ div.paypal-logo span > img {
 .cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:hover,
 .cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:focus,
 .cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:active,
-.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:checked{color:#000;}
+.cms-page-view.cms-custom-form .std .fieldset.bank #bank_radio_button_13_12_multiselect option:checked{color:#000;}*/
+
+
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio .input-box{background:url(/media/bank/muti-radio/select-bank-radio.png) 0 -2px no-repeat;border:1px solid #ebebeb;border-radius:4px;padding:0 10px 0;margin-top:12px;font-size: 20px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio input[type=radio]{width:5%!important;max-width:10%!important;float:left!important;margin-top:21px;margin-left:5px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label.inline{width:90%;text-align:left;height:50px;padding-top:18px;padding-left:40px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label[for="bank_select_option_13_16_radio17"] {  margin-top: -5px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label[for="bank_select_option_13_16_radio18"] {margin-top: -2px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio input#bank_select_option_13_16_radio17 { margin-top: 16px;}
+.cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio input#bank_select_option_13_16_radio18 { margin-top: 17px;}
+
+.cms-page-view.cms-custom-form .std .fieldset.hide{display: none;}
 .customer-forms ul { list-style: none !important;}
 .customer-forms .buttons-set{padding-top: 30px;}
 .customer-forms .buttons-set button.button{float: left;}
