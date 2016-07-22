@@ -150,10 +150,10 @@ $dealers->clear(); ?>
 												<?php if ($dealer->getWebsite()): ?>
 													<!--<h4><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></h4>-->
 												<?php endif; ?>
-												<?php if($dealer->getDealerMap()):?>
-													<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
-													<img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
-												<?php endif?>
+                      <?php if($dealer->getDealerMap()):?>
+                          <?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
+                          <a href="<?php echo $dealerMapUrl;?>" target="_blank" style="display: inherit;"><img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/></a>
+                        <?php endif?>
 
                         <input type="hidden" name="dealer-icon" id="dealer_icon_<?php echo $dealer->getId() ?>"
                                value="<?php echo $dealer->getDealerIconImage() ?>"/>
