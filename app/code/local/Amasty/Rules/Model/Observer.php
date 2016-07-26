@@ -142,7 +142,7 @@ class Amasty_Rules_Model_Observer
         );
 				
 				// Amasty Segment
-				Mage::helper('core')->isModuleEnabled('Amasty_Segments') {
+				if (Mage::helper('core')->isModuleEnabled('Amasty_Segments')) {
 					$cond[] = array(
 							'label' => Mage::helper('amsegments')->__('Customers Segmentation'),
 							'value' => array(
