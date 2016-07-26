@@ -140,6 +140,19 @@ class Amasty_Rules_Model_Observer
             'value' => 'amrules/rule_condition_total',
             'label' => Mage::helper('amrules')->__('Orders Subselection')
         );
+				
+				// Amasty Segment
+				Mage::helper('core')->isModuleEnabled('Amasty_Segments') {
+					$cond[] = array(
+							'label' => Mage::helper('amsegments')->__('Customers Segmentation'),
+							'value' => array(
+									array(
+											'value' => 'amsegments/salesrule_segments',
+											'label' => Mage::helper('amsegments')->__('Segments'),
+									)
+							)
+					);
+				}				
 
         $transport->setConditions($cond);
 

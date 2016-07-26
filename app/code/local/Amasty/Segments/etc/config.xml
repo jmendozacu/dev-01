@@ -178,19 +178,6 @@
                 <class>Amasty_Segments_Helper</class>
             </amsegments>
         </helpers>
-        <events>
-            
-<salesrule_rule_condition_combine>
-                 <observers>
-                     <amasty_rules_model_observer>
-                         <type>singleton</type>
-                         <class>amsegments/observer</class>
-                         <method>handleNewConditions</method>
-                     </amasty_rules_model_observer>
-                 </observers>
-           </salesrule_rule_condition_combine>
-
-        </events>
         <index>
             <indexer>
                 <amsegemnts_indexer>
