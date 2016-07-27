@@ -24,7 +24,7 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Dealerlocator_Grid extends Mage_Adm
 
     $this->addColumn('title', array('header' => Mage::helper('dealerlocator')->__('Title'), 'align' => 'left', 'index' => 'title',));
 
-    $this->addColumn('email', array('header' => Mage::helper('dealerlocator')->__('Email'), 'align' => 'left', 'index' => 'email',));
+    $this->addColumn('email', array('header' => Mage::helper('dealerlocator')->__('Open Time'), 'align' => 'left', 'index' => 'email',));
 
     $this->addColumn('website', array('header' => Mage::helper('dealerlocator')->__('Website'), 'align' => 'left', 'index' => 'website',));
 

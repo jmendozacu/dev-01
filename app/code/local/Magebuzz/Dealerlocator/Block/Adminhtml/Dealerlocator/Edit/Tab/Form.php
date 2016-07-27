@@ -25,13 +25,13 @@ class Magebuzz_Dealerlocator_Block_Adminhtml_Dealerlocator_Edit_Tab_Form extends
 
     $fieldset->addField('title', 'text', array('label' => Mage::helper('dealerlocator')->__('Title'), 'class' => 'required-entry', 'required' => TRUE, 'name' => 'title',));
 
-    $fieldset->addField('email', 'text', array('label' => Mage::helper('dealerlocator')->__('Email'), 'name' => 'email',));
+    $fieldset->addField('email', 'text', array('label' => Mage::helper('dealerlocator')->__('Open Time'), 'name' => 'email',));
 
     $fieldset->addField('website', 'text', array('label' => Mage::helper('dealerlocator')->__('Website'), 'name' => 'website',));
 
     $fieldset->addField('phone', 'text', array('label' => Mage::helper('dealerlocator')->__('Phone'), 'required' => FALSE, 'name' => 'phone',));
 		
-    $fieldset->addField('open_time', 'text', array('label' => Mage::helper('dealerlocator')->__('Open Time'), 'required' => FALSE, 'name' => 'open_time',));
+   /*  $fieldset->addField('open_time', 'text', array('label' => Mage::helper('dealerlocator')->__('Open Time'), 'required' => FALSE, 'name' => 'open_time',)); */
 
     $fieldset->addField('postal_code', 'text', array('label' => Mage::helper('dealerlocator')->__('Postal Code'), 'class' => 'required-entry', 'required' => TRUE, 'name' => 'postal_code',));
 

@@ -44,6 +44,9 @@
 												<?php if ($dealer->getPhone()): ?>
 													<h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
 												<?php endif; ?>
+												<?php if ($dealer->getEmail()): ?>
+													<h4><?php echo $this->__('Open Time: %s', $dealer->getEmail()) ?></h4>
+												<?php endif; ?>
 												<?php if ($dealer->getWebsite()): ?>
 													<!--<h4><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></h4>-->
 												<?php endif; ?>
@@ -123,6 +126,9 @@
 								<?php endif; ?>
 								<?php if ($productdealer->getPhone()): ?>
 									<h4><?php echo $this->__('Phone: %s', $productdealer->getPhone()) ?></h4>
+								<?php endif; ?>
+								<?php if ($dealer->getEmail()): ?>
+									<h4><?php echo $this->__('Open Time: %s', $dealer->getEmail()) ?></h4>
 								<?php endif; ?>
 								<?php if ($productdealer->getWebsite()): ?>
 									<!--<h4><?php echo $this->__('Website') ?>: <?php echo $productdealer->getWebsite() ?></h4>-->
