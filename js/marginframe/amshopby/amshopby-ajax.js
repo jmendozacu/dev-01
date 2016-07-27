@@ -571,6 +571,9 @@ function rerun_some_init_scripts() {
 		if (ajaxCart) {
 			ajaxCart.replaceButtonAddToCart('button.btn-cart');
 		}
+		jQuery('html, body').animate({
+        scrollTop: jQuery("#catalog-category-products").offset().top
+    }, 1000);
 }
 
 function amshopby_external_megatron() {
