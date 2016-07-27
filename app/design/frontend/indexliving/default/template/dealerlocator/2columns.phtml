@@ -147,6 +147,9 @@ $dealers->clear(); ?>
 												<?php if ($dealer->getPhone()): ?>
 													<h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
 												<?php endif; ?>
+												<?php if ($dealer->getOpenTime()): ?>
+													<h4><?php echo $this->__('Open Time: %s', $dealer->getOpenTime()) ?></h4>
+												<?php endif; ?>
 												<?php if ($dealer->getWebsite()): ?>
 													<!--<h4><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></h4>-->
 												<?php endif; ?>
