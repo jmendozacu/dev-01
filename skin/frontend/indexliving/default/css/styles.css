@@ -5241,7 +5241,7 @@ body.catalogsearch-result-index .page-title h1 {
 .product-view .product-shop .short-description {
   margin-bottom: 10px;
   clear: both;
-	font-weight: 300;
+	/*font-weight: 300;*/
 	font-size:14px;
 	color:#5d5d5d;
 }
