@@ -94,9 +94,9 @@
   @media (max-width: 1155px){
     .cms-page-view .c_left br{display:none;}
   }
-  @media (max-width: 1155px){
-    .cms-page-view .c_left br{display:none;}
-  }
+@media (max-width: 1150px) {
+	.sashas-notificationbar { width: 80% !important;  margin-left: -40% !important;}
+}
  @media (max-width: 991px) {
 	.product-viewed-large-desktop{display:none}
 	.product-viewed-mobile-tablet{display:block;}
@@ -828,10 +828,9 @@
 	.services-page .service-content .online-store .text-desc .details-info{padding:20px;}
  }
  @media (max-width: 600px){
-	.compare-popup{
-		max-width: 520px;
-    margin-left: -260px;
-	}
+	.compare-popup{ max-width: 520px; margin-left: -260px; }
+	.sashas-notificationbar {  width: 90% !important;  margin-left: -45% !important;}
+	.pop_up .btn_set{margin-top: -40px;}
  }
    @media (max-width: 511px){
 	.delivery-index-index .caculator .result-cost { text-align: left;background-position: center 20px;}
@@ -914,6 +913,20 @@
 	.cart-table .cart-footer-actions .button.btn-empty span{background-position: -10px -275px;}
 	.cart-table .cart-footer-actions .button.btn-continue span{ background-position: -7px -326px;}
 }
+@media (max-width: 414px){
+.pop_up iframe {
+    width: 99% !important;
+    height: 215px !important;
+    margin: 30px auto 10px !important;
+}
+.pop_up .btn_set {
+    margin-top: 0;
+}
+.sashas-notificationbar {
+    height: 399px !important;
+    margin-top: -200px !important;
+}
+}
 @media (max-width: 345px){
 	.cart-table .cart-footer-actions .button{font-size: 15px;}
 	.cart-table .cart-footer-actions .button.btn-empty span{  background-position: -10px -278px;}
@@ -926,4 +939,7 @@
 	}
   .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td,
   .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free{min-height: 58px;}
+
+	.pop_up .btn_set a{margin:0 10px;width:105px;padding:5px 0 7px;text-align:center;}
+	.pop_up .btn_set { margin-top: -30px;}
 }
