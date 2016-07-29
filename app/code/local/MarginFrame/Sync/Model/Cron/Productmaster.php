@@ -37,11 +37,11 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				'NAME_EN' 				=> 'name',
 				'DESC_TH' 				=> 'short_description',
 				'DESC_EN' 				=> 'short_description',
-				'MAIN_MATERIAL_TH' 		=> 'material',
+				// 'MAIN_MATERIAL_TH' 		=> 'material',
 				'MAIN_MATERIAL_EN' 		=> 'material',
 				'MATERIAL_TH' 			=> 'material_description',
 				'MATERIAL_EN' 			=> 'material_description',
-				'COLOR_TH' 				=> 'color',
+				// 'COLOR_TH' 				=> 'color',
 				'COLOR_EN' 				=> 'color',
 				'SIZE' 					=> 'size',
 				'KEYFEATURE_TH' 		=> 'key_feature',
@@ -265,6 +265,7 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 										$tmpval = preg_replace("/[\\\\]{2,}/", '\\', $cols[$value]);
 										$tmpval = preg_replace("/[']{2,}/", '"', $cols[$value]);
 										$tmpval = str_replace(array('\\"', '"', '\\'), array('""' ,'""', '\\\\'), $tmpval);
+										$tmpval = trim($tmpval);
 										$rowCsv_EN[array_search($index_magento[$value], $indexEN)] = $tmpval;
 									}
 								}
