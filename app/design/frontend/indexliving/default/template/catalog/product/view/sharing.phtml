@@ -38,7 +38,7 @@
 					<?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
 					<?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
 					<?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
-					<?php $description = Mage::helper('catalog/output')->productAttribute($_product, $_product->getDescription(), 'description');?>
+					<?php $description = Mage::helper('catalog/output')->productAttribute($_product, $_product->getShortDescription(), 'short_description');?>
 					<?php $caption = '';?>	
 					<?php if($_product->getFinalPrice() != $_product->getPrice()):?>
 					<?php $caption = $this->__('Special Price: %s (From %s)', Mage::helper('core')->currency($_product->getFinalPrice(), true, false), Mage::helper('core')->currency($_product->getPrice(), true, false));?>
@@ -63,7 +63,7 @@
 					<?php
 					$_pinterest_sharing_url = "http://pinterest.com/pin/create/button/?url=" . $_productUrl
 																	 . "&media=" . $_productImageUrl
-																	 . "&description=" . $_productName;
+																	 . "&description=" . $description;
 					?>
 					<li>
 						<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-pinterest icon-pinterest"
