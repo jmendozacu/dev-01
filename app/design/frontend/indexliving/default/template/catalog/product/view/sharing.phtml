@@ -38,6 +38,13 @@
 					<?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
 					<?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
 					<?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
+					<?php $description = Mage::helper('catalog/output')->productAttribute($_product, $_product->getDescription(), 'description');?>
+					<?php $caption = '';?>	
+					<?php if($_product->getFinalPrice() != $_product->getPrice()):?>
+					<?php $caption = $this->__('Special Price: %s (From %s)', Mage::helper('core')->currency($_product->getFinalPrice(), true, false), Mage::helper('core')->currency($_product->getPrice(), true, false));?>
+					<?php else:;?>
+						<?php $caption = $this->__('Price: %s', Mage::helper('core')->currency($_product->getFinalPrice(), true, false));?>
+					<?php endif;?>
 					<li>
 							<?php $_facebook_app_id = Mage::getStoreConfig('amajaxlogin/facebook/app_id'); ?>
 							<?php $_close_popup_url = Mage::getUrl('amajaxlogin/facebook/close_popup'); ?>
@@ -45,8 +52,9 @@
 							$_facebook_sharing_url = "https://www.facebook.com/dialog/share?app_id=" . $_facebook_app_id . "&display=popup"
 																			 . "&href=" . $_productUrl
 																			 . "&redirect_uri=" . $_close_popup_url;
+							$_facebook_feed_url = "https://www.facebook.com/dialog/feed?app_id=" . $_facebook_app_id . "&display=popup&caption=" . $caption . "&description=" . $description . "&link=" . Mage::getModel('core/url')->sessionUrlVar($_product->getProductUrl())."&redirect_uri=" . $_close_popup_url;
 							?>
-							<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-facebook icon-facebook" href="<?php echo $_facebook_sharing_url; ?>"><?php echo $this->__('Share on Facebook') ?></a>
+							<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-facebook icon-facebook" href="<?php echo $_facebook_feed_url; ?>"><?php echo $this->__('Share on Facebook') ?></a>
 					</li>
 					<li>
 							<a class="ss-button-facebook icon-twitter" href="<?php echo 'http://twitter.com/home?status=' . $_productName . '+' . $_productUrl; ?>" target="_blank" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Share on Twitter')) ?>" class="link-twitter"><?php echo $this->__('Share on Twitter') ?></a>
