@@ -52,7 +52,7 @@
 							$_facebook_sharing_url = "https://www.facebook.com/dialog/share?app_id=" . $_facebook_app_id . "&display=popup"
 																			 . "&href=" . $_productUrl
 																			 . "&redirect_uri=" . $_close_popup_url;
-							$_facebook_feed_url = "https://www.facebook.com/dialog/feed?app_id=" . $_facebook_app_id . "&display=popup&caption=" . $caption . "&description=" . $description . "&link=" . Mage::getModel('core/url')->sessionUrlVar($_product->getProductUrl())."&redirect_uri=" . $_close_popup_url;
+							$_facebook_feed_url = "https://www.facebook.com/dialog/feed?app_id=" . $_facebook_app_id . "&display=popup&caption=" . $caption . "&description=" . $description . "&picture=" . $_productImageUrl . "&link=" . Mage::getModel('core/url')->sessionUrlVar($_product->getProductUrl())."&redirect_uri=" . $_close_popup_url;
 							?>
 							<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-facebook icon-facebook" href="<?php echo $_facebook_feed_url; ?>"><?php echo $this->__('Share on Facebook') ?></a>
 					</li>
