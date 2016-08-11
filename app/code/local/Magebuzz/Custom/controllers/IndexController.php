@@ -17,4 +17,14 @@ class Magebuzz_Custom_IndexController extends Mage_Core_Controller_Front_Action
         $this->getResponse()->clearHeaders()->setHeader('Content-type', 'application/json', true);
         $this->getResponse()->setBody(json_encode($result));
     }
+    public function close_popupAction() {
+        $response = "
+		<html>
+			<script type='text/javascript'>
+				close();
+			</script>
+		</html>
+		";
+        $this->getResponse()->setBody($response);
+    }
 }

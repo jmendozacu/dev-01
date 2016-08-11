@@ -47,7 +47,8 @@
 					<?php endif;?>
 					<li>
 							<?php $_facebook_app_id = Mage::getStoreConfig('amajaxlogin/facebook/app_id'); ?>
-							<?php $_close_popup_url = Mage::getUrl('amajaxlogin/facebook/close_popup'); ?>
+							<?php $_close_popup_url = Mage::getUrl('custom/index/close_popup'); ?>
+                            <?php $_close_popup_url = Mage::getModel('core/url')->sessionUrlVar($_close_popup_url);?>
 							<?php
 							$_facebook_sharing_url = "https://www.facebook.com/dialog/share?app_id=" . $_facebook_app_id . "&display=popup"
 																			 . "&href=" . $_productUrl
