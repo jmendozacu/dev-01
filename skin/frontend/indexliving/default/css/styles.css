@@ -3579,6 +3579,7 @@ body {
 .box-home-list-products .box-list-products {float:left; width: 74.416%;  margin-right: 2%;}
 .box-home-list-products .box-list-products ul {margin-bottom:0px!important;}
 .box-home-list-products .box-list-products ul.level1 {display:none;}
+.box-home-list-products .box-list-products ul li dl.color{margin-top:-40px;}
 .box-home-list-products .best-seller,
 .box-home-list-products .new-arrival {float:left; width:100%;}
 .box-home-list-products .best-seller {margin-bottom:42px;}
