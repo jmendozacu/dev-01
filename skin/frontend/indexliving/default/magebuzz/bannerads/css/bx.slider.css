@@ -185,11 +185,12 @@
 }
 /*-----------------------*/
 
-.main-banners .wrap-bannerads div.banner .bx-viewport {width:1020px!important; display:inline-block; margin:auto; overflow:initial!important;}
+.main-banners .wrap-bannerads div.banner .bx-viewport {/*width:1020px!important;*/ width:1200px!important; height: auto; display:inline-block; margin:auto; /*overflow:initial!important;*/}
+.main-banners .wrap-bannerads div.banner .bx-viewport img{width: 100%;height: auto;}
 .main-banners .wrap-bannerads .bx-wrapper {overflow:hidden;}
 .wrap-bannerads div.banner .bx-viewport  li {margin:0px!important;}
 .main-banners .wrap-bannerads div.banner .bx-viewport:before,
-.main-banners .wrap-bannerads div.banner .bx-viewport:after {content:""; z-index:1; width:1020px; position:absolute; top:0px; height:100%; background:url(images/sider-backgroundbanner.png);}
+.main-banners .wrap-bannerads div.banner .bx-viewport:after {content:""; z-index:1; width:1020px; position:absolute; top:0px; height:100%; /*background:url(images/sider-backgroundbanner.png);*/}
 .main-banners .wrap-bannerads div.banner .bx-viewport:before {left:50%; margin-left:510px;}
 .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:50%; margin-right:510px;}
 .main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {background:url(images/slider-prev.png) center center no-repeat; top:50%; left:5px; position: absolute;}
