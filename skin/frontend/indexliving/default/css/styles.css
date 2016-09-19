@@ -1202,7 +1202,7 @@ body:not(.customer-account) .block:first-child .block-title {
 a.button {
   text-decoration: none;
 }
-
+button#ajaxcart_continue_shopping { background: #f0f1d9; color: #7c7c7c;}
 
 /* Disabled - class for anchor, state for form elements */
 .button.disabled,
@@ -7224,7 +7224,7 @@ body.catalogsearch-result-index .page-title h1 {
 	background:0 none;
 }
 
-.cart-table .cart-footer-actions .button.btn-continue{background:#f4701e;}
+.cart-table .cart-footer-actions .button.btn-continue{background:#f4701e;display: none;}
 .cart-table .cart-footer-actions .button.btn-continue span{
 	background-image: url(../images/icons2.png);
 	background-repeat: no-repeat;
