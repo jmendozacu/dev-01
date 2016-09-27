@@ -298,6 +298,8 @@ if ($this->getCategoryFilter()) {
                                                id="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>">
                                     </dl>
                                 <?php endforeach; ?>
+                            <?php else: ?>
+                                <dl class="empty-option"><div class="input-box"></div></dl>
                             <?php endif ?>
 
 

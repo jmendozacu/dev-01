@@ -204,7 +204,6 @@ if ($this->getCategoryFilter()) {
                         <?php endif; ?>
                     </ul>
                 </div>
-
                 <?php if ($_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) : ?>
                     <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
                     <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
@@ -297,7 +296,10 @@ if ($this->getCategoryFilter()) {
                                    id="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>">
                         </dl>
                     <?php endforeach; ?>
+                <?php else: ?>
+                        <dl class="empty-option"><div class="input-box"></div></dl>
                 <?php endif ?>
+
 
                 <h2 class="product-name">
                 <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
