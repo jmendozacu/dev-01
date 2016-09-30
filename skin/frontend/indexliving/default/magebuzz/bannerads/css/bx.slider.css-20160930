@@ -59,7 +59,7 @@
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
-  background: #EEE;
+  background: #fff;
   text-indent: -9999px;
   display: block;
   width: 15px;
@@ -184,21 +184,17 @@
   color: #FFFFFF;
 }
 /*-----------------------*/
-/*.wrap-bannerads div.banner{width: 1290px;}*/
-.wrap-bannerads div.banner { width: 1290px; height: 417px;position:relative;margin-top: 25px;margin-bottom: 70px;}
-.main-banners .wrap-bannerads div.banner .bx-viewport {/*width:1020px!important;*/ width:1200px!important; height: auto; display:inline-block; margin:auto; /*overflow:initial!important;*/}
-.main-banners .wrap-bannerads div.banner .bx-viewport img{width: 100%;max-height: 417px;}
-.main-banners .wrap-bannerads .bx-wrapper {overflow:hidden;height: 455px;}
+
+.main-banners .wrap-bannerads div.banner .bx-viewport {width:1020px!important; display:inline-block; margin:auto; overflow:initial!important;}
+.main-banners .wrap-bannerads .bx-wrapper {overflow:hidden;}
 .wrap-bannerads div.banner .bx-viewport  li {margin:0px!important;}
 .main-banners .wrap-bannerads div.banner .bx-viewport:before,
-.main-banners .wrap-bannerads div.banner .bx-viewport:after {content:""; z-index:1; width:1020px; position:absolute; top:0px; height:100%; /*background:url(images/sider-backgroundbanner.png);*/}
+.main-banners .wrap-bannerads div.banner .bx-viewport:after {content:""; z-index:1; width:1020px; position:absolute; top:0px; height:100%; background:url(images/sider-backgroundbanner.png);}
 .main-banners .wrap-bannerads div.banner .bx-viewport:before {left:50%; margin-left:510px;}
 .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:50%; margin-right:510px;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {background:#EBEBEB url(images/slider-prev.png) center center no-repeat; background-size: 35%; top:50%; left:0; position: absolute;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-next {background:#EBEBEB url(images/slider-next.png) center center no-repeat; background-size: 35%; top:50%; right:0; position: absolute;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev:hover {background:#666 url(images/slider-prev.png) center center no-repeat;background-size: 35%;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-next:hover {background:#666 url(images/slider-next.png) center center no-repeat;background-size: 35%; }
-.main-banners .bx-wrapper .bx-pager.bx-default-pager {bottom:0;}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {background:url(images/slider-prev.png) center center no-repeat; top:50%; left:5px; position: absolute;}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-next {background:url(images/slider-next.png) center center no-repeat; top:50%; right:5px; position: absolute;}
+.main-banners .bx-wrapper .bx-pager.bx-default-pager {bottom:24px;}
 
 .banner-feature li a {position:relative; display:block;}
 .banner-feature li a  .banner-title {position:absolute; top:0px; left:0px;}
@@ -214,13 +210,7 @@
 .allcategory-banners .banners-list .rb .wrap-bannerads{}
 .allcategory-banners .banners-list .rb .wrap-bannerads .banner{float:left;}
 .allcategory-banners .banners-list .rb .wrap-bannerads .banner .bx-viewport{padding-right:150px;}
- @media (max-width: 1315px) {
-  .wrap-bannerads div.banner{width: 100%;height: auto;}
-}
- @media (max-width: 1200px) {
-  .wrap-bannerads div.banner{margin-bottom: 20px;}
-  .main-banners .wrap-bannerads div.banner .bx-viewport, .main-banners .wrap-bannerads div.banner .bx-viewport img{height: auto !important;}
- }
+
  @media (max-width: 1060px) {
   .main-banners .wrap-bannerads .bx-wrapper {padding-left:50px; padding-right:50px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport {width:100%!important;}
@@ -232,13 +222,6 @@
   .main-banners .wrap-bannerads div.banner .bx-viewport:after {width:50px;}
   .decor-banner .box-slider .bx-wrapper .bx-pager.bx-default-pager {padding-top:0px; margin-top:8px; }
 }
- @media (max-width: 970px) {
-  .main-banners .wrap-bannerads .bx-wrapper .main-banners .wrap-bannerads div.banner .bx-viewport, .main-banners .wrap-bannerads div.banner .bx-viewport img{max-height: 357px !important;}
-  .main-banners .wrap-bannerads .bx-wrapper{height: auto !important;}
-  .wrap-bannerads .bx-viewport .banner-desc{border: solid 1px #EEE;}
-  .main-banners .bx-wrapper .bx-pager.bx-default-pager {  bottom: 15px;}
-  .wrap-bannerads .bx-viewport .banner-desc::before{display: none;}
- }
  @media (max-width: 767px) {
   .allcategory-banners  .banner.banner-category {overflow-x:auto; width:100%;}
   .allcategory-banners .banners-list .banner-carousel {max-width:none; }
