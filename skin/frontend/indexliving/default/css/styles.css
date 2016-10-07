@@ -11960,3 +11960,7 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .pop_up .top_banner {  margin-top: 30px;}
 .pop_up .btn_set a{margin:0 10px;width: 140px;text-align: center;}
 .pop_up .btn_set a.button:hover{background: #f4701e;}
+
+.amscheckout-data-table .summary-details-amrules.summary-details{ background-color: #efefef; border-top: 1px solid #ddd;}
+.amscheckout-data-table .summary-details-amrules.summary-details .price{ padding-right: 10px;  }
+.amscheckout-data-table .summary-details-amrules.summary-details .a-right{ padding-left: 10px; }
