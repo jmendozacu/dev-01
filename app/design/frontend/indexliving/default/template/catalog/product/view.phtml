@@ -61,7 +61,7 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
                     <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
 				</div>
                 <div class="product-sku">
-                    <span><?php echo $this->__('SKU: ');?></span><?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?>
+                    <span><?php  echo $this->__('SKU: ');?></span><span id="product-sku"><?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?></span>
                 </div>
                     <?php if ($_product->getPromotionText()):?>
                         <div class="promotion-text">

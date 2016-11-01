@@ -75,7 +75,7 @@ class Amasty_Conf_Block_Catalog_Product_View_Type_Configurable extends Mage_Cata
                         }                        
 
                         $confData[$strKey]['not_is_in_stock' ]  = !$simple->isSaleable();
-                             //$confData[$strKey]['sku' ] = $simple->getSku();
+                        $confData[$strKey]['sku' ] = $simple->getSku();
                         
                         
                  

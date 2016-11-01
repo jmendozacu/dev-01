@@ -944,6 +944,7 @@ Product.Config.prototype.updateData = function(key)
         this.updateSimpleData('short_description', '.short-description div', key);
         this.updateSimpleData('description', '.box-description div, #product_tabs_description_tabbed_contents div, #acctab-description + div.panel div.std', key);
         this.updateSimpleData('attributes', '#product-attribute-specs-table', key);
+        this.updateSimpleData('sku', '#product-sku', key);
 
         this.reloadImageBlock(confData.getData(key, 'media_url'));
         decorateTable('product-attribute-specs-table');
