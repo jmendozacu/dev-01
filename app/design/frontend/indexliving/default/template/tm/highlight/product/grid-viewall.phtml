@@ -6,7 +6,6 @@ $_productCollection = $this->getLoadedProductCollection();
 $_helper = $this->helper('catalog/output');
 $_collectionSize = $_productCollection->count();
 $_columnCount = $this->getColumnCount();
-print_
 ?>
 <?php if (!$_collectionSize) : return; endif; ?>
 <?php
@@ -79,7 +78,7 @@ if ($this->getCategoryFilter()) {
                        class="parent-product-image-confi-viewall-<?php echo $_product->getId() ?> "
                        style="display: none"
                         >
-                        <?php 
+                        <?php
                         $flipimg = $_product->getFlipImage();
                         if ($flipimg != 'no_selection' && $flipimg && strpos($flipimg, 'indexliving_image_placeholder') === false): ?>
                             <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -130,7 +129,7 @@ if ($this->getCategoryFilter()) {
                        title="<?php echo $this->stripTags($this->getImageLabel($child_product_collection, 'small_image'), null, true) ?>"
                        class="product-image-viewall-<?php echo $child_product_id?>" style="display: none"
                         >
-                        <?php 
+                        <?php
                         $flipimg = $child_product_collection->getFlipImage();
                         if ($flipimg != 'no_selection' && $flipimg && strpos($flipimg, 'indexliving_image_placeholder') === false): ?>
                             <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -164,7 +163,7 @@ if ($this->getCategoryFilter()) {
                     <a href="<?php echo $this->getProductUrl($_product) ?>"
                        title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                        class="product-image">
-                        <?php 
+                        <?php
                         $flipimg = $_product->getFlipImage();
                         if ($flipimg != 'no_selection' && $flipimg && strpos($flipimg, 'indexliving_image_placeholder') === false): ?>
                             <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
@@ -204,7 +203,6 @@ if ($this->getCategoryFilter()) {
                         <?php endif; ?>
                     </ul>
                 </div>
-
                 <?php if ($_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) : ?>
                     <?php $_attributes = Mage::helper('core')->decorateArray($_product->getTypeInstance(true)->getConfigurableAttributes($_product)) ?>
                     <?php $productAttribute = $this->getAttributeOfConfigProduct($_product); ?>
@@ -297,7 +295,10 @@ if ($this->getCategoryFilter()) {
                                    id="product-position-<?php echo $_product->getId() ?>-<?php echo $_attribute->getPosition() ?>">
                         </dl>
                     <?php endforeach; ?>
+                <?php else: ?>
+                        <dl class="empty-option"><div class="input-box"></div></dl>
                 <?php endif ?>
+
 
                 <h2 class="product-name">
                 <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
@@ -339,7 +340,7 @@ if ($this->getCategoryFilter()) {
 									<?php else: // Out stock or Ecommerce = No?>
 										<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()):?>
 											<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
-										<?php else:?>	
+										<?php else:?>
 											<?php if($_product->getEcommerce()): // Ecommerce = No ?>
 												<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
 											<?php else:?>

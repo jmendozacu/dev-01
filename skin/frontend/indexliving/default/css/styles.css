@@ -1202,7 +1202,7 @@ body:not(.customer-account) .block:first-child .block-title {
 a.button {
   text-decoration: none;
 }
-
+button#ajaxcart_continue_shopping { background: #f0f1d9; color: #7c7c7c;}
 
 /* Disabled - class for anchor, state for form elements */
 .button.disabled,
@@ -3579,7 +3579,7 @@ body {
 .box-home-list-products .box-list-products {float:left; width: 74.416%;  margin-right: 2%;}
 .box-home-list-products .box-list-products ul {margin-bottom:0px!important;}
 .box-home-list-products .box-list-products ul.level1 {display:none;}
-.box-home-list-products .box-list-products ul li dl.color{margin-top:-40px;}
+.box-home-list-products .box-list-products ul li dl{padding-bottom: 5px}
 .box-home-list-products .best-seller,
 .box-home-list-products .new-arrival {float:left; width:100%;}
 .box-home-list-products .best-seller {margin-bottom:42px;}
@@ -4520,6 +4520,9 @@ body.catalogsearch-result-index .page-title h1 {
   display: table;
   clear: both;
 }
+.products-grid > li dl, .products-grid div.item dl {
+  padding-bottom: 5px;
+}
 .products-grid .prolabel-wrapper {position:relative;}
 .cms-home .products-grid .prolabel-wrapper{min-height: 200px;}
 .products-grid .product-image {
@@ -5159,7 +5162,7 @@ body.catalogsearch-result-index .page-title h1 {
 .block-highlight .flip-container, .block-highlight .flip-container .front, .block-highlight .flip-container .back {
 	width: 100%;
 	height: 100%;
-	min-height:195px;
+	min-height:200px;
 }
 .catalog-category-view .block-highlight #alsolike-product-list  .flip-container, .catalog-category-view .block-highlight #recommend-product-list  .flip-container{min-height: 200px;}
 .block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
@@ -7224,7 +7227,7 @@ body.catalogsearch-result-index .page-title h1 {
 	background:0 none;
 }
 
-.cart-table .cart-footer-actions .button.btn-continue{background:#f4701e;}
+.cart-table .cart-footer-actions .button.btn-continue{background:#f4701e;display: none;}
 .cart-table .cart-footer-actions .button.btn-continue span{
 	background-image: url(../images/icons2.png);
 	background-repeat: no-repeat;
@@ -11926,7 +11929,11 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .product-label-product { padding-left: 15%; position: absolute; }
 .product-label-category table { position: relative; margin: 0 3px 0 0; }
 .product-label-product table { position: relative; margin: 0 5px 0 0; }
-.bundle #product-options-wrapper{ display: none; }
+
+/* ============================================ *
+ * MS-45:  Show option bundle product
+* ============================================ */
+/*.bundle #product-options-wrapper{ display: none; }*/
 
 /*--- Css For Delivery Page---*/
 .caculator{  border: solid 3px #fab80a;  padding: 25px 44px 25px 25px;  }
@@ -11957,3 +11964,7 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .pop_up .top_banner {  margin-top: 30px;}
 .pop_up .btn_set a{margin:0 10px;width: 140px;text-align: center;}
 .pop_up .btn_set a.button:hover{background: #f4701e;}
+
+.amscheckout-data-table .summary-details-amrules.summary-details{ background-color: #efefef; border-top: 1px solid #ddd;}
+.amscheckout-data-table .summary-details-amrules.summary-details .price{ padding-right: 10px;  }
+.amscheckout-data-table .summary-details-amrules.summary-details .a-right{ padding-left: 10px; }
