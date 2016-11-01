@@ -88,7 +88,7 @@ class Magebuzz_Ajaxcart_IndexController extends Mage_Core_Controller_Front_Actio
       }
       $_response['sidebar_cart_html'] = Mage::helper('ajaxcart')->getSidebarCartHtml();
       $_response['success'] = 'true';
-      $_response['success_message'] = Mage::helper('ajaxcart')->getSuccessHtml($_product);
+      $_response['success_message'] = Mage::helper('ajaxcart')->getSuccessHtml($_product,$_params);
 
     } catch (Exception $e) {
       $_response['success'] = 'false';
@@ -161,7 +161,7 @@ class Magebuzz_Ajaxcart_IndexController extends Mage_Core_Controller_Front_Actio
       }
       $_response['sidebar_cart_html'] = Mage::helper('ajaxcart')->getSidebarCartHtml();
       $_response['success'] = 'true';
-      $_response['success_message'] = Mage::helper('ajaxcart')->getSuccessHtml($_product);
+      $_response['success_message'] = Mage::helper('ajaxcart')->getSuccessHtml($_product,null);
 
       Mage::helper('wishlist')->calculate();
       $this->getResponse()->setBody(json_encode($_response));

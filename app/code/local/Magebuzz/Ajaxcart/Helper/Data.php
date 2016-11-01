@@ -46,10 +46,13 @@ class Magebuzz_Ajaxcart_Helper_Data extends Mage_Core_Helper_Abstract {
     return $layout->getOutput();
   }
 
-  public function getSuccessHtml($product) {
+  public function getSuccessHtml($product,$_params) {
     $block = Mage::getSingleton('core/layout')->createBlock('core/template', 'ajax_succeed_message');
     $block->setTemplate('ajaxcart/popup_notification.phtml');
     $block->setProduct($product);
+    if($_params){
+      $block->setParams($_params);
+    }
     return $block->renderView();
   }
 }
