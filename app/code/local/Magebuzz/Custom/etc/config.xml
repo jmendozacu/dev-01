@@ -22,6 +22,7 @@
             <adminhtml>
                 <rewrite>
                     <catalog_category_tabs>Magebuzz_Custom_Block_Adminhtml_Catalog_Category_Tabs</catalog_category_tabs>
+                    <catalog_category_tab_product>Magebuzz_Custom_Block_Adminhtml_Catalog_Category_Tab_Product</catalog_category_tab_product>
                 </rewrite>
             </adminhtml>
         </blocks>
