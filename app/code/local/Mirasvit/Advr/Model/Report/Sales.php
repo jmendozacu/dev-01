@@ -119,6 +119,11 @@ class Mirasvit_Advr_Model_Report_Sales extends Mirasvit_Advr_Model_Report_Abstra
                 'sales/order_tax',
                 'tax_sales_order_tax_item_table.tax_id = sales_order_tax_table.tax_id',
             ),
+//          array(
+//            'sales/order',
+//            'sales/quote_address',
+//            'sales_order_table.quote_id = sales_quote_address_table.quote_id',
+//          ),
         );
 
         $this->addColumn(
@@ -862,6 +867,15 @@ class Mirasvit_Advr_Model_Report_Sales extends Mirasvit_Advr_Model_Report_Abstra
                     )',
                 'table' => 'sales/order',
             )
+        )->addColumn(
+          'region',
+          array(
+            'label' => 'Province',
+            'type' => 'options',
+            'options' => Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai(),
+            'expression' => 'sales_order_address_table.region_id',
+            'table' => 'sales/order_address',
+          )
         );
 
         $attributes = Mage::getSingleton('advr/system_config_source_productAttribute')->toOptionHash();

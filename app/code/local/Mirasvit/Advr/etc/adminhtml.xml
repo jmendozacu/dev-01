@@ -89,6 +89,11 @@
                             <sort_order>110</sort_order>
                             <action>adminhtml/advr_order/category</action>
                         </category>
+                        <province module="advr">
+                            <title>Sales by Province</title>
+                            <sort_order>110</sort_order>
+                            <action>adminhtml/advr_order/province</action>
+                        </province>
                         <shippingtime module="advr">
                             <title>Average Shipping Time</title>
                             <sort_order>120</sort_order>

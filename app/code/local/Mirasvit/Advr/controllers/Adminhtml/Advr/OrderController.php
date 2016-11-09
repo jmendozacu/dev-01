@@ -179,6 +179,16 @@ class Mirasvit_Advr_Adminhtml_Advr_OrderController extends Mirasvit_Advr_Control
             ->renderLayout();
     }
 
+    public function provinceAction()
+    {
+        $this->_initAction()
+            ->_title($this->__('Sales by Province'));
+
+        $this->_addContent($this->getLayout()->createBlock('advr/adminhtml_order_province'))
+            ->_processActions()
+            ->renderLayout();
+    }
+
     public function shippingtimeAction()
     {
         $this->_initAction()
