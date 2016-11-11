@@ -89,4 +89,25 @@ class Mirasvit_Advr_Helper_Data extends Mage_Core_Helper_Abstract
 
         return $options;
     }
+
+    public function getAllRegionInOrder(){
+        $connection     = Mage::getSingleton('core/resource')->getConnection('core_read');
+
+        $sql = "SELECT DISTINCT `region_id`,`region`
+							FROM `".Mage::getSingleton('core/resource')->getTableName('sales_flat_order_address')."`
+							WHERE  `region_id` is not null ";
+        $results = $connection->fetchPairs($sql);
+        return $results;
+    }
+
+    public function getAllRegion(){
+        $optionRegionTH = Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai();
+        $optionRegionInFlatOrder = $this->getAllRegionInOrder();
+        $different = array_diff_key($optionRegionInFlatOrder, $optionRegionTH);
+        if(!empty($different)){
+            $optionRegionTH = $optionRegionTH + $different;
+        }
+
+        return $optionRegionTH;
+    }
 }

@@ -872,7 +872,7 @@ class Mirasvit_Advr_Model_Report_Sales extends Mirasvit_Advr_Model_Report_Abstra
           array(
             'label' => 'Province',
             'type' => 'options',
-            'options' => Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai(),
+            'options' => Mage::helper('advr')->getAllRegion(),
             'expression' => 'sales_order_address_table.region_id',
             'table' => 'sales/order_address',
           )

@@ -60,7 +60,7 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Province extends Mirasvit_Advr_Block_A
     $collection = Mage::getModel('advr/report_sales')
       ->setBaseTable('sales/order')
       ->setFilterData($this->getFilterData())
-//      ->selectColumns('region')
+//      ->selectColumns('sales_order_address_table.region')
       ->selectColumns($this->getVisibleColumns())
       ->groupByColumn('region');
     return $collection;
@@ -68,7 +68,8 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Province extends Mirasvit_Advr_Block_A
 
   public function getColumns()
   {
-    $optionRegion = Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai();
+    $optionRegion = Mage::helper('advr')->getAllRegion();
+
     $columns = array(
       'region' => array(
         'header' => Mage::helper('advr')->__('Province'),
