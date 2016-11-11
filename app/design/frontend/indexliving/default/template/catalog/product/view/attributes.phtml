@@ -35,6 +35,7 @@
     $_product = $this->getProduct()
 ?>
 <?php if($_additional = $this->getAdditionalData()): ?>
+	<?php $materialArray = array(); ?>
 	<div class="product-essential product-features">
 		<div class="page-container">
 			<div class="box-title">
@@ -45,19 +46,39 @@
 			</div>
 			<?php $i=0; foreach ($_additional as $_data): ?>
 				<!-- debug value: <?php echo $_data['value']; ?> -->
-				<?php if ($i++%2==0): ?>
-					<ul class="products-features-grid">
-				<?php endif ?>
-					<?php if($_data['value'] != 'No' && $_data['value'] != 'N/A' && $_data['value'] != 'ไม่ใช่'):?>
-						<li class="item<?php if(($i-1)%2==0): ?> first<?php elseif($i%2==0): ?> last<?php endif; ?>">
-								<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
-								<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
-						</li>
+        <?php if($_data['code'] == 'material' || $_data['code'] == 'material_description'): ?>
+					<?php $materialArray[] = $_data; ?>
+				<?php else: ?>
+					<?php if ($i++%2==0): ?>
+						<ul class="products-features-grid">
 					<?php endif ?>
-				<?php if ($i%2==0 || $i==count($_additional)): ?>
-					</ul>
+						<?php if($_data['value'] != 'No' && $_data['value'] != 'N/A' && $_data['value'] != 'ไม่ใช่'):?>
+							<li class="item<?php if(($i-1)%2==0): ?> first<?php elseif($i%2==0): ?> last<?php endif; ?>">
+									<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
+									<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
+							</li>
+						<?php endif ?>
+					<?php if ($i%2==0 || $i==count($_additional)): ?>
+						</ul>
+					<?php endif ?>
 				<?php endif ?>
 			<?php endforeach; ?>
+
+			<?php if(!empty($materialArray)): ?>
+				<ul class="products-features-grid">
+					<li class="item">
+						<?php $j=0; foreach ($materialArray as $_data): $j++; ?>
+							<?php if($j==1): ?>
+								<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
+							<?php endif; ?>
+							<?php if($_data['value'] != 'No' && $_data['value'] != 'N/A' && $_data['value'] != 'ไม่ใช่'):?>
+								<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</li>
+				</ul>
+			<?php endif; ?>
+			
 			<?php echo $this->getChildHtml('description') ?>
 		</div>
 	</div>
