@@ -25,13 +25,13 @@ class Mirasvit_Advr_Block_Adminhtml_Block_Grid_Column extends Mage_Adminhtml_Blo
         $this->_optionRegion = Mage::helper('advr')->getAllRegion();
         parent::__construct($data);
     }
-    
+
     public function getRowFieldExport(Varien_Object $row)
     {
         if(array_key_exists($row->getData('region'),  $this->_optionRegion)){
             $row->setData('region',$this->_optionRegion[$row->getData('region')]);
         }
-
+    
         $renderedValue = $row->getData($this->getIndex());
         # if need format column value
         $exportCallback = $this->getExportCallback();
