@@ -69,7 +69,6 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Province extends Mirasvit_Advr_Block_A
   public function getColumns()
   {
     $optionRegion = Mage::helper('advr')->getAllRegion();
-
     $columns = array(
       'region' => array(
         'header' => Mage::helper('advr')->__('Province'),
