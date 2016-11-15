@@ -10,12 +10,17 @@ class Magebuzz_Customaddress_Model_Mysql4_Region_Collection extends Magebuzz_Cus
     $this->_init('customaddress/region');
   }
 
-  public function _toOptionHashWithThai($valueField='region_id', $labelField='code')
+  public function _toOptionHashWithThai($en = true)
   {
+    $valueField='region_id';
+    $labelField='code';
     $res = array();
     foreach ($this as $item) {
-      if($item->getData('country_id')=='TH'){
+      if($en && $item->getData('country_id')=='TH'){
         $res[$item->getData($valueField)] = $item->getData($labelField);
+      }
+      if(!$en && $item->getData('country_id')=='TH'){
+        $res[$item->getData($valueField)] = $item->getData('default_name');
       }
     }
     asort($res);

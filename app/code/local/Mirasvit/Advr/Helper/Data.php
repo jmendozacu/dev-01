@@ -101,7 +101,12 @@ class Mirasvit_Advr_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     public function getAllRegion(){
-        $optionRegionTH = Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai();
+        $locale = Mage::app()->getLocale()->getLocaleCode();
+        if($locale == 'th_TH'){
+            $optionRegionTH = Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai(false);
+        }else{
+            $optionRegionTH = Mage::getModel('customaddress/region')->getCollection()->_toOptionHashWithThai(true);
+        }
         $optionRegionInFlatOrder = $this->getAllRegionInOrder();
         $different = array_diff_key($optionRegionInFlatOrder, $optionRegionTH);
         if(!empty($different)){
