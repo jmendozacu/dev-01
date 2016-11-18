@@ -28,7 +28,7 @@ class Mirasvit_Advr_Block_Adminhtml_Block_Grid_Column extends Mage_Adminhtml_Blo
 
     public function getRowFieldExport(Varien_Object $row)
     {
-        if(array_key_exists($row->getData('region'),  $this->_optionRegion)){
+        if($row->getData('region') && array_key_exists($row->getData('region'),  $this->_optionRegion)){
             $row->setData('region',$this->_optionRegion[$row->getData('region')]);
         }
     
