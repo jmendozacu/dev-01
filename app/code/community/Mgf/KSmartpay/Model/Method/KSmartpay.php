@@ -492,6 +492,8 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
             $special_item = Mage::helper('KSmartpay')->checkSpecialItem($session->getQuote()->getAllItems());
             if($special_item){ // Case 1 ถ้าในตะกร้ามีเฉพาะ Item พิเศษ ให้ผ่อน 0% 3 เดือน
                 $cartcondition = true;
+            } else {
+            	$cartcondition = false;
             }
         }
 
