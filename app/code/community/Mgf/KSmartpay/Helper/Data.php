@@ -31,5 +31,21 @@
  
 class Mgf_KSmartpay_Helper_Data extends Mage_Payment_Helper_Data
 {
+	public function checkSpecialItem($allitem){
+		$allInstallment = true;
+		foreach ($allitem as $item) {
+			$productid = $item->getProductId();
+			$ItemRowPrice = $item->getRowTotal();
 
+			if($ItemRowPrice > 0){
+				$product = Mage::getModel('catalog/product')->load($productid);
+				$installments_item = $product->getData('installments_item');
+				if(!$installments_item){
+					$allInstallment = false;
+				}
+			}
+		}
+
+		return $allInstallment;
+	}
 }
