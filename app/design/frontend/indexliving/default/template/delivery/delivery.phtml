@@ -45,6 +45,16 @@
         </div>
       </li>
       <div class="line-hr"></div>
+      <li class="fields shipping-weight" style="display: none" id="shipping-weight">
+        <h4>Weight (KG.)</h4>
+        <div class="field name-weight">
+          <div class="input-box" style="float: left;">
+            <input type="number" step="0.01" class="input-text validate-digits-range digits-range-0-9999999999" maxlength="10" title="Weight" value="" name="weight" id="weight">
+          </div>
+          <span style="margin: 10px 0 0 15px;float: left;">Kg</span>
+        </div>
+      </li>
+      <div style="display: none" class="line-hr" id="line-hr-weight"></div>
       <li class="fields shipping-area">
         <h4>Shipping Area</h4>
           <div class="field" style="float: left;width: auto;">
@@ -148,4 +158,16 @@
     doAjax();
   });
 
+  $('shipping_type').on('change', function(event) {
+    if($('shipping_type').value == '14309'){
+      $('weight').addClassName('required-entry');
+      $('line-hr-weight').show();
+      $('shipping-weight').show();
+    }else{
+      $('weight').removeClassName('required-entry');
+      $('weight').value = "";
+      $('line-hr-weight').hide();
+      $('shipping-weight').hide();
+    }
+  });
 </script>

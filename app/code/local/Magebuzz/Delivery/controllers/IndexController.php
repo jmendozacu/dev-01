@@ -50,6 +50,11 @@ class Magebuzz_Delivery_IndexController extends Mage_Core_Controller_Front_Actio
     $query .= ' (state = "' . $post['region_id'] . '" OR ' . 'state = "0")' . ' AND';
     $query .= ' (city = "' . $post['city_id'] . '" OR ' . 'city = "" OR city is null)';
 
+    if($post['weight'] && $post['weight']!= null){
+      $query .= ' AND weight_from <= "' . $post['weight'] . '" AND';
+      $query .= ' weight_to >= "' . $post['weight'] . '"' ;
+    }
+
     $results = $readConnection->fetchAssoc($query);
     /* get the results */
     $cost = array();
