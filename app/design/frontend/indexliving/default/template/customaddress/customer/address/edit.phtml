@@ -92,7 +92,7 @@
                         //]]>
                         </script>
                         <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
-                        <p id="outside_service_zone" style="display: none; color: red;">Outside the service zone</p>
+                        <p id="outside_service_zone" style="display: none; color: red;"><?php echo $this->__('Outside the service zone')?></p>
                     </div>
                 </div>
                 <div class="field">
