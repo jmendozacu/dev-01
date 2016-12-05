@@ -18,6 +18,49 @@ CityUpdater.prototype = {
 	},
 	
 	update: function() {
+		if(this.regionEl.value == 515 || this.regionEl.value == 509 || this.regionEl.value == 530){
+			$('outside_service_zone').style.display = 'block';
+			if($('city_id') != null){
+				$('city_id').disabled = true;
+				$('subdistrict_id').disabled = true;
+				$('zip').disabled = true;
+				$('country').disabled = true;
+				$('save_add').disabled = true;
+			}
+			if($('shipping:city_id') != null){
+				$('shipping:city_id').disabled = true;
+				$('shipping:subdistrict_id').disabled = true;
+				$('shipping:postcode').disabled = true;
+				//$('amscheckout-submit').disabled = true;
+			}
+			if($('billing:city_id') != null){
+				$('billing:city_id').disabled = true;
+				$('billing:subdistrict_id').disabled = true;
+				$('billing:postcode').disabled = true;
+				//$('amscheckout-submit').disabled = true;
+			}
+		}
+		else{
+			$('outside_service_zone').style.display = 'none';
+			if($('city_id') != null) {
+				$('city_id').disabled = false;
+				$('subdistrict_id').disabled = false;
+				$('zip').disabled = false;
+				$('country').disabled = false;
+				$('save_add').disabled = false;
+			}
+			if($('shipping:city_id') != null){
+				$('shipping:city_id').disabled = false;
+				$('shipping:subdistrict_id').disabled = false;
+				$('shipping:postcode').disabled = false;
+				//$('amscheckout-submit').disabled = false;
+			}
+			if($('billing:city_id') != null){
+				$('billing:city_id').disabled = false;
+				$('billing:subdistrict_id').disabled = false;
+				$('billing:postcode').disabled = false;
+				//$('amscheckout-submit').disabled = false;
+			}
 		if (this.cities[this.regionEl.value]) {
 			var i, option, city, def;
 			def = this.citySelectEl.getAttribute('defaultValue');
@@ -66,6 +109,7 @@ CityUpdater.prototype = {
 			}
 			this.citySelectEl.style.display = 'none';
 			Validation.reset(this.citySelectEl);
+		}
 		}
 	}, 
 	
