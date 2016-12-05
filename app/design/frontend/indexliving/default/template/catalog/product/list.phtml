@@ -35,6 +35,7 @@
 <?php
     $_productCollection=$this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
+    $baseDir = Mage::getSingleton('catalog/product_media_config')->getBaseMediaPath(); 
 ?>
 <?php if(!$_productCollection->count()): ?>
 <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
@@ -53,7 +54,8 @@
             <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
 							<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 							<?php $_imgSize = 250; ?>
-							<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+							<?php $baseFile = $baseDir . $_product->getFlipImage(); ?>
+							<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage() && file_exists($baseFile)): ?>
                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 									<div class="flipper">
 										<div class="front">
@@ -155,7 +157,8 @@
                 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 									<?php echo Mage::helper('amlabel')->getLabels($_product, 'category'); ?>
 									<?php $_imgSize = 250; ?>
-									<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage()): ?>
+									<?php $baseFile = $baseDir . $_product->getFlipImage(); ?>
+									<?php if ($_product->getFlipImage() != 'no_selection' && $_product->getFlipImage() && file_exists($baseFile)): ?>
 										<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
 											<div class="flipper">
 												<div class="front">

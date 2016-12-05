@@ -160,6 +160,24 @@
             "KrungsriD" => "3",
             "KrungsriB" => "6" 
         );
+
+        //Special Item and Price > 5000
+        if(Mage::getSingleton('checkout/cart')->getQuote()->getTotals()['shipping']!=null){
+            $shipping = Mage::getSingleton('checkout/cart')->getQuote()->getTotals()['shipping']->getValue();
+        } else {
+            $shipping = 0;
+        }
+        if(($CurrentAmount - $shipping) < 5000){ //สินค้าน้อยกว่า 5000 และเป็น Special item ทุกชิ้น ผ่อนได้
+            $special_item = Mage::helper('KSmartpay')->checkSpecialItem($session->getQuote()->getAllItems());
+            if($special_item){ // Case 1 ถ้าในตะกร้ามีเฉพาะ Item พิเศษ ให้ผ่อน 0% 3 เดือน
+                $default = Array ( 
+                    "KSmartpayD" => "3",
+                    "KrungsriD" => "3",
+                );
+            }
+        }
+        // > 5000 เข้า ผ่อนปกติ ทั้งหมด
+        
         // $customer = $this->getCustomer();
         // if ($customer->getEmail() == 'thanapol.s@marginframe.com'){
         //     $default["KrungsriD"] = 3;

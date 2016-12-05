@@ -8553,6 +8553,8 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 .product-view .product-options dd .input-box {
   width: 100%;
   height: auto;
+  text-align: left;
+  padding-left: 30px;
 }
 .product-view .product-options dd .input-box .styled-select{
 	width:100%;

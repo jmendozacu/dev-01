@@ -475,7 +475,6 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 			// => (Price > 0) and (is Installment)
 		}
 		//=> Loop cart items
-		
 		if ($cartcondition) {
 			if (count($AvaliableArray) < 1) {
 				$cartcondition = false;
@@ -487,6 +486,17 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 				}
 			}
 		}
+
+		//  Check Special Item  and Price > 3000
+		if(($CurrentAmount) < 5000){ //สินค้าน้อยกว่า 5000 และเป็น Special item ทุกชิ้น ผ่อนได้
+            $special_item = Mage::helper('KSmartpay')->checkSpecialItem($session->getQuote()->getAllItems());
+            if($special_item){ // Case 1 ถ้าในตะกร้ามีเฉพาะ Item พิเศษ ให้ผ่อน 0% 3 เดือน
+                $cartcondition = true;
+            } else {
+            	$cartcondition = false;
+            }
+        }
+
 		if (!$cartcondition) {
 			unset($AvaliableArray);
 		}

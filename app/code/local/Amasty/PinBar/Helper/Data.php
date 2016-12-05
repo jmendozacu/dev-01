@@ -44,7 +44,9 @@ class Amasty_PinBar_Helper_Data extends Mage_Core_Helper_Abstract
             if (array_key_exists('route', $decode) && array_key_exists('controller', $decode) && array_key_exists('action', $decode)) {
                 $path = $decode['route'] . '/' . $decode['controller'] . '/' . $decode['action'];
                 foreach ($decode['params'] as $key => $value) {
-                    $path .= '/' . $key . '/' . $value;
+                    if(!is_array($value)){
+                        $path .= '/' . $key . '/' . $value;
+                    }
                 }
             }
         }

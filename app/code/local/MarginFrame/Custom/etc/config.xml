@@ -24,7 +24,11 @@
 				<class>MarginFrame_Custom_Helper</class>
 			</custom>
 		</helpers>
-
+		<models>
+			<MarginFrame_Custom>
+				<class>MarginFrame_Custom_Model</class>
+			</MarginFrame_Custom>
+		</models>
 		<blocks>
 			<custom>
 				<class>MarginFrame_Custom_Block</class>

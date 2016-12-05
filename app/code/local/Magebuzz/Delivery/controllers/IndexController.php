@@ -38,33 +38,38 @@ class Magebuzz_Delivery_IndexController extends Mage_Core_Controller_Front_Actio
 
     $resource = Mage::getSingleton('core/resource');
 
-    $writeConnection = $resource->getConnection('core_write');
-
     $readConnection = $resource->getConnection('core_read');
 
-    $query = 'SELECT cost_base,method_id FROM ' . $resource->getTableName('amtable/rate') . ' WHERE';
+    $query  = 'SELECT rate_id,cost_base,rate.method_id,method.is_active FROM ' . $resource->getTableName('amtable/rate') . ' AS `rate`';
+    $query .= ' LEFT JOIN ' . $resource->getTableName('amtable/method'). ' AS `method` ON ' . 'rate.method_id = method.method_id';
+    $query .= ' WHERE method.is_active = 1 AND';
     $query .= ' (shipping_type = "' . $post['shipping_type'] . '" OR ' . 'shipping_type = "0")' . ' AND';
     $query .= ' price_from <= "' . $post['budget'] . '" AND';
     $query .= ' price_to >= "' . $post['budget'] . '" AND';
     $query .= ' (country = "' . $post['country_id'] . '" OR ' . 'country = "0")' . ' AND';
     $query .= ' (state = "' . $post['region_id'] . '" OR ' . 'state = "0")' . ' AND';
-    $query .= ' (city = "' . $post['city_id'] . '" OR ' . 'city ="")';
+    $query .= ' (city = "' . $post['city_id'] . '" OR ' . 'city = "" OR city is null)';
 
-    $results = $readConnection->fetchAll($query);
+    if($post['weight'] && $post['weight']!= null){
+      $query .= ' AND weight_from <= "' . $post['weight'] . '" AND';
+      $query .= ' weight_to >= "' . $post['weight'] . '"' ;
+    }
+
+    $results = $readConnection->fetchAssoc($query);
     /* get the results */
     $cost = array();
-    foreach ($results as $key => $result) {
-      $method_id = $result['method_id'];
-      $method = Mage::getModel('amtable/method')->load($method_id);
-      if ($result['cost_base'] < $method->getMinRate()) {
-        $result['cost_base'] = $method->getMinRate();
-        $cost[$key] = $result['cost_base'];
+
+    $minRates = Mage::getModel('amtable/method')->getCollection()->hashMinRate();
+    $maxRates = Mage::getModel('amtable/method')->getCollection()->hashMaxRate();
+
+    foreach ($results as $key  => $rate){
+      $cost[$key] =  $rate['cost_base'];
+      if ($maxRates[$rate['method_id']] != '0.00' && $maxRates[$rate['method_id']] < $rate['cost_base']){
+        $cost[$key] = $maxRates[$rate['method_id']];
       }
-      if ($result['cost_base'] > $method->getMaxRate()) {
-        $result['cost_base'] = $method->getMaxRate();
-        $cost[$key] = $result['cost_base'];
-      } else {
-        $cost[$key] = $result['cost_base'];
+
+      if ($minRates[$rate['method_id']] != '0.00' && $minRates[$rate['method_id']] > $rate['cost_base']){
+        $cost[$key] = $minRates[$rate['method_id']];
       }
     }
     return $cost;
