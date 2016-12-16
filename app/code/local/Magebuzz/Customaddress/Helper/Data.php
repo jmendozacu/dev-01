@@ -125,4 +125,13 @@ class Magebuzz_Customaddress_Helper_Data extends Mage_Core_Helper_Abstract {
 		}
 		return $arrAllZip;
 	}
+	public function checkShippingType(){
+		$cart = Mage::getSingleton('checkout/session')->getQuote();
+		$shippingTypes = array();
+		foreach ($cart->getAllVisibleItems() as $item) {
+			$product = $item->getProduct();
+			$shippingTypes[$product->getId()] = $product->getAmShippingType();
+		}
+		return $shippingTypes;
+	}
 }

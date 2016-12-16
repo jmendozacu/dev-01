@@ -14,11 +14,24 @@
     <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
 </div>
 <?php }?>
+<?php
+$shippingType = Mage::helper('customaddress')->checkShippingType();
+$shippingType = implode(",",$shippingType);
+// 114: ILM, 115: THAIPOST
+$hasILM = strpos($shippingType, '114');
+$hasTHAIPOST = strpos($shippingType, '115');
+?>
 <div class="order-review-button">
 	<div id='comment'>
 
 	</div>
-    <button id="amscheckout-submit" type="button" title="<?php echo $this->__('Place Order') ?>" class="button" onclick="completeCheckout();">
+    <button <?php if($hasILM || $hasTHAIPOST): ?> disabled <?php endif; ?> id="amscheckout-submit" type="button" title="<?php echo $this->__('Place Order') ?>" class="button" onclick="completeCheckout();">
         <span><span><?php echo $this->__('Place Order') ?></span></span>
     </button>
 </div>
+<div class="clearboth" style="clear: both"></div>
+<?php if($hasILM || $hasTHAIPOST): ?>
+    <div id="checkShippingType" style="float: right; font-size: 15px; padding-right: 15px;">
+        <p id="outside_service_zone" style="color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
+    </div>
+<?php endif; ?>
