@@ -70,4 +70,29 @@
             </settings>
         </redismanager>
     </default>
+
+    <frontend>        
+        <routers>
+            <KBank>
+                <use>standard</use>
+                <args>
+                    <module>Steverobbins_Redismanager</module>
+                    <frontName>redis</frontName>
+                </args>
+            </KBank>
+        </routers>
+    </frontend>
+
+    <crontab>
+        <jobs>
+            <steverobbins_redismanager_flush_all>
+                <schedule>
+                    <cron_expr>0 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>redismanager/observer::flushAllRedisCache</model>
+                </run>
+            </steverobbins_redismanager_flush_all>
+        </jobs>
+    </crontab>
 </config>
