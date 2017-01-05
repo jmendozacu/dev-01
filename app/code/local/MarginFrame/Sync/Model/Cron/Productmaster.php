@@ -66,7 +66,8 @@ class MarginFrame_Sync_Model_Cron_Productmaster extends Mage_Core_Model_Abstract
 				'TemperedGlass' 		=> array('multiselect'=> array('selling_point'=>'temperedglass')),
 				'SafetyGlassw' 			=> array('multiselect'=> array('selling_point'=>'safetyglass')),
 				'PICTURE'				=> 'image',
-				
+				'AA_Shipping_Type'		=> 'am_shipping_type',
+				'Weight'				=> 'weight',
 			);
 			$multiselect = array(
 				'GermanMelamine' 		=> 'germanmelamine',
