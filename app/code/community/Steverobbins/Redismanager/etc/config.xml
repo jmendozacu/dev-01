@@ -73,13 +73,13 @@
 
     <frontend>        
         <routers>
-            <KBank>
+            <redismanager>
                 <use>standard</use>
                 <args>
                     <module>Steverobbins_Redismanager</module>
                     <frontName>redis</frontName>
                 </args>
-            </KBank>
+            </redismanager>
         </routers>
     </frontend>
 

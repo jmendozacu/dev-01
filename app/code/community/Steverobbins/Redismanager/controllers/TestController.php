@@ -1,7 +1,8 @@
 <?php
 class Steverobbins_Redismanager_TestController extends Mage_Core_Controller_Front_Action
 {
-	public function dAction(){
+
+	public function testAction(){
 		$flushThis = null;
 		$hp = Mage::helper('redismanager');
 		$config = Mage::getStoreConfig('redismanager/settings/includename');

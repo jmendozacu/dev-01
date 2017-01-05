@@ -38,9 +38,9 @@ class Steverobbins_Redismanager_Model_Observer
                         $service['db']
                     )->getRedis()->flushAll();
                     $flushed[] = $serviceMatch;
-                    Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceMatch));
+                    // Mage::getSingleton('core/session')->addSuccess($this->__('%s flushed', $serviceMatch));
                 } catch (Exception $e) {
-                    Mage::getSingleton('core/session')->addError($e->getMessage());
+                    // Mage::getSingleton('core/session')->addError($e->getMessage());
                 }
             }
         }
