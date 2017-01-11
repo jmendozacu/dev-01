@@ -923,7 +923,7 @@
     margin-top: 0;
 }
 .sashas-notificationbar {
-    height: 399px !important;
+    height: auto !important;
     margin-top: -200px !important;
 }
 }
