@@ -11932,6 +11932,11 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .product-label-category table { position: relative; margin: 0 3px 0 0; }
 .product-label-product table { position: relative; margin: 0 5px 0 0; }
 
+.product-view .bundle {position: relative;clear: left;}
+.product-view .bundle .product-options {padding-top: 87px;}
+.product-view .bundle .change-qty { margin-top: 84px;}
+.product-view .bundle .add-to-cart {position: absolute;top: 0;}
+
 /* ============================================ *
  * MS-45:  Show option bundle product
 * ============================================ */
