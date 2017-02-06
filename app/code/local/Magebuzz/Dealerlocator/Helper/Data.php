@@ -9,7 +9,7 @@ class Magebuzz_Dealerlocator_Helper_Data extends Mage_Core_Helper_Abstract {
     $storeId = Mage::app()->getStore()->getId();
     $configUrl = Mage::getStoreConfig('dealerlocator/google_map_options/google_geo_api_url', $storeId);
     if ($configUrl != '') {
-      $url = Mage::getStoreConfig('dealerlocator/google_map_options/google_geo_api_url') . "?address=$address&sensor=false";
+      $url = Mage::getStoreConfig('dealerlocator/google_map_options/google_geo_api_url') . "?address=".$address."&sensor=false";
     } else {
       $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . $address . '&sensor=false';
     }
