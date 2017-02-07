@@ -26,6 +26,13 @@
           <frontName>bannerads</frontName>
         </args>
       </bannerads>
+      <catalog>
+        <args>
+          <modules>
+            <magebuzz_bannerads before="Mage_Catalog">Magebuzz_Bannerads</magebuzz_bannerads>
+          </modules>
+        </args>
+      </catalog>
     </routers>
     <layout>
       <updates>
@@ -108,6 +115,11 @@
           </reports>
         </entities>
       </bannerads_mysql4>
+      <catalog_resource>
+        <rewrite>
+          <category>Magebuzz_Bannerads_Model_Resource_Catalog_Category</category>
+        </rewrite>
+      </catalog_resource>
     </models>
     <resources>
       <bannerads_setup>

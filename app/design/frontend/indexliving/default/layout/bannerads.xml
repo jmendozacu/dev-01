@@ -757,4 +757,10 @@
       <block type="bannerads/bannerads" name="bannerads" template="bannerads/bannerads.phtml"/>
     </reference>
   </bannerads_index_index>
+
+  <_category_countdown_timeleft>
+    <reference name="head">
+      <block type="bannerads/timeleft" template="catalog/category/timeleft.phtml" name="category.timeleft.init" />
+    </reference>
+  </_category_countdown_timeleft>
 </layout> 

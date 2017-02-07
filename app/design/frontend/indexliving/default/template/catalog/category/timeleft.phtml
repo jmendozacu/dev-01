@@ -14,7 +14,6 @@ $timeleft = $timeleft * 1000;
     setTimeout(function(){
       var catId = <?php echo $category->getId() ?>;
       var url = '<?php echo $this->getUrl('bannerads/index/disableCategory', array('_secure' => $this->getRequest()->isSecure())); ?>';
-      AmAjaxObj.showAnimation();
       alert('This category is out of date. We will refresh page now');
       var request = new Ajax.Request(
         url,
