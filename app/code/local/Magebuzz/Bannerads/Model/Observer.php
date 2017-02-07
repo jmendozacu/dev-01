@@ -5,6 +5,69 @@
 
 class Magebuzz_Bannerads_Model_Observer {
 
+  public function loadTimeleftCategory(Varien_Event_Observer $observer){
+    if ($observer->getAction()
+      && in_array($observer->getAction()->getFullActionName(), array('catalog_category_view'))
+    ){
+      $category = Mage::registry('current_category');
+      if($category->getData('display_to_date')){
+        $observer->getAction()->getLayout()->getUpdate()->addHandle('_category_countdown_timeleft');
+      }
+    }
+  }
+
+  public function changeStatus(){
+    $categoryCollection = Mage::getModel('catalog/category')->getCollection()
+      ->addAttributeToSelect('is_active')
+      ->addAttributeToSelect('display_to_date')
+      ->addAttributeToSelect('display_from_date');
+
+    $now_time = date(Varien_Date::DATETIME_PHP_FORMAT, Mage::getModel('core/date')->timestamp(time()));
+    foreach ($categoryCollection as $category) {
+      $from_date = $category->getData('display_from_date');
+      $to_date = $category->getData('display_to_date');
+      $is_active = $category->getData('is_active');
+
+      if (!$from_date && !$to_date) {
+        continue;
+      }
+      if ($from_date && $to_date) {
+        $storeTimeStamp = strtotime($now_time);
+        $fromTimeStamp = strtotime($from_date);
+        $toTimeStamp = strtotime($to_date);
+        if (!($fromTimeStamp <= $storeTimeStamp && $storeTimeStamp <= $toTimeStamp)) {
+          $is_active = 0;
+        } else {
+          $is_active = 1;
+        }
+      }
+      if (!$from_date && $to_date) {
+        $storeTimeStamp = strtotime($now_time);
+        $toTimeStamp = strtotime($to_date);
+        if (!($storeTimeStamp <= $toTimeStamp)) {
+          $is_active = 0;
+        } else {
+          $is_active = 1;
+        }
+      }
+      if ($from_date && !$to_date) {
+        $storeTimeStamp = strtotime($now_time);
+        $fromTimeStamp = strtotime($from_date);
+        if (!($fromTimeStamp <= $storeTimeStamp)) {
+          $is_active = 0;
+        } else {
+          $is_active = 1;
+        }
+      }
+
+      if ((int)$category->getData('is_active') != $is_active) {
+        if ($is_active !== false) {
+          Mage::helper('bannerads')->saveStatus($category->getData('entity_id'),$is_active);
+        }
+      }
+    }
+  }
+
   public function checkBlockLoad($observer) {
     $blockModel = Mage::getModel('bannerads/bannerads')->getCollection()->addFieldToFilter('status', 1);
     $storeId = Mage::app()->getStore()->getStoreId();

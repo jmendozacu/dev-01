@@ -237,4 +237,34 @@ class Magebuzz_Bannerads_Helper_Data extends Mage_Core_Helper_Abstract {
 		$storeId = Mage::app()->getStore()->getId();
 		return (int)Mage::getStoreConfig('bannerads/general/enable_report', $storeId);
 	}
+
+  public function saveStatus($entity_id,$is_active) {
+    if($entity_id){
+      $attributeId = Mage::getResourceModel('eav/entity_attribute')
+        ->getIdByCode('catalog_category', 'is_active');
+      $catEntityIntTable = $this->_getTableName('catalog_category_entity_int');
+
+      $sql = "UPDATE {$catEntityIntTable}"."
+						SET value = ".$is_active."
+ 		        WHERE attribute_id = ".$attributeId. " AND entity_id = " .$entity_id;
+      try{
+        $this->_getWriteConnection()->query($sql);
+      }catch (Mage_Core_Exception $e){
+//        var_dump($e->getMessage());die;
+      }
+    }
+    return $this;
+  }
+
+  protected function _getWriteConnection() {
+    return Mage::getSingleton('core/resource')->getConnection('core_write');
+  }
+
+  protected function _getReadConnection() {
+    return Mage::getSingleton('core/resource')->getConnection('core_read');
+  }
+
+  protected function _getTableName($name) {
+    return Mage::getSingleton('core/resource')->getTableName($name);
+  }
 }

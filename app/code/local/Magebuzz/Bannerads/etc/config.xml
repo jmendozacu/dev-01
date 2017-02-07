@@ -1,8 +1,20 @@
 <?xml version="1.0"?>
 <config>
+  <crontab>
+    <jobs>
+      <magebuzz_check_category_datetime_to_active>
+        <schedule>
+          <cron_expr>*/5 * * * *</cron_expr>
+        </schedule>
+        <run>
+          <model>bannerads/observer::changeStatus</model>
+        </run>
+      </magebuzz_check_category_datetime_to_active>
+    </jobs>
+  </crontab>
   <modules>
     <Magebuzz_Bannerads>
-      <version>0.1.8</version>
+      <version>0.1.9</version>
     </Magebuzz_Bannerads>
   </modules>
   <frontend>
@@ -22,6 +34,16 @@
         </bannerads>
       </updates>
     </layout>
+    <events>
+      <controller_action_layout_load_before>
+        <observers>
+          <bannerads_controller_category_load_before>
+            <class>bannerads/observer</class>
+            <method>loadTimeleftCategory</method>
+          </bannerads_controller_category_load_before>
+        </observers>
+      </controller_action_layout_load_before>
+    </events>
     <translate>
       <modules>
         <Magebuzz_Bannerads>
