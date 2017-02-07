@@ -12,7 +12,8 @@ $isBlockIds = array();
 $urlShow = Mage::getUrl('bannerads/reports/impression');
 $urlClick = Mage::getUrl('bannerads/reports/click');
 ?>
-<?php if ($banners->getSize() > 0): ?>
+<?php if(!empty($banners)): ?>
+  <?php if ($banners->getSize() > 0): ?>
   <div class="wrap-bannerads">
     <!-- Display type Show all -->
     <?php if ($blockType == 1): ?>
@@ -102,4 +103,5 @@ $urlClick = Mage::getUrl('bannerads/reports/click');
     <?php endif ?>
   <div style="clear: both;"></div>
   </div>
+<?php endif; ?>
 <?php endif; ?>
