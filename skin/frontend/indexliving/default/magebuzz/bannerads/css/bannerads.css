@@ -25,7 +25,7 @@
   position: relative;
   z-index: 1;
 }
-.wrap-bannerads .bx-viewport .banner-desc{position:absolute; right:0; bottom:15px; max-width:440px; max-height:280px; padding:25px; background:url('images/banner-desc-bg.png') top left repeat; text-align:left;}
+.wrap-bannerads .bx-viewport .banner-desc{position:absolute; bottom:15px; max-width:440px; max-height:280px; padding:25px; background:url('images/banner-desc-bg.png') top left repeat; text-align:left;}
 .wrap-bannerads .bx-viewport .banner-desc.top-left{top:0; left:0;}
 .wrap-bannerads .bx-viewport .banner-desc.top-center{top:20px; left:50%; margin-left:-220px;}
 .wrap-bannerads .bx-viewport .banner-desc.top-right{top:0; right:0;}
