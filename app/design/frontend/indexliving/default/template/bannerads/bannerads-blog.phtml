@@ -1,0 +1,61 @@
+<?php
+/*
+* Copyright (c) 2015 www.magebuzz.com
+*/
+?>
+<?php
+$block = $this->getBannerads();
+$banners = $block->getImages();
+$blockType = $block->getDisplayType();
+$helper = Mage::helper('bannerads');
+$isBlockIds = array();
+$urlShow = Mage::getUrl('bannerads/reports/impression');
+$urlClick = Mage::getUrl('bannerads/reports/click');
+?>
+<?php if ($banners->getSize() > 0): ?>
+    <div class="wrap-bannerads">
+        <?php if (($blockType == 3) || ($blockType == 4) || ($blockType == 5) || ($blockType == 6)) : ?>
+            <div class="banner"
+                 <?php if ($block->getBlockMaxWidth()): ?>style="max-width:<?php echo $block->getBlockMaxWidth() ?>px" <?php endif; ?>>
+                <ul class="banner-carousel" id="banner_carousel_<?php echo $block->getBlockId() ?>">
+                    <?php $i = 0;
+                    foreach ($banners->getItems() as $banner): $i++; ?>
+                        <li>
+                            <a <?php if ($banner->getTarget()): ?> target="_blank" <?php endif; ?> <?php if ($banner->getBannerUrl() != ''): ?> href="<?php echo $banner->getBannerUrl(); ?>" <?php endif ?>
+                                onclick="bannerClicks('<?php echo $urlClick; ?>','<?php echo $banner->getBannerId() ?>','<?php echo $block->getBlockId() ?>')">
+                                <img
+                                    alt="<?php echo $banner->getBannerTitle(); ?>"
+                                    src="<?php echo $helper->getBannerImage($banner->getBannerImage()); ?>"/>
+                            </a>
+                            <h3><?php echo $banner->getBannerTitle(); ?></h3>
+                        </li>
+                        <?php $isBlockIds[] = $banner->getBannerId(); ?>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+            <?php if ($i > 1): ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+                    jQuery("#banner_carousel_<?php echo $block->getBlockId()?>").owlCarousel({
+                        nav: true,
+                        dots: true,
+                        loop:true,
+                        margin:20,
+                        responsive:{
+                            0:{
+                                items:1
+                            },
+                            600:{
+                                items:2
+                            },
+                            1000:{
+                                items:2
+                            }
+                        }
+                    });
+                });
+            </script>
+            <?php endif; ?>
+        <?php endif ?>
+    </div>
+<?php endif; ?>

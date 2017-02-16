@@ -65,23 +65,8 @@
 </header>
 <div class="box-top-menu box-header-content">
     <div class="page-header">
-        <div class="cateogry">
-            <a href="javascript:void(0)" title="<?php echo $this->__('Menu') ?>" class="skip-link skip-cateogry">
-        <span class="icon-menu box-desktop">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <span class="text-menu">
-          <?php echo $this->__('Categories') ?>
-        </span>
-            </a>
-            <div id="header-nav" class="skip-content menu-content">
-                <?php echo $this->getChildHtml('topMenu') ?>
-            </div>
-        </div>
-        <div class="box-desktop">
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topmenu')->toHtml() ?>
+        <div id="header-nav">
+            <?php echo $this->getChildHtml('topMenu') ?>
         </div>
         <div class="box-menu-mobile box-mobile">
             <h2 class="menu-title"><span><?php echo $this->__('Menu') ?></span></h2>
@@ -93,7 +78,6 @@
                                         title="<?php echo $this->__('language') ?>"><span><?php echo $this->__('language') ?></span></a>
                 </li>
             </ul>
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-topheader-links')->toHtml() ?>
             <div class="box-callus-mobile">
                 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-call-us')->toHtml() ?>
             </div>

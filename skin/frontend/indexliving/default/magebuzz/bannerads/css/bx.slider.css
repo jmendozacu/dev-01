@@ -52,10 +52,7 @@
   display: inline-block;
 }
 .bx-wrapper .bx-pager.bx-default-pager {
-  position:absolute;
-  bottom:5px;
-  width:100%;
-	z-index:9;
+    padding: 10px 0;
 }
 
 .bx-wrapper .bx-pager.bx-default-pager a {
@@ -185,19 +182,37 @@
 }
 /*-----------------------*/
 /*.wrap-bannerads div.banner{width: 1290px;}*/
-.wrap-bannerads div.banner { width: 1290px; height: 417px;position:relative;margin-top: 25px;margin-bottom: 70px;}
-.main-banners .wrap-bannerads div.banner .bx-viewport {/*width:1020px!important;*/ width:1200px!important; height: auto; display:inline-block; margin:auto; /*overflow:initial!important;*/}
-.main-banners .wrap-bannerads div.banner .bx-viewport img{width: 100%;max-height: 417px;}
-.main-banners .wrap-bannerads .bx-wrapper {overflow:hidden;height: 455px;}
-.wrap-bannerads div.banner .bx-viewport  li {margin:0px!important;}
+.wrap-bannerads div.banner {position:relative;}
+.main-banners .wrap-bannerads div.banner .bx-viewport {}
+.main-banners .wrap-bannerads div.banner .bx-viewport img{width: 100%; }
+.main-banners .wrap-bannerads .bx-wrapper {}
+.wrap-bannerads div.banner .bx-viewport  li {}
 .main-banners .wrap-bannerads div.banner .bx-viewport:before,
-.main-banners .wrap-bannerads div.banner .bx-viewport:after {content:""; z-index:1; width:1020px; position:absolute; top:0px; height:100%; /*background:url(images/sider-backgroundbanner.png);*/}
-.main-banners .wrap-bannerads div.banner .bx-viewport:before {left:50%; margin-left:510px;}
-.main-banners .wrap-bannerads div.banner .bx-viewport:after {right:50%; margin-right:510px;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {background:#EBEBEB url(images/slider-prev.png) center center no-repeat; background-size: 35%; top:50%; left:0; position: absolute;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-next {background:#EBEBEB url(images/slider-next.png) center center no-repeat; background-size: 35%; top:50%; right:0; position: absolute;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev:hover {background:#666 url(images/slider-prev.png) center center no-repeat;background-size: 35%;}
-.main-banners  .bx-wrapper .bx-controls-direction a.bx-next:hover {background:#666 url(images/slider-next.png) center center no-repeat;background-size: 35%; }
+.main-banners .wrap-bannerads div.banner .bx-viewport:after {}
+.main-banners .wrap-bannerads div.banner .bx-viewport:before {}
+.main-banners .wrap-bannerads div.banner .bx-viewport:after {}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev {
+    background: url(images/slider-prev.png) center center no-repeat;
+    background-color: rgba(235,235,235,0.9);
+    background-size: 35%;
+    top:50%;
+    left:0;
+    position: absolute;
+}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-next {
+    background: url(images/slider-next.png) center center no-repeat;
+    background-color: rgba(235,235,235,0.9);
+    background-size: 35%;
+    top:50%;
+    right:0;
+    position: absolute;
+}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-prev:hover {
+    background-color: rgba(255,194,34,0.9);
+}
+.main-banners  .bx-wrapper .bx-controls-direction a.bx-next:hover {
+    background-color: rgba(255,194,34,0.9);
+}
 .main-banners .bx-wrapper .bx-pager.bx-default-pager {bottom:0;}
 
 .banner-feature li a {position:relative; display:block;}

@@ -78,13 +78,8 @@ foreach ($children as $child) {
   }
   
   else{
-    if($childLevel==0){
       $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
-      $html .= '<a href="javascript:void(0)" class="' . $outermostClassCode . ' ' . $_hasChildren . '"><span>' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';
-    }else{
-      $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
-      $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $this->escapeHtml($this->__($child->getName())) . '</a>';  
-    }
+      $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $this->escapeHtml($this->__($child->getName())) . '</a>';
   }
   
   if (!empty($childrenWrapClass)) {
@@ -105,15 +100,6 @@ foreach ($children as $child) {
     
     if($childLevel==1){
       $html .= '<div class="menu-content" ' .$styleImage.'>';
-      $html .= '<h3 class="title-viewall">';
-      $html .=         '<a class="box-desktop level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
-      $html .=             $this->__('View All');
-      $html .=         '</a>';
-      $html .=         '<span class="box-mobile level'. $nextChildLevel .'">';
-      $html .=             $child->getName();
-      $html .=         '</span>';
-      
-      $html .= '</h3>';
       $html .= '<ul class="level' . $childLevel . '">';
       $html .= $this->render($child, $childrenWrapClass);
       if($catId && $catId != ''){

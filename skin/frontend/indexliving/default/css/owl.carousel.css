@@ -281,6 +281,27 @@
 .owl-pagination .owl-page.active {
   background:url(../images/paper2.png) no-repeat;
 }
+
+.owl-dots {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+.owl-dots .owl-dot{
+  display: inline-block;
+  background: #EEE;
+  text-indent: -9999px;
+  width: 10px;
+  height: 10px;
+  margin: 0 3px;
+  outline: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.owl-dots .owl-dot.active{
+  background: #FFC222;
+}
 @media (max-width: 991px){
  .block-content.recommend-product-list .owl-carousel .owl-controls .owl-nav .owl-next {right:0px;}
  .block-content.recommend-product-list .owl-carousel .owl-controls .owl-nav .owl-prev {left:0px;}
