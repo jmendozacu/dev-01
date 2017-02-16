@@ -3585,6 +3585,9 @@ body {
 .ideas-inspiration .title-style1 {
   margin: 0 0 10px
 }
+.ideas-inspiration .title-style1:before {
+  width: 77%;
+}
 .ideas-inspiration .title-style1 span {
   font-size: 30px;
 }
@@ -3602,14 +3605,11 @@ body {
   width: 12.5%;
   text-align: center;
   position: relative;
+  height: 120px;
+  border-right: 1px solid #ebebeb;
 }
-.ideas-inspiration .list-ideas ul li:after {
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  top: 0;
-  right:0;
-  background: #ebebeb;
+.ideas-inspiration .list-ideas ul li:last-child {
+  border: none;
 }
 .ideas-inspiration .list-ideas ul li a{
   display: block;
@@ -3623,6 +3623,7 @@ body {
   display: block;
   clear: both;
   min-height: 45px;
+  margin-bottom: 10px;
 }
 .ideas-inspiration .list-ideas ul li a span.text{
   font-size: 18px;
@@ -3658,10 +3659,10 @@ body {
   background-color: rgba(235,235,235,0.9);
   background-size: 35%;
 }
-.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev.bx-prev:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev.bx-prev:hover {
+.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
   background-color: rgba(255,194,34,0.9);
 }
-.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev.bx-next:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev.bx-next:hover {
+.home-blog .owl-carousel .owl-controls .owl-nav .owl-next:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-next:hover {
   background-color: rgba(255,194,34,0.9);
 }
 .box-home-list-products {float:left; width:100%;}
@@ -3672,13 +3673,23 @@ body {
 .box-home-list-products .best-seller,
 .box-home-list-products .new-arrival {float:left; width:100%;}
 .box-home-list-products .best-seller {margin-bottom:42px;}
+.box-home-list-products .best-seller .title-style1:before{
+  width: 84%;
+}
+.box-home-list-products .new-arrival .title-style1:before{
+  width: 79%;
+}
+.box-home-list-products .best-seller .title-style1 span strong,
+.box-home-list-products .new-arrival .title-style1 span strong{
+  font-size: 26px;
+}
 .box-home-list-products .banner-left {float:left; width: 23.75%;}
 .box-home-list-products .banner-left li{margin-bottom:30px;}
-.title-style1 {float:left; width:100%; margin-bottom:40px; text-align:left; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
-.title-style1:before {content:""; position:absolute; height:7px; width:165px; background:#FFC222; bottom:-6px; left:0;}
+.title-style1 {float:left; width:100%; margin-bottom:40px; text-align:left; position:relative; }
+.title-style1:before {content:""; position:absolute; height:7px; width:80%; background:#F4F4F4; bottom:4px; right:0;}
 .title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; }
 .title-style1 span strong{ font-weight: bold; color: #ffc222;}
-.title-style1 a {position:absolute; bottom:0px; right:0px; line-height:22px; color:#919191; font-size:14px; padding-right:15px; z-index:9}
+.title-style1 a {position:absolute; bottom:10px; right:0px; line-height:22px; color:#000; font-weight: normal; font-size:14px; padding-right:15px; z-index:9}
 .title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #919191; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
 .title-style1 a:hover {color:#FFC222; text-decoration:none;}
 .title-style1 a:hover:after {border-left-color:#FFC222;}

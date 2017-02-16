@@ -643,13 +643,14 @@
     }
 
     #header {
-        background: #252525;
+        background: #ffffff;
         float: left;
         width: 100%;
         padding: 0px;
         position: fixed;
         z-index: 999;
         top: 0;
+        border-bottom: 1px solid #e1e1e1;
     }
 
     #header.fixed {
@@ -671,12 +672,16 @@
         margin: 0px;
         padding: 15px 10px 14px;
         width: 43px;
+        background: #ffc222;
     }
 
-    .toggle-header-content.active {
-        background-color: #343434;
+    #header .icon-menu span{
+        float: left;
+        width: 100%;
+        margin: 0 0 3px;
+        height: 2px;
+        background: #000;
     }
-
     .icon-account.active {
         background: url(../images/icon-account-over2.png) no-repeat 13px 13px #343434
     }
@@ -687,7 +692,7 @@
         height: 44px;
         margin: 0px;
         text-indent: -9999px;
-        background: url(../images/icon-mobile.png) no-repeat 15px 15px;
+        background: url(../images/icon-mobile.png) no-repeat -65px -503px;
     }
 
     .close-box-search {
@@ -711,15 +716,20 @@
         float: left;
         width: 42px;
         height: 44px;
-        background: url(../images/icon-mobile.png) no-repeat -30px 13px;
+        background: url(../images/icon-mobile.png) no-repeat 8px -503px;
     }
 
     .icon-minicart {
-        background-position: -69px 13px;
+        background-position: -27px -503px;
     }
 
     .icon-minicart.active {
         background-position: -69px -180px;
+    }
+
+    #header-nav .nav-primary > li.level0 {
+        width: 100%;
+        border-bottom: 1px solid #ebebeb;
     }
 
     .banner-static-home li {
@@ -775,13 +785,12 @@
     .box-home-list-products .products-grid {
         width: auto;
         max-width: none;
+        padding-right: 20px;
     }
 
     .box-home-list-products .products-grid li.item,
     .recommend-product-list div.item {
-        width: 215px;
         border: solid 1px #EBEBEB;
-        margin-right: 15px;
         padding-bottom: 10px;
     }
 
@@ -818,7 +827,9 @@
         border-bottom: solid 6px transparent;
         border-top: solid 6px transparent;
     }
-
+    .main-home .main-banners .page-container {
+        padding: 0;
+    }
     .main-home .box-home-list-products .banner-right li:nth-child(1),
     .main-home .box-home-list-products .banner-right li:nth-child(2) {
         width: 48%;
@@ -830,6 +841,43 @@
         margin-right: 0px;
     }
 
+    .ideas-inspiration .title-style1 span {
+        font-size: 20px;
+    }
+    .ideas-inspiration .title-style1 span strong{
+        font-size: 22px;
+    }
+
+    .title-style1:before, .ideas-inspiration .title-style1:before {
+        width: 77% !important;
+    }
+
+    .ideas-inspiration .list-ideas ul li, .ideas-inspiration .list-ideas ul li:last-child{
+        width: 100%;
+        border-right: 1px solid #ebebeb;
+    }
+    .ideas-inspiration .owl-carousel .owl-controls .owl-nav .owl-prev {
+        background: url(../images/slider-prev.png) center center no-repeat;
+        background-color: rgba(235,235,235,0.9);
+        background-size: 35%;
+        left: 0;
+    }
+
+    .ideas-inspiration .owl-carousel .owl-controls .owl-nav .owl-next {
+        background: url(../images/slider-next.png) center center no-repeat;
+        background-color: rgba(235,235,235,0.9);
+        background-size: 35%;
+        right: 0;
+    }
+    .ideas-inspiration .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
+        background-color: rgba(255,194,34,0.9);
+    }
+    .ideas-inspiration .owl-carousel .owl-controls .owl-nav .owl-next:hover {
+        background-color: rgba(255,194,34,0.9);
+    }
+    .box-home-list-products .banner-left {
+        display: none;
+    }
     .box-home-decor .home-decor-content {
         padding-top: 30px;
     }
@@ -2576,12 +2624,6 @@
 }
 
 @media (max-width: 640px) {
-    .main-home .box-list-products .products-grid li.item.last {
-        display: block;
-        float: left;
-        margin-right: 0px;
-    }
-
     .products-grid .button.btn-cart > span:before {
         top: 0px;
         background-size: 80px auto;
@@ -3036,6 +3078,9 @@
 }
 
 @media (max-width: 600px) {
+    .title-style1:before, .ideas-inspiration .title-style1:before {
+        width: 65%!important;
+    }
     .compare-popup {
         max-width: 520px;
         margin-left: -260px;
@@ -3068,6 +3113,10 @@
 }
 
 @media (max-width: 480px) {
+
+    .title-style1:before, .ideas-inspiration .title-style1:before {
+        width: 45%!important;
+    }
     .banner-static-home {
         padding: 10px 0;
     }
@@ -3367,6 +3416,9 @@
 }
 
 @media (max-width: 345px) {
+    .title-style1:before, .ideas-inspiration .title-style1:before {
+        width: 27%!important;
+    }
     .cart-table .cart-footer-actions .button {
         font-size: 15px;
     }

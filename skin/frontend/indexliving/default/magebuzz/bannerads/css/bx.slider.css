@@ -237,10 +237,10 @@
   .main-banners .wrap-bannerads div.banner .bx-viewport, .main-banners .wrap-bannerads div.banner .bx-viewport img{height: auto !important;}
  }
  @media (max-width: 1060px) {
-  .main-banners .wrap-bannerads .bx-wrapper {padding-left:50px; padding-right:50px;}
+  .main-banners .wrap-bannerads .bx-wrapper {}
   .main-banners .wrap-bannerads div.banner .bx-viewport {width:100%!important;}
-  .main-banners .bx-wrapper .bx-controls-direction a.bx-prev{left:2px; margin-left:0px;}
-  .main-banners .bx-wrapper .bx-controls-direction a.bx-next{right:2px; margin-right:0px;}
+  .main-banners .bx-wrapper .bx-controls-direction a.bx-prev{left:0; margin-left:0px; margin-top: -40px;}
+  .main-banners .bx-wrapper .bx-controls-direction a.bx-next{right:0; margin-right:0px; margin-top: -40px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:before {left:-50px; margin-left:0px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:-50px; margin-right:0px;}
   .main-banners .wrap-bannerads div.banner .bx-viewport:before,
@@ -249,8 +249,10 @@
 }
  @media (max-width: 970px) {
   .main-banners .wrap-bannerads .bx-wrapper .main-banners .wrap-bannerads div.banner .bx-viewport, .main-banners .wrap-bannerads div.banner .bx-viewport img{max-height: 357px !important;}
-  .main-banners .wrap-bannerads .bx-wrapper{height: auto !important;}
-  .wrap-bannerads .bx-viewport .banner-desc{border: solid 1px #EEE;}
+  .main-banners .wrap-bannerads .bx-wrapper{}
+  .wrap-bannerads .bx-viewport .banner-desc{
+      display: none;
+  }
   .main-banners .bx-wrapper .bx-pager.bx-default-pager {  bottom: 15px;}
   .wrap-bannerads .bx-viewport .banner-desc::before{display: none;}
  }
@@ -261,15 +263,15 @@
 }
 
  @media (max-width: 480px) {
-  .main-banners .wrap-bannerads .bx-wrapper {padding-left:15px; padding-right:15px;}
-  .main-banners .wrap-bannerads div.banner .bx-viewport:before {left:-15px;}
-  .main-banners .wrap-bannerads div.banner .bx-viewport:after {right:-15px;}
+  .main-banners .wrap-bannerads .bx-wrapper {}
+  .main-banners .wrap-bannerads div.banner .bx-viewport:before {}
+  .main-banners .wrap-bannerads div.banner .bx-viewport:after {}
   .main-banners .wrap-bannerads div.banner .bx-viewport:before,
-  .main-banners .wrap-bannerads div.banner .bx-viewport:after {width:15px;}
+  .main-banners .wrap-bannerads div.banner .bx-viewport:after {}
   .main-banners .bx-wrapper .bx-controls-direction a.bx-prev,
-  .main-banners .bx-wrapper .bx-controls-direction a.bx-next  {width: 10px; background-size: 100% auto;}
+  .main-banners .bx-wrapper .bx-controls-direction a.bx-next  {}
   .main-banners .bx-wrapper .bx-pager.bx-default-pager {bottom:0px;}
-  .bx-wrapper .bx-pager.bx-default-pager a {width:6px; height:6px; margin:0px 2px;}
+  .bx-wrapper .bx-pager.bx-default-pager a {width:8px; height:8px; margin:0px 5px;}
  }
 
 

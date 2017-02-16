@@ -27,7 +27,7 @@
 <?php
 /* List ideas */
 ?>
-<ul>
+<ul class="indexliving-ideas">
     <li>
         <a href="#" title="">
         <span class="icon">
@@ -101,4 +101,25 @@
         </a>
     </li>
 </ul>
+<script type="text/javascript">
+    var widthWindow = jQuery(window).width();
+    if (widthWindow < 768) {
+        jQuery(".indexliving-ideas").owlCarousel({
+            loop: false,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 2
+                },
+                768: {
+                    items: 2
+                }
+            }
+        });
+    }
+</script>
 

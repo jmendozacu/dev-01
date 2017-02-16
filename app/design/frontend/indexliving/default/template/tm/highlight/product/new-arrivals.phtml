@@ -61,7 +61,7 @@ if ($this->getCategoryFilter()) {
     <span><?php echo $this->__('New ') ?><strong><?php echo $this->__('Arrivals')?></strong></span>
     <a title="<?php echo $this->__('view all') ?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all products') ?></a>
 </h2>
-<div class="category-products block-highlight <?php echo $this->getClassName() ?>">
+<div class="category-products block-highlight newarrivals-highlight <?php echo $this->getClassName() ?>">
     <div class="block-content">
         <?php $item = 0;
         foreach ($_productCollection as $_product): ?>
@@ -366,7 +366,7 @@ if ($this->getCategoryFilter()) {
     </div>
 </div>
 <a class="box-mobile a-button" title="<?php echo $this->__('view all') ?>"
-   href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all') ?></span></a>
+   href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all products') ?></span></a>
 <script type="text/javascript">
 
     var jQ = jQuery.noConflict();
@@ -424,5 +424,25 @@ if ($this->getCategoryFilter()) {
             }
         });
         divValidate.setAttribute('data-pass', 1);
+    }
+
+    var widthWindow = jQuery(window).width();
+    if (widthWindow < 768) {
+        jQuery(".newarrivals-highlight .block-content ul.products-grid").owlCarousel({
+            loop: false,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                768: {
+                    items: 1
+                }
+            }
+        });
     }
 </script>
