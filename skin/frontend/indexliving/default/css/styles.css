@@ -3563,7 +3563,7 @@ body {
 
 /* home page */
 .main-home .std ul {list-style:none;}
-.main-home .std ul li {margin:0px;}
+.main-home .std ul li {}
 .banner-static-home {float:left; width:100%; background:#EBEBEB; padding:16px 0; margin-top:-5px; text-align:center; }
 .banner-static-home ul {float:left; width:100%; margin:0px;}
 .banner-static-home li {float:left; width:25%;}
@@ -3630,7 +3630,7 @@ body {
   font-weight: normal;
   line-height: 18px;
 }
-.home-blog {
+.home-blog, .home-video {
   margin: 0 0 30px;
   float: left;
   width: 100%;
@@ -3647,21 +3647,21 @@ body {
   text-align: left;
   text-transform: capitalize;
 }
-.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev {
+.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev {
   background: url(../images/slider-prev.png) center center no-repeat;
   background-color: rgba(235,235,235,0.9);
   background-size: 35%;
 }
 
-.home-blog .owl-carousel .owl-controls .owl-nav .owl-next {
+.home-blog .owl-carousel .owl-controls .owl-nav .owl-next, .home-video .owl-carousel .owl-controls .owl-nav .owl-next {
   background: url(../images/slider-next.png) center center no-repeat;
   background-color: rgba(235,235,235,0.9);
   background-size: 35%;
 }
-.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev.bx-prev:hover {
+.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev.bx-prev:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev.bx-prev:hover {
   background-color: rgba(255,194,34,0.9);
 }
-.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev.bx-next:hover {
+.home-blog .owl-carousel .owl-controls .owl-nav .owl-prev.bx-next:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev.bx-next:hover {
   background-color: rgba(255,194,34,0.9);
 }
 .box-home-list-products {float:left; width:100%;}
@@ -3673,7 +3673,7 @@ body {
 .box-home-list-products .new-arrival {float:left; width:100%;}
 .box-home-list-products .best-seller {margin-bottom:42px;}
 .box-home-list-products .banner-left {float:left; width: 23.75%;}
-.main-home .box-home-list-products .banner-right li{margin-bottom:10px;}
+.box-home-list-products .banner-left li{margin-bottom:30px;}
 .title-style1 {float:left; width:100%; margin-bottom:40px; text-align:left; border-bottom:solid 6px #F4F4F4; position:relative; padding-bottom:10px;}
 .title-style1:before {content:""; position:absolute; height:7px; width:165px; background:#FFC222; bottom:-6px; left:0;}
 .title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; }
@@ -4060,7 +4060,10 @@ a.skip-link {
 .nav-primary .menu-content {
 }
 .nav-primary li.level1:hover .menu-content {}
-.nav-primary li.subcat {float:left; }
+.nav-primary li.subcat {
+  float:left;
+  width: 100%;
+}
 .nav-primary li.subcat > ul >li {float:left; width:100%;}
 .nav-primary li.subcat ul ul {float:left; width:100%; margin-bottom:15px; margin-top:5px;}
 .nav-primary li.subcat ul  li  a{

@@ -25,7 +25,47 @@ class Magebuzz_Bannerads_Block_Adminhtml_Images_Edit_Tab_Form extends Mage_Admin
 
     $fieldset->addField('banner_title', 'text', array('label' => Mage::helper('bannerads')->__('Title'), 'class' => 'required-entry', 'required' => TRUE, 'name' => 'banner_title',));
 
-    if ($object->getBannerImage()) {
+	  $fieldset->addField('use_video', 'select',
+		  array(
+			  'label' => Mage::helper('bannerads')->__('Use Video'),
+			  'name' => 'use_video',
+			  'values' => array(
+				  array('value' => 0, 'label' => Mage::helper('bannerads')->__('No'),),
+				  array('value' => 1, 'label' => Mage::helper('bannerads')->__('Yes'),),
+			  ),
+			  'note' => 'If use video is yes, image will not show in frontend'
+		  )
+	  );
+
+	  $fieldset->addField('url_video', 'text', array(
+		  'label' => Mage::helper('bannerads')->__('Video Url'),
+		  'name' => 'url_video',
+	  ));
+
+	  $fieldset->addField('video_width', 'text', array('label' => Mage::helper('bannerads')->__('Video Width'), 'name' => 'video_width','note' => 'If this field is null, will use configure in template'));
+	  $fieldset->addField('video_height', 'text', array('label' => Mage::helper('bannerads')->__('Video Height'), 'name' => 'video_height','note' => 'If this field is null, will use configure in template'));
+	  $this->setChild('form_after', $this->getLayout()->createBlock('adminhtml/widget_form_element_dependence')
+		  ->addFieldMap('use_video', 'use_video')
+		  ->addFieldMap('url_video', 'url_video')
+		  ->addFieldMap('video_height', 'video_height')
+		  ->addFieldMap('video_width', 'video_width')
+		  ->addFieldDependence(
+			  'url_video',
+			  'use_video',
+			  '1'
+		  )
+		  ->addFieldDependence(
+			  'video_height',
+			  'use_video',
+			  '1'
+		  )
+		  ->addFieldDependence(
+			  'video_width',
+			  'use_video',
+			  '1'
+		  )
+	  );
+	  if ($object->getBannerImage()) {
       $fieldset->addField('image', 'label', array('label' => Mage::helper('bannerads')->__('Banner Image'), 'name' => 'image', 'value' => $imgPath, 'after_element_html' => '<img src="' . $imgPath . '" alt=" ' . $imgPath . '" height="120" width="120" />',));
     }
 
