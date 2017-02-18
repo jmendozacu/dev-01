@@ -78,7 +78,6 @@ Default layout, loads most of the pages
         <reference name="head">
           <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
           <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
-          <action method="addItem"><type>skin_js</type><name>js/custom-home.js</name></action>
         </reference>
     </cms_index_index>
 
