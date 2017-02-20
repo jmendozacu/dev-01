@@ -3982,7 +3982,7 @@ a.skip-link {
 }
 .nav-primary .title-viewall span.level2 {padding:12px 0; color:#FFD322; text-transform:capitalize; float:left; width:100%; padding-left:68px; padding-right:2px; position:relative;}
 .nav-primary > li.level0 {
-  padding: 10px 15px;
+  padding: 10px;
 }
 .nav-primary li {float:left;/*width:100%;*/ font-size:16px;  text-transform:capitalize; padding:0; line-height:24px;}
 .nav-primary li.level0 > ul.level0 {
@@ -4017,7 +4017,7 @@ a.skip-link {
   font-size: 17px;
   font-weight: 600;
 }
-
+.nav-primary li a{font-family: 'Futura';color:#252525;}
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
 .nav-primary .menu-content .title-viewall a {float:right; font-size:14px;  font-weight:bold; line-height:22px; color:#fff; padding-right:33px; position:relative;}
 .nav-primary .menu-content .title-viewall a:before {content:""; height:22px; width:22px; position:absolute; right:0px; top:0px; border-radius:100%; background:url(../images/arrow-right-white.png) no-repeat center center #FFC222;}
