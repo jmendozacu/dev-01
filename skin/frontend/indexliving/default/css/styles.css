@@ -3752,10 +3752,10 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 .home-brands .brand-banner {float:left; width:100%; margin-bottom:28px;}
 .main-home .home-brands .brand-banner li {float:left; width: 32.334%; margin-right:1.499%; border:solid 1px #AEAEAE;}
 .main-home .home-brands .brand-banner li:nth-child(3n){margin-right:0px;}
-.home-brand-content {float:left; width:100%;}
+.home-brand-content {float:left; width:100%;margin-bottom:30px;}
 .home-brand-content .amshopby-featured {padding:0px;}
-.home-brand-content .logo-item {text-align:center;}
-.home-brand-content .logo-item img {margin:auto; max-width:99.9%;}
+.home-brand-content .logo-item{text-align:center;border:1px solid #ebebeb;height:100px;}
+.home-brand-content .logo-item img{margin:auto;width:auto;height:100%;}
 .home-brand-content .owl-carousel .owl-wrapper-outer {}
 /* ============================================ *
  * Logo
