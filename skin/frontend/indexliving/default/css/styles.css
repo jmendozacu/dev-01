@@ -3436,6 +3436,17 @@ body {
 .call-us label  a { font-size:19px;  margin-left:5px; line-height:22px; font-weight:bold; text-decoration:none;color:#000;}
 .call-us span {font-size:10px; line-height:12px; display:block;}
 
+
+.social_top_head{float:left;}
+.social_top_head li { display: inline-block;margin-right: 10px; margin-top: 11px;}
+.social_top_head li:last-child{margin-right:14px;}
+.social_top_head li a{background-image: url("../images/social-icon-top-header.png");background-repeat:no-repeat; width:29px;height:0;padding-top:29px;overflow:hidden;background-position:0 0;float:left;display:block;}
+.social_top_head li a:hover{opacity:0.7;}
+.social_top_head li a.tw{background-position:0 -52px;}
+.social_top_head li a.yt{background-position:0 -104px;}
+.social_top_head li a.line{background-position:0 -156px;}
+
+
 .store-language-container{float:right; }
 .form-language .dropdown {min-width:50px;}
 .form-language .dropdown dd,
