@@ -730,6 +730,103 @@
     #header-nav .nav-primary > li.level0 {
         width: 100%;
         border-bottom: 1px solid #ebebeb;
+        padding: 0;
+    }
+
+    #header-nav .nav-primary > li.level0.parent-active {
+        background: #f8f8f8;
+    }
+
+    #header-nav .nav-primary > li.level0.parent a{
+        display: block;
+    }
+    #header-nav .nav-primary > li.level0.parent a.level0 {
+        padding: 0 15px;
+    }
+    #header-nav .nav-primary > li.level0.parent a.level0.has-children {
+        display: block;
+        width: calc(100% - 45px);
+        float: left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #363636;
+        height: 45px;
+        line-height: 45px;
+    }
+    #header-nav .nav-primary > li.level0.parent.parent-active a.level0.has-children {
+        float: right;
+        font-family: 'Kanit', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #000000;
+        padding: 0;
+    }
+
+    #header-nav .nav-primary > li.level0.parent.parent-active a.i-show-sub-menu {
+        float: left;
+        width: 45px;
+        height: 45px;
+        background: url(../images/arrow-left.png) no-repeat center center;
+    }
+
+    #header-nav .nav-primary > li.level0.parent a.i-show-sub-menu {
+        width: 45px;
+        height: 45px;
+        background: url(../images/arrow-right.png) no-repeat center center;
+        float: right;
+    }
+    #header-nav .nav-primary li.level0 > ul.level0 {
+        padding: 0;
+        position: static;
+        border: none;
+        background: #fff;
+        display: none;
+        overflow: hidden;
+    }
+    #header-nav .nav-primary li.level0 > ul.level0 > li.level1 {
+        width: 100%;
+        height: 45px;
+    }
+    #header-nav .nav-primary li.level0 > ul.level0 > li.level1.parent {
+        width: 100%;
+        height: auto;
+    }
+
+    #header-nav .nav-primary li.level0 > ul.level0 > li.level1 > a {
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #363636;
+        padding: 0 10px;
+    }
+
+    #header-nav .nav-primary li.level0 > ul.level0 > li.level1.parent > a {
+        display: block;
+        width: calc(100% - 45px);
+        float: left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #363636;
+        height: 45px;
+        line-height: 45px;
+    }
+    #header-nav .nav-primary li.level0 > ul.level0 > li.level1.parent > a.i-show-sub-menu {
+        width: 45px;
+        height: 45px;
+        background: url(../images/arrow-mobile3.png) no-repeat center center;
+        float: right;
+    }
+
+    #header-nav .nav-primary li.level0 > ul.level0 > li.level1.parent.sub-active > a.i-show-sub-menu {
+        width: 45px;
+        height: 45px;
+        background: url(../images/arrow-mobile2.png) no-repeat center center;
+        float: right;
     }
 
     .banner-static-home li {
@@ -1185,11 +1282,9 @@
     }
 
     .nav-primary li.level1:hover {
-        background-color: #363636;
     }
 
     .nav-primary li.level1 > a:hover {
-        background-color: #363636;
     }
 
     .box-top-menu .nav-primary li.level1 > .arrow {
@@ -1252,13 +1347,15 @@
     .nav-primary li.subcat li.level2 a {
         width: 100%;
         float: left;
-        line-height: 30px;
-        padding: 10px 10%;
-        border-bottom: solid 1px #E6E6E6;
+        line-height: 35px;
+        padding: 0 20px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #363636;
     }
 
     .nav-primary li.subcat:nth-child(1) {
-        border-top: solid 1px #E6E6E6;
     }
 
     .nav-primary li.subcat ul ul,
