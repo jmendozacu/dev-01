@@ -374,7 +374,10 @@
     }
 
 }
+@media (max-width: 959px) {
+    .box-home-list-products .category-products .products-grid > li{width:31%;margin-right: 2%;}
 
+}  
 @media (max-width: 922px) {
     .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
         min-height: 58px;
