@@ -35,3 +35,9 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+  font-family: 'DBYordX';
+  src: url('fonts/DBYordX.eot?#iefix') format('embedded-opentype'),  url('fonts/DBYordX.woff') format('woff'), url('fonts/DBYordX.ttf')  format('truetype'), url('fonts/DBYordX.svg#DBYordX') format('svg');
+  font-weight: normal;
+  font-style: normal;
+} 
