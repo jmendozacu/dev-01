@@ -3754,7 +3754,7 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 .main-home .home-brands .brand-banner li:nth-child(3n){margin-right:0px;}
 .home-brand-content {float:left; width:100%;margin-bottom:30px;}
 .home-brand-content .amshopby-featured {padding:0px;}
-.home-brand-content .logo-item{text-align:center;border:1px solid #ebebeb;height:100px;}
+.home-brand-content .logo-item{text-align:center;border:1px solid #ebebeb;height:100px;overflow:hidden;}
 .home-brand-content .logo-item img{margin:auto;width:auto;height:100%;}
 .home-brand-content .owl-carousel .owl-wrapper-outer {}
 /* ============================================ *
