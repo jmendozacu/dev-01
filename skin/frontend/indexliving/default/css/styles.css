@@ -3656,10 +3656,12 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 }
 
 .home-blog .owl-item h3{
-  font-size: 24px;
+  font-size: 21px;
   font-weight: normal;
   text-align: left;
   text-transform: capitalize;
+  font-family: 'Futura','DBYordX';
+  margin-top: 10px;
 }
 .home-blog .owl-carousel .owl-controls .owl-nav .owl-prev, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev {
   background: url(../images/slider-prev.png) center center no-repeat;
