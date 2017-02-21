@@ -3455,9 +3455,9 @@ body {
 .form-language .dropdown ul { margin:0px; padding:0px; float:left; width:100%; }
 .form-language .dropdown dd { position:relative; z-index:1; }
 .form-language .dropdown a {float:left; width:100%;}
-.form-language .dropdown dt a {float:left; width:50px; height:50px; font-weight:bold; text-align:center; text-align:center; line-height:20px; padding:20px 0; background:#FFC222; color:#000;}
-.form-language .dropdown dt a span {width:100%; padding-right:10px; position:relative; }
-.form-language .dropdown dt a span:after {content:""; position:absolute; width:0px; height:0px; top:50%; margin-top:-3px; right:5px; border-top:solid 6px #000; border-right:solid 4px transparent; border-left:solid 4px transparent;}
+.form-language .dropdown dt a {float:left; width:50px; height:50px; font-weight:bold; text-align:center; text-align:center; line-height:20px; padding:20px 0; background:#000; color:#FFF;}
+.form-language .dropdown dt a span {width:100%; padding-right:10px; position:relative; color:#FFF;}
+.form-language .dropdown dt a span:after {content:""; position:absolute; width:0px; height:0px; top:50%; margin-top:-3px; right:5px; border-top:solid 6px #FFF; border-right:solid 4px transparent; border-left:solid 4px transparent;}
 .form-language .dropdown dd ul { background:#252525;  color:#fff; display:none; right:0px; padding:0px; position:absolute; top:0; width:auto; min-width:100%; list-style:none;}
 
 .form-language .dropdown dd ul li a { padding:8px 5px; text-align:center; display:block; color:#fff;}
