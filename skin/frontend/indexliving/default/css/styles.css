@@ -3674,6 +3674,11 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
   background-color: rgba(235,235,235,0.9);
   background-size: 35%;
 }
+
+.home-video li { height: 310px;}
+.home-video li iframe {width: 100%;height: 310px;}
+
+
 .home-blog .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
   background-color: rgba(255,194,34,0.9);
 }
