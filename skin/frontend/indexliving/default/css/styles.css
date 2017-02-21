@@ -4030,6 +4030,8 @@ a.skip-link {
   font-weight: 600;
 }
 .nav-primary li a{font-family: 'Futura';color:#252525;}
+.nav-primary li.level0 a:hover{border-bottom: solid 2px #FFC226;text-decoration: none;}
+.nav-primary li.level1 a:hover{border:none;text-decoration: underline;}
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
 .nav-primary .menu-content .title-viewall a {float:right; font-size:14px;  font-weight:bold; line-height:22px; color:#fff; padding-right:33px; position:relative;}
 .nav-primary .menu-content .title-viewall a:before {content:""; height:22px; width:22px; position:absolute; right:0px; top:0px; border-radius:100%; background:url(../images/arrow-right-white.png) no-repeat center center #FFC222;}
