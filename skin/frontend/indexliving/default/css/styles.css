@@ -5287,6 +5287,8 @@ body.catalogsearch-result-index .page-title h1 {
 	min-height:268px;
 }
 
+.box-home-list-products .block-highlight .flip-container{min-height:247px;}
+
 /* flip speed goes here */
 .flipper {
 	position: relative;
