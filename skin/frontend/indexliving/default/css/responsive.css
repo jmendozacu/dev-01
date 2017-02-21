@@ -329,7 +329,12 @@
 }
 @media (max-width: 1061px) {
     .page-header-container .box-right .top-links{ margin: 7px 15px 7px 0px;}
-} 
+    .searchautocomplete {width: 420px;}
+}   
+@media (max-width: 1043px) {
+    #header-search{width: 42%;}
+    .searchautocomplete {width: 400px;}
+}
 @media (max-width: 991px) {
     .product-viewed-large-desktop {
         display: none
