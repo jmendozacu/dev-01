@@ -112,6 +112,8 @@
     .top_links_head:hover .title_top_head{background:#fdbc12;}
     .top_links_head .topheader-links li{float: none;} 
     .nav-primary > li.level0 {padding: 10px 8px; font-size:15px;}
+
+    .box-home-list-products .block-highlight .flip-container{min-height:0;}
        
     .checkout-list-step ul {
         width: 100%;
