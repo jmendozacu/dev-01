@@ -325,7 +325,9 @@
         margin-left: -40% !important;
     }
 }
-
+@media (max-width: 1061px) {
+    .page-header-container .box-right .top-links{ margin: 7px 15px 7px 0px;}
+} 
 @media (max-width: 991px) {
     .product-viewed-large-desktop {
         display: none
