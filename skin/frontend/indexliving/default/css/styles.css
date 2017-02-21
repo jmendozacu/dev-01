@@ -3418,7 +3418,7 @@ body {
   }
 }
 .header-language-container .title_top_head{display: none;}
-.header-language-container .topheader-links {float:left; }
+.top_links_head, .header-language-container .topheader-links {float:left; }
 .header-language-container .topheader-links li {float:left; margin-right:2px;}
 .topheader-links li a {transition:0.2s; -webkit-transition:0.2s; -moz-transition:0.2s; display:block; min-width:90px; text-align:center; padding:10px; line-height:32px; font-size:12px; color:#000; background:#ffc222;} 
 .topheader-links li a:hover {background:#FFC222; text-decoration:none;}
