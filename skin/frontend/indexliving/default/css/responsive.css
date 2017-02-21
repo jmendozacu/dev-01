@@ -11,7 +11,9 @@
 .product-viewed-mobile-tablet {
     display: none;
 }
-
+@media (min-width: 1213px) {
+    .searchautocomplete{width: 530px;}
+} 
 @media (min-width: 1200px) {
     .compare-popup {
         min-width: 1200px;
