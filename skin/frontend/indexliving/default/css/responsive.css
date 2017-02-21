@@ -978,6 +978,7 @@
     }
 
     .owl-carousel .owl-controls .owl-nav .owl-prev {
+        left: 0;
         background: url(../images/slider-prev5.png) no-repeat 0 0;
     }
     .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
@@ -985,6 +986,7 @@
     }
 
     .owl-carousel .owl-controls .owl-nav .owl-next {
+        right: 0;
         background: url(../images/slider-next5.png) no-repeat 100% 0;
     }
     .owl-carousel .owl-controls .owl-nav .owl-next:hover {
@@ -1020,6 +1022,9 @@
         width: 30px;
         background: url(../images/slider-prev5.png) center center no-repeat;
     }
+    .home-video li {
+        height: auto;
+    }
     .home-blog .owl-carousel .owl-controls .owl-nav .owl-prev, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev, .ideas-inspiration .owl-carousel .owl-controls .owl-nav .owl-prev {
         left: -10px;
         background: url(../images/slider-prev5.png) center center no-repeat;
@@ -1039,7 +1044,13 @@
         background: url(../images/slider-next5_over.png) no-repeat 100% 0;
     }
     .box-home-list-products .banner-left {
-        display: none;
+        /*display: none;*/
+        padding: 0 17px;
+        width: 100%;
+        text-align: center;
+    }
+    .box-home-list-products .banner-left img {
+        display: inline-block;
     }
     .box-home-decor .home-decor-content {
         padding-top: 30px;
@@ -1693,6 +1704,55 @@
 
     .breadcrumbs li {
         font-size: 12px;
+    }
+    .newsletter-footer {
+    }
+    .newsletter-footer  .block-content {
+        padding: 0;
+        margin: 10px 0;
+    }
+    .newsletter-footer  .block-content .input-box {
+        height: auto;
+    }
+
+    .logo-newsletter,
+    .newsletter-footer #newsletter-validate-detail {
+        width: 100%;
+    }
+
+    .newsletter-footer {
+        background-position: center bottom
+    }
+
+    .newsletter-footer #newsletter-validate-detail {
+        margin: 0;
+        position: static;
+    }
+
+    .logo-newsletter {
+        position: relative;
+    }
+
+    .logo-newsletter:before,
+    .logo-newsletter:after {
+        content: "";
+        width: 10px;
+        height: 100%;
+        background: #111;
+        position: absolute;
+        top: 0px;
+    }
+
+    .logo-newsletter:before {
+        left: -10px;
+    }
+
+    .logo-newsletter:after {
+        right: -10px;
+    }
+    .logo-newsletter, .newsletter-footer #newsletter-validate-detail {
+        width: 100%;
+        padding: 15px 0;
     }
 
     /* Category page */
@@ -3385,43 +3445,6 @@
 
     .box-home-decor .title-decor {
         font-size: 25px;
-    }
-
-    .logo-newsletter,
-    .newsletter-footer #newsletter-validate-detail {
-        width: 100%;
-    }
-
-    .newsletter-footer {
-        background-position: center bottom
-    }
-
-    .newsletter-footer #newsletter-validate-detail {
-        margin: 10px 0 15px;
-        float: left;
-        position: static;
-    }
-
-    .logo-newsletter {
-        position: relative;
-    }
-
-    .logo-newsletter:before,
-    .logo-newsletter:after {
-        content: "";
-        width: 10px;
-        height: 100%;
-        background: #111;
-        position: absolute;
-        top: 0px;
-    }
-
-    .logo-newsletter:before {
-        left: -10px;
-    }
-
-    .logo-newsletter:after {
-        right: -10px;
     }
 
     /* my account */
