@@ -84,7 +84,7 @@
     }
     .top_links_head .title_top_head {
         display: block !important;
-        background: #f1b722;
+        background: #ffc222;
         color: #000;
         padding: 16px 27px;
         position: relative;
@@ -109,7 +109,9 @@
         display: none;
     }
     .top_links_head:hover .topheader-links{display: block;}
+    .top_links_head:hover .title_top_head{background:#fdbc12;}
     .top_links_head .topheader-links li{float: none;} 
+    .nav-primary > li.level0 {padding: 10px 8px; font-size:15px;}
        
     .checkout-list-step ul {
         width: 100%;
