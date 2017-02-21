@@ -3703,7 +3703,7 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 .box-home-list-products .new-arrival .title-style1 span strong{
   font-size: 26px;
 }
-.box-home-list-products .banner-left {float:left; width: 23.75%;}
+.box-home-list-products .banner-left {float:left; width: 24.75%;}
 .box-home-list-products .banner-left li{margin-bottom:30px;}
 .title-style1 {float:left; width:100%; margin-bottom:40px; text-align:left; position:relative; }
 .title-style1:before {content:""; position:absolute; height:7px; width:80%; background:#F4F4F4; bottom:4px; right:0;}
