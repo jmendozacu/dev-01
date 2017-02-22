@@ -3637,7 +3637,7 @@ body {
   min-height: 45px;
   margin-bottom: 10px;
 }
-body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DBYordX';font-size:22px;}
+body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DBYordX';font-size:20px;}
 .ideas-inspiration .list-ideas ul li a span.text{
   font-size: 18px;
   color: #000000;
