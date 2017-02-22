@@ -196,7 +196,7 @@
     background-color: rgba(235,235,235,0.9);
     background-size: 35%;
     top:50%;
-    left: -20px;
+    left: -50px;
     position: absolute;
 }
 .main-banners  .bx-wrapper .bx-controls-direction a.bx-next {
@@ -204,7 +204,7 @@
     background-color: rgba(235,235,235,0.9);
     background-size: 35%;
     top:50%;
-    right: -20px;
+    right: -50px;
     position: absolute;
 }
 .main-banners  .bx-wrapper .bx-controls-direction a.bx-prev:hover {
