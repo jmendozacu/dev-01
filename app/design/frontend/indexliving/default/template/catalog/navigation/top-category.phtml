@@ -5,6 +5,7 @@
         <?php foreach($_categories as $_category): ?>
             <li>
                 <?php
+                    $_category = Mage::getModel('catalog/category')->load($_category->getId());
                     $_iconHtml   = '';
                     $iconUrl = false;
                     if ($icon = $_category->getCategoryIcon()) {
@@ -12,9 +13,9 @@
                     }
                 ?>
 
-                <?php if ($_iconUrl): ?>
+                <?php if ($iconUrl): ?>
                     <?php
-                    $_iconHtml = '<img src="'.$_imgUrl.'" alt="'.$_category->getName().'" title="'.$_category->getName().'" />';
+                    $_iconHtml = '<img src="'.$iconUrl.'" alt="'.$_category->getName().'" title="'.$_category->getName().'" />';
                     $_iconHtml = Mage::helper('catalog/output')->categoryAttribute($_category, $_iconHtml, 'image');
                     ?>
                 <?php else: ?>
