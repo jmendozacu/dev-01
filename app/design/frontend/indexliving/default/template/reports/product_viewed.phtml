@@ -27,11 +27,11 @@
 ?>
 <?php if ($_products = $this->getRecentlyViewedProducts()): ?>
 <div class="block-recently-viewed product-viewed-large-desktop">
-    <div class="box-title">
+    <div class="box-title active">
       <span><?php echo $this->__('Recently View') ?></span>
       <span id="product-viewed-minimize"><?php echo $this->__('-') ?></span>
     </div>
-    <div class="box-content">
+    <div class="box-content" style="display: none;">
         <ol id="recently-viewed-items" class="mini-products-list">
         <?php $i = 0; foreach ($_products as $_item): ?>
             <li class="item">
@@ -46,7 +46,7 @@
                     </p>
                 </div>
             </li>
-				<?php $i++; if($i > 2): break;?><?php endif; ?>		
+                <?php $i++; if($i > 2): break;?><?php endif; ?>     
         <?php endforeach; ?>
         </ol>
         <script type="text/javascript">decorateList('recently-viewed-items');</script>
