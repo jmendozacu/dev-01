@@ -56,6 +56,7 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
     $dealerCollection = $this->getProductDealer();
     $dealerIds = $dealerCollection->getColumnValues('dealerlocator_id');
     $tagCollection = Mage::getModel('dealerlocator/tag')->getCollection()->addFieldToFilter('dealer_id', array('in' => $dealerIds));
+    $tagCollection->getSelect()->order('tag', 'asc');
     $tags = array();
     if (count($tagCollection)) {
       foreach ($tagCollection as $tag) {
