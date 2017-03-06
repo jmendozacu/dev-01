@@ -1,0 +1,300 @@
+.mastercheckout_main .clear {
+
+clear: both;
+float: none;
+display: block;
+
+}
+.mastercheckout_main {
+	border: 1px solid #c0c0c0;
+	background-color: #FFF;
+
+}
+.mastercheckout_main h3.mastercheckout-title, .mastercheckout_payment_titles, .mastercheckout_shipment_titles {
+	display: block;
+	border-bottom: 1px solid #c0c0c0 !important;
+	padding: 5px 20px 5px 20px !important;
+	background-color: #e7e7e7;
+	color: #999;
+	text-shadow: 0px 1px 0px #ffffff;
+	font-size: 18px !important;
+	font-weight: normal;
+	background: url("images/gradient.png") repeat-x scroll 0 0;
+	line-height: 1.35;
+}
+.mastercheckout_main .mastercheckout_payment_titles {
+	border-right: 1px solid #c0c0c0;
+}
+.mastercheckout_main .input-text {
+   padding: 6px;
+   font-size: 14px;
+   background: url("images/bg-input.gif") no-repeat scroll 0 0 transparent;
+   border: 1px solid #BBBBBB;
+   color: #555555;
+}
+.mastercheckout_main .input-text:focus {
+	border: 1px solid #F60;
+	background-color: #FFF;
+}
+.mastercheckout_main .input-box select{
+   padding: 5px;
+   font-size: 14px;
+   background: url("images/bg-input.gif") no-repeat scroll 0 0 transparent;
+   border: 1px solid #BBBBBB;
+   color: #555555;
+   width: 267px;
+}
+#registered_login {
+	border-bottom: 1px solid #c0c0c0;
+}
+#checkout_steps .inner {
+	padding: 20px;
+}
+#checkout_steps #new_user_login .inner {
+	padding: 0px 20px 0px 20px;
+}
+#checkout_billing form, #checkout_shipping form{
+	padding: 20px 20px 0px 20px;
+	display: block;
+}
+.checkout_title {
+	border-bottom: 1px solid #c0c0c0;
+	height: 60px;
+	background-color: #e7e7e7;
+	background: url("images/gradient40.png") repeat-x scroll 0 0 transparent;
+}
+.mastercheckout_step_deault {
+	display: inline-block;
+	float: left;
+	width: 33%;
+}
+#checkout_steps .form-list li {
+	display: inline-block;
+	font-weight:bold;
+}
+#checkout_steps .form-list li em {
+	color:red;
+}
+#login-form .form-list span {
+	display: inline-block;
+	width: 87px;
+	text-align: right;
+}
+#login-form .form-list .input-box {
+	clear: both;
+	display: inline-block;
+	margin-left: 0px;
+	width: auto;
+	padding-left: 8px;
+}
+#login-form .form-list li {
+	width: 427px;
+}
+#login-form .form-list input.input-text {
+	width: 317px;
+}
+.checkout_padd {
+	padding-bottom: 15px;
+	padding-left: 0;
+	padding-right: 15px;
+	padding-top: 15px;
+}
+.billing-buttons-width {
+	width:602px;
+}
+.form-list li.control label {
+	padding-right: 38px;
+}
+.mastercheckout_address {
+	display: inline-block;
+	float: left;
+	padding: 0;
+	width: 25%;
+}
+.masterchechkout_payment_test {
+	float: left;
+	width: 400px;
+	display: inline-block
+}
+.mastercheckout_payment_information {
+	display: inline-block;
+	float: left;
+	width: 50%;
+	padding: 0;
+}
+.mastercheckout_payment_information .inner {
+	border-right: 1px solid #c0c0c0;
+	min-height: 250px;
+}
+.mastercheckout_shipping_method {
+	display: inline-block;
+	float: right;
+	width: 50%;
+	padding: 0;
+}
+.mastercheckout_steps {
+	display:inline-block;
+	float: left;
+	padding-bottom: 6px;
+}
+.mastercheckout_step_active div {
+	border:6px;
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background-color:#F18200;
+	background: url("images/active.png") no-repeat scroll 0 0 transparent;
+}
+.mastercheckout_step_passive div {
+	border:6px;
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	background-color:#ccc;
+	background: url("images/passive.png") no-repeat scroll 0 0 transparent;
+}
+.mastercheckout_step_active {
+	color: #FFFFFF!important;
+	display: inline-block;
+	font-size: 22px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.mastercheckout_step_passive {
+	color: #FFFFFF !important;
+	display: inline-block;
+	font-size: 22px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.mastercheckout_step_active > span {
+	color: #333333;
+	display: inline-block;
+	font-size: 18px;
+	margin: 5px 0px 0px 5px;
+	text-shadow: 0px 1px 0px #ffffff;
+}
+.mastercheckout_step_passive > span {
+	font-size: 18px;
+	color:#a9a6a6;
+	display: inline-block;
+	margin: 5px 0px 0px 5px;
+	text-shadow: 0px 1px 0px #ffffff;
+	color: #999;
+}
+.mastercheckout_address span {
+	font-size:18px;
+	font-weight: bold
+}
+.checkout-agreements .agree label {
+	text-decoration: underline;
+	font-size: 14px;
+}
+.f-center {
+	text-align: center;
+	padding-right: 171px;
+	display: inline-block;
+}
+.mastercheckout_payment_method_title {
+	font-size:18px;
+	font-weight: bold
+}
+.mastercheckout_shipping_method_title {
+	font-size:18px;
+	font-weight: bold
+}
+.mastercheckout_active {
+	text-align: center;
+	vertical-align: middle;
+}
+.mastercheckout_main #mastercheckout-login .mastercheckout_active {
+	margin-left: 20px;
+}
+.mastercheckout_main .buttons-set {
+	margin: 0px;
+}
+.mastercheckout_main .button {
+}
+.mastercheckout_main .button span {
+	height: 26px;
+	font-size: 18px;
+	font-weight: normal;
+	padding: 4px 20px 0px 20px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.mastercheckout_main .button span span {
+	padding: 0px;
+}
+.mastercheckout_main .billing-buttons-width, .mastercheckout_main .buttons-set {
+	width: auto;
+	padding: 20px 20px 20px 20px;
+	border: 0px !important;
+	border-top: 1px solid #c0c0c0 !important;
+}
+.mastercheckout_main .buttons-set .required {
+	display: inline-block;
+	float: left;
+}
+.mastercheckout_main .form-list .wide {
+	width: 100%;
+}
+.mastercheckout_main #checkout_review .innerblock {
+	padding: 20px;
+}
+.mastercheckout_main #checkout_review .inner {
+	padding: 10px;
+}
+.mastercheckout_main #checkout_review .innerblock h3 {
+	padding: 5px 10px 5px 10px !important;
+}
+.mastercheckout_address {
+	width: 205px;
+	margin-right: 10px;
+	border: 1px solid #c0c0c0;
+}
+.mastercheckout_payment {
+	width: 205px;
+	float: left;
+	margin-right: 10px;
+	border: 1px solid #c0c0c0;
+}
+.mastercheckout_shippingmethod {
+	width: 205px;
+	float: left;
+	border: 1px solid #c0c0c0;
+}
+
+.mastercheckout_main button.btn-checkout span {
+	height: 40px !important;
+	padding: 0 0 0 9px !important;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+.mastercheckout_main button.btn-checkout span span {
+	padding: 0 25px 0 16px !important;
+}
+
+.mastercheckout_main #checkout_billing .buttons-set{ border-top: 0px !important;   }
+.mastercheckout_main h3.product-name{ background-color: none;  }
+
+.mastercheckout_main .forgot { color: #c0c0c0; font-size: 14px; text-decoration: none; padding: 5px; }
+.mastercheckout_main .forgot:hover { color: #DE5400; text-decoration: none; }
+
+.mastercheckout_main .checkout-agreements .agree{ padding: 0px 20px 0px 20px; }
+.mastercheckout-blocks { margin-bottom: 40px; }
+
+.mastercheckout_main .back-link { padding: 9px 20px 5px 0px; font-size: 14px; line-height: 14px !important; }
+.mastercheckout_main .buttons-set p.required {
+    margin: 9px 0 0 0;
+}
+
+.mastercheckout-checkbox {
+    display: block !important;
+    margin: 0 !important;
+}
+
+.mastercheckout_clickable {
+    cursor: pointer;
+}

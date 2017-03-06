@@ -1,0 +1,128 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Conf
+ */
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $imageWidth = (int)Mage::getStoreConfig('amconf/size/preview_width');
+    $imageHeight = (int)Mage::getStoreConfig('amconf/size/preview_height');
+    $smallImageSize = (int)Mage::getStoreConfig('amconf/size/thumb');
+    $itemCount = (int)Mage::getStoreConfig('amconf/carousel/visible_items');
+?>
+<div class="product-image-desk">
+<?php if((Mage::getStoreConfig('amconf/zoom/enable') || Mage::getStoreConfig('amconf/lightbox/enable'))) : ?>
+    <script type="text/javascript" src="<?php echo Mage::getDesign()->getSkinUrl('js/amasty/amconf/zoomer.js', array()) ?>"></script>
+<?php endif;?>
+<?php if ('true' == (string) Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
+                <div class="amlabel-div">
+                <?php echo Mage::helper('amlabel')->getLabels($_product, 'product') ?>
+ <?php endif; ?>
+<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+<div class="product-image">
+    <?php
+        $_img = '<img id="amasty_zoom" 
+					width="'. $imageWidth .'"
+					data-zoom-image="'.$this->helper('catalog/image')->init($_product, 'image').'" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imageWidth, $imageHeight).'" 
+					alt="'.$this->htmlEscape($this->getImageLabel()).'"
+				/>';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</div>
+
+<?php else: ?>
+<div class="product-image">
+    <?php
+        $_img = '<img id="amasty_zoom" data-zoom-image="'.$this->helper('catalog/image')->init($_product, 'image').'" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imageWidth, $imageHeight).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        echo $_helper->productAttribute($_product, $_img, 'image');
+    ?>
+</div>
+
+<?php endif; ?>
+<?php if ('true' == (string)Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
+                </div>
+            <?php endif; ?>
+
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views" style="top:<?php echo ($imageWidth - 270)/2?>px; width:<?php echo $smallImageSize ?>px">
+    <div style="position: relative;">
+        <div id="amasty_gallery">
+             <?php foreach ($this->getGalleryImages() as $_image): ?>
+                <a rel="group"  title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"  <?php echo Mage::getStoreConfig('amconf/lightbox/thumbnail_lignhtbox')?  ' class="fancybox" href="' . $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()) . '"':""; ?> data-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($imageWidth, $imageHeight); ?>" data-zoom-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>"  >
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($smallImageSize); ?>" width="<?php echo $smallImageSize;?>" height="<?php echo $smallImageSize;?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+                </a>
+             <?php endforeach; ?>
+        </div> 
+        <?php if (count($this->getGalleryImages()) > $itemCount && Mage::getStoreConfig('amconf/carousel/enable')): ?>
+            <div id="prevGallery" style="top:<?php echo $smallImageSize/2 - 17;?>px" class="MagicScrollArrows MagicScrollArrowPrev"></div>
+            <div id="nextGallery" style="top:<?php echo $smallImageSize/2 - 17;?>px" class="MagicScrollArrows MagicScrollArrowNext"></div>
+             <?php if (Mage::getStoreConfig('amconf/carousel/pagination')): ?>
+                <div id="ampagination" style="margin-top: 10px;"></div>
+             <?php endif; ?>
+        <?php endif; ?>
+     </div>
+</div>
+<?php endif;?>
+<script type="text/javascript" >
+    try {
+        AmZoomerObj = new AmZoomer(<?php echo Mage::helper('amconf/zoom')->jsParam()?>);
+        AmZoomerObj.loadCarousel();
+    }
+    catch(ex){console.debug(ex);}
+</script>
+</div>
+<div class="product-image-mobile" style="display:none;">
+	<?php if ('true' == (string) Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
+		<div class="amlabel-div">
+		<?php echo Mage::helper('amlabel')->getLabels($_product, 'product') ?>
+	<?php endif; ?>
+		<ul class="product-image-mobile-slider">
+			<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+			<li class="main-image">
+				<?php
+					$_img = '<img 
+						width="500"
+						src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500).'" 
+						alt="'.$this->htmlEscape($this->getImageLabel()).'"
+					/>';
+					echo $_helper->productAttribute($_product, $_img, 'image');
+				?>
+			</li>
+
+			<?php else: ?>
+			<li class="main-image">
+				<?php
+					$_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(500).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" />';
+					echo $_helper->productAttribute($_product, $_img, 'image');
+				?>
+			</li>
+			<?php endif; ?>
+			<?php if (count($this->getGalleryImages()) > 0): ?>
+				<?php foreach ($this->getGalleryImages() as $_image): ?>
+					<?php if($_product->getImage() != $_image['file']): ?>
+					<li class="test">
+						<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(500); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+					</li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+ <?php if ('true' == (string)Mage::getConfig()->getNode('modules/Amasty_Label/active')): ?>
+		</div>
+	<?php endif; ?>
+	<script type="text/javascript">              
+		jQuery(document).ready(function () {
+			jQuery('.product-image-mobile-slider').bxSlider({
+				auto: true,
+				infiniteLoop:<?php if (count($this->getGalleryImages()) > 1): ?> true <?php else:?> false <?php endif ?>,
+				mode: 'horizontal',
+				controls: false,
+				speed: 2000,
+				preloadImages: 'visible',
+				pager: <?php if (count($this->getGalleryImages()) > 1): ?> true <?php else:?> false <?php endif ?>,
+				captions: false
+			});
+		});        
+	</script>
+</div>

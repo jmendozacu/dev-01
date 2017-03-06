@@ -1,0 +1,73 @@
+<?php
+/**
+ * @author		Sashas
+ * @category    Sashas
+ * @package     Sashas_NotificationBar
+ * @copyright   Copyright (c) 2014 Sashas IT Support Inc. (http://www.sashas.org)
+ * @license     http://opensource.org/licenses/GPL-3.0  GNU General Public License, version 3 (GPL-3.0)
+ */
+?>
+<?php if ($this->ShowBar()):?>
+<style>
+<!--
+.sashas-notificationbar-popup {
+	background: none repeat scroll 0 0 <?php echo $this->getColor();?>;
+    height: 200px;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -100px;
+    position: fixed;
+    visibility: visible;
+    top: 50%;
+	/*  visibility: hidden;*/
+    width: 300px;
+    z-index: 160010;
+    /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -webkit-border-radius: 5px;
+	/* Firefox 1-3.6 */
+	-moz-border-radius: 5px;
+ 	/* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+	border-radius: 5px;
+}
+.sashas-notificationbar-popup #close {
+	cursor:pointer;
+	right: 20px;
+	position: absolute;
+	top:10px;
+}
+.sashas-notificationbar-fade {
+	    background-color: #000000;
+	    height: 100%;
+	    left: 0;
+	    margin: 0;
+	    opacity: 0.5;
+	    padding: 0;
+	    position: fixed;
+	   /* top: 0;*/
+	    visibility: visible;
+	   /* visibility: hidden;*/
+	    width: 100%;
+	    z-index: 160000;
+}
+.notificationbar-popup-container { margin:auto; padding-top: 30px;}
+<?php echo $this->getCss();?>
+-->
+</style>
+<div id="notificationbar-popup" class="sashas-notificationbar-popup">
+<div class="popup-close"><sup><a id="close" href="javascript:void(0);" onclick="hidepopup();">[close]</a></sup></div>
+<?php echo $this->getPopupHtml(); ?>
+<div class="notificationbar-popup-container"><?php echo $this->__($this->getPopupText())?></div>
+</div>
+<div id="notificationbar-fade" class="sashas-notificationbar-fade" onclick="hidepopup();"></div>
+<script  type="text/javascript" language="javascript">
+function hidepopup() {
+	 $('notificationbar-popup').hide();
+	 $('notificationbar-fade').hide();
+	 <?php if ($this->useSession()): ?>
+	 new Ajax.Request('<?php echo Mage::getUrl('notificationbar/notificationbar/closepopup');?>', {
+		  method: 'get'
+		  });
+	 <?php endif;?>
+}
+</script>
+<?php endif;?>

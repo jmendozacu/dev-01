@@ -1,0 +1,78 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="block block-subscribe">
+    <div class="logo-newsletter">
+      <img alt="logo" src="<?php echo $this->getSkinUrl('images/logo-newsletter.png') ?>" />
+    </div>
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail">
+        <div class="block-content">
+            <div class="input-box">
+               <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="subscriber_email" placeholder="<?php echo $this->__('Sign up for our newsletter') ?>" onfocus="this.placeholder = ''" onblur="this.placeholder = '<?php echo $this->__('Sign up for our newsletter') ?>'" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" />
+            </div>
+						<img id="newsletter-subscribe-processing" style="display:none;" alt="<?php echo $this->__('Loading...')?>" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif')?>" />
+            <button type="button" id="newsletter-subscribe-btn" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+				var url = '<?php echo $this->getFormActionUrl() ?>';
+				$('newsletter-subscribe-btn').observe('click', function() {
+					if($('subscriber_email').getValue() == ''){
+						if($('advice-required-entry-subscriber_email')){
+							$('advice-required-entry-subscriber_email').remove();
+						}
+						$('subscriber_email').insert({
+							after: "<div class='validation-advice' id='advice-required-entry-subscriber_email'><?php echo $this->__('This is a required field.')?></div>"
+						});
+					}else{
+						new Ajax.Request(
+							url,
+							{
+								parameters: {
+									subscriber_email: $('subscriber_email').getValue()
+								},
+								method: 'GET',
+								onLoading: function() {
+									if($('advice-required-entry-subscriber_email')){
+										$('advice-required-entry-subscriber_email').remove();
+									}
+									ajaxCart.ajaxLoading.show();
+								},
+								
+								onSuccess: function(transport){
+									ajaxCart.ajaxLoading.hide();
+									ajaxCart.optionsPopup.update(transport.responseJSON.html);
+									ajaxCart.optionsPopup.show();
+								}
+							}
+						)
+					}
+				});
+    //]]>
+    </script>
+</div>

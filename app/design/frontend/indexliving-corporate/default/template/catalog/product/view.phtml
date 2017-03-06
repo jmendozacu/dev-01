@@ -1,0 +1,237 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php
+if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
+//	echo Mage::helper('amshopby')->showLinks()
+}
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><div class="page-container"><?php echo $this->getMessagesBlock()->toHtml() ?></div></div>
+<div class="product-view">
+    <div class="product-essential">
+			<div class="page-container">
+        <form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="product-img-box">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+
+            <div class="product-shop">
+                <div class="product-name">
+                    <span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+				</div>
+                <div class="product-sku">
+                    <span><?php  echo $this->__('SKU: ');?></span><span id="product-sku"><?php echo $_helper->productAttribute($_product, $_product->getSku(), 'sku') ?></span>
+                </div>
+                    <?php if ($_product->getPromotionText()):?>
+                        <div class="promotion-text">
+                            <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getPromotionText()), 'promotion_text') ?></div>
+                        </div>
+                    <?php endif;?>
+                    <?php if ($_product->getShortDescription()):?>
+                        <div class="short-description">
+                                <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        </div>
+                    <?php endif;?>
+                    <div class="extra-info">
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short', false)?>
+										<?php //echo $this->getChildHtml('product_type_availability'); ?>
+                </div>
+
+          <div class="price-info">
+            <?php echo $this->getPriceHtml($_product); ?>
+            <?php echo $this->getChildHtml('bundle_prices') ?>
+            <?php echo $this->getTierPriceHtml() ?>
+            <?php echo $this->getChildHtml('alert_urls') ?>
+          </div>
+          <?php
+              $final_price = $_product->getFinalPrice();
+              $price = $_product->getPrice();
+              $discount_percent = 0;
+              if ($price > 0) $discount_percent = round(($price - $final_price) / $price * 100, 0, PHP_ROUND_HALF_UP);
+            ?>
+            <?php if ($discount_percent) :?>
+              <br class="clearfix">
+              <div class="save-price-percent clearfix"><span><?php //echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
+            <?php endif; ?>
+
+								<?php if(Mage::helper('core')->isModuleEnabled('MarginFrame_Shopby')):?>
+									<?php echo Mage::helper('amshopby')->showLinks($_product);?>
+								<?php endif;?>
+
+                <?php echo $this->getChildHtml('other');?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <div<?php if($_product->getTypeID()){ $productType = $_product->getTypeID(); if( $productType === 'bundle'){echo ' class="bundle"'; }} ?>><?php echo $this->getChildChildHtml('container1', '', true, true) ?></div>
+                <?php endif;?>
+								<div class="add-to-cart-wrapper">
+									<?php echo $this->getChildHtml('product_type_data') ?>
+									<?php echo $this->getChildHtml('extrahint') ?>
+
+									<?php if (!$this->hasOptions()):?>
+											<div class="add-to-box">
+													<?php if($_product->isSaleable()):?>
+														<?php echo $this->getChildHtml('addtocart') ?>
+														<?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+														<?php endif; ?>
+													<?php else:?>
+														<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()):?>
+															<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
+														<?php else:?>	
+															<?php if($_product->getEcommerce()): // Ecommerce = No ?>
+																<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
+															<?php else:?>
+																<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+															<?php endif; ?>
+														<?php endif; ?>
+													<?php endif; ?>
+													<?php echo $this->getChildHtml('addto') ?>
+													<?php echo $this->getChildHtml('sharing') ?>
+											</div>
+											<?php echo $this->getChildHtml('extra_buttons') ?>
+									<?php elseif (!$_product->isSaleable()):?>
+											<?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()):?>
+												<p class="action availability store-only"><span><?php echo $this->__('Store Only') ?></span></p>
+											<?php else:?>	
+													<p class="action availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+											<?php endif; ?>
+											<div class="add-to-box">
+													<?php echo $this->getChildHtml('addto') ?>
+											</div>
+									<?php endif; ?>
+								</div>
+
+								<div class="clearer"></div>
+								<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+										<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+								<?php endif;?>
+								<?php echo $this->getChildHtml('compareInsideProduct') ?>
+            </div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
+			</div>
+    </div>
+		<?php echo $this->getChildHtml('additional') ?>
+		<div class="product-essential product-description">
+			<div class="page-container">
+				<?php echo $this->getChildHtml('description') ?>
+			</div>
+		</div>
+        <?php echo $this->getChildHtml('related_products') ?>
+		<!-- Get attribute banner image in here -->
+		<?php if ($_product->getProductIdeaBanner() != 'no_selection' && $_product->getProductIdeaBanner()): ?>
+		<div class="product-essential product-idea-image">
+			<?php if($_product->getProductBannerUrl() != ''):?><a href="<?php echo $_product->getProductBannerUrl(); ?>" title=""><?php endif;?>
+			<img id="product_idea_banner" src="<?php echo Mage::helper('catalog/image')->init($_product, 'product_idea_banner')?>" alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" title="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" />
+			<?php if($_product->getProductBannerUrl() != ''):?></a><?php endif;?>
+		</div>
+		<?php endif; ?>
+		<!-- End product attribute banner image -->
+		<!-- Get related products with highlight extension -->
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-allcategory-related-products')->toHtml();?>
+
+		<!-- Get you may also like products with highlight extension -->
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-allcategory-alsolike-products')->toHtml();?>
+		<div class="product-review-wrap">
+			<div class="product-review-summary">
+				<?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+			</div>
+			<div class="product-review-details-form">
+				<?php echo $this->getChildHtml('product_reviews') ?>
+			</div>
+		</div>
+    <?php echo $this->getChildHtml('product_additional_data') ?>
+
+</div>
+

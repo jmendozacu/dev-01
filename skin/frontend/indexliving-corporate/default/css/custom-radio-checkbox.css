@@ -1,0 +1,32 @@
+/* REQUIRED CSS */
+
+/* Custom radio-checkbox */
+.radio{
+	
+}
+
+/*  .checkbox {
+	background: url(../images/icon-check.png) no-repeat;
+	width: 15px;
+  height: 16px;
+	margin:0;
+  float:left;
+  overflow:hidden;
+  cursor:pointer;
+  margin-top:3px;
+}
+.checkbox.checkbox-checked {
+  background: url(../images/icon-checked.png) no-repeat;
+} */
+.change-password  input[type="checkbox"],
+.useasdefault input[type="checkbox"] ,
+.checkout-style2 input[type="checkbox"]  {width:20px; height:20px; }
+.change-password .checkbox,
+.useasdefault .checkbox,
+.checkout-style2 .checkbox{width:20px; height:20px; margin-top:0px;  background: url(../images/checkbox1.png) no-repeat;}
+.change-password .checkbox.checkbox-checked,
+.useasdefault .checkbox.checkbox-checked ,
+.checkout-style2 .checkbox.checkbox-checked { background: url(../images/checkbox2.png) no-repeat;}
+
+/* hide input from view but still visible (ie & opera support) */
+.rc-hidden { opacity:0; margin-left:-20px;}

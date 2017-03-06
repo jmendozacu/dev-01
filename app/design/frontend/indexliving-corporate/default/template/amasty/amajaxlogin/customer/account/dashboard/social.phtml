@@ -1,0 +1,27 @@
+<?php 
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Ajaxlogin
+ */  
+
+if(Mage::helper('amajaxlogin/google')->isEnable() || Mage::helper('amajaxlogin/facebook')->isEnable() || Mage::helper('amajaxlogin/twitter')->isEnable()): ?>
+<div class="amajaxlogin-block dashboard">
+		<div class="amajaxlogin-social-icon">
+			<?php if(Mage::helper('amajaxlogin/google')->isEnable()) {?>
+				<div id="am-ajax-google"><iframe width="250" height="40" scrolling="no" style="border: 0;" src="<?php echo Mage::helper('amajaxlogin/google')->getIframeUrl()?>"></iframe></div>
+			<?php } ?>
+			<?php if(Mage::helper('amajaxlogin/facebook')->isEnable()) {?>
+        <label style="display:none;"><?php echo $this->__('Login with Facebook.')?></label>
+				<div id="am-ajax-facebook"><iframe width="250" height="40" scrolling="no" style="border: 0;" src="<?php echo Mage::helper('amajaxlogin/facebook')->getIframeUrl()?>"></iframe></div>
+			<?php } ?>
+			<?php if(Mage::helper('amajaxlogin/twitter')->isEnable()) {?>
+				<div id="am-ajax-twitter"><?php echo Mage::helper('amajaxlogin/twitter')->getTwitterHtml()?></div>
+			<?php } ?>
+		</div>
+</div>
+<?php  endif;?>
+
+
+
+

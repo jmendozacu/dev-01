@@ -1,0 +1,45 @@
+<?php if($this->helper('customer')->isLoggedIn()):?>
+<div class="model-content">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <h1>Information wishlist</h1>
+    <p class="login">
+    </p>
+    <br>
+    <button data-remodal-action="confirm" class="remodal-confirm">OK</button>
+</div>
+
+<?php endif; ?>
+    <?php if(!$this->helper('customer')->isLoggedIn()):?>
+    <div class="model-content">
+        <button data-remodal-action="close" class="remodal-close"></button>
+        <h1>Please First Login</h1>
+        <p class="login">
+        </p>
+    </div>
+<?php endif; ?>
+
+
+<script type="text/javascript">
+    $j(".wishlist-ajax-slice ").click(function(){
+        var proId = $j(this).find('.link-wishlist').attr('id');
+
+        <?php if(!$this->helper('customer')->isLoggedIn()):?>
+        window.location.href = "<?php echo Mage::getUrl('customer/account/login')?>";
+        <?php endif; ?>
+        <?php if($this->helper('customer')->isLoggedIn()):?>
+        url = '<?php echo $this->getUrl('customwishlist/index/add'); ?>';
+        url += 'product/'+$j(this).find('.detect-proId').text();
+        id = $j(this).find('.detect-proId').text();
+        $j.ajax({
+            url: url,
+            type: "GET",
+            dataType: 'json',
+            success: function (data) {
+                $j('#'+proId).attr('href','');
+                $j('#'+proId).addClass('added-item');
+            }
+        });
+        <?php endif;?>
+    });
+
+</script>

@@ -1,0 +1,64 @@
+<?php
+/**
+ * @author MarginFrame Team
+ * @copyright Copyright (c) 2015 MarginFrame (http://www.marginframe.com)
+ * @package MarginFrame_Shopby
+ */
+?>
+<div class="page-title style2">
+	<h1><?php echo $this->__('All Brands')?></h1>
+</div>
+<div class="amshopby-featured-wrapper">
+	<?php $i = 0; foreach ($this->getItems() as $item):?>
+	<?php if ($i++%3==0): ?>
+		<ul class="brands-grid">
+	<?php endif ?>	
+		<li class="item<?php if(($i-1)%3==0): ?> first<?php elseif($i%3==0): ?> last<?php endif; ?>">
+			<div class="brand-info">
+				<a class="brand-image" href="<?php echo $item->getUrl()?>" title="<?php echo $this->htmlEscape($item->getCurrentTitle())?>">
+				<?php if ($item->getImgBig()) : ?>
+						<img class="amshopby-featured" alt="<?php echo $this->htmlEscape($item->getCurrentTitle())?>" src="<?php echo $item->getImgBig()?>" />
+				<?php else: ?>
+				<?php echo $this->htmlEscape($item->getCurrentTitle())?>
+						<?php endif ?>
+				</a>
+				<div class="brand-text">
+					<h3 class="brand-name"><?php echo $this->htmlEscape($item->getCurrentTitle())?></h3>
+					<?php if($item->getCurrentDescr() != ''):?>
+						<p class="brand-desc" style="display:none;">
+							<?php $_shortDescriptionStripped = $this->htmlEscape($item->getCurrentDescr()); ?>
+							<?php
+								if(iconv_strlen($_shortDescriptionStripped,'UTF-8')>180) {
+									$_shortDescriptionStripped = iconv_substr($_shortDescriptionStripped, 0,180, 'UTF-8');
+									$_shortDescriptionStripped .= '...';
+								}
+								?>
+							<?php echo $_shortDescriptionStripped ?>
+						</p>
+					<?php endif; ?>
+					<a class="view-brand-details" href="<?php echo $item->getUrl()?>" title="<?php echo $this->htmlEscape($item->getCurrentTitle())?>"><?php echo $this->__('Read more >')?></a>
+				</div>
+			</div>
+		</li>	
+	<?php if ($i%3==0 || $i==count($this->getItems())): ?>
+		</ul>
+	<?php endif ?>	
+	<?php endforeach ?>
+</div>
+<script type="text/javascript">
+	jQuery(".brands-grid li.item" ).hover(function() {
+			jQuery(this).find('.brand-info .brand-text p.brand-desc').slideDown(300);
+		}, function() {
+			jQuery(this).find('.brand-info .brand-text p.brand-desc').slideUp(300);
+		}
+	);
+	function showBrandDesc(el, over) {
+		if(over) {
+			jQuery(el).addClass('over');
+			jQuery(el).find('.brand-info .brand-text p.brand-desc').slideDown(300);
+		}else{
+			jQuery(el).removeClass('over');
+			jQuery(el).find('.brand-info .brand-text p.brand-desc').slideUp(300);
+		}
+	}
+</script>

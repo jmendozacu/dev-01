@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
+<div class="shareproduct-content" id="shareproduct-content" style="display:none;">
+	<div id="popupsharing">
+		<h2><?php echo $this->__('Share the link to a friend')?></h2>
+		<div class="popupsharing-content clearfix">
+			<div class="social-sharing">
+				<?php //echo $this->getChildHtml('social_sharing') ?>
+				<ul class="sharing-links">
+					<?php $_helper = $this->helper('catalog/output'); ?>
+					<?php $_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')))?>
+					<?php $_productImageUrl = urlencode(trim($this->helper('catalog/image')->init($_product, 'image')))?>
+					<?php $_productUrl = urlencode(trim($_product->getProductUrl()))?>
+					<?php $description = Mage::helper('catalog/output')->productAttribute($_product, $_product->getShortDescription(), 'short_description');?>
+					<?php $caption = '';?>	
+					<?php if($_product->getFinalPrice() != $_product->getPrice()):?>
+					<?php $caption = $this->__('Special Price: %s (From %s)', Mage::helper('core')->currency($_product->getFinalPrice(), true, false), Mage::helper('core')->currency($_product->getPrice(), true, false));?>
+					<?php else:;?>
+						<?php $caption = $this->__('Price: %s', Mage::helper('core')->currency($_product->getFinalPrice(), true, false));?>
+					<?php endif;?>
+					<li>
+							<?php $_facebook_app_id = Mage::getStoreConfig('amajaxlogin/facebook/app_id'); ?>
+							<?php $_close_popup_url = Mage::getUrl('custom/index/close_popup'); ?>
+                            <?php $_close_popup_url = Mage::getModel('core/url')->sessionUrlVar($_close_popup_url);?>
+							<?php
+							$_facebook_sharing_url = "https://www.facebook.com/dialog/share?app_id=" . $_facebook_app_id . "&display=popup"
+																			 . "&href=" . $_productUrl
+																			 . "&redirect_uri=" . $_close_popup_url;
+							$_facebook_feed_url = "https://www.facebook.com/dialog/feed?app_id=" . $_facebook_app_id . "&display=popup&caption=" . $caption . "&description=" . $description . "&picture=" . $_productImageUrl . "&link=" . Mage::getModel('core/url')->sessionUrlVar($_product->getProductUrl())."&redirect_uri=" . $_close_popup_url;
+							?>
+							<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-facebook icon-facebook" href="<?php echo $_facebook_feed_url; ?>"><?php echo $this->__('Share on Facebook') ?></a>
+					</li>
+					<li>
+							<a class="ss-button-facebook icon-twitter" href="<?php echo 'http://twitter.com/home?status=' . $_productName . '+' . $_productUrl; ?>" target="_blank" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Share on Twitter')) ?>" class="link-twitter"><?php echo $this->__('Share on Twitter') ?></a>
+					</li>
+					<!-- share on pinterest -->
+					<?php
+					$_pinterest_sharing_url = "http://pinterest.com/pin/create/button/?url=" . $_productUrl
+																	 . "&media=" . $_productImageUrl
+																	 . "&description=" . $description;
+					?>
+					<li>
+						<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-pinterest icon-pinterest"
+							 href="<?php echo $_pinterest_sharing_url; ?>" target="_blank"><?php echo $this->__('Share on Pinterest') ?></a>
+					</li>
+					<!-- share on google plus -->
+					<li>
+						<a onclick="return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="ss-button-googleplus icon-google"
+							 href="https://plus.google.com/share?url=<?php echo $_productUrl; ?>" target="_blank" ><?php echo $this->__('Share on Google+') ?></a>
+					</li>
+					<li class="lineapp"><span>
+<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411"></script>
+<script type="text/javascript">// <![CDATA[
+new media_line_me.LineButton({"pc":false,"lang":"en","type":"d"});
+// ]]></script>
+</span></li>
+				</ul>
+			</div>
+			<div class="or_use_that">
+				<span class="or_use_text"><span><?php echo $this->__('OR') ?></span></span>
+			</div>
+			<ul class="form-list copy-link">
+				<li>
+					<label><?php echo $this->__('Copy the URL link below')?></label>
+					<div class="input-box">
+						<input type="text" name="shareurl" value="<?php echo $_product->getProductUrl(); ?>" id="shareurl" title="<?php echo $this->__('Share the link to a friend')?>" class="input-text" />
+						<button type="button" title="<?php echo $this->__('COPY')?>" onclick="copyToClipboard('#shareurl')" class="r-button button" id="copysharelink"><span><span><?php echo $this->__('COPY')?></span></span></button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function copyToClipboard(element) {
+		var $temp = jQuery("<input>");
+		jQuery("body").append($temp);
+		$temp.val(jQuery(element).val()).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}
+</script>

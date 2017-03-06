@@ -1,0 +1,126 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<div class="header-cart-box">
+  <?php $_cartQty = $this->getSummaryCount() ?>
+  <h3 class="box-title"><?php echo $this->__('Shopping cart') ?></h3>
+  <div class="block-content">
+    <?php $_items = $this->getRecentItems() ?>
+    <?php if(count($_items)): ?>
+      <div class="list-items">
+        <ol class="mini-products-list">
+
+        <?php foreach($_items as $_item): ?>
+            <?php echo $this->getItemHtml($_item) ?>
+        <?php endforeach; ?>
+        </ol>
+        <script type="text/javascript">decorateGeneric($$('.minicart-product-item'), ['odd','even','first','last'])</script>
+      </div>
+    <?php else: ?>
+      <p class="item-wrap empty"><span><?php echo $this->__('You have no items in your shopping bag.') ?></span></p>
+    <?php endif ?>
+    
+    <?php if ($_cartQty>0): ?>
+      <div class="summary">
+        <p class="subtotal">
+          <?php if ($this->canApplyMsrp()): ?>
+              <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+          <?php else: ?>
+              <span class="left summary-label"><?php echo $this->__('Total') ?></span> <span class="header-cart-subtotal" id="header-cart-subtotal"><?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?></span>
+              <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                  <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+              <?php endif; ?>
+          <?php endif; ?>
+        </p>
+      </div>
+    <?php endif ?>
+    <?php if($_cartQty): ?>
+    <div class="actions">
+        <?php echo $this->getChildHtml('extra_actions') ?>
+        <button type="button" title="<?php echo $this->__('Checkout') ?>" class="button r-button" onclick="setLocation('<?php echo $this->getUrl('checkout/cart') ?>')"><span><span><?php echo $this->__('Checkout') ?></span></span></button>
+    </div>
+    <?php endif ?>
+  </div>
+</div>
+<script type="text/javascript">
+    function headerCartUpdateQty(productId){
+        var qty = parseInt(jQuery('#header_cart_qty_' + productId).val());
+        var ajaxurl = "<?php echo $this->getUrl('extendcart/index/updateqty')?>";
+        ajaxurl += productId;
+        var request = new Ajax.Request(ajaxurl, {
+            method: 'POST',
+            parameters: {isAjax: '1', product_id: productId, product_qty: qty},
+            onLoading: function () {
+                jQuery('#apply_change_qty_loading_' + productId).show();
+            },
+            onSuccess: function(transport) {
+                jQuery('#apply_change_qty_loading_' + productId).hide();
+                if (transport.responseJSON.success == 'false') {
+                    jQuery('#minicart-msg').show();
+                    jQuery('#minicart-msg').html(transport.responseJSON.message);
+                }
+                if (transport.responseJSON.success == 'true') {
+                    jQuery('#apply_qty_' + productId).hide();
+                    jQuery('#minicart-msg-'+ productId).show();
+                    jQuery('#minicart-msg-'+ productId).html(transport.responseJSON.notice);
+                    if(transport.responseJSON.message == 'Item was updated successfully.'){
+                        jQuery('#minicart-msg-'+ productId).hide();
+                    }
+
+                }
+                jQuery("#cartItemCountInHead .cart-item-count").remove();
+                jQuery("#cartItemCountInHeadMobile .cart-item-count").remove();
+                //jQuery('#item_price_' + productId).children().remove();
+                jQuery('#header-cart-subtotal').children().remove();
+                jQuery("#cartItemCountInHead").append('<span class="cart-item-count">' + parseInt(transport.responseJSON.cart_item_count) + '</span>');
+                jQuery("#cartItemCountInHeadMobile").append('<span class="cart-item-count">' + parseInt(transport.responseJSON.cart_item_count) + '</span>');
+                //jQuery('#item_price_' + productId).append(transport.responseJSON.cart_item_row_total);
+                jQuery('#header-cart-subtotal').append(transport.responseJSON.cart_subtotal);
+                // update some boxes in cart page
+                if(transport.responseJSON.quote_item_id){
+                    if(jQuery('#cart-price-item-' + transport.responseJSON.quote_item_id)){
+                        jQuery('#cart-price-item-' + transport.responseJSON.quote_item_id).html(transport.responseJSON.cart_item_row_total);
+                    }
+                    if(jQuery('#cart_' + transport.responseJSON.quote_item_id + '_qty')){
+                        jQuery('#cart_' + transport.responseJSON.quote_item_id + '_qty').val(transport.responseJSON.cart_item_row_qty);
+                    }
+                    // update total box
+                    jQuery('#checkout_cart_totals').html(transport.responseJSON.totals);
+                }
+            }
+        });
+    }
+//    function applyChangeQty(productId){
+//        jQuery('#apply_qty_' + productId).show();
+//    }
+</script>

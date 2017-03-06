@@ -1,0 +1,15 @@
+<?php $_indexes = $this->getIndexes(); ?>
+<?php foreach ($_indexes as $_index): ?>
+    <?php if ($_index->getStoreId() == Mage::app()->getStore()->getStoreId()): ?>
+        <?php $countResult = $_index->getCountResults() ?>
+    <?php endif; ?>
+<?php endforeach; ?>
+<div class="page-title">
+    <h1><?php echo ($this->getHeaderText()) ? $this->getHeaderText() : $this->__("%s results for '%s'", $countResult, $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+</div>
+
+<?php echo $this->getChildHtml('related_searches') ?>
+
+<?php Mage::helper('mstcore/debug')->dump('product $collection', Mage::getModel('catalogsearch/layer')->getProductCollection()->getSelect()->__toString()); ?>
+
+<?php echo $this->getCurrentContent() ?>

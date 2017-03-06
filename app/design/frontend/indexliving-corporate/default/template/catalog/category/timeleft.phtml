@@ -1,0 +1,36 @@
+<?php
+$category = Mage::registry('current_category');
+$time_end = $category->getData('display_to_date');
+$now = date(Varien_Date::DATETIME_PHP_FORMAT, Mage::getModel('core/date')->timestamp(time()));
+$storeTimeStamp = strtotime($now);
+$toTimeStamp    = strtotime($time_end);
+$timeleft = (int)$toTimeStamp - (int)$storeTimeStamp;
+$timeleft = $timeleft * 1000;
+?>
+
+<script type="text/javascript">
+  //<![CDATA[
+  document.observe("dom:loaded", function() {
+    setTimeout(function(){
+      var catId = <?php echo $category->getId() ?>;
+      var url = '<?php echo $this->getUrl('bannerads/index/disableCategory', array('_secure' => $this->getRequest()->isSecure())); ?>';
+      alert('This category is out of date. We will refresh page now');
+      var request = new Ajax.Request(
+        url,
+        {
+          method: 'post',
+          parameters: {
+            categoryId: catId,
+          },
+          onCreate: function (transport) {
+//          location.reload(true);
+          },
+          onComplete: function (transport) {
+            location.reload(true);
+          }
+        }
+      );
+    },  <?php echo $timeleft ?>);
+  });
+  //]]>
+</script>

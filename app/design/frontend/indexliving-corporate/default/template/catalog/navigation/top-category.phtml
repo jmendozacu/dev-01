@@ -1,0 +1,54 @@
+<?php $_helper = Mage::helper('catalog/category') ?>
+<?php $_categories = $_helper->getStoreCategories() ?>
+<?php if (count($_categories) > 0): ?>
+    <ul class="indexliving-top-categories">
+        <?php foreach($_categories as $_category): ?>
+            <li>
+                <?php
+                    $_category = Mage::getModel('catalog/category')->load($_category->getId());
+                    $_iconHtml   = '';
+                    $iconUrl = false;
+                    if ($icon = $_category->getCategoryIcon()) {
+                        $iconUrl = Mage::getBaseUrl('media').'catalog/category/'.$icon;
+                    }
+                ?>
+
+                <?php if ($iconUrl): ?>
+                    <?php
+                    $_iconHtml = '<img src="'.$iconUrl.'" alt="'.$_category->getName().'" title="'.$_category->getName().'" />';
+                    $_iconHtml = Mage::helper('catalog/output')->categoryAttribute($_category, $_iconHtml, 'image');
+                    ?>
+                <?php else: ?>
+                    <?php
+                    $_iconHtml = '<img src="'.$this->getSkinUrl('images/category-icons/no-image.png').'" alt="'.$_category->getName().'" title="'.$_category->getName().'" />';
+                    ?>
+                <?php endif;?>
+                <?php echo $_iconHtml ?>
+                <a href="<?php echo $_helper->getCategoryUrl($_category) ?>">
+                    <?php echo $_category->getName() ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery(".indexliving-top-categories").owlCarousel({
+            loop: false,
+            nav: true,
+            dots: false,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 3
+                },
+                600: {
+                    items: 3
+                },
+                768: {
+                    items: 3
+                }
+            }
+        });
+    });
+</script>

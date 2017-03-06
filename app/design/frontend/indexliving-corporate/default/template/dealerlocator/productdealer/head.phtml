@@ -1,0 +1,5 @@
+<?php
+  $google_key = Mage::getStoreConfig('dealerlocator/google_map_options/google_api_key');
+  $googleJs = 'https://maps.googleapis.com/maps/api/js?key=' . $google_key . '&sensor=true&v=3.8';
+?>
+<script src="<?php echo $googleJs; ?>" type="text/javascript"></script>

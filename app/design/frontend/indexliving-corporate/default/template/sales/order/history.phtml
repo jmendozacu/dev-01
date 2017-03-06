@@ -1,0 +1,105 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php $_orders = $this->getOrders(); ?>
+<div class="page-title">
+    <h1><?php echo $this->__('My Orders') ?></h1>
+    <a href="/custom-form" class="payment_transfer"><?php echo $this->__('Payment Confirmation') ?></a>
+</div>
+<?php echo $this->getChildHtml('info');?>
+<?php if($_orders->getSize()): ?>
+<table class="data-table orders orders-table table-custom-mobile" id="my-orders-table">
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th class="id"><?php echo $this->__('Id') ?></th>
+            <th class="date"><?php echo $this->__('Date') ?></th>
+            <th class="number"><?php echo $this->__('Order #') ?></th>
+            <th class="total"><span class="nobr"><?php echo $this->__('Total (THB)') ?></span></th>
+            <th class="ship"><?php echo $this->__('Ship To') ?></th>
+            <th class="status"><span class="nobr"><?php echo $this->__('Order Status') ?></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $_odd = ''; ?>
+        <?php $i=0; foreach ($_orders as $_order): $i++; ?>
+        <tr onclick="window.location.href='<?php echo $this->getViewUrl($_order) ?>'" style="cursor: pointer;">
+            <td class="number">
+              <label class="th-title box-mobile"><?php echo $this->__('Id') ?></label>
+              <div class="td-content">
+                <?php echo $i;?>
+              </div>
+            </td>
+            <td class="date">
+              <label class="th-title box-mobile"><?php echo $this->__('Date') ?></label>
+              <div class="td-content">
+                <span class="nobr">
+                <?php
+                  $date = $this->formatDate($_order->getCreatedAtStoreDate()) ;
+                  echo $date;
+                ?>
+                </span>
+              </div>
+            </td>
+            <td class="number">
+              <label class="th-title box-mobile"><?php echo $this->__('Order #') ?></label>
+              <div class="td-content">
+                <a href="<?php echo $this->getViewUrl($_order) ?>" title="<?php echo $this->__('View Order') ?>"><?php echo $_order->getRealOrderId() ?></a>
+              </div>
+            </td>
+            <td class="total">
+              <label class="th-title box-mobile"><?php echo $this->__('Ship To') ?></label>
+              <div class="td-content">
+                <?php echo $_order->formatPrice($_order->getGrandTotal()) ?>
+              </div>
+            </td>
+            <td class="ship">
+              <label class="th-title box-mobile"><?php echo $this->__('Order Total') ?></label>
+              <div class="td-content">
+                <?php echo $_order->getShippingAddress() ? $this->escapeHtml($_order->getShippingAddress()->getName()) : '&nbsp;' ?>
+              </div>
+            </td>
+            <td class="status">
+              <label class="th-title box-mobile"><?php echo $this->__('Order Status') ?></label>
+              <div class="td-content">
+                <span <?php if($_order->getStatus() == 'complete'): ?> class="status-done" <?php endif; ?>><?php echo $_order->getStatusLabel() ?></span>
+              </div>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<script type="text/javascript">decorateTable('my-orders-table');</script>
+<?php echo $this->getPagerHtml(); ?>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif ?>

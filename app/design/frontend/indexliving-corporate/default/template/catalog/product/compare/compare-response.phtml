@@ -1,0 +1,36 @@
+<?php
+$_helper = $this->helper('catalog/product_compare');
+$_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
+?>
+<?php if ($_items): ?>
+<div class="block block-list block-compare">
+		<div class="block-title">
+				<strong><span><?php echo $this->__('Compare Products') ?>
+						<?php if($_helper->getItemCount() > 0): ?>
+								<small><?php echo $this->__('(%d)', $_helper->getItemCount()) ?></small>
+						<?php endif; ?>
+				</span></strong>
+				<div class="mess_succes"></div>
+		</div>
+		<div class="block-content">
+		<?php if($_helper->getItemCount() > 0): ?>
+				<ol id="compare-items">
+				<?php foreach($_items as $_index => $_item): ?>
+						<li class="item">
+								<input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
+								<a href="javascript:void(0)" onclick="removeajaxCompare('<?php echo $_helper->getRemoveUrl($_item) ?>')" title="<?php echo $this->quoteEscape($this->__('Remove This Item')) ?>" class="btn-remove" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the compare products?')) ?>');"><?php echo $this->__('Remove This Item') ?></a>
+								<p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></p>
+						</li>
+				<?php endforeach; ?>
+				</ol>
+				<script type="text/javascript">decorateList('compare-items')</script>
+				<div class="actions">
+						<button type="button" id="compare-all-items" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Compare')) ?>" class="button" onclick="openComparePopup('<?php echo $_helper->getListUrl() ?>');"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+						<a href="javascript:void(0)" onclick="clearCompare('<?php echo $_helper->getClearListUrl() ?>');"><?php echo $this->__('Clear All') ?></a>
+				</div>
+		<?php else: ?>
+				<p class="empty"><?php echo $this->__('You have no items to compare.') ?></p>
+		<?php endif; ?>
+		</div>
+</div>
+<?php endif;?>

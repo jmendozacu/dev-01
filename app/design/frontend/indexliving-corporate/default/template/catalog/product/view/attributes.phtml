@@ -1,0 +1,85 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product additional attributes template
+ *
+ * @see Mage_Catalog_Block_Product_View_Attributes
+ */
+?>
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_product = $this->getProduct()
+?>
+<?php if($_additional = $this->getAdditionalData()): ?>
+	<?php $materialArray = array(); ?>
+	<div class="product-essential product-features">
+		<div class="page-container">
+			<div class="box-title">
+				<h2><?php echo $this->__('Features') ?></h2>
+				<?php if($_helper->productAttribute($_product, $_product->getProductDownloadLink(), 'product_download_link') != ''):?>
+					<button type="button" title="<?php echo $this->quoteEscape($this->__('Product Download')) ?>" class="button btn-downloads" onclick="javascript:window.open('<?php echo $_helper->productAttribute($_product, $_product->getProductDownloadLink(), 'product_download_link') ?>');"><span><span><?php echo $this->__('Product Download') ?></span></span></button>
+					<?php endif ?>
+			</div>
+			<?php $i=0; foreach ($_additional as $_data): ?>
+				<!-- debug value: <?php echo $_data['value']; ?> -->
+        <?php if($_data['code'] == 'material' || $_data['code'] == 'material_description'): ?>
+					<?php $materialArray[] = $_data; ?>
+				<?php else: ?>
+					<?php if ($i++%2==0): ?>
+						<ul class="products-features-grid">
+					<?php endif ?>
+						<?php if($_data['value'] != 'No' && $_data['value'] != 'N/A' && $_data['value'] != 'ไม่ใช่'):?>
+							<li class="item<?php if(($i-1)%2==0): ?> first<?php elseif($i%2==0): ?> last<?php endif; ?>">
+									<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
+									<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
+							</li>
+						<?php endif ?>
+					<?php if ($i%2==0 || $i==count($_additional)): ?>
+						</ul>
+					<?php endif ?>
+				<?php endif ?>
+			<?php endforeach; ?>
+
+			<?php if(!empty($materialArray)): ?>
+				<ul class="products-features-grid">
+					<li class="item">
+						<?php $j=0; foreach ($materialArray as $_data): $j++; ?>
+							<?php if($j==1): ?>
+								<h3><?php echo $this->escapeHtml($this->__($_data['label'])) ?></h3>
+							<?php endif; ?>
+							<?php if($_data['value'] != 'No' && $_data['value'] != 'N/A' && $_data['value'] != 'ไม่ใช่'):?>
+								<p><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></p>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					</li>
+				</ul>
+			<?php endif; ?>
+			
+			<?php echo $this->getChildHtml('description') ?>
+		</div>
+	</div>
+<?php endif;?>

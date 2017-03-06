@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Ajaxlogin
+ */
+-->
+<layout>
+    <default>
+     <reference name="head"> 
+        <action method="addItem" ifconfig="amajaxlogin/general/enable"><type>skin_js</type><name>js/amasty/amajaxlogin/amAjaxLogin.js</name><params/></action>
+        <block type="amajaxlogin/config" ifconfig="amajaxlogin/general/enable" name="amajaxlogin.config" before="-" />
+        <action method="addItem" ifconfig="amajaxlogin/general/enable" ><type>skin_css</type><name>css/amasty/amajaxlogin/amajaxlogin.css</name><params/></action>
+        <action method="addItem" ifconfig="amajaxlogin/general/enable_jquery"><type>skin_js</type><name>js/z_amasty/plugins/jquery.js</name><params/></action>
+      </reference> 
+      <!--
+			<reference name="header">
+				<block type="amajaxlogin/customer_form_login" name="amajaxlogin_header_box" as="header_mini_login" template="amasty/amajaxlogin/customer/form/minilogin.phtml">
+					<block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_social" as="fbLogin" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+				</block>
+			</reference>
+			-->
+			<reference name="header.box-right-content">
+				<block type="amajaxlogin/customer_form_login" name="amajaxlogin_header_box" as="header_mini_login" template="amasty/amajaxlogin/customer/form/minilogin.phtml">
+					<block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_social" as="fbLogin" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+				</block>
+			</reference>
+    </default>
+   
+    <customer_account_index translate="label">
+        <update handle="my.account.wrapper"/>
+        <reference name="my.account.wrapper">
+            <!-- <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/> -->
+        </reference>
+    </customer_account_index>
+
+    <customer_account_login>
+        <reference name="customer_form_login">
+             <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+        </reference>
+    </customer_account_login>
+    <customer_account_create>
+        <reference name="customer_form_register">
+             <block type="amajaxlogin/customer_account_dashboard_social" name="amajaxlogin_customer_account_dashboard_social" as="social" template="amasty/amajaxlogin/customer/account/dashboard/social.phtml"/>
+        </reference>
+    </customer_account_create>
+		
+		<customer_account_rewardpoints>
+			<update handle="customer_account"/>
+			<!-- Mage_Customer -->
+			<reference name="root">
+					<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+			</reference>
+			<reference name="breadcrumbs">
+				<action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+				<action method="addCrumb"><crumbName>My Account</crumbName><crumbInfo><label>My Account</label><title>My Account</title></crumbInfo></action>
+			</reference>
+			<reference name="my.account.wrapper">
+				<block type="cms/block" name="customer.rewardpoints" before="-">
+						<action method="setBlockId"><block_id>index-customer-rewardpoints</block_id></action>
+				</block>
+			</reference>
+		</customer_account_rewardpoints>
+		<amajaxlogin_account_visitorlogin>
+			<update handle="customer_account_login"/>
+		</amajaxlogin_account_visitorlogin>
+</layout>

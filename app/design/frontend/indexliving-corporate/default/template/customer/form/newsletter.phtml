@@ -1,0 +1,84 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Newsletter Subscription') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php echo $this->getChildHtml('form_before')?>
+<form action="<?php echo $this->getAction() ?>" method="post" id="form-validate">
+    <div class="form-newsletter">
+			<?php echo $this->getBlockHtml('formkey')?>
+			<ul>
+				<?php if($this->getIsSubscribed()): ?>
+					<li style="margin:0 0 10px;"><p id="dashboard-newsletter-label"><?php echo $this->__("You are currently subscribed to 'General Subscription'.")?></p></li>
+				<?php else:?>	
+					<li style="margin:0 0 10px;"><p id="dashboard-newsletter-label"><?php echo $this->__('You are currently not subscribed to any newsletter.') ?></p></li>
+				<?php endif;?>
+				<li class="control">
+					<input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo Mage::helper('core')->quoteEscape($this->__('General Subscription')) ?>"<?php if($this->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="newsletter-checkbox" />
+					<label for="subscription"><?php echo $this->__('Newsletter Email') ?></label>
+					<img id="message_newsletter" style="display:none;" alt="<?php echo $this->__('Loading...')?>" src="<?php echo $this->getSkinUrl('images/mini-loader.gif')?>" />
+					<input type="hidden" value="<?php if($this->getIsSubscribed()): ?>0<?php else:?>1<?php endif; ?>" id="check_is_subscribed" />
+				</li>
+			</ul>
+    </div>
+</form>
+<?php /* Extensions placeholder */ ?>
+<?php echo $this->getChildHtml('customer.form.newsletter.extra2')?>
+<script type="text/javascript">
+	jQuery(function () {
+		jQuery('.form-newsletter').customRadioCheckbox();
+	});	
+//<![CDATA[
+				var dataForm = new VarienForm('form-validate', true);				
+				var account_subscription_url = '<?php echo $this->getUrl('newsletter/manage/save') ?>';
+				$('subscription').observe('click', function() {
+					new Ajax.Request(
+						account_subscription_url,
+						{
+							parameters: {
+								is_subscribed: $('check_is_subscribed').getValue()
+							},
+							method: 'GET',
+							
+							onLoading: function() {
+								$('message_newsletter').show();
+							},
+							
+							onSuccess: function(transport){
+								$('message_newsletter').hide();
+								if(transport.responseJSON.success == 'error'){
+									$('subscription').next().removeClassName('checkbox-checked');
+								}
+								$('dashboard-newsletter-label').update(transport.responseJSON.label);
+								$('check_is_subscribed').setValue(transport.responseJSON.is_subscribed);
+							}
+						}
+					)
+				});
+		//]]>
+</script>
