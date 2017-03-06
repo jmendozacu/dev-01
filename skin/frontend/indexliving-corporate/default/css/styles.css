@@ -12113,3 +12113,16 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .amscheckout-data-table .summary-details-amrules.summary-details{ background-color: #efefef; border-top: 1px solid #ddd;}
 .amscheckout-data-table .summary-details-amrules.summary-details .price{ padding-right: 10px;  }
 .amscheckout-data-table .summary-details-amrules.summary-details .a-right{ padding-left: 10px; }
+
+/* corporate*/
+.mpblog-list.list .mpblog-post .mp-header .post-views:before {
+  background-image: url(../images/icon-corporate.png);
+}
+
+
+@media (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 4 / 2), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .mpblog-list.list .mpblog-post .mp-header .post-views:before{
+    background-image: url(../images/icon-corporate2x.png);
+    background-size: 100px 1000px;
+  }
+}

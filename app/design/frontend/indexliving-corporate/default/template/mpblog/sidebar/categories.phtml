@@ -11,14 +11,13 @@ $collection = $this->getCollection();
 ?>
 <?php if ($this->getDisplay() && count($collection)): ?>
 <div class="block mpblog-categories">
-    <div class="block-title">
-        <strong><span><?php echo $this->getBlockHeader(); ?></span></strong>
-    </div>
     <div class="block-content">
+        <div class="categories-title">
+            <strong><span><?php echo $this->getBlockHeader(); ?></span></strong>
+        </div>
         <ul class="mplog-categories">
         <?php foreach ($collection as $category): ?>
             <li class="mpblog-category<?php if ($category->getIsActive()): ?> active<?php endif; ?> mpblog-category-<?php echo $category->getId(); ?>">
-                <i class="<?php echo $this->getColorClass(); ?> glyphicons ok_2"></i>
                 <a href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $this->escapeHtml($category->getName()); ?></a>
             </li>
         <?php endforeach; ?>

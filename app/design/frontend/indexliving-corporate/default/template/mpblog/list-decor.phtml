@@ -5,56 +5,72 @@
  * @package Magpleasure_Blog
  */
 ?>
-<div class="mpblog-container list">
+<div class="mpblog-container list list-decor list-decor-style1">
     <div class="mp-blog-head fix-me">
         <h1 class="mp-title"><?php echo $this->getPageHeader(); ?></h1>
-        <?php if ($this->getShowRssLink()): ?>
-            <span class="mp-blog-rss">
-            <i class="<?php echo $this->getColorClass(); ?> glyphicons rss"></i>
-            <a class="mp-blog-rss-link" href="<?php echo $this->getRssFeedUrl(); ?>" target="_blank"
-               title="<?php echo $this->__("Subscribe RSS Feed"); ?>">
-                <?php echo $this->__("RSS Feed"); ?>
-            </a>
-        </span>
-        <?php endif; ?>
     </div>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-banner-blog')->toHtml() ?>
+
     <?php if (count($this->getCollection())): ?>
 
         <div class="mpblog-list list">
-            <?php foreach ($this->getCollection() as $post): ?>
+            <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
                 <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
                 <div class="mpblog-post">
+                    <div class="post-image">
+                        <?php if( $i == 1):   ?>
+                            <?php if ($post->getPostThumbnailSrc()): ?>
+                                <div class="post-thumbnail">
+                                    <?php if ($this->hasThumbnailUrl()): ?>
+                                    <a class="thumbnail-url" title="<?php echo $this->escapeHtml($post->getTitle()); ?>" href="<?php echo $this->getThumbnailUrl(); ?>">
+                                        <?php endif; ?>
+                                        <img class="thumbnail"
+                                             src="<?php echo $post->getPostThumbnailSrc(); ?>"
+                                             alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                                        <?php if ($this->hasThumbnailUrl()): ?>
+                                    </a>
+                                <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php else:?>
+                            <?php if ($post->getListThumbnailSrc()): ?>
+                                <div class="thumbnail-container">
+                                    <div class="post-thumbnail">
+                                        <a
+                                          href="<?php echo $post->getPostUrl(); ?>"
+                                          title="<?php echo $this->escapeHtml($post->getTitle()); ?>">
 
-                    <div class="mp-post-header">
-                        <h2><a href="<?php echo $post->getPostUrl(); ?>"><?php echo $this->escapeHtml($post->getTitle()); ?></a></h2>
+                                            <img class="thumbnail"
+                                                 src="<?php echo $post->getListThumbnailSrc(); ?>"
+                                                 alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif;?>
+                        <div class="post-tag"><span><?php echo $this->__('Kitchen')?></span></div>
                     </div>
-
-                    <?php if ($post->getListThumbnailSrc()): ?>
-                    <div class="thumbnail-container">
-                        <div class="post-thumbnail">
-                            <a
-                                href="<?php echo $post->getPostUrl(); ?>"
-                                title="<?php echo $this->escapeHtml($post->getTitle()); ?>">
-
-                                <img class="thumbnail"
-                                     src="<?php echo $post->getListThumbnailSrc(); ?>"
-                                     alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
-                            </a>
+                    <div class="mp-header">
+                        <?php if ($post->getCreatedAt()): ?>
+                            <span class="post-time">
+                                <?php echo date('d F Y', strtotime($post->getCreatedAt()));; ?>
+                            </span>
+                        <?php endif; ?>
+                        <div class="post-views">
+                            <strong><?php echo $post->getViews() ?></strong>
+                            <span></span><?php echo $this->__('Views') ?> </span>
                         </div>
                     </div>
-                    <?php endif; ?>
-
-                    <div class="mp-header fix-me">
-                        <?php echo $this->getHeaderHtml($post); ?>
+                    <div class="mp-post-title">
+                        <a href="<?php echo $post->getPostUrl(); ?>"><?php echo $this->escapeHtml($post->getTitle()); ?></a>
                     </div>
                     <div class="mp-content std fix-me">
                         <?php echo $post->getShortContent(); ?>
                     </div>
                     <div class="mp-details fix-me">
-                        <a class="button mp-read-more" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("Read More"); ?>">
-                            <?php echo $this->__("Read More"); ?>
+                        <a class="mp-read-more" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("Read More"); ?>">
+                            <?php echo $this->__("Read More >"); ?>
                         </a>
-                        <?php echo $this->getFooterHtml($post); ?>
                     </div>
                 </div>
             <?php endforeach; ?>
