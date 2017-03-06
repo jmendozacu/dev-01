@@ -1,0 +1,69 @@
+<?php
+/**
+ * @category    Bubble
+ * @package     Bubble_CmsTree
+ * @version     2.1.0
+ * @copyright   Copyright (c) 2016 BubbleShop (https://www.bubbleshop.net)
+ */
+?>
+<?php
+/**
+ * @var Bubble_CmsTree_Block_Adminhtml_Cms_Page_Edit $this
+ */
+?>
+<?php echo $this->getFormInitScripts() ?>
+<div class="content-header">
+    <?php echo $this->getHeaderHtml() ?>
+    <p class="form-buttons"><?php echo $this->getButtonsHtml('header') ?></p>
+</div>
+<div id="popup-window-mask" style="display: none;"></div>
+<div id="popup-duplicate" class="backup-dialog" style="display: none; margin-top: -76px;">
+    <div class="entry-edit">
+        <form method="post" action="<?php echo $this->getDuplicateFormAction() ?>" onsubmit="$('popup-duplicate').hide();$('loading-mask').show();">
+            <input name="form_key" type="hidden" value="<?php echo $this->getFormKey(); ?>" />
+            <div class="entry-edit-head">
+                <h4 class="head-edit-form fieldset-legend"><?php echo $this->__('Duplicate Options') ?></h4>
+            </div>
+            <div class="content">
+                <table class="form-list" cellspacing="0">
+                    <tr>
+                        <td class="label"><label for="include_children"><?php echo $this->__('Include Children')?></label></td>
+                        <td class="value"><input type="checkbox" name="include_children" id="include_children" checked="checked" /></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label for="store_dest"><?php echo $this->__('Store Destination')?> <span class="required">*</span></label></td>
+                        <td class="value"><?php echo $this->getDuplicateStoreSelectHtml() ?></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttons-set">
+                <div class="f-right">
+                    <button type="submit" class="scalable"><span><?php echo $this->__('OK')?></span></button>
+                    <button type="button" class="scalable" onclick="hidePopupDuplicate();"><span><?php echo $this->__('Cancel')?></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php echo $this->getTabsHtml(); ?>
+<?php echo $this->getFormHtml() ?>
+<?php if ($this->hasFooterButtons()): ?>
+    <div class="content-footer">
+        <p class="form-buttons"><?php echo $this->getButtonsHtml('footer') ?></p>
+    </div>
+<?php endif; ?>
+<script type="text/javascript">
+//<![CDATA[
+if ($('page_current_tab')) {
+    $$('#page_tabs .tab-item-link').invoke('observe', 'click', function(event) {
+        var el = event.element();
+        if (el.tagName !== 'A') {
+            el = event.element().up('a');
+        }
+        $('page_current_tab').value = el.id;
+    });
+}
+editForm = new varienForm('edit_form', '<?php echo $this->getValidationUrl() ?>');
+//]]>
+</script>
+<?php echo $this->getFormScripts() ?>

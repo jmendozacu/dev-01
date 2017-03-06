@@ -1,0 +1,62 @@
+<?php
+/**
+ * @category    Bubble
+ * @package     Bubble_CmsTree
+ * @version     2.1.0
+ * @copyright   Copyright (c) 2016 BubbleShop (https://www.bubbleshop.net)
+ */
+?>
+<div class="main-col-inner">
+    <div class="<?php echo $this->getContainerCssClass() ?>">
+        <div id="messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+        <?php echo $this->getChildHtml('content') ?>
+    </div>
+    <div id="messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+</div>
+<?php echo $this->getChildHtml('js') ?>
+<script type="text/javascript">
+//<![CDATA[
+    <?php if (Mage::getStoreConfig('cms/wysiwyg/enabled') == Mage_Cms_Model_Wysiwyg_Config::WYSIWYG_ENABLED): ?>
+        $('togglepage_content').click();
+    <?php endif; ?>
+
+    $('page_tabs_main_section').show();
+
+    <?php if ($tab = $this->getRequest()->getParam('tab')): ?>
+        var tab = '<?php echo $tab ?>';
+        if ($(tab)) {
+            $(tab).click();
+        }
+    <?php endif; ?>
+
+    if (typeof(highlighter) == 'object') {
+        var cmsEditor = highlighter.create($('page_content'));
+
+        // Refresh CM when clicking on Content tab. If not, CM is not rendered properly.
+        if ($('page_tabs_content_section')) {
+            $('page_tabs_content_section').observe('click', function() {
+                cmsEditor.refresh();
+                highlighter.autoIndent(cmsEditor);
+                if ($('page_content_tbl')) {
+                    cmsEditor.getWrapperElement().hide();
+                }
+            });
+        }
+
+        // Refresh CM when clicking on Design tab. If not, CM is not rendered properly.
+        if ($('page_layout_update_xml')) {
+            var xmlEditor = highlighter.create($('page_layout_update_xml'), 'xml');
+            var customXmlEditor = highlighter.create($('page_custom_layout_update_xml'), 'xml');
+            if ($('page_tabs_design_section')) {
+                $('page_tabs_design_section').observe('click', function() {
+                    xmlEditor.refresh();
+                    highlighter.autoIndent(xmlEditor);
+                    customXmlEditor.refresh();
+                    highlighter.autoIndent(customXmlEditor);
+                });
+            }
+        }
+    }
+//]]>
+</script>
