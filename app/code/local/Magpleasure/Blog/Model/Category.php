@@ -59,6 +59,11 @@ class Magpleasure_Blog_Model_Category extends Magpleasure_Blog_Model_Abstract im
         return $this->_helper()->_url($this->getStoreId())->getUrl($this->getId(), Magpleasure_Blog_Helper_Url::ROUTE_CATEGORY, $page);
     }
 
+    public function getCategoryUrlSubcate($page = 1, $id = null)
+    {
+        return $this->_helper()->_url($this->getStoreId())->getUrl($id, Magpleasure_Blog_Helper_Url::ROUTE_CATEGORY, $page);
+    }
+
     public function setStore($storeId)
     {
         if ($storeId){

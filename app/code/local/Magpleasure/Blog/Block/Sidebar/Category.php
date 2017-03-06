@@ -8,6 +8,7 @@
 class Magpleasure_Blog_Block_Sidebar_Category extends Magpleasure_Blog_Block_Sidebar_Abstract
 {
     protected $_collection;
+    protected $_collection_subcate;
 
     protected function _construct()
     {
@@ -57,7 +58,14 @@ class Magpleasure_Blog_Block_Sidebar_Category extends Magpleasure_Blog_Block_Sid
         }
         return $this->_collection;
     }
+    public function getCollectionSubcate($subcate_id)
+    {
+        if ($subcate_id){
+            /** @var Magpleasure_Blog_Model_Mysql4_Category_Collection $collection  */
+            $collection = Mage::getModel('mpblog/category')->load($subcate_id);
 
-
-
+            $this->_collection_subcate = $collection;
+        }
+        return $this->_collection_subcate;
+    }
 }
