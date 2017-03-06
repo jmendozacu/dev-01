@@ -12,7 +12,7 @@ $isBlockIds = array();
 $urlShow = Mage::getUrl('bannerads/reports/impression');
 $urlClick = Mage::getUrl('bannerads/reports/click');
 ?>
-<?php if ($banners->getSize() > 0): ?>
+<?php if (count($banners) > 0): ?>
     <div class="wrap-bannerads">
         <?php if (($blockType == 3) || ($blockType == 4) || ($blockType == 5) || ($blockType == 6)) : ?>
             <div class="banner"
