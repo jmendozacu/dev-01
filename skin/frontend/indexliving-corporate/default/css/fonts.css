@@ -40,4 +40,45 @@
   src: url('fonts/DBYordX.eot?#iefix') format('embedded-opentype'),  url('fonts/DBYordX.woff') format('woff'), url('fonts/DBYordX.ttf')  format('truetype'), url('fonts/DBYordX.svg#DBYordX') format('svg');
   font-weight: normal;
   font-style: normal;
-} 
+}
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('fonts/kanit/Kanit-Light.eot');
+  src: url('fonts/kanit/Kanit-Light.eot?#iefix') format('embedded-opentype'),
+  url('fonts/kanit/Kanit-Light.woff') format('woff'),
+  url('fonts/kanit/Kanit-Light.ttf') format('truetype'),
+  url('fonts/kanit/Kanit-Light.svg#Kanit-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('fonts/kanit/Kanit-Medium.eot');
+  src: url('fonts/kanit/Kanit-Medium.eot?#iefix') format('embedded-opentype'),
+  url('fonts/kanit/Kanit-Medium.woff') format('woff'),
+  url('fonts/kanit/Kanit-Medium.ttf') format('truetype'),
+  url('fonts/kanit/Kanit-Medium.svg#Kanit-Medium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('fonts/kanit/Kanit-Bold.eot');
+  src: url('fonts/kanit/Kanit-Bold.eot?#iefix') format('embedded-opentype'),
+  url('fonts/kanit/Kanit-Bold.woff') format('woff'),
+  url('fonts/kanit/Kanit-Bold.ttf') format('truetype'),
+  url('fonts/kanit/Kanit-Bold.svg#Kanit-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('fonts/kanit/Kanit-Regular.eot');
+  src: url('fonts/kanit/Kanit-Regular.eot?#iefix') format('embedded-opentype'),
+  url('fonts/kanit/Kanit-Regular.woff') format('woff'),
+  url('fonts/kanit/Kanit-Regular.ttf') format('truetype'),
+  url('fonts/kanit/Kanit-Regular.svg#Kanit-Regular') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}

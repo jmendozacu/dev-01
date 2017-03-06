@@ -108,8 +108,8 @@
                        as="list.decor"
                        template="mpblog/list-decor.phtml"/>
                 <block type="mpblog/content_category_list"
-                     name="mpblog.category.list.decor"
-                     as="list.decor"
+                     name="mpblog.category.list.decor2"
+                     as="list.decor2"
                      template="mpblog/list-decor2.phtml"/>
             </block>
 
@@ -220,6 +220,9 @@
                        name="mpblog_comments_list"
                        as="mpblog_comments_list"
                        template="mpblog/comments/list.phtml"/>
+
+              <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost"
+                     template="mpblog/sidebar/recentpost.phtml"/>
             </block>
         </reference>
     </mpblog_index_post>

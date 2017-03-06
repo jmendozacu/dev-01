@@ -10,9 +10,8 @@
     <div class="mp-buttons fix-me">
         <ul>
         <?php foreach($this->getButtons() as $button): ?>
-
             <?php if ($this->getHasImage($button)): ?>
-            <li>
+            <li class="social-<?php echo $button->getValue(); ?>">
                 <?php if ($button->getIsTemplate()): ?>
                     <?php echo $this->getButtonHtml($button); ?>
                 <?php else: ?>
