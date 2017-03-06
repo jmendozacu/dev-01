@@ -1439,3 +1439,25 @@ i.mpblog-old-magento.glyphicons:before {
   font-style: normal;
 }
 
+.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1){
+  width:100%;
+  margin-bottom:30px;
+}
+.list-decor-style2 .mpblog-list.list .mpblog-post {
+  margin-right:2%;
+}
+.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(3n +1) {
+  margin-right: 0px;
+}
+.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-image {
+  float:left;
+  width:66%;
+  margin-right:2%;
+}
+.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
+  float:left;
+  width:32%;
+}
+.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .mp-content  {
+  display:block;
+}

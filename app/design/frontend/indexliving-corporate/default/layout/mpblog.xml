@@ -107,7 +107,11 @@
                        name="mpblog.category.list.decor"
                        as="list.decor"
                        template="mpblog/list-decor.phtml"/>
-          </block>
+                <block type="mpblog/content_category_list"
+                     name="mpblog.category.list.decor"
+                     as="list.decor"
+                     template="mpblog/list-decor2.phtml"/>
+            </block>
 
             <block type="mpblog/content_category_grid"
                    name="mpblog.category.grid"
