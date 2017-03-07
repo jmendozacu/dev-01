@@ -199,26 +199,15 @@
 
         </reference>
         <reference name="layout.content">
-
             <block type="mpblog/content_post" name="mpblog.post" as="post">
-
-                <block type="mpblog/social"
-                       name="mpblog_social"
-                       as="mpblog_social"
-                       template="mpblog/social.phtml"/>
-
-                <block type="mpblog/comments_action"
-                       name="mpblog_comments_action"
-                       as="mpblog_comments_action"
-                       template="mpblog/comments/action.phtml"/>
-
-                <block type="mpblog/comments_list"
-                       name="mpblog_comments_list"
-                       as="mpblog_comments_list"
-                       template="mpblog/comments/list.phtml"/>
-
-              <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost"
-                     template="mpblog/sidebar/recentpost.phtml"/>
+                <block type="mpblog/content_post" name="mpblog.post.decor" as="post.decor" template="mpblog/post-decor.phtml">
+                  <block type="mpblog/sidebar_category" name="mpblog.sidebar_category" as="mpblog.sidebar_category" template="mpblog/sidebar/categories.phtml"/>
+                    <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>
+                    <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost" template="mpblog/sidebar/recentpost.phtml"/>
+                </block>
+                <block type="mpblog/content_post" name="mpblog.post.promotion" as="post.promotion" template="mpblog/post-promotion.phtml">
+                    <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost" template="mpblog/sidebar/recentpost-promotion.phtml"/>
+                </block>
             </block>
         </reference>
     </mpblog_index_post>
