@@ -169,22 +169,27 @@ $dealers->clear(); ?>
 												<input type="hidden" name="dealer-address" id="dealer_address_<?php echo $dealer->getId() ?>"
 															 value="<?php echo $dealer->getAddress() ?>"/>
 												<div class="dealer-info" style="display:none;" id="dealer_highlight_<?php echo $dealer->getId() ?>">
-												<p><strong><?php echo $dealer->getTitle() ?></strong></p>
+<!--                                                    --><?php //Zend_Debug::dump($dealer->getDealerMap());die;?>
+                                                    <?php if($dealer->getDealerMap()):?>
+                                                        <img width="200" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
+                                                    <?php else: ?>
+                                                        <p><strong><?php echo $dealer->getTitle() ?></strong></p>
 
-												<p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
-												<?php if ($dealer->getPostalCode()): ?>
-													<p><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></p>
-												<?php endif; ?>
-												<?php if ($dealer->getPhone()): ?>
-													<p><?php echo $this->__('Phone') ?>: <?php echo $dealer->getPhone() ?></p>
-												<?php endif; ?>
-												<?php if ($dealer->getWebsite()): ?>
-													<p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
-												<?php endif; ?>
-												<p><b><?php echo $this->__('Get Directions') ?>:</b> <a
-														href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
-													<a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
-												</p>
+                                                        <p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
+                                                        <?php if ($dealer->getPostalCode()): ?>
+                                                            <p><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></p>
+                                                        <?php endif; ?>
+                                                        <?php if ($dealer->getPhone()): ?>
+                                                            <p><?php echo $this->__('Phone') ?>: <?php echo $dealer->getPhone() ?></p>
+                                                        <?php endif; ?>
+                                                        <?php if ($dealer->getWebsite()): ?>
+                                                            <p><?php echo $this->__('Website') ?>: <?php echo $dealer->getWebsite() ?></p>
+                                                        <?php endif; ?>
+                                                        <p><b><?php echo $this->__('Get Directions') ?>:</b> <a
+                                                                href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
+                                                            <a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
+                                                        </p>
+                                                    <?php endif; ?>
 											</div>
 											</li>
                                         <?php endif;?>
