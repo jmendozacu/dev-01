@@ -224,15 +224,17 @@
             <block type="mpblog/adminhtml_category_edit_tabs" name="mpblog_category_edit_tabs">
                 <block type="mpblog/adminhtml_category_edit_tab_general" name="mpblog_category_edit_tab_general" />
                 <block type="mpblog/adminhtml_category_edit_tab_meta" name="mpblog_category_edit_tab_meta" />
+                <block type="mpblog/adminhtml_category_edit_tab_subcategory" name="mpblog_category_edit_tab_subcategory" />
                 <action method="addTab"><name>general</name><block>mpblog_category_edit_tab_general</block></action>
                 <action method="addTab"><name>meta_data</name><block>mpblog_category_edit_tab_meta</block></action>
+                <action method="addTab"><name>sub_category</name><block>mpblog_category_edit_tab_subcategory</block></action>
             </block>
         </reference>
     </adminhtml_mpblog_category_edit>
 
     <adminhtml_mpblog_category_grid>
         <block type="core/text_list" name="root" output="toHtml">
-            <block type="mpblog/adminhtml_category_grid" name="admin.mpblog.categories.grid"/>
+            <block type="mpblog/adminhtml_category_grid" name= "admin.mpblog.categories.grid"/>
         </block>
     </adminhtml_mpblog_category_grid>
 
