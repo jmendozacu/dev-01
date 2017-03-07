@@ -97,20 +97,16 @@
             <block type="mpblog/content_list_wrapper" name="mpblog.content.list.wrapper" as="mpblog_content_list_wrapper" />
         </reference>
         <reference name="layout.content">
-
-            <block type="mpblog/content_category_list"
-                   name="mpblog.category.list"
-                   as="list"
-                   template="mpblog/list.phtml">
-
-                <block type="mpblog/content_category_list"
-                       name="mpblog.category.list.decor"
-                       as="list.decor"
-                       template="mpblog/list-decor.phtml"/>
-                <block type="mpblog/content_category_list"
-                     name="mpblog.category.list.decor2"
-                     as="list.decor2"
-                     template="mpblog/list-decor2.phtml"/>
+            <block type="mpblog/content_category_list" name="mpblog.category.list" as="list" template="mpblog/list.phtml">
+                <block type="mpblog/content_category_list" name="mpblog.category.list.decor" as="list.decor" template="mpblog/list-decor.phtml">
+                    <block type="mpblog/sidebar_category" name="mpblog.sidebar_category" as="mpblog.sidebar_category" template="mpblog/sidebar/categories.phtml"/>
+                </block>
+                <block type="mpblog/content_category_list" name="mpblog.category.list.decor2" as="list.decor2" template="mpblog/list-decor2.phtml">
+                  <block type="mpblog/sidebar_category" name="mpblog.sidebar_category" as="mpblog.sidebar_category" template="mpblog/sidebar/categories.phtml"/>
+                </block>
+                <block type="mpblog/content_category_list" name="mpblog.category.list.promotion" as="list.promotion" template="mpblog/list-promotion.phtml">
+                  <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>
+                </block>
             </block>
 
             <block type="mpblog/content_category_grid"
