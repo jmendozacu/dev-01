@@ -12,31 +12,6 @@ $post = $this->getPost();
 
 /** @var Magpleasure_Blog_Block_Content_Post $this */
 ?>
-<div class="mpblog-container">
-    <div class="mpblog-post mpblog-post-view">
-        <div class="mp-blog-head fix-me">
-            <h1 class=""><?php echo $this->escapeHtml($post->getTitle()); ?></h1>
-        </div>
-        <div class="mp-header">
-            <div class="post-views">
-                <strong><?php echo $post->getViews() ?></strong>
-                <span></span><?php echo $this->__('Views') ?> </span>
-            </div>
-            <?php if ($helper->getSocialEnabled()): ?>
-                <div class="post-social">
-                    <div class="share">
-                        <strong><?php echo $this->__('50') ?></strong>
-                        <span></span><?php echo $this->__('Shares') ?> </span>
-                    </div>
-                    <?php if ($helper->getSocialEnabled()): ?>
-                        <?php echo $this->getSocialHtml(); ?>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
-        </div>
-        <div class="mp-content std fix-me">
-            <?php echo $post->getFullContent(); ?>
-        </div>
-    </div>
-    <?php echo $this->getChildHtml('recentpost')?>
-</div>
+<?php //echo $this->getChildHtml('post.decor'); ?>
+<?php echo $this->getChildHtml('post.promotion'); ?>
+

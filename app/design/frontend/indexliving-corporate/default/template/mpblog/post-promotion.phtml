@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Magpleasure_Blog
+ */
+
+/** @var Magpleasure_Blog_Helper_Data $helper  */
+$helper = $this->_helper();
+/** @var Magpleasure_Blog_Model_Post $post  */
+$post = $this->getPost();
+
+/** @var Magpleasure_Blog_Block_Content_Post $this */
+?>
+<div class="mpblog-2column-right mpblog-post-promotiom">
+    <div class="mp-blog-head fix-me">
+        <h1 class="mp-title title-promotion">
+            <?php echo $this->escapeHtml($post->getTitle()); ?>
+        </h1>
+    </div>
+    <div class="mpblog-col-right">
+        <?php echo $this->getChildHtml('recentpost')?>
+    </div>
+    <div class="mpblog-col-content">
+        <div class="mpblog-container">
+            <div class="mpblog-post mpblog-post-view">
+                <?php if ($post->getPostThumbnailSrc()): ?>
+                    <div class="post-thumbnail">
+                        <?php if ($this->hasThumbnailUrl()): ?>
+                            <a class="thumbnail-url" title="<?php echo $this->escapeHtml($post->getTitle()); ?>" href="<?php echo $this->getThumbnailUrl(); ?>">
+                                <?php endif; ?>
+                                <img class="thumbnail"
+                                     src="<?php echo $post->getPostThumbnailSrc(); ?>"
+                                     alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                                <?php if ($this->hasThumbnailUrl()): ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+                <div class="mp-content std fix-me">
+                    <?php echo $post->getFullContent(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

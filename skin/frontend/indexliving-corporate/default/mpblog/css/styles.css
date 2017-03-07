@@ -126,8 +126,11 @@
 .desktop.two-columns-right aside.right,
 .mpblog-2column-left .mpblog-col-left,
 .mpblog-2column-right .mpblog-col-right{
-  width: 23%;
+  width: 24%;
   float: left;
+}
+.mpblog-2column-right .mpblog-col-right {
+  float:right;
 }
 .desktop.two-columns-right section.content,
 .mpblog-2column-right .mpblog-col-content{
@@ -823,14 +826,7 @@ i.glyphicons.calendar {
   background: none !important;
 }
 /* Sidebars */
-.mpblog-categories .block-content,
-.mpblog-search .block-content,
-.mpblog-recentposts .block-content,
-.mpblog-tags .block-content,
-.mpblog-recentcomments .block-content,
-.mpblog-archives .block-content {
-  padding: 5px 10px;
-}
+
 .mpblog-categories .block-content {
   padding:0px;
 }
@@ -1280,7 +1276,8 @@ i.mpblog-old-magento.glyphicons:before {
 .mpblog-container h3,
 .mpblog-container h4,
 .mpblog-container h5,
-.mpblog-container .h6 {
+.mpblog-container .h6,
+#mpblog_content_post{
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
 }
 
@@ -1482,11 +1479,12 @@ i.mpblog-old-magento.glyphicons:before {
   float:left;
 }
 .mpblog-post.mpblog-post-view .mp-content  {
-   font-size:16px;
+  font-size:16px;
   font-weight: 300;
   font-style: normal;
   float:left;
   width:100%;
+  color: #000;
 }
 .block-title.title-style5,
 .title-style5 {
@@ -1518,7 +1516,7 @@ i.mpblog-old-magento.glyphicons:before {
   -moz-transform: translate(-50%,0) ;
 }
 .mp-blog-head h1.mp-title.title-promotion {
-  padding: 20px 1000px;
+  padding: 18px 1000px;
   margin: 0 -1000px 30px -1000px;
   background: #EFEFEF;
   border-top: solid 1px #E6E6E6;
@@ -1664,4 +1662,58 @@ ul.mp-details > li >a:hover:before {
 .box-shares .mpblog-social-container:after {
   border-bottom:solid 8px #fff;
   margin-top:2px;
+}
+
+.mpblog-post-promotiom .mpblog-col-content {
+  border-right:solid 1px #f4f4f4;
+}
+.mpblog-post-promotiom .mpblog-col-right {
+  position: relative;
+}
+.mpblog-post-promotiom .mpblog-col-right:before{
+  position: absolute;
+  height:100%;
+  width:1px;
+  content:"";
+  left:-1px;
+  top:0px;
+  background:#f4f4f4;
+}
+.mpblog-recentposts-style2 {
+  float:left;
+  width:100%;
+  padding: 0 20px;
+  text-align: center;
+}
+.block-title.title-style6 strong{
+  font-size:18px;
+  color:#444444;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  margin-bottom:20px;
+}
+.mpblog-list-style2 .mpblog-post {
+  border-bottom:solid 1px #d7d7d7;
+  padding:25px 0;
+  margin:0px;
+}
+.mpblog-list-style2 .mpblog-post:nth-last-child(1){
+  border-bottom:none;
+  padding-bottom:0px;
+}
+.mpblog-list-style2 .mpblog-post .post-image {
+  padding:0 19%;
+}
+.mpblog-list-style2 .mpblog-post .mp-post-title a{
+  font-size:16px;
+  color:#000;
+  line-height: 24px;
+  height: 48px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-weight: normal;
+  text-transform: uppercase;
 }
