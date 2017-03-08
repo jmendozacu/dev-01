@@ -1522,7 +1522,7 @@ i.mpblog-old-magento.glyphicons:before {
   border-top: solid 1px #E6E6E6;
   border-bottom: solid 1px #E6E6E6;
   float: left;
-  width: auto;
+  width: calc(100% + 2000px);
   max-width: none;
   font-size: 28px;
   font-weight: bold;
@@ -1716,4 +1716,29 @@ ul.mp-details > li >a:hover:before {
   overflow: hidden;
   font-weight: normal;
   text-transform: uppercase;
+}
+.list-news-event .mpblog-list.list .mpblog-post {
+  float:left;
+  width:49%;
+  margin:20px 2% 20px 0;
+}
+.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) {
+  width:100%;
+  margin:10px 0 50px;
+}
+
+.list-news-event .mpblog-list.list .mpblog-post:nth-child(2n + 1){
+  margin-right:0px;
+}
+.list-news-event .mpblog-list.list .mpblog-post:nth-child(2n){
+   clear:left;
+}
+
+.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image,
+.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
+  float:left;
+  width:49%;
+}
+.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image{
+  margin-right:2%;
 }
