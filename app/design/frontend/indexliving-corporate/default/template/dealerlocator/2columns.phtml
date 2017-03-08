@@ -138,7 +138,7 @@ $dealers->clear(); ?>
                                                 ?>
                                         <?php if($store_id_allow==0||$current_store_id==$store_id_allow):?>
 											<li
-												onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
+												onclick="<?php if($dealer->getDealerMap()){?>mapPopup('<?php echo $dealer->getId() ?>','<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $dealer->getDealerMap(); ?>'); window.location='#map_canvas'<?php }else{ ?>showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'<?php } ?>">
 												<h3><?php echo $dealer->getTitle(); ?></h3>
 												<h4><?php echo $dealer->getAddress(); ?></h4>
 												<?php if ($dealer->getPostalCode()): ?>
@@ -169,10 +169,6 @@ $dealers->clear(); ?>
 												<input type="hidden" name="dealer-address" id="dealer_address_<?php echo $dealer->getId() ?>"
 															 value="<?php echo $dealer->getAddress() ?>"/>
 												<div class="dealer-info" style="display:none;" id="dealer_highlight_<?php echo $dealer->getId() ?>">
-<!--                                                    --><?php //Zend_Debug::dump($dealer->getDealerMap());die;?>
-                                                    <?php if($dealer->getDealerMap()):?>
-                                                        <img width="200" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
-                                                    <?php else: ?>
                                                         <p><strong><?php echo $dealer->getTitle() ?></strong></p>
 
                                                         <p><?php echo $this->__('Address') ?>: <?php echo $dealer->getAddress() ?></p>
@@ -189,7 +185,6 @@ $dealers->clear(); ?>
                                                                 href="javascript:fromhere(<?php echo $dealer->getId() ?>)"> <?php echo $this->__('To Here') ?></a> -
                                                             <a href="javascript:fromhere(<?php echo $dealer->getId() ?>)"><?php echo $this->__('From Here') ?></a>
                                                         </p>
-                                                    <?php endif; ?>
 											</div>
 											</li>
                                         <?php endif;?>
@@ -224,7 +219,7 @@ $dealers->clear(); ?>
 						<ul id="dealer-list" class="product-dealerscroll">
 							<?php foreach ($dealers->getItems() as $dealer): ?>
 								<li
-									onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
+                                    onclick="<?php if($dealer->getDealerMap()){?>mapPopup('<?php echo $dealer->getId() ?>','<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $dealer->getDealerMap(); ?>'); window.location='#map_canvas'<?php }else{ ?>showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'<?php } ?>">
 									<h3><?php echo $dealer->getTitle(); ?></h3>
 									<h4><?php echo $dealer->getAddress(); ?></h4>
 									<?php if ($dealer->getPostalCode()): ?>
@@ -395,6 +390,22 @@ $dealers->clear(); ?>
       infoWindow.setContent(infoContent);
       infoWindow.open(map, marker);
     });
+  }
+  function mapPopup(dealerMapId,dealerMap){
+      if ($('map-popup-' + dealerMapId)) {
+          $('map-popup-' + dealerMapId).remove();
+      } else {
+          window.dealerMapContainer = new Element('div', {
+              'class': 'dealermap-popup',
+              'id': 'dealermap-popup-' + dealerMapId,
+          });
+          dealerMapContainer.insert('<div id="ajaxcart-overlay"><div class="dealer-map-preview-popup"><a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="javascript:hideMapPopup()"></a><img align="middle" id="img-mappopup" src="'+ dealerMap +'" /></div></div>');
+          $$('body')[0].insert(dealerMapContainer);
+      }
+  }
+
+  function hideMapPopup() {
+      jQuery('.dealermap-popup').remove();
   }
 
 	function showBigMap(dealerMapUrl, dealerMapId) {
