@@ -6,26 +6,23 @@
  */
 ?>
 <?php
-    $home_decor = 1;
-    $promotions = 2;
-    $newevent_crs = 3;
-    $index_project = 4;
+$home_decor = 1;
+$promotions = 2;
+$newevent_crs = 3;
+$index_project = 4;
 ?>
-<?php $collection = $this->getCollection(); ?>
-<?php if (count($collection)): ?>
-    <?php foreach ($collection as $category): ?>
-        <?php $category_style = $category->getData('category_style'); ?>
-        <?php if($category_style == $home_decor):?>
 
-        <?php elseif($category_style == $promotions):?>
+<?php  $category  = $this->getCategory(); ?>
+<?php $category_style = $category->getData('category_style'); ?>
+<?php
+if($category_style == $home_decor){
+  echo $this->getChildHtml('list.decor');
+  //echo $this->getChildHtml('list.decor2');
+}elseif($category_style == $promotions){
+  echo $this->getChildHtml('list.promotion');
+}elseif($category_style == $newevent_crs){
+  echo $this->getChildHtml('list.news.event');
+}elseif($category_style == $index_project){
+}
+?>
 
-        <?php elseif($category_style == $newevent_crs):?>
-
-        <?php elseif($category_style == $index_project):?>
-
-        <?php endif ?>
-    <?php endforeach; ?>
-<?php endif ?>
-<?php //echo $this->getChildHtml('list.decor'); ?>
-<?php //echo $this->getChildHtml('list.decor2'); ?>
-<?php echo $this->getChildHtml('list.promotion'); ?>

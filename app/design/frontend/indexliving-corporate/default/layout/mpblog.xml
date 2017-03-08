@@ -107,6 +107,8 @@
                 <block type="mpblog/content_category_list" name="mpblog.category.list.promotion" as="list.promotion" template="mpblog/list-promotion.phtml">
                   <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>
                 </block>
+                <block type="mpblog/content_category_list" name="mpblog.category.list.news.event" as="list.news.event" template="mpblog/list-news-event.phtml"/>
+
             </block>
 
             <block type="mpblog/content_category_grid"
@@ -201,12 +203,16 @@
         <reference name="layout.content">
             <block type="mpblog/content_post" name="mpblog.post" as="post">
                 <block type="mpblog/content_post" name="mpblog.post.decor" as="post.decor" template="mpblog/post-decor.phtml">
-                  <block type="mpblog/sidebar_category" name="mpblog.sidebar_category" as="mpblog.sidebar_category" template="mpblog/sidebar/categories.phtml"/>
+                    <block type="mpblog/sidebar_category" name="mpblog.sidebar_category" as="mpblog.sidebar_category" template="mpblog/sidebar/categories.phtml"/>
                     <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>
                     <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost" template="mpblog/sidebar/recentpost.phtml"/>
                 </block>
                 <block type="mpblog/content_post" name="mpblog.post.promotion" as="post.promotion" template="mpblog/post-promotion.phtml">
                     <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost" template="mpblog/sidebar/recentpost-promotion.phtml"/>
+                </block>
+                <block type="mpblog/content_post" name="mpblog.post.news.event" as="post.news.event" template="mpblog/post-news-event.phtml">
+                    <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>
+                    <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost" template="mpblog/sidebar/recentpost.phtml"/>
                 </block>
             </block>
         </reference>

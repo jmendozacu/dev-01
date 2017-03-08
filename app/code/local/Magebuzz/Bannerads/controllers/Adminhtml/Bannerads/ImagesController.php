@@ -46,14 +46,14 @@ class Magebuzz_Bannerads_Adminhtml_Bannerads_ImagesController extends Mage_Admin
   public function saveAction() {
     if ($data = $this->getRequest()->getPost()) {
 			//date processing
-			$data = $this->_filterDateTime($data, array('start_time', 'end_time'));
-			if (!$data['start_time']) {
-				$data['start_time'] = new Zend_Db_Expr('NULL');
-			}
-			
-			if (!$data['end_time']) {
-				$data['end_time'] = new Zend_Db_Expr('NULL');
-			}
+//			$data = $this->_filterDateTime($data, array('start_time', 'end_time'));
+//			if (!$data['start_time']) {
+//				$data['start_time'] = new Zend_Db_Expr('NULL');
+//			}
+//
+//			if (!$data['end_time']) {
+//				$data['end_time'] = new Zend_Db_Expr('NULL');
+//			}
 			
       if (isset($_FILES['banner_image']['name']) && $_FILES['banner_image']['name'] != '') {
 				$info = pathinfo($_FILES['banner_image']['name']);
