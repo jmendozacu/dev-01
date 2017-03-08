@@ -36,8 +36,7 @@ class Magpleasure_Blog_Block_Adminhtml_Category_Edit_Tab_Subcategory extends Mag
 
         $fieldset->addField('sub_category', 'multiselect', array(
             'label' => $this->_helper()->__('Sub category'),
-            'class' => 'required-entry',
-            'required' => true,
+            'required' => false,
             'name' => 'sub_category',
             'values' => $this->getListCategory(),
         ));
