@@ -229,6 +229,41 @@
 .allcategory-banners .banners-list .rb .wrap-bannerads{}
 .allcategory-banners .banners-list .rb .wrap-bannerads .banner{float:left;}
 .allcategory-banners .banners-list .rb .wrap-bannerads .banner .bx-viewport{padding-right:150px;}
+
+.box-banners-style3 .bx-wrapper .bx-controls-direction a {
+  width:40px;
+  height:45px;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  background-color:#EDEDED;
+}
+.box-banners-style3 .bx-wrapper .bx-controls-direction a:hover{
+  background-color:#FFC222;
+}
+.box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-prev {
+  background-position: 13px -48px;
+  left:-55px;
+}
+.box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-next {
+  background-position: -34px -48px;
+  right:-55px;
+}
+.box-banners-style3 .bx-wrapper .bx-pager.bx-default-pager {
+  position: absolute;
+  bottom: 6px;
+  left: 0px;
+  width: 100%;
+  z-index: 9;
+  padding: 0px;
+}
+.box-banners-style3 .bx-wrapper .bx-pager.bx-default-pager a  {
+  width:12px;
+  height:12px;
+  margin:0px 4px;
+}
+
+
  @media (max-width: 1315px) {
   .wrap-bannerads div.banner{width: 100%;height: auto;}
   .main-banners  .bx-wrapper .bx-controls-direction a.bx-prev{left: -40px;}

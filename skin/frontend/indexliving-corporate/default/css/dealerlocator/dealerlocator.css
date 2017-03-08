@@ -1,6 +1,13 @@
 .dealerlocator {
 	float:left; width:100%;
   margin-top:40px;
+  font-family: 'Kanit', Helvetica, Arial, sans-serif;
+}
+.dealerlocator  h2,
+.dealerlocator  h4,
+.dealerlocator  h3,
+.dealerlocator {
+  font-family: 'Kanit', Helvetica, Arial, sans-serif;
 }
 
 .dealerlocator .col2-set .col-1 {
@@ -236,7 +243,7 @@
 .list-all-product-dealer ul li .dealer-map{position:absolute; right:0; bottom:10px;}
 
 .list-all-product-dealer ul li h3{
-	color:#ffc222;
+	color:#000;
 	font-size:14px;
 	margin:0 0 5px;
 	font-weight:bold;
@@ -246,6 +253,7 @@
 	display:block;
 	clear:both;
 	text-transform:none;
+  text-transform: uppercase;
 }
 .list-all-product-dealer ul li h4{
 	color:#000;
