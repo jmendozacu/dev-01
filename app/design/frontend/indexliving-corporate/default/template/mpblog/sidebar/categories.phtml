@@ -19,6 +19,23 @@ $collection = $this->getCollection();
         <?php foreach ($collection as $category): ?>
             <li class="mpblog-category<?php if ($category->getIsActive()): ?> active<?php endif; ?> mpblog-category-<?php echo $category->getId(); ?>">
                 <a href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $this->escapeHtml($category->getName()); ?></a>
+                <?php
+                $subcate_ids = $category->getData('sub_category');
+                if($subcate_ids):
+                    $subcate_ids = explode(',', $subcate_ids);
+                    foreach($subcate_ids as $subcate_id):
+                        $collection_subcate = $this->getCollectionSubcate($subcate_id);
+                        ?>
+                        <ul class="mplog-sub-categories">
+                            <?php if ($collection_subcate['status'] == 1): ?>
+                                <li class="mpblog-category">
+                                    <i class="glyphicons ok_2"></i>
+                                    <a href="<?php echo $collection_subcate->getCategoryUrlSubcate(null,$subcate_id); ?>"><?php echo $this->escapeHtml($collection_subcate['name']); ?></a>
+                                </li>
+                            <?php endif ?>
+                        </ul>
+                    <?php endforeach; ?>
+                <?php endif ?>
             </li>
         <?php endforeach; ?>
         </ul>
