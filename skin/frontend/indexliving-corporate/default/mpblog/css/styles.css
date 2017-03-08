@@ -1485,6 +1485,7 @@ i.mpblog-old-magento.glyphicons:before {
   float:left;
   width:100%;
   color: #000;
+  margin-bottom:30px;
 }
 .block-title.title-style5,
 .title-style5 {
@@ -1741,4 +1742,11 @@ ul.mp-details > li >a:hover:before {
 }
 .list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image{
   margin-right:2%;
+}
+
+.blog-banners-right li {
+  margin-bottom:22px;
+}
+.blog-banners-right li:nth-last-child(1) {
+  margin-bottom:0px;
 }
