@@ -12143,8 +12143,16 @@ ul.mp-details > li >a:before,
   font-weight: bold;
   color:#252525;
 }
-.joy-card-page {
+.joy-card-page,
+.page-title.style2 h1,
+.cms-page-view .std p,
+.cms-page-view{
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
+}
+.page-title.style2 h1 {
+  font-size:28px;
+  color:#252525;
+  font-weight:bold;
 }
 /* joycard page */
 .joy-card-page  .box-banners {
@@ -12275,5 +12283,55 @@ ul.mp-details > li >a:before,
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
-
-
+.joy-4-page .page-title.style2 {
+  margin-bottom:50px;
+}
+.joy-4-page .top-info  {
+  text-align: center;
+  margin-bottom:35px;
+}
+.joy-4-page .top-info img {
+  margin:0 auto 15px;
+}
+.joy-4-page .top-info h3 {
+  font-size:36px;
+  color:#000;
+  font-weight: 500;
+}
+.joy-4-page .top-info p {
+  font-size:24px;
+  font-weight: 300;
+  line-height: 30px;
+  color:#000;
+}
+.joy-4-page .list-joy ul {
+  float:left;
+  width:50%;
+}
+.joy-4-page .list-joy ul:nth-child(2) {
+  margin-top: 150px;
+}
+.joy-4-page .list-joy li {
+  float:left;
+  width:100%;
+  margin:35px 0;
+}
+.joy-4-page .list-joy li a {
+  display: block;
+  width:455px;
+  max-width:100%;
+  margin:auto;
+}
+.joy-4-page .list-joy li a  img {
+  max-width:100%;
+  margin:0 auto 20px;
+}
+.joy-4-page .list-joy li label {
+  font-size:18px;
+  font-weight: 300;
+  line-height: 28px;
+}
+.joy-4-page .list-joy li strong {
+  font-weight: normal;
+  font-size:24px;
+}
