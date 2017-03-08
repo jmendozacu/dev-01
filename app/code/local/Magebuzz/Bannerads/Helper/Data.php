@@ -252,6 +252,26 @@ class Magebuzz_Bannerads_Helper_Data extends Mage_Core_Helper_Abstract {
       }catch (Mage_Core_Exception $e){
 //        var_dump($e->getMessage());die;
       }
+
+      if(Mage::helper('catalog/category_flat')->isEnabled()) {
+        $allStores = Mage::app()->getStores();
+        foreach ($allStores as $_eachStoreId => $val)
+        {
+          $_storeId = Mage::app()->getStore($_eachStoreId)->getId();
+          $table_flat = 'catalog_category_flat_store_'.$_storeId;
+          $catFlatTable = $this->_getTableName($table_flat);
+
+          $sqlFlat = "UPDATE {$catFlatTable}"."
+            SET is_active = ".$is_active."
+            WHERE entity_id = " .$entity_id;
+          try{
+            $this->_getWriteConnection()->query($sqlFlat);
+          }catch (Mage_Core_Exception $e){
+            //        var_dump($e->getMessage());die;
+          }
+        }
+
+      }
     }
     return $this;
   }
