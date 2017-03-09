@@ -4700,6 +4700,8 @@ body.catalogsearch-result-index .page-title h1 {
 .catalog-product-view .product-view .product-shop .price-info{position: relative;}
 .products-grid  .grid-price .save-price-percent{right:0px;  bottom:12px; }
 .catalog-product-view .product-view .product-shop .save-price-percent{position:relative;display:table;padding:4px 4px 2px;margin-left:0;}
+.catalog-product-view .add-to-cart-wrapper .remark_prd {text-align: center;padding-bottom: 6px;}
+
 
 .products-list  .product-desc {float:left; width:100%; margin-bottom:35px; font-size:12px;display: none;}
 
@@ -12054,7 +12056,7 @@ body:lang(th) .product-view .add-to-cart button.btn-cart span span{line-height: 
 body:lang(th) .products-grid .actions .button.btn-cart { line-height: 2.4;}
 body:lang(th) .product-view .product-review-summary .review-box .box-title .br .write-review-popup{padding: 9px 15px 5px;}
 body:lang(th) .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{margin-top: 36%;}
-body:lang(th) .product-view .add-to-links > li > a{font-size: 19px;line-height:38px;}
+body:lang(th) .product-view .add-to-links > li > a{font-size: 15px;line-height:33px;}
 body:lang(th) .mini-account  a{ padding: 12px 10px 10px 40px; font-size: 15px;}
 body:lang(th) .mini-account .box-title{font-size: 16px;padding: 11px 10px 7px;}
 body:lang(th) .block-account li {font-size:15px}
