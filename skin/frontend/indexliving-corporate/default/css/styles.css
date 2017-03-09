@@ -12115,7 +12115,8 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .mpblog-post .mp-header .post-views:before,
 ul.mp-details > li >a:before,
 .box-banners-style3 .bx-wrapper .bx-controls-direction a,
-.joy-card-page li:before{
+.joy-card-page li:before,
+.joy-price-page .box-right li:before{
   background-image: url(../images/icon-corporate.png);
 }
 
@@ -12124,7 +12125,8 @@ ul.mp-details > li >a:before,
   .mpblog-post .mp-header .post-views:before,
   ul.mp-details > li >a:before,
   .box-banners-style3 .bx-wrapper .bx-controls-direction a,
-  .joy-card-page li:before{
+  .joy-card-page li:before,
+  .joy-price-page .box-right li:before{
     background-image: url(../images/icon-corporate2x.png);
     background-size: 100px 1000px;
   }
@@ -12283,7 +12285,8 @@ ul.mp-details > li >a:before,
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
 }
-.joy-4-page .page-title.style2 {
+.joy-4-page .page-title.style2,
+.joy-price-page .page-title.style2{
   margin-bottom:50px;
 }
 .joy-4-page .top-info  {
@@ -12334,4 +12337,83 @@ ul.mp-details > li >a:before,
 .joy-4-page .list-joy li strong {
   font-weight: normal;
   font-size:24px;
+}
+.joy-price-page  .box-left {
+  float:left;
+  width:33%;
+}
+.joy-price-page  .box-right{
+  float:left;
+  width:67%;
+  padding-left:9%;
+}
+.joy-price-page  .box-left  .img-logo {
+  width:275px;
+  max-width:100%;
+  margin-bottom:15px;
+}
+.joy-price-page  .box-left h2{
+  color:#7FA0D3;
+  font-size:81px;
+  font-weight: bold ;
+  text-transform: uppercase;
+  line-height: 82px;
+  margin-bottom:0px;
+}
+.joy-price-page  .box-left label{
+  font-size:49px;
+  font-weight: 300;
+  font-style: normal;
+  color:#000;
+  margin-bottom:10px;
+}
+.joy-price-page  .box-left label strong {
+  font-weight: normal;
+}
+.joy-price-page  .box-left p{
+  color:#7D7D7D;
+  font-size:18px;
+  font-weight: 300;
+  font-style: normal;
+  line-height: 30px;
+}
+.joy-price-page .box-right li {
+  float:left;
+  width:100%;
+  margin-bottom:25px;
+  font-size:16px;
+  font-weight: 300;
+  font-style: normal;
+  padding-left:100px;
+  position: relative;
+  line-height: 24px;
+  color:#000;
+  min-height:82px;
+}
+.joy-price-page .box-right li:before{
+  content:"";
+  width:68px;
+  height:68px;
+  position: absolute;
+  left:0px;
+  top:0px;
+  background-repeat: no-repeat;
+}
+.joy-price-page .box-right li label{
+  font-size:22px;
+  font-weight: normal;
+  margin-bottom:10px;
+  display: block;
+}
+.joy-price-page .box-right li.economy:before {
+  background-position: 0px -373px;
+}
+.joy-price-page .box-right li.technology:before {
+  background-position: 0px -459px;
+}
+.joy-price-page .box-right li.productivity:before {
+  background-position: 0px -535px;
+}
+.joy-price-page .box-right li.direct:before {
+  background-position: 0px -617px;
 }
