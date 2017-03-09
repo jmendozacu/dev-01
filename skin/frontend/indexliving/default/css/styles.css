@@ -5404,9 +5404,15 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .product-view .product-shop .price-box {
   margin-top: 0;
-	float:left;
+	/*float:left;*/
   clear:left;
 }
+
+
+.product-view .price-info .view-dealers-link{border-top:solid 1px #ededed;border-bottom:solid 1px #ededed;padding-bottom:10px;text-align:left;margin-bottom:-11px;margin-top:15px;}
+.product-view .price-info .view-dealers-link:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.product-view .price-info .view-dealers-link .view-dealers{padding:0 25px;float:left !important;}
+
 .product-view .product-shop .price-box .price-from,
 .product-view .product-shop .price-box .price-to { display:inline-block;}
 .product-view .product-shop .price-box .old-price,
