@@ -12286,7 +12286,8 @@ ul.mp-details > li >a:before,
   -moz-border-radius: 4px;
 }
 .joy-4-page .page-title.style2,
-.joy-price-page .page-title.style2{
+.joy-price-page .page-title.style2,
+.joy-design-page .page-title.style2 {
   margin-bottom:50px;
 }
 .joy-4-page .top-info  {
@@ -12416,4 +12417,135 @@ ul.mp-details > li >a:before,
 }
 .joy-price-page .box-right li.direct:before {
   background-position: 0px -617px;
+}
+.joy-design-page .top-info{
+  text-align: center;
+  line-height: 30px;
+}
+.joy-design-page .top-info img {
+  margin:10px auto 15px;
+  width:221px;
+  max-width:100%;
+}
+.joy-design-page .top-info label {
+  color:#707070;
+  font-size:18px;
+  font-weight: 300;
+  margin-bottom:10px;
+}
+.joy-design-page .top-info p {
+  color:#000;
+  font-size:18px;
+  font-weight: normal;
+}
+.joy-design-page .top-info h2 {
+  font-size:36px;
+  color:#252525;
+  font-weight: bold;
+  line-height: 45px;
+  margin-bottom:15px;
+}
+.joy-design-page .list-designer {
+  float:left;
+  width:100%;
+}
+.joy-design-page .list-designer li {
+   float:left;
+  width:100%;
+  padding:62px 0;
+  border-bottom:solid 1px #ebebeb;
+}
+.joy-design-page .list-designer li:nth-child(1) {
+  margin-top:50px;
+  border-top:solid 1px #ebebeb;
+}
+.joy-design-page .list-designer li .avatar {
+  float:left;
+  width:25%;
+}
+.joy-design-page .list-designer li .designer-info{
+  padding-left:2.5%;
+  float:left;
+  width:75%;
+  padding-top:25px;
+}
+.joy-design-page .list-designer li .designer-info h4{
+  color: #1d1d1b;
+  font-size: 35px;
+  line-height: 40px;
+  margin-bottom:0px;
+}
+.joy-design-page .list-designer li .designer-info label{
+  color: #000;
+  text-transform: uppercase;
+  font-size: 19px;
+  font-family: 'Index';
+}
+.joy-design-page .list-designer li .designer-info label small{
+  font-size:12px;
+  font-weight: normal;
+}
+.joy-design-page .list-designer li .title-info {
+  margin-top:20px;
+  font-size:36px;
+  color:#E78F00;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 38px;
+  margin-bottom: 10px;
+}
+.joy-design-page .list-designer li .title-info strong{
+  font-weight: bold;
+  display: block;
+}
+.joy-design-page .list-designer li .description p {
+  font-size:18px;
+  font-weight: 300;
+  color:#000;
+  line-height: 30px;
+  float:left;
+  width:45%;
+  padding-right:15px;
+}
+.joy-design-page .list-designer li .description .box-iframe {
+  float:left;
+  width:55%;
+  margin-top: -22px;
+}
+.joy-design-page .list-designer li .description .box-iframe >div{
+  float:left;
+  width:100%;
+  padding-bottom:56.25%;
+  position: relative;
+}
+.joy-design-page .list-designer li .description .box-iframe iframe {
+  position: absolute;
+  width:100%;
+  height:100%;
+  left:0px;
+  top:0px;
+  border:none;
+}
+.joy-design-page .list-designer li .designer-info-container {
+  float:left;
+  width:100%;
+}
+.joy-design-page .list-designer li:nth-child(2n) .avatar {
+  float:right;
+}
+.joy-design-page .list-designer li:nth-child(2n) .designer-info {
+  padding-left:0px;
+  padding-right:2.5%;
+  text-align: right;
+}
+.joy-design-page .list-designer li:nth-child(2n) .description p  {
+  float:right;
+  padding-left:15px;
+  padding-right:0px;
+}
+.joy-design-page .list-designer li:nth-child(2n) .designer-info img {
+  float:right;
+}
+.joy-design-page .list-designer li:nth-child(2n) .title-info {
+  color:#70bfb6;
 }
