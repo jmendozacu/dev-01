@@ -12148,7 +12148,8 @@ ul.mp-details > li >a:before,
 .joy-card-page,
 .page-title.style2 h1,
 .cms-page-view .std p,
-.cms-page-view{
+.cms-page-view,
+.buttons-set button{
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
 }
 .page-title.style2 h1 {
@@ -12652,13 +12653,13 @@ ul.mp-details > li >a:before,
 .service-detail .list-other-links li a {
   color:#000;
 }
-.service-detail.service-3d-designer .top-info {
+.service-detail .top-info {
   text-align: center;
   padding:25px;
   float:left;
   width:100%;
 }
-.service-detail.service-3d-designer .top-info h2 {
+.service-detail .top-info h2 {
   font-size:36px;
   color:#252525;
   font-weight: bold;
@@ -12667,7 +12668,7 @@ ul.mp-details > li >a:before,
   float:left;
   width:100%;
 }
-.service-detail.service-3d-designer .top-info p {
+.service-detail .top-info p {
  color:#707070;
   font-size: 18px;
   font-weight: 300;
@@ -12686,7 +12687,7 @@ ul.mp-details > li >a:before,
 .service-detail.service-3d-designer .top-info label a {
   color:#FFC222;
 }
-.service-detail.service-3d-designer .top-info img.banner{
+.service-detail .top-info img.banner{
   margin:auto;
 }
 .service-detail.service-3d-designer .box-info {
@@ -12734,4 +12735,228 @@ ul.mp-details > li >a:before,
   color:#000;
   margin-bottom:12px;
   text-transform: uppercase;
+}
+.service-detail.service-home-delivery-assembly .top-info p {
+  margin-bottom:25px;
+}
+.service-home-delivery-assembly .box-info {
+  float:left;
+  width:100%;
+  margin-bottom: 40px;
+  padding-bottom:40px;
+  border-bottom:solid 1px #ebebeb;
+}
+.service-home-delivery-assembly .box-info:nth-last-child(1) {
+  border-bottom:none;
+  margin-bottom:0;
+}
+.service-home-delivery-assembly .box-info .title {
+  font-size:24px;
+  color:#000;
+  font-weight: normal;
+  margin-bottom:10px;
+}
+.service-home-delivery-assembly .box-info label {
+  font-size:18px;
+  font-weight: 300;
+  margin-bottom:15px;
+  color:#000;
+}
+.table-style1 {
+  text-align: center;
+  color:#000;
+  font-size:16px;
+  font-weight: normal;
+  line-height: 24px;
+}
+.table-style1 th {
+  background:#252525;
+  color:#fff;
+  font-size:18px;
+  font-weight: normal;
+  padding:10px;
+  line-height: 30px;
+  text-align: center;
+}
+.table-style1 tbody tr {
+  border-top:solid 1px #ebebeb;
+}
+.table-style1 td{
+  border-top:15px solid #fff;
+  border-bottom:15px solid #fff;
+  text-align: center;
+}
+.table-style1 td,
+.table-style1 th {
+  border-left:22px solid #fff;
+}
+.table-style1 td:nth-child(1),
+.table-style1 th:nth-child(1) {
+  border-left:0px;
+  width:187px;
+}
+.table-style1 td {
+  background:#F7F7F7;
+  padding:10px;
+}
+.table-style1 td:nth-child(1) {
+ background:none;
+}
+.table-style1 .col2 {
+  float:left;
+  width:50%;
+  border-right: solid 1px #fff;
+  padding-right:10px;
+}
+.table-style1 .col2:nth-child(2n) {
+  padding-left:10px;
+  padding-right:0px;
+  border-right:0px;
+}
+.table-style1 span {
+  font-weight: 300;
+}
+.service-home-delivery-assembly .box-info .table-style1 label {
+  font-weight: bold;
+  display: block;
+}
+.table-style1 strong {
+  color:#FDC300;
+  font-size:20px;
+}
+.service-home-delivery-assembly .box-info ul {
+  margin-top:10px;
+}
+.service-home-delivery-assembly .box-info li {
+  font-size:16px;
+  color:#000;
+  font-weight: 300;
+  line-height: 22px;
+  margin-bottom:10px;
+  padding-left:28px;
+  position: relative;
+}
+.service-home-delivery-assembly .box-info li:before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  position: absolute;
+  left:10px;
+  top:7px;
+  background: #FFC222;
+}
+.service-home-delivery-assembly .box-info.box-form {
+  border:solid 2px #FDC300;
+  padding:22px;
+}
+
+.service-home-delivery-assembly .form-list li {
+  width:100%;
+  padding:20px 0;
+  border-top:solid 1px #ebebeb;
+}
+.service-home-delivery-assembly .form-list li:before{
+  display: none;
+}
+.service-home-delivery-assembly .form-list li >label{
+   font-size:18px;
+  font-weight: normal;
+  margin-bottom:10px;
+  color: #FFC222;
+  display: block;
+}
+.service-home-delivery-assembly .form-list .input-box {
+  float:left;
+}
+.service-home-delivery-assembly .form-list select{
+  width:220px;
+  float:left;
+  margin-right:10px;
+  font-size:16px;
+  color:#000;
+  font-family: 'Kanit', Helvetica, Arial, sans-serif;
+}
+.service-home-delivery-assembly .form-list select + span {
+  float:left;
+  line-height: 35px;
+}
+.service-home-delivery-assembly .form-list .input-box label {
+   display: block;
+  text-align: left;
+  font-size:16px;
+}
+.service-home-delivery-assembly .buttons-set  {
+  text-align: left;
+  border:none;
+  margin:0px;
+  padding:0px;
+}
+.service-home-delivery-assembly .buttons-set button{
+  float:left;
+  font-size:18px;
+  font-weight: normal;
+  margin-left:0px;
+}
+.service-home-delivery-assembly .buttons-set .button-cancel  {
+  margin-left:12px;
+}
+.button-cancel {
+  background:#363636;
+}
+.service-home-delivery-assembly .buttons-set .note{
+color:#767676;
+font-size:14px;
+margin-bottom:15px;
+}
+.service-home-delivery-assembly .delivery-info  {
+  float:left;
+  width:603px;
+  max-width:100%;
+  padding:15px;
+  background:#f6f6f6;
+  font-size:14px;
+  color:#767676;
+  margin-top:30px;
+}
+.service-home-delivery-assembly .delivery-info .delivery-top{
+  float:left;
+  width:100%;
+  font-size:18px;
+  color:#767676;
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+.service-home-delivery-assembly .delivery-info .delivery-top:before{
+  content:"";
+  width:155px;
+  height:77px;
+  background:url(../images/cms/DAYS.png) no-repeat top left;
+  float:left;
+  border-right:solid 1px #ebebeb;
+  margin-right:28px;
+}
+.service-home-delivery-assembly .delivery-info .delivery-top label{
+  font-size: 24px;
+  font-weight: normal;
+  color: #000;
+  display: block;
+  margin: 0px;
+  line-height: 26px;
+  margin-bottom:5px;
+}
+.service-home-delivery-assembly .delivery-info .delivery-top label strong{
+  font-size:26px;
+  color:#FDC300;
+}
+.service-home-delivery-assembly .delivery-info .delivery-note {
+  float:left;
+  width:100%;
+}
+.service-home-delivery-assembly .delivery-info .delivery-note label{
+  font-size:14px;
+  color:#767676;
+  margin-bottom:5px;
 }
