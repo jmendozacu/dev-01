@@ -12116,7 +12116,8 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 ul.mp-details > li >a:before,
 .box-banners-style3 .bx-wrapper .bx-controls-direction a,
 .joy-card-page li:before,
-.joy-price-page .box-right li:before{
+.joy-price-page .box-right li:before,
+.piano-hi-gloss  .cms-box-gray  li:before{
   background-image: url(../images/icon-corporate.png);
 }
 
@@ -12126,7 +12127,8 @@ ul.mp-details > li >a:before,
   ul.mp-details > li >a:before,
   .box-banners-style3 .bx-wrapper .bx-controls-direction a,
   .joy-card-page li:before,
-  .joy-price-page .box-right li:before{
+  .joy-price-page .box-right li:before,
+  .piano-hi-gloss  .cms-box-gray  li:before{
     background-image: url(../images/icon-corporate2x.png);
     background-size: 100px 1000px;
   }
@@ -12161,12 +12163,14 @@ ul.mp-details > li >a:before,
 .joy-card-page  .box-banners {
   margin-bottom:30px;
 }
-.joy-card-page .joy-boxinfo {
+.joy-card-page .joy-boxinfo,
+.cms-box-gray{
   background:#f6f6f6;
   padding:45px 1000px;
   margin:0 -1000px;
-  width:auto;
   max-width:none;
+  float:left;
+  width:calc(100% + 2000px) ;
 }
 .joy-card-page .joy-boxinfo .box-image,
 .joy-card-page .joy-boxinfo .box-info {
@@ -12631,7 +12635,7 @@ ul.mp-details > li >a:before,
   padding: 3px 12px;
 }
 
-.service-detail .list-other-links {
+.cms-page-view .list-other-links {
   float:left;
   width:100%;
   border-bottom:solid 1px #ebebeb;
@@ -12639,7 +12643,7 @@ ul.mp-details > li >a:before,
   line-height: 25px;
   text-align: center;
 }
-.service-detail .list-other-links li {
+.cms-page-view .list-other-links li {
   display: inline-block;
   font-size:16px;
   font-weight: 500;
@@ -12647,10 +12651,10 @@ ul.mp-details > li >a:before,
   color:#FFC222;
   margin-right:35px;
 }
-.service-detail .list-other-links li:nth-last-child(1) {
+.cms-page-view .list-other-links li:nth-last-child(1) {
   margin-right:0px;
 }
-.service-detail .list-other-links li a {
+.cms-page-view .list-other-links li a {
   color:#000;
 }
 .service-detail .top-info {
@@ -12959,4 +12963,73 @@ margin-bottom:15px;
   font-size:14px;
   color:#767676;
   margin-bottom:5px;
+}
+
+.top-info-style1  {
+  text-align: center;
+  padding:35px 0;
+  float:left;
+  width:100%;
+}
+.top-info-style1 .img-logo {
+  margin:10px auto 40px;
+  max-width:100%;
+}
+.cms-page-view .top-info-style1 h2 {
+  font-size:36px;
+  line-height: 48px;
+  color:#252525;
+  font-weight: bold;
+  margin-bottom:30px;
+}
+.cms-page-view .top-info-style1 label{
+  font-size:18px;
+  color:#707070;
+  font-weight:300;
+  line-height: 24px;
+  margin-bottom:40px;
+}
+.piano-hi-gloss  .cms-box-gray  li {
+  float:left;
+  width:49%;
+  margin-right:2%;
+  margin-bottom: 30px;
+  padding-left:30px;
+  position: relative;
+}
+.piano-hi-gloss  .cms-box-gray  li:nth-child(2n){
+  margin-right:0px;
+}
+.piano-hi-gloss  .cms-box-gray  li:nth-child(2n +1){
+  clear:left;
+}
+.piano-hi-gloss  .cms-box-gray  li label{
+   color:#000;
+  font-size:20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom:10px;
+}
+.piano-hi-gloss  .cms-box-gray  li p{
+  font-size: 16px;
+  color:#707070;
+}
+.piano-hi-gloss  .cms-box-gray  li:before {
+  width:20px;
+  height:20px;
+  content:"";
+  position: absolute;
+  left:0px;
+  top: 3px;
+  background-position: -80px -310px;
+  background-repeat: no-repeat;
+}
+.piano-hi-gloss .box-image-bottom {
+  margin-top:50px;
+  text-align: center;
+  float:left;
+  width:100%;
+}
+.piano-hi-gloss .box-image-bottom img {
+  margin:auto;
 }
