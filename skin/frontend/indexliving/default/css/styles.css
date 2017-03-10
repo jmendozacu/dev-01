@@ -8673,6 +8673,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 	text-transform: uppercase;
 	font-weight: bold;
 }
+body:lang(en) .availability.store-only  span{font-size: 14px;}
 .product-view .availability.out-of-stock{text-align:center;}
 .product-view .availability.out-of-stock span{font-size:30px;}
 .product-view .owl-carousel .owl-item .availability.out-of-stock span{font-size:18px;}
