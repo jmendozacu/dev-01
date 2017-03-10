@@ -94,9 +94,10 @@ if(Mage::helper('core')->isModuleEnabled('Amsty_Shopby')){
               <br class="clearfix">
               <div class="save-price-percent clearfix"><span><?php //echo $this->__('Save ') ?><strong><?php echo $discount_percent; ?><?php echo '%' ?></strong></span></div>
             <?php endif; ?>
+ 
 
-            <?php echo $this->getChildHtml('alert_urls') ?>
   </div>
+  <?php echo $this->getChildHtml('alert_urls') ?>
                                 <?php if(Mage::helper('core')->isModuleEnabled('MarginFrame_Shopby')):?>
                                     <?php echo Mage::helper('amshopby')->showLinks($_product);?>
                                 <?php endif;?>
