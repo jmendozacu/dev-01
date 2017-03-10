@@ -5407,14 +5407,14 @@ body.catalogsearch-result-index .page-title h1 {
 }
 .product-view .product-shop .price-box {
   margin-top: 0;
-	/*float:left;*/
+  float:left;
   clear:left;
+  margin-right: 12px;
 }
 
-
-.product-view .price-info .view-dealers-link{border-top:solid 1px #ededed;border-bottom:solid 1px #ededed;padding-bottom:10px;text-align:left;margin-bottom:-11px;margin-top:15px;}
-.product-view .price-info .view-dealers-link:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
-.product-view .price-info .view-dealers-link .view-dealers{padding:0 25px;float:left !important;}
+.product-view .view-dealers-link{border-top:solid 1px #ededed;border-bottom:solid 1px #ededed;padding-bottom:10px;text-align:left;margin-bottom:-1px;margin-top:15px;clear:left;}
+.product-view .view-dealers-link:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.product-view .view-dealers-link .view-dealers{padding:0 25px;float:left !important;}
 
 .product-view .product-shop .price-box .price-from,
 .product-view .product-shop .price-box .price-to { display:inline-block;}
@@ -8673,11 +8673,14 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
 	text-transform: uppercase;
 	font-weight: bold;
 }
+body:lang(en) .availability.store-only  span{font-size: 14px;}
 .product-view .availability.out-of-stock{text-align:center;}
 .product-view .availability.out-of-stock span{font-size:30px;}
 .product-view .owl-carousel .owl-item .availability.out-of-stock span{font-size:18px;}
-.product-view .availability.store-only{text-align:center;}
-.product-view .availability.store-only span{font-size:30px;}
+.product-view .availability.store-only{text-align:center;border-bottom:solid 1px #dadada;padding-bottom:10px;margin-bottom:5px;margin-top:28px}
+.product-view .availability.store-only span{font-size:26px;}
+body:lang(en) .product-view .availability.store-only{padding-bottom: 28px;}
+body:lang(en) .product-view .availability.store-only span { font-size: 24px;}
 .product-view .owl-carousel .owl-item .availability.store-only span{font-size:18px;}
 .product-view .product-options .swatch-attr {
   float: none;
