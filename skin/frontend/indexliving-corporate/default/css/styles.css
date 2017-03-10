@@ -12629,3 +12629,109 @@ ul.mp-details > li >a:before,
   font-size: 16px;
   padding: 3px 12px;
 }
+
+.service-detail .list-other-links {
+  float:left;
+  width:100%;
+  border-bottom:solid 1px #ebebeb;
+  padding:25px 0;
+  line-height: 25px;
+  text-align: center;
+}
+.service-detail .list-other-links li {
+  display: inline-block;
+  font-size:16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color:#FFC222;
+  margin-right:35px;
+}
+.service-detail .list-other-links li:nth-last-child(1) {
+  margin-right:0px;
+}
+.service-detail .list-other-links li a {
+  color:#000;
+}
+.service-detail.service-3d-designer .top-info {
+  text-align: center;
+  padding:25px;
+  float:left;
+  width:100%;
+}
+.service-detail.service-3d-designer .top-info h2 {
+  font-size:36px;
+  color:#252525;
+  font-weight: bold;
+  line-height: 40px;
+  margin:25px 0;
+  float:left;
+  width:100%;
+}
+.service-detail.service-3d-designer .top-info p {
+ color:#707070;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 24px;
+  margin:15px 0;
+  float:left;
+  width:100%;
+}
+.service-detail.service-3d-designer .top-info label {
+  font-size:22px;
+  font-weight: normal;
+  margin-bottom:20px;
+  float:left;
+  width:100%;
+}
+.service-detail.service-3d-designer .top-info label a {
+  color:#FFC222;
+}
+.service-detail.service-3d-designer .top-info img.banner{
+  margin:auto;
+}
+.service-detail.service-3d-designer .box-info {
+  float:left;
+  width:calc(100% + 2000px);
+  margin:0 -1000px -40px;
+  padding:35px 1000px;
+  background:#fafafa;
+}
+.service-detail.service-3d-designer .box-info ul {
+  float:left;
+  width:50%;
+  padding-right:4%;
+}
+.service-detail.service-3d-designer .box-info ul:nth-child(2n){
+  padding-right:0px;
+  padding-left:4%;
+}
+.service-detail.service-3d-designer .box-info ul li {
+  float:left;
+  width:100%;
+  margin-bottom:40px;
+  padding-left:16px;
+  position: relative;
+  font-size:16px;
+  font-weight: 300;
+  color: #707070;
+}
+.service-detail.service-3d-designer .box-info ul li:before{
+  content:"";
+  width:5px;
+  height:5px;
+  position: absolute;
+  top:10px;
+  left:0px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background:#FFC222;
+}
+.service-detail.service-3d-designer .box-info ul li label{
+  display: block;
+  font-size:20px;
+  font-weight: bold;
+  color:#000;
+  margin-bottom:12px;
+  text-transform: uppercase;
+}
