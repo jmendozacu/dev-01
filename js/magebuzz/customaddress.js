@@ -18,7 +18,7 @@ CityUpdater.prototype = {
 	},
 	
 	update: function() {
-		if(this.regionEl.value == 515 || this.regionEl.value == 509 || this.regionEl.value == 530){
+		if(this.regionEl.value == 515 || this.regionEl.value == 509 || this.regionEl.value == 530 || this.regionEl.value == 551){
 			$('outside_service_zone').style.display = 'block';
 			if($('city_id') != null){
 				$('city_id').disabled = true;

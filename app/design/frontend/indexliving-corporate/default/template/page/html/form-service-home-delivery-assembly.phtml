@@ -1,0 +1,47 @@
+<form>
+  <ul class="form-list">
+    <li class="field">
+      <label><?php echo $this->__('Type Product to buy') ?></label>
+      <div class="input-box">
+          <select>
+            <option><?php echo $this->__('option 1') ?></option>
+            <option><?php echo $this->__('option 2') ?></option>
+          </select>
+      </div>
+    </li>
+    <li class="field">
+      <label><?php echo $this->__('Order budget') ?></label>
+      <div class="input-box">
+        <select>
+          <option><?php echo $this->__('0') ?></option>
+          <option><?php echo $this->__('1') ?></option>
+        </select>
+        <span><?php echo $this->__('baht') ?></span>
+      </div>
+    </li>
+    <li class="field">
+      <label><?php echo $this->__('Delivery location') ?></label>
+      <div class="input-box">
+        <label><?php echo $this->__('Province') ?></label>
+        <select>
+          <option><?php echo $this->__('option 1') ?></option>
+          <option><?php echo $this->__('option 2') ?></option>
+        </select>
+      </div>
+      <div class="input-box">
+        <label><?php echo $this->__('County / District') ?></label>
+        <select>
+          <option><?php echo $this->__('option 1') ?></option>
+          <option><?php echo $this->__('option 2') ?></option>
+        </select>
+      </div>
+    </li>
+  </ul>
+  <div class="buttons-set">
+     <div class="note">
+       <?php echo $this->__('Note: This calculation is a preliminary calculation of shipping costs.')?>
+     </div>
+    <button class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+    <button class="button button-cancel"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+  </div>
+</form>
