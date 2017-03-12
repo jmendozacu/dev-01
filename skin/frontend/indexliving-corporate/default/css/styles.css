@@ -12335,3 +12335,19 @@ ul.mp-details > li >a:before,
   font-weight: normal;
   font-size:24px;
 }
+.message-franchise{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 310px;
+  margin-left: -152px;
+  margin-top: -100px;
+  text-align: center;
+  z-index: 9040;
+  max-height: 480px;
+  opacity: 1;
+  background: #fff;
+  padding: 15px 13px;
+  font-size: 24px;
+  color: black;
+}

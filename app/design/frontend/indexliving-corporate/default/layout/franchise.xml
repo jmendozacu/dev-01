@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <franchise_index_showform>
+        <reference name="content">
+            <block type="franchise/applicationform" name="applicationform"
+                   template="franchise/applicationform.phtml"/>
+        </reference>
+    </franchise_index_showform>
+</layout>

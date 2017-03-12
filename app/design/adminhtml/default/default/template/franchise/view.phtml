@@ -1,0 +1,127 @@
+<?php
+$values = $this->getValuesData();
+?>
+<style type="text/css">
+    .franchise_form{
+        width: 100%;
+        font-size: 13px;
+        padding: 10px;
+        border: 1px solid #cbd3d4;
+    }
+    .franchise_form tbody td{
+        border-width: 0 1px 1px 0;
+        border-color: #dadfe0;
+        border-style: solid;
+        padding: 3px;
+    }
+    .franchise_form thead th{
+        border-bottom-width: 1px;
+        border-bottom-color: #dadfe0;
+        border-bottom-style: solid;
+        padding-top: 1px;
+    }
+    td#lable {
+        width: 55%;
+    }
+</style>
+<div class="content-header">
+    <table cellspacing="0" >
+        <tr>
+            <td style="width:50%;"><h3 class="icon-head head-products"><?php echo Mage::helper('catalog')->__('Application') ?></h3></td>
+            <td class="a-right">
+                <?php echo $this->getButtonsHtml() ?>
+            </td>
+        </tr>
+    </table>
+</div>
+<table class="franchise_form" onscroll="">
+    <thead>
+        <tr>
+            <th>
+                <span><?php echo $this->__('Questions')?></span>
+            </th>
+            <th>
+                <span><?php echo $this->__('Answers')?></span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="lable"><label for="contact_name"><?php echo $this->__('Contact person name')?></label></td>
+            <td><?php echo $values['contact_name']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="company_name"><?php echo $this->__('Company name')?></label></td>
+            <td><?php echo $values['company_name']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="address"><?php echo $this->__('Address')?></label></td>
+            <td><?php echo $values['address']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="country"><?php echo $this->__('Country')?></label></td>
+            <td><?php echo $values['country']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="tel"><?php echo $this->__('Telephone')?></label></td>
+            <td><?php echo $values['tel']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="fax"><?php echo $this->__('Fax')?></label></td>
+            <td><?php echo $values['fax']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="website"><?php echo $this->__('Website')?></label></td>
+            <td><?php echo $values['website']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="email"><?php echo $this->__('Email')?></label></td>
+            <td><?php echo $values['email']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="current_business"><?php echo $this->__('What is your current business?')?></label></td>
+            <td><?php echo $values['current_business']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="retail_business"><?php echo $this->__('Have you ever been retail business before?(If yes, please desciber)')?></label></td>
+            <td><?php echo $values['retail_business']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="number_staff"><?php echo $this->__('How many staff working in your company?')?></label></td>
+            <td><?php echo $values['number_staff']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="sale_turnover"><?php echo $this->__('What is your sale turnover (Volume) per year?')?></label></td>
+            <td><?php echo $values['sale_turnover']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="warehouse"><?php echo $this->__('Do you have your own warehouse(s)? If yes, the what is/are the location and sizing space?')?></label></td>
+            <td><?php echo $values['warehouse']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="experience"><?php echo $this->__('Have you ever had any experience in dealing with franchise business before? If yes, then what kind of the business?')?></label></td>
+            <td><?php echo $values['experience']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="potential_competitor"><?php echo $this->__('Who are potential competitor of Index Living Mall in your country?')?></label></td>
+            <td><?php echo $values['potential_competitor']?></td>
+        </tr>
+        <tr>
+            <td id="lable"><label for="potential_locations"><?php echo $this->__('Do you have any potential locations for Index Living Mall Store? / What location? / How large?')?></label></td>
+            <td><?php echo $values['potential_locations']?></td>
+        </tr>
+    </tbody>
+</table>
+<!--<table class="franchise_form">-->
+<!--    <tr>-->
+<!--        <th>--><?php //echo $this->__('Field') ?><!--</th>-->
+<!--        <th>--><?php //echo $this->__('Value') ?><!--</th>-->
+<!--    </tr>-->
+<!--    --><?php //foreach ($values as $key=>$value) {
+//        ?>
+<!--        <tr>-->
+<!--            <td>--><?php //echo strtoupper($key) ?><!--</td>-->
+<!--            <td>--><?php //echo $value ?><!--</td>-->
+<!--        </tr>-->
+<!--    --><?php //} ?>
+<!--</table>-->
