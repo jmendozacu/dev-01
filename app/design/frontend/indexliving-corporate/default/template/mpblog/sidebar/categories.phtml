@@ -8,37 +8,61 @@
 /** @var Magpleasure_Blog_Model_Mysql4_Category_Collection $collection  */
 /** @var Magpleasure_Blog_Block_Sidebar_Category $this  */
 $collection = $this->getCollection();
+//$category = Mage::getBlockSingleton('mpblog/content_category')->getCategory();
 ?>
 <?php if ($this->getDisplay() && count($collection)): ?>
-<div class="block mpblog-categories">
-    <div class="block-content">
-        <div class="categories-title">
-            <strong><span><?php echo $this->getBlockHeader(); ?></span></strong>
-        </div>
-        <ul class="mplog-categories">
-        <?php foreach ($collection as $category): ?>
-            <li class="mpblog-category<?php if ($category->getIsActive()): ?> active<?php endif; ?> mpblog-category-<?php echo $category->getId(); ?>">
-                <a href="<?php echo $category->getCategoryUrl(); ?>"><?php echo $this->escapeHtml($category->getName()); ?></a>
-                <?php
-                $subcate_ids = $category->getData('sub_category');
-                if($subcate_ids):
-                    $subcate_ids = explode(',', $subcate_ids);
-                    foreach($subcate_ids as $subcate_id):
-                        $collection_subcate = $this->getCollectionSubcate($subcate_id);
-                        ?>
-                        <ul class="mplog-sub-categories">
-                            <?php if ($collection_subcate['status'] == 1): ?>
-                                <li class="mpblog-category">
-                                    <i class="glyphicons ok_2"></i>
-                                    <a href="<?php echo $collection_subcate->getCategoryUrlSubcate(null,$subcate_id); ?>"><?php echo $this->escapeHtml($collection_subcate['name']); ?></a>
-                                </li>
+    <div class="block mpblog-categories">
+        <div class="block-content">
+            <div class="categories-title">
+                <strong><span><?php echo $this->getBlockHeader(); ?></span></strong>
+            </div>
+            <ul class="mplog-categories">
+                <?php foreach ($collection as $category): ?>
+                    <li class="mpblog-category<?php if ($category->getIsActive()): ?>active<?php endif; ?> mpblog-category-<?php echo $category->getId(); ?>">
+                    <!--<a href="--><?php //echo $category->getCategoryUrl(); ?><!--">--><?php //echo $this->escapeHtml($category->getName()); ?><!--</a>-->
+                        <?php
+                        $subcate_ids_2 = $category->getData('sub_category');
+                        if($subcate_ids_2):
+                            $subcate_ids_2 = explode(',', $subcate_ids_2);
+                            ?>
+                            <?php if ($category->getIsActive()): ?>
+                            <ul class="mplog-sub-categories-level-2">
+                                <?php
+                                foreach($subcate_ids_2 as $subcate_id_2):
+                                    $collection_subcate_2 = $this->getCollectionSubcate($subcate_id_2);
+                                    ?>
+                                    <?php if ($collection_subcate_2['status'] == 1): ?>
+                                    <li class="mpblog-category" id="level-2">
+                                        <a href="<?php echo $collection_subcate_2->getCategoryUrlSubcate(null,$subcate_id_2); ?>"><?php echo $this->escapeHtml($collection_subcate_2['name']); ?></a>
+                                        <?php
+                                        $subcate_ids_3 = $collection_subcate_2->getData('sub_category');
+                                        if($subcate_ids_3):
+                                            $subcate_ids_3 = explode(',', $subcate_ids_3);
+                                            ?>
+                                            <ul class="mplog-sub-categories-level-3">
+                                                <?php
+                                                foreach($subcate_ids_3 as $subcate_id_3):
+                                                    $collection_subcate_3 = $this->getCollectionSubcate($subcate_id_3);
+                                                    ?>
+                                                    <?php if ($collection_subcate_3['status'] == 1): ?>
+                                                    <li class="mpblog-category" id="level-2">
+                                                        <a href="<?php echo $collection_subcate_3->getCategoryUrlSubcate(null,$subcate_id_3); ?>"><?php echo $this->escapeHtml($collection_subcate_3['name']); ?></a>
+                                                    </li>
+                                                <?php endif ?>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif ?>
+                                    </li>
+                                <?php endif ?>
+                                <?php endforeach; ?>
+                            </ul>
                             <?php endif ?>
-                        </ul>
-                    <?php endforeach; ?>
-                <?php endif ?>
-            </li>
-        <?php endforeach; ?>
-        </ul>
+                        <?php endif ?>
+                    </li>
+
+                <?php endforeach; ?>
+            </ul>
+        </div>
     </div>
-</div>
 <?php endif; ?>
+
