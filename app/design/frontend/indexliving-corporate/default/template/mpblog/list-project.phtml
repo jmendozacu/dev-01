@@ -1,0 +1,88 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Magpleasure_Blog
+ */
+?>
+<div class="mpblog-2column-left">
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-indexproject')->toHtml() ?>
+    <div class="mpblog-col-left">
+        <?php echo $this->getChildHtml('mpblog.sidebar_category'); ?>
+    </div>
+    <div class="mpblog-col-content">
+        <div class="mpblog-container list list-decor-style1 list-index-project">
+            <div class="mp-blog-head fix-me">
+                <h1 class="mp-title"><?php echo $this->getPageHeader(); ?></h1>
+                <!--<a class="button button-contact-project-sales" title="<?php /*echo $this->__('Contact Project Sales') */?>" href="javascript:void(0)"><?php /*echo $this->__('Contact Project Sales') */?></a>-->
+            </div>
+            <?php if (count($this->getCollection())): ?>
+
+                <div class="mpblog-list list">
+                    <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
+                        <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
+                        <div class="mpblog-post">
+                            <div class="post-image">
+                                <?php if( $i == 1):   ?>
+                                    <?php if ($post->getPostThumbnailSrc()): ?>
+                                        <div class="post-thumbnail">
+                                            <img class="thumbnail"
+                                                 src="<?php echo $post->getPostThumbnailSrc(); ?>"
+                                                 alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php else:?>
+                                    <?php if ($post->getListThumbnailSrc()): ?>
+                                        <div class="thumbnail-container">
+                                            <div class="post-thumbnail">
+                                                <img class="thumbnail"
+                                                         src="<?php echo $post->getListThumbnailSrc(); ?>"
+                                                         alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endif;?>
+                                <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
+                            </div>
+                            <div class="post-info">
+                                <div class="box-left">
+                                    <div class="mp-post-title">
+                                        <?php echo $this->escapeHtml($post->getTitle()); ?>
+                                    </div>
+                                    <div class="mp-content">
+                                        <?php echo $post->getFullContent(); ?>
+                                    </div>
+                                </div>
+                                <div class="box-right">
+                                    <img alt="image logo" src="<?php echo $this->getSkinUrl('images/blog/logo1.jpg') ?>" />
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php echo $this->getToolbarHtml(); ?>
+            <?php else: ?>
+                <?php echo $this->__("There are no posts yet."); ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="box-application-form" id="box-application-form">
+        <div class="content-popup">
+            <?php echo $this->getChildHtml('mpblog.application.form'); ?>
+        </div>
+        <a class="icon-close" id="close-application-form" href="javascript:void(0)" title="<?php echo $this->__('Close') ?>"><?php echo $this->__('Close') ?></a>
+    </div>
+    <script type="text/javascript">
+        jQuery('#box-application-form').hide();
+        jQuery('.button-contact-project-sales').click(function() {
+            jQuery('#box-application-form').show();
+        });
+        jQuery('#close-application-form').click(function() {
+            jQuery('#box-application-form').hide();
+        });
+    </script>
+
+</div>
+
+
+
