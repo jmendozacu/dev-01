@@ -138,7 +138,7 @@ $dealers->clear(); ?>
                                                 ?>
                                         <?php if($store_id_allow==0||$current_store_id==$store_id_allow):?>
 											<li
-												onclick="<?php if($dealer->getDealerMap()){?>mapPopup('<?php echo $dealer->getId() ?>','<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $dealer->getDealerMap(); ?>'); window.location='#map_canvas'<?php }else{ ?>showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'<?php } ?>">
+												onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
 												<h3><?php echo $dealer->getTitle(); ?></h3>
 												<h4><?php echo $dealer->getAddress(); ?></h4>
 												<?php if ($dealer->getPostalCode()): ?>
@@ -155,7 +155,11 @@ $dealers->clear(); ?>
 												<?php endif; ?>
                       <?php if($dealer->getDealerMap()):?>
                           <?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
-                          <a href="<?php echo $dealerMapUrl;?>" target="_blank" style="display: inherit;"><img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/></a>
+                          <a href="#"
+                             onclick="mapPopup('<?php echo $dealer->getId() ?>','<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $dealer->getDealerMap(); ?>');"
+                             style="display: inherit;">
+                            <img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
+                          </a>
                         <?php endif?>
 
                         <input type="hidden" name="dealer-icon" id="dealer_icon_<?php echo $dealer->getId() ?>"
@@ -219,7 +223,7 @@ $dealers->clear(); ?>
 						<ul id="dealer-list" class="product-dealerscroll">
 							<?php foreach ($dealers->getItems() as $dealer): ?>
 								<li
-                                    onclick="<?php if($dealer->getDealerMap()){?>mapPopup('<?php echo $dealer->getId() ?>','<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $dealer->getDealerMap(); ?>'); window.location='#map_canvas'<?php }else{ ?>showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'<?php } ?>">
+                                    onclick="showLocationOnMap('<?php echo $dealer->getId() ?>', '<?php echo $dealer->getDealerIconImage() ?>'); window.location='#map_canvas'">
 									<h3><?php echo $dealer->getTitle(); ?></h3>
 									<h4><?php echo $dealer->getAddress(); ?></h4>
 									<?php if ($dealer->getPostalCode()): ?>
@@ -236,7 +240,11 @@ $dealers->clear(); ?>
 									<?php endif; ?>
 									<?php if($dealer->getDealerMap()):?>
 										<?php $dealerMapUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/'.$dealer->getDealerMap();?>
-										<img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" onclick="showBigMap('<?php echo $dealerMapUrl ?>', '<?php echo $dealer->getDealerId()?>')" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
+                                      <a href="#"
+                                         onclick="mapPopup('<?php echo $dealer->getId() ?>','<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dealers/map/' . $dealer->getDealerMap(); ?>');"
+                                         style="display: inherit;">
+                                        <img width="50" class="dealer-map dealer-map-<?php echo $dealer->getDealerId()?>" src="<?php echo $dealerMapUrl;?>" alt="<?php echo $dealer->getTitle(); ?>"/>
+                                      </a>
 									<?php endif?>
 
                 <input type="hidden" name="dealer-icon" id="dealer_icon_<?php echo $dealer->getId() ?>"
