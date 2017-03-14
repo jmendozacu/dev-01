@@ -110,6 +110,7 @@
                 <block type="mpblog/content_category_list" name="mpblog.category.list.news.event" as="list.news.event" template="mpblog/list-news-event.phtml"/>
                 <block type="mpblog/content_category_list" name="mpblog.category.list.project" as="list.project" template="mpblog/list-project.phtml">
                     <block type="mpblog/sidebar_category" name="mpblog.sidebar_category" as="mpblog.sidebar_category" template="mpblog/sidebar/categories.phtml"/>
+                    <block type="core/template" name="mpblog.application.form" as="mpblog.application.form" template="mpblog/application-form.phtml"/>
                 </block>
             </block>
 

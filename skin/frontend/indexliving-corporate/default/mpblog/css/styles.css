@@ -1828,3 +1828,78 @@ ul.mp-details > li >a:hover:before {
   font-size: 17px;
   margin-top: -5px;
 }
+.box-application-form {
+  position: fixed;
+  width:100%;
+  height:100%;
+  left:0px;
+  top:0px;
+  background:rgba(0,0,0,0.8);
+  z-index: 99;
+}
+.box-application-form .content-popup {
+  width: 890px;
+  max-width:100%;
+  padding:3%;
+  background:#F6F6F6;
+  position: absolute;
+  left:50%;
+  top:5%;
+  max-height:90%;
+  transform: translate(-50%,0);
+  -webkit-transform: translate(-50%,0);
+  -moz-transform: translate(-50%,0);
+  overflow-y: auto;
+}
+.box-application-form h2 {
+  float:left;
+  width:100%;
+  font-size:28px;
+  font-weight: bold;
+  color:#000;
+  text-transform: uppercase;
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:solid 1px #E6E6E6;
+}
+.box-application-form .form-list .fields .field {
+  float:left;
+  width:48%;
+  margin-right:4%;
+}
+.box-application-form .form-list .fields .field:nth-child(2n){
+  margin-right:0px;
+}
+.box-application-form .form-list input {
+  width:100%;
+}
+.box-application-form .form-list label {
+  font-size:16px;
+  margin-bottom:8px;
+}
+.box-application-form .buttons-set {
+  text-align: left;
+  border: none;
+}
+.box-application-form .buttons-set .note-required {
+  color:red;
+  margin-bottom:20px;
+}
+.box-application-form .buttons-set button.button{
+  float:left;
+  font-size:24px;
+  margin-left:0px;
+  font-weight: normal;
+  min-width: 250px;
+}
+.icon-close {
+  width:30px;
+  height:30px;
+  background:url(../images/close.png) no-repeat center center;
+  top:5%;
+  margin-top:-25px;
+  left:50%;
+  margin-left:445px;
+  text-indent: -9999px;
+  position: absolute;
+}
