@@ -105,7 +105,7 @@ class Magpleasure_Blog_Adminhtml_Mpblog_CategoryController extends Magpleasure_B
         try {
             $category->addData($requestPost);
             $category->save();
-            $this->_getSession()->addSuccess($this->_helper()->__("Category weren't successfully saved."));
+            $this->_getSession()->addSuccess($this->_helper()->__("Category has been saved successfully."));
 
             $params = $this->_getCommonParams();
             $params['id'] = $this->getRequest()->getParam('id') ? $this->getRequest()->getParam('id') : $category->getId();
