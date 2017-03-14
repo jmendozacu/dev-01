@@ -78,63 +78,6 @@ class Magebuzz_Franchise_Block_Adminhtml_Franchise_Grid extends Mage_Adminhtml_B
             'width' => '100px'
         ));
 
-        $this->addColumn('current_business', array(
-            'header' => Mage::helper('franchise')->__('Current Business'),
-            'align' => 'left',
-            'index' => 'current_business',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('retail_business', array(
-            'header' => Mage::helper('franchise')->__('Retail Business'),
-            'align' => 'left',
-            'index' => 'retail_business',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('number_staff', array(
-            'header' => Mage::helper('franchise')->__('Number Staff'),
-            'align' => 'left',
-            'index' => 'number_staff',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('sale_turnover', array(
-            'header' => Mage::helper('franchise')->__('Sale Turnover'),
-            'align' => 'left',
-            'index' => 'sale_turnover',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('warehouse', array(
-            'header' => Mage::helper('franchise')->__('Warehouse'),
-            'align' => 'left',
-            'index' => 'warehouse',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('experience', array(
-            'header' => Mage::helper('franchise')->__('Experience'),
-            'align' => 'left',
-            'index' => 'experience',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('potential_competitor', array(
-            'header' => Mage::helper('franchise')->__('Potential Competitor'),
-            'align' => 'left',
-            'index' => 'potential_competitor',
-            'width' => '100px'
-        ));
-
-        $this->addColumn('potential_locations', array(
-            'header' => Mage::helper('franchise')->__('Potential Locations'),
-            'align' => 'left',
-            'index' => 'potential_locations',
-            'width' => '100px'
-        ));
-
-
         $this->addColumn('action', array(
             'header' => Mage::helper('franchise')->__('Action'),
             'width' => '100',

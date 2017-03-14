@@ -1,0 +1,4 @@
+<?php
+    $block_concept = Mage::getStoreConfig('franchise/concept/concept_block',Mage::app()->getStore()->getId());
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId($block_concept)->toHtml();
+?>
