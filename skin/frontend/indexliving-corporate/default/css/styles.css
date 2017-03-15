@@ -13049,3 +13049,26 @@ margin-bottom:15px;
   font-size: 24px;
   color: black;
 }
+#application-form .left{float: left}
+#application-form .right label{
+  padding-left: 60px;
+}
+#application-form li{
+  margin-bottom: 17px;
+}
+#application-form label{
+  font-size: 16px;
+}
+#application-form .area{text-align: left;clear: both}
+#application-form .appli-form-block{
+  border: 1px solid rgb(227, 227, 227);
+  background: rgb(247, 247, 247);
+  border-radius: 3px;
+  padding: 20px;
+}
+#application-form .button{
+  padding: 5px 75px;
+}
+#application-form p.note{
+  color: red;
+}

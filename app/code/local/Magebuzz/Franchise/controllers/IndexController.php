@@ -37,8 +37,8 @@ class Magebuzz_Franchise_IndexController extends Mage_Core_Controller_Front_Acti
                 $template = Mage::getStoreConfig('franchise/general/email_template', $storeId);
 
                 $sender  = array(
-                    'name'  => Mage::getStoreConfig('trans_email/ident_support/name'),
-                    'email' => Mage::getStoreConfig('trans_email/ident_support/email')
+                    'name'  => Mage::getStoreConfig('trans_email/ident_support/name',$storeId),
+                    'email' => Mage::getStoreConfig('trans_email/ident_support/email',$storeId)
                 );
 
                 $recepientEmail = Mage::getStoreConfig('franchise/general/receive_applicants',$storeId);
@@ -52,7 +52,7 @@ class Magebuzz_Franchise_IndexController extends Mage_Core_Controller_Front_Acti
                 if (!$mailTemplate->getSentSuccess()) {
                     throw new Exception();
                 }
-                //-------------
+
                 $_response['success'] = 'true';
                 $_response['success_message'] = 'Sent email successful.';
             }catch (Exception $e) {
