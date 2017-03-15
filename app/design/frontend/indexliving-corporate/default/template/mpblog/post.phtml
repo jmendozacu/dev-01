@@ -9,11 +9,35 @@
 $helper = $this->_helper();
 /** @var Magpleasure_Blog_Model_Post $post  */
 $post = $this->getPost();
+$category = $post->getData('categories');
+if(count($category)>=2){
+    $category = array_shift(array_values($category));
+}
+if($category){
+    $home_decor = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
+    $promotions = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
+    $newevent_crs = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+    $index_project = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
+    $collection_category = Mage::getModel('mpblog/category')->load($category);
+    $category_style = $collection_category->getData('category_style');
+    if($category_style == $home_decor){
+        echo $this->getChildHtml('post.decor');
+    }
+    elseif($category_style == $promotions){
+        echo $this->getChildHtml('post.promotion');
+    }
+    elseif($category_style == $newevent_crs){
+        echo $this->getChildHtml('post.news.event');
+    }
+    elseif($category_style == $index_project){
 
+    }
+
+}
 /** @var Magpleasure_Blog_Block_Content_Post $this */
 ?>
 <?php //echo $this->getChildHtml('post.decor'); ?>
 <?php //echo $this->getChildHtml('post.promotion'); ?>
-<?php echo $this->getChildHtml('post.news.event'); ?>
+<?php //echo $this->getChildHtml('post.news.event'); ?>
 
 
