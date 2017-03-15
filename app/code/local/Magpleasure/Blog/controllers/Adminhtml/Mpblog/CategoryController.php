@@ -102,6 +102,10 @@ class Magpleasure_Blog_Adminhtml_Mpblog_CategoryController extends Magpleasure_B
         if($requestPost['sub_category']){
             $requestPost['sub_category'] = implode(',', $requestPost['sub_category']);
         }
+        else{
+            $requestPost['sub_category'] = null;
+        }
+        
         try {
             $category->addData($requestPost);
             $category->save();
