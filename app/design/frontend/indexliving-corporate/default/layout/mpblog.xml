@@ -95,7 +95,10 @@
         <update handle="mpblog_default"/>
         <reference name="head">
             <block type="mpblog/content_list_wrapper" name="mpblog.content.list.wrapper" as="mpblog_content_list_wrapper" />
+            <action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.fancybox.css</name></action>
         </reference>
+
         <reference name="layout.content">
             <block type="mpblog/content_category_list" name="mpblog.category.list" as="list" template="mpblog/list.phtml">
                 <block type="mpblog/content_category_list" name="mpblog.category.list.decor" as="list.decor" template="mpblog/list-decor.phtml">

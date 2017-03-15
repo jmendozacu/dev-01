@@ -5,6 +5,10 @@
  * @package Magpleasure_Blog
  */
 ?>
+
+
+
+
 <div class="mpblog-2column-left">
     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-indexproject')->toHtml() ?>
     <div class="mpblog-col-left">
@@ -19,10 +23,11 @@
             <?php if (count($this->getCollection())): ?>
 
                 <div class="mpblog-list list">
+
                     <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
                         <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
                         <div class="mpblog-post">
-                            <div class="post-image">
+                            <div class="post-image" id="post-image-<?php echo $post->getId() ?>">
                                 <?php if( $i == 1):   ?>
                                     <?php if ($post->getPostThumbnailSrc()): ?>
                                         <div class="post-thumbnail">
@@ -43,7 +48,77 @@
                                     <?php endif; ?>
                                 <?php endif;?>
                                 <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
+                                <div class="popup-image">
+                                    <div class="popup-content">
+                                        <ul class="main-slider-id<?php echo $post->getId() ?>">
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
+                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    setTimeout(function(){
+                                        jQuery(document).ready(function() {
+                                            jQuery('.main-slider-id<?php echo $post->getId() ?> .voucher-gallery-thumbs').fancybox({
+                                                prevEffect : 'none',
+                                                nextEffect : 'none',
+                                                closeBtn  : true,
+                                                arrows    : true,
+                                                nextClick : true,
+                                                helpers : {
+                                                    thumbs : {
+                                                        width  : 86,
+                                                        height : 86
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }, 1000);
+
+                                </script>
                             </div>
+
+
                             <div class="post-info">
                                 <div class="box-left">
                                     <div class="mp-post-title">
