@@ -68,4 +68,16 @@ class Magpleasure_Blog_Block_Sidebar_Category extends Magpleasure_Blog_Block_Sid
         }
         return $this->_collection_subcate;
     }
+
+  public function getCollectionByLanding($typelanding){
+    $collection = Mage::getModel('mpblog/category')->getCollection();
+    $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Category::STATUS_ENABLED);
+    $collection->addFieldToFilter($typelanding, 1);
+
+    if (!Mage::app()->isSingleStoreMode()){
+      $collection->addStoreFilter(Mage::app()->getStore()->getId());
+    }
+
+    return $collection->setSortOrder('asc');
+  }
 }
