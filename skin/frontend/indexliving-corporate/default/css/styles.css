@@ -13181,3 +13181,31 @@ margin-bottom:15px;
   display: none;
   padding:15px;
 }
+.box-container .col2 {
+  float:left;
+  width:calc(50% - 10px);
+  margin-right:20px;
+  padding-right:7%;
+}
+.box-container .col2:nth-child(2n) {
+  margin-right:0px;
+}
+.ul-style-big label {
+  font-size:20px;
+  font-weight:bold;
+  text-transform: uppercase;
+  margin-bottom:10px;
+  color:#000;
+}
+.ul-style-big li {
+  margin-bottom:30px;
+}
+.ul-style1.ul-style-big li:before {
+  width:5px;
+  height:5px;
+}
+.cms-page-view .std .ul-style-big p  {
+  font-size:16px;
+  color: #707070;
+  font-weight: 300;
+}
