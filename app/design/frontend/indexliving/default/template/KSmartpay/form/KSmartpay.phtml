@@ -47,21 +47,6 @@
         $PaymentPlanListArray = array();
         $PaymentPlanListArray = explode(",", $PaymentPlanList);
         $AvaliableArray = array();
-        
-        //get Attribute Price tag
-        $priceTagId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','price_tag');
-        $priceTagsValues = Mage::getModel('catalog/resource_eav_attribute')->load($priceTagId);
-        $dontmissId = '';
-        if ($priceTagsValues->usesSource()) {
-            $attributeOptions = $priceTagsValues->getSource()->getAllOptions();
-            foreach ($attributeOptions as $option) {
-                if($option['label']=='dontmiss'){
-                    $dontmissId = $option['value'];
-                }
-            }
-        }
-        $hasDontmiss = false;
-
         foreach($session->getQuote()->getAllItems() as $item)
         {
 
@@ -79,11 +64,6 @@
                 $attributeValue = null;
                 $attributeValue = "";
                 $product = Mage::getModel('catalog/product')->load($productid);
-
-                if(in_array($dontmissId, explode(',', $product->getData('price_tag')))){
-                    // IT-2826 dontmiss ในตะกร้า ผ่อนได้แค่ 3 เดือน
-                    $hasDontmiss = true;
-                }
 
                 $PrdinstallmentsData = $product->getData('installments_attribute');
                 if ($PrdinstallmentsData != "")  {
@@ -175,7 +155,7 @@
             // "KSmartpayA" => "4",
             "KSmartpayD" => "3",
             "KSmartpayB" => "6",
-            //"KrungsriC" => "10",
+            "KrungsriC" => "10",
             // // "KrungsriA" => "4",
             "KrungsriD" => "3",
             "KrungsriB" => "6" 
@@ -195,19 +175,9 @@
                     "KrungsriD" => "3",
                 );
             }
-
-
         }
         // > 5000 เข้า ผ่อนปกติ ทั้งหมด
         
-        if($hasDontmiss){
-            // IT-2826 dontmiss ในตะกร้า ผ่อนได้แค่ 3 เดือน
-            $default = Array ( 
-                "KSmartpayD" => "3",
-                "KrungsriD" => "3",
-            );
-        }
-
         // $customer = $this->getCustomer();
         // if ($customer->getEmail() == 'thanapol.s@marginframe.com'){
         //     $default["KrungsriD"] = 3;

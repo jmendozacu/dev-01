@@ -170,21 +170,6 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 		$AvaliableArray = array();
 		$storeId = Mage::app()->getStore()->getStoreId();
 		$session= Mage::getSingleton('checkout/session');
-
-		//get Attribute Price tag
-        $priceTagId = Mage::getResourceModel('eav/entity_attribute')->getIdByCode('catalog_product','price_tag');
-        $priceTagsValues = Mage::getModel('catalog/resource_eav_attribute')->load($priceTagId);
-        $dontmissId = '';
-        if ($priceTagsValues->usesSource()) {
-            $attributeOptions = $priceTagsValues->getSource()->getAllOptions();
-            foreach ($attributeOptions as $option) {
-                if($option['label']=='dontmiss'){
-                    $dontmissId = $option['value'];
-                }
-            }
-        }
-        $hasDontmiss = false;
-
 		foreach($session->getQuote()->getAllItems() as $item)
 		{
 		   $productsku = $item->getSku();
@@ -201,11 +186,6 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
 				$attributeValue = "";
 				$product = Mage::getModel('catalog/product')->load($productid);
 				
-				if(in_array($dontmissId, explode(',', $product->getData('price_tag')))){
-                    // IT-2826 dontmiss ในตะกร้า ผ่อนได้แค่ 3 เดือน
-                    $hasDontmiss = true;
-                }
-
         		$PrdinstallmentsData = $product->getData('installments_attribute');
         		if ($PrdinstallmentsData != "")  {
 					$PrdInstallmentArray = explode(",", $PrdinstallmentsData); // 30 31 32 33
@@ -515,11 +495,6 @@ class Mgf_KSmartpay_Model_Method_KSmartpay extends Mage_Payment_Model_Method_Abs
             } else {
             	$cartcondition = false;
             }
-        } else {
-        	if($hasDontmiss){
-	            // IT-2826 dontmiss ในตะกร้า ผ่อนได้แค่ 3 เดือน
-	            $cartcondition = true;
-	        }
         }
 
 		if (!$cartcondition) {
