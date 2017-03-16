@@ -44,8 +44,8 @@ class Mgf_KSmartpay_Helper_Data extends Mage_Payment_Helper_Data
 					$allInstallment = false;
 				}
 			}
-		}
 
+		}
 		return $allInstallment;
 	}
 }
