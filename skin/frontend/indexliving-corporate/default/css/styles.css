@@ -13198,7 +13198,8 @@ margin-bottom:15px;
   color:#000;
 }
 .ul-style-big li {
-  margin-bottom:30px;
+  margin-bottom: 30px;
+  padding-left: 16px;
 }
 .ul-style1.ul-style-big li:before {
   width:5px;
