@@ -13099,6 +13099,16 @@ margin-bottom:15px;
 #application-form p.note{
   color: red;
 }
+#toolbar-pager{
+  overflow: visible !important;
+  float: none !important;
+}
+#toolbar-pager .pagination .count-container{
+  float: right;
+}
+#toolbar-pager .pagination .pages li.current a {
+  color: #ffc222;
+}
 .ul-style1 li {
   font-weight: 300;
   font-size:14px;
