@@ -185,6 +185,17 @@ jQuery(document).ready(function () {
 		return false;
 	});
 
+  // box-list-tab
+  jQuery(".tab-title").click(function() {
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).next().slideDown();
+      jQuery(this).addClass('active');
+    }else if (jQuery(this).hasClass('active')) {
+      jQuery(this).next().slideUp();
+      jQuery(this).removeClass('active');
+    }
+  });
+
 
   //When page loads...
   jQuery(".tab-history-content").hide(); //Hide all content
