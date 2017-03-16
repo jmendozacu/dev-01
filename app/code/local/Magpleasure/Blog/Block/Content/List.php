@@ -96,7 +96,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
 
         $this->getToolbar()
             ->setPagerObject(Mage::getModel('mpblog/list'))
-            ->setLimit($this->_helper()->getPostsLimit())
+//            ->setLimit($this->_helper()->getPostsLimit())
             ->setCollection($this->getCollection())
             ->setTemplate('mpblog/list/pager.phtml')
         ;
