@@ -13222,3 +13222,59 @@ margin-bottom:15px;
   color: #707070;
   font-weight: 300;
 }
+
+.list-joy-quality {
+  float:left;
+  width:100%;
+  padding-top:47px;
+  border-top:solid 1px #ebebeb;
+  margin-top: 35px;
+}
+.list-joy-quality li{
+  float:left;
+  width:32%;
+  margin-right:2%;
+  margin-bottom: 40px;
+  border:solid 1px #ebebeb;
+}
+.list-joy-quality li:nth-child(3n) {
+  margin-right:0px;
+}
+.list-joy-quality li .box-image {
+  float:left;
+  width:100%;
+  border-bottom:solid 1px #ebebeb;
+}
+.list-joy-quality li .box-image a{
+  float:left;
+  width:100%;
+  padding-bottom:69%;
+  position: relative;
+}
+.list-joy-quality li .box-image img {
+  position: absolute;
+  top:50%;
+  left:50%;
+  max-width:85%;
+  transform: translate(-50%,-50%);
+}
+.list-joy-quality li .box-info {
+  padding:15px;
+  float:left;
+  width:100%;
+}
+.list-joy-quality li .box-info .title {
+  font-size:24px;
+  color:#000;
+  font-weight:bold;
+  line-height: 30px;
+  margin-bottom:5px;
+}
+.list-joy-quality li .box-info label{
+  font-size:16px;
+  color:#707070;
+  line-height: 24px;
+  height:48px;
+  overflow: hidden;
+  font-weight: 300;
+}
