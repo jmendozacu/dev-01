@@ -13372,3 +13372,63 @@ margin-bottom:15px;
   border:none;
   border-top:solid 1px #ebebeb;
 }
+
+/* brands cms*/
+.cms-brand{
+  font-family: 'Kanit';
+  margin-bottom:100px;
+  float: left;
+  width: 100%;
+}
+.cms-brand .top-content {
+  float:left;
+  width:100%;
+  padding-bottom: 65px;
+  border-bottom:solid 1px #ebebeb;
+  text-align: center;
+}
+.cms-brand .top-content .top-banner,
+.cms-brand .top-content .box-logo{
+  float:left;
+  width:100%;
+  margin-bottom:45px;
+}
+.cms-brand .top-content .top-banner img,
+.cms-brand .top-content .box-logo img {
+  margin:auto;
+  max-width:100%;
+}
+
+.cms-brand .top-content h2 {
+   color:#252525;
+  font-size:28px;
+  font-weight: bold;
+  margin-bottom:20px;
+}
+.cms-brand .top-content label {
+  font-size:18px;
+  font-weight: 300;
+  color:#000;
+  margin-bottom:65px;
+  line-height:30px;
+}
+.cms-brand .top-content .actions {
+  float:left;
+  width:100%;
+}
+.cms-brand .top-content .actions .button {
+  display: inline-block;
+  margin:0 25px 5px 0;
+  min-width:230px;
+  text-align: center;
+  font-size:17px;
+  font-weight: normal;
+}
+.cms-brand .top-content .actions .button.button-facebook {
+  background-color:#034EA1;
+  margin-right:0px;
+}
+.cms-brand .top-content .actions .button.button-facebook:hover {
+  background-color:#044082;
+}
+
