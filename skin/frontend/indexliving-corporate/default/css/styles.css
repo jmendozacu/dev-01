@@ -13102,14 +13102,21 @@ margin-bottom:15px;
   color: red;
 }
 #toolbar-pager{
-  overflow: visible !important;
-  float: none !important;
+  /*overflow: visible !important;*/
+  /*float: none !important;*/
+  width: 100%;
 }
 #toolbar-pager .pagination .count-container{
   float: right;
 }
 #toolbar-pager .pagination .pages li.current a {
   color: #ffc222;
+}
+#toolbar-pager .pagination .pages li a {
+  font-size: 13px;
+}
+#toolbar-pager li a{
+  margin-right: 0 !important;
 }
 .ul-style1 li {
   font-weight: 300;
