@@ -66,7 +66,12 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Additional
                 )
             ) {
 
-                $this->_values['stores'] = Mage::app()->getDefaultStoreView()->getId();
+//                $this->_values['stores'] = Mage::app()->getDefaultStoreView()->getId();
+              $arrayId = array();
+              foreach(Mage::app()->getStores() as $_store){
+                $arrayId [] = $_store->getId();
+              }
+              $this->_values['stores'] = $arrayId;
             }
         }
         return $this->_values;
