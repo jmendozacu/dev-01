@@ -10857,8 +10857,12 @@ div.paypal-logo span > img {
 .cms-page-view .content_cms img{max-width:100%;}
 .cms-page-view .content_cms .frist_con{border-bottom: solid 1px #EEE; padding-bottom: 10px;margin-bottom:20px;}
 .cms-page-view .secound_con{margin-bottom: 20px;}
-.cms-page-view .secound_con .con_success_left{width:56%;float:left;}
-.cms-page-view .secound_con .img_con_success{width:43%;float:right;padding-top:2%;}
+.cms-page-view .secound_con .con_success_left{width:68%;float:left;}
+.cms-page-view .secound_con .img_con_success{width: 32%; float:right;padding-top:2%;}
+.cms-page-view .secound_con .img_con_success img {
+  max-width:100%;
+  float:right;
+}
 .cms-page-view .wrapper_col{margin: 0 -20px;}
 .cms-page-view .col_3{width: 33.3333333%;height:344px;float:left;padding:0 20px;margin-top: 20px;}
 .cms-page-view .col_3 h4{margin-bottom:0;}
@@ -13285,7 +13289,6 @@ margin-bottom:15px;
   overflow: hidden;
   font-weight: 300;
 }
-
 body.career-index-application .col3-layout .col-wrapper,
 body.career-index-index .col3-layout .col-wrapper,
 body.career-index-index .col3-layout .col-wrapper .col-main
@@ -13400,4 +13403,174 @@ body.career-index-application #application-form li{
 }
 body.career-index-application #application-form label{
   padding-bottom: 5px;
+}
+.content_cms.about-us .box-banner {
+  float:left;
+  width:100%;
+  position: relative;
+  margin-bottom:45px;
+}
+.content_cms.about-us .box-banner .box-info {
+  position: absolute;
+  width:420px;
+  max-width:96%;
+  left:3%;
+  top:50%;
+  transform: translate(0,-50%);
+  -webkit-transform: translate(0,-50%);
+  -moz-transform: translate(0,-50%);
+  background:rgba(255,255,255,0.9);
+  padding:30px 20px;
+  color:#000;
+  font-size:22px;
+  font-weight: 500;
+  line-height: 30px;
+  font-family: 'Kanit';
+}
+.content_cms.about-us .box-banner .box-info h3{
+   margin-bottom:8px;
+   font-size:38px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color:#000;
+  font-family: 'Kanit';
+}
+.cms-page-view .content_cms.about-us .frist_con .c_left {
+  width:34%;
+}
+.cms-page-view .content_cms.about-us .frist_con .c_left img {
+  max-width:98%;
+}
+.cms-page-view .content_cms.about-us .frist_con .c_right {
+  width:66%;
+}
+.cms-page-view .content_cms.about-us  p,
+.cms-page-view .content_cms.about-us li{
+  font-size:16px;
+  font-weight: 300;
+  color:#707070;
+}
+.cms-page-view .content_cms.about-us .frist_con .c_right h2 {
+  font-size:28px;
+  font-family: 'Kanit';
+  font-weight: bold;
+  margin-bottom:20px;
+}
+.cms-page-view .content_cms.about-us .frist_con .c_right strong {
+   color:#ffc222;
+  font-size:24px;
+  font-weight: normal;
+  display: block;
+  line-height: 30px;
+}
+.cms-page-view .content_cms.about-us .frist_con {
+  border:none;
+}
+.cms-page-view .content_cms.about-us h3 {
+  font-size:28px;
+  font-weight: bold;
+  color:#000;
+  font-family: 'Kanit';
+  margin-bottom:20px;
+}
+.cms-page-view .content_cms.about-us #tabs_history,
+.cms-page-view .content_cms.about-us #tabs_history p{
+  font-family: 'Index', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+.cms-page-view .amshopby-featured-wrapper .brands-grid li .brand-info {
+  border:none;
+  background:#fff;
+}
+.cms-page-view .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text {
+  border:none;
+  border-top:solid 1px #ebebeb;
+}
+
+/* brands cms*/
+.cms-brand{
+  font-family: 'Kanit';
+  margin-bottom:100px;
+  float: left;
+  width: 100%;
+}
+.cms-brand .top-content {
+  float:left;
+  width:100%;
+  padding-bottom: 65px;
+  border-bottom:solid 1px #ebebeb;
+  text-align: center;
+}
+.cms-brand .top-content .top-banner,
+.cms-brand .top-content .box-logo{
+  float:left;
+  width:100%;
+  margin-bottom:45px;
+}
+.cms-brand .top-content .top-banner img,
+.cms-brand .top-content .box-logo img {
+  margin:auto;
+  max-width:100%;
+}
+
+.cms-brand .top-content h2 {
+   color:#252525;
+  font-size:28px;
+  font-weight: bold;
+  margin-bottom:20px;
+}
+.cms-brand .top-content label {
+  font-size:18px;
+  font-weight: 300;
+  color:#000;
+  margin-bottom:65px;
+  line-height:30px;
+}
+.cms-brand .top-content .actions {
+  float:left;
+  width:100%;
+}
+.cms-brand .top-content .actions .button {
+  display: inline-block;
+  margin:0 25px 5px 0;
+  min-width:230px;
+  text-align: center;
+  font-size:17px;
+  font-weight: normal;
+}
+.cms-brand .top-content .actions .button.button-facebook {
+  background-color:#034EA1;
+  margin-right:0px;
+}
+.cms-brand .top-content .actions .button.button-facebook:hover {
+  background-color:#044082;
+}
+
+.cms-brand .box-content {
+  float:left;
+  width:100%;
+  padding:33px 0;
+}
+.cms-brand .box-content img {
+  margin-bottom:10px;
+  max-width:100%;
+}
+.cms-brand .box-content .box-left-40 {
+  float:left;
+  width:41%;
+}
+.cms-brand .box-content .box-right-60 {
+  float:left;
+  padding-left:18px;
+  width:59%;
+}
+.cms-brand .box-content p {
+  font-size:18px;
+  color:#000;
+  font-weight: 300;
+  line-height: 24px;
+}
+.cms-brand .box-content p strong{
+  font-weight: normal;
+
 }

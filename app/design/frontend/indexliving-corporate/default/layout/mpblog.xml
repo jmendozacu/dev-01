@@ -205,6 +205,9 @@
                    as="mpblog_content_post_wrapper"
                    template="mpblog/post/wrapper.phtml" />
 
+            <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
+
         </reference>
         <reference name="layout.content">
             <block type="mpblog/content_post" name="mpblog.post" as="post">

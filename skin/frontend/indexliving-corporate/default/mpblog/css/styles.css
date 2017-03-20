@@ -1509,8 +1509,9 @@ i.mpblog-old-magento.glyphicons:before {
   font-size:24px;
   font-weight: 500;
   font-style: normal;
-  margin:0px;
+  margin:0px 0 8px;
   padding:0px;
+  display: block;
 }
 .title-style5:before{
   content:"";
@@ -1523,6 +1524,36 @@ i.mpblog-old-magento.glyphicons:before {
   transform: translate(-50%,0) ;
   -webkit-transform: translate(-50%,0) ;
   -moz-transform: translate(-50%,0) ;
+}
+.title-style5 a {
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  line-height: 22px;
+  color: #000;
+  font-weight: normal;
+  font-size: 14px;
+  padding-right: 15px;
+  z-index: 9;
+}
+
+.title-style5 a:after{
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 0px;
+  width: 0px;
+  height: 0px;
+  border-left: solid 7px #919191;
+  border-bottom: solid 4px transparent;
+  border-top: solid 4px transparent;
+}
+.title-style5 a:hover{
+  color: #FFC222;
+  text-decoration: none;
+}
+.title-style5 a:hover:after {
+  border-left-color: #FFC222;
 }
 .mp-blog-head h1.mp-title.title-promotion {
   padding: 18px 1000px;
@@ -1916,4 +1947,30 @@ ul.mp-details > li >a:hover:before {
 }
 .mpblog-list.list .mpblog-post .post-image .popup-image li:nth-child(n + 2) a  {
   display: none;
+}
+.mpblog-post .mp-content .products-grid .item a > img {
+  border:none;
+  box-shadow: none;
+  width:auto;
+  margin:auto;
+  padding:0px;
+}
+.mpblog-post .mp-content .products-grid div.item dl {
+   clear: both;
+  width:100%;
+}
+.mpblog-post .mp-content .products-grid .item .prolabel-wrapper .flip-container a,
+.mpblog-post .mp-content .products-grid .item .prolabel-wrapper  a.product-image{
+  width:100%;
+  float:left;
+  text-align: center;
+}
+.mpblog-post .mp-content .products-grid  .grid-price .save-price-percent{
+  float: left;
+  position: static;
+  margin-top: 3px;
+  margin-left: 15px;
+}
+.mpblog-post .mp-content .related-products {
+  margin-top:30px;
 }
