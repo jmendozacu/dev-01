@@ -1,0 +1,97 @@
+<?php
+$values = $this->getValuesData();
+$application_for_job_id = $values['application_for_job_id'];
+$jobTitle = Mage::getModel('career/job')->load($application_for_job_id)->getData('title');
+?>
+<style type="text/css">
+  .application_form{
+    width: 100%;
+    font-size: 13px;
+    padding: 10px;
+    border: 1px solid #cbd3d4;
+  }
+  .application_form tbody td{
+    border-width: 0 1px 1px 0;
+    border-color: #dadfe0;
+    border-style: solid;
+    padding: 3px;
+  }
+  .application_form thead th{
+    border-bottom-width: 1px;
+    border-bottom-color: #dadfe0;
+    border-bottom-style: solid;
+    padding-top: 1px;
+  }
+  td#lable {
+    width: 55%;
+  }
+</style>
+<div class="content-header">
+  <table cellspacing="0" >
+    <tr>
+      <td style="width:50%;"><h3 class="icon-head head-products"><?php echo Mage::helper('catalog')->__('Application Form') ?></h3></td>
+      <td class="a-right">
+        <?php echo $this->getButtonsHtml() ?>
+      </td>
+    </tr>
+  </table>
+</div>
+<table class="application_form" onscroll="">
+  <thead>
+  <tr>
+    <th>
+      <span><?php echo $this->__('Questions')?></span>
+    </th>
+    <th>
+      <span><?php echo $this->__('Answers')?></span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td id="lable"><label for="identity_number"><?php echo $this->__('Identity Number')?></label></td>
+    <td><?php echo $values['identity_number']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="application_for_job_id"><?php echo $this->__('Application For Job')?></label></td>
+    <td><?php echo $jobTitle ?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="email"><?php echo $this->__('Email')?></label></td>
+    <td><?php echo $values['email']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="name"><?php echo $this->__('Name')?></label></td>
+    <td><?php echo $values['name']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="surname"><?php echo $this->__('Surname')?></label></td>
+    <td><?php echo $values['surname']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="tel"><?php echo $this->__('Telephone')?></label></td>
+    <td><?php echo $values['tel']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="date_of_birth"><?php echo $this->__('Date Of Birth')?></label></td>
+    <td><?php echo $values['date_of_birth']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="work_type"><?php echo $this->__('Work Type')?></label></td>
+    <td><?php echo $values['work_type']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="work_age"><?php echo $this->__('Work Age')?></label></td>
+    <td><?php echo $values['work_age']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="present_company"><?php echo $this->__('Present Company')?></label></td>
+    <td><?php echo $values['present_company']?></td>
+  </tr>
+  <tr>
+    <td id="lable"><label for="last_position"><?php echo $this->__('Last Position')?></label></td>
+    <td><?php echo $values['last_position']?></td>
+  </tr>
+
+  </tbody>
+</table>

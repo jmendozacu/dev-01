@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <career_index_index>
+        <reference name="content">
+            <block type="career/job" name="jobform"
+                   template="career/showjob.phtml"/>
+        </reference>
+    </career_index_index>
+    <career_index_application>
+        <reference name="content">
+            <block type="career/job" name="applicationform"
+                   template="career/application.phtml"/>
+        </reference>
+    </career_index_application>
+</layout>

@@ -13285,3 +13285,119 @@ margin-bottom:15px;
   overflow: hidden;
   font-weight: 300;
 }
+
+body.career-index-application .col3-layout .col-wrapper,
+body.career-index-index .col3-layout .col-wrapper,
+body.career-index-index .col3-layout .col-wrapper .col-main
+{
+  width: 100%;
+}
+body.career-index-application .col3-layout .col-wrapper .col-main{
+  float: none;
+  width: 100%;
+}
+body.career-index-index .job_list{
+  width: 100%;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+}
+
+body.career-index-index #job_title,
+body.career-index-index #job_function{
+  width: 35%;
+}
+body.career-index-index #position{
+  width: 10%;
+}
+body.career-index-index #location{
+  width: 20%;
+}
+body.career-index-index .job_list th{
+  border: 3px solid #fff;
+  text-transform: uppercase;
+  padding: 10px;
+  background: black;
+  color: white;
+  font-weight: 600;
+  font-size: 17px;
+  text-align: center;
+}
+body.career-index-index .job_list tbody tr{
+  border: 1px solid #eceaea;
+  border-left: none;
+  border-right: none;
+}
+body.career-index-index .job_list tbody tr:nth-child(2n) {
+  background: #f9f9f9;
+}
+body.career-index-index .job_list tbody tr td{
+  padding: 10px;
+  text-align: center;
+}
+body.career-index-index .job_list tbody tr td a:hover{
+  color: #ffc222;
+}
+body.career-index-application .scope_of_work p,
+body.career-index-application .qualifications p{
+  font-size: 17px;
+  color: black;
+  font-weight: 600;
+}
+body.career-index-application .scope_of_work,
+body.career-index-application .qualifications{
+  padding-bottom: 30px;
+}
+body.career-index-application .scope_of_work .scope_of_work_content,
+body.career-index-application .qualifications .qualifications_content{
+  padding: 15px 0;
+  font-size: 15px;
+  color: black;
+}
+body.career-index-application #career #application{
+  border-top: 1px solid #dcdcdc;
+  padding-top: 50px;
+}
+body.career-index-application #career #application p.join_us{
+  font-size: 23px;
+  text-transform: uppercase;
+}
+body.career-index-application #career #application span.join_us{
+  font-weight: 900;
+  font-size: 28px;
+}
+body.career-index-application form#application-form p{
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 25px;
+}
+body.career-index-application #career{
+  color: black;
+}
+body.career-index-application #career #application .application_form{
+  border: 1px solid #dedede;
+  width: 76%;
+  background: #f9f9f9;
+  padding-bottom: 40px;
+}
+body.career-index-application #career #application .application_form #personal_information,
+body.career-index-application #career #application .application_form #work_information{
+  padding-top: 24px;
+  padding-left: 48px;
+  border-radius: 4px;
+  padding-bottom: 20px;
+}
+body.career-index-application #career #application .application_form p.note{
+  font-size: 15px;
+  font-weight: 500;
+  padding-left: 48px;
+}
+body.career-index-application #career #application-form .button{
+  margin-left: 48px;
+}
+body.career-index-application #application-form li{
+  margin-bottom: 20px;
+}
+body.career-index-application #application-form label{
+  padding-bottom: 5px;
+}
