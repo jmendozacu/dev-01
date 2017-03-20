@@ -13432,3 +13432,32 @@ margin-bottom:15px;
   background-color:#044082;
 }
 
+.cms-brand .box-content {
+  float:left;
+  width:100%;
+  padding:33px 0;
+}
+.cms-brand .box-content img {
+  margin-bottom:10px;
+  max-width:100%;
+}
+.cms-brand .box-content .box-left-40 {
+  float:left;
+  width:41%;
+}
+.cms-brand .box-content .box-right-60 {
+  float:left;
+  padding-left:18px;
+  width:59%;
+}
+.cms-brand .box-content p {
+  font-size:18px;
+  color:#000;
+  font-weight: 300;
+  line-height: 24px;
+}
+.cms-brand .box-content p strong{
+  font-weight: normal;
+
+}
+
