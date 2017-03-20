@@ -1,0 +1,113 @@
+<?php
+$id = $this->getRequest()->getParam('id');
+$job = Mage::getModel('career/job')->load($id);
+?>
+<div id="career">
+  <div id="content-job">
+    <div class="scope_of_work">
+      <p><?php echo $this->__('Scope of work:')?></p>
+      <div class="scope_of_work_content"><?php echo $job->getData('scope_of_work')?></div>
+    </div>
+    <div class="qualifications">
+      <p><?php echo $this->__('Qualifications:')?></p>
+      <div class="qualifications_content"><?php echo $job->getData('qualifications')?></div>
+    </div>
+  </div>
+  <div id="application">
+    <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
+    <div class="application_form">
+      <form id="application-form" method="post" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id))?>">
+        <div id="personal_information">
+          <p><?php echo $this->__('Personal Information')?></p>
+          <ul>
+            <li>
+              <div class="field left">
+                <label for="identity_number" class="required"><em>*</em><?php echo $this->__('Identity number') ?></label>
+                <div class="input-box">
+                  <input type="text" name="identity_number" value="" id="identity_number" class="input-text required-entry" title="<?php echo $this->__('Identity number') ?>" />
+                </div>
+              </div>
+              <div class="field right">
+                <label for="email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                <div class="input-box">
+                  <input type="text" name="email" value="" id="email" class="input-text required-entry" title="<?php echo $this->__('Company name') ?>" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="field left">
+                <label for="name" class="required"><em>*</em><?php echo $this->__('Name') ?></label>
+                <div class="input-box">
+                  <input type="text" name="name" value="" id="name" class="input-text required-entry" title="<?php echo $this->__('Name') ?>" />
+                </div>
+              </div>
+              <div class="field right">
+                <label for="surname" class="required"><em>*</em><?php echo $this->__('Surname') ?></label>
+                <div class="input-box">
+                  <input type="text" name="surname" value="" id="surname" class="input-text required-entry" title="<?php echo $this->__('Surname') ?>" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="field left">
+                <label for="tel" class="required"><em>*</em><?php echo $this->__('Phone number') ?></label>
+                <div class="input-box">
+                  <input type="text" name="tel" value="" id="tel" class="input-text required-entry" title="<?php echo $this->__('Phone number') ?>" />
+                </div>
+              </div>
+              <div class="field right">
+                <label for="date_of_birth" class="required"><em>*</em><?php echo $this->__('Date Of Birth') ?></label>
+                <div class="input-box">
+                  <input type="text" name="date_of_birth" value="" id="date_of_birth" class="input-text required-entry" title="<?php echo $this->__('Date Of Birth') ?>" />
+                </div>
+              </div>
+            </li>
+            </ul>
+          </div>
+        <div class="separate">
+          <hr>
+        </div>
+          <div id="work_information">
+            <p><?php echo $this->__('Work Information')?></p>
+            <ul>
+              <li>
+                <div class="field left">
+                  <label for="work_type" class="required"><em>*</em><?php echo $this->__('Work Type') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="work_type" value="" id="work_type" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" />
+                  </div>
+                </div>
+                <div class="field right">
+                  <label for="work_age" class="required"><em>*</em><?php echo $this->__('Work Age') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="work_age" value="" id="work_age" class="input-text required-entry" title="<?php echo $this->__('Work Age') ?>" />
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="field left">
+                  <label for="present_company" class="required"><em>*</em><?php echo $this->__('Present Company') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="present_company" value="" id="present_company" class="input-text required-entry" title="<?php echo $this->__('Present Company') ?>" />
+                  </div>
+                </div>
+                <div class="field right">
+                  <label for="last_position" class="required"><em>*</em><?php echo $this->__('Last Position') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="last_position" value="" id="last_position" class="input-text required-entry" title="<?php echo $this->__('Last Position') ?>" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <p class="note">* You must fill the information</p>
+        <button type="submit" title="Submit" class="button"><span><span>Send form</span></span></button>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  //< ![CDATA[
+  var myForm = new VarienForm('application-form',true);
+  //]]>
+</script>
