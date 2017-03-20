@@ -13436,6 +13436,7 @@ margin-bottom:15px;
   float:left;
   width:100%;
   padding:33px 0;
+  color: #000;
 }
 .cms-brand .box-content img {
   margin-bottom:10px;
@@ -13460,4 +13461,30 @@ margin-bottom:15px;
   font-weight: normal;
 
 }
-
+.cms-brand .image-col2 {
+  float:left;
+  max-width:calc(50% - 9px) ;
+  margin-right:18px;
+}
+.cms-brand .image-col2 + .image-col2 {
+  margin-right:0px;
+}
+.cms-brand .box-content label {
+  font-size:20px;
+  font-weight:normal;
+  margin-bottom:20px;
+}
+.cms-brand .box-content .ul-style1 li {
+  font-size:18px;
+  font-weight: 300;
+  margin-bottom:20px;
+  color: #000;
+}
+.cms-brand .box-content .ul-style1 li:before  {
+  width:4px;
+  height:4px;
+}
+.cms-brand .box-content .col2 {
+  float:left;
+  width:50%;
+}
