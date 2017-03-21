@@ -92,7 +92,8 @@
                     <?php if($this->getShowPerPage()): ?>
                         <div class="limiter">
                             <label><?php echo $this->__('Show') ?></label>
-                            <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
+                            <!-- onchange="setLocation(this.value)"-->
+                            <select title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
                                 <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
                                     <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
                                         <?php echo $_limit ?>
@@ -200,5 +201,31 @@
                 }
             });
         }
+
+        jQuery(".pagination select").change(function(event) {
+            var option = this.value;
+            var numberItem =  parseInt(jQuery.trim(jQuery(this).find('option:selected').text()));
+            var id = '<?php echo Mage::app()->getRequest()->getParam('id'); ?>';
+            var number_posts = '<?php echo $this->getCollection()->getSize()?>';
+            if(number_posts <= numberItem){
+                jQuery('.pagination .pages').hide();
+            }
+            else{
+                jQuery('.pagination .pages').show();
+            }
+            $j('#ajaxcart-overlay').show();
+            $j('#ajax_cart_loading').show();
+            jQuery.ajax({
+                type:"get",
+                url:"<?php echo $this->getUrl('*/*/filterproduct'); ?>?limit="+numberItem+"&id="+id,
+                success: function(transport) {
+                    if (transport.success == 'true') {
+                        jQuery('.mpblog-list').html(transport.result);
+                        $j('#ajax_cart_loading').hide();
+                        $j('#ajaxcart-overlay').hide();
+                    }
+                }
+            });
+        });
     });
 </script>
