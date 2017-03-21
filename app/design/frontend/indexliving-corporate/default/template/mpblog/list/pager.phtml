@@ -82,11 +82,6 @@
                         <li>
 <!--                            <a class="next--><?php //if(!$this->getAnchorTextForNext()): ?><!-- i-next--><?php //endif; ?><!--" href="--><?php //echo $this->getNextPageUrl() ?><!--" title="--><?php //echo Mage::helper('core')->quoteEscape($this->__('Next')) ?><!--">-->
                             <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="#" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
-                                <?php if(!$this->getAnchorTextForNext()): ?>
-                                    <?php echo $this->__('Next') ?>
-                                <?php else: ?>
-                                    <?php echo $this->getAnchorTextForNext() ?>
-                                <?php endif;?>
                             </a>
                         </li>
                     <?php endif;?>
@@ -156,7 +151,6 @@
 <?php endif ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        debugger;
         jQuery(".pagination a").click(function(event) {
             event.preventDefault();
             page = jQuery(this).html();
@@ -193,9 +187,10 @@
         function updateTable(pageno){
             $j('#ajaxcart-overlay').show();
             $j('#ajax_cart_loading').show();
+            var id = '<?php echo Mage::app()->getRequest()->getParam('id'); ?>'
             jQuery.ajax({
                 type:"get",
-                url:"<?php echo $this->getUrl('*/*/filterproduct'); ?>?p="+pageno,
+                url:"<?php echo $this->getUrl('*/*/filterproduct'); ?>?p="+pageno+"&id="+id,
                 success: function(transport) {
                     if (transport.success == 'true') {
                         jQuery('.mpblog-list').html(transport.result);
