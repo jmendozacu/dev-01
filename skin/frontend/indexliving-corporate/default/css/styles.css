@@ -13643,3 +13643,52 @@ body.career-index-application #application-form label{
   color:#9C9C9C;
   line-height: 22px;
 }
+.cms-brand .ul-style2 {
+  float:left;
+  width:100%;
+}
+.cms-brand .ul-style2 li {
+  float:left;
+  width:100%;
+  padding:90px 0;
+  border-bottom:solid 1px #ebebeb;
+}
+.cms-brand .ul-style2 li:nth-child(1){
+  padding-top:57px;
+}
+.cms-brand .ul-style2 li .box-left-40 {
+  float:left;
+  width:43%;
+  padding-left:27px;
+}
+.cms-brand .ul-style2 li .box-left-60 {
+  float:left;
+  width:57%;
+  padding-right:27px;
+}
+.cms-brand .ul-style2 li:nth-child(2n) .box-left-60 {
+  float:right;
+  padding-left:27px;
+  padding-right:0px;
+}
+.cms-brand .ul-style2 li:nth-child(2n) .box-left-40 {
+  padding-right:27px;
+  padding-left:0px;
+}
+.cms-brand .ul-style2 li label {
+  font-size:36px;
+  color:#000;
+  font-weight: bold;
+  line-height: 46px;
+  margin-bottom:25px;
+}
+.cms-brand .ul-style2 li label span{
+  font-weight: normal;
+}
+
+.cms-brand .ul-style2 li p {
+  font-size:18px;
+  color:#707070;
+  font-weight: 300;
+  line-height: 24px;
+}
