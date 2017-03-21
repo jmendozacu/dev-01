@@ -32,7 +32,7 @@ $post = $this->getPost();
                     <?php if ($helper->getSocialEnabled()): ?>
                         <div class="post-social">
                             <div class="share">
-                                <strong><?php echo $this->__('50') ?></strong>
+                                <strong  id="results"><?php echo $this->__('50') ?></strong>
                                 <span></span><?php echo $this->__('Shares') ?> </span>
                             </div>
                             <?php if ($helper->getSocialEnabled()): ?>
@@ -49,3 +49,22 @@ $post = $this->getPost();
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    jQuery(function($) {
+        var token = '<?php echo Mage::helper('amajaxlogin/facebook')->getAppId(); ?>|<?php echo Mage::helper('amajaxlogin/facebook')->getSecretId(); ?>';
+        $(document).ready(function(){
+            $.ajax({
+                url: 'https://graph.facebook.com/v2.7/',
+                dataType: 'jsonp',
+                type: 'GET',
+                data: {access_token: token, id: '<?php echo Mage::helper('core/url')->getCurrentUrl() ?>' },
+                success: function(data){
+                    console.log(data.share.share_count);debugger;
+                    $('#results').html(data.share.share_count);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+
