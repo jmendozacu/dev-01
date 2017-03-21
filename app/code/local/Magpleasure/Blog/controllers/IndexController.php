@@ -344,9 +344,10 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
         $response = array();
         $data = $this->getRequest()->getParams();
         $page_no = $data['p'];
-        $collection = Mage::getBlockSingleton('page/html_pager')->getPageUrl($page_no);
+        $collection = Mage::getBlockSingleton('mpblog/content_list')->getCollection();
         $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
-            ->setTemplate('mpblog/contentajaxpager.phtml')->setCollection($collection)->toHTML();
+            ->setCollection($collection)
+            ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
         $response['success'] = 'true';
         $this->getResponse()->setBody(json_encode($response));
         return;
