@@ -13603,4 +13603,43 @@ body.career-index-application #application-form label{
   float:left;
   width:50%;
 }
-
+.cms-brand .list-style1 {
+  margin-top:-18px;
+}
+.cms-brand .list-style1 li {
+  float:left;
+  width:80%;
+  padding:18px 18px 18px 89px;
+  position: relative;
+  margin-bottom: 15px;
+}
+.cms-brand .list-style1 li:nth-child(2n){
+  float:right;
+  background:#f6f6f6;
+}
+.cms-brand .list-style1 li .count-item {
+  position: absolute;
+  width:40px;
+  height:40px;
+  left:18px;
+  top:18px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background:#cf3229;
+  color:#fff;
+  text-align: center;
+  line-height: 40px;
+  font-size:26px;
+  font-weight: bold;
+}
+.cms-brand .list-style1 li label{
+  font-size:20px;
+  font-weight: normal;
+  color:#000;
+  margin-bottom:12px;
+}
+.cms-brand .list-style1 li p{
+  color:#9C9C9C;
+  line-height: 22px;
+}
