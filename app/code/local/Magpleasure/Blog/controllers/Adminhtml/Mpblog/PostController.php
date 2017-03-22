@@ -213,8 +213,117 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
             $this->_redirect('*/*/new', $params);
         }
     }
+    public function saveImages($post_id, $images) {
+        $names = $images;
+        unset($names[sizeof($names) - 1]);
+        foreach ($names as $key => $name) {
+            try {
+                $uploadInfo = array(
+                  'name' => $_FILES['magebuzz_input2']['name'][$key],
+                  'type' => $_FILES['magebuzz_input2']['type'][$key],
+                  'tmp_name' => $_FILES['magebuzz_input2']['tmp_name'][$key],
+                  'error' => $_FILES['magebuzz_input2']['error'][$key],
+                  'size' => $_FILES['magebuzz_input2']['size'][$key]
+                );
+                $uploader = new Mage_Core_Model_File_Uploader($uploadInfo);
+                $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
+                $uploader->setAllowRenameFiles(false);
+                $uploader->setFilesDispersion(false);
+                $path = Mage::getBaseDir('media') . DS . 'magebuzz';
+                if(!is_dir($path)){
+                  mkdir($path , 0777, true);
+                }
+                chmod($path, 0777);
+                $name = $this->characterSpecial($name);
+                $newName = $name;
+                $result = $uploader->save($path, $newName);
+                $images[$key] = $newName;
+            } catch (Exception $e) {
+                $images[$key] = $name;
+            }
+        }
+        try {
+            for ($i = 0; $i < count($images) - 1; $i++) {
+                $model = Mage::getModel('mpblog/slideimages');
+                $data['post_id'] = $post_id;
+                $data['images'] = $images[$i];
 
-    public function saveAction()
+                $model
+                  ->setSlideImagesId(null)
+                  ->addData($data)
+                  ->save();
+            }
+        } catch (Exception $e) {
+            Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+        }
+    }
+  public function removeimageAction() {
+    $block = 0;
+    $image_name = $this->getRequest()->getParam('value');
+    $id = $this->getRequest()->getParam('id');
+//    $gifttemplate = Mage::getModel('mpblog/category')->load($id, 'category_id');
+
+    $datas = Mage::getModel('mpblog/slideimages')->getCollection()->addFieldToFilter('images', array('finset' => $image_name));
+    $model = Mage::getModel('mpblog/slideimages')->load($id);
+
+    $dir_image = Mage::getBaseDir('media') . DS . 'magebuzz' . DS . $image_name;
+    if (file_exists($dir_image)) {
+      $image = Mage::getBaseDir('media') . 'magebuzz' . $image_name;
+    }
+    try {
+      foreach ($datas as $data) {
+        $model->setId($data->getId())->delete();
+      }
+    } catch (Exception $exc) {
+
+    }
+    Mage::helper('mpblog')->deleteTemplateImageFile($image);
+    $result['html'] = $block;
+    $this->getResponse()->setHeader('Content-type', 'application/json');
+    $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+  }
+
+
+  public function characterSpecial($character) {
+    $character1 = array("ñ", " ", "à", "á", "?", "?", "ã", "â", "?", "?", "?", "?", "?", "?", "?", "?"
+    , "?", "?", "?", "è", "é", "?", "?", "?", "ê", "?", "?", "?", "?", "?", "ì", "í", "?", "?", "?",
+      "ò", "ó", "?", "?", "õ", "ô", "?", "?", "?", "?", "?", "?"
+    , "?", "?", "?", "?", "?",
+      "ù", "ú", "?", "?", "?", "?", "?", "?", "?", "?", "?",
+      "?", "ý", "?", "?", "?",
+      "?",
+      "À", "Á", "?", "?", "Ã", "Â", "?", "?", "?", "?", "?", "?"
+    , "?", "?", "?", "?", "?",
+      "È", "É", "?", "?", "?", "Ê", "?", "?", "?", "?", "?",
+      "Ì", "Í", "?", "?", "?",
+      "Ò", "Ó", "?", "?", "Õ", "Ô", "?", "?", "?", "?", "?", "?"
+    , "?", "?", "?", "?", "?",
+      "Ù", "Ú", "?", "?", "?", "?", "?", "?", "?", "?", "?",
+      "?", "Ý", "?", "?", "?",
+      "?", "ê", "ù", "à");
+    $character2 = array("n", "", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a"
+    , "a", "a", "a", "a", "a", "a",
+      "e", "e", "e", "e", "e", "e", "e", "e", "e", "e", "e",
+      "i", "i", "i", "i", "i",
+      "o", "o", "o", "o", "o", "o", "o", "o", "o", "o", "o", "o"
+    , "o", "o", "o", "o", "o",
+      "u", "u", "u", "u", "u", "u", "u", "u", "u", "u", "u",
+      "y", "y", "y", "y", "y",
+      "d",
+      "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A"
+    , "A", "A", "A", "A", "A",
+      "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E",
+      "I", "I", "I", "I", "I",
+      "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O"
+    , "O", "O", "O", "O", "O",
+      "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U",
+      "Y", "Y", "Y", "Y", "Y",
+      "D", "e", "u", "a");
+    return str_replace($character1, $character2, $character);
+  }
+
+
+  public function saveAction()
     {
         $this->_resetDraft();
         $requestPost = $this->getRequest()->getPost();
@@ -226,6 +335,11 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
         }
 
         try {
+          $post_id = $post->getData('post_id');
+          if (isset($_FILES['magebuzz_input2']['name']) && $_FILES['magebuzz_input2']['name'] != '') {
+            $images = $_FILES['magebuzz_input2']['name'];
+            $this->saveImages($post_id, $images);
+          }
             $post->addData($requestPost);
 
             # Process Timezone

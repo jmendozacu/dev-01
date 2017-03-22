@@ -11,6 +11,25 @@
     <default>
         <reference name="head">
             <!-- We have no other possibility to display extra options in the HEAD -->
+            <action method="addCss">
+                <stylesheet>css/magebuzz/jquery.filer.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <script>css/magebuzz/jquery.filer-dragdropbox-theme.css</script>
+            </action>
+            <action method="addJs">
+                <script>jquery/jquery-1.10.2.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>magebuzz/noconflict.js</script>
+            </action>
+            <action method="addJs">
+                <script>magebuzz/jquery.filer.js</script>
+            </action>
+
+            <action method="addJs">
+                <script>magebuzz/uploadimage.js</script>
+            </action>
             <action method="setTemplate">
                 <name>magpleasure/page/head.phtml</name>
             </action>
