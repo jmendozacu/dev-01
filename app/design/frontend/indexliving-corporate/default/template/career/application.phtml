@@ -2,15 +2,24 @@
 $id = $this->getRequest()->getParam('id');
 $job = Mage::getModel('career/job')->load($id);
 ?>
+<div class="page-title style2">
+  <h1><?php echo $this->__('Career') ?> </h1>
+</div>
 <div id="career">
-  <div id="content-job">
-    <div class="scope_of_work">
-      <p><?php echo $this->__('Scope of work:')?></p>
-      <div class="scope_of_work_content"><?php echo $job->getData('scope_of_work')?></div>
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-detail-bannertop')->toHtml() ?>
+  <div id="content-job" class="content-job">
+    <label class="job-title"><?php echo $job->getData('title')?></label>
+    <div class="list-info">
+      <label><?php echo $this->__('Scope of work:')?></label>
+      <div>
+        <?php echo $job->getData('scope_of_work')?>
+      </div>
     </div>
-    <div class="qualifications">
-      <p><?php echo $this->__('Qualifications:')?></p>
-      <div class="qualifications_content"><?php echo $job->getData('qualifications')?></div>
+    <div class="list-info">
+      <label><?php echo $this->__('Qualifications:')?></label>
+      <div>
+        <?php echo $job->getData('qualifications')?>
+      </div>
     </div>
   </div>
   <div id="application">
@@ -64,9 +73,6 @@ $job = Mage::getModel('career/job')->load($id);
             </li>
             </ul>
           </div>
-        <div class="separate">
-          <hr>
-        </div>
           <div id="work_information">
             <p><?php echo $this->__('Work Information')?></p>
             <ul>
@@ -99,11 +105,12 @@ $job = Mage::getModel('career/job')->load($id);
                 </div>
               </li>
             </ul>
+            <p class="note">* You must fill the information</p>
+            <button type="submit" title="Submit" class="button"><span><span>Send form</span></span></button>
           </div>
-        <p class="note">* You must fill the information</p>
-        <button type="submit" title="Submit" class="button"><span><span>Send form</span></span></button>
       </form>
     </div>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-contacts')->toHtml() ?>
   </div>
 </div>
 <script type="text/javascript">

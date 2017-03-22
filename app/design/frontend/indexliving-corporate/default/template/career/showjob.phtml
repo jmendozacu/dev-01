@@ -1,16 +1,11 @@
 <?php
 $collections = Mage::helper('career')->getJob();
 ?>
-<div class="content-header">
-  <table cellspacing="0" >
-    <tr>
-      <td style="width:50%;"><h3 class="icon-head head-products"><?php echo Mage::helper('catalog')->__('Job List') ?></h3></td>
-      <td class="a-right">
-        <?php echo $this->getButtonsHtml() ?>
-      </td>
-    </tr>
-  </table>
+<div class="page-title style2">
+  <h1><?php echo $this->__('Career') ?> </h1>
 </div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-top-info')->toHtml() ?>
+
 <?php if (count($collections)): ?>
   <table class="job_list" onscroll="">
     <thead>
