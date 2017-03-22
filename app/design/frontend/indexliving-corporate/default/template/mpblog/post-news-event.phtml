@@ -59,7 +59,6 @@ $post = $this->getPost();
                 type: 'GET',
                 data: {access_token: token, id: '<?php echo Mage::helper('core/url')->getCurrentUrl() ?>' },
                 success: function(data){
-                    console.log(data.share.share_count);debugger;
                     $('#results').html(data.share.share_count);
                 }
             });
