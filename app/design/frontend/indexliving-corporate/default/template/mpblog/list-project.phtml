@@ -7,10 +7,14 @@
 ?>
 
 
-
-
+<?php
+  $category  = $this->getCategory();
+  $show_landing_field  = $category->getData('category_is_landing_project');
+?>
 <div class="mpblog-2column-left">
+  <?php if($show_landing_field):?>
     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-indexproject')->toHtml() ?>
+  <?php endif; ?>
     <div class="mpblog-col-left">
         <?php echo $this->getChildHtml('mpblog.sidebar_category_prject'); ?>
     </div>
@@ -18,7 +22,9 @@
         <div class="mpblog-container list list-decor-style1 list-index-project">
             <div class="mp-blog-head fix-me">
                 <h1 class="mp-title"><?php echo $this->getPageHeader(); ?></h1>
-                <!--<a class="button button-contact-project-sales" title="<?php /*echo $this->__('Contact Project Sales') */?>" href="javascript:void(0)"><?php /*echo $this->__('Contact Project Sales') */?></a>-->
+              <?php if(!$show_landing_field):?>
+                <a class="button button-contact-project-sales" title="<?php echo $this->__('Contact Project Sales') ?>" href="javascript:void(0)"><?php echo $this->__('Contact Project Sales') ?></a>
+              <?php endif; ?>
             </div>
             <?php if (count($this->getCollection())): ?>
 
