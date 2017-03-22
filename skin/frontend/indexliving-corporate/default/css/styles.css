@@ -12146,7 +12146,8 @@ ul.mp-details > li >a:before,
 .box-banners-style3 .bx-wrapper .bx-controls-direction a,
 .joy-card-page li:before,
 .joy-price-page .box-right li:before,
-.piano-hi-gloss  .cms-box-gray  li:before{
+.piano-hi-gloss  .cms-box-gray  li:before,
+.career-top-info .top-info .content-info li:before{
   background-image: url(../images/icon-corporate.png);
 }
 
@@ -12157,7 +12158,8 @@ ul.mp-details > li >a:before,
   .box-banners-style3 .bx-wrapper .bx-controls-direction a,
   .joy-card-page li:before,
   .joy-price-page .box-right li:before,
-  .piano-hi-gloss  .cms-box-gray  li:before{
+  .piano-hi-gloss  .cms-box-gray  li:before,
+  .career-top-info .top-info .content-info li:before{
     background-image: url(../images/icon-corporate2x.png);
     background-size: 100px 1000px;
   }
@@ -13298,7 +13300,9 @@ body.career-index-index .job_list{
   width: 100%;
   color: black;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Kanit';
 }
 
 body.career-index-index #job_title,
@@ -13312,26 +13316,31 @@ body.career-index-index #location{
   width: 20%;
 }
 body.career-index-index .job_list th{
-  border: 3px solid #fff;
+  border-right: 3px solid #fff;
   text-transform: uppercase;
-  padding: 10px;
-  background: black;
+  padding: 12px 10px;
+  background: #252525;
   color: white;
-  font-weight: 600;
-  font-size: 17px;
+  font-weight: 500;
+  font-size: 18px;
   text-align: center;
+  line-height: 26px;
+}
+body.career-index-index .job_list th:nth-last-child(1) {
+  border-right:0px;
 }
 body.career-index-index .job_list tbody tr{
-  border: 1px solid #eceaea;
+  border: 1px solid #e6e6e6;
   border-left: none;
   border-right: none;
 }
 body.career-index-index .job_list tbody tr:nth-child(2n) {
-  background: #f9f9f9;
+  background: #f7f7f7;
 }
 body.career-index-index .job_list tbody tr td{
-  padding: 10px;
+  padding: 12px 10px;
   text-align: center;
+  line-height: 25px;
 }
 body.career-index-index .job_list tbody tr td a:hover{
   color: #ffc222;
@@ -13687,3 +13696,108 @@ body.career-index-application #application-form label{
   font-weight: 300;
   line-height: 24px;
 }
+
+.career-top-info {
+  float:left;
+  width:100%;
+  margin:22px 0 30px;
+  font-family: 'Kanit';
+}
+.career-top-info .top-info {
+  float:left;
+  width:100%;
+  position: relative;
+  margin-bottom:30px;
+}
+.career-top-info .top-info img {
+  max-width:100%;
+}
+.career-top-info .top-info .content-info {
+  position: absolute;
+  width:393px;
+  max-width:100%;
+  right:8%;
+  bottom:0px;
+  background:rgba(255,255,255,0.9);
+  padding:22px 15px 22px 22px;
+}
+.career-top-info .top-info .content-info:before,
+.career-top-info .top-info .content-info:after{
+  content:"";
+  position:absolute;
+  top:0px;
+  left:0px;
+  background:rgba(255,194,34,0.9);
+}
+.career-top-info .top-info .content-info:before {
+  height:100%;
+  width:10px;
+  margin-left:-10px;
+}
+.career-top-info .top-info .content-info:after {
+  width:100%;
+  height:10px;
+  margin-left:-10px;
+  margin-top:-10px;
+}
+.career-top-info .top-info .content-info h2{
+  font-family: 'Kanit';
+  font-size:24px;
+  color:#ffc222;
+  font-weight: bold;
+  margin-bottom:10px;
+}
+.career-top-info .top-info .content-info li {
+  float:left;
+  width:100%;
+  margin-bottom:12px;
+  position: relative;
+  padding-left:38px;
+  font-size:15px;
+  font-weight: 300;
+  line-height: 18px;
+  color:#000;
+}
+.career-top-info .top-info .content-info li strong{
+  font-weight: 500;
+}
+.career-top-info .top-info .content-info li:before{
+  content:"";
+  width:22px;
+  height:30px;
+  left:0px;
+  top:3px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: -1px -709px;
+}
+.career-top-info .top-info .content-info li.li-address:before {
+  background-position: -50px -709px;
+}
+.career-top-info .top-info .content-info li.li-hotline:before {
+  background-position: 0px -750px;
+  top: -3px;
+}
+.career-top-info .top-info .content-info li.li-line:before {
+  background-position: -50px -750px;
+  top: 0px;
+}
+.career-top-info .top-info .content-info li.li-email:before {
+  background-position:-1px -790px;
+}
+
+.career-top-info .box-text {
+  float:left;
+  width:100%;
+  font-size:16px;
+  font-weight: 300;
+  color:#000;
+  line-height: 24px;
+}
+.career-top-info .box-text label{
+  font-size:18px;
+  color:#000;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+

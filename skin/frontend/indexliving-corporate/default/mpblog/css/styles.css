@@ -1806,13 +1806,13 @@ ul.mp-details > li >a:hover:before {
   height:calc(100% - 30px);
   overflow-x: auto;
   top:15px;
-  font-size:18px;
+  font-size:16px;
   font-weight: 300;
   line-height: 28px;
   color:#000;
 }
 .banner-indexproject .banner-description h3 {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom:10px;
 }
