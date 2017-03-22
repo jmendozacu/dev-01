@@ -4,11 +4,22 @@
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+            <action method="addCrumb"><crumbName>Career</crumbName><crumbInfo><label>Career</label><title>Career</title></crumbInfo></action>
+        </reference>
         <reference name="content">
             <block type="career/job" name="jobform" template="career/showjob.phtml"/>
         </reference>
     </career_index_index>
     <career_index_application>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/</link></crumbInfo></action>
+            <action method="addCrumb"><crumbName>Career</crumbName><crumbInfo><label>Career</label><title>Career</title></crumbInfo></action>
+        </reference>
         <reference name="content">
             <block type="career/job" name="applicationform" template="career/application.phtml"/>
         </reference>

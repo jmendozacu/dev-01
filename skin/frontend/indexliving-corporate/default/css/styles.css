@@ -495,6 +495,7 @@ table{
   line-height: 1.5;
 }
 
+
 input,
 select,
 textarea{
@@ -12147,7 +12148,7 @@ ul.mp-details > li >a:before,
 .joy-card-page li:before,
 .joy-price-page .box-right li:before,
 .piano-hi-gloss  .cms-box-gray  li:before,
-.career-top-info .top-info .content-info li:before{
+.career-contacts li:before{
   background-image: url(../images/icon-corporate.png);
 }
 
@@ -12159,7 +12160,7 @@ ul.mp-details > li >a:before,
   .joy-card-page li:before,
   .joy-price-page .box-right li:before,
   .piano-hi-gloss  .cms-box-gray  li:before,
-  .career-top-info .top-info .content-info li:before{
+  .career-contacts li:before{
     background-image: url(../images/icon-corporate2x.png);
     background-size: 100px 1000px;
   }
@@ -12182,7 +12183,8 @@ ul.mp-details > li >a:before,
 .page-title.style2 h1,
 .cms-page-view .std p,
 .cms-page-view,
-.buttons-set button{
+.buttons-set button,
+#career{
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
 }
 .page-title.style2 h1 {
@@ -13088,15 +13090,31 @@ margin-bottom:15px;
   font-size: 24px;
   color: black;
 }
-#application-form .left{float: left}
-#application-form .right label{
-  padding-left: 60px;
+#application-form .left,
+#application-form .right {
+  float: left;
+  width:48%;
+}
+#application-form .left {
+  margin-right:4%;
+}
+#application-form  #personal_information ,
+#application-form  #work_information {
+  float:left;
+  width:100%;
+  padding:5%;
+}
+#application-form  #work_information {
+  border-top:solid 1px #e6e6e6;
 }
 #application-form li{
-  margin-bottom: 17px;
+  margin-bottom: 18px;
+  float:left;
+  width:100%;
 }
 #application-form label{
   font-size: 16px;
+  color: #231f20;
 }
 #application-form .area{text-align: left;clear: both}
 #application-form .appli-form-block{
@@ -13106,7 +13124,12 @@ margin-bottom:15px;
   padding: 20px;
 }
 #application-form .button{
-  padding: 5px 75px;
+  padding: 7px 10px;
+  min-width: 250px;
+  font-size: 24px;
+  text-transform: none;
+  font-weight: 500;
+  font-family: 'Kanit';
 }
 #application-form p.note{
   color: red;
@@ -13296,6 +13319,121 @@ margin-bottom:15px;
   font-weight: 300;
 }
 
+/* Career */
+
+.career-top-info {
+  float:left;
+  width:100%;
+  margin:22px 0 30px;
+  font-family: 'Kanit';
+}
+.career-top-info .top-info {
+  float:left;
+  width:100%;
+  position: relative;
+  margin-bottom:30px;
+}
+.career-top-info .top-info img {
+  max-width:100%;
+}
+.career-top-info .top-info .content-info {
+  position: absolute;
+  width:393px;
+  max-width:100%;
+  right:8%;
+  bottom:0px;
+  background:rgba(255,255,255,0.9);
+  padding:22px 15px 22px 22px;
+}
+.career-top-info .top-info .content-info:before,
+.career-top-info .top-info .content-info:after{
+  content:"";
+  position:absolute;
+  top:0px;
+  left:0px;
+  background:rgba(255,194,34,0.9);
+}
+.career-top-info .top-info .content-info:before {
+  height:100%;
+  width:10px;
+  margin-left:-10px;
+}
+.career-top-info .top-info .content-info:after {
+  width:100%;
+  height:10px;
+  margin-left:-10px;
+  margin-top:-10px;
+}
+.career-contacts h2{
+  font-family: 'Kanit';
+  font-size:24px;
+  color:#ffc222;
+  font-weight: bold;
+  margin-bottom:10px;
+}
+.career-contacts li {
+  float:left;
+  width:100%;
+  margin-bottom:12px;
+  position: relative;
+  padding-left:38px;
+  font-size:15px;
+  font-weight: 300;
+  line-height: 18px;
+  color:#000;
+}
+.career-contacts li strong{
+  font-weight: 500;
+}
+.career-contacts li:before{
+  content:"";
+  width:22px;
+  height:30px;
+  left:0px;
+  top:3px;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: -1px -709px;
+}
+.career-contacts li.li-address:before {
+  background-position: -50px -709px;
+}
+.career-contacts li.li-hotline:before {
+  background-position: 0px -750px;
+  top: -3px;
+}
+.career-contacts li.li-line:before {
+  background-position: -50px -750px;
+  top: 0px;
+}
+.career-contacts li.li-email:before {
+  background-position:-1px -790px;
+}
+
+.career-top-info .box-text {
+  float:left;
+  width:100%;
+  font-size:16px;
+  font-weight: 300;
+  color:#000;
+  line-height: 24px;
+}
+.career-top-info .box-text label{
+  font-size:18px;
+  color:#000;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+.career-detail-bannertop {
+  float:left;
+  width:100%;
+  margin:22px 0px 30px;
+}
+.content-job .job-title {
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
 body.career-index-index .job_list{
   width: 100%;
   color: black;
@@ -13345,69 +13483,85 @@ body.career-index-index .job_list tbody tr td{
 body.career-index-index .job_list tbody tr td a:hover{
   color: #ffc222;
 }
-body.career-index-application .scope_of_work p,
-body.career-index-application .qualifications p{
-  font-size: 17px;
-  color: black;
-  font-weight: 600;
+.content-job .list-info {
+  color:#000;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
 }
-body.career-index-application .scope_of_work,
-body.career-index-application .qualifications{
+.content-job .list-info label{
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom:5px;
+}
+.content-job .list-info{
   padding-bottom: 30px;
 }
-body.career-index-application .scope_of_work .scope_of_work_content,
-body.career-index-application .qualifications .qualifications_content{
-  padding: 15px 0;
-  font-size: 15px;
-  color: black;
-}
+
 body.career-index-application #career #application{
-  border-top: 1px solid #dcdcdc;
-  padding-top: 50px;
+  border-top: 1px solid #e6e6e6;
+  padding-top: 45px;
 }
 body.career-index-application #career #application p.join_us{
-  font-size: 23px;
+  font-size: 24px;
   text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom:20px;
 }
 body.career-index-application #career #application span.join_us{
-  font-weight: 900;
+  font-weight: bold;
   font-size: 28px;
 }
 body.career-index-application form#application-form p{
   font-size: 18px;
-  font-weight: 600;
-  padding-bottom: 25px;
+  font-weight: 500;
+  padding-bottom: 20px;
+  color: #231F20;
 }
 body.career-index-application #career{
   color: black;
 }
 body.career-index-application #career #application .application_form{
-  border: 1px solid #dedede;
-  width: 76%;
-  background: #f9f9f9;
-  padding-bottom: 40px;
+  border: 1px solid #e6e6e6;
+  width: 74%;
+  background: #f6f6f6;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  float:left;
 }
-body.career-index-application #career #application .application_form #personal_information,
-body.career-index-application #career #application .application_form #work_information{
-  padding-top: 24px;
-  padding-left: 48px;
-  border-radius: 4px;
-  padding-bottom: 20px;
+body.career-index-application #career #application .career-contacts {
+  float:left;
+  width:26%;
+  padding-left:3%;
 }
 body.career-index-application #career #application .application_form p.note{
-  font-size: 15px;
-  font-weight: 500;
-  padding-left: 48px;
+  font-size: 14px;
+  font-weight: normal;
+  /* padding-left: 48px; */
+  float: left;
+  width: 100%;
+  padding: 15px 0 25px;
+  color: red;
 }
 body.career-index-application #career #application-form .button{
-  margin-left: 48px;
+
 }
 body.career-index-application #application-form li{
   margin-bottom: 20px;
 }
+body.career-index-application #application-form li:nth-last-child(1) {
+  margin-bottom:0px;
+}
 body.career-index-application #application-form label{
   padding-bottom: 5px;
 }
+
+
+
+
+
+
 .content_cms.about-us .box-banner {
   float:left;
   width:100%;
@@ -13696,108 +13850,3 @@ body.career-index-application #application-form label{
   font-weight: 300;
   line-height: 24px;
 }
-
-.career-top-info {
-  float:left;
-  width:100%;
-  margin:22px 0 30px;
-  font-family: 'Kanit';
-}
-.career-top-info .top-info {
-  float:left;
-  width:100%;
-  position: relative;
-  margin-bottom:30px;
-}
-.career-top-info .top-info img {
-  max-width:100%;
-}
-.career-top-info .top-info .content-info {
-  position: absolute;
-  width:393px;
-  max-width:100%;
-  right:8%;
-  bottom:0px;
-  background:rgba(255,255,255,0.9);
-  padding:22px 15px 22px 22px;
-}
-.career-top-info .top-info .content-info:before,
-.career-top-info .top-info .content-info:after{
-  content:"";
-  position:absolute;
-  top:0px;
-  left:0px;
-  background:rgba(255,194,34,0.9);
-}
-.career-top-info .top-info .content-info:before {
-  height:100%;
-  width:10px;
-  margin-left:-10px;
-}
-.career-top-info .top-info .content-info:after {
-  width:100%;
-  height:10px;
-  margin-left:-10px;
-  margin-top:-10px;
-}
-.career-top-info .top-info .content-info h2{
-  font-family: 'Kanit';
-  font-size:24px;
-  color:#ffc222;
-  font-weight: bold;
-  margin-bottom:10px;
-}
-.career-top-info .top-info .content-info li {
-  float:left;
-  width:100%;
-  margin-bottom:12px;
-  position: relative;
-  padding-left:38px;
-  font-size:15px;
-  font-weight: 300;
-  line-height: 18px;
-  color:#000;
-}
-.career-top-info .top-info .content-info li strong{
-  font-weight: 500;
-}
-.career-top-info .top-info .content-info li:before{
-  content:"";
-  width:22px;
-  height:30px;
-  left:0px;
-  top:3px;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-position: -1px -709px;
-}
-.career-top-info .top-info .content-info li.li-address:before {
-  background-position: -50px -709px;
-}
-.career-top-info .top-info .content-info li.li-hotline:before {
-  background-position: 0px -750px;
-  top: -3px;
-}
-.career-top-info .top-info .content-info li.li-line:before {
-  background-position: -50px -750px;
-  top: 0px;
-}
-.career-top-info .top-info .content-info li.li-email:before {
-  background-position:-1px -790px;
-}
-
-.career-top-info .box-text {
-  float:left;
-  width:100%;
-  font-size:16px;
-  font-weight: 300;
-  color:#000;
-  line-height: 24px;
-}
-.career-top-info .box-text label{
-  font-size:18px;
-  color:#000;
-  font-weight: bold;
-  margin-bottom: 18px;
-}
-
