@@ -349,6 +349,7 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
         $home_decor_category_style = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
         $promotion_category_style = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
         $newevent_crs_category_style = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+        $index_project_category_style = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
         $category_id = $data['id'];
         $category_collection = Mage::getModel('mpblog/category')->load($category_id);
         $category_style = $category_collection->getData('category_style');
@@ -368,9 +369,11 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
               ->setCollection($collection)
               ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
         }
-
-
-
+        elseif($category_style == $index_project_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_index_projectstyle.phtml')->toHTML();
+        }
         $response['success'] = 'true';
         $this->getResponse()->setBody(json_encode($response));
         return;
