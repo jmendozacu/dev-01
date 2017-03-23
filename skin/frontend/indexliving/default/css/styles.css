@@ -3467,9 +3467,9 @@ body {
 .form-language .dropdown span { float:left; width:100%; cursor:pointer; padding:0 5px 0 5px; line-height:14px; text-transform:uppercase; color:#000;}
 .form-language .dropdown dd span {color:#fff;}
 .form-language .flagvisibility { display:none;}
-.page-header-container{padding:37px 0; float:left; width:100%;}
+.page-header-container{padding:20px 0 6px; float:left; width:100%;}
 .page-header-container .box-right {float:right; }
-.page-header-container .box-right .top-links {float:left; margin:7px 25px 7px 0px;}
+.page-header-container .box-right .top-links {float:left; margin:9px 25px 7px 0px;}
 .page-header-container .box-right .top-links > li {float:left; font-size:14px;  color:#252525; text-transform:uppercase; }
 .page-header-container .box-right .top-links > li > a {display:inline-block; line-height:25px; position:relative; color:#252525; }
 .page-header-container .box-right .top-links > li  >a:hover {color:#FFC222; text-decoration:none;}
@@ -3483,8 +3483,8 @@ body {
 .page-header-container .box-right .top-links li.wishlist {margin-left:8px;}
 .page-header-container .box-right .top-links li.wishlist a {padding-left:20px;}
 .page-header-container .box-right .top-links li.wishlist a:before{content:""; position:absolute; top:0px; left:0px; width:20px; height:100%; background:url(../images/icons.png) no-repeat 0px -69px;}
-.header-minicart .mycart {float:left; width:50px; height:50px; position:relative; border-radius:100%; background:url(../images/icons.png) no-repeat -59px -65px #FFC222;}
-.header-minicart .mycart span.cart-item-count {position:absolute; width:32px; height:32px; line-height:32px; top:-15px; right:-15px; border-radius:100%; background:#252525; color:#fff; text-align:center; font-size:11px;     }
+.header-minicart .mycart {float:left; width:45px; height:45px; position:relative; border-radius:100%; background:url(../images/icons.png) no-repeat -61px -67px #FFC222;}
+.header-minicart .mycart span.cart-item-count {position:absolute; width:22px; height:22px; line-height:20px; top:-8px; right:-8px; border-radius:100%; background:#252525; color:#fff; text-align:center; font-size:11px;     }
 .box-top-menu {float:left;  width:100%; text-transform:uppercase;}
 .main-home {float:left;  width:100%;}
 .box-top-menu .cateogry {float:left; width:24%; background:#252525; padding: 0 19px; position:relative;}
@@ -3590,7 +3590,7 @@ body {
 
 
 .ideas-inspiration {
-  margin: 15px 0;
+  margin: 0;
   float: left;
   width: 100%;
 }
@@ -3631,22 +3631,30 @@ body {
   display: block;
   padding: 10px;
   text-decoration: none;
+  line-height: 18px;
 }
 .ideas-inspiration .list-ideas ul li a img{
   display: inline-block;
 }
 .ideas-inspiration .list-ideas ul li a span.icon{
-  display: block;
+  display: table;
+  width: 100%;
   clear: both;
-  min-height: 45px;
+  min-height: 50px;
   margin-bottom: 10px;
 }
-body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DBYordX';font-size:20px;}
+.ideas-inspiration .list-ideas ul li a span.icon .icon-inner{
+  display: table-cell;
+  vertical-align: middle;
+}
+body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{
+  font-family: 'DBYordX';
+  font-size:18px;
+}
 .ideas-inspiration .list-ideas ul li a span.text{
   font-size: 18px;
   color: #000000;
   font-weight: normal;
-  line-height: 18px;
 }
 .home-blog, .home-video {
   margin: 0 0 30px;
@@ -3711,7 +3719,7 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 .box-home-list-products .banner-left li{margin-bottom:30px;}
 .title-style1 {float:left; width:100%; margin-bottom:40px; text-align:left; position:relative; }
 .title-style1:before {content:""; position:absolute; height:7px; width:87%; background:#F4F4F4; bottom:4px; right:0;}
-.title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal;     background: #fff;  position: relative;  padding-right: 15px; }
+.title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; background-color: #fff; position: relative; z-index: 10; padding-right: 15px; padding-bottom: 5px;}
 .title-style1 span strong{ font-weight: bold; color: #ffc222;}
 .title-style1 a {position:absolute; bottom:10px; right:0px; line-height:22px; color:#000; font-weight: normal; font-size:14px; padding-right:15px; z-index:9}
 .title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #919191; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
@@ -4023,7 +4031,7 @@ a.skip-link {
 .nav-primary > li.level0 {
   padding: 10px 9px;
 }
-.nav-primary li {float:left;/*width:100%;*/ font-size:15px;  text-transform:capitalize; padding:0; line-height:24px;}
+.nav-primary li {float:left;/*width:100%;*/ font-size:14px;  text-transform:capitalize; padding:0; line-height:22px;}
 .nav-primary li.level0 > ul.level0 {
   display: none;
   border: 1px solid #e1e1e1;
