@@ -11008,11 +11008,14 @@ div.paypal-logo span > img {
 .tab-left .tabsPage,
 .tab-left .tabs {float:left; width:25%; background:#F5F5F5; font-size:19px; }
 .tab-left .tabsPage li,
-.tab-left .tabs li {float:left; width:100%; border-bottom:solid 2px #E3E3E3;list-style-type: none;}
+.tab-left .tabs li {float:left; width:100%; border-bottom:solid 1px #E3E3E3;list-style-type: none;}
+.tab-left .tabs li:nth-child(1){
+  border-top:solid 1px #E3E3E3;
+}
 .tab-left .tabsPage li a,
-.tab-left .tabs li a {display:block; padding:10px 15px; line-height: 24px; }
+.tab-left .tabs li a {display:block; padding:10px 15px; line-height: 24px; color:#555; font-weight: 300; }
 .tab-left .tabsPage li a:hover,
-.tab-left .tabs li a:hover {text-decoration:none;}
+.tab-left .tabs li a:hover {text-decoration:none; color:#000;}
 .tab-left .tabsPage li.active,
 .tab-left .tabs li.active {background:#fff;position:relative;}
 .tab-left .tabsPage li.active:before,
@@ -11055,7 +11058,167 @@ div.paypal-logo span > img {
 .career_job .menuheaders.selected .thecontent ul{margin-bottom:20px;}
 .content_cms.career h2{color:#000;padding:10px 15px;background:#F7F7F7;margin-bottom:0;margin-top:10px;border-bottom:solid 1px #ececec;}
 
-/*history-company*/
+
+
+/* franchise-concept */
+.cms-franchise .tab-left .tab_container {
+  padding:0 0 0 20px;
+}
+.franchise-concept,
+.cms-page-view .std .franchise-concept p,
+.franchise-concept .ul-style1 li,
+.franchise-concept label{
+  font-size:16px;
+  color:#252525;
+  line-height: 26px;
+  font-family: 'Kanit';
+  font-weight:300;
+}
+.franchise-concept label {
+  font-weight: 500;
+}
+.franchise-concept h2 {
+  font-size:28px;
+  color:#000;
+  font-weight: bold;
+}
+.franchise-concept p strong{
+  font-weight:500;
+}
+.franchise-concept .col-2-image {
+  margin:30px 20px;
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+}
+.franchise-concept .col-2-image img {
+  float:left;
+  width:49.4%;
+}
+.franchise-concept .col-2-image img + img {
+  width:50.4%;
+  margin-left:0.2%;
+}
+.franchise-concept h4 {
+  font-size:24px;
+  font-weight: bold;
+  color:#FBB50D;
+  text-transform: uppercase;
+  font-family: 'Kanit';
+  margin:15px 0 10px;
+}
+.franchise-concept .box-gray {
+  padding:12px;
+  background:#fbfbfb;
+  float:left;
+  width:100%;
+}
+.franchise-concept .box-gray .box-image {
+  float:right;
+  width:40%;
+}
+.franchise-concept .box-gray .box-info {
+  float:left;
+  width:60%;
+  padding-right:18px;
+}
+.franchise-concept .box-gray .box-info label{
+  margin-bottom:5px;
+}
+.franchise-concept .box-white {
+  float:left;
+  width:100%;
+  padding:32px 0;
+  border-bottom:solid 1px #ebebeb;
+  margin-bottom:20px;
+}
+.franchise-concept .box-white .box-image {
+  float:left;
+  width:40%;
+}
+.franchise-concept .box-white .box-info {
+  float:left;
+  width:60%;
+  padding-left:18px;
+}
+.franchise-concept .box-gray1 {
+  background:#f5f5f5;
+  padding:10px;
+}
+.franchise-concept .box-gray1 strong{
+  font-weight: 500;
+}
+.franchise-concept a {
+  color:#fbb50d;
+}
+.franchise-concept .index-store {
+  float:left;
+  width:100%;
+}
+.franchise-concept .list-country >li {
+  float:left;
+  width:100%;
+  margin-bottom:15px;
+}
+.franchise-concept .list-country >li:nth-last-child(1) {
+  margin-bottom:0px;
+}
+.franchise-concept .list-country >li >label{
+  font-size:24px;
+}
+.cms-page-view .std .franchise-concept .list-country >li >p{
+  color:#9c9c9c
+}
+.franchise-concept .list-stores {
+  float:left;
+  width:100%;
+  clear: both;
+  overflow: hidden;
+  background:#f5f5f5;
+  padding:10px 18px;
+  margin:20px 0;
+}
+.franchise-concept .list-stores li {
+  float:left;
+  width:49%;
+  margin:8px 2% 8px 0;
+  background:#fff;
+}
+.franchise-concept .list-stores li:nth-child(2n){
+  margin-right:0px;
+}
+.franchise-concept .list-stores li .box-image {
+  float:left;
+  width:100%;
+}
+.franchise-concept .list-stores li .box-info {
+  float:left;
+  width:100%;
+  padding:8px 12px;
+}
+.franchise-concept .list-stores li .box-info label{
+  font-size:16px;
+  font-weight: 300;
+}
+.franchise-concept .list-stores li .box-info .store-name{
+  font-weight: bold;
+  font-size:18px;
+  line-height: 24px;
+  margin-bottom:0px;
+}
+.franchise-concept .list-stores li .box-info span{
+  display: block;
+  color:#9c9c9c;
+  font-size:16px;
+  font-weight: 500;
+}
+.franchise-concept .list-country li:nth-last-child(1) .list-stores {
+  margin-bottom: 0px;
+}
+
+
+  /*history-company*/
 #tabs_history{padding:0;float:left;clear:both;width:99%;margin-bottom:0;margin-top:10px;border:1px solid #F3F3F3;}
 ul.tabs_history{margin:0;padding:0;float:left;list-style:none;min-height:45px;width:100%;background:#F3F3F3;}
 ul.tabs_history li{float:left;padding:0;min-height:45px;line-height:45px;border-left:none;overflow:hidden;position:relative;}
@@ -12151,7 +12314,8 @@ ul.mp-details > li >a:before,
 .career-contacts li:before,
 .design-build-page .box1 ul li.li-icon:before,
 .design-build-page .box1 .list-type-design li:before,
-.design-build-page .box2 li:before{
+.design-build-page .box2 li:before,
+.cms-franchise .page-contact ul li span:before{
   background-image: url(../images/icon-corporate.png);
 }
 
@@ -12166,7 +12330,8 @@ ul.mp-details > li >a:before,
   .career-contacts li:before,
   .design-build-page .box1 ul li.li-icon:before,
   .design-build-page .box1 .list-type-design li:before,
-  .design-build-page .box2 li:before{
+  .design-build-page .box2 li:before,
+  .cms-franchise .page-contact ul li span:before{
     background-image: url(../images/icon-corporate2x.png);
     background-size: 100px 1000px;
   }
@@ -13125,10 +13290,30 @@ margin-bottom:15px;
 }
 #application-form .area{text-align: left;clear: both}
 #application-form .appli-form-block{
-  border: 1px solid rgb(227, 227, 227);
-  background: rgb(247, 247, 247);
+  border: 1px solid #e6e6e6;
+  background: #f6f6f6;
   border-radius: 3px;
   padding: 20px;
+  float:left;
+  width:100%;
+  clear: both;
+}
+#application-form .appli-form-list + .appli-form-list {
+  border-top:solid 1px #e6e6e6;
+  padding:20px 20px 0;
+  margin-top:20px;
+  width:calc(100% + 40px);
+  margin-left:-20px;
+  float:left;
+}
+#application-form .appli-form-list .field-textarea{
+  width:450px;
+  max-width:100%;
+}
+.tab_container #application-form p.note {
+  float:left ;
+  width:100%;
+  margin-bottom:20px;
 }
 #application-form .button{
   padding: 7px 10px;
@@ -13141,6 +13326,56 @@ margin-bottom:15px;
 #application-form p.note{
   color: red;
 }
+.cms-franchise .page-contact p,
+.cms-franchise .page-contact ul li{
+  font-size:16px;
+  color:#252525;
+  font-weight: 300;
+}
+.cms-franchise .page-contact ul {
+  float:left;
+  width:566px;
+  background:#f5f5f5;
+  padding:10px;
+}
+.cms-franchise .page-contact ul li {
+  border-top:solid 1px #ebebeb;
+  padding:18px 0px 18px 0px;
+  position: relative;
+}
+.cms-franchise .page-contact ul li span {
+  padding-left:50px;
+  display: block;
+}
+.cms-franchise .page-contact ul li:nth-child(1) {
+  border-top:none;
+}
+.cms-franchise .page-contact ul li span:before{
+  width:32px;
+  height:32px;
+  content:"";
+  position: absolute;
+  left:0px;
+  top:13px;
+  background-repeat: no-repeat;
+}
+.cms-franchise .page-contact ul li.email span:before {
+  background-position: 0 -1050px;
+}
+.cms-franchise .page-contact ul li.phone span:before {
+  background-position: -35px -1048px;
+}
+.cms-franchise .page-contact ul li.adrress span:before {
+  background-position: 0 -1085px;
+}
+.cms-franchise .page-contact ul li.map span:before {
+  background-position: -74px -1049px;
+}
+.cms-franchise .page-contact ul li.map img {
+  margin:15px auto 0 ;
+  max-width:100%;
+}
+
 #toolbar-pager{
   /*overflow: visible !important;*/
   /*float: none !important;*/

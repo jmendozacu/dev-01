@@ -4,6 +4,9 @@
 	</default>
   <checkout_onepage_index translate="label">
 		<reference name="head">
+			<action method="setTemplate">
+				<name>customaddress/page/head.phtml</name>
+			</action>
 			<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>
 		</reference>
 		<!-- <reference name="checkout.onepage">

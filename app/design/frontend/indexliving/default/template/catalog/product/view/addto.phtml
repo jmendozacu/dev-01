@@ -28,9 +28,15 @@
 	<?php echo $this->__('Products and prices offered online and in-store may vary') ?>
 </div>
 
+<div class="remark_prd"> 
+	<?php echo $this->__('Products and Prices Offered Online And In-Store May Vary') ?>
+</div>
+
+
 <?php $_product = $this->getProduct(); ?>
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
 <?php $wishlistItemId = Mage::helper('customwishlist')->checkItemInWishlist($_product->getId())?>
+
 <ul class="add-to-links">
 	<?php if ($this->helper('wishlist')->isAllow()) : ?>
 		<li class="wishlist-ajax add-wishlist">
