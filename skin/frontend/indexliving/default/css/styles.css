@@ -3509,14 +3509,14 @@ body {
 .toggle-minicart.active:after {bottom:-4px;}
 .top-link-account {position:relative;}
 #header-mini-login,
-#mini-cart-info {position:absolute; display:none; text-transform: none; z-index:12; top:90px; right:153px; width:302px; max-width:none;}
+#mini-cart-info {position:absolute; display:none; text-transform: none; z-index:12; top:69px; right:153px; width:302px; max-width:none;}
 .account-mini-login,
 .header-cart-box,
 .mini-account  { float:left; width:100%; border-radius:5px;  box-shadow: 0px 0px 3px 1px #aaa;  border-top: 0 none; background: #FFFFFF; padding:0px;}
 .account-mini-login .box-title ,
 #mini-cart-info .box-title,
 .mini-account .box-title { width:100%;  margin:0px;  border-radius: 5px 5px 0 0; float:left; background:#252525; padding:10px 10px 8px; line-height:18px; color:#fff; text-align:center; font-size:14px;  }
-#mini-cart-info {width:345px; top:90px; right:0px; overflow: initial;}
+#mini-cart-info {width:345px; top:69px; right:0px; overflow: initial;}
 .mini-account {width:200px; float:right;}
 .header-cart-box .block-content {float:left; width:100%;}
 .header-cart-box .block-content .item-wrap.empty {float:left; width:100%; min-height:480px; text-align:center;}
@@ -4022,7 +4022,9 @@ a.skip-link {
   float: left;
   width: 100%;
   position: relative;
+  border-bottom: 1px solid #ececec;
 }
+.cms-index-index .nav-primary{ border-bottom: none;}
 .nav-primary .title-viewall span.level2 {padding:12px 0; color:#FFD322; text-transform:capitalize; float:left; width:100%; padding-left:68px; padding-right:2px; position:relative;}
 .nav-primary > li.level0 {
   padding: 10px;
@@ -4436,7 +4438,7 @@ a.skip-link {
   padding-bottom: 25px;
 }
 .footer .footer-content {position:relative;}
-.footer .footer-contacts {float:left; width:24%;}
+.footer .footer-contacts {float:left; width:26%;}
 .footer .footer-links {float:right; width:67%;}
 .footer .footer-contacts .phone {float:left; width:100%; padding-bottom:8px; border-bottom:solid 1px #F4F4F4; position:relative;}
 .footer .footer-contacts .phone  img {max-width:55%; padding-right:4%; border-right:solid 1px #898989; display:inline-block;}
