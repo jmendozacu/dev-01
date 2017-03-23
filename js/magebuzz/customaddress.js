@@ -18,7 +18,32 @@ CityUpdater.prototype = {
 	},
 	
 	update: function() {
-		if(this.regionEl.value == 515 || this.regionEl.value == 509 || this.regionEl.value == 530 || this.regionEl.value == 551){
+		// 551: Surat Thani
+		if(this.regionEl.value == 551){
+			new Ajax.Request(checkShippingType, {
+				method: 'post',
+				onComplete: function(response) {
+					if (response.responseJSON.ilm) {
+						jQuery('#amscheckout-submit').attr("disabled", true);
+						$('outside_service_zone').style.display = 'block';
+				}
+					if (response.responseJSON.thaipost) {
+						$('notice_service').style.display = 'block';
+					}
+				}.bind(this)
+			});
+		}
+		else {
+			jQuery('#amscheckout-submit').attr("disabled", false);
+			$('outside_service_zone').style.display = 'none';
+			if($('notice_service')){
+				$('notice_service').hide();
+			}
+
+		}
+
+		if(this.regionEl.value == 515 || this.regionEl.value == 509 || this.regionEl.value == 530){
+
 			$('outside_service_zone').style.display = 'block';
 			if($('city_id') != null){
 				$('city_id').disabled = true;
