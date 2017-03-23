@@ -1249,7 +1249,7 @@ button#ajaxcart_continue_shopping { background: #f0f1d9; color: #7c7c7c;}
 .button.btn-cart > span,
 #wishlist-view-form .button.btn-add  >span {display:inline-block; padding-left:38px; position:relative;}
 .button.btn-cart > span:before,
-#wishlist-view-form .button.btn-add  >span:before {content:""; position:absolute; width:30px; height:30px; top:2px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
+#wishlist-view-form .button.btn-add  >span:before {content:""; position:absolute; width:30px; height:30px; top:-7px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
 .button.btn-cart{ font-weight: bold; font-size:14px; }
 .button.btn-cart:hover{background:#f4701e;}
 
@@ -12065,7 +12065,7 @@ body:lang(th) .main-home .box-home-decor .decor-style .banner-title, body:lang(t
 
 body:lang(th) .product-view .button.btn-cart > span:before, #wishlist-view-form .button.btn-add  >span:before{background: url(../images/icons.png) no-repeat -2px -843px;}
 body:lang(th) .product-view .add-to-cart button.btn-cart span span{line-height: 45px}
-body:lang(th) .products-grid .actions .button.btn-cart { line-height: 2.4;}
+body:lang(th) .products-grid .actions .button.btn-cart { line-height: 1;}
 body:lang(th) .product-view .product-review-summary .review-box .box-title .br .write-review-popup{padding: 9px 15px 5px;}
 body:lang(th) .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{margin-top: 36%;}
 body:lang(th) .product-view .add-to-links > li > a{font-size: 15px;line-height:33px;}
