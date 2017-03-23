@@ -6,18 +6,23 @@
  */
 ?>
 <?php
-$home_decor = 1;
-$promotions = 2;
-$newevent_crs = 3;
-$index_project = 4;
+$home_decor = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
+$promotions = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
+$newevent_crs = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+$index_project = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
 ?>
 
-<?php  $category  = $this->getCategory(); ?>
+<?php  $category  = $this->getCategory();?>
+<?php  $show_landing_field  = $category->getData('category_is_landing')?>
 <?php $category_style = $category->getData('category_style'); ?>
 <?php
 if($category_style == $home_decor){
-  echo $this->getChildHtml('list.decor');
-  //echo $this->getChildHtml('list.decor2');
+  if($show_landing_field){
+    echo $this->getChildHtml('list.decor');
+  }
+  else{
+    echo $this->getChildHtml('list.decor2');
+  }
 }elseif($category_style == $promotions){
   echo $this->getChildHtml('list.promotion');
 }elseif($category_style == $newevent_crs){

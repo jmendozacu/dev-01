@@ -342,12 +342,38 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
     public function filterproductAction(){
         $this->getResponse()->setHeader('Content-type','application/json');
         $response = array();
-        $data = $this->getRequest()->getParams();
-        $page_no = $data['p'];
         $collection = Mage::getBlockSingleton('mpblog/content_list')->getCollection();
-        $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
-            ->setCollection($collection)
-            ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+        $data = $this->getRequest()->getParams();
+        //$page_no = $data['p'];
+        // check replace content_ajax by category_style
+        $home_decor_category_style = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
+        $promotion_category_style = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
+        $newevent_crs_category_style = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+        $index_project_category_style = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
+        $category_id = $data['id'];
+        $category_collection = Mage::getModel('mpblog/category')->load($category_id);
+        $category_style = $category_collection->getData('category_style');
+
+        if($category_style == $promotion_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_promotionstyle.phtml')->toHTML();
+        }
+        elseif($category_style == $newevent_crs_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_newevent_crsstyle.phtml')->toHTML();
+        }
+        elseif($category_style == $home_decor_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+        }
+        elseif($category_style == $index_project_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_index_projectstyle.phtml')->toHTML();
+        }
         $response['success'] = 'true';
         $this->getResponse()->setBody(json_encode($response));
         return;

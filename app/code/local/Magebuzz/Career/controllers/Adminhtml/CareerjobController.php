@@ -86,7 +86,7 @@ class Magebuzz_Career_Adminhtml_CareerjobController extends Mage_Adminhtml_Contr
   }
 
   public function massDeleteAction() {
-    $formIds = $this->getRequest()->getParam('career');
+    $formIds = $this->getRequest()->getParam('job');
     if (!is_array($formIds)) {
       Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
     } else {
@@ -104,15 +104,15 @@ class Magebuzz_Career_Adminhtml_CareerjobController extends Mage_Adminhtml_Contr
   }
 
   public function massStatusAction() {
-    $banneradsIds = $this->getRequest()->getParam('job');
-    if (!is_array($banneradsIds)) {
+    $jobIds = $this->getRequest()->getParam('job');
+    if (!is_array($jobIds)) {
       Mage::getSingleton('adminhtml/session')->addError($this->__('Please select item(s)'));
     } else {
       try {
-        foreach ($banneradsIds as $banneradsId) {
-          $bannerads = Mage::getSingleton('bannerads/bannerads')->load($banneradsId)->setStatus($this->getRequest()->getParam('status'))->setIsMassupdate(TRUE)->save();
+        foreach ($jobIds as $jobId) {
+          $bannerads = Mage::getSingleton('career/job')->load($jobId)->setStatus($this->getRequest()->getParam('status'))->setIsMassupdate(TRUE)->save();
         }
-        $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully updated', count($banneradsIds)));
+        $this->_getSession()->addSuccess($this->__('Total of %d record(s) were successfully updated', count($jobId)));
       } catch (Exception $e) {
         $this->_getSession()->addError($e->getMessage());
       }

@@ -20,37 +20,49 @@ class Magebuzz_Career_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_B
       'title',
       'text',
       array('label' => Mage::helper('career')->__('Title'),
-        'name' => 'title',)
+        'name' => 'title',
+        'class'     => 'required-entry',
+        'required'  => true,)
     );
     $fieldset->addField(
       'function',
       'text',
       array('label' => Mage::helper('career')->__('Function'),
-        'name' => 'function',)
+        'name' => 'function',
+        'class'     => 'required-entry',
+        'required'  => true,)
     );
     $fieldset->addField(
       'position',
       'text',
       array('label' => Mage::helper('career')->__('Position'),
-        'name' => 'position',)
+        'name' => 'position',
+        'class'     => 'required-entry',
+        'required'  => true,)
     );
     $fieldset->addField(
       'location',
       'text',
       array('label' => Mage::helper('career')->__('Location'),
-        'name' => 'location',)
+        'name' => 'location',
+        'class'     => 'required-entry',
+        'required'  => true,)
     );
     $fieldset->addField(
       'scope_of_work',
       'textarea',
       array('label' => Mage::helper('career')->__('Scope Of Work'),
-        'name' => 'scope_of_work',)
+        'name' => 'scope_of_work',
+        'class'     => 'required-entry',
+        'required'  => true,)
     );
     $fieldset->addField(
       'qualifications',
       'textarea',
       array('label' => Mage::helper('career')->__('Qualifications'),
-        'name' => 'qualifications',)
+        'name' => 'qualifications',
+        'class'     => 'required-entry',
+        'required'  => true,)
     );
     $fieldset->addField(
       'status',

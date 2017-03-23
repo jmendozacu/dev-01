@@ -7,10 +7,14 @@
 ?>
 
 
-
-
+<?php
+  $category  = $this->getCategory();
+  $show_landing_field  = $category->getData('category_is_landing_project');
+?>
 <div class="mpblog-2column-left">
+  <?php if($show_landing_field):?>
     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-indexproject')->toHtml() ?>
+  <?php endif; ?>
     <div class="mpblog-col-left">
         <?php echo $this->getChildHtml('mpblog.sidebar_category_prject'); ?>
     </div>
@@ -18,7 +22,9 @@
         <div class="mpblog-container list list-decor-style1 list-index-project">
             <div class="mp-blog-head fix-me">
                 <h1 class="mp-title"><?php echo $this->getPageHeader(); ?></h1>
-                <!--<a class="button button-contact-project-sales" title="<?php /*echo $this->__('Contact Project Sales') */?>" href="javascript:void(0)"><?php /*echo $this->__('Contact Project Sales') */?></a>-->
+              <?php if(!$show_landing_field):?>
+                <a class="button button-contact-project-sales" title="<?php echo $this->__('Contact Project Sales') ?>" href="javascript:void(0)"><?php echo $this->__('Contact Project Sales') ?></a>
+              <?php endif; ?>
             </div>
             <?php if (count($this->getCollection())): ?>
 
@@ -48,51 +54,28 @@
                                     <?php endif; ?>
                                 <?php endif;?>
                                 <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
+                                <?php
+                                $post_id = $post->getData('post_id');
+                                $datas = Mage::getModel('mpblog/slideimages')
+                                  ->getCollection()
+                                  ->addFieldToFilter('post_id', $post_id);
+                                $paths = array();
+                                $media_dir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+                                foreach ($datas as $datass) {
+                                    $images = $datass->getImages();
+                                    $paths[] = $media_dir.'magebuzz/'.$images;
+                                }
+                                ?>
                                 <div class="popup-image">
                                     <div class="popup-content">
                                         <ul class="main-slider-id<?php echo $post->getId() ?>">
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                                                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                                                </a>
-                                            </li>
+                                            <?php foreach($paths as $path):?>
+                                                <li>
+                                                    <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $path ?>">
+                                                        <img alt="image post" src="<?php echo $path ?>" />
+                                                    </a>
+                                                </li>
+                                            <?php endforeach; ?>
                                         </ul>
                                     </div>
                                 </div>

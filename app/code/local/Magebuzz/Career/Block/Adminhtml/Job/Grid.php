@@ -104,6 +104,23 @@ class Magebuzz_Career_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widg
             'url' => $this->getUrl('*/*/massDelete'),
             'confirm' => Mage::helper('career')->__('Are you sure?')
         ));
+
+        $this->getMassactionBlock()->addItem('status', array(
+          'label'      => Mage::helper('career')->__('Change status'),
+          'url'        => $this->getUrl('*/*/massStatus', array('_current' => TRUE)),
+          'additional' => array(
+            'visibility' => array(
+              'name'   => 'status',
+              'type'   => 'select',
+              'class'  => 'required-entry',
+              'label'  => Mage::helper('career')->__('Status'),
+              'values' => array(
+                '1' => 'Enable',
+                '0' => 'Disable'
+              )
+            )
+          )
+        ));
         return $this;
     }
 
