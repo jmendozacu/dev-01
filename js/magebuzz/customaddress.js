@@ -19,37 +19,42 @@ CityUpdater.prototype = {
 	
 	update: function() {
 		// 551: Surat Thani
-		if(this.regionEl.value == 551){
-			new Ajax.Request(checkShippingType, {
-				method: 'post',
-				onComplete: function(response) {
-					if (response.responseJSON.ilm) {
-						jQuery('#amscheckout-submit').attr("disabled", true);
-						$('outside_service_zone').style.display = 'block';
-				}
-					if (response.responseJSON.thaipost) {
-						$('notice_service').style.display = 'block';
-					}
-				}.bind(this)
-			});
-		}
-		else {
-			jQuery('#amscheckout-submit').attr("disabled", false);
-			$('outside_service_zone').style.display = 'none';
-			if($('notice_service')){
-				$('notice_service').hide();
+		if(jQuery('.checkout-onepage-index')){
+			if(this.regionEl.value == 551){
+				new Ajax.Request(checkShippingType, {
+					method: 'post',
+					onComplete: function(response) {
+						if(response.responseJSON.ilm && response.responseJSON.thaipost){
+							jQuery('#amscheckout-submit').attr("disabled", true);
+							$('outside_service_zone').style.display = 'block';
+						}
+						else{
+							if (response.responseJSON.ilm) {
+								jQuery('#amscheckout-submit').attr("disabled", true);
+								$('outside_service_zone').style.display = 'block';
+							}
+							if (response.responseJSON.thaipost) {
+								$('notice_service').style.display = 'block';
+							}
+						}
+					}.bind(this)
+				});
 			}
+			else {
+				jQuery('#amscheckout-submit').attr("disabled", false);
+				if($('outside_service_zone')){
+					$('outside_service_zone').style.display = 'none';
+				}
 
+				if($('notice_service')){
+					$('notice_service').hide();
+				}
+
+			}
 		}
-
 		if(this.regionEl.value == 515 || this.regionEl.value == 509 || this.regionEl.value == 530){
-			$('outside_service_zone').style.display = 'block';
-			if($('city_id') != null){
-				$('city_id').disabled = true;
-				$('subdistrict_id').disabled = true;
-				$('zip').disabled = true;
-				$('country').disabled = true;
-				$('save_add').disabled = true;
+			if($('outside_service_zone')){
+				$('outside_service_zone').style.display = 'block';
 			}
 			if($('shipping:city_id') != null){
 				$('shipping:city_id').disabled = true;
@@ -65,76 +70,71 @@ CityUpdater.prototype = {
 			}
 		}
 		else{
-			$('outside_service_zone').style.display = 'none';
-			if($('city_id') != null) {
-				$('city_id').disabled = false;
-				$('subdistrict_id').disabled = false;
-				$('zip').disabled = false;
-				$('country').disabled = false;
-				$('save_add').disabled = false;
+			if($('outside_service_zone')) {
+				$('outside_service_zone').style.display = 'none';
 			}
-			if($('shipping:city_id') != null){
-				$('shipping:city_id').disabled = false;
-				$('shipping:subdistrict_id').disabled = false;
-				$('shipping:postcode').disabled = false;
-				//$('amscheckout-submit').disabled = false;
-			}
-			if($('billing:city_id') != null){
-				$('billing:city_id').disabled = false;
-				$('billing:subdistrict_id').disabled = false;
-				$('billing:postcode').disabled = false;
-				//$('amscheckout-submit').disabled = false;
-			}
-		if (this.cities[this.regionEl.value]) {
-			var i, option, city, def;
-			def = this.citySelectEl.getAttribute('defaultValue');
-			if (this.cityTextEl) {
-				if (!def) {
-					def = this.cityTextEl.value.toLowerCase();
+				if($('shipping:city_id') != null){
+					$('shipping:city_id').disabled = false;
+					$('shipping:subdistrict_id').disabled = false;
+					$('shipping:postcode').disabled = false;
+					//$('amscheckout-submit').disabled = false;
 				}
-				////need to comment this to avoid issue when saving address without touching city field
-				//this.cityTextEl.value = '';
-			}
-			
-			this.citySelectEl.options.length = 1;
-			for (cityId in this.cities[this.regionEl.value]) {
-				city = this.cities[this.regionEl.value][cityId];
+				if($('billing:city_id') != null){
+					$('billing:city_id').disabled = false;
+					$('billing:subdistrict_id').disabled = false;
+					$('billing:postcode').disabled = false;
+					//$('amscheckout-submit').disabled = false;
+				}
+				if (this.cities[this.regionEl.value]) {
+					var i, option, city, def;
+					def = this.citySelectEl.getAttribute('defaultValue');
+					if (this.cityTextEl) {
+						if (!def) {
+							def = this.cityTextEl.value.toLowerCase();
+						}
+						////need to comment this to avoid issue when saving address without touching city field
+						//this.cityTextEl.value = '';
+					}
 
-				option = document.createElement('OPTION');
-				option.value = city.code;
-				option.text = city.name.stripTags();
-				option.title = city.name;
+					this.citySelectEl.options.length = 1;
+					for (cityId in this.cities[this.regionEl.value]) {
+						city = this.cities[this.regionEl.value][cityId];
 
-				if (this.citySelectEl.options.add) {
-					this.citySelectEl.options.add(option);
-				} else {
-					this.citySelectEl.appendChild(option);
-				}				
-				
-				if (cityId==def || (city.name && city.name==def) ||
-						(city.name && city.code.toLowerCase()==def)
-				) {
-					this.citySelectEl.value = city.code;
+						option = document.createElement('OPTION');
+						option.value = city.code;
+						option.text = city.name.stripTags();
+						option.title = city.name;
+
+						if (this.citySelectEl.options.add) {
+							this.citySelectEl.options.add(option);
+						} else {
+							this.citySelectEl.appendChild(option);
+						}
+
+						if (cityId==def || (city.name && city.name==def) ||
+							(city.name && city.code.toLowerCase()==def)
+						) {
+							this.citySelectEl.value = city.code;
+						}
+					}
+
+					// Sort Alphabetize
+					this.sortAlphabetize();
+
+					if (this.cityTextEl) {
+						this.cityTextEl.style.display = 'none';
+					}
+					this.citySelectEl.style.display = '';
+				}
+				else {
+					this.citySelectEl.options.length = 1;
+					if (this.cityTextEl) {
+						this.cityTextEl.style.display = '';
+					}
+					this.citySelectEl.style.display = 'none';
+					Validation.reset(this.citySelectEl);
 				}
 			}
-			
-			// Sort Alphabetize
-			this.sortAlphabetize();
-			
-			if (this.cityTextEl) {
-				this.cityTextEl.style.display = 'none';
-			}
-			this.citySelectEl.style.display = '';
-		}
-		else {
-			this.citySelectEl.options.length = 1;
-			if (this.cityTextEl) {
-				this.cityTextEl.style.display = '';
-			}
-			this.citySelectEl.style.display = 'none';
-			Validation.reset(this.citySelectEl);
-		}
-		}
 	}, 
 	
 	sortAlphabetize: function () {
