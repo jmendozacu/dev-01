@@ -1247,9 +1247,9 @@ button#ajaxcart_continue_shopping { background: #f0f1d9; color: #7c7c7c;}
 
 .button.btn-cart, .button.btn-view-details {background:#FFC222; border-radius:3px;}
 .button.btn-cart > span,
-#wishlist-view-form .button.btn-add  >span {display:inline-block; padding-left:38px; position:relative;}
+#wishlist-view-form .button.btn-add  >span {display:inline-block; padding-left:38px; padding-bottom: 3px; position:relative;}
 .button.btn-cart > span:before,
-#wishlist-view-form .button.btn-add  >span:before {content:""; position:absolute; width:30px; height:30px; top:-7px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
+#wishlist-view-form .button.btn-add  >span:before {content:""; position:absolute; width:30px; height:30px; top:-5px; left:0px; background: url(../images/icons.png) no-repeat -2px -845px;}
 .button.btn-cart{ font-weight: bold; font-size:14px; }
 .button.btn-cart:hover{background:#f4701e;}
 
@@ -4699,7 +4699,7 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid .product-name a {color:#000; font-size:17px; font-weight: bold; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
 .products-grid .desc {font-size:12px; color:#434343; font-weight: 300; margin-bottom:5px; height: 18px;display: none;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
-.products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 4px 5px 1px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
+.products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 2px 5px 5px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
 .products-grid  .grid-price .save-price-percent strong, .catalog-product-view .product-view .product-shop .save-price-percent strong{display:block; color:#FFF; font-size:14px;line-height:16px;}
 .catalog-product-view .product-view .product-shop .price-info{position: relative;}
 .products-grid  .grid-price .save-price-percent{right:0px;  bottom:12px; }
@@ -12065,7 +12065,6 @@ body:lang(th) .main-home .box-home-decor .decor-style .banner-title, body:lang(t
 
 body:lang(th) .product-view .button.btn-cart > span:before, #wishlist-view-form .button.btn-add  >span:before{background: url(../images/icons.png) no-repeat -2px -843px;}
 body:lang(th) .product-view .add-to-cart button.btn-cart span span{line-height: 45px}
-body:lang(th) .products-grid .actions .button.btn-cart { line-height: 1;}
 body:lang(th) .product-view .product-review-summary .review-box .box-title .br .write-review-popup{padding: 9px 15px 5px;}
 body:lang(th) .categories-list .category-grid li.category-item.category-products-list .link-view-productlist{margin-top: 36%;}
 body:lang(th) .product-view .add-to-links > li > a{font-size: 15px;line-height:33px;}
