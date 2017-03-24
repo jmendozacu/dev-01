@@ -3668,14 +3668,10 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
-body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{
+.ideas-inspiration .list-ideas ul li a span.text{
   font-family: 'DBYordX';
   font-size:18px;
-}
-.ideas-inspiration .list-ideas ul li a span.text{
-  font-size: 18px;
   color: #000000;
-  font-weight: normal;
 }
 .home-blog, .home-video {
   margin: 0 0 30px;
