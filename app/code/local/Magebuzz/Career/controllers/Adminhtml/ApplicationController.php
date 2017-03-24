@@ -47,7 +47,7 @@ class Magebuzz_Career_Adminhtml_ApplicationController extends Mage_Adminhtml_Con
     }
 
     public function massDeleteAction() {
-        $formIds = $this->getRequest()->getParam('career');
+        $formIds = $this->getRequest()->getParam('application');
         if (!is_array($formIds)) {
             Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
         } else {

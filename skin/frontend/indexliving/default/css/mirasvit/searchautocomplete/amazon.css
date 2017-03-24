@@ -55,7 +55,7 @@
   width: 100%;
   border:solid 1px #DADADA;
   border-radius:3px 0 0 3px;
-  padding-top:8px;
+  padding-top:6px;
   padding-bottom:8px;
 }
 .searchautocomplete .nav .nav-search-in {
@@ -90,7 +90,7 @@
   float: left;
   font-size: 14px;
   height: 45px;
-  line-height: 46px;
+  line-height: 43px;
   margin: 0px 0px 0px 2px;
   padding: 0px 25px 0px 10px;
   text-align: center;
@@ -429,17 +429,3 @@
   .searchautocomplete .searchautocomplete-placeholder ul {max-height:300px; overflow-y:auto;}
   .searchautocomplete .searchautocomplete-placeholder {top:48px;}
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

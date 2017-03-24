@@ -469,11 +469,11 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
     public function checkoutAction(){
         $res = array();
         $this->_reloadRequest(FALSE);
-        
+
         $postMethod = $this->getRequest()->getParam('method');
         
         $amResponse = $this->_saveSteps(FALSE);
-        
+
         $paymentMethod = $this->getOnepage()->getQuote()->getPayment()->getMethod();
         if (
             $paymentMethod == 'sagepayserver' ||
@@ -606,6 +606,30 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
         
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($res));
         
+    }
+    public function checkShippingTypeAction(){
+      $this->getResponse()->setHeader('Content-type', 'application/json');
+      $_response = array();
+      $cart = Mage::getModel('checkout/cart')->getQuote();
+      $shippingType = array();
+      foreach ($cart->getAllItems() as $item) {
+        $shippingType[] = $item->getProduct()->getAmShippingType();
+      }
+      //114: ILM
+      if(in_array("115", $shippingType)){
+        $_response['thaipost'] = 1;
+      }
+      else{
+        $_response['thaipost'] = 0;
+      }
+      if(in_array("114", $shippingType)){
+        $_response['ilm'] = 1;
+      }
+      else{
+        $_response['ilm'] = 0;
+      }
+      $this->getResponse()->setBody(json_encode($_response));
+      return;
     }
     
     public function savePaymentAction()
