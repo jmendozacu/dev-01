@@ -31,8 +31,7 @@ if($captchaEnable){
 <script type="text/javascript" src="<?php echo $this->getJsUrl('mage/captcha.js') ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/amasty/customform/jquery.datetimepicker.css') ?>" />
 <script type="text/javascript" src="<?php echo $this->getJsUrl('amasty/customform/jquery.datetimepicker.full.min.js') ?>"></script>
-
-<h2 class="customer-forms-title"><?php echo $this->__('Payment Confirmation') ?></h2>
+<h2 class="customer-forms-title"><?php echo $form->getTitle(Mage::app()->getStore()->getId()) ?></h2>
 <div class="customer-forms">
 
         <form id="custom-form-<?php echo $form->getId()?>" action="<?php echo $this->getUrl('customform/form/submit/',array('preview'=>$this->getPreview())) ?>" method="post" enctype="multipart/form-data">
@@ -86,7 +85,7 @@ if($captchaEnable){
 
         <div class="buttons-set">
             <button type="submit"  title="<?php echo $this->__('Submit') ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
-            <button type="button" onclick="window.location = '<?php echo $this->getUrl('customform/form/reset/',array('form_id'=>$this->getFormId())) ?>'" title="<?php echo $this->__('Reset') ?>" class="button"><span><span><?php echo $this->__('Reset') ?></span></span></button>
+<!--            <button type="button" onclick="window.location = '--><?php //echo $this->getUrl('customform/form/reset/',array('form_id'=>$this->getFormId())) ?><!--'" title="--><?php //echo $this->__('Reset') ?><!--" class="button"><span><span>--><?php //echo $this->__('Reset') ?><!--</span></span></button>-->
         </div>
         </form>
 </div>

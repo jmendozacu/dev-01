@@ -1896,8 +1896,13 @@ ul.mp-details > li >a:hover:before {
 }
 .box-application-form .form-list .fields .field {
   float:left;
-  width:48%;
+  width:96%;
   margin-right:4%;
+}
+.box-application-form .form-list > li {
+  margin-bottom: 10px;
+  float:left;
+  width:50%;
 }
 .box-application-form .form-list .fields .field:nth-child(2n){
   margin-right:0px;
