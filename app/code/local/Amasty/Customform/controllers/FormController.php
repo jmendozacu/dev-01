@@ -123,7 +123,7 @@ class Amasty_Customform_FormController extends Mage_Core_Controller_Front_Action
                 $this->sendEmail($submit);
             }
             $this->_getSession()->addSuccess('The form is saved successfully');
-            $this->_redirectUrl($form->getSuccessUrl());
+            $this->_redirectUrl($this->_getRefererUrl());
         }
         catch (Exception $e) {
             //$this->_getSession()->addError($e->getMessage());
