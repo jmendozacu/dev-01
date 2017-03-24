@@ -4746,7 +4746,7 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 2px 5px 5px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
 .products-grid  .grid-price .save-price-percent strong, .catalog-product-view .product-view .product-shop .save-price-percent strong{display:block; color:#FFF; font-size:14px;line-height:16px;}
 .catalog-product-view .product-view .product-shop .price-info{position: relative;}
-.products-grid  .grid-price .save-price-percent{right:0px;  bottom:12px; }
+.products-grid  .grid-price .save-price-percent{right:0px;  bottom:10px; }
 .catalog-product-view .product-view .product-shop .save-price-percent{position:relative;display:table;padding:4px 4px 2px;margin-left:0;}
 .catalog-product-view .add-to-cart-wrapper .remark_prd {text-align: center;padding-bottom: 6px;}
 
