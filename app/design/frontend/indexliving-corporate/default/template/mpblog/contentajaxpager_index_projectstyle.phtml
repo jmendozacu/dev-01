@@ -4,7 +4,7 @@
 
     <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
       <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
-      <div class="mpblog-post">
+      <div class="mpblog-post" onclick="showImages(<?php echo $post->getId() ?>)">
         <div class="post-image" id="post-image-<?php echo $post->getId() ?>">
           <?php if( $i == 1):   ?>
             <?php if ($post->getPostThumbnailSrc()): ?>
@@ -27,52 +27,7 @@
           <?php endif;?>
           <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
           <div class="popup-image">
-            <div class="popup-content">
-              <ul class="main-slider-id<?php echo $post->getId() ?>">
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                  </a>
-                </li>
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                  </a>
-                </li>
-
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                  </a>
-                </li>
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                  </a>
-                </li>
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                  </a>
-                </li>
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                  </a>
-                </li>
-
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image1.jpg') ?>" />
-                  </a>
-                </li>
-                <li>
-                  <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>">
-                    <img alt="image post" src="<?php echo $this->getSkinUrl('images/blog/image2.jpg') ?>" />
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>" ></div>
           </div>
           <script type="text/javascript">
             setTimeout(function(){
@@ -95,8 +50,6 @@
 
           </script>
         </div>
-
-
         <div class="post-info">
           <div class="box-left">
             <div class="mp-post-title">
@@ -116,3 +69,4 @@
 <?php else: ?>
   <?php echo $this->__("There are no posts yet."); ?>
 <?php endif; ?>
+

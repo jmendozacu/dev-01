@@ -378,4 +378,35 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
         $this->getResponse()->setBody(json_encode($response));
         return;
     }
+    public function getSlideImagesAction()
+    {
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+        $post_id = $this->getRequest()->getParam('postId');
+
+        $image_names = Mage::getModel('mpblog/slideimages')
+          ->getCollection()
+          ->addFieldToFilter('post_id', $post_id);
+        $media_dir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+
+        $html = '';
+        if($image_names){
+            $html .='<ul class="main-slider-id'.$post_id.'" id="main-slider-id'.$post_id.'">';
+            foreach ($image_names as $image_name) {
+                $images = $image_name->getImages();
+                $paths = $media_dir . 'magebuzz/' . $images;
+
+                $html .= '<li class="popup_img_li_'.$post_id.'">';
+                $html .= '<a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="'.$paths.'">';
+                $html .= '<img alt="image post" src="'.$paths.'" />';
+                $html .= '</a>';
+                $html .= '</li>';
+            }
+            $html .= '</ul>';
+        }
+        $response['result'] = $html;
+        $response['success'] = 'true';
+        $this->getResponse()->setBody(json_encode($response));
+        return;
+    }
 }

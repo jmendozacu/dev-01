@@ -32,7 +32,7 @@
 
                     <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
                         <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
-                        <div class="mpblog-post">
+                        <div class="mpblog-post" onclick="showImages(<?php echo $post->getId() ?>)">
                             <div class="post-image" id="post-image-<?php echo $post->getId() ?>">
                                 <?php if( $i == 1):   ?>
                                     <?php if ($post->getPostThumbnailSrc()): ?>
@@ -54,30 +54,8 @@
                                     <?php endif; ?>
                                 <?php endif;?>
                                 <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
-                                <?php
-                                $post_id = $post->getData('post_id');
-                                $datas = Mage::getModel('mpblog/slideimages')
-                                  ->getCollection()
-                                  ->addFieldToFilter('post_id', $post_id);
-                                $paths = array();
-                                $media_dir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
-                                foreach ($datas as $datass) {
-                                    $images = $datass->getImages();
-                                    $paths[] = $media_dir.'magebuzz/'.$images;
-                                }
-                                ?>
                                 <div class="popup-image">
-                                    <div class="popup-content">
-                                        <ul class="main-slider-id<?php echo $post->getId() ?>">
-                                            <?php foreach($paths as $path):?>
-                                                <li>
-                                                    <a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="<?php echo $path ?>">
-                                                        <img alt="image post" src="<?php echo $path ?>" />
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </div>
+                                    <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>" ></div>
                                 </div>
                                 <script type="text/javascript">
                                     setTimeout(function(){
@@ -87,6 +65,7 @@
                                                 nextEffect : 'none',
                                                 closeBtn  : true,
                                                 arrows    : true,
+                                                loop: false,
                                                 nextClick : true,
                                                 helpers : {
                                                     thumbs : {
@@ -100,8 +79,6 @@
 
                                 </script>
                             </div>
-
-
                             <div class="post-info">
                                 <div class="box-left">
                                     <div class="mp-post-title">
@@ -139,7 +116,22 @@
             jQuery('#box-application-form').hide();
         });
     </script>
-
+  <script type="text/javascript">
+    function showImages(postId) {
+      if(!jQuery('.main-slider-id'+postId).length){
+      jQuery.ajax({
+        type: "post",
+        url: "<?php echo $this->getUrl('mpblog/index/getSlideImages'); ?>?postId=" + postId,
+        success: function (transport) {
+          if (transport.success == 'true') {
+            jQuery('.parent_content_'+postId).html(transport.result);
+            jQuery(".popup_img_li_"+postId).first().children().click();
+          }
+        }
+      });
+      }
+    }
+  </script>
 </div>
 
 
