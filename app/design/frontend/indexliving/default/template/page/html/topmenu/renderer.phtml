@@ -73,7 +73,7 @@ foreach ($children as $child) {
       $html .= '<ul class="level1">';
     }
     $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
-    $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $this->escapeHtml($this->__($child->getName())) . '</a>';
+    $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '"><span>' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';
 
     if (!empty($_hasChildren)) {
       $html .= '<a href="javascript:void(0)" class="i-show-sub-menu"><span style="display:none">' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';
@@ -82,7 +82,7 @@ foreach ($children as $child) {
   
   else{
       $html .= '<li' . $this->_getRenderedMenuItemAttributes($child) . '>';
-      $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '">' . $this->escapeHtml($this->__($child->getName())) . '</a>';
+      $html .= '<a href="' . $child->getUrl() . '" class="' . $outermostClassCode . ' ' . $_hasChildren . '"><span>' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';
 
     if (!empty($_hasChildren)) {
       $html .= '<a href="javascript:void(0)" class="i-show-sub-menu"><span style="display:none">' . $this->escapeHtml($this->__($child->getName())) . '</span></a>';

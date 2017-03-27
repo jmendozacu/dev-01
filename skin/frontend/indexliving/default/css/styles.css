@@ -4116,14 +4116,16 @@ a.skip-link {
 }
 .nav-primary li.level1 > a {
   text-decoration: none;
-  border-bottom:solid 2px transparent;
   padding:0px;
   width:auto;
   margin-bottom:10px;
+  color:#FFC226;
 }
-.nav-primary li.level1 > a:hover{
-  border-bottom:solid 2px #FFC226;
-  text-decoration: none;
+.nav-primary li.level1 > a >span {
+  color:#252525;
+}
+.nav-primary li.level1 > a:hover {
+   text-decoration: underline;
 }
 
 .nav-primary li.subcat ul li  a:hover,
