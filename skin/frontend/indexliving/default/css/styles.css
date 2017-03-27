@@ -1177,7 +1177,7 @@ body:not(.customer-account) .block:first-child .block-title {
 .customer-account .my-account .title-buttons .link-reorder{
   background: #ffc222;
   display: inline-block;
-  padding: 9px 15px 7px;
+  padding: 7px 15px;
   border: 0;
   color: #FFFFFF;
   font-size: 14px;
