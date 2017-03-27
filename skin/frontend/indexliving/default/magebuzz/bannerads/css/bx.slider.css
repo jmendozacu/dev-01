@@ -231,8 +231,8 @@
 .allcategory-banners .banners-list .rb .wrap-bannerads .banner .bx-viewport{padding-right:150px;}
  @media (max-width: 1315px) {
   .wrap-bannerads div.banner{width: 100%;height: auto;}
-  .main-banners  .bx-wrapper .bx-controls-direction a.bx-prev{left: -40px;}
-  .main-banners  .bx-wrapper .bx-controls-direction a.bx-next{right: -40px;}
+  .main-banners  .bx-wrapper .bx-controls-direction a.bx-prev{left: -45px;}
+  .main-banners  .bx-wrapper .bx-controls-direction a.bx-next{right: -45px;}
 }
  @media (max-width: 1120px) {
   .main-banners  .bx-wrapper .bx-controls-direction a.bx-prev{left: -30px;}
