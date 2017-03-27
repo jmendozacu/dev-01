@@ -51,13 +51,13 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
     protected function _amSaveShipping(){
 				$shipping = $this->getRequest()->getPost('shipping', array());
 				$billing = $this->getRequest()->getPost('billing', array());
-								
+
 				$this->saveMethodAction();
         $this->saveShippingAction();
-				
+
 				$usingBillingCase = isset($shipping['same_as_billing']) ? (int)$shipping['same_as_billing'] : 0;
 				if (!$usingBillingCase) {
-					//billing is different 
+					//billing is different
 					$billing['email'] = $shipping['email'];
 					$billing['day'] = $shipping['day'];
 					$billing['month'] = $shipping['month'];
@@ -268,7 +268,7 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
         
         $billing = $this->getRequest()->getPost('billing', array());
         $shipping = $this->getRequest()->getPost('shipping', array());
-        
+
         $requiredFields = $this->_getRequiredFields();
         
         foreach($billingDefaults as $key => $def){
@@ -610,11 +610,32 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
     public function checkShippingTypeAction(){
       $this->getResponse()->setHeader('Content-type', 'application/json');
       $_response = array();
+
       $cart = Mage::getModel('checkout/cart')->getQuote();
       $shippingType = array();
       foreach ($cart->getAllItems() as $item) {
         $shippingType[] = $item->getProduct()->getAmShippingType();
       }
+// start customer already had address
+      //551: Surat Thani
+      $address_id = $this->getRequest()->getParams('address_id');
+      if($address_id){
+        $address_collection = Mage::getModel('customer/address')->load($address_id);
+        $region_id = $address_collection->getData('region_id');
+        if($region_id == 551){
+          $_response['surat_thani'] = 1;
+        }
+//        if($region_id == 551 && in_array("114", $shippingType) && in_array("115", $shippingType)){
+//          $_response['had_address_cannot_order_ilm_thaipost'] = 1;
+//        }
+//        if($region_id == 551 && in_array("114", $shippingType)){
+//          $_response['had_address_cannot_order_ilm'] = 1;
+//        }
+//        if($region_id == 551 && in_array("115", $shippingType)){
+//          $_response['had_address_can_order_thaipost'] = 1;
+//        }
+      }
+// end customer already had address
       //114: ILM
       if(in_array("115", $shippingType)){
         $_response['thaipost'] = 1;
@@ -631,6 +652,19 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
       $this->getResponse()->setBody(json_encode($_response));
       return;
     }
+
+//    public function getAddressAction(){
+//        $this->getResponse()->setHeader('Content-type', 'application/json');
+//        $_response = array();
+//        $address_id = $this->getRequest()->getParams('address_id');
+//        $address_collection = Mage::getModel('customer/address')->load($address_id);
+//        $region_id = $address_collection->getData('region_id');
+//        if($region_id == 551){
+//          $_response['surat_thani'] = 1;
+//        }
+//        $this->getResponse()->setBody(json_encode($_response));
+//        return;
+//    }
     
     public function savePaymentAction()
     {
