@@ -241,6 +241,7 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                                         <?php echo $this->getChildHtml("shipping") ?>
                                     </div>
                                 </div>
+                              <p id="outside_service" style="padding-top: 10px; font-size: 15px;display: none; color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
                                 <?php /*}*/
                                 ?>
                                 <?php if (!$skipBilling) { ?>
@@ -381,6 +382,7 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                                             <?php echo $this->getChildHtml("shipping") ?>
                                         </div>
                                     </div>
+                                  <p id="outside_service" style="padding-top: 10px; font-size: 15px;display: none; color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
                                 <?php } ?>
                             </div>
                             <div class="second-column">
@@ -499,6 +501,7 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                                             <?php echo $this->getChildHtml("shipping") ?>
                                         </div>
                                     </div>
+                                  <p id="outside_service" style="padding-top: 10px; font-size: 15px;display: none; color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
                                 <?php } ?>
                                 <?php if (!$skipShippingMethod) { ?>
                                     <div class="column-section">
@@ -898,7 +901,65 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
 
         if ($('shipping-address-select')) {
             $('shipping-address-select').observe('change', function () {
-                updateCheckout('shipping');
+              updateCheckout('shipping');
+              var params = this.value;
+              new Ajax.Request(checkShippingType, {
+                method: 'post',
+                parameters: {
+                  address_id: this.value
+                },
+                onComplete: function (response) {
+                    debugger;
+                    if(response.responseJSON.surat_thani || response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
+                        if (response.responseJSON.surat_thani) {
+                            if (response.responseJSON.ilm && response.responseJSON.thaipost) {
+                                jQuery('#amscheckout-submit').attr("disabled", true);
+                                $('outside_service').style.display = 'block';
+                                jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                jQuery('#billing_as_shipping_no').attr("disabled", true);
+                            }
+                            else {
+                                if (response.responseJSON.ilm) {
+                                    jQuery('#amscheckout-submit').attr("disabled", true);
+                                    $('outside_service').style.display = 'block';
+                                    jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                    jQuery('#billing_as_shipping_no').attr("disabled", true);
+                                }
+                                if (response.responseJSON.thaipost) {
+                                    $('notice_service').style.display = 'block';
+                                }
+                            }
+                        }
+                        if (response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
+                            if (response.responseJSON.ilm && response.responseJSON.thaipost) {
+                                jQuery('#amscheckout-submit').attr("disabled", true);
+                                $('outside_service').style.display = 'block';
+                                jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                jQuery('#billing_as_shipping_no').attr("disabled", true);
+                            }
+                            else {
+                                if (response.responseJSON.ilm) {
+                                    jQuery('#amscheckout-submit').attr("disabled", true);
+                                    $('outside_service').style.display = 'block';
+                                    jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                    jQuery('#billing_as_shipping_no').attr("disabled", true);
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        jQuery('#billing_as_shipping_yes').attr("disabled", false);
+                        jQuery('#billing_as_shipping_no').attr("disabled", false);
+                        jQuery('#amscheckout-submit').attr("disabled", false);
+                        if($('outside_service')){
+                            $('outside_service').style.display = 'none';
+                        }
+                        if($('notice_service')){
+                            $('notice_service').hide();
+                        }
+                    }
+                }.bind(this)
+              });
             });
         }
 

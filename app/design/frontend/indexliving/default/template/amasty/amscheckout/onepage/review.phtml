@@ -30,9 +30,4 @@ $hasTHAIPOST = strpos($shippingType, '115');
     </button>
 </div>
 <div class="clearboth" style="clear: both"></div>
-<p id="notice_service" style="display: none; color: red;"><?php echo $this->__('Note: This shipping and installation price Excluding boarding the island. By the way, the island will pay the actual destination. (Inquire more 02-417-1111)')?></p>
-<?php if($hasILM || $hasTHAIPOST): ?>
-    <div id="checkShippingType" style="float: right; font-size: 15px; padding-right: 15px;">
-        <p id="outside_service_zone" style="color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
-    </div>
-<?php endif; ?>
+<p id="notice_service" style="display: none; color: red;"><?php echo $this->__('Remark : Shipping and installing prices are not included an island ferry boat. Ferry price will be charge on delivery as real price. (More info please call 02-417-1111)')?></p>

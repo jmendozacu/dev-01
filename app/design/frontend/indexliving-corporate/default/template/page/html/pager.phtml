@@ -32,137 +32,199 @@
  */
 ?>
 <?php if($this->getCollection()->getSize()): ?>
-  <?php if($this->getShowAmounts() || $this->getShowPerPage()): ?>
-    <?php if($this->getShowAmounts()): ?>
-      <?php if($this->getLastPageNum()>1): ?>
-      <p class="amount amount-box amount--has-pages">
-          <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
-      </p>
-      <?php else: ?>
-      <p class="amount amount-box amount--no-pages">
-          <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
-      </p>
-      <?php endif; ?>
-      <?php endif ?>  
-  <?php endif ?>  
-    <?php if($this->getUseContainer()): ?>
-    <div class="pager pager-no-toolbar">
-    <?php endif ?>
-    <?php if($this->getShowAmounts() || $this->getShowPerPage()): ?>
-    <div class="count-container">
-        
-        <?php if($this->getShowPerPage()): ?>
-        <div class="limiter">
-            <label><?php echo $this->__('Show') ?></label>
-            <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
-            <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
-                <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
-                    <?php echo $_limit ?>
-                </option>
-            <?php endforeach; ?>
-            </select>
-        </div>
-        <?php endif ?>
-    </div>
-    <?php endif; ?>
+  <?php if($this->getUseContainer()): ?>
+    <div class="pager pager-no-toolbar" id="toolbar-pager">
+  <?php endif ?>
 
-    <?php if($this->getLastPageNum()>1): ?>
-    <div class="pages box-desktop">
+  <?php if($this->getLastPageNum()>1): ?>
+    <div class="pagination">
+      <div class="pages box-desktop">
         <strong><?php echo $this->__('Page:') ?></strong>
         <ol>
-        <?php if (!$this->isFirstPage()): ?>
+          <?php if (!$this->isFirstPage()): ?>
             <li>
-                <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
-                    <?php if(!$this->getAnchorTextForPrevious()): ?>
-                        <?php echo $this->__('Previous') ?>
-                    <?php else: ?>
-                        <?php echo $this->getAnchorTextForPrevious() ?>
-                    <?php endif;?>
-                </a>
+              <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
+                <?php if(!$this->getAnchorTextForPrevious()): ?>
+                  <?php echo $this->__('Previous') ?>
+                <?php else: ?>
+                  <?php echo $this->getAnchorTextForPrevious() ?>
+                <?php endif;?>
+              </a>
             </li>
-        <?php endif;?>
+          <?php endif;?>
 
-        <?php if ($this->canShowFirst()): ?>
+          <?php if ($this->canShowFirst()): ?>
             <li><a class="first" href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
-        <?php endif;?>
+          <?php endif;?>
 
-        <?php if ($this->canShowPreviousJump()): ?>
+          <?php if ($this->canShowPreviousJump()): ?>
             <li><a class="previous_jump" title="" href="<?php echo $this->getPreviousJumpUrl() ?>">...</a></li>
-        <?php endif;?>
+          <?php endif;?>
 
-        <?php foreach ($this->getFramePages() as $_page): ?>
+          <?php foreach ($this->getFramePages() as $_page): ?>
             <?php if ($this->isPageCurrent($_page)): ?>
-                <li class="current"><?php echo $_page ?></li>
+              <li class="current"><a id="<?php echo $_page ?>" href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
             <?php else: ?>
-                <li><a href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
+              <li><a id="<?php echo $_page ?>" href="<?php echo $this->getPageUrl($_page) ?>"><?php echo $_page ?></a></li>
             <?php endif;?>
-        <?php endforeach;?>
+          <?php endforeach;?>
 
 
-        <?php if ($this->canShowNextJump()): ?>
+          <?php if ($this->canShowNextJump()): ?>
             <li><a class="next_jump" title="" href="<?php echo $this->getNextJumpUrl() ?>">...</a></li>
-        <?php endif;?>
+          <?php endif;?>
 
-        <?php if ($this->canShowLast()): ?>
-          <li><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>
-        <?php endif;?>
+          <?php if ($this->canShowLast()): ?>
+            <li><a class="last" href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>
+          <?php endif;?>
 
-        <?php if (!$this->isLastPage()): ?>
+          <?php if (!$this->isLastPage()): ?>
             <li>
-                <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
-                    <?php if(!$this->getAnchorTextForNext()): ?>
-                        <?php echo $this->__('Next') ?>
-                    <?php else: ?>
-                        <?php echo $this->getAnchorTextForNext() ?>
-                    <?php endif;?>
-                </a>
+              <!--                            <a class="next--><?php //if(!$this->getAnchorTextForNext()): ?><!-- i-next--><?php //endif; ?><!--" href="--><?php //echo $this->getNextPageUrl() ?><!--" title="--><?php //echo Mage::helper('core')->quoteEscape($this->__('Next')) ?><!--">-->
+              <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="#" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
+              </a>
             </li>
-        <?php endif;?>
+          <?php endif;?>
         </ol>
-
+      </div>
+      <?php if($this->getShowAmounts() || $this->getShowPerPage()): ?>
+        <div class="count-container">
+          <?php if($this->getShowPerPage()): ?>
+            <div class="limiter">
+              <label><?php echo $this->__('Show') ?></label>
+              <!-- onchange="setLocation(this.value)"-->
+              <select title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
+                <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                  <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                    <?php echo $_limit ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif ?>
+        </div>
+      <?php endif; ?>
     </div>
     <div class="pages box-mobile">
-        <ol>
-        
-            <li class="li-previous">
-              <?php if (!$this->isFirstPage()): ?>
-                <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
-                    <?php if(!$this->getAnchorTextForPrevious()): ?>
-                        <?php echo $this->__('Previous') ?>
-                    <?php else: ?>
-                        <?php echo $this->getAnchorTextForPrevious() ?>
-                    <?php endif;?>
-                </a>
-              <?php else: ?>
-              <span class="previous"></span>
-              <?php endif;?>  
-            </li>
-            
-            <?php foreach ($this->getFramePages() as $_page): ?>
-                <?php if ($this->isPageCurrent($_page)): ?>
-                    <li class="li-current"><?php echo $_page ?>/<?php echo $this->getLastPageNum() ?></li>
-                <?php endif;?>
-            <?php endforeach;?>
-        
-            <li class="li-next">
-               <?php if (!$this->isLastPage()): ?>
-                <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
-                    <?php if(!$this->getAnchorTextForNext()): ?>
-                        <?php echo $this->__('Next') ?>
-                    <?php else: ?>
-                        <?php echo $this->getAnchorTextForNext() ?>
-                    <?php endif;?>
-                </a>
-                <?php else: ?>
-                  <span class="next"></span>
-                <?php endif;?>     
-            </li>
-        </ol>
-    </div>
-    <?php endif; ?>
+      <ol>
 
-    <?php if($this->getUseContainer()): ?>
+        <li class="li-previous">
+          <?php if (!$this->isFirstPage()): ?>
+            <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
+              <?php if(!$this->getAnchorTextForPrevious()): ?>
+                <?php echo $this->__('Previous') ?>
+              <?php else: ?>
+                <?php echo $this->getAnchorTextForPrevious() ?>
+              <?php endif;?>
+            </a>
+          <?php else: ?>
+            <span class="previous"></span>
+          <?php endif;?>
+        </li>
+
+        <?php foreach ($this->getFramePages() as $_page): ?>
+          <?php if ($this->isPageCurrent($_page)): ?>
+            <li class="li-current"><?php echo $_page ?>/<?php echo $this->getLastPageNum() ?></li>
+          <?php endif;?>
+        <?php endforeach;?>
+
+        <li class="li-next">
+          <?php if (!$this->isLastPage()): ?>
+            <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
+              <?php if(!$this->getAnchorTextForNext()): ?>
+                <?php echo $this->__('Next') ?>
+              <?php else: ?>
+                <?php echo $this->getAnchorTextForNext() ?>
+              <?php endif;?>
+            </a>
+          <?php else: ?>
+            <span class="next"></span>
+          <?php endif;?>
+        </li>
+      </ol>
     </div>
-    <?php endif ?>
+  <?php endif; ?>
+
+  <?php if($this->getUseContainer()): ?>
+    </div>
+  <?php endif ?>
 
 <?php endif ?>
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    jQuery(".pagination a").click(function(event) {
+      event.preventDefault();
+      page = jQuery(this).html();
+
+      var a_current_old = jQuery('.pagination .pages li.current a');
+      var li_current_old = jQuery('.pagination .pages li.current');
+      li_current_old.removeClass('current');
+      a_current_old.css('color','black');
+
+      var current_page_number = event.toElement;
+      current_page_number.setAttribute("style", "color:#ffc222");
+      var li_current_new = current_page_number.up();
+      if(!current_page_number.hasClassName('i-next')){
+        li_current_new.addClassName('current');
+      }
+      else{
+        if(li_current_old.next().children().hasClass('i-next')){
+          li_current_old.addClass('current');
+          li_current_old.children().css("color","#ffc222");
+        }
+        else{
+          li_current_old.next().addClass('current');
+        }
+
+      }
+
+      if(current_page_number.hasClassName('i-next')){
+        page = parseInt(a_current_old.html()) + 1;
+      }
+      updatePage(page);
+
+    });
+
+    function updatePage(pageno){
+      $j('#ajaxcart-overlay').show();
+      $j('#ajax_cart_loading').show();
+      jQuery.ajax({
+        type:"get",
+        url:"<?php echo $this->getUrl('career/index/filterproduct'); ?>?p="+pageno,
+        success: function(transport) {
+          if (transport.success == 'true') {
+            jQuery('.job_list').html(transport.result);
+            $j('#ajax_cart_loading').hide();
+            $j('#ajaxcart-overlay').hide();
+          }
+        }
+      });
+    }
+
+    jQuery(".pagination select").change(function(event) {
+      var option = this.value;
+      var numberItem =  parseInt(jQuery.trim(jQuery(this).find('option:selected').text()));
+      var id = '<?php echo Mage::app()->getRequest()->getParam('id'); ?>';
+      var number_posts = '<?php echo $this->getCollection()->getSize()?>';
+      if(number_posts <= numberItem){
+        jQuery('.pagination .pages').hide();
+      }
+      else{
+        jQuery('.pagination .pages').show();
+      }
+      $j('#ajaxcart-overlay').show();
+      $j('#ajax_cart_loading').show();
+      jQuery.ajax({
+        type:"get",
+        url:"<?php echo $this->getUrl('career/index/filterproduct'); ?>?limit="+numberItem,
+        success: function(transport) {
+          if (transport.success == 'true') {
+            jQuery('.job_list').html(transport.result);
+            $j('#ajax_cart_loading').hide();
+            $j('#ajaxcart-overlay').hide();
+          }
+        }
+      });
+    });
+  });
+</script>
