@@ -1,11 +1,6 @@
 <?php
 $collections = $this->getCollection();
 ?>
-<div class="page-title style2">
-  <h1><?php echo $this->__('Career') ?> </h1>
-</div>
-<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-top-info')->toHtml() ?>
-
 <?php if (count($collections)): ?>
   <table class="job_list" onscroll="">
     <thead>
@@ -43,7 +38,6 @@ $collections = $this->getCollection();
     <?php endforeach?>
     </tbody>
   </table>
-  <?php echo $this->getToolbarHtml()?>
 <?php else:?>
   <?php echo $this->__("There are no jobs yet."); ?>
 <?php endif; ?>

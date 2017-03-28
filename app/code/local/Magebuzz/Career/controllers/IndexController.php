@@ -33,4 +33,17 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
             }
         }
     }
+
+    public function filterproductAction()
+    {
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        $response = array();
+        $collection = Mage::getBlockSingleton('career/job')->getCollection();
+        $response['result'] = Mage::app()->getLayout()->createBlock('career/job')
+          ->setCollection($collection)
+          ->setTemplate('career/contentajaxpager.phtml')->toHTML();
+        $response['success'] = 'true';
+        $this->getResponse()->setBody(json_encode($response));
+        return;
+    }
 }
