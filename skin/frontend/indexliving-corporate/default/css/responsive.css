@@ -3826,6 +3826,20 @@
     body.career-index-application #career #application p.join_us {
         font-size:18px;
     }
+
+    /* franchise page */
+    .tab-left .tabs {
+        margin-bottom:20px;
+    }
+    .tab-left .tab_container {
+        width:100%;
+    }
+    .cms-franchise .tab-left .tab_container {
+        padding-left:0px;
+    }
+    .franchise-concept .col-2-image {
+        margin:25px 0;
+    }
 }
 
 @media (max-width: 500px){
@@ -3840,5 +3854,60 @@
     }
     body.career-index-application #application-form li {
         margin-bottom:0px;
+    }
+    .franchise-concept h2,
+    .franchise-concept h4{
+        font-size:18px;
+    }
+    .franchise-concept .col-2-image img,
+    .franchise-concept .col-2-image img + img{
+        width:100%;
+        margin: 0 0 10px;
+    }
+    .franchise-concept .box-gray {
+        width:calc(100% + 20px);
+        margin-left:-10px;
+    }
+    .franchise-concept .box-gray .box-image ,
+    .franchise-concept .box-gray .box-info,
+    .franchise-concept .box-white .box-image,
+    .franchise-concept .box-white .box-info{
+        width:100%;
+        padding:0px;
+        margin:5px 0;
+    }
+    .franchise-concept .list-stores {
+        padding:10px;
+    }
+    .franchise-concept .list-stores li {
+        width:100%;
+        margin:0 0 10px;
+    }
+    .franchise-concept .list-stores li .box-info .store-name {
+        color:#FFC222;
+    }
+    .franchise-concept a,
+    .franchise-concept,
+    .cms-page-view .std .franchise-concept p,
+    .franchise-concept .ul-style1 li,
+    .franchise-concept label,
+    .franchise-concept .list-stores li .box-info label,
+    .franchise-concept .list-stores li .box-info span,
+    #application-form label{
+        font-size:14px;
+    }
+    .franchise-concept .list-stores li .box-info .store-name {
+        font-size:16px;
+    }
+    #application-form .appli-form-block {
+        padding:10px;
+    }
+    #application-form .appli-form-list + .appli-form-list {
+        padding: 10px 10px 0;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+    }
+    .tab-left h1, .tab-left h2 {
+        font-size:20px;
     }
 }

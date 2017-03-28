@@ -13337,6 +13337,8 @@ margin-bottom:15px;
   width:566px;
   background:#f5f5f5;
   padding:10px;
+  max-width:100%;
+  margin-top: 10px;
 }
 .cms-franchise .page-contact ul li {
   border-top:solid 1px #ebebeb;
