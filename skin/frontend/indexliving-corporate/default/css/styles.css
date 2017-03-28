@@ -12333,7 +12333,7 @@ ul.mp-details > li >a:before,
   .design-build-page .box2 li:before,
   .cms-franchise .page-contact ul li span:before{
     background-image: url(../images/icon-corporate2x.png);
-    background-size: 100px 1000px;
+    background-size: 100px auto;
   }
 }
 
