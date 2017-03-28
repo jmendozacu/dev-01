@@ -3661,7 +3661,7 @@ body {
   display: table;
   width: 100%;
   clear: both;
-  min-height: 50px;
+  height: 50px;
   margin-bottom: 10px;
 }
 .ideas-inspiration .list-ideas ul li a span.icon .icon-inner{
