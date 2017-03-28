@@ -909,32 +909,55 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                   address_id: this.value
                 },
                 onComplete: function (response) {
-                  if(response.responseJSON.surat_thani){
                     debugger;
-                    if(response.responseJSON.ilm && response.responseJSON.thaipost){
-                      jQuery('#amscheckout-submit').attr("disabled", true);
-                      $('outside_service').style.display = 'block';
+                    if(response.responseJSON.surat_thani || response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
+                        if (response.responseJSON.surat_thani) {
+                            if (response.responseJSON.ilm && response.responseJSON.thaipost) {
+                                jQuery('#amscheckout-submit').attr("disabled", true);
+                                $('outside_service').style.display = 'block';
+                                jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                jQuery('#billing_as_shipping_no').attr("disabled", true);
+                            }
+                            else {
+                                if (response.responseJSON.ilm) {
+                                    jQuery('#amscheckout-submit').attr("disabled", true);
+                                    $('outside_service').style.display = 'block';
+                                    jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                    jQuery('#billing_as_shipping_no').attr("disabled", true);
+                                }
+                                if (response.responseJSON.thaipost) {
+                                    $('notice_service').style.display = 'block';
+                                }
+                            }
+                        }
+                        if (response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
+                            if (response.responseJSON.ilm && response.responseJSON.thaipost) {
+                                jQuery('#amscheckout-submit').attr("disabled", true);
+                                $('outside_service').style.display = 'block';
+                                jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                jQuery('#billing_as_shipping_no').attr("disabled", true);
+                            }
+                            else {
+                                if (response.responseJSON.ilm) {
+                                    jQuery('#amscheckout-submit').attr("disabled", true);
+                                    $('outside_service').style.display = 'block';
+                                    jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                                    jQuery('#billing_as_shipping_no').attr("disabled", true);
+                                }
+                            }
+                        }
                     }
                     else{
-                      if (response.responseJSON.ilm) {
-                        jQuery('#amscheckout-submit').attr("disabled", true);
-                        $('outside_service').style.display = 'block';
-                      }
-                      if (response.responseJSON.thaipost) {
-                        $('notice_service').style.display = 'block';
-                      }
+                        jQuery('#billing_as_shipping_yes').attr("disabled", false);
+                        jQuery('#billing_as_shipping_no').attr("disabled", false);
+                        jQuery('#amscheckout-submit').attr("disabled", false);
+                        if($('outside_service')){
+                            $('outside_service').style.display = 'none';
+                        }
+                        if($('notice_service')){
+                            $('notice_service').hide();
+                        }
                     }
-                  }
-                  else{
-                    jQuery('#amscheckout-submit').attr("disabled", false);
-                    if($('outside_service')){
-                      $('outside_service').style.display = 'none';
-                    }
-
-                    if($('notice_service')){
-                      $('notice_service').hide();
-                    }
-                  }
                 }.bind(this)
               });
             });

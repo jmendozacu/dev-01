@@ -622,18 +622,18 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
       if($address_id){
         $address_collection = Mage::getModel('customer/address')->load($address_id);
         $region_id = $address_collection->getData('region_id');
-        if($region_id == 551){
-          $_response['surat_thani'] = 1;
-        }
-//        if($region_id == 551 && in_array("114", $shippingType) && in_array("115", $shippingType)){
-//          $_response['had_address_cannot_order_ilm_thaipost'] = 1;
-//        }
-//        if($region_id == 551 && in_array("114", $shippingType)){
-//          $_response['had_address_cannot_order_ilm'] = 1;
-//        }
-//        if($region_id == 551 && in_array("115", $shippingType)){
-//          $_response['had_address_can_order_thaipost'] = 1;
-//        }
+          if ($region_id == 551) {
+              $_response['surat_thani'] = 1;
+          }
+          if ($region_id == 515) {
+              $_response['pattani'] = 1;
+          }
+          if ($region_id == 509) {
+              $_response['nara_thiwat'] = 1;
+          }
+          if ($region_id == 530) {
+              $_response['yala'] = 1;
+          }
       }
 // end customer already had address
       //114: ILM
@@ -652,19 +652,6 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
       $this->getResponse()->setBody(json_encode($_response));
       return;
     }
-
-//    public function getAddressAction(){
-//        $this->getResponse()->setHeader('Content-type', 'application/json');
-//        $_response = array();
-//        $address_id = $this->getRequest()->getParams('address_id');
-//        $address_collection = Mage::getModel('customer/address')->load($address_id);
-//        $region_id = $address_collection->getData('region_id');
-//        if($region_id == 551){
-//          $_response['surat_thani'] = 1;
-//        }
-//        $this->getResponse()->setBody(json_encode($_response));
-//        return;
-//    }
     
     public function savePaymentAction()
     {
