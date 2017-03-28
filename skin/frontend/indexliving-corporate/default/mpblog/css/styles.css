@@ -1428,15 +1428,7 @@ i.mpblog-old-magento.glyphicons:before {
 .list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(3n +1) {
   margin-right: 0px;
 }
-.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-image {
-  float:left;
-  width:66%;
-  margin-right:2%;
-}
-.list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
-  float:left;
-  width:32%;
-}
+
 .list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .mp-content  {
   display:block;
 }
@@ -2070,16 +2062,24 @@ ul.mp-details > li >a:hover:before {
     width:100%;
     margin:0 0 10px;
   }
-  .list-decor-style1 .mpblog-list.list .mpblog-post:nth-child(1),
-  .mpblog-list.list .mpblog-post,
-  .list-decor-style1 .mpblog-list.list .mpblog-post {
-    width:100%;
-    margin: 0 0 20px;
+
+  .mpblog-list.list .mpblog-post {
+    width:100% !important;
+    margin: 0 0 20px !important;
   }
 }
 
 @media (min-width: 501px){
   .blog-mobile {
     display: none!important;
+  }
+  .list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-image {
+    float:left;
+    width:66%;
+    margin-right:2%;
+  }
+  .list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
+    float:left;
+    width:32%;
   }
 }
