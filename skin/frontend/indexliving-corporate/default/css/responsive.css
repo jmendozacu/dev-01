@@ -1006,7 +1006,6 @@
         background: url(../images/slider-prev5.png) no-repeat 0 0;
     }
     .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
-        left: 0;
         background: url(../images/slider-prev5_over.png) no-repeat 0 0;
     }
 
@@ -1015,7 +1014,6 @@
         background: url(../images/slider-next5.png) no-repeat 100% 0;
     }
     .owl-carousel .owl-controls .owl-nav .owl-next:hover {
-        right: 0;
         background: url(../images/slider-next5_over.png) no-repeat 100% 0;
     }
     .main-home .box-home-list-products .banner-right li:nth-child(1),
@@ -3839,6 +3837,13 @@
     }
     .franchise-concept .col-2-image {
         margin:25px 0;
+    }
+    .products-grid > li,
+    .products-grid div.item {
+        border: solid 1px #EAEAEA;
+        border-radius: 3px;
+        box-shadow: 0px 0px 2px 2px #F8F8F8;
+        padding:10px;
     }
 }
 
