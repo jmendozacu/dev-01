@@ -54,7 +54,10 @@
                                     <?php endif; ?>
                                 <?php endif;?>
                                 <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
-                                <?php if($post->getImage()):?>
+                                <?php
+                                  $isPostHasSlide = Mage::helper('mpblog')->isPostHasSlide($post->getId());
+                                  if($isPostHasSlide):
+                                ?>
                                   <div class="popup-image">
                                       <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>" ></div>
                                   </div>
