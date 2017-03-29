@@ -1462,7 +1462,7 @@ i.mpblog-old-magento.glyphicons:before {
   float:left;
   margin-right:10px;
 }
-.mpblog-post .mp-header .post-social .mpblog-social-container {
+.mpblog-post .mp-header .mpblog-social-container {
   float:left;
 }
 .mpblog-post.mpblog-post-view .mp-content  {
@@ -2067,6 +2067,13 @@ ul.mp-details > li >a:hover:before {
     width:100% !important;
     margin: 0 0 20px !important;
   }
+  .mpblog-post-view .mp-blog-head h1 {
+    font-size: 24px;
+  }
+  .mpblog-post .mp-header .mpblog-social-container {
+    width:100%;
+    margin-top:10px;
+  }
 }
 
 @media (min-width: 501px){
@@ -2082,4 +2089,5 @@ ul.mp-details > li >a:hover:before {
     float:left;
     width:32%;
   }
+
 }
