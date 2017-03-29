@@ -365,9 +365,18 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
               ->setTemplate('mpblog/contentajaxpager_newevent_crsstyle.phtml')->toHTML();
         }
         elseif($category_style == $home_decor_category_style){
-            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
-              ->setCollection($collection)
-              ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+            $is_landing_field = $category_collection->getData('category_is_landing');
+            if($is_landing_field){
+                $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+                  ->setCollection($collection)
+                  ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+            }
+            else{
+                $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+                  ->setCollection($collection)
+                  ->setTemplate('mpblog/contentajaxpager_homedecor_sublanding.phtml')->toHTML();
+            }
+
         }
         elseif($category_style == $index_project_category_style){
             $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
