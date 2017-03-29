@@ -1562,32 +1562,6 @@ i.mpblog-old-magento.glyphicons:before {
   text-transform: uppercase;
   font-weight: bold;
 }
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) {
-  float:left;
-  width:100%;
-  padding-bottom:30px;
-  border-bottom:solid 1px #e6e6e6;
-}
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .post-image,
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
-  float:left;
-  width:50%;
-}
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
-  padding-left:20px;
-}
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .mp-header .post-time {
-  font-size:20px;
-}
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .mp-post-title {
-  margin: 5px 0 20px;
-}
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .mp-post-title a  {
-  font-size:28px;
-  display: block;
-  height:auto;
-  line-height: 34px;
-}
 .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) ul.mp-details > li >a {
   text-indent: 0;
   width:auto;
@@ -1956,9 +1930,22 @@ ul.mp-details > li >a:hover:before {
 @media (max-width: 768px){
   .mpblog-2column-left .mpblog-col-left,
   .mpblog-2column-left .mpblog-col-content,
-  .mpblog-2column-right .mpblog-col-content{
+  .mpblog-2column-right .mpblog-col-content,
+  .mpblog-2column-right .mpblog-col-right{
     width:100%;
     padding:0px;
+    border:none;
+  }
+
+  .mpblog-post-promotiom .mpblog-col-right {
+    border-top:solid 1px #e6e6e6;
+    padding-top:25px;
+  }
+  .mpblog-post-promotiom .mpblog-col-right:before {
+    display: none;
+  }
+  .mpblog-post-promotiom .block-title.title-style6 strong {
+    margin-bottom:0px;
   }
   .mpblog-2column-left .mpblog-col-left {
     margin-bottom:20px;
@@ -2111,7 +2098,44 @@ ul.mp-details > li >a:hover:before {
      font-size:16px;
     line-height:24px;
     padding-top:13px;
-    paddin-bottom:13px;
+    padding-bottom:13px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post .mp-header .post-time {
+    font-size:12px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post .mp-post-title a {
+    font-size:18px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) ul.mp-details > li >a {
+    font-size:12px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post {
+    border-bottom: solid 1px #cecece;
+    padding-bottom: 15px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-last-child(1) {
+    border-bottom:none;
+    padding-bottom:0px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(n + 2) {
+    width:84%!important;
+    margin-left:8%!important;
+    margin-right:8%!important;
+    text-align: center;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(n + 2) .mp-header .post-time {
+     display: none;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(n + 2)  .mp-post-title a {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(n + 2) ul.mp-details li {
+    float: none;
+    display: inline-block;
+  }
+  .mpblog-recentposts-style2 {
+    padding:0 8%;
   }
 }
 
@@ -2135,6 +2159,33 @@ ul.mp-details > li >a:hover:before {
   }
   .list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image{
     margin-right:2%;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .post-image,
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
+    float:left;
+    width:50%;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) {
+    float:left;
+    width:100%;
+    padding-bottom:30px;
+    border-bottom:solid 1px #e6e6e6;
+  }
+
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
+    padding-left:20px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .mp-header .post-time {
+    font-size:20px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .mp-post-title {
+    margin: 5px 0 20px;
+  }
+  .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) .mp-post-title a  {
+    font-size:28px;
+    display: block;
+    height:auto;
+    line-height: 34px;
   }
 
 }

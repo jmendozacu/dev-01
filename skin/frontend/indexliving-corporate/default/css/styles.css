@@ -12372,6 +12372,8 @@ ul.mp-details > li >a:before,
 /* joycard page */
 .joy-card-page  .box-banners {
   margin-bottom:30px;
+  float:left;
+  width:100%;
 }
 .joy-card-page .joy-boxinfo,
 .cms-box-gray{
@@ -12531,16 +12533,23 @@ ul.mp-details > li >a:before,
 }
 .joy-4-page .list-joy ul {
   float:left;
-  width:50%;
-}
-.joy-4-page .list-joy ul:nth-child(2) {
-  margin-top: 150px;
-}
-.joy-4-page .list-joy li {
-  float:left;
   width:100%;
-  margin:35px 0;
 }
+.joy-4-page .list-joy ul li{
+  float:left;
+  width:49%;
+  margin:35px 0;
+  margin-right:2%;
+}
+
+.joy-4-page .list-joy ul li:nth-child(2n){
+  margin-right:0px;
+  float:right;
+}
+.joy-4-page .list-joy ul li:nth-child(2) {
+  margin-top: 185px;
+}
+
 .joy-4-page .list-joy li a {
   display: block;
   width:455px;
