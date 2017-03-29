@@ -1753,15 +1753,6 @@ ul.mp-details > li >a:hover:before {
    clear:left;
 }
 
-.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image,
-.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
-  float:left;
-  width:49%;
-}
-.list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image{
-  margin-right:2%;
-}
-
 .blog-banners-right li {
   margin-bottom:22px;
 }
@@ -2116,6 +2107,12 @@ ul.mp-details > li >a:hover:before {
     right:0px;
     margin-top:-4px;
   }
+  .mp-blog-head h1.mp-title.title-promotion {
+     font-size:16px;
+    line-height:24px;
+    padding-top:13px;
+    paddin-bottom:13px;
+  }
 }
 
 @media (min-width: 501px){
@@ -2130,6 +2127,14 @@ ul.mp-details > li >a:hover:before {
   .list-decor-style2 .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
     float:left;
     width:32%;
+  }
+  .list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image,
+  .list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-info {
+    float:left;
+    width:49%;
+  }
+  .list-news-event .mpblog-list.list .mpblog-post:nth-child(1) .post-image{
+    margin-right:2%;
   }
 
 }
