@@ -22,7 +22,8 @@ class Amasty_Ajaxlogin_FacebookController extends Amasty_Ajaxlogin_AjaxloginCont
 
             $url = 'https://graph.facebook.com/oauth/access_token';
             $tokenInfo = null;
-            parse_str(file_get_contents($url . '?' . http_build_query($this->_params)), $tokenInfo);
+            // parse_str(file_get_contents($url . '?' . http_build_query($this->_params)), $tokenInfo);
+            $tokenInfo = json_decode(file_get_contents($url . '?' . http_build_query($this->_params)), true);
             if (count($tokenInfo) > 0 && isset($tokenInfo['access_token'])) {
                 $token = $tokenInfo['access_token'];
                 $this->_params = array('access_token' => $token);
