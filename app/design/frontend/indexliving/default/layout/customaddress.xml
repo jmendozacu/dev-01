@@ -7,7 +7,8 @@
 			<action method="setTemplate">
 				<name>customaddress/page/head.phtml</name>
 			</action>
-			<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>
+			<!--<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>-->
+			<action method="addItem" ifconfig="customaddress/general/enable_module"><type>skin_js</type><name>magebuzz/customaddress_checkout.js</name><params/></action>
 		</reference>
 		<!-- <reference name="checkout.onepage">
 			<action method="setTemplate" ifconfig="customaddress/general/enable_module"><template>customaddress/checkout/onepage.phtml</template></action>
@@ -21,7 +22,8 @@
 	</checkout_onepage_index>
 	<customer_account_create translate="label">
 		<reference name="head">
-			<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>
+			<!--<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>-->
+			<action method="addItem" ifconfig="customaddress/general/enable_module"><type>skin_js</type><name>magebuzz/customaddress.js</name><params/></action>
 		</reference>
 		<reference name="customer_form_register">
 			<action method="setTemplate" ifconfig="customaddress/general/enable_module"><template>customaddress/customer/form/register.phtml</template></action>      
@@ -30,7 +32,8 @@
 	
 	<customer_address_form>
 		<reference name="head">
-			<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>
+			<!--<action method="addJs" ifconfig="customaddress/general/enable_module"><script>magebuzz/customaddress.js</script></action>-->
+			<action method="addItem" ifconfig="customaddress/general/enable_module"><type>skin_js</type><name>magebuzz/customaddress.js</name><params/></action>
 		</reference>
 		<reference name="customer_address_edit">
 			<action method="setTemplate" ifconfig="customaddress/general/enable_module"><template>customaddress/customer/address/edit.phtml</template></action>
