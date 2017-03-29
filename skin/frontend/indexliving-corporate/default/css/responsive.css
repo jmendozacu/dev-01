@@ -3967,4 +3967,23 @@
     .cms-page-view .std .joy-card-page li {
         font-size:15px;
     }
+    .joy-4-page .list-joy ul li,
+    .joy-4-page .list-joy ul li:nth-child(2){
+        float:left;
+        width:100%;
+        margin: 20px 0;
+    }
+    .joy-4-page .top-info h3 {
+        font-size:30px;
+    }
+    .joy-4-page .top-info p {
+        font-size: 16px;
+        padding: 0 5%;
+    }
+    .joy-4-page .list-joy li strong {
+        font-size:18px;
+    }
+    .joy-4-page .list-joy li label {
+        font-size:16px;
+    }
 }
