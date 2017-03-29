@@ -3904,6 +3904,9 @@
     .franchise-concept .list-stores li .box-info .store-name {
         font-size:16px;
     }
+    .franchise-concept .list-country li a{
+        font-size:13px;
+    }
     #application-form .appli-form-block {
         padding:10px;
     }
