@@ -50,12 +50,12 @@
 }
 .searchautocomplete .nav {
   float: left;
-  height: 46px;
+  height: 40px;
   position: relative;
   width: 100%;
   border:solid 1px #DADADA;
   border-radius:3px 0 0 3px;
-  padding-top:6px;
+  padding-top:2px;
   padding-bottom:8px;
 }
 .searchautocomplete .nav .nav-search-in {
@@ -71,13 +71,13 @@
   border: 1px solid #DDD;
   color: black;
   cursor: pointer;
-  height: 29px;
+  height: 39px;
   left: 5px;
   margin: 0;
   outline: 0;
   padding: 0;
   position: absolute;
-  top: 5px;
+  top: 0;
   visibility: visible;
   width: auto;
 }
@@ -89,16 +89,16 @@
   cursor: pointer;
   float: left;
   font-size: 14px;
-  height: 45px;
-  line-height: 43px;
+  height: 39px;
+  line-height: 37px;
   margin: 0px 0px 0px 2px;
   padding: 0px 25px 0px 10px;
   text-align: center;
   white-space: nowrap;
 }
 .searchautocomplete .nav .nav-search-in .nav-down-arrow {
-  right: 6px;
-  top: 18px;
+  right: 10px;
+  top: 15px;
   position: absolute;
   width: 10px;
   height: 10px;
@@ -146,7 +146,7 @@
 }
 .searchautocomplete .nav-submit-button .button {
   width:58px;
-  height:46px;
+  height:40px;
   position:absolute;
   top:0px;
   right:0px;
@@ -163,7 +163,7 @@
   padding: 0px;
   position: absolute;
   right: -1px;
-  top: 44px;
+  top: 38px;
   width: 100%;
   z-index: 102;
   border:solid 1px #E6E6E6;

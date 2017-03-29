@@ -35,7 +35,7 @@ if ($this->getCategoryFilter()) {
 <div class="related-products">
   <h2 class="title-style5">
     <strong><span><?php echo $this->__($this->getTitle()) ?></span></strong>
-    <a title="<?php echo $this->__('view all') ?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all') ?></a>
+    <a class="blog-desktop" title="<?php echo $this->__('view all') ?>" href="<?php echo $_categoryUrl; ?>"><?php echo $this->__('view all') ?></a>
   </h2>
   <div class="categoryproducts block-highlight <?php echo $this->getClassName() ?>">
     <div id="recommend-product-list-blog" class="products-grid">
@@ -336,21 +336,21 @@ if ($this->getCategoryFilter()) {
     <?php endif ?>
   </div>
 
-  <!--<a class="box-mobile a-button" title="<?php //echo $this->__('view all')?>" href="<?php //echo $_categoryUrl; ?>"><span><?php //echo $this->__('view all')?></span></a>-->
+  <a class="blog-mobile button button-view-all" title="<?php echo $this->__('view all') ?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all products') ?></span></a>
 </div>
 <script type="text/javascript">
   setTimeout(function(){
     jQuery("#recommend-product-list-blog").owlCarousel({
       loop: false,
-      margin: 20,
+      margin: 10,
       dots:false,
       nav: true,
       responsive: {
         0: {
-          items: 2
+          items: 1
         },
-        600: {
-          items: 3
+        501: {
+          items: 2
         },
         768: {
           items: 3

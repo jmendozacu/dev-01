@@ -33,10 +33,10 @@ $post = $this->getPost();
                                 <strong id="results"><?php echo $this->__('50') ?></strong>
                                 <span></span><?php echo $this->__('Shares') ?> </span>
                             </div>
-                            <?php if ($helper->getSocialEnabled()): ?>
-                                <?php echo $this->getSocialHtml(); ?>
-                            <?php endif; ?>
                         </div>
+                        <?php if ($helper->getSocialEnabled()): ?>
+                          <?php echo $this->getSocialHtml(); ?>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
                 <div class="mp-content std fix-me">

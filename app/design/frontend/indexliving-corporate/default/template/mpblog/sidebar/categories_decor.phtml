@@ -13,7 +13,11 @@ $collection = $this->getCollectionByLanding('category_is_landing');
 <?php if ($this->getDisplay() && count($collection)): ?>
   <div class="block mpblog-categories">
     <div class="block-content">
-      <ul class="mplog-categories">
+      <label class="show-mplog-categories box-mobile">
+        <span class="title-show"><?php echo $this->__('Show Navigation') ?></span>
+        <span class="title-hide"><?php echo $this->__('Hide Navigation') ?></span>
+      </label>
+      <ul class="mplog-categories box-desktop">
         <?php foreach ($collection as $category): ?>
             <?php
             $subcate_ids_2 = $category->getData('sub_category');
@@ -38,7 +42,7 @@ $collection = $this->getCollectionByLanding('category_is_landing');
                         $collection_subcate_3 = $this->getCollectionSubcate($subcate_id_3);
                         ?>
                         <?php if ($collection_subcate_3['status'] == 1): ?>
-                        <li class="mpblog-category" id="level-2">
+                        <li class="mpblog-category">
                           <a href="<?php echo $collection_subcate_3->getCategoryUrlSubcate(null,$subcate_id_3); ?>"><?php echo $this->escapeHtml($collection_subcate_3['name']); ?></a>
                         </li>
                       <?php endif ?>
@@ -51,6 +55,19 @@ $collection = $this->getCollectionByLanding('category_is_landing');
             <?php endif ?>
         <?php endforeach; ?>
       </ul>
+      <script type="text/javascript">
+        jQuery(document).ready(function(){
+          jQuery(".show-mplog-categories").click(function() {
+            if (!jQuery(this).hasClass('active')){
+              jQuery(this).next().slideDown();
+              jQuery(this).addClass('active');
+            }else if (jQuery(this).hasClass('active')) {
+              jQuery(this).next().slideUp();
+              jQuery(this).removeClass('active');
+            }
+          });
+        });
+      </script>
     </div>
   </div>
 <?php endif; ?>

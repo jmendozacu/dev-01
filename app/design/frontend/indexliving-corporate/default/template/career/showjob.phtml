@@ -7,7 +7,7 @@ $collections = $this->getCollection();
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-top-info')->toHtml() ?>
 
 <?php if (count($collections)): ?>
-  <table class="job_list" onscroll="">
+  <table class="job_list box-desktop" onscroll="">
     <thead>
     <tr>
       <th id="job_title">
@@ -43,6 +43,23 @@ $collections = $this->getCollection();
     <?php endforeach?>
     </tbody>
   </table>
+  <ul class="job_list box-mobile">
+    <?php foreach($collections as $collection): ?>
+      <li class="job-item">
+         <dl>
+           <dt><?php echo $this->__('Job Title')?></dt>
+           <dd><?php echo $collection->getData('title'); ?></dd>
+           <dt><?php echo $this->__('Job Function')?></dt>
+           <dd><?php echo $collection->getData('function'); ?></dd>
+           <dt><?php echo $this->__('Position')?></dt>
+           <dd><?php echo $collection->getData('position'); ?></dd>
+           <dt><span><?php echo $this->__('Location')?></dt>
+           <dd><?php echo $collection->getData('location'); ?></dd>
+         </dl>
+        <a class="button read-more" href='<?php echo $this->getUrl('*/*/application',array('id' => $collection->getData('job_id')));?>'><span><?php echo $this->__('Read more')?></span></a>
+      </li>
+    <?php endforeach?>
+  </ul>
   <?php echo $this->getToolbarHtml()?>
 <?php else:?>
   <?php echo $this->__("There are no jobs yet."); ?>

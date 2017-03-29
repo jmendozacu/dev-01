@@ -1006,7 +1006,6 @@
         background: url(../images/slider-prev5.png) no-repeat 0 0;
     }
     .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
-        left: 0;
         background: url(../images/slider-prev5_over.png) no-repeat 0 0;
     }
 
@@ -1015,7 +1014,6 @@
         background: url(../images/slider-next5.png) no-repeat 100% 0;
     }
     .owl-carousel .owl-controls .owl-nav .owl-next:hover {
-        right: 0;
         background: url(../images/slider-next5_over.png) no-repeat 100% 0;
     }
     .main-home .box-home-list-products .banner-right li:nth-child(1),
@@ -1710,6 +1708,7 @@
         padding: 10px 0;
         position: relative;
         margin: 0px;
+        font-size: 16px;
     }
 
     .footer .footer-links .box-links h3:before {
@@ -1732,7 +1731,9 @@
         -o-transform: rotate(-180deg);
         transform: rotate(-180deg);
     }
-
+    .footer .footer-links .box-links li  a {
+        font-size: 14px;
+    }
     .footer-bottom address {
         width: 100%;
         text-align: center;
@@ -1751,7 +1752,7 @@
     }
 
     .breadcrumbs {
-        margin: 5px 0;
+        margin: 9px 0;
     }
 
     .breadcrumbs li {
@@ -3759,5 +3760,162 @@
 
     .pop_up .btn_set {
         margin-top: -30px;
+    }
+}
+
+/* update index-corporate */
+
+@media (max-width:991px) {
+    /* career page */
+    .career-top-info .top-info .content-info,
+    body.career-index-application #career #application .career-contacts {
+        position: static;
+        width:100%;
+        float:left;
+        margin-top:10px;
+        border: solid 2px #ffc222;
+    }
+    .career-top-info .top-info .content-info:before,
+    .career-top-info .top-info .content-info:after  {
+        display: none;
+    }
+    .page-title.style2 h1 {
+        font-size:16px;
+        padding:5px 0;
+    }
+    body.career-index-application #career #application .application_form {
+        width:100%;
+    }
+}
+@media (max-width: 768px){
+    .job_list {
+        float:left;
+        width:100%;
+    }
+    .job_list .job-item {
+        float:left;
+        width:100%;
+        margin: 0 0 10px;
+        border:solid 1px #e6e6e6;
+        padding:10px;
+        text-align: left;
+        font-size:15px;
+        color:#000;
+        font-weight: 300;
+    }
+    .job_list .job-item:nth-child(2n) {
+        border:none;
+        background:#F7F7F7;
+    }
+    .job_list .job-item dt {
+      font-weight: 500;
+    }
+    .job_list .job-item dd {
+        margin-bottom:12px;
+    }
+    .job_list .job-item .read-more {
+        font-size: 16px;
+        padding: 2px 10px;
+        font-weight: 500;
+    }
+    body.career-index-application #career #application span.join_us {
+        display: block;
+    }
+    body.career-index-application #career #application p.join_us {
+        font-size:18px;
+    }
+
+    /* franchise page */
+    .tab-left .tabs {
+        margin-bottom:20px;
+    }
+    .tab-left .tab_container {
+        width:100%;
+    }
+    .cms-franchise .tab-left .tab_container {
+        padding-left:0px;
+    }
+    .franchise-concept .col-2-image {
+        margin:25px 0;
+    }
+    .products-grid > li,
+    .products-grid div.item {
+        border: solid 1px #EAEAEA;
+        border-radius: 3px;
+        box-shadow: 0px 0px 2px 2px #F8F8F8;
+        padding:10px;
+    }
+}
+
+@media (max-width: 500px){
+    #application-form  #personal_information,
+    #application-form  #work_information {
+        padding:10px;
+    }
+    #application-form .left,
+    #application-form .right {
+        margin:0px 0 10px;
+        width:100%;
+    }
+    body.career-index-application #application-form li {
+        margin-bottom:0px;
+    }
+    .franchise-concept h2,
+    .franchise-concept h4{
+        font-size:18px;
+    }
+    .franchise-concept .col-2-image img,
+    .franchise-concept .col-2-image img + img{
+        width:100%;
+        margin: 0 0 10px;
+    }
+    .franchise-concept .box-gray {
+        width:calc(100% + 20px);
+        margin-left:-10px;
+    }
+    .franchise-concept .box-gray .box-image ,
+    .franchise-concept .box-gray .box-info,
+    .franchise-concept .box-white .box-image,
+    .franchise-concept .box-white .box-info{
+        width:100%;
+        padding:0px;
+        margin:5px 0;
+    }
+    .franchise-concept .list-stores {
+        padding:10px;
+    }
+    .franchise-concept .list-stores li {
+        width:100%;
+        margin:0 0 10px;
+    }
+    .franchise-concept .list-stores li .box-info .store-name {
+        color:#FFC222;
+    }
+    .franchise-concept a,
+    .franchise-concept,
+    .cms-page-view .std .franchise-concept p,
+    .franchise-concept .ul-style1 li,
+    .franchise-concept label,
+    .franchise-concept .list-stores li .box-info label,
+    .franchise-concept .list-stores li .box-info span,
+    #application-form label{
+        font-size:14px;
+    }
+    .franchise-concept .list-stores li .box-info .store-name {
+        font-size:16px;
+    }
+    .franchise-concept .list-country li a{
+        font-size:13px;
+    }
+    #application-form .appli-form-block {
+        padding:10px;
+    }
+    #application-form .appli-form-list + .appli-form-list {
+        padding: 10px 10px 0;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+    }
+    .tab-left h1, .tab-left h2 {
+        font-size:20px;
     }
 }
