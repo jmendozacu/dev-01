@@ -658,4 +658,14 @@ class Magpleasure_Blog_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::helper('mpblog/data_layout');
     }
+    public function isPostHasSlide($postId){
+        $image_names = Mage::getModel('mpblog/slideimages')
+          ->getCollection()
+          ->addFieldToFilter('post_id', $postId);
+        $images = array();
+        foreach($image_names as $image_name){
+            $images[] = $image_name->getImages();
+        }
+        return count($images);
+    }
 }
