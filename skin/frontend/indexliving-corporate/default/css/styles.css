@@ -12372,6 +12372,8 @@ ul.mp-details > li >a:before,
 /* joycard page */
 .joy-card-page  .box-banners {
   margin-bottom:30px;
+  float:left;
+  width:100%;
 }
 .joy-card-page .joy-boxinfo,
 .cms-box-gray{

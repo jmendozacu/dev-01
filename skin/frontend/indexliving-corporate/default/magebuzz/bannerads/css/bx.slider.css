@@ -287,6 +287,12 @@
   .main-banners .wrap-bannerads div.banner .bx-viewport:before,
   .main-banners .wrap-bannerads div.banner .bx-viewport:after {width:50px;}
   .decor-banner .box-slider .bx-wrapper .bx-pager.bx-default-pager {padding-top:0px; margin-top:8px; }
+   .box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-prev {
+     left:-10px;
+   }
+   .box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-next {
+     right:-10px;
+   }
 }
  @media (max-width: 970px) {
   .main-banners .wrap-bannerads .bx-wrapper .main-banners .wrap-bannerads div.banner .bx-viewport, .main-banners .wrap-bannerads div.banner .bx-viewport img{max-height: 357px !important;}
