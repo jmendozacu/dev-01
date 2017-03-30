@@ -38,7 +38,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
   protected function _getDealers() {
     $data = $this->getRequest()->getParams();
     $storeIds = array(Mage_Core_Model_App::ADMIN_STORE_ID, Mage::app()->getStore()->getId());
-    $_collection = Mage::getModel('dealerlocator/dealerlocator')->getCollection();
+    $_collection = Mage::getModel('dealerlocator/dealerlocator')->getCollection()->addFieldToFilter('status','1');
     $_collection->getSelect()->join(array('dealer_store' => Mage::getModel('core/resource')->getTableName('dealerlocator_store')), 'main_table.dealerlocator_id = dealer_store.dealer_id')->where('dealer_store.store_id IN (?)', $storeIds)->where('status=?', 1);
 
     $centerLatitude = $_collection->getFirstItem()->getLatitude();
