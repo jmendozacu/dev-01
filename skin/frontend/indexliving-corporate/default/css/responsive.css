@@ -3877,6 +3877,20 @@
     .list-joy-quality li:nth-child(2n) {
         margin-right:0px;
     }
+    .joy-price-page  .box-left,
+    .joy-price-page  .box-right {
+        width:100%;
+        padding-left:0px;
+    }
+    .joy-price-page  .box-left {
+        margin-bottom:20px;
+        border-bottom:solid 1px #e6e6e6;
+        padding-bottom:20px;
+        text-align: center;
+    }
+    .joy-price-page  .box-left  .img-logo {
+        margin:0 auto 15px;
+    }
 }
 
 @media (max-width: 500px){
@@ -3999,14 +4013,36 @@
         width:100%;
         margin: 0 0 15px;
     }
-    .list-joy-quality li .box-info .title {
+    .list-joy-quality li .box-info .title,
+    .joy-price-page .box-right li label{
         font-size:18px;
     }
-    .list-joy-quality li .box-info label {
+    .list-joy-quality li .box-info label,
+    .joy-price-page  .box-left p,
+    .joy-price-page .box-right li{
         font-size:15px;
         height:auto;
     }
     .list-joy-quality li .box-info {
         padding:10px;
+    }
+    .joy-price-page  .box-left h2 {
+        font-size:56px;
+    }
+    .joy-price-page  .box-left label {
+        font-size:34px;
+    }
+    .joy-price-page .box-right li {
+        padding:80px 0 0;
+        text-align: center;
+    }
+    .joy-price-page .box-right li:before {
+        left:50%;
+        transform: translate(-50%,0);
+        -webkit-transform: translate(-50%,0);
+        -moz-transform: translate(-50%,0);
+    }
+    .joy-price-page .box-right li label span {
+        display: block;
     }
 }
