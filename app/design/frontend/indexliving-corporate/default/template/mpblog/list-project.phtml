@@ -36,12 +36,21 @@
                             <div class="post-image <?php if($post->getImage()):?> box-cursor-pointer <?php endif;?>" id="post-image-<?php echo $post->getId() ?>">
                                 <?php if( $i == 1):   ?>
                                     <?php if ($post->getPostThumbnailSrc()): ?>
-                                        <div class="post-thumbnail">
+                                        <div class="post-thumbnail blog-desktop">
                                             <img class="thumbnail"
                                                  src="<?php echo $post->getPostThumbnailSrc(); ?>"
                                                  alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
                                         </div>
                                     <?php endif; ?>
+                                  <?php if ($post->getListThumbnailSrc()): ?>
+                                    <div class="thumbnail-container blog-mobile">
+                                      <div class="post-thumbnail">
+                                        <img class="thumbnail"
+                                             src="<?php echo $post->getListThumbnailSrc(); ?>"
+                                             alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                                      </div>
+                                    </div>
+                                  <?php endif; ?>
                                 <?php else:?>
                                     <?php if ($post->getListThumbnailSrc()): ?>
                                         <div class="thumbnail-container">
