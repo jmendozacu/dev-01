@@ -224,7 +224,7 @@ class Magebuzz_Dealerlocator_Block_Dealerlocator extends Mage_Core_Block_Templat
     $dealerIds = $tagModel->getCollection()->addFieldToFilter('tag', $tag)->getColumnValues('dealer_id');
     $dealerCollection = $dealerModel;
     if(count($dealerIds)>0){
-      $dealerCollection = $dealerModel->getCollection()
+      $dealerCollection = $dealerModel->getCollection()->addFieldToFilter('status','1')
       ->addFieldToFilter('dealerlocator_id', array('in' => $dealerIds));
     }
     return $dealerCollection;
