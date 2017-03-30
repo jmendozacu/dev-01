@@ -902,14 +902,17 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
         if ($('shipping-address-select')) {
             $('shipping-address-select').observe('change', function () {
               updateCheckout('shipping');
-              var params = this.value;
-              new Ajax.Request(checkShippingType, {
+              checkShipping(this.value)
+            });
+        }
+        function checkShipping(address_id){
+            //var params = this.value;
+            new Ajax.Request(checkShippingType, {
                 method: 'post',
                 parameters: {
-                  address_id: this.value
+                    address_id: address_id
                 },
                 onComplete: function (response) {
-                    debugger;
                     if(response.responseJSON.surat_thani || response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
                         if (response.responseJSON.surat_thani) {
                             if (response.responseJSON.ilm && response.responseJSON.thaipost) {
@@ -959,10 +962,14 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                         }
                     }
                 }.bind(this)
-              });
             });
         }
-
+        jQuery(document).ready(function() {
+          if ($('shipping-address-select')) {
+            var address_id = jQuery('#shipping-address-select').find(":selected").val();
+            checkShipping(address_id);
+          }
+        });
 
         reviewEvents();
         cartEvents();
