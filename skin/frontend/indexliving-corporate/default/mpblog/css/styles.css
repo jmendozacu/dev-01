@@ -2037,7 +2037,9 @@ ul.mp-details > li >a:hover:before {
   .product-highlight-blog .owl-carousel .owl-controls .owl-nav .owl-prev {
     left:-10px;
   }
-
+  .post-detail-news-event .blog-banners-right {
+    display: none;
+  }
 }
 
 @media (max-width: 500px){

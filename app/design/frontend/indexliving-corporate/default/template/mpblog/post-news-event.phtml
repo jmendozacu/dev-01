@@ -12,7 +12,7 @@ $post = $this->getPost();
 
 /** @var Magpleasure_Blog_Block_Content_Post $this */
 ?>
-<div class="mpblog-2column-right">
+<div class="mpblog-2column-right post-detail-news-event">
     <div class="mpblog-col-right">
         <div class="blog-banners-right">
             <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-bannerright')->toHtml() ?>
@@ -35,10 +35,11 @@ $post = $this->getPost();
                                 <strong  id="results"><?php echo $this->__('50') ?></strong>
                                 <span></span><?php echo $this->__('Shares') ?> </span>
                             </div>
-                            <?php if ($helper->getSocialEnabled()): ?>
-                                <?php echo $this->getSocialHtml(); ?>
-                            <?php endif; ?>
                         </div>
+                        <?php if ($helper->getSocialEnabled()): ?>
+                            <?php echo $this->getSocialHtml(); ?>
+                        <?php endif; ?>
+
                     <?php endif; ?>
                 </div>
                 <div class="mp-content std fix-me">

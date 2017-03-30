@@ -3891,6 +3891,49 @@
     .joy-price-page  .box-left  .img-logo {
         margin:0 auto 15px;
     }
+    .joy-service-page .list-service li {
+        border:solid 1px #ebebeb;
+    }
+    .joy-service-page .list-service li .box-image,
+    .joy-service-page .list-service li .box-info {
+        float:left;
+        width:100%;
+        position: static;
+        border: none;
+    }
+    .joy-service-page .list-service li .box-info >div,
+    .joy-service-page .list-service li:nth-child(2n + 1) .box-info >div{
+        position: static;
+        float: left;
+        transform: none;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    .joy-design-page .list-designer li .avatar,
+    .joy-design-page .list-designer li .description p,
+    .joy-design-page .list-designer li .description .box-iframe,
+    .joy-design-page .list-designer li .designer-info,
+    .joy-design-page .list-designer li:nth-child(2n) .designer-info {
+        width:100%;
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .joy-design-page .list-designer li .avatar {
+        width:100%;
+        padding-bottom:100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .joy-design-page .list-designer li .avatar img {
+        position: absolute;
+        width:100%;
+        height:auto;
+        left:0px;
+        top:0px;
+    }
+    .joy-design-page .list-designer li:nth-child(2) .avatar img {
+       top:-30%;
+    }
 }
 
 @media (max-width: 500px){
@@ -4013,24 +4056,39 @@
         width:100%;
         margin: 0 0 15px;
     }
+    .list-joy-quality li .box-info label {
+        height:auto;
+    }
+    .joy-design-page .list-designer li .designer-info label {
+        font-size:13px;
+    }
+    .list-joy-quality li .box-info label,
+    .joy-price-page  .box-left p,
+    .joy-price-page .box-right li,
+    .joy-design-page .top-info label,
+    .joy-service-page .list-service li .box-info p,
+    .joy-design-page .list-designer li .description p{
+        font-size:15px;
+    }
     .list-joy-quality li .box-info .title,
     .joy-price-page .box-right li label{
         font-size:18px;
     }
-    .list-joy-quality li .box-info label,
-    .joy-price-page  .box-left p,
-    .joy-price-page .box-right li{
-        font-size:15px;
-        height:auto;
+    .joy-service-page .list-service li .box-info h2,
+    .joy-design-page .list-designer li .title-info{
+        font-size: 24px;
     }
-    .list-joy-quality li .box-info {
-        padding:10px;
+    .joy-design-page .list-designer li .designer-info h4 {
+        font-size:29px;
+    }
+    .joy-price-page  .box-left label {
+        font-size:34px;
     }
     .joy-price-page  .box-left h2 {
         font-size:56px;
     }
-    .joy-price-page  .box-left label {
-        font-size:34px;
+    .list-joy-quality li .box-info {
+        padding:10px;
     }
     .joy-price-page .box-right li {
         padding:80px 0 0;
@@ -4042,7 +4100,21 @@
         -webkit-transform: translate(-50%,0);
         -moz-transform: translate(-50%,0);
     }
-    .joy-price-page .box-right li label span {
+    .joy-price-page .box-right li label span,
+    .joy-service-page .list-service li .box-info h2 strong {
         display: block;
+    }
+    .joy-service-page .list-service li:nth-child(3) .box-info h2 strong {
+        display: initial;
+    }
+    .joy-design-page .top-info label br,
+    .joy-design-page .top-info p br{
+        display: none;
+    }
+    .joy-design-page .list-designer li {
+        padding:25px 0;
+    }
+    .joy-design-page .list-designer li:nth-child(1) {
+        margin-top: 25px;
     }
 }
