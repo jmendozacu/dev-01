@@ -1815,7 +1815,7 @@ ul.mp-details > li >a:hover:before {
 }
 .box-application-form .content-popup {
   width: 890px;
-  max-width:100%;
+  max-width:96%;
   padding:3%;
   background:#F6F6F6;
   position: absolute;
@@ -2040,6 +2040,25 @@ ul.mp-details > li >a:hover:before {
   .post-detail-news-event .blog-banners-right {
     display: none;
   }
+  .banner-indexproject .banner-description {
+    position: static;
+    float:left;
+    width:100%;
+    background:none;
+    padding:10px 0 0;
+  }
+  .box-application-form .content-popup {
+    top: 80px;
+    width:96%;
+    max-height:calc(100% - 100px);
+    overflow-y:auto;
+  }
+  .icon-close {
+    top: 80px;
+    margin-top: 0px;
+    margin-left: -20px;
+    left: 96%;
+  }
 }
 
 @media (max-width: 500px){
@@ -2138,6 +2157,13 @@ ul.mp-details > li >a:hover:before {
   }
   .mpblog-recentposts-style2 {
     padding:0 8%;
+  }
+  .list-index-project .mp-blog-head .button {
+    float:left;
+    margin-bottom:20px;
+  }
+  .box-application-form .form-list > li {
+    width:100%;
   }
 }
 
