@@ -18,7 +18,8 @@
         
         <reference name="head">
             <action method="addItem"><type>js</type><name>prototype/window.js</name></action>
-            <action method="addItem"><type>js</type><name>amasty/amscheckout/checkout.js</name></action>
+            <!--<action method="addItem"><type>js</type><name>amasty/amscheckout/checkout.js</name></action>-->
+            <action method="addItem"><type>skin_js</type><name>js/amasty/amscheckout/checkout.js</name></action>
             <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
             <action method="addCss"><stylesheet>css/amasty/amscheckout/main.css</stylesheet></action>
             <action method="addCss"><stylesheet>css/amasty/amscheckout/popup.css</stylesheet></action>
