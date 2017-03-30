@@ -3869,7 +3869,14 @@
     .joy-card-page  .box-banners {
         margin-bottom:0px;
     }
-
+    .list-joy-quality li,
+    .list-joy-quality li:nth-child(3n){
+        width:49%;
+        margin-right:2%;
+    }
+    .list-joy-quality li:nth-child(2n) {
+        margin-right:0px;
+    }
 }
 
 @media (max-width: 500px){
@@ -3985,5 +3992,21 @@
     }
     .joy-4-page .list-joy li label {
         font-size:16px;
+    }
+    .list-joy-quality li,
+    .list-joy-quality li, .list-joy-quality li:nth-child(3n){
+        float:left;
+        width:100%;
+        margin: 0 0 15px;
+    }
+    .list-joy-quality li .box-info .title {
+        font-size:18px;
+    }
+    .list-joy-quality li .box-info label {
+        font-size:15px;
+        height:auto;
+    }
+    .list-joy-quality li .box-info {
+        padding:10px;
     }
 }
