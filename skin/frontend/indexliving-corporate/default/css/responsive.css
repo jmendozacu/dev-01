@@ -421,7 +421,7 @@
 
 }  
 @media (max-width: 922px) {
-    .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
+    .table_price_delivery .table_row .td, .table_price_delivery .table_row .td.free {
         min-height: 58px;
     }
 
@@ -2953,26 +2953,73 @@
     width: 593px;
 }
 @media (max-width: 697px) {
-    .delivery-index-index .total_buy, .delivery-index-index .desktop_show {
+    .table_price_delivery .desktop_show {
         display: none;
     }
 
-    .delivery-index-index .mobile_show {
+    .table_price_delivery .mobile_show {
         display: block;
     }
 
-    .delivery-index-index .th, .delivery-index-index .tr, .delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd,
-    .delivery-index-index .table_price_delivery .table_row .furniture_prd.one {
+    .table_price_delivery .th,
+    .table_price_delivery .tr,
+    .table_price_delivery .table_row .furniture_prd,
+    .table_price_delivery .table_row .home_prd,
+    .table_price_delivery .table_row .furniture_prd.one,
+    .table_price_delivery.style2 .table_row .furniture_prd{
         width: 100%
     }
-
-    .delivery-index-index .mobile_show .td.white.full, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
-        min-height: 22px;
+    .table_price_delivery.style2 .table_row {
+        border-bottom:0px;
+    }
+    .delivery-index-index .mobile_show .td.white.full,
+    .table_price_delivery .table_row .td,
+    .table_price_delivery .table_row .td,
+    .table_price_delivery .table_row .td.free {
+        min-height: 0px;
+    }
+    .table_price_delivery .table_row .td.free {
+        height:auto;
     }
 
-    .delivery-index-index .table_price_delivery .table_row .th {
+    .table_price_delivery .table_row .th {
         margin-top: 20px;
+        padding:5px;
+        line-height:25px;
     }
+    .table_price_delivery .table_row .th h3 {
+        margin-bottom:0px;
+    }
+
+    .table_price_delivery .title-total-buy {
+        text-align: left;
+        font-size:18px;
+        font-weight: 500;
+        color:#000;
+    }
+    .table_price_delivery .title-total-buy strong {
+        font-weight: 500;
+        color:#ffc222;
+    }
+    .table_price_delivery .table_row .td h4 {
+        font-size:14px;
+    }
+    .table_price_delivery .table_row .td {
+        padding:5px;
+        vertical-align: middle;
+        display: table-cell;
+        float:none;
+    }
+    .table_price_delivery .table_row .tr.clearfix.style1 .td {
+        vertical-align: top;
+    }
+    .table_price_delivery .table_row .td p {
+        font-size:14px;
+    }
+    .table_price_delivery .table_row .td.full {
+        float:left;
+    }
+
 }
 
 @media (max-width: 640px) {
@@ -3753,11 +3800,6 @@
         margin-left: -150px;
     }
 
-    .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td,
-    .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
-        min-height: 58px;
-    }
-
     .pop_up .btn_set a {
         margin: 0 10px;
         width: 105px;
@@ -3837,7 +3879,81 @@
     body.career-index-application #career #application p.join_us {
         font-size:18px;
     }
-
+    .show-categories {
+        float:left;
+        width:100%;
+        background:#F0F0F0;
+        color:#000;
+        padding:5px 10px;
+        line-height: 30px;
+        position: relative;
+        font-size:16px;
+    }
+    .show-categories:after{
+        content:"";
+        width:8px;
+        height:8px;
+        border-top:solid 1px #000;
+        border-right:solid 1px #000;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg);
+        position: absolute;
+        top:50%;
+        margin-top:-5px;
+        right:10px;
+    }
+    .show-categories.active:after{
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        margin-top: -1px;
+    }
+    .show-categories .title-hide,
+    .show-categories.active .title-show{
+        display: none;
+    }
+    .show-categories.active .title-hide {
+        display: block;
+    }
+    .list-categories .categories-title {
+        font-size:16px;
+        font-weight: 500;
+    }
+    .list-categories a{
+        border-bottom:solid 1px #ebebeb;
+        display: block;
+        position: relative;
+        padding:10px;
+        line-height: 20px;
+    }
+    .list-categories a:after{
+        content:"";
+        width:8px;
+        height:8px;
+        border-top:solid 1px #C8C8C8;
+        border-right:solid 1px #C8C8C8;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top:50%;
+        right:10px;
+    }
+    .list-categories .mpblog-category.level-2 {
+        float: left;
+        width: 100%;
+        margin: 0px;
+    }
+    .list-categories .mpblog-category.level-2 li a  {
+        padding-left:30px;
+    }
     /* franchise page */
     .tab-left .tabs {
         margin-bottom:20px;
@@ -3961,6 +4077,35 @@
     }
     .cms-brand .box-content .ul-style2 li .box-left-40 img {
        margin:10px 0;
+    }
+    .cms-page-view .show-categories {
+        margin-top:20px;
+    }
+    .cms-page-view .list-other-links {
+        border-bottom:none;
+        padding:0px;
+    }
+    .cms-page-view .list-other-links li{
+        float:left;
+        width:100%;
+        margin:0px;
+        text-align: left;
+    }
+    .cms-page-view .list-other-links li span {
+        display: none;
+    }
+    .cms-page-view .list-other-links li a {
+        color:#363636;
+        font-size:16px;
+        text-transform: capitalize;
+        font-weight: 300;
+    }
+    .cms-page-view .list-other-links li:nth-child(1) a{
+       font-weight: 500;
+        text-transform: uppercase;
+    }
+    .cms-page-view .list-other-links li:nth-child(n+2) a {
+        padding-left:20px;
     }
 }
 
@@ -4100,14 +4245,25 @@
     .cms-page-view .content_cms.about-us li,
     .cms-brand .top-content label,
     .cms-brand .box-content p,
-    .cms-brand .ul-style2 li p{
+    .cms-brand .ul-style2 li p,
+    .service-detail .top-info p,
+    .service-home-delivery-assembly .box-info label,
+    .service-home-delivery-assembly .box-info li,
+    .service-home-delivery-assembly .form-list li >label{
         font-size:15px;
+    }
+    .service-detail.service-3d-designer .top-info label,
+    .service-detail.service-3d-designer .box-info ul li label,
+    .service-home-delivery-assembly .delivery-info .delivery-top{
+        font-size:16px;
     }
     .list-joy-quality li .box-info .title,
     .joy-price-page .box-right li label,
     .cms-page-view .content_cms.about-us .frist_con .c_right strong,
     .cms-brand .list-style1 li label,
-    .cms-brand .ul-style2 li label{
+    .cms-brand .ul-style2 li label,
+    .service-home-delivery-assembly .box-info .title,
+    .service-home-delivery-assembly .box-info.box-form h2{
         font-size:18px;
     }
     .cms-page-view .content_cms.about-us .frist_con .c_right h2,
@@ -4117,7 +4273,8 @@
     }
     .joy-service-page .list-service li .box-info h2,
     .joy-design-page .list-designer li .title-info,
-    .tab-history-content h4{
+    .tab-history-content h4,
+    .service-detail .top-info h2{
         font-size: 24px;
     }
     .joy-design-page .list-designer li .designer-info h4 {
@@ -4243,4 +4400,71 @@
     .cms-brand .box-content .col2 {
         width:100%;
     }
+    .service-detail .top-info {
+        padding:10px 0;
+    }
+    .service-detail .top-info h2 {
+        margin:0px;
+        line-height: 28px;
+    }
+    .service-detail.service-3d-designer .box-info ul {
+        width:100%;
+        padding:0px;
+    }
+    .service-detail.service-3d-designer .box-info ul li {
+        margin-bottom:15px;
+    }
+    .service-detail.service-3d-designer .box-info ul:nth-child(2n) {
+        padding-left:0px;
+    }
+    .table_price_delivery {
+        margin-top:5px;
+    }
+    .service-home-delivery-assembly .box-info.box-form {
+        padding:8px;
+    }
+    .service-home-delivery-assembly .form-list li {
+        padding:10px 0;
+    }
+    .service-home-delivery-assembly .form-list .input-box {
+        width:100%;
+    }
+    .service-home-delivery-assembly .form-list .input-box input,
+    .service-home-delivery-assembly .form-list .input-box select {
+        max-width:82%;
+        float: left;
+    }
+    .service-home-delivery-assembly .buttons-set .button {
+        width:100%;
+    }
+    .service-home-delivery-assembly .buttons-set .button-cancel {
+        margin-left:0px;
+    }
+    .service-home-delivery-assembly .delivery-info {
+        padding:6px;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top:before {
+        -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        transform: scale(0.6);
+        left: -30px;
+        margin-right:0px;
+        border:none;
+        top: -15px;
+        position: absolute;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top label {
+        width:100%;
+        padding: 10px 0 10px 86px ;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top label {
+        font-size:22px;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top {
+        position: relative;
+        margin-bottom:10px;
+    }
+
 }

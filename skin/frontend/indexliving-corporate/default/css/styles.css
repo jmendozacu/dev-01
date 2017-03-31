@@ -10903,29 +10903,40 @@ div.paypal-logo span > img {
 .delivery-index-index .delivery_shipping .header_top .box_left_text .txt_content h2{font-size:30px;color:#ffc222;font-weight:bold;}
 .delivery-index-index .delivery_shipping .header_top .box_left_text .txt_content h1 span, .delivery-index-index .header_top .box_left_text .txt_content h2 span{font-weight: normal;position:relative;}
 .delivery-index-index .header_top .box_left_text .txt_content h2 span:after{content:"";width:40px;height:6px;background:#FFF;position:absolute;bottom:-11px;right:5px;}
-.delivery-index-index .table_price_delivery{display: table;width: 100%;margin-top: 40px;}
-.delivery-index-index .table_price_delivery .table_row{padding-bottom: 10px;border-bottom: solid 1px #e6e6e6;text-align: center;}
-.delivery-index-index .table_price_delivery .table_row.last{border-bottom: 0;}
-.delivery-index-index .table_price_delivery .table_row .th{background:#252525;padding: 14px 0 1px;}
-.delivery-index-index .table_price_delivery .table_row .th h3{color:#FFF;}
-.delivery-index-index .table_price_delivery .table_row .total_buy{width: 18%;margin-right: 2%;float: left;}
-.delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd{width: 39%;float: left;margin-right: 2%;}
-.delivery-index-index .table_price_delivery .table_row .furniture_prd.one{width:80%;margin-right: 0;}
-.delivery-index-index .table_price_delivery .table_row .home_prd{margin-right: 0;}
-.delivery-index-index .table_price_delivery .table_row .tr{background:#f7f7f7;}
-.delivery-index-index .table_price_delivery .table_row .tr, .delivery-index-index .table_price_delivery .table_row .tr.white{margin-top:12px;}
-.delivery-index-index .table_price_delivery .table_row .td{background:#f7f7f7;width:49.8%;float:left;border-right:1px solid #FFF;padding:10px;}
-.delivery-index-index .table_price_delivery .table_row .td:last-child{width: 50%;border-right: 0;}
-.delivery-index-index .table_price_delivery .table_row .td.free{height:39px;}
-.delivery-index-index .table_price_delivery .table_row .td h4{font-weight:bold;font-size:16px;}
-.delivery-index-index .table_price_delivery .table_row .td p{font-size:13px;}
-.delivery-index-index .table_price_delivery .table_row .td.full, .delivery-index-index .table_price_delivery .table_row .td.white{width:100%;}
-.delivery-index-index .table_price_delivery .table_row .tr.white, .delivery-index-index .table_price_delivery .table_row .td.white{background:#FFF;}
-.delivery-index-index .table_price_delivery .table_row .td.free .free_txt {   color: #ffb300;  font-size: 18px;}
+.table_price_delivery{display: table;width: 100%;margin-top: 40px;}
+.table_price_delivery .table_row{padding-bottom: 10px;border-bottom: solid 1px #e6e6e6;text-align: center;}
+.table_price_delivery .table_row.last{border-bottom: 0;}
+.table_price_delivery .table_row .th{background:#252525;padding: 14px 0 1px;}
+.table_price_delivery .table_row .th h3{color:#FFF; font-size:18px; font-family: 'Kanit'; font-weight: 500;}
+.table_price_delivery .table_row .total_buy{width: 18%;margin-right: 2%;float: left;}
+.table_price_delivery .table_row .furniture_prd, .table_price_delivery .table_row .home_prd{width: 39%;float: left;margin-right: 2%;}
+.table_price_delivery .table_row .furniture_prd.one{width:80%;margin-right: 0;}
+.table_price_delivery .table_row .home_prd{margin-right: 0;}
+.table_price_delivery .table_row .tr{background:#f7f7f7;}
+.table_price_delivery .table_row .tr, .table_price_delivery .table_row .tr.white{margin-top:12px;}
+.table_price_delivery .table_row .td{background:#f7f7f7;width:49.8%;float:left;border-right:1px solid #FFF;padding:10px;}
+.table_price_delivery .table_row .td:last-child{width: 50%;border-right: 0;}
+.table_price_delivery .table_row .td.free{height:39px;}
+.table_price_delivery .table_row .td h4{font-weight:bold;font-size:16px; font-family: 'Kanit'; margin-bottom: 5px;}
+.table_price_delivery .table_row .td p{font-size:15px; font-weight: 300; line-height:18px; color:#000; }
+.table_price_delivery .table_row .tr.clearfix.style1 .td p {
+   color:#767676;
+}
+.table_price_delivery .table_row .td.full, .table_price_delivery .table_row .td.white{width:100%;}
+.table_price_delivery .table_row .tr.white, .table_price_delivery .table_row .td.white{background:#FFF;}
+.table_price_delivery .table_row .td.free .free_txt {font-weight: 500;   color: #ffb300;  font-size: 20px;}
 .delivery-index-index .list_bullet{margin-top:30px;margin-bottom:39px;padding-bottom:40px;border-bottom:solid 1px #e6e6e6;}
 .delivery-index-index .list_bullet li{position:relative;padding-left:24px;}
 .delivery-index-index .list_bullet li:before{content:"\2022";font-size:19px;line-height:21px;position:absolute;left:5px;color:#ffb300;}
-.delivery-index-index .mobile_show{display:none;}
+.table_price_delivery.style2 .table_row .furniture_prd {
+  width:66%;
+  margin-right:0px;
+}
+.table_price_delivery .table_row .total_buy {
+  width:32%;
+}
+
+.table_price_delivery .mobile_show{display:none;}
 
 /*cms-custom-form*/
 .cms-page-view.cms-custom-form .std .fieldset{width: 45%;margin-right: 5%;float: left;}
@@ -13099,6 +13110,7 @@ ul.mp-details > li >a:before,
 }
 .service-home-delivery-assembly .form-list .input-box {
   float:left;
+  max-width: 100%;
 }
 .service-home-delivery-assembly .form-list select{
   /*width:220px;*/
