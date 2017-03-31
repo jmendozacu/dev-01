@@ -4249,12 +4249,14 @@
     .service-detail .top-info p,
     .service-home-delivery-assembly .box-info label,
     .service-home-delivery-assembly .box-info li,
-    .service-home-delivery-assembly .form-list li >label{
+    .service-home-delivery-assembly .form-list li >label,
+    .cms-page-view .top-info-style1 label{
         font-size:15px;
     }
     .service-detail.service-3d-designer .top-info label,
     .service-detail.service-3d-designer .box-info ul li label,
-    .service-home-delivery-assembly .delivery-info .delivery-top{
+    .service-home-delivery-assembly .delivery-info .delivery-top,
+    .ul-style-big label{
         font-size:16px;
     }
     .list-joy-quality li .box-info .title,
@@ -4274,7 +4276,8 @@
     .joy-service-page .list-service li .box-info h2,
     .joy-design-page .list-designer li .title-info,
     .tab-history-content h4,
-    .service-detail .top-info h2{
+    .service-detail .top-info h2,
+    .cms-page-view .top-info-style1 h2{
         font-size: 24px;
     }
     .joy-design-page .list-designer li .designer-info h4 {
@@ -4468,5 +4471,18 @@
     }
     .cms-page-view .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text {
         border-top:none;
+    }
+    .cms-page-view .top-info-style1 h2 {
+        margin-bottom:10px;
+        line-height: 30px;
+    }
+    .box-container .col2 {
+        width:100%;
+        padding-right:0px;
+        padding-left:0px;
+        margin: 0 0 15px;
+    }
+    .top-info-style1 {
+        padding:20px 10px;
     }
 }
