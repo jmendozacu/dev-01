@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <adminhtml_faq_index>
+    <reference name="content">
+      <block type="faq/adminhtml_faq" name="faq"/>
+    </reference>
+  </adminhtml_faq_index>
+  <adminhtml_faq_edit>
+    <update handle="editor"/>
+  </adminhtml_faq_edit>
+  <adminhtml_faq_category_index>
+    <reference name="content">
+      <block type="faq/adminhtml_category" name="category"/>
+    </reference>
+  </adminhtml_faq_category_index>
+</layout>

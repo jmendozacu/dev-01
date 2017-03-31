@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="top.links">
+			<action method="addLink" translate="label title" module="faq" ifconfig="faq/general/show_top_link">
+				<label>FAQ</label>
+				<url>faq</url>
+				<title>FAQ</title>
+				<prepare>true</prepare>
+				<urlParams/>
+				<position>0</position>
+			</action>
+		</reference>				
+	</default>
+	<faq_index_index>	
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>magebuzz/faq/faq.css</stylesheet> </action>
+		</reference>
+		<reference name="content">
+				<block type="faq/faq" name="faq" template="faq/faq.phtml" />
+		</reference>
+	</faq_index_index>		
+	<faq_category_view>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
+		<reference name="left">
+			<block type="faq/left" name="faq.left" template="faq/left.phtml" before="-"/>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>magebuzz/faq/faq.css</stylesheet> </action>
+		</reference>
+		<reference name="content">
+			<block type="faq/category" name="faq" template="faq/category.phtml" />
+		</reference>
+	</faq_category_view>
+	<faq_category_detail>
+		<reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
+		<reference name="left">
+			<block type="faq/left" name="faq.left" template="faq/left.phtml" before="-"/>
+		</reference>
+		<reference name="head">
+			<action method="addCss"><stylesheet>magebuzz/faq/faq.css</stylesheet> </action>
+		</reference>
+		<reference name="content">
+			<block type="faq/detail" name="faq" template="faq/detail.phtml" />
+		</reference>
+	</faq_category_detail>
+	<faq_category_search>
+		<reference name="head">
+			<action method="addCss"><stylesheet>magebuzz/faq/faq.css</stylesheet> </action>
+		</reference>
+		<reference name="root">
+				<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference>
+		<reference name="left">
+			<block type="faq/left" name="faq.left" template="faq/left.phtml" before="-"/>
+		</reference>
+		<reference name="content">
+				<block type="faq/result" name="result" template="faq/result.phtml" />
+		</reference>
+	</faq_category_search>	
+	<faq_index_search>
+		<reference name="head">
+			<action method="addCss"><stylesheet>magebuzz/faq/faq.css</stylesheet> </action>
+		</reference>
+		<reference name="left">
+			<block type="faq/left" name="faq.left" template="faq/left.phtml" before="-"/>
+		</reference>
+		<reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="faq/result" name="result" template="faq/result.phtml" />
+        </reference>
+	</faq_index_search>
+</layout> 
