@@ -4466,5 +4466,7 @@
         position: relative;
         margin-bottom:10px;
     }
-
+    .cms-page-view .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text {
+        border-top:none;
+    }
 }
