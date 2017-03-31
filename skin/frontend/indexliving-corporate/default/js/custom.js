@@ -196,6 +196,14 @@ jQuery(document).ready(function () {
     }
   });
 
+  if(widthWindow <= 800){
+    jQuery("#tabs_history .tabs_history").mCustomScrollbar({
+      axis:"x",
+      advanced:{
+        autoExpandHorizontalScroll:true
+      }
+    });
+  };
 
   //When page loads...
   jQuery(".tab-history-content").hide(); //Hide all content

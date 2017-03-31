@@ -353,9 +353,9 @@
         text-align: center;
     }
 
-    .cms-page-view .content_cms img {
+    /*.cms-page-view .content_cms img {
         display: inline-block;
-    }
+    }*/
 
     .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label.inline {
         padding-left: 24px;
@@ -3934,7 +3934,12 @@
     .joy-design-page .list-designer li:nth-child(2) .avatar img {
        top:-30%;
     }
-
+    .cms-page-view .content_cms.about-us .frist_con .c_left,
+    .cms-page-view .content_cms.about-us .frist_con .c_right{
+       width:100%;
+        float:left;
+        text-align: left;
+    }
 }
 
 @media (max-width: 500px){
@@ -4068,15 +4073,23 @@
     .joy-price-page .box-right li,
     .joy-design-page .top-info label,
     .joy-service-page .list-service li .box-info p,
-    .joy-design-page .list-designer li .description p{
+    .joy-design-page .list-designer li .description p,
+    .cms-page-view .content_cms.about-us  p,
+    .cms-page-view .content_cms.about-us li{
         font-size:15px;
     }
     .list-joy-quality li .box-info .title,
-    .joy-price-page .box-right li label{
+    .joy-price-page .box-right li label,
+    .cms-page-view .content_cms.about-us .frist_con .c_right strong{
         font-size:18px;
     }
+    .cms-page-view .content_cms.about-us .frist_con .c_right h2,
+    .cms-page-view .content_cms.about-us h3{
+        font-size:22px;
+    }
     .joy-service-page .list-service li .box-info h2,
-    .joy-design-page .list-designer li .title-info{
+    .joy-design-page .list-designer li .title-info,
+    .tab-history-content h4{
         font-size: 24px;
     }
     .joy-design-page .list-designer li .designer-info h4 {
@@ -4117,5 +4130,32 @@
     }
     .joy-design-page .list-designer li:nth-child(1) {
         margin-top: 25px;
+    }
+    .cms-page-view .secound_con .con_success_left,
+    .cms-page-view .secound_con .img_con_success{
+        width:100%;
+    }
+    .cms-page-view .secound_con .img_con_success img {
+        float:none;
+        margin:auto;
+    }
+    .tab-history-content {
+        padding:20px 10px;
+    }
+    .content_cms.about-us .box-banner .box-info h3 {
+        font-size: 18px;
+        line-height: 20px;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+    .content_cms.about-us .box-banner .box-info {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        max-width: 55%;
+        padding: 5px;
+    }
+    .cms-page-view .content_cms.about-us .frist_con .c_left img {
+        max-width:74%;
     }
 }
