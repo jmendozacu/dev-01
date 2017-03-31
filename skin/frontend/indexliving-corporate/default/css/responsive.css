@@ -3940,6 +3940,28 @@
         float:left;
         text-align: left;
     }
+    .cms-brand .top-content label br {
+        display: none;
+    }
+    .cms-brand .box-content .box-left-40,
+    .cms-brand .box-content .box-right-60,
+    .cms-brand .ul-style2 li .box-left-60{
+        width:100%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    .cms-brand .box-content .box-left-40 {
+        margin-bottom:20px;
+    }
+    .cms-brand .box-content .box-left-40 img {
+        margin:0 auto 20px;
+    }
+    .cms-brand .box-content img {
+        margin:auto;
+    }
+    .cms-brand .box-content .ul-style2 li .box-left-40 img {
+       margin:10px 0;
+    }
 }
 
 @media (max-width: 500px){
@@ -4075,16 +4097,22 @@
     .joy-service-page .list-service li .box-info p,
     .joy-design-page .list-designer li .description p,
     .cms-page-view .content_cms.about-us  p,
-    .cms-page-view .content_cms.about-us li{
+    .cms-page-view .content_cms.about-us li,
+    .cms-brand .top-content label,
+    .cms-brand .box-content p,
+    .cms-brand .ul-style2 li p{
         font-size:15px;
     }
     .list-joy-quality li .box-info .title,
     .joy-price-page .box-right li label,
-    .cms-page-view .content_cms.about-us .frist_con .c_right strong{
+    .cms-page-view .content_cms.about-us .frist_con .c_right strong,
+    .cms-brand .list-style1 li label,
+    .cms-brand .ul-style2 li label{
         font-size:18px;
     }
     .cms-page-view .content_cms.about-us .frist_con .c_right h2,
-    .cms-page-view .content_cms.about-us h3{
+    .cms-page-view .content_cms.about-us h3,
+    .cms-brand .top-content h2{
         font-size:22px;
     }
     .joy-service-page .list-service li .box-info h2,
@@ -4157,5 +4185,62 @@
     }
     .cms-page-view .content_cms.about-us .frist_con .c_left img {
         max-width:74%;
+    }
+    .cms-brand .top-content .actions .button,
+    .cms-brand .top-content .actions .button.button-facebook{
+        margin:8px 5px;
+    }
+    .cms-brand .top-content {
+        padding-bottom:25px;
+    }
+    .cms-brand .list-style1 li {
+        width:100%;
+        padding:50px 0 10px;
+    }
+    .cms-brand .list-style1 li .count-item {
+        top:0px;
+        left:0px;
+    }
+    .cms-brand .list-style1 li:nth-child(2n) {
+        padding:58px 8px 8px;
+    }
+    .cms-brand .list-style1 li:nth-child(2n) .count-item {
+        top:8px;
+        left:8px;
+    }
+    .cms-brand {
+        margin-bottom:0px;
+    }
+    .cms-brand .box-content {
+        padding-bottom:0px;
+    }
+    .cms-brand .top-content .top-banner,
+    .cms-brand .top-content .box-logo {
+        margin-bottom:25px;
+    }
+    .cms-brand .box-content .box-left-40 >div {
+        margin-top:0px!important;
+    }
+    .cms-brand .box-content .box-left-40 p {
+        margin-bottom:15px;
+    }
+    .cms-brand .ul-style2 li:nth-child(1) {
+        padding-top:0px;
+    }
+    .cms-brand .ul-style2 li {
+        padding:25px 0;
+    }
+    .cms-brand .ul-style2 li .box-left-40 {
+        margin-bottom:0px;
+    }
+    .cms-brand .ul-style2 li label {
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+    .cms-brand .top-content .box-logo img {
+        max-width:75%;
+    }
+    .cms-brand .box-content .col2 {
+        width:100%;
     }
 }
