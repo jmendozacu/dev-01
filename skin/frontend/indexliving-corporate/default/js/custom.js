@@ -196,6 +196,14 @@ jQuery(document).ready(function () {
     }
   });
 
+  if(widthWindow <= 800){
+    jQuery("#tabs_history .tabs_history").mCustomScrollbar({
+      axis:"x",
+      advanced:{
+        autoExpandHorizontalScroll:true
+      }
+    });
+  };
 
   //When page loads...
   jQuery(".tab-history-content").hide(); //Hide all content
@@ -297,7 +305,15 @@ jQuery(document).ready(function () {
       jQuery('#header-search').hide();
   });
 
-
+  jQuery(".show-categories").click(function() {
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).next().slideDown();
+      jQuery(this).addClass('active');
+    }else if (jQuery(this).hasClass('active')) {
+      jQuery(this).next().slideUp();
+      jQuery(this).removeClass('active');
+    }
+  });
 
   /*icon menu on mobile */
   jQuery('#toggle-menu').click(function(){
