@@ -10932,7 +10932,7 @@ div.paypal-logo span > img {
   width:66%;
   margin-right:0px;
 }
-.table_price_delivery .table_row .total_buy {
+.table_price_delivery.style2 .table_row .total_buy {
   width:32%;
 }
 
@@ -14402,6 +14402,7 @@ body.career-index-application #application-form label{
   margin:25px auto;
   text-align: center;
   display: inline-block;
+  background: transparent;
 }
 .design-build-page .box3 .step-3 li {
   float:left;
