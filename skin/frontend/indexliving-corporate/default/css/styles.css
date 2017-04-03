@@ -2889,6 +2889,9 @@ input:focus, textarea:focus, keygen:focus, select:focus {outline-offset: 0px; ou
 .input-text.validation-failed {
   border-color: #df280a;
 }
+#shipping-form-validate .input-text.validation-failed{
+  float: left;
+}
 
 .input-text.validation-failed:focus {
   outline-color: #ef9384;
@@ -2983,6 +2986,9 @@ p.required,
   font-size: 13px;
 }
 .validation-advice{padding-left: 4%;}
+#shipping-form-validate .validation-advice{
+  float: left;
+}
 /* ============================================ *
  * Form List
  * ============================================ */

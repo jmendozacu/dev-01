@@ -22,8 +22,7 @@
     <li class="field">
       <label><?php echo $this->__('Order budget') ?></label>
       <div class="input-box">
-        <input type="number" class="input-text required-entry validate-digits validate-digits-range digits-range-0-9999999999" maxlength="10" title="Budget" value="" name="budget" id="budget">
-        <span><?php echo $this->__('baht') ?></span>
+        <input placeholder="<?php echo $this->__('baht') ?>" type="number" class="input-text required-entry validate-digits validate-digits-range digits-range-0-9999999999" maxlength="10" title="Budget" value="" name="budget" id="budget">
       </div>
     </li>
     <li class="fields shipping-weight" style="display: none" id="shipping-weight">
@@ -54,7 +53,7 @@
       <div class="field" style="display: none">
         <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
         <div class="input-box">
-          <?php echo $this->getCountryHtmlSelect() ?>
+          <?php echo $this->getLayout()->getBlockSingleton('directory/data')->getCountryHtmlSelect(); ?>
         </div>
       </div>
     </li>
