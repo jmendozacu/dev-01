@@ -788,19 +788,58 @@ $j(document).ready(function () {
 
     // Cache the highest
     var highestBox = 0;
-
     // Select and loop the elements you want to equalise
     $j('.post-image', this).each(function(){
-
       // If this box is higher than the cached highest then store it
       if($j(this).height() > highestBox) {
         highestBox = $j(this).height();
       }
-
     });
-
     // Set the height of all those children to whichever was highest
     $j('.post-image',this).height(highestBox);
+
+  });
+
+  $j('.list-promotion .mpblog-list').each(function(){
+    var highestBox = 0;
+    var k = 1;
+    $j('.post-image', this).each(function(){
+      if(k > 1){
+        if($j(this).height() > highestBox) {
+          highestBox = $j(this).height();
+        }
+      }
+      k = k + 1;
+    });
+
+    var j =1;
+    $j('.post-image', this).each(function(){
+      if(j > 1){
+        $j(this).height(highestBox);
+      }
+      j = j + 1;
+    });
+
+  });
+  $j('.list-decor-style2 .mpblog-list').each(function(){
+    var highestBox = 0;
+    var k = 1;
+    $j('.post-image', this).each(function(){
+      if(k > 1){
+        if($j(this).height() > highestBox) {
+          highestBox = $j(this).height();
+        }
+      }
+      k = k + 1;
+    });
+
+    var j =1;
+    $j('.post-image', this).each(function(){
+      if(j > 1){
+        $j(this).height(highestBox);
+      }
+      j = j + 1;
+    });
 
   });
 
