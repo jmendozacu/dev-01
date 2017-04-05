@@ -50,3 +50,12 @@
 <?php else: ?>
     <?php echo $this->__("There are no posts yet."); ?>
 <?php endif; ?>
+<script type="text/javascript">
+//    jQuery(".pagination-mobie #a-previous").click(function(event) {
+    jQuery(document).on('click', '.pagination-mobie #a-previous', function () {
+        var page = jQuery('#a-previous').html();
+        page = parseInt(page);
+        checkEnableNextPreviousButton(page);
+        updatePageMobie(page);
+    });
+</script>

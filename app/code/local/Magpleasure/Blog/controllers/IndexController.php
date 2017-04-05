@@ -387,6 +387,55 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
         $this->getResponse()->setBody(json_encode($response));
         return;
     }
+
+  public function pagerMobieAction()
+  {
+
+    $this->getResponse()->setHeader('Content-type', 'application/json');
+    $response = array();
+    $collection = Mage::getBlockSingleton('mpblog/content_list')->getCollection();
+    $data = $this->getRequest()->getParams();
+    $current_page = $data['p'];
+    //$page_no = $data['p'];
+    // check replace content_ajax by category_style
+    $home_decor_category_style = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
+    $promotion_category_style = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
+    $newevent_crs_category_style = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+    $index_project_category_style = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
+    $category_id = $data['id'];
+    $category_collection = Mage::getModel('mpblog/category')->load($category_id);
+    $category_style = $category_collection->getData('category_style');
+
+    if ($category_style == $promotion_category_style) {
+      $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+        ->setCollection($collection)
+        ->setTemplate('mpblog/contentajaxpager_promotionstyle.phtml')->toHTML();
+    } elseif ($category_style == $newevent_crs_category_style) {
+      $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+        ->setCollection($collection)
+        ->setTemplate('mpblog/contentajaxpager_newevent_crsstyle.phtml')->toHTML();
+    } elseif ($category_style == $home_decor_category_style) {
+      $is_landing_field = $category_collection->getData('category_is_landing');
+      if ($is_landing_field) {
+        $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+          ->setCollection($collection)
+          ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+      } else {
+        $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+          ->setCollection($collection)
+          ->setTemplate('mpblog/contentajaxpager_homedecor_sublanding.phtml')->toHTML();
+      }
+
+    } elseif ($category_style == $index_project_category_style) {
+      $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+        ->setCollection($collection)
+        ->setTemplate('mpblog/contentajaxpager_index_projectstyle.phtml')->toHTML();
+    }
+    $response['success'] = 'true';
+    $response['next_page'] = $current_page + 1;
+    $this->getResponse()->setBody(json_encode($response));
+    return;
+  }
     public function getSlideImagesAction()
     {
         $this->getResponse()->setHeader('Content-type','application/json');
