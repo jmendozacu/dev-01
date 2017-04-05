@@ -57,6 +57,18 @@ class Magpleasure_Blog_Block_Sidebar_Recentpost extends Magpleasure_Blog_Block_S
     {
         return $this->__('Recent Posts');
     }
+    protected function _checkCategory(Magpleasure_Blog_Model_Mysql4_Post_Collection $collection)
+    {
+      if (($post_id = $this->getRequest()->getParam('id')) && !$this->getIsCategory()){
+        $category =Mage::getModel('mpblog/post')->load($post_id)->getCategories();
+        if(is_array($category)){
+          $collection->addCategoryFilter($category);
+        }
+      }elseif(($id = $this->getRequest()->getParam('id')) && $this->getIsCategory()){
+        $collection->addCategoryFilter($id);
+      }
+      return $this;
+    }
 
     public function getCollection()
     {

@@ -783,6 +783,27 @@ $j(document).ready(function () {
             }
         });
     }
+
+  $j('#mpblog_content_post .mpblog-list').each(function(){
+
+    // Cache the highest
+    var highestBox = 0;
+
+    // Select and loop the elements you want to equalise
+    $j('.post-image', this).each(function(){
+
+      // If this box is higher than the cached highest then store it
+      if($j(this).height() > highestBox) {
+        highestBox = $j(this).height();
+      }
+
+    });
+
+    // Set the height of all those children to whichever was highest
+    $j('.post-image',this).height(highestBox);
+
+  });
+
 });
 
 // ==============================================

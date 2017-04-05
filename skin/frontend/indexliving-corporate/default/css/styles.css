@@ -2889,6 +2889,9 @@ input:focus, textarea:focus, keygen:focus, select:focus {outline-offset: 0px; ou
 .input-text.validation-failed {
   border-color: #df280a;
 }
+#shipping-form-validate .input-text.validation-failed{
+  float: left;
+}
 
 .input-text.validation-failed:focus {
   outline-color: #ef9384;
@@ -2983,6 +2986,9 @@ p.required,
   font-size: 13px;
 }
 .validation-advice{padding-left: 4%;}
+#shipping-form-validate .validation-advice{
+  float: left;
+}
 /* ============================================ *
  * Form List
  * ============================================ */
@@ -10932,7 +10938,7 @@ div.paypal-logo span > img {
   width:66%;
   margin-right:0px;
 }
-.table_price_delivery .table_row .total_buy {
+.table_price_delivery.style2 .table_row .total_buy {
   width:32%;
 }
 
@@ -11198,6 +11204,7 @@ div.paypal-logo span > img {
   width:49%;
   margin:8px 2% 8px 0;
   background:#fff;
+  height: 335px;
 }
 .franchise-concept .list-stores li:nth-child(2n){
   margin-right:0px;
@@ -14402,6 +14409,7 @@ body.career-index-application #application-form label{
   margin:25px auto;
   text-align: center;
   display: inline-block;
+  background: transparent;
 }
 .design-build-page .box3 .step-3 li {
   float:left;

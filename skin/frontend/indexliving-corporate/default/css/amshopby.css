@@ -304,6 +304,7 @@ input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"
     .amshopby-featured-wrapper .brands-grid li {
         width:100%;
         margin-left:0px;
+        border:solid 1px #ebebeb;
     }
     .cms-page-view .secound_con .con_success_left {
 
