@@ -46,4 +46,18 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
         $this->getResponse()->setBody(json_encode($response));
         return;
     }
+    public function pagerMobieAction()
+    {
+        $current_page = $this->getRequest()->getParam('p');
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        $response = array();
+        $collection = Mage::getBlockSingleton('career/job')->getCollection();
+        $response['result'] = Mage::app()->getLayout()->createBlock('career/job')
+          ->setCollection($collection)
+          ->setTemplate('career/contentajaxpager-mobie.phtml')->toHTML();
+        $response['success'] = 'true';
+        $response['next_page'] = $current_page + 1;
+        $this->getResponse()->setBody(json_encode($response));
+        return;
+    }
 }

@@ -105,43 +105,40 @@
         </div>
       <?php endif; ?>
     </div>
-    <div class="pages box-mobile">
-      <ol>
+    <div class="pagination-mobie">
+      <div class="pages box-mobile">
+        <ol>
 
-        <li class="li-previous">
-          <?php if (!$this->isFirstPage()): ?>
-            <a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
-              <?php if(!$this->getAnchorTextForPrevious()): ?>
+          <li class="li-previous">
+            <a id="a-previous"
+               class="previous<?php if (!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif; ?>" href="#"
+               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>">
+              <?php if (!$this->getAnchorTextForPrevious()): ?>
                 <?php echo $this->__('Previous') ?>
               <?php else: ?>
                 <?php echo $this->getAnchorTextForPrevious() ?>
-              <?php endif;?>
+              <?php endif; ?>
             </a>
-          <?php else: ?>
-            <span class="previous"></span>
-          <?php endif;?>
-        </li>
+          </li>
 
-        <?php foreach ($this->getFramePages() as $_page): ?>
-          <?php if ($this->isPageCurrent($_page)): ?>
-            <li class="li-current"><?php echo $_page ?>/<?php echo $this->getLastPageNum() ?></li>
-          <?php endif;?>
-        <?php endforeach;?>
+          <?php foreach ($this->getFramePages() as $_page): ?>
+            <?php if ($this->isPageCurrent($_page)): ?>
+              <li class="li-current"><?php echo $_page ?>/<?php echo $this->getLastPageNum() ?></li>
+            <?php endif;?>
+          <?php endforeach;?>
 
-        <li class="li-next">
-          <?php if (!$this->isLastPage()): ?>
-            <a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
-              <?php if(!$this->getAnchorTextForNext()): ?>
-                <?php echo $this->__('Next') ?>
+          <li class="li-next">
+            <a id="a-next" class="next<?php if (!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="#"
+               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>">
+              <?php if (!$this->getAnchorTextForNext()): ?>
+                <?php echo $this->__('2') ?>
               <?php else: ?>
                 <?php echo $this->getAnchorTextForNext() ?>
-              <?php endif;?>
+              <?php endif; ?>
             </a>
-          <?php else: ?>
-            <span class="next"></span>
-          <?php endif;?>
-        </li>
-      </ol>
+          </li>
+        </ol>
+      </div>
     </div>
   <?php endif; ?>
 
@@ -151,6 +148,7 @@
 
 <?php endif ?>
 <script type="text/javascript">
+  // ajax for desktop
   jQuery(document).ready(function() {
     jQuery(".pagination a").click(function(event) {
       event.preventDefault();
@@ -227,4 +225,85 @@
       });
     });
   });
+</script>
+<script type="text/javascript">
+  // ajax for mobie
+  function nextButton(){
+    var html_next = "<a id='a-next' class='next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>' href='#' title='<?php echo Mage::helper('core')->quoteEscape($this->__('Next')) ?>'>";
+    var anchorTextForNext = '<?php echo $this->getAnchorTextForNext()?>';
+    if(!anchorTextForNext){
+      var html_between = "<?php echo $this->__('Next') ?>";
+    }
+    else{
+      var html_between = anchorTextForNext;
+    }
+    return html_next = html_next + html_between + "</a>";
+  }
+  function previousButton(){
+    var html_previous = "<a id='a-previous' class='previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>' href='#' title='<?php echo Mage::helper('core')->quoteEscape($this->__('Previous')) ?>'>";
+    var anchorTextForPrevious = '<?php echo $this->getAnchorTextForPrevious()?>';
+    if(!anchorTextForPrevious){
+      var html_between = "<?php echo $this->__('Previous') ?>";
+    }
+    else{
+      var html_between = anchorTextForPrevious;
+    }
+    return html_previous = html_previous + html_between + "</a>";
+  }
+  function checkEnableNextPreviousButton(current_page) {
+    if (jQuery(window).width() <= 768) {
+      var html_previous = previousButton();
+      var html_next = nextButton();
+      var lastpage_number = "<?php echo $this->getLastPageNum()?>";
+      if(current_page == 1){
+        jQuery(".pagination-mobie .li-previous").html("<span class='previous'></span>");
+      }
+      else{
+        if(current_page == lastpage_number){
+          jQuery(".pagination-mobie .li-next").html("<span class='next'></span>");
+          //jQuery(".pagination-mobie .li-previous").html(html_previous);
+        }
+        else{
+          jQuery(".pagination-mobie .li-previous").html(html_previous);
+          //jQuery(".pagination-mobie .li-next").html(html_next);
+        }
+      }
+
+    }
+  }
+  jQuery(document).ready(function() {
+    checkEnableNextPreviousButton(1);
+  });
+  jQuery(".pagination-mobie #a-next").click(function(event) {
+    var page = jQuery('#a-next').html();
+    page = parseInt(page);
+    checkEnableNextPreviousButton(page);
+    updatePageMobie(page);
+  });
+  function updatePageMobie(pageno) {
+    var lastpage_number = "<?php echo $this->getLastPageNum()?>";
+    if (!pageno) {
+      pageno = lastpage_number - 1;
+    }
+    else{
+      $j('#ajaxcart-overlay').show();
+      $j('#ajax_cart_loading').show();
+      jQuery.ajax({
+        type: "get",
+        url: "<?php echo $this->getUrl('career/index/pagerMobie'); ?>?p=" + pageno,
+        success: function (transport) {
+          if (transport.success == 'true') {
+
+            jQuery('.job_list.box-mobile').html(transport.result);
+            jQuery('#a-next').html(transport.next_page);
+            jQuery('#a-previous').html(transport.next_page - 2);
+            jQuery('.li-current').html(pageno + "/" + lastpage_number);
+            $j('#ajax_cart_loading').hide();
+            $j('#ajaxcart-overlay').hide();
+
+          }
+        }
+      });
+    }
+  }
 </script>
