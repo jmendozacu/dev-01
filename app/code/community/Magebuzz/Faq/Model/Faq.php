@@ -21,5 +21,16 @@ class Magebuzz_Faq_Model_Faq extends Mage_Core_Model_Abstract
 						->addFieldToFilter('faq_id', array('in' => $faqIds));
 		return $faqCollection;				
 	}
+	public function getAllFaqs($categories)
+	{
+		$storeIds = array(Mage::app()->getStore()->getId(), Mage_Core_Model_App::ADMIN_STORE_ID);
+		$collection = Mage::getModel('faq/faq')->getCollection();
+		$collection->getSelect()
+			->join(array('faq_category' => Mage::getModel('core/resource')->getTableName('faq_category_item')), 'main_table.faq_id=faq_category.faq_id')
+			->join(array('fstore' => Mage::getModel('core/resource')->getTableName('faq_store')), 'main_table.faq_id=fstore.faq_id')
+			->where('faq_category.category_id IN (?)', $categories)
+			->where('fstore.store_id IN (?)', $storeIds);
 
+		return $collection;
+	}
 }

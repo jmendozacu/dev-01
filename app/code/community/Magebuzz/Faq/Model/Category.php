@@ -8,7 +8,7 @@ class Magebuzz_Faq_Model_Category extends Mage_Core_Model_Abstract
 		$this->_init('faq/category');
 	}  
 	
-	public function getTitle($cat_id){
+	public function getTitleFaq($cat_id){
 		$categoryInfo = $this->getCollection()
 			->addFieldToFilter('category_id', $cat_id)
 			->getFirstItem()

@@ -39,6 +39,11 @@ class Magebuzz_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wi
             'align' => 'left',
             'index' => 'category_name',
         ));
+        $this->addColumn('category_group', array(
+          'header' => Mage::helper('faq')->__('Category Group'),
+          'align' => 'left',
+          'renderer' => 'Magebuzz_Faq_Block_Adminhtml_Category_Renderer_Categorygroup',
+        ));
         $this->addColumn('sort_order', array(
             'header' => Mage::helper('faq')->__('Sort Order'),
             'align' => 'center',
