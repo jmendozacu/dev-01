@@ -108,7 +108,7 @@ class Magebuzz_Faq_Block_Faq extends Mage_Core_Block_Template
   public function getCategoryTitle()
   {
     $cat_id = $this->getRequest()->getParam('cid');
-    $title = Mage::getModel('faq/category')->getTitle($cat_id);
+    $title = Mage::getModel('faq/category')->getTitleFaq($cat_id);
     if ($title == null || $cat_id == null)
       return null;
     return $title;

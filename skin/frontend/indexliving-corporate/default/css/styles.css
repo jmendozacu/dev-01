@@ -14585,4 +14585,31 @@ body.career-index-application #application-form label{
   color:#ffc222;
   margin:0 10px;
 }
-
+#list-faq .question{
+  height: 60px;
+  background: rgba(226, 224, 224, 0.23);
+  border-top: 1px solid rgb(226, 224, 224);
+  padding: 18px;
+  color: black;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#list-faq .answer{
+  padding: 18px;
+  color: black;
+}
+.faq-index-index ul.tabs{
+  text-align: right;
+}
+.faq-index-index div.category{
+  font-size: 13px;
+  font-weight: normal !important;
+}
+.faq-index-index .tab-left .tab_container{
+  padding: 0 25px 15px;
+}
+.faq-index-index .category_title_faq{
+  font-size: 20px;
+  color: black;
+  padding: 10px 0 25px;
+}

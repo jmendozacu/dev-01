@@ -14,6 +14,15 @@ class Magebuzz_Faq_Block_Adminhtml_Category_Edit_Tab_Form extends Mage_Adminhtml
             'title' => Mage::helper('faq')->__('Category Name'),
             'required' => true,
         ));
+
+        $fieldset->addField('category_group', 'select', array(
+          'name' => 'category_group',
+          'label' => Mage::helper('faq')->__('Category group'),
+          'title' => Mage::helper('faq')->__('Category group'),
+          'required' => true,
+          'values' => Mage::getModel('faq/categorygroup')->getOptionArray()
+        ));
+
         $fieldset->addField('sort_order', 'text', array(
             'name' => 'sort_order',
             'label' => Mage::helper('faq')->__('Sort Order'),

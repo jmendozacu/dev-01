@@ -20,7 +20,8 @@
 			<action method="addCss"><stylesheet>magebuzz/faq/faq.css</stylesheet> </action>
 		</reference>
 		<reference name="content">
-				<block type="faq/faq" name="faq" template="faq/faq.phtml" />
+				<!--<block type="faq/faq" name="faq" template="faq/faq.phtml" />-->
+				<block type="faq/faq" name="faq" template="faq/faq_new_design.phtml" />
 		</reference>
 	</faq_index_index>		
 	<faq_category_view>
