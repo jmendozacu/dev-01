@@ -145,7 +145,7 @@ $dealers->clear(); ?>
 												<h4><?php echo $this->__('Postcode') ?>: <?php echo $dealer->getPostalCode() ?></h4>
 												<?php endif; ?>
 												<?php if ($dealer->getPhone()): ?>
-													<h4><?php echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
+                         <h4><?php echo $this->__('Phone') ?>: <a href="tel:<?php echo $dealer->getPhone() ?>"><?php echo $dealer->getPhone() ?></a><?php //echo $this->__('Phone: %s', $dealer->getPhone()) ?></h4>
 												<?php endif; ?>
 												<?php if ($dealer->getEmail()): ?>
 													<h4><?php echo $this->__('Open Time: %s', $dealer->getEmail()) ?></h4>
