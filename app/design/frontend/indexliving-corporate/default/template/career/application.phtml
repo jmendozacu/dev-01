@@ -25,7 +25,7 @@ $job = Mage::getModel('career/job')->load($id);
   <div id="application">
     <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
     <div class="application_form">
-      <form id="application-form" method="post" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id))?>">
+      <form id="application-form" method="post" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id,'job_title'=>$job->getData('title')))?>">
         <div id="personal_information">
           <p><?php echo $this->__('Personal Information')?></p>
           <ul>

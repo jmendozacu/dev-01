@@ -11,6 +11,7 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
     public function submitApplicationAction(){
         $params = $this->getRequest()->getPost();
         $job_id = $this->getRequest()->getParam('job_id');
+        $job_title = $this->getRequest()->getParam('job_title');
         if(!$params){
             return;
         }
@@ -20,6 +21,7 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
                 $model
                   ->setData($params)
                   ->setApplicationForJobId($job_id)
+                  ->setApplicationForJob($job_title)
                   ->setId(NULL)
                   ->save();
                 Mage::getSingleton('core/session')->addSuccess($this->__('Apply successfully!'));

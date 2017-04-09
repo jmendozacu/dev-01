@@ -74,8 +74,8 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
         $this->addColumn('application_for_job_id', array(
           'header' => Mage::helper('career')->__('Application For Job'),
           'align' => 'left',
-          'index' => 'application_for_job_id',
-          'renderer' => 'Magebuzz_Career_Block_Adminhtml_Application_Renderer_Applicationforjob',
+          'index' => 'application_for_job',
+//          'renderer' => 'Magebuzz_Career_Block_Adminhtml_Application_Renderer_Applicationforjob',
           'width' => '100px'
         ));
 
