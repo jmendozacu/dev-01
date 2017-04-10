@@ -336,25 +336,25 @@ function checkShipping(address_id){
         onComplete: function (response) {
             if(response.responseJSON.surat_thani || response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
                 if (response.responseJSON.surat_thani) {
-                    if (response.responseJSON.ilm && response.responseJSON.thaipost) {
+                    //if (response.responseJSON.ilm && response.responseJSON.thaipost) {
+                    //
+                    //    $('outside_service').style.display = 'block';
+                    //    jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                    //    jQuery('#billing_as_shipping_no').attr("disabled", true);
+                    //    jQuery('#amscheckout-submit').attr("disabled", true);
+                    //}
+                    //else {
+                    //    if (response.responseJSON.ilm) {
 
-                        $('outside_service').style.display = 'block';
-                        jQuery('#billing_as_shipping_yes').attr("disabled", true);
-                        jQuery('#billing_as_shipping_no').attr("disabled", true);
-                        jQuery('#amscheckout-submit').attr("disabled", true);
-                    }
-                    else {
-                        if (response.responseJSON.ilm) {
-
-                            $('outside_service').style.display = 'block';
-                            jQuery('#billing_as_shipping_yes').attr("disabled", true);
-                            jQuery('#billing_as_shipping_no').attr("disabled", true);
-                            jQuery('#amscheckout-submit').attr("disabled", true);
-                        }
-                        if (response.responseJSON.thaipost) {
+                            //$('outside_service').style.display = 'block';
+                            //jQuery('#billing_as_shipping_yes').attr("disabled", true);
+                            //jQuery('#billing_as_shipping_no').attr("disabled", true);
+                            //jQuery('#amscheckout-submit').attr("disabled", true);
+                        //}
+                        //if (response.responseJSON.thaipost) {
                             $('notice_service').style.display = 'block';
-                        }
-                    }
+                        //}
+                    //}
                 }
                 if (response.responseJSON.pattani || response.responseJSON.nara_thiwat || response.responseJSON.yala) {
                     if (response.responseJSON.ilm && response.responseJSON.thaipost) {

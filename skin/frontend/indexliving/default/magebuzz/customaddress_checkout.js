@@ -24,25 +24,25 @@ CityUpdater.prototype = {
 				new Ajax.Request(checkShippingType, {
 					method: 'post',
 					onComplete: function(response) {
-						if(response.responseJSON.ilm && response.responseJSON.thaipost){
-							jQuery('#amscheckout-submit').attr("disabled", true);
-							$('outside_service_zone').style.display = 'block';
-							jQuery('#billing_as_shipping_yes').attr("disabled", true);
-							jQuery('#billing_as_shipping_no').attr("disabled", true);
-							jQuery('#billing-form-show').hide();
-						}
-						else{
-							if (response.responseJSON.ilm) {
-								jQuery('#amscheckout-submit').attr("disabled", true);
-								$('outside_service_zone').style.display = 'block';
-								jQuery('#billing_as_shipping_yes').attr("disabled", true);
-								jQuery('#billing_as_shipping_no').attr("disabled", true);
-								jQuery('#billing-form-show').hide();
-							}
-							if (response.responseJSON.thaipost) {
+						//if(response.responseJSON.ilm && response.responseJSON.thaipost){
+						//	jQuery('#amscheckout-submit').attr("disabled", true);
+						//	$('outside_service_zone').style.display = 'block';
+						//	jQuery('#billing_as_shipping_yes').attr("disabled", true);
+						//	jQuery('#billing_as_shipping_no').attr("disabled", true);
+						//	jQuery('#billing-form-show').hide();
+						//}
+						//else{
+						//	if (response.responseJSON.ilm) {
+						//		jQuery('#amscheckout-submit').attr("disabled", true);
+						//		$('outside_service_zone').style.display = 'block';
+						//		jQuery('#billing_as_shipping_yes').attr("disabled", true);
+						//		jQuery('#billing_as_shipping_no').attr("disabled", true);
+						//		jQuery('#billing-form-show').hide();
+						//	}
+							//if (response.responseJSON.thaipost) {
 								$('notice_service').style.display = 'block';
-							}
-						}
+							//}
+						//}
 					}.bind(this)
 				});
 			}
