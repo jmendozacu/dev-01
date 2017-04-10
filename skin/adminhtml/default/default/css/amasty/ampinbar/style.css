@@ -89,3 +89,10 @@
     background: rgba(0, 0, 0, 0) linear-gradient(to right, rgba(99, 99, 99, 0) 0%, rgba(99, 99, 99, 0) 90%, rgba(247, 247, 247, 1) 100%) repeat scroll 0 0;
 
 }
+.adminhtml-faq-edit #faq_tabs_form_section_content table{
+    width: 100%;
+}
+.adminhtml-faq-edit .form-list td.label,
+.adminhtml-faq-edit .form-list td.label label{
+    width: 70px !important;
+}
