@@ -21,7 +21,53 @@ $job = Mage::getModel('career/job')->load($id);
         <?php echo $job->getData('qualifications')?>
       </div>
     </div>
+    <div class="shareJob">
+      <div class="job-social">
+        <div class="share">
+          <strong id="results"><?php echo $this->__('50') ?></strong>
+          <span><?php echo $this->__('Shares') ?> </span>
+        </div>
+      </div>
+      <ul class="sharing-links">
+        <?php $jobName = urlencode(trim($job->getData('title')))?>
+        <?php $careerUrl = urlencode(trim(Mage::helper('core/url')->getCurrentUrl()))?>
+        <?php $caption = $this->__('We are hiring! Position: '.$jobName);?>
+        <?php $_pinterest_sharing_url = "http://pinterest.com/pin/create/button/?url=" . $careerUrl;?>
+        <?php
+        $_close_popup_url = Mage::getModel('core/url')->sessionUrlVar($_close_popup_url);
+        $_close_popup_url = Mage::getUrl('custom/index/close_popup');
+        $_facebook_app_id = Mage::getStoreConfig('amajaxlogin/facebook/app_id');
+        $_facebook_sharing_url = "https://www.facebook.com/dialog/share?app_id=" . $_facebook_app_id . "&display=popup"
+                    . "&href=" . $careerUrl
+                    . "&redirect_uri=" . $_close_popup_url;
+        $_facebook_feed_url = "https://www.facebook.com/dialog/feed?app_id=" . $_facebook_app_id . "&display=popup&caption=" . $caption ."&link=" . $careerUrl."&redirect_uri=" . $_close_popup_url;
+        ?>
+        <div class="mp-buttons fix-me">
+          <ul>
+            <li class="social-facebook">
+              <a target="_blank" href="<?php echo $_facebook_feed_url; ?>" title="<?php echo $this->__('Facebook') ?>">
+                <i class="blog-icon facebook"></i>
+              </a>
+            </li>
+            <li class="social-twitter">
+              <a target="_blank" href="<?php echo 'http://twitter.com/home?status=' . $jobName . '+' . $careerUrl; ?>" title="<?php echo $this->__('Twitter') ?>">
+                <i class="blog-icon twitter"></i>
+              </a>
+            </li>
+            <li class="social-googleplus">
+              <div class="g-plus" data-action="share" data-annotation="none" data-height="24"></div>
+            </li>
+            <li class="social-pinterest">
+              <a target="_blank" href="<?php echo $_pinterest_sharing_url; ?>" title="<?php echo $this->__('Pinterest') ?>">
+                <i class="blog-icon pinterest"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </div>
   </div>
+  <div class="clearboth"></div>
   <div id="application">
     <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
     <div class="application_form">
@@ -117,4 +163,21 @@ $job = Mage::getModel('career/job')->load($id);
   //< ![CDATA[
   var myForm = new VarienForm('application-form',false);
   //]]>
+</script>
+<script type="text/javascript">
+  jQuery(function($) {
+    var token = '<?php echo Mage::helper('amajaxlogin/facebook')->getAppId(); ?>|<?php echo Mage::helper('amajaxlogin/facebook')->getSecretId(); ?>';
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://graph.facebook.com/v2.7/',
+        dataType: 'jsonp',
+        type: 'GET',
+        data: {access_token: token, id: '<?php echo Mage::helper('core/url')->getCurrentUrl() ?>' },
+        success: function(data){
+          $('#results').html(data.share.share_count);
+        }
+      });
+      return false;
+    })
+  });
 </script>

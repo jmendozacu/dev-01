@@ -13774,7 +13774,6 @@ body.career-index-index .job_list tbody tr td a:hover{
 }
 
 body.career-index-application #career #application{
-  border-top: 1px solid #e6e6e6;
   padding-top: 45px;
 }
 body.career-index-application #career #application p.join_us{
@@ -14612,4 +14611,98 @@ body.career-index-application #application-form label{
   font-size: 20px;
   color: black;
   padding: 10px 0 25px;
+}
+#career .shareJob{
+  border-bottom: 1px solid #e6e6e6;
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  margin: 10px 0;
+}
+#career .shareJob ul li{
+  float: left;
+  display: inline-block;
+  padding-right: 5px;
+}
+#career .job-social .share{
+  float: left;
+  margin-right: 10px;
+  line-height: 2;
+  font-size: 15px;
+  font-weight: 100;
+}
+#career .job-social .share span{
+  color: #ccc;
+}
+
+
+.shareJob .mp-buttons ul li .blog-icon {
+  float: left;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+}
+.shareJob .mp-buttons ul li .blog-icon.twitter {
+  background-image: url("../mpblog/images/assets/twitter.png");
+  background-image: url("../mpblog/images/assets/twitter.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.facebook {
+  background-image: url("../mpblog/images/assets/facebook.png");
+  background-image: url("../mpblog/images/assets/facebook.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.vkontakte {
+  background-image: url("../mpblog/images/assets/vk.png");
+  background-image: url("../mpblog/images/assets/vk.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.odnoklassniki {
+  background-image: url("../mpblog/images/assets/ok.png");
+  background-image: url("../mpblog/images/assets/ok.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.blogger {
+  background-image: url("../mpblog/images/assets/blogger.png");
+  background-image: url("../mpblog/images/assets/blogger.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.tumblr {
+  background-image: url("../mpblog/images/assets/tumblr.png");
+  background-image: url("../mpblog/images/assets/tumblr.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.pinterest {
+  background-image: url("../mpblog/images/assets/pinterest.png");
+  background-image: url("../mpblog/images/assets/pinterest.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.digg {
+  background-image: url("../mpblog/images/assets/digg.png");
+  background-image: url("../mpblog/images/assets/digg.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.mixx {
+  background-image: url("../mpblog/images/assets/mixx.png");
+  background-image: url("../mpblog/images/assets/mixx.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.delicious {
+  background-image: url("../mpblog/images/assets/delicious.png");
+  background-image: url("../mpblog/images/assets/delicious.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.stumbleupon {
+  background-image: url("../mpblog/images/assets/stumbleupon.png");
+  background-image: url("../mpblog/images/assets/stumbleupon.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.slashdot {
+  background-image: url("../mpblog/images/assets/slashdot.png");
+  background-image: url("../mpblog/images/assets/slashdot.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.slashdot {
+  background-image: url("../mpblog/images/assets/slashdot.png");
+  background-image: url("../mpblog/images/assets/slashdot.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.reddit {
+  background-image: url("../mpblog/images/assets/reddit.png");
+  background-image: url("../mpblog/images/assets/reddit.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.linkedin {
+  background-image: url("../mpblog/images/assets/linkedin.png");
+  background-image: url("../mpblog/images/assets/linkedin.svg");
+}
+.shareJob .mp-buttons ul li .blog-icon.google {
+  background-image: url("../mpblog/images/assets/google_bookmarks.png");
+  background-image: url("../mpblog/images/assets/google_bookmarks.svg");
 }

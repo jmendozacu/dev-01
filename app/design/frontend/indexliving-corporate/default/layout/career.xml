@@ -13,6 +13,15 @@
         </reference>
     </career_index_index>
     <career_index_application>
+        <reference name="head">
+            <block type="core/text" name="google.cdn.jquery">
+                <action method="setText">
+                    <text>
+                        <![CDATA[<script src="https://apis.google.com/js/platform.js" async defer></script>]]>
+                    </text>
+                </action>
+            </block>
+        </reference>
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
