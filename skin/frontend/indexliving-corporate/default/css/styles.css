@@ -12839,10 +12839,10 @@ ul.mp-details > li >a:before,
   transform: translate(0, -50%);
   -webkit-transform: translate(0, -50%);
   -moz-transform: translate(0, -50%);
-  padding-left:8%;
+  padding-left:6%;
 }
 .joy-service-page .list-service li:nth-child(2n + 1) .box-info >div {
-  padding-right:8%;
+  padding-right:6%;
   padding-left:0;
   text-align: right;
 }
@@ -12866,7 +12866,7 @@ ul.mp-details > li >a:before,
   font-weight: bold;
 }
 .joy-service-page .list-service li .box-info p {
-  font-size:18px;
+  font-size:17px;
   color:#000;
   font-weight: 300;
   font-style: normal;

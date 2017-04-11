@@ -3813,7 +3813,16 @@
 }
 
 /* update index-corporate */
-
+@media (max-width:1120px) {
+    .joy-service-page .list-service li .box-info p  {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .joy-service-page .list-service li .box-info h2 {
+        margin-bottom:8px;
+    }
+}
 @media (max-width:991px) {
     /* career page */
     .career-top-info .top-info .content-info,
