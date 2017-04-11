@@ -344,15 +344,15 @@ function checkShipping(address_id){
                     //    jQuery('#amscheckout-submit').attr("disabled", true);
                     //}
                     //else {
-                    //    if (response.responseJSON.ilm) {
-
+                        if (response.responseJSON.ilm) {
+                            $('notice_service').style.display = 'block';
                             //$('outside_service').style.display = 'block';
                             //jQuery('#billing_as_shipping_yes').attr("disabled", true);
                             //jQuery('#billing_as_shipping_no').attr("disabled", true);
                             //jQuery('#amscheckout-submit').attr("disabled", true);
-                        //}
+                        }
                         //if (response.responseJSON.thaipost) {
-                            $('notice_service').style.display = 'block';
+                        //    $('notice_service').style.display = 'block';
                         //}
                     //}
                 }
