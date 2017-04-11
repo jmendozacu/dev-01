@@ -1700,6 +1700,17 @@
     .footer .footer-links .box-links {
         width: 100%;
     }
+    .footer .footer-contacts {
+        text-align: center;
+    }
+    .footer .footer-contacts .phone {
+        float:none;
+        display: inline-block;
+    }
+    .footer .footer-contacts .phone label {
+        text-align: left;
+        width:auto;
+    }
 
     .footer .footer-links .box-links {
         border-bottom: solid 1px #DADADA;
