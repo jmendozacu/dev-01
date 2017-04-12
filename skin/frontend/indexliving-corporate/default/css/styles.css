@@ -10944,6 +10944,18 @@ div.paypal-logo span > img {
 
 .table_price_delivery .mobile_show{display:none;}
 
+
+.table_price_delivery.style3 .table_row .total_buy {
+  width:40%;
+}
+.table_price_delivery.style3 .table_row .furniture_prd {
+  margin-right:0px;
+  width:58%;
+}
+.table_price_delivery.style3 .table_row .td:last-child {
+  width:100%;
+}
+
 /*cms-custom-form*/
 .cms-page-view.cms-custom-form .std .fieldset{width: 45%;margin-right: 5%;float: left;}
 .cms-page-view.cms-custom-form .form-list .field, .cms-page-view.cms-custom-form .std li input, .cms-page-view.cms-custom-form .std select, .cms-page-view.cms-custom-form .std textarea{width: 100%;max-width: 100%;}
@@ -12802,36 +12814,36 @@ ul.mp-details > li >a:before,
   width:100%;
   margin-top:40px;
 }
-.joy-service-page .list-service li {
+.list-service li {
   float:left;
   width:100%;
   margin: 10px 0;
   position: relative;
 }
-.joy-service-page .list-service li .box-image,
-.joy-service-page .list-service li .box-info{
+.list-service li .box-image,
+.list-service li .box-info{
   float:left;
   width:50%;
 }
-.joy-service-page .list-service li .box-image img {
+.list-service li .box-image img {
   width:100%;
 }
-.joy-service-page .list-service li:nth-child(2n + 1) .box-image {
+ .list-service li:nth-child(2n + 1) .box-image {
   float:right;
 }
-.joy-service-page .list-service li:nth-child(2n + 1) .box-info  {
+.list-service li:nth-child(2n + 1) .box-info  {
   left:0px;
 }
-.joy-service-page .list-service li:nth-child(2n) .box-info {
+.list-service li:nth-child(2n) .box-info {
   right:0px;
 }
-.joy-service-page .list-service li .box-info {
+.list-service li .box-info {
   border:solid 1px #ebebeb;
   position: absolute;
   top:0px;
   height:100%;
 }
-.joy-service-page .list-service li .box-info >div {
+.list-service li .box-info >div {
   position: absolute;
   width:100%;
   left:0px;
@@ -12841,19 +12853,19 @@ ul.mp-details > li >a:before,
   -moz-transform: translate(0, -50%);
   padding-left:6%;
 }
-.joy-service-page .list-service li:nth-child(2n + 1) .box-info >div {
+.list-service li:nth-child(2n + 1) .box-info >div {
   padding-right:6%;
   padding-left:0;
   text-align: right;
 }
 
-.joy-service-page .list-service li:nth-child(2n) .box-info  {
+.list-service li:nth-child(2n) .box-info  {
   border-left:none;
 }
-.joy-service-page .list-service li:nth-child(2n + 1) .box-info {
+.list-service li:nth-child(2n + 1) .box-info {
   border-right:none;
 }
-.joy-service-page .list-service li .box-info h2{
+.list-service li .box-info h2{
   color:#FFC222;
   font-size:35px;
   text-transform: uppercase;
@@ -12862,10 +12874,10 @@ ul.mp-details > li >a:before,
   line-height: 38px;
   margin-bottom:12px;
 }
-.joy-service-page .list-service li .box-info h2 strong {
+.list-service li .box-info h2 strong {
   font-weight: bold;
 }
-.joy-service-page .list-service li .box-info p {
+.list-service li .box-info p {
   font-size:17px;
   color:#000;
   font-weight: 300;
@@ -12873,11 +12885,192 @@ ul.mp-details > li >a:before,
   line-height: 24px;
   margin-bottom:20px;
 }
-.joy-service-page .list-service li .box-info a {
+.list-service li .box-info a {
   font-size: 16px;
   padding: 3px 12px;
 }
+.list-service li .box-info label{
+  font-size:20px;
+  color:#000;
+  font-weight: 500;
+  font-family: 'Kanit';
+}
 
+/* home service page*/
+.home-service-page .top-info {
+  margin-top:45px;
+  float:left;
+  width:100%;
+  display: table;
+  margin-bottom:15px;
+}
+.home-service-page .top-info .box-logo,
+.home-service-page .top-info .box-video {
+   display: table-cell;
+  width:50%;
+  vertical-align: middle;
+  text-align: center;
+}
+.home-service-page .top-info .box-logo img {
+  margin:auto;
+  max-width:95%;
+}
+
+.home-service-page .top-info .box-video >div{
+  float:left;
+  width:100%;
+  padding-bottom: 59%;
+  position: relative;
+}
+.home-service-page .top-info .box-video >div iframe {
+  border:none;
+  position: absolute;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+}
+.home-service-page .box-qacode {
+  float:left;
+  width:100%;
+  background:#f8f8f8;
+  padding:20px;
+  text-align: center;
+  display: table;
+}
+.home-service-page .box-qacode .box-text {
+  display: table-cell;
+  width:65%;
+  vertical-align: middle;
+  font-size:26px;
+  color:#000;
+  font-family: 'Kanit';
+  font-weight: 300;
+}
+.home-service-page .box-qacode .qa-code  {
+  display: table-cell;
+  width:45%;
+  vertical-align: middle;
+}
+.home-service-page .list-service li .box-info h2 {
+  position: relative  ;
+  padding-bottom:10px;
+  font-family: 'Kanit';
+}
+.home-service-page .list-service li .box-info h2:before{
+  content:"";
+  position: absolute;
+  width:50px;
+  height:5px;
+  background:#000;
+  bottom:0px;
+}
+.home-service-page .list-service li .box-info p {
+  margin-bottom:0px;
+}
+.home-service-page .list-service li:nth-child(2n+1) .box-info h2:before {
+   right:0px;
+}
+.home-service-page .list-service li:nth-child(2n) .box-info h2:before {
+  left:0px;
+}
+.home-service-page .list-service li.text-center .box-image{
+  width:29%;
+  float:left;
+}
+.home-service-page .list-service li.text-center .box-image + .box-image {
+  float:right;
+}
+.home-service-page .list-service li.text-center .box-info {
+  width: 42%;
+  left: 29%;
+}
+.home-service-page .list-service li.text-center .box-info >div{
+  text-align: center;
+  padding:0 3%;
+}
+.home-service-page .list-service li.text-center .box-info h2 {
+  font-size:30px;
+  line-height: 32px;
+}
+.home-service-page .list-service li.text-center .box-info h2:before{
+  left:50%;
+  margin-left:-15px;
+}
+.home-service-page .box-service-gray {
+  float:left;
+  width:calc(100% + 2000px);
+  margin:30px -1000px;
+  padding:30px 1000px;
+  background:#f6f6f6;
+}
+.home-service-page h3{
+  font-size:24px;
+  color:#000;
+  font-weight: bold;
+  font-family: 'Kanit';
+  margin-bottom:15px;
+}
+.home-service-page .box-service-gray ul{
+  float:left;
+  width:100%;
+  margin:15px 0;
+}
+.home-service-page .box-service-gray li{
+  float:left;
+  width:32%;
+  margin-right:2%;
+  background:#fff;
+  text-align: center;
+  padding: 15px 5px;
+  font-family: 'Kanit';
+  font-weight: 300;
+  font-size:16px;
+  color:#252525;
+}
+.home-service-page .box-service-gray li:nth-child(3n) {
+  margin-right:0px;
+}
+.home-service-page .box-service-gray li img {
+  margin:0 auto 10px;
+}
+.home-service-page .box-service-gray li label{
+   font-size:22px;
+  font-weight: bold;
+  color:#252525;
+  margin-bottom: 8px;
+ }
+.home-service-page .box-service-gray li p{
+  min-height:72px;
+}
+.home-service-page .box-service-gray .info-contacts {
+  float:left;
+  width:100%;
+  margin-top:10px;
+  font-family: 'Kanit';
+  font-weight: 300;
+  font-size:18px;
+  color:#252525;
+}
+.home-service-page .box-service-gray .info-contacts label,
+.home-service-page .box-service-gray .info-contacts strong{
+  font-weight: 500;
+  font-size:18px;
+}
+.home-service-page .box-service-gray .info-contacts a {
+  color:#ffc222;
+  font-size:30px;
+  font-weight: bold;
+  margin: 0 5px;
+}
+.home-service-page .box-service-gray .info-contacts a:hover{
+  text-decoration: none;
+}
+.home-service-page .box-service-gray .info-contacts strong {
+  color:#ffc222;
+}
+
+  /* --------------------- */
 .cms-page-view .list-other-links {
   float:left;
   width:100%;
