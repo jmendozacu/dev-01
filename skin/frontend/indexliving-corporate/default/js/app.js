@@ -843,6 +843,28 @@ $j(document).ready(function () {
 
   });
 
+  $j('.list-news-event .mpblog-list').each(function(){
+    var highestBox = 0;
+    var k = 1;
+    $j('.post-image', this).each(function(){
+      if(k > 1){
+        if($j(this).height() > highestBox) {
+          highestBox = $j(this).height();
+        }
+      }
+      k = k + 1;
+    });
+
+    var j =1;
+    $j('.post-image', this).each(function(){
+      if(j > 1){
+        $j(this).height(highestBox);
+      }
+      j = j + 1;
+    });
+
+  });
+
 });
 
 // ==============================================
