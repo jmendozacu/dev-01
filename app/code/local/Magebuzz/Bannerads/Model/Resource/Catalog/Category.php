@@ -13,7 +13,7 @@ class Magebuzz_Bannerads_Model_Resource_Catalog_Category extends Mage_Catalog_Mo
     }
     $this->_saveCategoryProducts($object);
     $this->_checkTimeToActive($object);
-    return parent::_afterSave($object);
+    return Mage_Catalog_Model_Resource_Abstract::_afterSave($object);
   }
 
 
