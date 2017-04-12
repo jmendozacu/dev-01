@@ -2969,7 +2969,7 @@
 
 @media (max-width: 640px) {
     .products-grid .button.btn-cart > span:before {
-        top: 0px;
+       /* top: 0px;*/
         background-size: 80px auto;
         background-position: 3px -674px
     }
@@ -3021,7 +3021,7 @@
     }
 
     .button.btn-cart > span:before {
-        top: 0px;
+        /*top: 0px;*/
         background-size: 80px auto;
         background-position: 3px -668px
     }
