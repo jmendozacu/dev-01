@@ -4178,6 +4178,58 @@
         transform: rotate(-135deg);
         margin-top:-2px;
     }
+
+    /* home service page */
+    .home-service-page .top-info .box-logo,
+    .home-service-page .top-info .box-video,
+    .home-service-page .box-qacode .box-text,
+    .home-service-page .box-qacode .qa-code{
+        float:left;
+        width:100%;
+    }
+    .home-service-page .top-info .box-logo {
+        margin-bottom:20px;
+    }
+    .home-service-page .box-qacode .box-text {
+       font-size:16px;
+        margin-bottom:20px;
+    }
+    .home-service-page .box-qacode .qa-code img {
+        margin:auto;
+    }
+    .home-service-page .list-service li {
+        border:solid 1px #ebebeb;
+    }
+    .home-service-page .list-service li .box-info,
+    .home-service-page .list-service li .box-image,
+    .home-service-page .list-service li.text-center .box-info,
+    .home-service-page .list-service li.text-center .box-image{
+       width:100%;
+        position: static;
+        border:none;
+    }
+    .list-service li .box-info >div,
+    .home-service-page .list-service li.text-center .box-info >div{
+        position: static;
+        transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        padding:12px;
+        text-align: right;
+    }
+    .home-service-page .list-service li:nth-child(2n) .box-info h2:before,
+    .home-service-page .list-service li.text-center .box-info h2:before{
+        right:0px;
+    }
+    .list-service li:nth-child(2n + 1) .box-info >div,
+    .list-service li:nth-child(2n) .box-info >div,
+    .home-service-page .list-service li.text-center .box-info >div {
+        padding:12px;
+    }
+    .home-service-page .box-service-gray li {
+        width:100%;
+        margin:0px 0px 15px;
+    }
 }
 
 @media (max-width: 500px){
@@ -4234,9 +4286,41 @@
     #application-form label{
         font-size:14px;
     }
-    .franchise-concept .list-stores li .box-info .store-name {
+    .franchise-concept .list-stores li .box-info .store-name,
+    .list-service li .box-info p{
         font-size:16px;
     }
+
+    .joy-card-page .joy-boxinfo .box-info h4,
+    .list-service li .box-info label{
+        font-size:18px;
+    }
+    .cms-page-view .std .joy-card-page p,
+    .joy-card-page .joy-boxinfo .box-info,
+    .cms-page-view .std .joy-card-page li {
+        font-size:15px;
+    }
+    .joy-4-page .list-joy ul li,
+    .joy-4-page .list-joy ul li:nth-child(2){
+        float:left;
+        width:100%;
+        margin: 20px 0;
+    }
+    .joy-4-page .top-info h3,
+    .list-service li .box-info h2{
+        font-size:30px;
+    }
+    .joy-4-page .top-info p {
+        font-size: 16px;
+        padding: 0 5%;
+    }
+    .joy-4-page .list-joy li strong {
+        font-size:18px;
+    }
+    .joy-4-page .list-joy li label {
+        font-size:16px;
+    }
+
     .franchise-concept .list-country li a{
         font-size:13px;
     }
@@ -4248,7 +4332,8 @@
         width: calc(100% + 20px);
         margin-left: -10px;
     }
-    .tab-left h1, .tab-left h2 {
+    .tab-left h1, .tab-left h2,
+    .home-service-page h3{
         font-size:20px;
     }
     .joy-card-page .joy-boxinfo,
@@ -4267,33 +4352,7 @@
         transform: scale(0.7);
         left: -10px;
     }
-    .joy-card-page .joy-boxinfo .box-info h4 {
-        font-size:18px;
-    }
-    .cms-page-view .std .joy-card-page p,
-    .joy-card-page .joy-boxinfo .box-info,
-    .cms-page-view .std .joy-card-page li {
-        font-size:15px;
-    }
-    .joy-4-page .list-joy ul li,
-    .joy-4-page .list-joy ul li:nth-child(2){
-        float:left;
-        width:100%;
-        margin: 20px 0;
-    }
-    .joy-4-page .top-info h3 {
-        font-size:30px;
-    }
-    .joy-4-page .top-info p {
-        font-size: 16px;
-        padding: 0 5%;
-    }
-    .joy-4-page .list-joy li strong {
-        font-size:18px;
-    }
-    .joy-4-page .list-joy li label {
-        font-size:16px;
-    }
+
     .list-joy-quality li,
     .list-joy-quality li, .list-joy-quality li:nth-child(3n){
         float:left;
@@ -4321,7 +4380,9 @@
     .service-home-delivery-assembly .box-info label,
     .service-home-delivery-assembly .box-info li,
     .service-home-delivery-assembly .form-list li >label,
-    .cms-page-view .top-info-style1 label{
+    .cms-page-view .top-info-style1 label,
+    .home-service-page .box-service-gray .info-contacts label,
+    .home-service-page .box-service-gray .info-contacts strong{
         font-size:15px;
     }
     .service-detail.service-3d-designer .top-info label,
@@ -4351,7 +4412,8 @@
     .tab-history-content h4,
     .service-detail .top-info h2,
     .cms-page-view .top-info-style1 h2,
-    .design-build-page .box2 label{
+    .design-build-page .box2 label,
+    .home-service-page .box-service-gray .info-contacts a{
         font-size: 24px;
     }
     .joy-design-page .list-designer li .designer-info h4 {
@@ -4619,10 +4681,21 @@
     .design-build-page .box-bottom a {
         font-size:20px;
     }
+    .table_price_delivery.style3 .table_row .total_buy,
+    .table_price_delivery.style3 .table_row .furniture_prd{
+        width:49%;
+    }
 }
 
 @media (min-width: 769px) {
     .cms-page-view .list-other-links li.box-mobile{
         display: none;
+    }
+    .home-service-page .list-service li:nth-child(2n) .box-info h2:before {
+        left:0px;
+    }
+    .home-service-page .list-service li.text-center .box-info h2:before{
+        left:50%;
+        margin-left:-15px;
     }
 }

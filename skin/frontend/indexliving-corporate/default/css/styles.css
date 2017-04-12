@@ -10954,6 +10954,7 @@ div.paypal-logo span > img {
 }
 .table_price_delivery.style3 .table_row .td:last-child {
   width:100%;
+  display: block;
 }
 
 /*cms-custom-form*/
@@ -12971,9 +12972,7 @@ ul.mp-details > li >a:before,
 .home-service-page .list-service li:nth-child(2n+1) .box-info h2:before {
    right:0px;
 }
-.home-service-page .list-service li:nth-child(2n) .box-info h2:before {
-  left:0px;
-}
+
 .home-service-page .list-service li.text-center .box-image{
   width:29%;
   float:left;
@@ -12993,10 +12992,7 @@ ul.mp-details > li >a:before,
   font-size:30px;
   line-height: 32px;
 }
-.home-service-page .list-service li.text-center .box-info h2:before{
-  left:50%;
-  margin-left:-15px;
-}
+
 .home-service-page .box-service-gray {
   float:left;
   width:calc(100% + 2000px);
