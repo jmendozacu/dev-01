@@ -4460,7 +4460,7 @@ a.skip-link {
   padding-bottom: 25px;
 }
 .footer .footer-content {position:relative;}
-.footer .footer-contacts {float:left; width:24%;}
+.footer .footer-contacts {float:left; width:30%;}
 .footer .footer-links {float:right; width:67%;}
 .footer .footer-contacts .phone {float:left; width:100%; padding-bottom:8px; border-bottom:solid 1px #F4F4F4; position:relative;}
 .footer .footer-contacts .phone  img {max-width:55%; padding-right:4%; border-right:solid 1px #898989; display:inline-block;}
@@ -4477,7 +4477,7 @@ a.skip-link {
 .footer .payment img {display:inline-block; margin:0px 3px;}
 .footer .socials li.lineapp{display: none;}
 
-.footer .footer-links .box-links {float:left; width:25%;}
+.footer .footer-links .box-links {float:left; width:25%; padding-left:8px;}
 .footer .footer-links .box-links h3  {color:#363636; font-size:15px; font-weight: bold; line-height:22px;   text-transform: capitalize;}
  @media (min-width: 769px){
   .footer .footer-links .box-links h3.title-shoppingonline {text-indent:-999px; background:url(../images/logo-shopping.png) no-repeat; background-size:114px auto;  min-height:57px; margin-top:-36px;}
