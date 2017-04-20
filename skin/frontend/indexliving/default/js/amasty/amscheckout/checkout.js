@@ -382,7 +382,7 @@ function checkShipping(address_id){
                 if($('outside_service')){
                     $('outside_service').style.display = 'none';
                 }
-                if($('notice_service')){
+                if($('notice_service') && !response.responseJSON.ilm){
                     $('notice_service').hide();
                 }
             }
