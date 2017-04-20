@@ -47,7 +47,8 @@ class Magebuzz_Dealerlocator_Block_Productdealer extends Mage_Core_Block_Templat
       ->join(array('dealerlocatorTag' => $dealerlocatorTagTable), 'dealerlocatorTag.dealer_id=dealerStore.dealer_id', array('dealerlocatorTag.tag'))
       ->addFieldToFilter('productDealer.product_id', $productId)
       ->addFieldToFilter('productDealer.store_id', array('in' => $storeIds))
-      ->addFieldToFilter('dealerStore.store_id', array('in' => $storeIds));
+      ->addFieldToFilter('dealerStore.store_id', array('in' => $storeIds))
+      ->addFieldToFilter('status', 1);
     $productdealerCollection->getSelect()->order('dealerlocatorTag.tag', 'asc');
     $productdealerCollection->getSelect()->group('main_table.dealerlocator_id');
     
