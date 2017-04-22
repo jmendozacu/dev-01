@@ -376,9 +376,14 @@ function checkShipping(address_id){
                 }
             }
             else{
+                if(response.responseJSON.ilm){
+                    jQuery('#amscheckout-submit').attr("disabled", true);
+                }
+                else{
+                    jQuery('#amscheckout-submit').attr("disabled", false);
+                }
                 jQuery('#billing_as_shipping_yes').attr("disabled", false);
                 jQuery('#billing_as_shipping_no').attr("disabled", false);
-                jQuery('#amscheckout-submit').attr("disabled", false);
                 if($('outside_service')){
                     $('outside_service').style.display = 'none';
                 }
