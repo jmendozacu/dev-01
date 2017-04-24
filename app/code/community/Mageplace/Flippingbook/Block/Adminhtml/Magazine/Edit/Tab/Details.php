@@ -173,6 +173,15 @@ class Mageplace_Flippingbook_Block_Adminhtml_Magazine_Edit_Tab_Details extends M
                 )
             )
         );
+      $fieldset_details->addField('description',
+        'textarea',
+        array(
+          'name'     => 'description',
+          'label'    => $this->__('Description'),
+          'title'    => $this->__('Description'),
+          'required' => false
+        )
+      );
 
         $form->setValues($model->getData());
 

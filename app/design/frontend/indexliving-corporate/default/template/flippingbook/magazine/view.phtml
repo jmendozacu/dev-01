@@ -59,9 +59,14 @@
         <div ignore="1" class="fb_topBar">
             <?php if ($_magazine->getDisplayTitle()): ?>
               <div class="box-title">
-                  <div class="date-active"><?php echo $this->__('9/2559') ?></div>
+                  <div class="date-active">
+                    <?php
+                    $createDate = new DateTime($_magazine->getData('created_at'));
+                    echo $createDate->format('Y-m-d');
+                      ?>
+                  </div>
                   <h2 id="fb_bookname"><?php echo $_magazine->getName(); ?></h2>
-                  <div class="short-des"><?php echo $this->__('Lorem Ipsum has been the standard dummy text ever since the 1500s') ?></div>
+                  <div class="short-des"><?php echo $_magazine->getDescription() ?></div>
               </div>
             <?php endif; ?>
             <div class="tb_social" style="float: right; margin-left: 0px;">
