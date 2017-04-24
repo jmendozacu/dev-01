@@ -96,6 +96,28 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit extends Magpleasure_Blog_Block_
         ";
 
         $this->setTemplate('mpblog/post/edit.phtml');
+        $this->_formScripts[] = "
+            function saveAndContinueEdit(){
+                editForm.submit($('edit_form').action+'back/edit/');
+            }
+
+            function removeImage(image ){
+                new Ajax.Request('"
+          . $this->getUrl('*/*/removeimage', array('_current' => true))
+          . "', {
+                            parameters: {
+                                         form_key: FORM_KEY,
+                                         value: image,
+                                         },
+                            evalScripts: true,
+                            onSuccess: function(data) {
+                                 $(image).remove();
+                                  var result = data.responseText.evalJSON();
+
+                            }
+                        });
+            }
+        ";
     }
 
     public function getBackUrl()

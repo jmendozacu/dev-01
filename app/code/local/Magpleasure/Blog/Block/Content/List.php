@@ -96,7 +96,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
 
         $this->getToolbar()
             ->setPagerObject(Mage::getModel('mpblog/list'))
-            ->setLimit($this->_helper()->getPostsLimit())
+//            ->setLimit($this->_helper()->getPostsLimit())
             ->setCollection($this->getCollection())
             ->setTemplate('mpblog/list/pager.phtml')
         ;
@@ -110,10 +110,10 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
 
         $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
         if ($breadcrumbs){
-            $breadcrumbs->addCrumb('blog', array(
-                'label' => $this->_helper()->getMenuLabel(),
-                'title' => $this->_helper()->getMenuLabel(),
-            ));
+//            $breadcrumbs->addCrumb('blog', array(
+//                'label' => $this->_helper()->getMenuLabel(),
+//                'title' => $this->_helper()->getMenuLabel(),
+//            ));
         }
     }
 

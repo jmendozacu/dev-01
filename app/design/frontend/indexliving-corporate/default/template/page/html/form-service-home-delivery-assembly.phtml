@@ -1,0 +1,131 @@
+<form id="shipping-form-validate" method="post">
+  <ul class="form-list">
+    <li class="field">
+      <label><?php echo $this->__('Type Product to buy') ?></label>
+      <div class="input-box">
+        <?php
+        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'am_shipping_type'); //"am_shipping_type" is the attribute_code
+        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+        ?>
+        <select class="validate-select" name="shipping_type" id="shipping_type">
+          <option value=""><?php echo $this->__('Choose an Option...') ?></option>
+          <?php foreach ($allOptions as $instance) :
+            if($instance['value'] && $instance['label']):?>
+              <option value="<?php echo $instance['value']; ?>">
+                <?php echo $instance['label'] ?>
+              </option>
+            <?php endif;?>
+          <?php endforeach;?>
+        </select>
+      </div>
+    </li>
+    <li class="field">
+      <label><?php echo $this->__('Order budget') ?></label>
+      <div class="input-box">
+        <input placeholder="<?php echo $this->__('baht') ?>" type="number" class="input-text required-entry validate-digits validate-digits-range digits-range-0-9999999999" maxlength="10" title="Budget" value="" name="budget" id="budget">
+      </div>
+    </li>
+    <li class="fields shipping-weight" style="display: none" id="shipping-weight">
+      <h4>Weight (KG.)</h4>
+      <div class="field name-weight">
+        <div class="input-box" style="float: left;">
+          <input type="number" step="0.01" class="input-text validate-digits-range digits-range-0-9999999999" maxlength="10" title="Weight" value="" name="weight" id="weight">
+        </div>
+        <span style="margin: 10px 0 0 15px;float: left;">Kg</span>
+      </div>
+    </li>
+    <li class="field">
+      <label><?php echo $this->__('Delivery location') ?></label>
+      <div class="input-box">
+        <label><?php echo $this->__('Province') ?></label>
+        <select id="region_id" name="region_id" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="validate-select" style="display:none;">
+          <option value=""><?php echo $this->__('Please select state or province') ?></option>
+        </select>
+        <input type="text" id="region" name="region" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" />
+      </div>
+      <div class="input-box">
+        <label><?php echo $this->__('County / District') ?></label>
+        <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select" style="display:none;">
+          <option value=""><?php echo $this->__('Please select City') ?></option>
+        </select>
+        <input type="text" name="city" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('City')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
+      </div>
+      <div class="field" style="display: none">
+        <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+        <div class="input-box">
+          <?php echo $this->getLayout()->getBlockSingleton('directory/data')->getCountryHtmlSelect(); ?>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="buttons-set">
+     <div class="note">
+       <?php echo $this->__('Note: This calculation is a preliminary calculation of shipping costs.')?>
+     </div>
+    <button class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+    <button class="button button-cancel" title="Cancel" type="reset" onclick="$j('.result').fadeOut();"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
+
+  </div>
+</form>
+<script type="text/javascript">
+
+  new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+
+  new CityUpdater('country', 'region_id', 'city', 'city_id', <?php echo Mage::helper('customaddress')->getCityJson() ?>);
+
+</script>
+
+<script>
+
+  var formId = 'shipping-form-validate';
+  var myForm = new VarienForm(formId, true);
+  var postUrl = '<?php echo $this->getUrl("delivery/index/result") ?>';
+
+  function doAjax() {
+    if (myForm.validator.validate()) {
+      $j('.result').fadeOut();
+      $j('#ajaxcart-overlay').show();
+      $j('#ajax_cart_loading').show();
+      var request = new Ajax.Request(
+        postUrl,
+        {
+          method:'post',
+          parameters: $(formId).serialize(true),
+          onSuccess: function(transport){
+            if(transport.responseText.isJSON()) {
+              var result = transport.responseText.evalJSON();
+              if (result.success) {
+                $j('#ajaxcart-overlay').hide();
+                $j('#ajax_cart_loading').hide();
+                $j('.result').text(result.cost);
+                $j('.result').fadeIn();
+              }else{
+                $j('#ajaxcart-overlay').hide();
+                $j('#ajax_cart_loading').hide();
+                alert('No shipping cost available with this value!');
+              }
+            }
+          }
+        }
+      );
+    }
+  }
+
+  new Event.observe(formId, 'submit', function(e){
+    e.stop();
+    doAjax();
+  });
+
+//  $('shipping_type').on('change', function(event) {
+//    if($('shipping_type').value == '14309'){
+//      $('weight').addClassName('required-entry');
+//      $('line-hr-weight').show();
+//      $('shipping-weight').show();
+//    }else{
+//      $('weight').removeClassName('required-entry');
+//      $('weight').value = "";
+//      $('line-hr-weight').hide();
+//      $('shipping-weight').hide();
+//    }
+//  });
+</script>

@@ -1,0 +1,40 @@
+<?php
+$collection = $this->getCollection();
+$category_id = $collection->getFirstItem()->getData('category_id');
+$category_title = Mage::getModel('faq/category')->load($category_id)->getData('category_name');
+?>
+<?php if (count($collection)): ?>
+  <div class="list-faqs list-faq-<?php echo $category_id ?>">
+    <p class='category_title_faq'><?php echo $this->__($category_title) ?></p>
+    <div id="list-faq">
+      <?php foreach ($collection as $faq): ?>
+        <div id="faq_<?php echo $faq->getData('faq_id') ?>">
+          <div id="question_<?php echo $faq->getData('faq_id') ?>" class="question">
+            <span class="content"><?php echo $faq->getData('question'); ?></span>
+          </div>
+          <div id="answer_<?php echo $faq->getData('faq_id') ?>" class="answer">
+            <span class="content"><?php echo $faq->getData('answer'); ?></span>
+          </div>
+        </div>
+        <div class="clearboth"></div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+<?php else: ?>
+  <div class="list-faqs">
+    <p class="no_faq"><?php echo $this->__("There are no FAQ yet.") ?></p>
+  </div>
+<?php endif; ?>
+<script type="text/javascript">
+  jQuery(".answer").hide();
+  jQuery(".question").click(function(){
+    if(jQuery(this).hasClass('active')){
+      jQuery(this).removeClass('active');
+      jQuery(this).next().hide();
+    }
+    else{
+      jQuery(this).addClass('active');
+      jQuery(this).next().show();
+    }
+  })
+</script>

@@ -1,0 +1,186 @@
+<div class="application-form">
+    <div class="application-form-head">
+        <h2 id="application-title"><?php echo $this->__('Application Form')?></h2>
+    </div>
+    <div class="application-form-content">
+        <form id="application-form" action="" method="post">
+            <div class="appli-form-block">
+                <ul class="appli-form-list">
+                    <li>
+                        <div class="field left">
+                            <label for="contact_name" class="required"><em>*</em><?php echo $this->__('Contact person name') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="contact_name" value="" id="contact_name" class="input-text required-entry" title="<?php echo $this->__('Contact person name') ?>" />
+                            </div>
+                        </div>
+                        <div class="field right">
+                            <label for="company_name" class="required"><em>*</em><?php echo $this->__('Company name') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="company_name" value="" id="company_name" class="input-text required-entry" title="<?php echo $this->__('Company name') ?>" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field left">
+                            <label for="address" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="address" value="" id="address" class="input-text required-entry" title="<?php echo $this->__('Address') ?>" />
+                            </div>
+                        </div>
+                        <div class="field right">
+                            <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="country" value="" id="country" class="input-text required-entry" title="<?php echo $this->__('Country') ?>" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field left">
+                            <label for="tel" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="tel" value="" id="tel" class="input-text required-entry" title="<?php echo $this->__('Telephone') ?>" />
+                            </div>
+                        </div>
+                        <div class="field right">
+                            <label for="fax" class="required"><em>*</em><?php echo $this->__('Fax') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="fax" value="" id="fax" class="input-text required-entry" title="<?php echo $this->__('Fax') ?>" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field left">
+                            <label for="website" class="required"><em>*</em><?php echo $this->__('Website') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="website" value="" id="website" class="input-text required-entry" title="<?php echo $this->__('Website') ?>" />
+                            </div>
+                        </div>
+                        <div class="field right">
+                            <label for="email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                            <div class="input-box">
+                                <input type="email" name="email" value="" id="email" class="input-text required-entry" title="<?php echo $this->__('Email') ?>" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="appli-form-list">
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="current_business" class="required"><em>*</em><?php echo $this->__('What is your current business?') ?></label>
+                            <div class="input-box area">
+                                <textarea style="text-align: left" rows="3" name="current_business" id="current_business" class="input-text required-entry" title="<?php echo $this->__('What is your current business?') ?>" ></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="retail_business" class="required"><em>*</em><?php echo $this->__('Have you ever been retail business before? <br />(If yes, please desciber)') ?></label>
+                            <div class="input-box area">
+                                <textarea name="retail_business" rows="3" id="retail_business" class="input-text required-entry" title="<?php echo $this->__('Have you ever been retail business before?(If yes, please desciber)') ?>" ></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="number_staff" class="required"><em>*</em><?php echo $this->__('How many staff working in your company?') ?></label>
+                            <div class="input-box area">
+                                <textarea name="number_staff" rows="3" id="number_staff" class="input-text required-entry" title="<?php echo $this->__('How many staff working in your company?') ?>"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="sale_turnover" class="required"><em>*</em><?php echo $this->__('What is your sale turnover (Volume) per year?') ?></label>
+                            <div class="input-box area">
+                                <textarea name="sale_turnover" rows="3" id="sale_turnover" class="input-text required-entry" title="<?php echo $this->__('What is your sale turnover (Volume) per year?') ?>"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="warehouse" class="required"><em>*</em><?php echo $this->__('Do you have your own warehouse(s)? If yes, the what is/are the location and sizing space?') ?></label>
+                            <div class="input-box area">
+                                <textarea name="warehouse" rows="3" id="warehouse" class="input-text required-entry" title="<?php echo $this->__('Do you have your own warehouse(s)? If yes, the what is/are the location and sizing space?') ?>"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="experience" class="required"><em>*</em><?php echo $this->__('Have you ever had any experience in dealing with franchise business before? If yes, then what kind of the business?') ?></label>
+                            <div class="input-box area">
+                                <textarea name="experience" rows="3" id="experience" class="input-text required-entry" title="<?php echo $this->__('Have you ever had any experience in dealing with franchise business before? If yes, then what kind of the business?') ?>"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="potential_competitor"  class="required"><em>*</em><?php echo $this->__('Who are potential competitor of Index Living Mall in your country?') ?></label>
+                            <div class="input-box area">
+                                <textarea name="potential_competitor" rows="3" id="potential_competitor" class="input-text required-entry" title="<?php echo $this->__('Who are potential competitor of Index Living Mall in your country?') ?>"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="field field-textarea">
+                            <label for="potential_locations"  class="required"><em>*</em><?php echo $this->__('Do you have any potential locations for Index Living Mall Store? / What location? / How large?') ?></label>
+                            <div class="input-box area">
+                                <textarea name="potential_locations" rows="3" id="potential_locations" class="input-text required-entry" title="<?php echo $this->__('Do you have any potential locations for Index Living Mall Store? / What location? / How large?') ?>"></textarea>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <p class="note"><?php echo $this->__('* You must fill the information') ?></p>
+                <button type="submit" title="Submit" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+            </div>
+            <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        </form>
+    </div>
+</div>
+<div class="message-franchise" style="display:none;">
+    <a title="Close" class="ajaxcart-close" href="javascript:void(0)" onclick="closeFranchisePopup();"></a>
+    <div class="ajaxcart-body">
+        <p class="added-success-message">Send email successful.</p>
+    </div>
+</div>
+<script type="text/javascript">
+    //< ![CDATA[
+    var myForm = new VarienForm('application-form',true);
+    //]]>
+    var formId = 'application-form';
+    var postUrl = '<?php echo $this->getUrl('franchise/index/sendemail')?>';
+    function doAjax() {
+        if (myForm.validator.validate()) {
+            $j('#ajaxcart-overlay').show();
+            $j('#ajax_cart_loading').show();
+            var request = new Ajax.Request(
+                postUrl,
+                {
+                    method:'post',
+                    parameters: $(formId).serialize(true),
+                    onSuccess: function(transport){
+                        if(transport.responseText.isJSON()) {
+                            var result = transport.responseText.evalJSON();
+                            if (result.success) {
+                                $j('#ajax_cart_loading').hide();
+                                $j('.message-franchise').show();
+                            }else{
+                                $j('#ajaxcart-overlay').hide();
+                                $j('#ajax_cart_loading').hide();
+                                alert('Can not sent email');
+                            }
+                        }
+                    }
+                }
+            );
+        }
+    }
+    function closeFranchisePopup(){
+        $j('.message-franchise').hide();
+        $j('#ajaxcart-overlay').hide();
+        $('application-form').reset()
+    }
+    new Event.observe(formId, 'submit', function(e){
+        e.stop();
+        doAjax();
+    });
+</script>

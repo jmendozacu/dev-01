@@ -339,4 +339,132 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
 
         $this->_redirect('customer/account/login');
     }
+    public function filterproductAction(){
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+        $collection = Mage::getBlockSingleton('mpblog/content_list')->getCollection();
+        $data = $this->getRequest()->getParams();
+        //$page_no = $data['p'];
+        // check replace content_ajax by category_style
+        $home_decor_category_style = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
+        $promotion_category_style = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
+        $newevent_crs_category_style = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+        $index_project_category_style = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
+        $category_id = $data['id'];
+        $category_collection = Mage::getModel('mpblog/category')->load($category_id);
+        $category_style = $category_collection->getData('category_style');
+
+        if($category_style == $promotion_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_promotionstyle.phtml')->toHTML();
+        }
+        elseif($category_style == $newevent_crs_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_newevent_crsstyle.phtml')->toHTML();
+        }
+        elseif($category_style == $home_decor_category_style){
+            $is_landing_field = $category_collection->getData('category_is_landing');
+            if($is_landing_field){
+                $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+                  ->setCollection($collection)
+                  ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+            }
+            else{
+                $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+                  ->setCollection($collection)
+                  ->setTemplate('mpblog/contentajaxpager_homedecor_sublanding.phtml')->toHTML();
+            }
+
+        }
+        elseif($category_style == $index_project_category_style){
+            $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+              ->setCollection($collection)
+              ->setTemplate('mpblog/contentajaxpager_index_projectstyle.phtml')->toHTML();
+        }
+        $response['success'] = 'true';
+        $this->getResponse()->setBody(json_encode($response));
+        return;
+    }
+
+  public function pagerMobieAction()
+  {
+
+    $this->getResponse()->setHeader('Content-type', 'application/json');
+    $response = array();
+    $collection = Mage::getBlockSingleton('mpblog/content_list')->getCollection();
+    $data = $this->getRequest()->getParams();
+    $current_page = $data['p'];
+    //$page_no = $data['p'];
+    // check replace content_ajax by category_style
+    $home_decor_category_style = Magpleasure_Blog_Model_Categorystyle::HOME_DECOR;
+    $promotion_category_style = Magpleasure_Blog_Model_Categorystyle::PROMOTION;
+    $newevent_crs_category_style = Magpleasure_Blog_Model_Categorystyle::NEWEVENT_CSR;
+    $index_project_category_style = Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT;
+    $category_id = $data['id'];
+    $category_collection = Mage::getModel('mpblog/category')->load($category_id);
+    $category_style = $category_collection->getData('category_style');
+
+    if ($category_style == $promotion_category_style) {
+      $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+        ->setCollection($collection)
+        ->setTemplate('mpblog/contentajaxpager_promotionstyle.phtml')->toHTML();
+    } elseif ($category_style == $newevent_crs_category_style) {
+      $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+        ->setCollection($collection)
+        ->setTemplate('mpblog/contentajaxpager_newevent_crsstyle.phtml')->toHTML();
+    } elseif ($category_style == $home_decor_category_style) {
+      $is_landing_field = $category_collection->getData('category_is_landing');
+      if ($is_landing_field) {
+        $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+          ->setCollection($collection)
+          ->setTemplate('mpblog/contentajaxpager.phtml')->toHTML();
+      } else {
+        $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+          ->setCollection($collection)
+          ->setTemplate('mpblog/contentajaxpager_homedecor_sublanding.phtml')->toHTML();
+      }
+
+    } elseif ($category_style == $index_project_category_style) {
+      $response['result'] = Mage::app()->getLayout()->createBlock('mpblog/content_category_list')
+        ->setCollection($collection)
+        ->setTemplate('mpblog/contentajaxpager_index_projectstyle.phtml')->toHTML();
+    }
+    $response['success'] = 'true';
+    $response['next_page'] = $current_page + 1;
+    $this->getResponse()->setBody(json_encode($response));
+    return;
+  }
+    public function getSlideImagesAction()
+    {
+        $this->getResponse()->setHeader('Content-type','application/json');
+        $response = array();
+        $post_id = $this->getRequest()->getParam('postId');
+
+        $image_names = Mage::getModel('mpblog/slideimages')
+          ->getCollection()
+          ->addFieldToFilter('post_id', $post_id);
+        $media_dir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+
+        $html = '';
+        if($image_names){
+            $html .='<ul class="main-slider-id'.$post_id.'" id="main-slider-id'.$post_id.'">';
+            foreach ($image_names as $image_name) {
+                $images = $image_name->getImages();
+                $paths = $media_dir . 'magebuzz/' . $images;
+
+                $html .= '<li class="popup_img_li_'.$post_id.'">';
+                $html .= '<a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="'.$paths.'">';
+                $html .= '<img alt="image post" src="'.$paths.'" />';
+                $html .= '</a>';
+                $html .= '</li>';
+            }
+            $html .= '</ul>';
+        }
+        $response['result'] = $html;
+        $response['success'] = 'true';
+        $this->getResponse()->setBody(json_encode($response));
+        return;
+    }
 }

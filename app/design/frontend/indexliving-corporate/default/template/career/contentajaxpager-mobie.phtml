@@ -1,0 +1,33 @@
+<?php
+$collections = $this->getCollection();
+?>
+<?php if (count($collections)): ?>
+
+    <?php foreach($collections as $collection): ?>
+      <li class="job-item">
+        <dl>
+          <dt><?php echo $this->__('Job Title')?></dt>
+          <dd><?php echo $collection->getData('title'); ?></dd>
+          <dt><?php echo $this->__('Job Function')?></dt>
+          <dd><?php echo $collection->getData('function'); ?></dd>
+          <dt><?php echo $this->__('Position')?></dt>
+          <dd><?php echo $collection->getData('position'); ?></dd>
+          <dt><span><?php echo $this->__('Location')?></dt>
+          <dd><?php echo $collection->getData('location'); ?></dd>
+        </dl>
+        <a class="button read-more" href='<?php echo $this->getUrl('*/*/application',array('id' => $collection->getData('job_id')));?>'><span><?php echo $this->__('Read more')?></span></a>
+      </li>
+    <?php endforeach?>
+
+<?php else:?>
+  <?php echo $this->__("There are no jobs yet."); ?>
+<?php endif; ?>
+<script type="text/javascript">
+//  jQuery(".pagination-mobie #a-previous").click(function(event) {
+    jQuery(document).on('click', '.pagination-mobie #a-previous', function(){
+    var page = jQuery('#a-previous').html();
+    page = parseInt(page);
+    checkEnableNextPreviousButton(page);
+    updatePageMobie(page);
+  });
+</script>

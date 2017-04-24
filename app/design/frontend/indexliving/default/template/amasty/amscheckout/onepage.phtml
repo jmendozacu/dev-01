@@ -241,6 +241,7 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                                         <?php echo $this->getChildHtml("shipping") ?>
                                     </div>
                                 </div>
+                              <p id="outside_service" style="padding-top: 10px; font-size: 15px;display: none; color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
                                 <?php /*}*/
                                 ?>
                                 <?php if (!$skipBilling) { ?>
@@ -381,6 +382,7 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                                             <?php echo $this->getChildHtml("shipping") ?>
                                         </div>
                                     </div>
+                                  <p id="outside_service" style="padding-top: 10px; font-size: 15px;display: none; color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
                                 <?php } ?>
                             </div>
                             <div class="second-column">
@@ -499,6 +501,7 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
                                             <?php echo $this->getChildHtml("shipping") ?>
                                         </div>
                                     </div>
+                                  <p id="outside_service" style="padding-top: 10px; font-size: 15px;display: none; color: red;"><?php echo $this->__('*Sorry, outside the service zone')?></p>
                                 <?php } ?>
                                 <?php if (!$skipShippingMethod) { ?>
                                     <div class="column-section">
@@ -898,10 +901,9 @@ if ($hlr->isCustomerMustBeLogged() && !$this->isCustomerLoggedIn()) {
 
         if ($('shipping-address-select')) {
             $('shipping-address-select').observe('change', function () {
-                updateCheckout('shipping');
+              updateCheckout('shipping');
             });
         }
-
 
         reviewEvents();
         cartEvents();

@@ -96,12 +96,11 @@ class Magpleasure_Blog_Block_Content_Post extends Magpleasure_Blog_Block_Content
 
         $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
         if ($breadcrumbs){
-            $breadcrumbs->addCrumb('blog', array(
-                'label' => $this->_helper()->getMenuLabel(),
-                'title' => $this->_helper()->getMenuLabel(),
-                'link' => $this->_helper()->_url()->getUrl(),
-            ));
-
+//            $breadcrumbs->addCrumb('blog', array(
+//                'label' => $this->_helper()->getMenuLabel(),
+//                'title' => $this->_helper()->getMenuLabel(),
+//                'link' => $this->_helper()->_url()->getUrl(),
+//            ));
             $breadcrumbs->addCrumb('post', array(
                 'label' => $this->getTitle(),
                 'title' => $this->getTitle(),

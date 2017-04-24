@@ -301,6 +301,14 @@ input[name^="amshopby"][id$="from"].input-text, input[name^="amshopby"][id$="to"
 	.amshopby-featured-wrapper .brands-grid li{float:left; width:100%; margin-left:0; margin-bottom:15px; position:relative;}
 	.amshopby-featured-wrapper .brands-grid li.first{margin-left:0;}
 	.amshopby-featured-wrapper .brands-grid li.last{margin-left:0;}
+    .amshopby-featured-wrapper .brands-grid li {
+        width:100%;
+        margin-left:0px;
+        border:solid 1px #ebebeb;
+    }
+    .cms-page-view .secound_con .con_success_left {
+
+    }
 }
 @media (min-width: 600px) and (max-width: 767px) {
 	.amshopby-featured-wrapper .brands-grid li{float:left; width:49%; margin-left:0; margin-bottom:15px; position:relative;}

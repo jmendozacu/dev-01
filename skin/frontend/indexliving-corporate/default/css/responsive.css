@@ -12,7 +12,7 @@
     display: none;
 }
 @media (min-width: 1213px) {
-    .searchautocomplete{width: 530px;}
+    .searchautocomplete{width: 445px;}
 } 
 @media (min-width: 1200px) {
     .compare-popup {
@@ -353,9 +353,9 @@
         text-align: center;
     }
 
-    .cms-page-view .content_cms img {
+    /*.cms-page-view .content_cms img {
         display: inline-block;
-    }
+    }*/
 
     .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio label.inline {
         padding-left: 24px;
@@ -421,7 +421,7 @@
 
 }  
 @media (max-width: 922px) {
-    .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
+    .table_price_delivery .table_row .td, .table_price_delivery .table_row .td.free {
         min-height: 58px;
     }
 
@@ -447,8 +447,6 @@
     }
 }
 
-@media (min-width: 769px) {
-}
 
 @media (min-width: 769px) and (max-width: 991px) {
     /* .box-desktop,
@@ -1000,22 +998,27 @@
 
     .main-home .box-home-list-products .owl-carousel .owl-item {
     }
-
+    .owl-carousel .owl-controls .owl-nav .owl-next {
+        right:0px;
+    }
     .owl-carousel .owl-controls .owl-nav .owl-prev {
-        left: 0;
+        left:0px;
+    }
+    .owl-carousel .owl-controls .owl-nav .owl-prev,
+    .box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-prev{
         background: url(../images/slider-prev5.png) no-repeat 0 0;
     }
-    .owl-carousel .owl-controls .owl-nav .owl-prev:hover {
-        left: 0;
+    .owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+    .box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-prev:hover{
         background: url(../images/slider-prev5_over.png) no-repeat 0 0;
     }
 
-    .owl-carousel .owl-controls .owl-nav .owl-next {
-        right: 0;
+    .owl-carousel .owl-controls .owl-nav .owl-next,
+    .box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-next{
         background: url(../images/slider-next5.png) no-repeat 100% 0;
     }
-    .owl-carousel .owl-controls .owl-nav .owl-next:hover {
-        right: 0;
+    .owl-carousel .owl-controls .owl-nav .owl-next:hover,
+    .box-banners-style3 .bx-wrapper .bx-controls-direction a.bx-next:hover{
         background: url(../images/slider-next5_over.png) no-repeat 100% 0;
     }
     .main-home .box-home-list-products .banner-right li:nth-child(1),
@@ -1695,6 +1698,17 @@
     .footer .footer-links .box-links {
         width: 100%;
     }
+    .footer .footer-contacts {
+        text-align: center;
+    }
+    .footer .footer-contacts .phone {
+        float:none;
+        display: inline-block;
+    }
+    .footer .footer-contacts .phone label {
+        text-align: left;
+        width:auto;
+    }
 
     .footer .footer-links .box-links {
         border-bottom: solid 1px #DADADA;
@@ -1710,6 +1724,7 @@
         padding: 10px 0;
         position: relative;
         margin: 0px;
+        font-size: 16px;
     }
 
     .footer .footer-links .box-links h3:before {
@@ -1732,7 +1747,9 @@
         -o-transform: rotate(-180deg);
         transform: rotate(-180deg);
     }
-
+    .footer .footer-links .box-links li  a {
+        font-size: 14px;
+    }
     .footer-bottom address {
         width: 100%;
         text-align: center;
@@ -1751,7 +1768,7 @@
     }
 
     .breadcrumbs {
-        margin: 5px 0;
+        margin: 9px 0;
     }
 
     .breadcrumbs li {
@@ -2945,26 +2962,73 @@
     width: 593px;
 }
 @media (max-width: 697px) {
-    .delivery-index-index .total_buy, .delivery-index-index .desktop_show {
+    .table_price_delivery .desktop_show {
         display: none;
     }
 
-    .delivery-index-index .mobile_show {
+    .table_price_delivery .mobile_show {
         display: block;
     }
 
-    .delivery-index-index .th, .delivery-index-index .tr, .delivery-index-index .table_price_delivery .table_row .furniture_prd, .delivery-index-index .table_price_delivery .table_row .home_prd,
-    .delivery-index-index .table_price_delivery .table_row .furniture_prd.one {
+    .table_price_delivery .th,
+    .table_price_delivery .tr,
+    .table_price_delivery .table_row .furniture_prd,
+    .table_price_delivery .table_row .home_prd,
+    .table_price_delivery .table_row .furniture_prd.one,
+    .table_price_delivery.style2 .table_row .furniture_prd{
         width: 100%
     }
-
-    .delivery-index-index .mobile_show .td.white.full, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
-        min-height: 22px;
+    .table_price_delivery.style2 .table_row {
+        border-bottom:0px;
+    }
+    .delivery-index-index .mobile_show .td.white.full,
+    .table_price_delivery .table_row .td,
+    .table_price_delivery .table_row .td,
+    .table_price_delivery .table_row .td.free {
+        min-height: 0px;
+    }
+    .table_price_delivery .table_row .td.free {
+        height:auto;
     }
 
-    .delivery-index-index .table_price_delivery .table_row .th {
+    .table_price_delivery .table_row .th {
         margin-top: 20px;
+        padding:5px;
+        line-height:25px;
     }
+    .table_price_delivery .table_row .th h3 {
+        margin-bottom:0px;
+    }
+
+    .table_price_delivery .title-total-buy {
+        text-align: left;
+        font-size:18px;
+        font-weight: 500;
+        color:#000;
+    }
+    .table_price_delivery .title-total-buy strong {
+        font-weight: 500;
+        color:#ffc222;
+    }
+    .table_price_delivery .table_row .td h4 {
+        font-size:14px;
+    }
+    .table_price_delivery .table_row .td {
+        padding:5px;
+        vertical-align: middle;
+        display: table-cell;
+        float:none;
+    }
+    .table_price_delivery .table_row .tr.clearfix.style1 .td {
+        vertical-align: top;
+    }
+    .table_price_delivery .table_row .td p {
+        font-size:14px;
+    }
+    .table_price_delivery .table_row .td.full {
+        float:left;
+    }
+
 }
 
 @media (max-width: 640px) {
@@ -3745,11 +3809,6 @@
         margin-left: -150px;
     }
 
-    .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td,
-    .delivery-index-index .table_price_delivery .table_row .td, .delivery-index-index .table_price_delivery .table_row .td.free {
-        min-height: 58px;
-    }
-
     .pop_up .btn_set a {
         margin: 0 10px;
         width: 105px;
@@ -3759,5 +3818,884 @@
 
     .pop_up .btn_set {
         margin-top: -30px;
+    }
+}
+
+/* update index-corporate */
+@media (max-width:1120px) {
+    .joy-service-page .list-service li .box-info p  {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .joy-service-page .list-service li .box-info h2 {
+        margin-bottom:8px;
+    }
+}
+@media (max-width:991px) {
+    /* career page */
+    .career-top-info .top-info .content-info,
+    body.career-index-application #career #application .career-contacts {
+        position: static;
+        width:100%;
+        float:left;
+        margin-top:10px;
+        border: solid 2px #ffc222;
+    }
+    .career-top-info .top-info .content-info:before,
+    .career-top-info .top-info .content-info:after  {
+        display: none;
+    }
+    .page-title.style2 h1 {
+        font-size:16px;
+        padding:5px 0;
+    }
+    .box-titlestyle2 {
+        font-size: 16px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        line-height: 30px;
+    }
+    body.career-index-application #career #application .application_form {
+        width:100%;
+    }
+}
+@media (max-width: 768px){
+    .job_list {
+        float:left;
+        width:100%;
+    }
+    .job_list .job-item {
+        float:left;
+        width:100%;
+        margin: 0 0 10px;
+        border:solid 1px #e6e6e6;
+        padding:10px;
+        text-align: left;
+        font-size:15px;
+        color:#000;
+        font-weight: 300;
+    }
+    .job_list .job-item:nth-child(2n) {
+        border:none;
+        background:#F7F7F7;
+    }
+    .job_list .job-item dt {
+      font-weight: 500;
+    }
+    .job_list .job-item dd {
+        margin-bottom:12px;
+    }
+    .job_list .job-item .read-more {
+        font-size: 16px;
+        padding: 2px 10px;
+        font-weight: 500;
+    }
+    body.career-index-application #career #application span.join_us {
+        display: block;
+    }
+    body.career-index-application #career #application p.join_us {
+        font-size:18px;
+    }
+    .show-categories {
+        float:left;
+        width:100%;
+        background:#F0F0F0;
+        color:#000;
+        padding:5px 10px;
+        line-height: 30px;
+        position: relative;
+        font-size:16px;
+    }
+    .show-categories:after{
+        content:"";
+        width:8px;
+        height:8px;
+        border-top:solid 1px #000;
+        border-right:solid 1px #000;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
+        transform: rotate(135deg);
+        position: absolute;
+        top:50%;
+        margin-top:-5px;
+        right:10px;
+    }
+    .show-categories.active:after{
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        margin-top: -1px;
+    }
+    .show-categories .title-hide,
+    .show-categories.active .title-show{
+        display: none;
+    }
+    .show-categories.active .title-hide {
+        display: block;
+    }
+    .list-categories .categories-title {
+        font-size:16px;
+        font-weight: 500;
+    }
+    .list-categories a{
+        border-bottom:solid 1px #ebebeb;
+        display: block;
+        position: relative;
+        padding:10px;
+        line-height: 20px;
+    }
+    .list-categories a:after{
+        content:"";
+        width:8px;
+        height:8px;
+        border-top:solid 1px #C8C8C8;
+        border-right:solid 1px #C8C8C8;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top:50%;
+        right:10px;
+    }
+    .list-categories .mpblog-category.level-2 {
+        float: left;
+        width: 100%;
+        margin: 0px;
+    }
+    .list-categories .mpblog-category.level-2 li a  {
+        padding-left:30px;
+    }
+    /* franchise page */
+    .tab-left .tabs {
+        margin-bottom:20px;
+    }
+    .tab-left .tab_container {
+        width:100%;
+    }
+    .cms-franchise .tab-left .tab_container {
+        padding-left:0px;
+    }
+    .franchise-concept .col-2-image {
+        margin:25px 0;
+    }
+    .products-grid > li,
+    .products-grid div.item {
+        border: solid 1px #EAEAEA;
+        border-radius: 3px;
+        box-shadow: 0px 0px 2px 2px #F8F8F8;
+        padding:10px;
+    }
+    .joy-card-page .joy-boxinfo .box-image {
+        display: none;
+    }
+    .joy-card-page .joy-boxinfo .box-info {
+        padding-left:0px;
+        float:left;
+        width:100%;
+    }
+    .joy-card-page  .box-banners {
+        margin-bottom:0px;
+    }
+    .list-joy-quality li,
+    .list-joy-quality li:nth-child(3n){
+        width:49%;
+        margin-right:2%;
+    }
+    .list-joy-quality li:nth-child(2n) {
+        margin-right:0px;
+    }
+    .joy-price-page  .box-left,
+    .joy-price-page  .box-right {
+        width:100%;
+        padding-left:0px;
+    }
+    .joy-price-page  .box-left {
+        margin-bottom:20px;
+        border-bottom:solid 1px #e6e6e6;
+        padding-bottom:20px;
+        text-align: center;
+    }
+    .joy-price-page  .box-left  .img-logo {
+        margin:0 auto 15px;
+    }
+    .joy-service-page .list-service li {
+        border:solid 1px #ebebeb;
+    }
+    .joy-service-page .list-service li .box-image,
+    .joy-service-page .list-service li .box-info {
+        float:left;
+        width:100%;
+        position: static;
+        border: none;
+    }
+    .joy-service-page .list-service li .box-info >div,
+    .joy-service-page .list-service li:nth-child(2n + 1) .box-info >div{
+        position: static;
+        float: left;
+        transform: none;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+    .joy-design-page .list-designer li .avatar,
+    .joy-design-page .list-designer li .description p,
+    .joy-design-page .list-designer li .description .box-iframe,
+    .joy-design-page .list-designer li .designer-info,
+    .joy-design-page .list-designer li:nth-child(2n) .designer-info {
+        width:100%;
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .joy-design-page .list-designer li .avatar {
+        width:100%;
+        padding-bottom:100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .joy-design-page .list-designer li .avatar img {
+        position: absolute;
+        width:100%;
+        height:auto;
+        left:0px;
+        top:0px;
+    }
+    .joy-design-page .list-designer li:nth-child(2) .avatar img {
+       top:-30%;
+    }
+    .cms-page-view .content_cms.about-us .frist_con .c_left,
+    .cms-page-view .content_cms.about-us .frist_con .c_right{
+       width:100%;
+        float:left;
+        text-align: left;
+    }
+    .cms-brand .top-content label br {
+        display: none;
+    }
+    .cms-brand .box-content .box-left-40,
+    .cms-brand .box-content .box-right-60,
+    .cms-brand .ul-style2 li .box-left-60{
+        width:100%!important;
+        padding-left:0px!important;
+        padding-right:0px!important;
+    }
+    .cms-brand .box-content .box-left-40 {
+        margin-bottom:20px;
+    }
+    .cms-brand .box-content .box-left-40 img {
+        margin:0 auto 20px;
+    }
+    .cms-brand .box-content img {
+        margin:auto;
+    }
+    .cms-brand .box-content .ul-style2 li .box-left-40 img {
+       margin:10px 0;
+    }
+    .cms-page-view .show-categories {
+        margin-top:20px;
+    }
+    .cms-page-view .list-other-links {
+        border-bottom:none;
+        padding:0px;
+    }
+    .cms-page-view .list-other-links li{
+        float:left;
+        width:100%;
+        margin:0px;
+        text-align: left;
+    }
+    .cms-page-view .list-other-links li span {
+        display: none;
+    }
+    .cms-page-view .list-other-links li a {
+        color:#363636;
+        font-size:16px;
+        text-transform: capitalize;
+        font-weight: 300;
+    }
+    .cms-page-view .list-other-links li:nth-child(1) a{
+       font-weight: 500;
+        text-transform: uppercase;
+    }
+    .cms-page-view .list-other-links li:nth-child(n+2) a {
+        padding-left:20px;
+    }
+    .design-build-page .list-type-design {
+        width:100%;
+        padding-left:0px;
+        padding-right:0px;
+        margin: 0 0 20px;
+    }
+    .design-build-page .box2 .list-content .designer {
+        display: none;
+    }
+    .design-build-page .box2 li {
+        padding-right:0px;
+    }
+    .design-build-page .box3 .step-3 {
+        display: none;
+    }
+    .design-build-page .box3 .container-box label.tab-title {
+        float:left;
+        width:100%;
+        margin-bottom:0px;
+        background:#000;
+        padding:10px ;
+        font-size:18px;
+        color:#ffc222;
+        font-weight: 500;
+        line-height: 25px;
+        position: relative;
+        text-align: left;
+        margin-top:5px;
+    }
+    .design-build-page .box3 label.tab-title:before {
+        position: absolute;
+        content:"";
+        width:8px;
+        height:8px;
+        border-bottom:solid 1px #fff;
+        border-right:solid 1px #fff;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        right:10px;
+        top:50%;
+        margin-top:-7px;
+    }
+    .design-build-page .box3 label.tab-title.active:before {
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        -ms-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+        margin-top:-2px;
+    }
+
+    /* home service page */
+    .home-service-page .top-info .box-logo,
+    .home-service-page .top-info .box-video,
+    .home-service-page .box-qacode .box-text,
+    .home-service-page .box-qacode .qa-code{
+        float:left;
+        width:100%;
+    }
+    .home-service-page .top-info .box-logo {
+        margin-bottom:20px;
+    }
+    .home-service-page .box-qacode .box-text {
+       font-size:16px;
+        margin-bottom:20px;
+    }
+    .home-service-page .box-qacode .qa-code img {
+        margin:auto;
+    }
+    .home-service-page .list-service li {
+        border:solid 1px #ebebeb;
+    }
+    .home-service-page .list-service li .box-info,
+    .home-service-page .list-service li .box-image,
+    .home-service-page .list-service li.text-center .box-info,
+    .home-service-page .list-service li.text-center .box-image{
+       width:100%;
+        position: static;
+        border:none;
+    }
+    .list-service li .box-info >div,
+    .home-service-page .list-service li.text-center .box-info >div{
+        position: static;
+        transform: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+        padding:12px;
+        text-align: right;
+    }
+    .home-service-page .list-service li:nth-child(2n) .box-info h2:before,
+    .home-service-page .list-service li.text-center .box-info h2:before{
+        right:0px;
+    }
+    .list-service li:nth-child(2n + 1) .box-info >div,
+    .list-service li:nth-child(2n) .box-info >div,
+    .home-service-page .list-service li.text-center .box-info >div {
+        padding:12px;
+    }
+    .home-service-page .box-service-gray li {
+        width:100%;
+        margin:0px 0px 15px;
+    }
+}
+
+@media (max-width: 500px){
+    #application-form  #personal_information,
+    #application-form  #work_information {
+        padding:10px;
+    }
+    #application-form .left,
+    #application-form .right {
+        margin:0px 0 10px;
+        width:100%;
+    }
+    body.career-index-application #application-form li {
+        margin-bottom:0px;
+    }
+    .franchise-concept h2,
+    .franchise-concept h4{
+        font-size:18px;
+    }
+    .franchise-concept .col-2-image img,
+    .franchise-concept .col-2-image img + img{
+        width:100%;
+        margin: 0 0 10px;
+    }
+    .franchise-concept .box-gray {
+        width:calc(100% + 20px);
+        margin-left:-10px;
+    }
+    .franchise-concept .box-gray .box-image ,
+    .franchise-concept .box-gray .box-info,
+    .franchise-concept .box-white .box-image,
+    .franchise-concept .box-white .box-info{
+        width:100%;
+        padding:0px;
+        margin:5px 0;
+    }
+    .franchise-concept .list-stores {
+        padding:10px;
+    }
+    .franchise-concept .list-stores li {
+        width:100%;
+        margin:0 0 10px;
+    }
+    .franchise-concept .list-stores li .box-info .store-name {
+        color:#FFC222;
+    }
+    .franchise-concept a,
+    .franchise-concept,
+    .cms-page-view .std .franchise-concept p,
+    .franchise-concept .ul-style1 li,
+    .franchise-concept label,
+    .franchise-concept .list-stores li .box-info label,
+    .franchise-concept .list-stores li .box-info span,
+    #application-form label{
+        font-size:14px;
+    }
+    .franchise-concept .list-stores li .box-info .store-name,
+    .list-service li .box-info p{
+        font-size:16px;
+    }
+
+    .joy-card-page .joy-boxinfo .box-info h4,
+    .list-service li .box-info label{
+        font-size:18px;
+    }
+    .cms-page-view .std .joy-card-page p,
+    .joy-card-page .joy-boxinfo .box-info,
+    .cms-page-view .std .joy-card-page li {
+        font-size:15px;
+    }
+    .joy-4-page .list-joy ul li,
+    .joy-4-page .list-joy ul li:nth-child(2){
+        float:left;
+        width:100%;
+        margin: 20px 0;
+    }
+    .joy-4-page .top-info h3,
+    .list-service li .box-info h2{
+        font-size:30px;
+    }
+    .joy-4-page .top-info p {
+        font-size: 16px;
+        padding: 0 5%;
+    }
+    .joy-4-page .list-joy li strong {
+        font-size:18px;
+    }
+    .joy-4-page .list-joy li label {
+        font-size:16px;
+    }
+
+    .franchise-concept .list-country li a{
+        font-size:13px;
+    }
+    #application-form .appli-form-block {
+        padding:10px;
+    }
+    #application-form .appli-form-list + .appli-form-list {
+        padding: 10px 10px 0;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+    }
+    .tab-left h1, .tab-left h2,
+    .home-service-page h3{
+        font-size:20px;
+    }
+    .joy-card-page .joy-boxinfo,
+    .cms-box-gray {
+        padding-top:10px;
+        padding-bottom:10px;
+    }
+    .joy-card-page .joy-boxinfo li {
+        padding-left:55px;
+    }
+    .joy-card-page .joy-boxinfo li:before {
+        -webkit-transform: scale(0.7);
+        -moz-transform: scale(0.7);
+        -o-transform: scale(0.7);
+        -ms-transform: scale(0.7);
+        transform: scale(0.7);
+        left: -10px;
+    }
+
+    .list-joy-quality li,
+    .list-joy-quality li, .list-joy-quality li:nth-child(3n){
+        float:left;
+        width:100%;
+        margin: 0 0 15px;
+    }
+    .list-joy-quality li .box-info label {
+        height:auto;
+    }
+    .joy-design-page .list-designer li .designer-info label {
+        font-size:13px;
+    }
+    .list-joy-quality li .box-info label,
+    .joy-price-page  .box-left p,
+    .joy-price-page .box-right li,
+    .joy-design-page .top-info label,
+    .joy-service-page .list-service li .box-info p,
+    .joy-design-page .list-designer li .description p,
+    .cms-page-view .content_cms.about-us  p,
+    .cms-page-view .content_cms.about-us li,
+    .cms-brand .top-content label,
+    .cms-brand .box-content p,
+    .cms-brand .ul-style2 li p,
+    .service-detail .top-info p,
+    .service-home-delivery-assembly .box-info label,
+    .service-home-delivery-assembly .box-info li,
+    .service-home-delivery-assembly .form-list li >label,
+    .cms-page-view .top-info-style1 label,
+    .home-service-page .box-service-gray .info-contacts label,
+    .home-service-page .box-service-gray .info-contacts strong{
+        font-size:15px;
+    }
+    .service-detail.service-3d-designer .top-info label,
+    .service-detail.service-3d-designer .box-info ul li label,
+    .service-home-delivery-assembly .delivery-info .delivery-top,
+    .ul-style-big label,
+    .design-build-page .box2 li{
+        font-size:16px;
+    }
+    .list-joy-quality li .box-info .title,
+    .joy-price-page .box-right li label,
+    .cms-page-view .content_cms.about-us .frist_con .c_right strong,
+    .cms-brand .list-style1 li label,
+    .cms-brand .ul-style2 li label,
+    .service-home-delivery-assembly .box-info .title,
+    .service-home-delivery-assembly .box-info.box-form h2,
+    .design-build-page .box3 .container-box >label{
+        font-size:18px;
+    }
+    .cms-page-view .content_cms.about-us .frist_con .c_right h2,
+    .cms-page-view .content_cms.about-us h3,
+    .cms-brand .top-content h2{
+        font-size:22px;
+    }
+    .joy-service-page .list-service li .box-info h2,
+    .joy-design-page .list-designer li .title-info,
+    .tab-history-content h4,
+    .service-detail .top-info h2,
+    .cms-page-view .top-info-style1 h2,
+    .design-build-page .box2 label,
+    .home-service-page .box-service-gray .info-contacts a{
+        font-size: 24px;
+    }
+    .joy-design-page .list-designer li .designer-info h4 {
+        font-size:29px;
+    }
+    .joy-price-page  .box-left label {
+        font-size:34px;
+    }
+    .design-build-page .box2 h3,
+    .design-build-page .box3 h3{
+        font-size:36px;
+    }
+    .design-build-page .box3 h3 strong {
+        font-size:40px;
+    }
+    .joy-price-page  .box-left h2 {
+        font-size:56px;
+    }
+    .list-joy-quality li .box-info {
+        padding:10px;
+    }
+    .joy-price-page .box-right li {
+        padding:80px 0 0;
+        text-align: center;
+    }
+    .joy-price-page .box-right li:before {
+        left:50%;
+        transform: translate(-50%,0);
+        -webkit-transform: translate(-50%,0);
+        -moz-transform: translate(-50%,0);
+    }
+    .joy-price-page .box-right li label span,
+    .joy-service-page .list-service li .box-info h2 strong {
+        display: block;
+    }
+    .joy-service-page .list-service li:nth-child(3) .box-info h2 strong {
+        display: initial;
+    }
+    .joy-design-page .top-info label br,
+    .joy-design-page .top-info p br{
+        display: none;
+    }
+    .joy-design-page .list-designer li {
+        padding:25px 0;
+    }
+    .joy-design-page .list-designer li:nth-child(1) {
+        margin-top: 25px;
+    }
+    .cms-page-view .secound_con .con_success_left,
+    .cms-page-view .secound_con .img_con_success{
+        width:100%;
+    }
+    .cms-page-view .secound_con .img_con_success img {
+        float:none;
+        margin:auto;
+    }
+    .tab-history-content {
+        padding:20px 10px;
+    }
+    .content_cms.about-us .box-banner .box-info h3 {
+        font-size: 18px;
+        line-height: 20px;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+    .content_cms.about-us .box-banner .box-info {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        max-width: 55%;
+        padding: 5px;
+    }
+    .cms-page-view .content_cms.about-us .frist_con .c_left img {
+        max-width:74%;
+    }
+    .cms-brand .top-content .actions .button,
+    .cms-brand .top-content .actions .button.button-facebook{
+        margin:8px 5px;
+    }
+    .cms-brand .top-content {
+        padding-bottom:25px;
+    }
+    .cms-brand .list-style1 li {
+        width:100%;
+        padding:50px 0 10px;
+    }
+    .cms-brand .list-style1 li .count-item {
+        top:0px;
+        left:0px;
+    }
+    .cms-brand .list-style1 li:nth-child(2n) {
+        padding:58px 8px 8px;
+    }
+    .cms-brand .list-style1 li:nth-child(2n) .count-item {
+        top:8px;
+        left:8px;
+    }
+    .cms-brand {
+        margin-bottom:0px;
+    }
+    .cms-brand .box-content {
+        padding-bottom:0px;
+    }
+    .cms-brand .top-content .top-banner,
+    .cms-brand .top-content .box-logo {
+        margin-bottom:25px;
+    }
+    .cms-brand .box-content .box-left-40 >div {
+        margin-top:0px!important;
+    }
+    .cms-brand .box-content .box-left-40 p {
+        margin-bottom:15px;
+    }
+    .cms-brand .ul-style2 li:nth-child(1) {
+        padding-top:0px;
+    }
+    .cms-brand .ul-style2 li {
+        padding:25px 0;
+    }
+    .cms-brand .ul-style2 li .box-left-40 {
+        margin-bottom:0px;
+    }
+    .cms-brand .ul-style2 li label {
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+    .cms-brand .top-content .box-logo img {
+        max-width:75%;
+    }
+    .cms-brand .box-content .col2 {
+        width:100%;
+    }
+    .service-detail .top-info {
+        padding:10px 0;
+    }
+    .service-detail .top-info h2 {
+        margin:0px;
+        line-height: 28px;
+    }
+    .service-detail.service-3d-designer .box-info ul {
+        width:100%;
+        padding:0px;
+    }
+    .service-detail.service-3d-designer .box-info ul li {
+        margin-bottom:15px;
+    }
+    .service-detail.service-3d-designer .box-info ul:nth-child(2n) {
+        padding-left:0px;
+    }
+    .table_price_delivery {
+        margin-top:5px;
+    }
+    .service-home-delivery-assembly .box-info.box-form {
+        padding:8px;
+    }
+    .service-home-delivery-assembly .form-list li {
+        padding:10px 0;
+    }
+    .service-home-delivery-assembly .form-list .input-box {
+        width:100%;
+    }
+    .service-home-delivery-assembly .form-list .input-box input,
+    .service-home-delivery-assembly .form-list .input-box select {
+        max-width:82%;
+        float: left;
+    }
+    .service-home-delivery-assembly .buttons-set .button {
+        width:100%;
+    }
+    .service-home-delivery-assembly .buttons-set .button-cancel {
+        margin-left:0px;
+    }
+    .service-home-delivery-assembly .delivery-info {
+        padding:6px;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top:before {
+        -webkit-transform: scale(0.6);
+        -moz-transform: scale(0.6);
+        -o-transform: scale(0.6);
+        -ms-transform: scale(0.6);
+        transform: scale(0.6);
+        left: -30px;
+        margin-right:0px;
+        border:none;
+        top: -15px;
+        position: absolute;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top label {
+        width:100%;
+        padding: 10px 0 10px 86px ;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top label {
+        font-size:22px;
+    }
+    .service-home-delivery-assembly .delivery-info .delivery-top {
+        position: relative;
+        margin-bottom:10px;
+    }
+    .cms-page-view .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text {
+        border-top:none;
+    }
+    .cms-page-view .top-info-style1 h2 {
+        margin-bottom:10px;
+        line-height: 30px;
+    }
+    .box-container .col2 {
+        width:100%;
+        padding-right:0px;
+        padding-left:0px;
+        margin: 0 0 15px;
+    }
+    .top-info-style1 {
+        padding:20px 10px;
+    }
+    .design-build-page .box1 .box-video-list,
+    .design-build-page .box1 ul {
+       width:100%;
+       padding-left: 0px;
+       padding-right:0px;
+    }
+    .design-build-page .box1 ul {
+        margin-top:0px;
+    }
+    .design-build-page .box1 .list-type-design li {
+        width:100%;
+        margin-right:0px;
+    }
+    .design-build-page .box2 h3 {
+        line-height: 40px;
+        margin:0px;
+    }
+    .design-build-page .box2 .list-content {
+        padding:10px;
+        margin-bottom:0px;
+    }
+    .design-build-page .box2 li {
+        line-height: 20px;
+    }
+    .design-build-page .box3 .box-text {
+        padding:8px;
+    }
+    .design-build-page .box4 .col-3 > li,
+    .design-build-page .box3 .box-text .col2-text{
+        width:100%;
+        margin-right:0px;
+    }
+    .design-build-page .box4 .col-3 > li:before {
+        width:1px;
+        height:calc(100% - 125px);
+        border-top:none;
+        border-left:dashed 1px #ffc222;
+        left:14px;
+        top:125px;
+    }
+    .design-build-page .box4 .col-3 > li {
+        padding-left:35px;
+    }
+    .design-build-page .box4 .col-3 li img {
+        margin-left:-35px;
+    }
+    .design-build-page .box-bottom,
+    .design-build-page .box3 .box-text .col2-text{
+        font-size:15px;
+    }
+    .design-build-page .box-bottom a {
+        font-size:20px;
+    }
+    .table_price_delivery.style3 .table_row .total_buy,
+    .table_price_delivery.style3 .table_row .furniture_prd{
+        width:49%;
+    }
+}
+
+@media (min-width: 769px) {
+    .cms-page-view .list-other-links li.box-mobile{
+        display: none;
+    }
+    .home-service-page .list-service li:nth-child(2n) .box-info h2:before {
+        left:0px;
+    }
+    .home-service-page .list-service li.text-center .box-info h2:before{
+        left:50%;
+        margin-left:-15px;
     }
 }

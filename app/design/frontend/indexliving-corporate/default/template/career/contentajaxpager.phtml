@@ -1,0 +1,43 @@
+<?php
+$collections = $this->getCollection();
+?>
+<?php if (count($collections)): ?>
+  <table class="job_list" onscroll="">
+    <thead>
+    <tr>
+      <th id="job_title">
+        <span><?php echo $this->__('Job Title')?></span>
+      </th>
+      <th id="job_function">
+        <span><?php echo $this->__('Job Function')?></span>
+      </th>
+      <th id="position">
+        <span><?php echo $this->__('Position')?></span>
+      </th>
+      <th id="location">
+        <span><?php echo $this->__('Location')?></span>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($collections as $collection): ?>
+      <tr>
+        <td id="job_title">
+          <a href='<?php echo $this->getUrl('*/*/application',array('id' => $collection->getData('job_id')));?>'><?php echo $collection->getData('title'); ?></a>
+        </td>
+        <td id="job_function">
+          <?php echo $collection->getData('function'); ?>
+        </td>
+        <td id="position">
+          <?php echo $collection->getData('position'); ?>
+        </td>
+        <td id="location">
+          <?php echo $collection->getData('location'); ?>
+        </td>
+      </tr>
+    <?php endforeach?>
+    </tbody>
+  </table>
+<?php else:?>
+  <?php echo $this->__("There are no jobs yet."); ?>
+<?php endif; ?>

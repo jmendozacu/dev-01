@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+		<career module="career">
+			<title>Career</title>
+			<sort_order>61</sort_order>
+			<children>
+				<job module="career">
+					<title>Manage Job</title>
+					<sort_order>10</sort_order>
+					<action>adminhtml/careerjob</action>
+				</job>
+				<application module="career">
+					<title>Manage Application</title>
+					<sort_order>20</sort_order>
+					<action>adminhtml/application</action>
+				</application>
+			</children>
+		</career>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<career>
+										<title>Career</title>
+										<sort_order>250</sort_order>
+									</career>
+								</children>
+							</config>
+						</children>
+					</system>
+					<career module="career">
+						<title>Career</title>
+						<sort_order>61</sort_order>
+						<children>
+							<job module="career">
+								<title>Manage Job</title>
+								<sort_order>10</sort_order>
+								<action>adminhtml/careerjob</action>
+							</job>
+							<application module="career">
+								<title>Manage Application</title>
+								<sort_order>20</sort_order>
+								<action>adminhtml/application</action>
+							</application>
+						</children>
+					</career>
+				</children>				
+			</admin>
+		</resources>
+	</acl>
+</config>

@@ -1,0 +1,70 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Magpleasure_Blog
+ */
+
+/** @var Magpleasure_Blog_Helper_Data $helper  */
+$helper = $this->_helper();
+/** @var Magpleasure_Blog_Model_Post $post  */
+$post = $this->getPost();
+
+/** @var Magpleasure_Blog_Block_Content_Post $this */
+?>
+<div class="mpblog-2column-right post-detail-news-event">
+    <div class="mpblog-col-right">
+        <div class="blog-banners-right">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-bannerright')->toHtml() ?>
+        </div>
+    </div>
+    <div class="mpblog-col-content">
+        <div class="mpblog-container">
+            <div class="mpblog-post mpblog-post-view">
+                <div class="mp-blog-head fix-me">
+                    <h1 class=""><?php echo $this->escapeHtml($post->getTitle()); ?></h1>
+                </div>
+                <div class="mp-header">
+                    <div class="post-views">
+                        <strong><?php echo $post->getViews() ?></strong>
+                        <span></span><?php echo $this->__('Views') ?> </span>
+                    </div>
+                    <?php if ($helper->getSocialEnabled()): ?>
+                        <div class="post-social">
+                            <div class="share">
+                                <strong  id="results"><?php echo $this->__('50') ?></strong>
+                                <span></span><?php echo $this->__('Shares') ?> </span>
+                            </div>
+                        </div>
+                        <?php if ($helper->getSocialEnabled()): ?>
+                            <?php echo $this->getSocialHtml(); ?>
+                        <?php endif; ?>
+
+                    <?php endif; ?>
+                </div>
+                <div class="mp-content std fix-me">
+                    <?php echo $post->getFullContent(); ?>
+                </div>
+            </div>
+            <?php echo $this->getChildHtml('recentpost')?>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    jQuery(function($) {
+        var token = '<?php echo Mage::helper('amajaxlogin/facebook')->getAppId(); ?>|<?php echo Mage::helper('amajaxlogin/facebook')->getSecretId(); ?>';
+        $(document).ready(function(){
+            $.ajax({
+                url: 'https://graph.facebook.com/v2.7/',
+                dataType: 'jsonp',
+                type: 'GET',
+                data: {access_token: token, id: '<?php echo Mage::helper('core/url')->getCurrentUrl() ?>' },
+                success: function(data){
+                    $('#results').html(data.share.share_count);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+

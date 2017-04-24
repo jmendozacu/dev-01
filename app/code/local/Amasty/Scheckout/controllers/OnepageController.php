@@ -51,13 +51,13 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
     protected function _amSaveShipping(){
 				$shipping = $this->getRequest()->getPost('shipping', array());
 				$billing = $this->getRequest()->getPost('billing', array());
-								
+
 				$this->saveMethodAction();
         $this->saveShippingAction();
-				
+
 				$usingBillingCase = isset($shipping['same_as_billing']) ? (int)$shipping['same_as_billing'] : 0;
 				if (!$usingBillingCase) {
-					//billing is different 
+					//billing is different
 					$billing['email'] = $shipping['email'];
 					$billing['day'] = $shipping['day'];
 					$billing['month'] = $shipping['month'];
@@ -268,7 +268,7 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
         
         $billing = $this->getRequest()->getPost('billing', array());
         $shipping = $this->getRequest()->getPost('shipping', array());
-        
+
         $requiredFields = $this->_getRequiredFields();
         
         foreach($billingDefaults as $key => $def){
@@ -469,11 +469,11 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
     public function checkoutAction(){
         $res = array();
         $this->_reloadRequest(FALSE);
-        
+
         $postMethod = $this->getRequest()->getParam('method');
         
         $amResponse = $this->_saveSteps(FALSE);
-        
+
         $paymentMethod = $this->getOnepage()->getQuote()->getPayment()->getMethod();
         if (
             $paymentMethod == 'sagepayserver' ||
@@ -606,6 +606,51 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
         
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($res));
         
+    }
+    public function checkShippingTypeAction(){
+      $this->getResponse()->setHeader('Content-type', 'application/json');
+      $_response = array();
+
+      $cart = Mage::getModel('checkout/cart')->getQuote();
+      $shippingType = array();
+      foreach ($cart->getAllItems() as $item) {
+        $shippingType[] = $item->getProduct()->getAmShippingType();
+      }
+// start customer already had address
+      //551: Surat Thani
+      $address_id = $this->getRequest()->getParams('address_id');
+      if($address_id){
+        $address_collection = Mage::getModel('customer/address')->load($address_id);
+        $region_id = $address_collection->getData('region_id');
+          if ($region_id == 551) {
+              $_response['surat_thani'] = 1;
+          }
+          if ($region_id == 515) {
+              $_response['pattani'] = 1;
+          }
+          if ($region_id == 509) {
+              $_response['nara_thiwat'] = 1;
+          }
+          if ($region_id == 530) {
+              $_response['yala'] = 1;
+          }
+      }
+// end customer already had address
+      //114: ILM
+      if(in_array("115", $shippingType)){
+        $_response['thaipost'] = 1;
+      }
+      else{
+        $_response['thaipost'] = 0;
+      }
+      if(in_array("114", $shippingType)){
+        $_response['ilm'] = 1;
+      }
+      else{
+        $_response['ilm'] = 0;
+      }
+      $this->getResponse()->setBody(json_encode($_response));
+      return;
     }
     
     public function savePaymentAction()

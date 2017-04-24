@@ -26,6 +26,10 @@ class Magpleasure_Blog_Block_Adminhtml_Category_Edit_Tab_Subcategory extends Mag
                 $category[] = array('value' => $id, 'label' => $name);
             }
         }
+        $null = array(
+            0 => null,
+        );
+        $category = array_merge($null,$category);
         return $category;
     }
 

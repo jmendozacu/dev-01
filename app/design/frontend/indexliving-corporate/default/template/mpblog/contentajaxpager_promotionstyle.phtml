@@ -1,0 +1,74 @@
+<?php if (count($this->getCollection())): ?>
+  <div class="mpblog-list list">
+    <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
+      <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
+      <div class="mpblog-post">
+        <div class="post-image">
+          <?php if ($post->getListThumbnailSrc()): ?>
+            <div class="thumbnail-container">
+              <div class="post-thumbnail">
+                <a
+                  href="<?php echo $post->getPostUrl(); ?>"
+                  title="<?php echo $this->escapeHtml($post->getTitle()); ?>">
+
+                  <img class="thumbnail"
+                       src="<?php echo $post->getListThumbnailSrc(); ?>"
+                       alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                </a>
+              </div>
+            </div>
+          <?php endif; ?>
+        </div>
+        <div class="post-info">
+          <div class="mp-header">
+            <?php if ($post->getCreatedAt()): ?>
+              <span class="post-time">
+                                    <?php echo date('d F Y', strtotime($post->getCreatedAt()));; ?>
+                                </span>
+            <?php endif; ?>
+          </div>
+          <div class="mp-post-title">
+            <a href="<?php echo $post->getPostUrl(); ?>"><?php echo $this->escapeHtml($post->getTitle()); ?></a>
+          </div>
+          <ul class="mp-details fix-me">
+            <li>
+              <a class="mp-view" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("View"); ?>">
+                <?php echo $this->__("View"); ?>
+              </a>
+            </li>
+            <li>
+              <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="#">
+                <?php echo $this->__("Download"); ?>
+              </a>
+            </li>
+            <?php //if ($helper->getSocialEnabled()): ?>
+            <li class="box-shares">
+              <a class="mp-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)">
+                <?php echo $this->__("Share"); ?>
+              </a>
+              <?php echo $this->getChildHtml('mpblog_social'); ?>
+            </li>
+
+            <?php //endif; ?>
+          </ul>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+  <script type="text/javascript" >
+    jQuery('.mp-share').click( function(){
+      jQuery(this).next().toggle();
+    });
+  </script>
+<?php else: ?>
+  <?php echo $this->__("There are no posts yet."); ?>
+<?php endif; ?>
+<script type="text/javascript">
+//  jQuery(".pagination-mobie #a-previous").click(function(event) {
+jQuery(document).on('click', '.pagination-mobie #a-previous', function () {
+    var page = jQuery('#a-previous').html();
+    page = parseInt(page);
+    checkEnableNextPreviousButton(page);
+    updatePageMobie(page);
+  });
+</script>

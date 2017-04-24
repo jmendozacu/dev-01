@@ -1,0 +1,102 @@
+<div class="category-group tab-left">
+  <ul class="tabs">
+    <li class="first">
+      <a href="#" title="">Online FAQ</a>
+      <div class="category first" style="display: none">
+        <?php
+        $category_online_faqs = $this->getCategories()->addFieldToFilter('category_group', Magebuzz_Faq_Model_Categorygroup::ONLINE_FAQ);
+        ?>
+        <?php foreach ($category_online_faqs as $category_online_faq): ?>
+          <?php $online_faq_id =  $category_online_faq->getData('category_id'); ?>
+          <a id="cate_id_<?php echo $online_faq_id ?>" onclick="showFaq(<?php echo $online_faq_id ?>)"  href="#"><?php echo $category_online_faq->getData('category_name') ?><span class="arrow"> > </span></a>
+        <?php endforeach; ?>
+      </div>
+    </li>
+    <li>
+      <a href="#">In-store FAQ</a>
+      <div class="category" style="display: none">
+        <?php
+        $category_in_store_faqs = $this->getCategories()->addFieldToFilter('category_group', Magebuzz_Faq_Model_Categorygroup::IN_STORE_FAQ);
+        ?>
+        <?php foreach ($category_in_store_faqs as $category_in_store_faq): ?>
+          <?php $in_store_faq_id =  $category_in_store_faq->getData('category_id'); ?>
+          <a id="cate_id_<?php echo $in_store_faq_id ?>" onclick="showFaq(<?php echo $in_store_faq_id ?>)" href="#"><?php echo $category_in_store_faq->getData('category_name') ?><span class="arrow"> > </span></a>
+        <?php endforeach; ?>
+      </div>
+    </li>
+    <li>
+      <a href="#">About Index Living Mall</a>
+      <div class="category" style="display: none">
+        <?php
+        $category_about_indexs = $this->getCategories()->addFieldToFilter('category_group', Magebuzz_Faq_Model_Categorygroup::ABOUT_INDEX);
+        ?>
+        <?php foreach ($category_about_indexs as $category_about_index): ?>
+          <?php $about_index_id =  $category_about_index->getData('category_id'); ?>
+          <a id="cate_id_<?php echo $about_index_id ?>" onclick="showFaq(<?php echo $about_index_id ?>)" href="#"><?php echo $category_about_index->getData('category_name') ?><span class="arrow"> > </span></a>
+        <?php endforeach; ?>
+      </div>
+    </li>
+  </ul>
+  <div class="tab_container">
+  </div>
+</div>
+<script type="text/javascript">
+  function showFaq(category_id){
+    var cate_id = jQuery('#cate_id_'+ category_id);
+    if(cate_id.hasClass('active')){
+      cate_id.removeClass('active');
+    }
+    else{
+      cate_id.addClass('active');
+      cate_id.next().removeClass('active');
+      cate_id.prev().removeClass('active');
+    }
+    var get_faqs_url = "<?php echo $this->getUrl('faq/index/getFaqs')?>?category_id=" + category_id;
+    if(jQuery('.list-faq-'+ category_id).hasClass('loaded')){
+      jQuery(".list-faqs").hide();
+      jQuery('.list-faq-'+ category_id).show();
+    }
+    else{
+      $j('#ajaxcart-overlay').show();
+      $j('#ajax_cart_loading').show();
+      jQuery.ajax({
+        parameters: {
+          category_id: category_id
+        },
+        type: "get",
+        url: get_faqs_url,
+        success: function (transport) {
+          if (transport.success == 'true') {
+            jQuery(".list-faqs").hide();
+            jQuery('.tab_container').append(transport.result);
+            jQuery('.list-faq-'+ category_id).show();
+            jQuery('.list-faq-'+ category_id).addClass('loaded');
+          }
+          if(transport.success == 'false') {
+            jQuery(".list-faqs").hide();
+            jQuery('.tab_container').append(transport.no_result);
+            jQuery('.list-faq-'+ category_id).addClass('loaded');
+          }
+          $j('#ajax_cart_loading').hide();
+          $j('#ajaxcart-overlay').hide();
+        }
+      });
+    }
+  }
+</script>
+<script type="text/javascript">
+  jQuery('.tabs > li.first > a').addClass('active');
+  jQuery('.tabs > li > div.category.first').show();
+  jQuery(".tabs > li > a").click(function(){
+    jQuery('.tabs > li > a').removeClass('active');
+    jQuery('.tabs > li > div.category').hide();
+    if(jQuery(this).hasClass('active')){
+      jQuery(this).next().hide();
+      jQuery(this).removeClass('active');
+    }
+    else{
+      jQuery(this).next().show();
+      jQuery(this).addClass('active');
+    }
+  })
+</script>

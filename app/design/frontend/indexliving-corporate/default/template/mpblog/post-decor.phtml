@@ -14,7 +14,7 @@ $post = $this->getPost();
 ?>
 <div class="mpblog-2column-left">
     <div class="mpblog-col-left">
-        <?php echo $this->getChildHtml('mpblog.sidebar_category'); ?>
+        <?php echo $this->getChildHtml('mpblog.sidebar_category_decor'); ?>
     </div>
     <div class="mpblog-col-content">
         <div class="mpblog-container">
@@ -30,13 +30,13 @@ $post = $this->getPost();
                     <?php if ($helper->getSocialEnabled()): ?>
                         <div class="post-social">
                             <div class="share">
-                                <strong><?php echo $this->__('50') ?></strong>
+                                <strong id="results"><?php echo $this->__('50') ?></strong>
                                 <span></span><?php echo $this->__('Shares') ?> </span>
                             </div>
-                            <?php if ($helper->getSocialEnabled()): ?>
-                                <?php echo $this->getSocialHtml(); ?>
-                            <?php endif; ?>
                         </div>
+                        <?php if ($helper->getSocialEnabled()): ?>
+                          <?php echo $this->getSocialHtml(); ?>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
                 <div class="mp-content std fix-me">
@@ -44,6 +44,40 @@ $post = $this->getPost();
                 </div>
             </div>
             <?php echo $this->getChildHtml('recentpost')?>
+            <div class="comment-blog" style="display: block; width: 100% ">
+              <div class="block-title title-style5">
+                <strong><span>Comment</span></strong>
+              </div>
+              <?php $app_id = Mage::helper('amajaxlogin/facebook')->getAppId();?>
+              <div class="fb-comments" data-href="<?php echo Mage::getBaseUrl();?>"
+                   data-width="895" data-numposts="5"></div>
+              <div id="fb-root"></div>
+              <script>
+                (function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=<?php echo $app_id?>";
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+            </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  jQuery(function($) {
+    var token = '<?php echo Mage::helper('amajaxlogin/facebook')->getAppId(); ?>|<?php echo Mage::helper('amajaxlogin/facebook')->getSecretId(); ?>';
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://graph.facebook.com/v2.7/',
+        dataType: 'jsonp',
+        type: 'GET',
+        data: {access_token: token, id: '<?php echo Mage::helper('core/url')->getCurrentUrl() ?>' },
+        success: function(data){
+          $('#results').html(data.share.share_count);
+        }
+      });
+      return false;
+    })
+  });
+</script>

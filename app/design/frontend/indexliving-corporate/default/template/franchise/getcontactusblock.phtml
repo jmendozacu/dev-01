@@ -1,0 +1,4 @@
+<?php
+$block_contact = Mage::getStoreConfig('franchise/contact/contact_block',Mage::app()->getStore()->getId());
+echo $this->getLayout()->createBlock('cms/block')->setBlockId($block_contact)->toHtml();
+?>

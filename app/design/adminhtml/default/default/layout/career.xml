@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_application_index>
+        <reference name="content">
+            <block type="career/adminhtml_application" name="applicationform" />
+        </reference>
+    </adminhtml_application_index>
+    <adminhtml_careerjob_index>
+        <reference name="content">
+            <block type="career/adminhtml_job" name="jobform" />
+        </reference>
+    </adminhtml_careerjob_index>
+
+    <adminhtml_application_view>
+        <reference name="content">
+            <block type="career/adminhtml_application_view" name="applicationview" />
+        </reference>
+    </adminhtml_application_view>
+</layout>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <adminhtml_faq_index>
+    <reference name="content">
+      <block type="faq/adminhtml_faq" name="faq"/>
+    </reference>
+  </adminhtml_faq_index>
+  <adminhtml_faq_edit>
+    <reference name="head">
+      <action method="addItem">
+        <type>js_css</type>
+        <value>mpblog/vendor/redactor/redactor.css</value>
+      </action>
+      <action method="addItem">
+        <type>js_css</type>
+        <value>mpblog/adminhtml/redactor/plugins/magento/magento.css</value>
+      </action>
+      <action method="addItem">
+        <type>js_css</type>
+        <value>mpblog/adminhtml/redactor/plugins/cutter/cutter.css</value>
+      </action>
+    </reference>
+    <reference name="extra_head">
+      <action method="addSafeJs">
+        <alias>jQuery.Redactor</alias>
+        <value>mpblog/vendor/redactor/redactor.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.video</alias>
+        <value>mpblog/vendor/redactor/plugins/video.min.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.fullscreen</alias>
+        <value>mpblog/vendor/redactor/plugins/fullscreen.min.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.fontcolor</alias>
+        <value>mpblog/vendor/redactor/plugins/fontcolor.min.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.definedlinks</alias>
+        <value>mpblog/vendor/redactor/plugins/definedlinks.min.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.table</alias>
+        <value>mpblog/vendor/redactor/plugins/table.min.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.magento</alias>
+        <value>mpblog/adminhtml/redactor/plugins/magento/magento.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.cutter</alias>
+        <value>mpblog/adminhtml/redactor/plugins/cutter/cutter.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.imagemanager</alias>
+        <value>mpblog/vendor/redactor/plugins/imagemanager.min.js</value>
+      </action>
+      <action method="addSafeJs">
+        <alias>RedactorPlugins.undo</alias>
+        <value>mpblog/adminhtml/redactor/plugins/undo/undo.js</value>
+      </action>
+      <block type="magpleasure/adminhtml_template" name="mpblog.post.wysiwyg.variables" as="mpblog.post.wysiwyg.variables" template="mpblog/system/wysiwyg/variables.phtml" />
+    </reference>
+    <update handle="editor"/>
+  </adminhtml_faq_edit>
+  <adminhtml_faq_category_index>
+    <reference name="content">
+      <block type="faq/adminhtml_category" name="category"/>
+    </reference>
+  </adminhtml_faq_category_index>
+</layout>

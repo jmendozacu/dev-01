@@ -35,11 +35,11 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
         parent::_prepareBreadcrumbs();
         $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
         if ($breadcrumbs){
-            $breadcrumbs->addCrumb('blog', array(
-                'label' => $this->_helper()->getMenuLabel(),
-                'title' => $this->_helper()->getMenuLabel(),
-                'link' =>  $this->_helper()->_url()->getUrl(),
-            ));
+//            $breadcrumbs->addCrumb('blog', array(
+//                'label' => $this->_helper()->getMenuLabel(),
+//                'title' => $this->_helper()->getMenuLabel(),
+//                'link' =>  $this->_helper()->_url()->getUrl(),
+//            ));
 
             $breadcrumbs->addCrumb($this->getCategory()->getUrlKey(), array(
                 'label' => $this->getCategory()->getName(),

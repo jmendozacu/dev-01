@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Mageplace_Flippingbook
+ */
+-->
+<config>
+    <menu>
+        <flippingbook translate="title" module="flippingbook">
+            <title>HTML5 Flipping Book</title>
+            <sort_order>60</sort_order>
+            <children>
+                <category translate="title" module="flippingbook">
+                    <title>Manage Categories</title>
+                    <action>adminhtml/flippingbook_category</action>
+                </category>
+            </children>
+            <children>
+                <template translate="title" module="flippingbook">
+                    <title>Manage Templates</title>
+                    <action>adminhtml/flippingbook_template</action>
+                </template>
+            </children>
+            <children>
+                <resolution translate="title" module="flippingbook">
+                    <title>Manage Resolutions</title>
+                    <action>adminhtml/flippingbook_resolution</action>
+                </resolution>
+            </children>
+            <children>
+                <magazine translate="title" module="flippingbook">
+                    <title>Manage Books</title>
+                    <action>adminhtml/flippingbook_magazine</action>
+                </magazine>
+            </children>
+            <children>
+                <page translate="title" module="flippingbook">
+                    <title>Manage Pages</title>
+                    <action>adminhtml/flippingbook_page</action>
+                </page>
+            </children>
+            <children>
+                <multiupload translate="title" module="flippingbook">
+                    <title>Multiupload</title>
+                    <action>adminhtml/flippingbook_multiupload</action>
+                </multiupload>
+            </children>
+        </flippingbook>
+    </menu>
+
+    <acl>
+        <resources>
+            <all>
+                <title>Allow everything</title>
+            </all>
+            <admin>
+                <children>
+                    <flippingbook translate="title">
+                        <title>HTML5 Flipping Book</title>
+                        <sort_order>10</sort_order>
+                        <children>
+                            <category translate="title">
+                                <title>Manage Categories</title>
+                                <sort_order>0</sort_order>
+                            </category>
+                        </children>
+                        <children>
+                            <template translate="title">
+                                <title>Manage Templates</title>
+                                <sort_order>1</sort_order>
+                            </template>
+                        </children>
+                        <children>
+                            <resolution translate="title">
+                                <title>Manage Resolutions</title>
+                                <sort_order>2</sort_order>
+                            </resolution>
+                        </children>
+                        <children>
+                            <magazine translate="title">
+                                <title>Manage Books</title>
+                                <sort_order>3</sort_order>
+                            </magazine>
+                        </children>
+                        <children>
+                            <page translate="title">
+                                <title>Manage Pages</title>
+                                <sort_order>4</sort_order>
+                            </page>
+                        </children>
+                        <children>
+                            <multiupload translate="title">
+                                <title>Multiupload</title>
+                                <sort_order>5</sort_order>
+                            </multiupload>
+                        </children>
+                    </flippingbook>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

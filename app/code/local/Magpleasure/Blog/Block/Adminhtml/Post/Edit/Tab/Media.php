@@ -68,6 +68,53 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Media extends Mage_Adminhtm
             'note' => $this->_helper()->__("<i>{{store url=''}}</i> or <i>http://www.store.com/</i> variants will work"),
         ));
 
+        $uploadimage = $this->__('Slide Image');
+//Start new code
+        $a = 0;
+        $data['blog_id'] = $this->getRequest()->getParam('id');
+        if (isset($data['blog_id'])) {
+            $datas = Mage::getModel('mpblog/slideimages')->getCollection()->addFieldToFilter('post_id', array('finset' => $data['blog_id']));
+            $imagess = array();
+            foreach ($datas as $datass) {
+                $imagess[] = $datass->getImages();
+            }
+
+            if (count($imagess)) {
+                $a = 1;
+            } else {
+                $a = 0;
+            }
+
+            $imagess = implode('","', $imagess);
+            $imagess = '["' . $imagess . '"]';
+        }
+
+        $script = ($a) ? 'setImage(' . $imagess . ',"' . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'magebuzz/");' : '';
+        $fieldset->addField('slideimages', 'hidden', array(
+          'name' => ' slideimages',
+          'label' => Mage::helper('mpblog')->__('Images'),
+          'title' => Mage::helper('mpblog')->__('Images'),
+          'after_element_html' => "
+                 <label>
+                    <?php echo $this->__('Or upload your photo') ?>
+                    $uploadimage
+                  </label>
+                <div>
+                    <div>
+                        <input type='file' name='magebuzz_input2' id='magebuzz_input2' >
+                    </div>
+                <div>
+                <div class='jFiler-items jFiler-row'>
+                    <ul class='jFiler-item-list' id='jFiler_item_list_images'>
+                    </ul>
+                </div>
+                </div>
+            </div>
+              <script type='text/javascript'>
+                  " . $script . "
+              </script>
+        "));
+// End new code
         $fieldset = $form->addFieldset('display', array('legend' => $this->_helper()->__('Display Settings')));
 
         $fieldset->addType('grid_class', 'Magpleasure_Blog_Block_System_Entity_Form_Element_Grid_Class');

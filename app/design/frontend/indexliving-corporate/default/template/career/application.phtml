@@ -1,0 +1,183 @@
+<?php
+$id = $this->getRequest()->getParam('id');
+$job = Mage::getModel('career/job')->load($id);
+?>
+<div class="page-title style2">
+  <h1><?php echo $this->__('Career') ?> </h1>
+</div>
+<div id="career">
+  <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-detail-bannertop')->toHtml() ?>
+  <div id="content-job" class="content-job">
+    <label class="job-title"><?php echo $job->getData('title')?></label>
+    <div class="list-info">
+      <label><?php echo $this->__('Scope of work:')?></label>
+      <div>
+        <?php echo $job->getData('scope_of_work')?>
+      </div>
+    </div>
+    <div class="list-info">
+      <label><?php echo $this->__('Qualifications:')?></label>
+      <div>
+        <?php echo $job->getData('qualifications')?>
+      </div>
+    </div>
+    <div class="shareJob">
+      <div class="job-social">
+        <div class="share">
+          <strong id="results"><?php echo $this->__('50') ?></strong>
+          <span><?php echo $this->__('Shares') ?> </span>
+        </div>
+      </div>
+      <ul class="sharing-links">
+        <?php $jobName = urlencode(trim($job->getData('title')))?>
+        <?php $careerUrl = urlencode(trim(Mage::helper('core/url')->getCurrentUrl()))?>
+        <?php $caption = $this->__('We are hiring! Position: '.$jobName);?>
+        <?php $_pinterest_sharing_url = "http://pinterest.com/pin/create/button/?url=" . $careerUrl;?>
+        <?php
+        $_close_popup_url = Mage::getModel('core/url')->sessionUrlVar($_close_popup_url);
+        $_close_popup_url = Mage::getUrl('custom/index/close_popup');
+        $_facebook_app_id = Mage::getStoreConfig('amajaxlogin/facebook/app_id');
+        $_facebook_sharing_url = "https://www.facebook.com/dialog/share?app_id=" . $_facebook_app_id . "&display=popup"
+                    . "&href=" . $careerUrl
+                    . "&redirect_uri=" . $_close_popup_url;
+        $_facebook_feed_url = "https://www.facebook.com/dialog/feed?app_id=" . $_facebook_app_id . "&display=popup&caption=" . $caption ."&link=" . $careerUrl."&redirect_uri=" . $_close_popup_url;
+        ?>
+        <div class="mp-buttons fix-me">
+          <ul>
+            <li class="social-facebook">
+              <a target="_blank" href="<?php echo $_facebook_feed_url; ?>" title="<?php echo $this->__('Facebook') ?>">
+                <i class="blog-icon facebook"></i>
+              </a>
+            </li>
+            <li class="social-twitter">
+              <a target="_blank" href="<?php echo 'http://twitter.com/home?status=' . $jobName . '+' . $careerUrl; ?>" title="<?php echo $this->__('Twitter') ?>">
+                <i class="blog-icon twitter"></i>
+              </a>
+            </li>
+            <li class="social-googleplus">
+              <div class="g-plus" data-action="share" data-annotation="none" data-height="24"></div>
+            </li>
+            <li class="social-pinterest">
+              <a target="_blank" href="<?php echo $_pinterest_sharing_url; ?>" title="<?php echo $this->__('Pinterest') ?>">
+                <i class="blog-icon pinterest"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="clearboth"></div>
+  <div id="application">
+    <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
+    <div class="application_form">
+      <form id="application-form" method="post" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id,'job_title'=>$job->getData('title')))?>">
+        <div id="personal_information">
+          <p><?php echo $this->__('Personal Information')?></p>
+          <ul>
+            <li>
+              <div class="field left">
+                <label for="identity_number" class="required"><em>*</em><?php echo $this->__('Identity number') ?></label>
+                <div class="input-box">
+                  <input type="text" name="identity_number" value="" id="identity_number" class="input-text required-entry" title="<?php echo $this->__('Identity number') ?>" />
+                </div>
+              </div>
+              <div class="field right">
+                <label for="email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
+                <div class="input-box">
+                  <input type="text" name="email" value="" id="email" class="input-text required-entry" title="<?php echo $this->__('Company name') ?>" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="field left">
+                <label for="name" class="required"><em>*</em><?php echo $this->__('Name') ?></label>
+                <div class="input-box">
+                  <input type="text" name="name" value="" id="name" class="input-text required-entry" title="<?php echo $this->__('Name') ?>" />
+                </div>
+              </div>
+              <div class="field right">
+                <label for="surname" class="required"><em>*</em><?php echo $this->__('Surname') ?></label>
+                <div class="input-box">
+                  <input type="text" name="surname" value="" id="surname" class="input-text required-entry" title="<?php echo $this->__('Surname') ?>" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="field left">
+                <label for="tel" class="required"><em>*</em><?php echo $this->__('Phone number') ?></label>
+                <div class="input-box">
+                  <input type="text" name="tel" value="" id="tel" class="input-text required-entry" title="<?php echo $this->__('Phone number') ?>" />
+                </div>
+              </div>
+              <div class="field right">
+                <label for="date_of_birth" class="required"><em>*</em><?php echo $this->__('Date Of Birth') ?></label>
+                <div class="input-box">
+                  <input type="text" name="date_of_birth" value="" id="date_of_birth" class="input-text required-entry" title="<?php echo $this->__('Date Of Birth') ?>" />
+                </div>
+              </div>
+            </li>
+            </ul>
+          </div>
+          <div id="work_information">
+            <p><?php echo $this->__('Work Information')?></p>
+            <ul>
+              <li>
+                <div class="field left">
+                  <label for="work_type" class="required"><em>*</em><?php echo $this->__('Work Type') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="work_type" value="" id="work_type" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" />
+                  </div>
+                </div>
+                <div class="field right">
+                  <label for="work_age" class="required"><em>*</em><?php echo $this->__('Work Age') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="work_age" value="" id="work_age" class="input-text required-entry" title="<?php echo $this->__('Work Age') ?>" />
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="field left">
+                  <label for="present_company" class="required"><em>*</em><?php echo $this->__('Present Company') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="present_company" value="" id="present_company" class="input-text required-entry" title="<?php echo $this->__('Present Company') ?>" />
+                  </div>
+                </div>
+                <div class="field right">
+                  <label for="last_position" class="required"><em>*</em><?php echo $this->__('Last Position') ?></label>
+                  <div class="input-box">
+                    <input type="text" name="last_position" value="" id="last_position" class="input-text required-entry" title="<?php echo $this->__('Last Position') ?>" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <p class="note">* You must fill the information</p>
+            <button type="submit" title="Submit" class="button"><span><span>Send form</span></span></button>
+          </div>
+      </form>
+    </div>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-contacts')->toHtml() ?>
+  </div>
+</div>
+<script type="text/javascript">
+  //< ![CDATA[
+  var myForm = new VarienForm('application-form',false);
+  //]]>
+</script>
+<script type="text/javascript">
+  jQuery(function($) {
+    var token = '<?php echo Mage::helper('amajaxlogin/facebook')->getAppId(); ?>|<?php echo Mage::helper('amajaxlogin/facebook')->getSecretId(); ?>';
+    $(document).ready(function(){
+      $.ajax({
+        url: 'https://graph.facebook.com/v2.7/',
+        dataType: 'jsonp',
+        type: 'GET',
+        data: {access_token: token, id: '<?php echo Mage::helper('core/url')->getCurrentUrl() ?>' },
+        success: function(data){
+          $('#results').html(data.share.share_count);
+        }
+      });
+      return false;
+    })
+  });
+</script>
