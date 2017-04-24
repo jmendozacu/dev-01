@@ -1,19 +1,24 @@
-<div class="flipbook-view">
+<div class="flipbook-list">
   <div class="page-title style2">
     <h1><?php echo $this->__('INDEX LIVING MALL CATALOG') ?></h1>
   </div>
 
-  <div class="lastest-book" style="margin-top: 20px">
+  <div class="lastest-book">
     <?php $lastest_book = $this->getLastestBook(); ?>
-    <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$lastest_book->getData('magazine_thumbnail');?>" />
+    <div class="box-image">
+      <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$lastest_book->getData('magazine_thumbnail');?>" />
+    </div>
     <div class="infor-book">
       <div class="date-time">
-        <?php echo $lastest_book->getData('created_at');  ?>
+        <?php
+        $createDate = new DateTime($lastest_book->getData('created_at'));
+        echo $createDate->format('Y-m-d');
+        ?>
       </div>
       <div class="name-book">
         <?php echo $lastest_book->getData('magazine_title') ?>
-        <p>Lorem Ipsum has been the standard dummy text ever since the 1500s</p>
       </div>
+      <div class="short-des"><?php echo $lastest_book->getDescription() ?></div>
       <?php if($lastest_book->getData('magazine_background_pdf') && $lastest_book->getData('magazine_enable_pdf')) : ?>
         <div class="file-size">
           <?php echo $this->__('File Size : ') ?>
@@ -24,9 +29,9 @@
           <?php  ?>
         </div>
         <div class="tb_social" style="float: right; margin-left: 0px;">
-          <div class="view">
-            <i class="view" title="<?php echo $this->__('View')?>" onclick="location.href='<?php echo $this->getMagazineUrl($lastest_book); ?>'"><?php echo $this->__('View') ?></i>
-          </div>
+
+            <a class="view" title="<?php echo $this->__('View')?>" href="<?php echo $this->getMagazineUrl($lastest_book); ?>"><?php echo $this->__('View') ?></a>
+
           <?php if ($lastest_book->getMagazineEnablePdf() && $lastest_book->getMagazineBackgroundPdf()): ?>
             <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
                onclick="location.href='<?php echo $this->getPdfUrl($lastest_book); ?>'"><?php echo $this->__('Download') ?></i>
@@ -40,20 +45,81 @@
                 <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
               </div>
             </div>
-            <script type="text/javascript">
-              jQuery('.box-share > label').click(function() {
-                if (!jQuery(this).hasClass('active')){
-                  jQuery('.box-share .share-socials').slideDown();
-                  jQuery(this).addClass('active');
-                }else if (jQuery(this).hasClass('active')) {
-                  jQuery('.box-share .share-socials').slideUp();
-                  jQuery(this).removeClass('active');
-                }
-              });
-            </script>
 <!--          --><?php //endif; ?>
         </div>
       <?php endif; ?>
     </div>
   </div>
+  <div class="category_book">
+    <ul class="categpry_list">
+      <li>
+        <a href="#" title="all"><?php echo $this->__('ALl')?></a>
+      </li>
+      <?php $category_list= Mage::getModel('flippingbook/category')->getCollection(); ?>
+      <?php if($category_list->getData()): ?>
+        <?php foreach($category_list as $_category): ?>
+          <li>
+            <a href="#" title="<?php $_category->getName()?>"><?php echo $_category->getName()?></a>
+          </li>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </ul>
+    <ul class="category_book_list">
+      <?php $collection = Mage::getModel('flippingbook/magazine')->getCollection(); ?>
+      <?php if($collection->getData()): ?>
+        <?php foreach($collection as $_magazine): ?>
+          <li class="item">
+            <div class="box-image">
+              <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$_magazine->getData('magazine_thumbnail');?>" />
+            </div>
+            <div class="infor-book">
+              <div class="date-time">
+                <?php
+                $createDate = new DateTime($_magazine->getData('created_at'));
+                echo $createDate->format('Y-m-d');
+                ?>
+              </div>
+              <div class="name-book">
+                <?php echo $_magazine->getData('magazine_title') ?>
+              </div>
+              <div class="file-size">
+                <?php echo $this->__('File Size : ') ?>
+                <?php
+                $path_file = Mage::getBaseDir('media').'/flippingbook/pdf/'.$_magazine->getData('magazine_background_pdf');
+                echo $this->formatSizeUnits(filesize($path_file));
+                ?>
+                <?php  ?>
+              </div>
+              <div class="tb_social">
+                <a class="view" title="<?php echo $this->__('View')?>" href="<?php echo $this->getMagazineUrl($_magazine); ?>"><?php echo $this->__('View') ?></a>
+                <?php if ($_magazine->getMagazineEnablePdf() && $_magazine->getMagazineBackgroundPdf()): ?>
+                  <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
+                     onclick="location.href='<?php echo $this->getPdfUrl($_magazine); ?>'"><?php echo $this->__('Download') ?></i>
+                <?php endif; ?>
+                <div class="box-share">
+                  <label><?php echo $this->__('Share') ?></label>
+                  <div class="share-socials">
+                    <i class="tbicon share-facebook" title="<?php echo $this->__('Share on facebook'); ?>"></i>
+                    <i class="tbicon share-twitter" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                    <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </ul>
+  </div>
 </div>
+<script type="text/javascript">
+  jQuery('.box-share > label').click(function() {
+    if (!jQuery(this).hasClass('active')){
+      jQuery(this).next().slideDown();
+      jQuery(this).addClass('active');
+    }else if (jQuery(this).hasClass('active')) {
+      jQuery(this).next().slideUp();
+      jQuery(this).removeClass('active');
+    }
+  });
+</script>

@@ -57,6 +57,12 @@
         </reference>
     </flippingbook_magazine_popup>
   <flippingbook_index_index>
+      <reference name="root">
+          <action method="setTemplate"><template>page/1column.phtml</template></action>
+      </reference>
+      <reference name="head">
+          <action method="addItem"><type>skin_css</type><name>flippingbook/css/basic.css</name></action>
+      </reference>
     <reference name="content">
       <block type="flippingbook/frontend_list" name="flippingbook.list" template="flippingbook/magazine/list.phtml" />
     </reference>

@@ -299,8 +299,9 @@ div.flipbook-viewport {
     margin-top:20px;
     float:right;
 }
-.flipbook-view .fb_topBar .tb_social .icon-pdf,
-.flipbook-view .fb_topBar .tb_social .box-share >label{
+.tb_social .icon-pdf,
+.tb_social .box-share >label,
+.tb_social .view{
   float:left;
     padding-left: 40px;
     font-size: 18px;
@@ -316,13 +317,15 @@ div.flipbook-viewport {
     color: #000;
     cursor: pointer;
 }
-.flipbook-view .fb_topBar .tb_social .icon-pdf:hover,
-.flipbook-view .fb_topBar .tb_social .box-share >label:hover {
+.tb_social .icon-pdf:hover,
+.tb_social .box-share >label:hover,
+.tb_social .view:hover{
     text-decoration: none;
     color: #FF8A00;
 }
-.flipbook-view .fb_topBar .tb_social .icon-pdf:before,
-.flipbook-view .fb_topBar .tb_social .box-share >label:before{
+.tb_social .icon-pdf:before,
+.tb_social .box-share >label:before,
+.tb_social .view:before{
     background: url(../../images/icon-corporate.png) no-repeat  8px -17px;
     content: "";
     position: absolute;
@@ -335,21 +338,26 @@ div.flipbook-viewport {
     -moz-border-radius: 50%;
     background-color: #000;
 }
-.flipbook-view .fb_topBar .tb_social .box-share >label:before,
-.flipbook-view .fb_topBar .tb_social .box-share >label.active:before{
-    background-position: -43px -17px;
+.tb_social .box-share >label:before,
+.tb_social .box-share >label.active:before{
+
 }
-.flipbook-view .fb_topBar .tb_social .icon-pdf:hover:before,
-.flipbook-view .fb_topBar .tb_social .box-share >label.active:before,
-.flipbook-view .fb_topBar .tb_social .box-share >label:hover:before{
+.tb_social .view:before {
+    background-position: -43px 9px;
+}
+
+.tb_social .icon-pdf:hover:before,
+.tb_social .box-share >label.active:before,
+.tb_social .box-share >label:hover:before,
+.tb_social .view:hover:before{
     background-color: #FF8A00;
 }
 
-.flipbook-view .fb_topBar .tb_social .box-share {
-    float:right;
+.tb_social .box-share {
+    float: right;
     position: relative;
 }
-.flipbook-view .fb_topBar .tb_social .share-socials {
+.tb_social .share-socials {
     display: none;
     position: absolute;
     width: 115px;
@@ -357,7 +365,7 @@ div.flipbook-viewport {
     top: 45px;
     background: #fff;
 }
-.flipbook-view .fb_topBar .tb_social .share-socials .tbicon {
+.tb_social .share-socials .tbicon {
     margin: 0px 10px 0px 0px;
 }
 .flipbook-view .related-products{
@@ -377,4 +385,141 @@ div.flipbook-viewport {
 .flipbook-view .related-products .products-grid.owl-carousel div.item {
     width:100%;
     margin:0px;
+}
+.flipbook-list {
+    float:left;
+    width:100%;
+    clear: both;
+    font-family: 'Kanit';
+    font-weight: 300;
+    color:#898989;
+    font-size:14px;
+}
+.flipbook-list .lastest-book {
+    display: block;
+    margin:25px auto;
+    width:770px;
+    max-width:100%;
+    overflow: hidden;
+}
+.flipbook-list .lastest-book .box-image{
+    float:left;
+    width:40%;
+    padding-right:20px;
+    position: relative;
+    padding-top:30px;
+    padding-left:30px;
+}
+.flipbook-list .lastest-book .box-image:before{
+    content:"";
+    position: absolute;
+    width:76px;
+    height:76px;
+    top:0px;
+    left:0px;
+    background:url(../images/label.png) no-repeat center center;
+}
+.flipbook-list .lastest-book .infor-book {
+    float:right;
+    width:60%;
+    padding-top:7%;
+}
+.flipbook-list .category_book {
+    float:left;
+    width:100%;
+    border-top:solid 1px #ebebeb;
+    padding-top:35px;
+    margin-top:10px;
+}
+
+.flipbook-list .infor-book .date-time {
+   font-size:14px;
+}
+.flipbook-list .infor-book .name-book {
+    font-size:28px;
+    color:#000;
+    font-weight:bold;
+    text-transform: uppercase;
+    margin-bottom:8px;
+}
+.flipbook-list .infor-book .short-des {
+  font-size:22px;
+  color:#000;
+  line-height: 24px;
+  margin-bottom:5px;
+}
+.flipbook-list .infor-book .tb_social {
+    float:left;
+    width:100%;
+    margin-top:8px;
+}
+.flipbook-list .infor-book .tb_social .box-share {
+    float:left;
+}
+.category_book .categpry_list {
+    float:left;
+    width:100%;
+    text-align: center;
+    margin-bottom:30px;
+}
+.category_book .categpry_list li {
+    display:inline-block;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin-right:15px;
+    padding-right:15px;
+    border-right:solid 1px #ebebeb;
+}
+.category_book .categpry_list li:nth-last-child(1) {
+    margin-right:0px;
+    padding-right:0px;
+    border-right:none;
+}
+.category_book .categpry_list li a {
+    display: block;
+    font-size:22px;
+    color:#252525;
+}
+.category_book .category_book_list {
+    float:left;
+    width:100%;
+}
+.category_book .category_book_list li.item{
+    float:left;
+    width:25%;
+    margin-bottom:30px;
+}
+.category_book .category_book_list li.item .box-image {
+    float:left;
+    width: 172px;
+    max-width:100%;
+    height:240px;
+    box-shadow: 0px 0px 3px 1px #ccc;
+    position: relative;
+    overflow: hidden;
+}
+.category_book .category_book_list li.item .box-image img {
+    width:100%;
+    position: absolute;
+    left:0px;
+    top:0px;
+}
+
+.category_book .infor-book {
+    float:left;
+    width:100%;
+    margin-top:5px;
+}
+.flipbook-list .category_book .infor-book .name-book {
+    font-size:14px;
+    line-height: 16px;
+    margin-bottom:5px;
+}
+.category_book .tb_social .icon-pdf,
+.category_book .tb_social .box-share >label,
+.category_book .tb_social .view {
+    text-indent: -9999px;
+}
+.category_book .tb_social .tbicon {
+    margin: 0 5px;
 }
