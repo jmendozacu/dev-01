@@ -12934,7 +12934,7 @@ ul.mp-details > li >a:before,
 .home-service-page .box-qacode {
   float:left;
   width:100%;
-  background:#f8f8f8;
+  /*background:#f8f8f8;*/
   padding:20px;
   text-align: center;
   display: table;
