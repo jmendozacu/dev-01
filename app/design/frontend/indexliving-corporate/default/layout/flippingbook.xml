@@ -56,4 +56,9 @@
                    template="flippingbook/magazine/view.phtml"/>
         </reference>
     </flippingbook_magazine_popup>
+  <flippingbook_index_index>
+    <reference name="content">
+      <block type="flippingbook/frontend_list" name="flippingbook.list" template="flippingbook/magazine/list.phtml" />
+    </reference>
+  </flippingbook_index_index>
 </layout>

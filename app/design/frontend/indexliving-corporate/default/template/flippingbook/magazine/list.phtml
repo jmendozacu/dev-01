@@ -1,0 +1,59 @@
+<div class="flipbook-view">
+  <div class="page-title style2">
+    <h1><?php echo $this->__('INDEX LIVING MALL CATALOG') ?></h1>
+  </div>
+
+  <div class="lastest-book" style="margin-top: 20px">
+    <?php $lastest_book = $this->getLastestBook(); ?>
+    <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$lastest_book->getData('magazine_thumbnail');?>" />
+    <div class="infor-book">
+      <div class="date-time">
+        <?php echo $lastest_book->getData('created_at');  ?>
+      </div>
+      <div class="name-book">
+        <?php echo $lastest_book->getData('magazine_title') ?>
+        <p>Lorem Ipsum has been the standard dummy text ever since the 1500s</p>
+      </div>
+      <?php if($lastest_book->getData('magazine_background_pdf') && $lastest_book->getData('magazine_enable_pdf')) : ?>
+        <div class="file-size">
+          <?php echo $this->__('File Size : ') ?>
+          <?php
+          $path = Mage::getBaseDir('media').'/flippingbook/pdf/'.$lastest_book->getData('magazine_background_pdf');
+          echo $this->formatSizeUnits(filesize($path));
+          ?>
+          <?php  ?>
+        </div>
+        <div class="tb_social" style="float: right; margin-left: 0px;">
+          <div class="view">
+            <i class="view" title="<?php echo $this->__('View')?>" onclick="location.href='<?php echo $this->getMagazineUrl($lastest_book); ?>'"><?php echo $this->__('View') ?></i>
+          </div>
+          <?php if ($lastest_book->getMagazineEnablePdf() && $lastest_book->getMagazineBackgroundPdf()): ?>
+            <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
+               onclick="location.href='<?php echo $this->getPdfUrl($lastest_book); ?>'"><?php echo $this->__('Download') ?></i>
+          <?php endif; ?>
+<!--          --><?php //if ($lastest_book->getDisplayTopIcons()): ?>
+            <div class="box-share">
+              <label><?php echo $this->__('Share') ?></label>
+              <div class="share-socials">
+                <i class="tbicon share-facebook" title="<?php echo $this->__('Share on facebook'); ?>"></i>
+                <i class="tbicon share-twitter" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
+              </div>
+            </div>
+            <script type="text/javascript">
+              jQuery('.box-share > label').click(function() {
+                if (!jQuery(this).hasClass('active')){
+                  jQuery('.box-share .share-socials').slideDown();
+                  jQuery(this).addClass('active');
+                }else if (jQuery(this).hasClass('active')) {
+                  jQuery('.box-share .share-socials').slideUp();
+                  jQuery(this).removeClass('active');
+                }
+              });
+            </script>
+<!--          --><?php //endif; ?>
+        </div>
+      <?php endif; ?>
+    </div>
+  </div>
+</div>
