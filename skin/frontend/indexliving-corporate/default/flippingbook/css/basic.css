@@ -360,3 +360,21 @@ div.flipbook-viewport {
 .flipbook-view .fb_topBar .tb_social .share-socials .tbicon {
     margin: 0px 10px 0px 0px;
 }
+.flipbook-view .related-products{
+    float: left;
+    width: 100%;
+    border-top: solid 1px #ebebeb;
+    padding-top: 30px;
+}
+.flipbook-view .related-products .products-grid div.item {
+    float:left;
+    width:24%;
+    margin-right:1.3333%;
+}
+.flipbook-view .related-products .products-grid div.item:nth-child(4n) {
+    margin-right:0px;
+}
+.flipbook-view .related-products .products-grid.owl-carousel div.item {
+    width:100%;
+    margin:0px;
+}

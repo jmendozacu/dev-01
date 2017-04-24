@@ -25,6 +25,8 @@
             <action method="addItem"><type>skin_js</type><name>js/flippingbook/flippingbook.js</name><params/></action>
             <action method="addItem"><type>skin_js</type><name>js/flippingbook/hash.min.js</name><params/></action>
             <action method="addItem"><type>skin_css</type><name>flippingbook/css/basic.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
         </reference>
         <reference name="content">
             <block type="flippingbook/frontend_magazine" name="flippingbook.magazine"
