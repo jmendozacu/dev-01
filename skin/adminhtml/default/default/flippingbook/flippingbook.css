@@ -1,0 +1,10 @@
+button.add-widget,
+button.add-variable{
+    display: none;
+}
+#page_text_magentovariable,
+#page_text_magentowidget,
+#magazine_details_magazine_description_magentovariable,
+#magazine_details_magazine_description_magentowidget {
+    display: none;
+}

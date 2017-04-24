@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Mageplace_Flippingbook
+ */
+-->
+<widgets>
+	<flippingbook_magazine_link type="flippingbook/frontend_widget_magazine_link" translate="name description" module="flippingbook">
+		<name>HTML5 Flipping Book</name>
+		<description>Link to a Specified HTML5 Flipping Book</description>
+		<parameters>
+			<id_path translate="label">
+				<visible>1</visible>
+				<required>1</required>
+				<label>HTML5 Flipping Book</label>
+				<type>label</type>
+				<helper_block>
+					<type>flippingbook/adminhtml_magazine_widget_chooser</type>
+					<data>
+						<button translate="open">
+							<open>Select HTML5 Flipping Book...</open>
+						</button>
+					</data>
+				</helper_block>
+				<sort_order>100</sort_order>
+			</id_path>
+			<anchor_text translate="label desctiption">
+				<visible>1</visible>
+				<label>Anchor Custom Text</label>
+				<description>If empty, the HTML5 Flipping Book Name will be used</description>
+				<type>text</type>
+			</anchor_text>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Anchor Custom Title</label>
+				<type>text</type>
+			</title>
+			<template translate="label">
+				<label>Template</label>
+				<visible>1</visible>
+				<type>select</type>
+				<value>flippingbook/magazine/widget/link/link_block.phtml</value>
+				<values>
+					<default translate="label">
+						<value>flippingbook/magazine/widget/link/link_block.phtml</value>
+						<label>HTML5 Flipping Book Block Template</label>
+					</default>
+					<link_inline translate="label">
+						<value>flippingbook/magazine/widget/link/link_inline.phtml</value>
+						<label>HTML5 Flipping Book Link Inline Template</label>
+					</link_inline>
+					<link_image translate="label">
+						<value>flippingbook/magazine/widget/link/link_image.phtml</value>
+						<label>HTML5 Flipping Book Link Image Template</label>
+					</link_image>
+				</values>
+			</template>
+		</parameters>
+	</flippingbook_magazine_link>
+</widgets>
