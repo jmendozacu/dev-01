@@ -40,9 +40,9 @@
             <div class="box-share">
               <label><?php echo $this->__('Share') ?></label>
               <div class="share-socials">
-                <i class="tbicon share-facebook" title="<?php echo $this->__('Share on facebook'); ?>"></i>
-                <i class="tbicon share-twitter" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
-                <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                <i class="tbicon share-facebook" name="<?php echo $lastest_book->getName(); ?>"  url="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $this->__('Share on facebook'); ?>"></i>
+                <i class="tbicon share-twitter" name="<?php echo $lastest_book->getName(); ?>"  url="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                <i class="tbicon share-plus" name="<?php echo $lastest_book->getName(); ?>"  url="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $this->__('Share on G+'); ?>"></i>
               </div>
             </div>
 <!--          --><?php //endif; ?>
@@ -53,18 +53,19 @@
   <div class="category_book">
     <ul class="categpry_list">
       <li>
-        <a href="#" title="all"><?php echo $this->__('ALl')?></a>
+        <a href="javascript:;" onclick="getListBooks('all')"title="all"><?php echo $this->__('ALl')?></a>
       </li>
       <?php $category_list= Mage::getModel('flippingbook/category')->getCollection(); ?>
       <?php if($category_list->getData()): ?>
         <?php foreach($category_list as $_category): ?>
           <li>
-            <a href="#" title="<?php $_category->getName()?>"><?php echo $_category->getName()?></a>
+            <a href="javascript:;" onclick="getListBooks('<?php echo $_category->getId()?>')" title="<?php $_category->getName()?>"><?php echo $_category->getName()?></a>
           </li>
         <?php endforeach; ?>
       <?php endif; ?>
     </ul>
-    <ul class="category_book_list">
+    <ul class="category_book_list" id="category_book_list">
+      <div id="all_list">
       <?php $collection = Mage::getModel('flippingbook/magazine')->getCollection(); ?>
       <?php if($collection->getData()): ?>
         <?php foreach($collection as $_magazine): ?>
@@ -99,9 +100,9 @@
                 <div class="box-share">
                   <label><?php echo $this->__('Share') ?></label>
                   <div class="share-socials">
-                    <i class="tbicon share-facebook" title="<?php echo $this->__('Share on facebook'); ?>"></i>
-                    <i class="tbicon share-twitter" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
-                    <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                    <i class="tbicon share-facebook" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" url="" title="<?php echo $this->__('Share on facebook'); ?>"></i>
+                    <i class="tbicon share-twitter" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                    <i class="tbicon share-plus" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on G+'); ?>"></i>
                   </div>
                 </div>
               </div>
@@ -109,6 +110,7 @@
           </li>
         <?php endforeach; ?>
       <?php endif; ?>
+      </div>
     </ul>
   </div>
 </div>
@@ -122,4 +124,49 @@
       jQuery(this).removeClass('active');
     }
   });
+  jQuery(document).ready(function () {
+    clickElement(jQuery(".tbicon"), function (a) {
+      var rawPublicationLink =  jQuery(this).attr("url");
+      var rawPublicationTitle =  jQuery(this).attr("name");
+      navigation(jQuery.trim(jQuery(this).attr("class").replace(/\b([a-z-]*hover|tbicon)\b/g, "")), rawPublicationLink, rawPublicationTitle)
+    });
+  });
+  function clickElement(a, b) {
+    jQuery.isTouch ? a.bind(jQuery.mouseEvents.up, b) : a.click(b)
+  }
+  function navigation(a, rawPublicationLink, rawPublicationTitle) {
+    switch (a) {
+      case "share-facebook":
+        window.open("https://www.facebook.com/sharer.php?u=" + encodeURIComponent(rawPublicationLink) + "&t=" + encodeURIComponent(rawPublicationTitle));
+        break;
+      case "share-twitter":
+        window.open("https://twitter.com/intent/tweet?original_referer=" + encodeURIComponent(rawPublicationLink) + "&url=" + encodeURIComponent(rawPublicationLink) + "&text=" + encodeURIComponent(rawPublicationTitle));
+        break;
+      case "share-plus":
+        window.open("https://plusone.google.com/_/+1/confirm?url=" + encodeURIComponent(rawPublicationLink))
+    }
+  }
+
+  function getListBooks(id){
+    var url = '<?php echo $this->getUrl('flippingbook/index/getListBooksByCategory')?>';
+    new Ajax.Request(url, {
+      parameters: {
+        category_id: id
+      },
+
+      onCreate: function() {
+        ajaxCart.ajaxLoading.show();
+      }.bind(this),
+
+      onComplete: function(response) {
+        /* hide ajax loading */
+        ajaxCart.ajaxLoading.hide();
+        /* show message, update cart info */
+          if (response.responseJSON) {
+            var html = response.responseJSON.html;
+           $('all_list').replace(html);
+          }
+      }.bind(this)
+    });
+  }
 </script>

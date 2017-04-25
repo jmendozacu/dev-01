@@ -1,0 +1,46 @@
+<div id="all_list">
+  <?php $collection = $this->getCollection(); ?>
+  <?php if($collection->getData()): ?>
+    <?php foreach($collection as $_magazine): ?>
+      <li class="item">
+        <div class="box-image">
+          <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$_magazine->getData('magazine_thumbnail');?>" />
+        </div>
+        <div class="infor-book">
+          <div class="date-time">
+            <?php
+            $createDate = new DateTime($_magazine->getData('created_at'));
+            echo $createDate->format('Y-m-d');
+            ?>
+          </div>
+          <div class="name-book">
+            <?php echo $_magazine->getData('magazine_title') ?>
+          </div>
+          <div class="file-size">
+            <?php echo $this->__('File Size : ') ?>
+            <?php
+            $path_file = Mage::getBaseDir('media').'/flippingbook/pdf/'.$_magazine->getData('magazine_background_pdf');
+            echo $this->formatSizeUnits(filesize($path_file));
+            ?>
+            <?php  ?>
+          </div>
+          <div class="tb_social">
+            <a class="view" title="<?php echo $this->__('View')?>" href="<?php echo $this->getMagazineUrl($_magazine); ?>"><?php echo $this->__('View') ?></a>
+            <?php if ($_magazine->getMagazineEnablePdf() && $_magazine->getMagazineBackgroundPdf()): ?>
+              <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
+                 onclick="location.href='<?php echo $this->getPdfUrl($_magazine); ?>'"><?php echo $this->__('Download') ?></i>
+            <?php endif; ?>
+            <div class="box-share">
+              <label><?php echo $this->__('Share') ?></label>
+              <div class="share-socials">
+                <i class="tbicon share-facebook" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" url="" title="<?php echo $this->__('Share on facebook'); ?>"></i>
+                <i class="tbicon share-twitter" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                <i class="tbicon share-plus" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on G+'); ?>"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    <?php endforeach; ?>
+  <?php endif; ?>
+</div>
