@@ -376,7 +376,12 @@ function checkShipping(address_id){
                 }
             }
             else{
-                if(response.responseJSON.ilm){
+                if((response.responseJSON.ilm && $("shipping:region_id").value == '515') ||
+                    (response.responseJSON.ilm && $("shipping:region_id").value == '509') ||
+                    (response.responseJSON.ilm && $("shipping:region_id").value == '530') ||
+                    (response.responseJSON.ilm && $("billing:region_id").value == '530') ||
+                    (response.responseJSON.ilm && $("billing:region_id").value == '509') ||
+                    (response.responseJSON.ilm && $("billing:region_id").value == '515')){
                     jQuery('#amscheckout-submit').attr("disabled", true);
                 }
                 else{
