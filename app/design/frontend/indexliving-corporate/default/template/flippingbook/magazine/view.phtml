@@ -1,0 +1,252 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Mageplace_Flippingbook
+ */
+?>
+<?php $_magazine = $this->getMagazine(); ?>
+<?php $pages = $this->getPages(); ?>
+<?php if (count($pages)): ?>
+    <?php $url = $this->getMagazineUrl($_magazine); ?>
+    <?php $helper = Mage::helper('cms'); ?>
+    <?php $processor = $helper->getPageTemplateProcessor(); ?>
+    <?php $magazine_width = $_magazine->getResolutionWidth(); ?>
+    <?php $magazine_height = $_magazine->getResolutionHeight(); ?>
+
+    <style>
+        div.flipbook-viewport {
+            background-color: # <?php echo $_magazine->getPageBackgroundColor(); ?> !important;
+        }
+
+        .fb_slider {
+            width: <?php echo $magazine_width; ?>px;
+            left: <?php echo $magazine_width/2; ?>px;
+        }
+
+        .fb_slider .ui-slider-horizontal {
+            width: <?php echo $magazine_width-80; ?>px;
+        }
+
+        .next-button {
+            background-position: -38px <?php echo $magazine_height/2-14; ?>px;
+        }
+
+        .previous-button {
+            background-position: -4px <?php echo $magazine_height/2-14; ?>px;
+        }
+
+        .next-button, .previous-button {
+            height: <?php echo $magazine_height; ?>px;
+        }
+
+        .flipbook-viewport .page {
+            background-color: #<?php echo $_magazine->getBackgroundColor(); ?> !important;
+            font-family: <?php echo $this->getFontFamily($_magazine);  ?> !important;
+            font-size: <?php echo $this->getFontSize($_magazine);  ?> !important;;
+        }
+
+        .flipbook-viewport .page p {
+            line-height: <?php echo $this->getLineSpasing($_magazine);  ?> !important;
+            margin: <?php echo $this->getParagraphSpacing($_magazine);  ?> 0 !important;
+        }
+
+    </style>
+    <div class="flipbook-view">
+        <div class="page-title style2">
+            <h1><?php echo $this->__('INDEX LIVING MALL CATALOG') ?></h1>
+        </div>
+        <div ignore="1" class="fb_topBar">
+            <?php if ($_magazine->getDisplayTitle()): ?>
+              <div class="box-title">
+                  <div class="date-active">
+                    <?php
+                    $createDate = new DateTime($_magazine->getData('created_at'));
+                    echo $createDate->format('Y-m-d');
+                      ?>
+                  </div>
+                  <h2 id="fb_bookname"><?php echo $_magazine->getName(); ?></h2>
+                  <div class="short-des"><?php echo $_magazine->getDescription() ?></div>
+              </div>
+            <?php endif; ?>
+            <div class="tb_social" style="float: right; margin-left: 0px;">
+                <?php if ($_magazine->getMagazineEnablePdf() && $_magazine->getMagazineBackgroundPdf()): ?>
+                    <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
+                       onclick="location.href='<?php echo $this->getPdfUrl($_magazine); ?>'"><?php echo $this->__('Download') ?></i>
+                <?php endif; ?>
+                <?php if ($_magazine->getDisplayTopIcons()): ?>
+                    <div class="box-share">
+                        <label><?php echo $this->__('Share') ?></label>
+                        <div class="share-socials">
+                            <i class="tbicon share-facebook" title="<?php echo $this->__('Share on facebook'); ?>"></i>
+                            <i class="tbicon share-twitter" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                            <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        jQuery('.box-share > label').click(function() {
+                            if (!jQuery(this).hasClass('active')){
+                                jQuery('.box-share .share-socials').slideDown();
+                                jQuery(this).addClass('active');
+                            }else if (jQuery(this).hasClass('active')) {
+                                jQuery('.box-share .share-socials').slideUp();
+                                jQuery(this).removeClass('active');
+                            }
+                        });
+                    </script>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="flipbook-viewport" style="width: <?php echo $magazine_width * 2 + 50; ?>px">
+            <div class="container">
+                <div id="book-zoom">
+                    <div class="flipbook">
+                        <?php if ($_magazine->getDisplayMoveButton()): ?>
+                            <div ignore="1" class="next-button"></div>
+                            <div ignore="1" class="previous-button"></div>
+                        <?php endif; ?>
+                        <?php foreach ($pages as $page) : ?>
+                            <?php if ($page->getIsImage()): ?>
+                                <div style="background-image:url(<?php echo $page->getPageImageUrl() ?>)"></div>
+                            <?php else: ?>
+                                <div>
+                                    <div class="flipbook-page">
+                                        <?php echo $processor->filter($page->getPageText()); ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <?php if ($_magazine->getDisplayPagebox()): ?>
+                    <div id="page-bar">
+                        <label><?php echo $this->__('Go to'); ?></label>
+                        <input type="text" id="goto_page_input" value="" autocomplete="" placeholder="page">
+                    <span id="goto_page_input_button"
+                          onclick="location.href='<?php echo $url; ?>#page/'+document.getElementById('goto_page_input').value;"></span>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_magazine->getDisplaySlider()): ?>
+                    <div id="slider-bar" class="fb_slider">
+                        <div id="slider"></div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="box-products">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-flipbook-list-products')->toHtml() ?>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var rawPublicationLink = "<?php echo $url; ?>";
+        var rawPublicationTitle = "<?php echo $_magazine->getName(); ?>";
+        <?php if($_magazine->getDisplaySlider()): ?>
+            jQuery("#slider").slider({
+                min: 1,
+                max: 100,
+                start: function (event, ui) {
+                    if (!window._thumbPreview) {
+                        _thumbPreview = jQuery('<div />', {'class': 'thumbnail'}).html('<div></div>');
+                        setPreview(ui.value);
+                        _thumbPreview.appendTo(jQuery(ui.handle));
+                    } else
+                        setPreview(ui.value);
+                },
+                slide: function (event, ui) {
+                    setPreview(ui.value);
+                },
+                stop: function () {
+                    if (window._thumbPreview)
+                        _thumbPreview.removeClass('show');
+                    jQuery('.flipbook').turn('page', Math.max(1, jQuery(this).slider('value') * 2 - 2));
+                }
+            });
+        <?php endif; ?>
+
+
+        function loadApp() {
+            jQuery(document).keydown(function(e){
+                var previous = 37, next = 39;
+                switch (e.keyCode) {
+                    case previous:
+                        jQuery('.flipbook').turn('previous');
+                        break;
+                    case next:
+                        jQuery('.flipbook').turn('next');
+                        break;
+                }
+            });
+
+            FlippingbookHash.on('^page\/([0-9]*)$', { yep: function (path, parts) {
+                var page = parts[1];
+                if (page !== undefined) {
+                    if (jQuery('.flipbook').turn('is'));
+                    {
+                        jQuery('.flipbook').turn('page', page);
+                    }
+                }
+            }, nop: function (path) {
+                if (jQuery('.flipbook').turn('is')) {
+                    jQuery('.flipbook').turn('page', 1);
+                }
+            } });
+
+            jQuery('.flipbook').turn({
+                width:<?php echo $magazine_width*2; ?>,
+                height:<?php echo $magazine_height; ?>,
+                elevation: 50,
+                gradients: true,
+                pages: <?php echo count($pages); ?>,
+                autoCenter: true,
+                when: {
+                    turning: function (e, page, view) {
+                        pages = jQuery(this).turn('pages');
+                        if (page > 1) {
+                            jQuery('.previous-button').show();
+                        } else {
+                            jQuery('.previous-button').hide();
+                        }
+                        if (page != pages) {
+                            if (page == (pages - 1) && pages % 2 != 0) {
+                                jQuery('.next-button').hide();
+                            } else {
+                                jQuery('.next-button').show();
+                            }
+                        } else {
+                            jQuery('.next-button').hide();
+                        }
+                        FlippingbookHash.go('page/' + page).update();
+                    },
+                    turned: function (e, page, view) {
+                        var book = jQuery(this);
+                        if (jQuery('#slider')) {
+                            jQuery('#slider').slider('value', getViewNumber(book, page));
+                        }
+                        book.turn('center');
+                    },
+                    end: function (e, pageObj) {
+                        var book = jQuery(this);
+                        setTimeout(function () {
+                            if (jQuery('#slider')) {
+                                jQuery('#slider').slider('value', getViewNumber(book));
+                            }
+                        }, 1);
+                    }
+                }
+            });
+            if (jQuery('#slider')) {
+                jQuery('#slider').slider('option', 'max', numberOfViews(jQuery('.flipbook')));
+            }
+            jQuery('.flipbook').addClass('animated');
+        }
+        yepnope({
+            test: Modernizr.csstransforms,
+            yep: ['<?php echo $this->getSkinUrl("js/flippingbook/turn.min.js")?>'],
+            nope: ['<?php echo $this->getSkinUrl("js/flippingbook/turn.html4.min.js")?>'],
+            both: ['<?php echo $this->getSkinUrl("flippingbook/css/basic.css")?>'],
+            complete: loadApp });
+    </script>
+<?php else: ?>
+    <?php echo $this->__("No pages in the book!"); ?>
+<?php endif; ?>

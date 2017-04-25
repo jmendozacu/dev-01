@@ -66,6 +66,7 @@ class Magebuzz_Bannerads_Block_Adminhtml_Bannerads_Grid extends Mage_Adminhtml_B
       'align'  => 'left',
       'index'  => 'from_date',
       'type'   => 'datetime',
+      'renderer' => 'Magebuzz_Bannerads_Block_Adminhtml_Bannerads_Renderer_Datetime',
     ));
 
     $this->addColumn('to_date', array(
@@ -73,6 +74,7 @@ class Magebuzz_Bannerads_Block_Adminhtml_Bannerads_Grid extends Mage_Adminhtml_B
       'align'  => 'left',
       'index'  => 'to_date',
       'type'   => 'datetime',
+      'renderer' => 'Magebuzz_Bannerads_Block_Adminhtml_Bannerads_Renderer_Datetime',
     ));
 
     $this->addColumn('customer_group_ids', array(

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Mageplace_Flippingbook
+ */
+-->
+<layout>
+    <adminhtml_flippingbook_template_edit>
+        <reference name="left">
+            <block type="flippingbook/adminhtml_template_edit_tabs" name="flippingbook_template_edit_tabs">
+                <block type="flippingbook/adminhtml_template_edit_tab_main" name="flippingbook_template_edit_tab_main" />
+                <block type="flippingbook/adminhtml_template_edit_tab_page" name="flippingbook_template_edit_tab_page" />
+                <block type="flippingbook/adminhtml_template_edit_tab_elements" name="flippingbook_template_edit_tab_elements" />
+                <action method="addTab"><name>main_section</name><block>flippingbook_template_edit_tab_main</block></action>
+                <action method="addTab"><name>page_section</name><block>flippingbook_template_edit_tab_page</block></action>
+                <action method="addTab"><name>element_section</name><block>flippingbook_template_edit_tab_elements</block></action>
+            </block>
+        </reference>
+    </adminhtml_flippingbook_template_edit>
+
+    <adminhtml_flippingbook_magazine_edit>
+        <reference name="head">
+            <action method="addCss"><name>flippingbook/flippingbook.css</name></action>
+        </reference>
+        <update handle="editor"/>
+    </adminhtml_flippingbook_magazine_edit>
+
+    <adminhtml_flippingbook_page_edit>
+        <reference name="head">
+            <action method="addCss"><name>flippingbook/flippingbook.css</name></action>
+        </reference>
+        <update handle="editor"/>
+    </adminhtml_flippingbook_page_edit>
+
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>flippingbook</name>
+                <block>flippingbook/adminhtml_catalog_product_edit_tabs</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+</layout>

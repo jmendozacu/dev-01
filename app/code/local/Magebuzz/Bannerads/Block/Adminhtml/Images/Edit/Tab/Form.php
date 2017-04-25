@@ -89,14 +89,14 @@ class Magebuzz_Bannerads_Block_Adminhtml_Images_Edit_Tab_Form extends Mage_Admin
 			)
 		);
 		
-		$outputFormat = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
+//		$outputFormat = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
 		
 		$fieldset->addField('start_time', 'date', 
 			array(
 				'label' => Mage::helper('bannerads')->__('From Date'), 
 				'name' => 'start_time', 
-				'format' => $outputFormat, 
-				'time' => TRUE, 
+        'format' => 'yyyy-MM-dd HH:mm:ss',
+        'time' => TRUE,
 				'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			)
 		);
@@ -105,8 +105,8 @@ class Magebuzz_Bannerads_Block_Adminhtml_Images_Edit_Tab_Form extends Mage_Admin
 			array(
 				'label' => Mage::helper('bannerads')->__('To Date'), 
 				'name' => 'end_time', 
-				'format' => $outputFormat, 
-				'time' => TRUE, 
+        'format' => 'yyyy-MM-dd HH:mm:ss',
+        'time' => TRUE,
 				'image' => $this->getSkinUrl('images/grid-cal.gif'),
 			)
 		);
