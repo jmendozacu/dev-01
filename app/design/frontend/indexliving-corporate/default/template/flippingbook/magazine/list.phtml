@@ -6,7 +6,9 @@
   <div class="lastest-book">
     <?php $lastest_book = $this->getLastestBook(); ?>
     <div class="box-image">
-      <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$lastest_book->getData('magazine_thumbnail');?>" />
+      <a href="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $lastest_book->getData('magazine_title') ?>">
+        <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$lastest_book->getData('magazine_thumbnail');?>" />
+      </a>
     </div>
     <div class="infor-book">
       <div class="date-time">
@@ -70,7 +72,9 @@
         <?php foreach($collection as $_magazine): ?>
           <li class="item">
             <div class="box-image">
-              <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$_magazine->getData('magazine_thumbnail');?>" />
+              <a href="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $_magazine->getData('magazine_title') ?>">
+                <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$_magazine->getData('magazine_thumbnail');?>" />
+              </a>
             </div>
             <div class="infor-book">
               <div class="date-time">
