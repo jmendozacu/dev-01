@@ -340,7 +340,7 @@ div.flipbook-viewport {
 }
 .tb_social .box-share >label:before,
 .tb_social .box-share >label.active:before{
-
+  background-position: -42px -17px;
 }
 .tb_social .view:before {
     background-position: -43px 9px;
