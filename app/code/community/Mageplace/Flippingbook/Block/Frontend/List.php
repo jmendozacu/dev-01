@@ -4,6 +4,7 @@ class Mageplace_Flippingbook_Block_Frontend_List extends Mage_Core_Block_Templat
 
   public function getLastestBook(){
     $model = Mage::getModel('flippingbook/magazine')->getCollection()
+      ->addFieldToFilter('is_active', 1)
       ->setOrder('created_at', 'desc')
       ->getFirstItem();
     return $model;

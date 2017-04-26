@@ -62,7 +62,7 @@
                   <div class="date-active">
                     <?php
                     $createDate = new DateTime($_magazine->getData('created_at'));
-                    echo $createDate->format('Y-m-d');
+                    echo $createDate->format('j F, Y');
                       ?>
                   </div>
                   <h2 id="fb_bookname"><?php echo $_magazine->getName(); ?></h2>
@@ -70,6 +70,7 @@
               </div>
             <?php endif; ?>
             <div class="tb_social" style="float: right; margin-left: 0px;">
+              <a class="view active" title="<?php echo $this->__('View')?>" href="<?php echo $this->getMagazineUrl($_magazine); ?>"><?php echo $this->__('View') ?></a>
                 <?php if ($_magazine->getMagazineEnablePdf() && $_magazine->getMagazineBackgroundPdf()): ?>
                     <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
                        onclick="location.href='<?php echo $this->getPdfUrl($_magazine); ?>'"><?php echo $this->__('Download') ?></i>
@@ -80,7 +81,13 @@
                         <div class="share-socials">
                             <i class="tbicon share-facebook" title="<?php echo $this->__('Share on facebook'); ?>"></i>
                             <i class="tbicon share-twitter" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
+                          <div class="parent-google">
                             <i class="tbicon share-plus" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                            <div class="child-google">
+                              <script src="https://apis.google.com/js/platform.js" async defer></script>
+                              <div class="g-plus" data-action="share" data-annotation="none" data-href="http://index-corporate.mgfdev.com/flippingbook/magazine/view/id/1"></div>
+                            </div>
+                          </div>
                         </div>
                     </div>
                     <script type="text/javascript">

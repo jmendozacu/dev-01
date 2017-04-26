@@ -37,8 +37,10 @@ function navigation(a) {
         case "share-twitter":
             window.open("https://twitter.com/intent/tweet?original_referer=" + encodeURIComponent(rawPublicationLink) + "&url=" + encodeURIComponent(rawPublicationLink) + "&text=" + encodeURIComponent(rawPublicationTitle));
             break;
-        case "share-plus":
-            window.open("https://plusone.google.com/_/+1/confirm?url=" + encodeURIComponent(rawPublicationLink))
+//        case "share-plus":
+////            window.open("https://plus.google.com/share?url=" + encodeURIComponent(rawPublicationLink));
+//              window.open("https://plus.google.com/share?url=" + encodeURIComponent(rawPublicationLink), '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');
+//            break;
     }
 }
 

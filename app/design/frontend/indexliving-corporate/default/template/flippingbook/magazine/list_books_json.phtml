@@ -10,7 +10,7 @@
           <div class="date-time">
             <?php
             $createDate = new DateTime($_magazine->getData('created_at'));
-            echo $createDate->format('Y-m-d');
+            echo $createDate->format('j F, Y');
             ?>
           </div>
           <div class="name-book">
@@ -35,7 +35,13 @@
               <div class="share-socials">
                 <i class="tbicon share-facebook" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" url="" title="<?php echo $this->__('Share on facebook'); ?>"></i>
                 <i class="tbicon share-twitter" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on Twitter'); ?>"></i>
-                <i class="tbicon share-plus" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                <div class="parent-google">
+                  <i class="tbicon share-plus" name="<?php echo $_magazine->getName(); ?>" url="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $this->__('Share on G+'); ?>"></i>
+                  <div class="child-google">
+                    <script src="https://apis.google.com/js/platform.js" async defer></script>
+                    <div class="g-plus" data-action="share" data-annotation="none" data-href="<?php echo $this->getMagazineUrl($_magazine); ?>"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

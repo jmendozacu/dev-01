@@ -15,9 +15,11 @@ class Mageplace_Flippingbook_IndexController extends Mage_Core_Controller_Front_
     $_response = array();
     $category_id = $this->getRequest()->getParam('category_id');
     if($category_id == 'all'){
-      $collection = Mage::getModel('flippingbook/magazine')->getCollection();
+      $collection = Mage::getModel('flippingbook/magazine')->getCollection()
+        ->addFieldToFilter('is_active', 1);
     }else{
       $collection = Mage::getModel('flippingbook/magazine')->getCollection()
+        ->addFieldToFilter('is_active', 1)
         ->addFieldToFilter('magazine_category_id', $category_id);
     }
     if($collection->getData()){
@@ -28,7 +30,7 @@ class Mageplace_Flippingbook_IndexController extends Mage_Core_Controller_Front_
         ->setTemplate('flippingbook/magazine/list_books_json.phtml')->toHtml();
       $success = true;
     }else{
-      $html_list = '';
+      $html_list = '<div id="all_list"></div>';
       $success = false;
     }
     $_response['html'] = $html_list;

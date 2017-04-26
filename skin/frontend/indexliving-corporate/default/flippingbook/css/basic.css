@@ -163,7 +163,7 @@
     text-align: left;
     width: 100%;
     margin-top: 0px;
-    overflow: hidden;
+    overflow: initial;
 }
 div.flipbook-viewport {
     overflow: hidden;
@@ -319,7 +319,8 @@ div.flipbook-viewport {
 }
 .tb_social .icon-pdf:hover,
 .tb_social .box-share >label:hover,
-.tb_social .view:hover{
+.tb_social .view:hover,
+.tb_social .view.active {
     text-decoration: none;
     color: #FF8A00;
 }
@@ -349,7 +350,8 @@ div.flipbook-viewport {
 .tb_social .icon-pdf:hover:before,
 .tb_social .box-share >label.active:before,
 .tb_social .box-share >label:hover:before,
-.tb_social .view:hover:before{
+.tb_social .view:hover:before,
+.tb_social .view.active:before{
     background-color: #FF8A00;
 }
 
@@ -522,4 +524,17 @@ div.flipbook-viewport {
 }
 .category_book .tb_social .tbicon {
     margin: 0 5px;
+}
+.share-socials .parent-google{
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+.share-socials .parent-google .child-google{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
 }
