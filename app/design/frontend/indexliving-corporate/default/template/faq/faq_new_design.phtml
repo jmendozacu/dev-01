@@ -8,7 +8,7 @@
         ?>
         <?php foreach ($category_online_faqs as $category_online_faq): ?>
           <?php $online_faq_id =  $category_online_faq->getData('category_id'); ?>
-          <a id="cate_id_<?php echo $online_faq_id ?>" onclick="showFaq(<?php echo $online_faq_id ?>)"  href="#"><?php echo $category_online_faq->getData('category_name') ?><span class="arrow"> > </span></a>
+          <a id="cate_id_<?php echo $online_faq_id ?>" class="category-faq" onclick="showFaq(<?php echo $online_faq_id ?>)"  href="#"><?php echo $category_online_faq->getData('category_name') ?><span class="arrow"> > </span></a>
         <?php endforeach; ?>
       </div>
     </li>
@@ -20,7 +20,7 @@
         ?>
         <?php foreach ($category_in_store_faqs as $category_in_store_faq): ?>
           <?php $in_store_faq_id =  $category_in_store_faq->getData('category_id'); ?>
-          <a id="cate_id_<?php echo $in_store_faq_id ?>" onclick="showFaq(<?php echo $in_store_faq_id ?>)" href="#"><?php echo $category_in_store_faq->getData('category_name') ?><span class="arrow"> > </span></a>
+          <a id="cate_id_<?php echo $in_store_faq_id ?>" class="category-faq" onclick="showFaq(<?php echo $in_store_faq_id ?>)" href="#"><?php echo $category_in_store_faq->getData('category_name') ?><span class="arrow"> > </span></a>
         <?php endforeach; ?>
       </div>
     </li>
@@ -32,7 +32,7 @@
         ?>
         <?php foreach ($category_about_indexs as $category_about_index): ?>
           <?php $about_index_id =  $category_about_index->getData('category_id'); ?>
-          <a id="cate_id_<?php echo $about_index_id ?>" onclick="showFaq(<?php echo $about_index_id ?>)" href="#"><?php echo $category_about_index->getData('category_name') ?><span class="arrow"> > </span></a>
+          <a id="cate_id_<?php echo $about_index_id ?>" class="category-faq" onclick="showFaq(<?php echo $about_index_id ?>)" href="#"><?php echo $category_about_index->getData('category_name') ?><span class="arrow"> > </span></a>
         <?php endforeach; ?>
       </div>
     </li>
@@ -47,9 +47,10 @@
       cate_id.removeClass('active');
     }
     else{
+      jQuery('.category-faq').removeClass('active');
       cate_id.addClass('active');
-      cate_id.next().removeClass('active');
-      cate_id.prev().removeClass('active');
+//      cate_id.next().removeClass('active');
+//      cate_id.prev().removeClass('active');
     }
     var get_faqs_url = "<?php echo $this->getUrl('faq/index/getFaqs')?>?category_id=" + category_id;
     if(jQuery('.list-faq-'+ category_id).hasClass('loaded')){
