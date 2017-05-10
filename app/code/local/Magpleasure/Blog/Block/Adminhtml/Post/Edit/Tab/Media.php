@@ -61,6 +61,29 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Media extends Mage_Adminhtm
             'url' => 'magpleasure/mpblog',
         ));
 
+        $document = '';
+        $path = '';
+        $data['blog_id'] = $this->getRequest()->getParam('id');
+        if($data['blog_id']){
+            $blogs = Mage::getModel('mpblog/post')
+              ->getCollection()
+              ->addFieldToFilter('post_id', array('finset' => $data['blog_id']));
+            foreach($blogs as $blog){
+                $document = $blog->getData('document_promotion');
+            }
+        }
+
+        if($document){
+            $path = Mage::getBaseDir('media') . DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'.$data['blog_id']. DS . $document;
+        }
+
+        $fieldset->addField('document_promotion', 'file', array(
+          'label'     => $this->_helper()->__('Document'),
+          'required'  => false,
+          'name'      => 'document_promotion',
+          'note' =>     $this->_helper()->__("<a href='$path'>$document</a>"),
+        ));
+
         $fieldset->addField('thumbnail_url', 'text', array(
             'label' => $this->_helper()->__('Image Link'),
             'required' => false,

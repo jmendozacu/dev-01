@@ -340,6 +340,26 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
             $images = $_FILES['magebuzz_input2']['name'];
             $this->saveImages($post_id, $images);
           }
+          if (isset($_FILES['document_promotion']['name']) && $_FILES['document_promotion']['name'] != '') {
+            $document = $_FILES["document_promotion"]["name"];
+            try {
+              $uploader = new Varien_File_Uploader('document_promotion');
+              $uploader->setAllowedExtensions(array('pdf', 'doc'));
+              $uploader->setAllowRenameFiles(false);
+              $uploader->setFilesDispersion(false);
+              $path = Mage::getBaseDir('media') . DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'.$post_id;
+
+              if(!is_dir($path)){
+                mkdir($path , 0777, true);
+              }
+              chmod($path, 0777);
+
+              $uploader->save($path, $document);
+            } catch (Exception $e) {
+              Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+            $requestPost['document_promotion'] = $document;
+          }
             $post->addData($requestPost);
 
             # Process Timezone
