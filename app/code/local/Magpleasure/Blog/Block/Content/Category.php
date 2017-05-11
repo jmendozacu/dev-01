@@ -40,7 +40,19 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
 //                'title' => $this->_helper()->getMenuLabel(),
 //                'link' =>  $this->_helper()->_url()->getUrl(),
 //            ));
-
+            $category = $this->getCategory();
+            $category_is_landing = $category->getData('category_is_landing');
+            if(!$category_is_landing){
+                $parentCategorys = Mage::helper('mpblog')->getParentCategory($this->getCategory()->getData('category_style'));
+              if($parentCategorys->getSize()){
+                foreach ($parentCategorys as $parentCategory){
+                  $breadcrumbs->addCrumb($parentCategory->getUrlKey(), array(
+                    'label' => $parentCategory->getName(),
+                    'title' => $parentCategory->getName(),
+                  ));
+                }
+              }
+            }
             $breadcrumbs->addCrumb($this->getCategory()->getUrlKey(), array(
                 'label' => $this->getCategory()->getName(),
                 'title' => $this->getCategory()->getName(),
