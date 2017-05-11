@@ -51,13 +51,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="#">
+                                <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
                                     <?php echo $this->__("Download"); ?>
                                 </a>
                             </li>
                             <?php //if ($helper->getSocialEnabled()): ?>
                                 <li class="box-shares">
-                                    <a class="mp-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)">
+                                    <a class="mp-share link-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)" id="shareProductLink">
                                         <?php echo $this->__("Share"); ?>
                                     </a>
                                     <?php echo $this->getChildHtml('mpblog_social'); ?>

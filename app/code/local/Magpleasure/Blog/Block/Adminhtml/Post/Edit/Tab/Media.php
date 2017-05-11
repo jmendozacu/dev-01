@@ -74,7 +74,7 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Media extends Mage_Adminhtm
         }
 
         if($document){
-            $path = Mage::getBaseDir('media') . DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'.$data['blog_id']. DS . $document;
+            $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $document;
         }
 
         $fieldset->addField('document_promotion', 'file', array(
