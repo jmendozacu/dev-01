@@ -3846,8 +3846,8 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
   }
   .logo .large {
     display: block;
-    width: 201px;
-    height: 30px;
+    width: 180px; 
+    height: auto; 
   }
   .box-top-menu.box-header-content {display:block!important;}
 }
