@@ -675,4 +675,12 @@ class Magpleasure_Blog_Helper_Data extends Mage_Core_Helper_Abstract
           ->addFieldToFilter('category_style',$subCategoryStyle);
         return $collection;
     }
+
+    public function getParentCategoryIndexproject($subCategoryStyle){
+        $collection = Mage::getModel('mpblog/category')->getCollection();
+        $collection
+          ->addFieldToFilter('category_is_landing_project','1')
+          ->addFieldToFilter('category_style',$subCategoryStyle);
+        return $collection;
+    }
 }

@@ -41,9 +41,12 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
 //                'link' =>  $this->_helper()->_url()->getUrl(),
 //            ));
             $category = $this->getCategory();
-            $category_is_landing = $category->getData('category_is_landing');
-            if(!$category_is_landing){
-                $parentCategorys = Mage::helper('mpblog')->getParentCategory($this->getCategory()->getData('category_style'));
+            $category_is_landing_homedecor = $category->getData('category_is_landing');
+            $category_is_landing_indexproject = $category->getData('category_is_landing_project');
+            $category_style = $this->getCategory()->getData('category_style');
+//
+            if(!$category_is_landing_homedecor && $category_style == Magpleasure_Blog_Model_Categorystyle::HOME_DECOR){
+                $parentCategorys = Mage::helper('mpblog')->getParentCategory($category_style);
               if($parentCategorys->getSize()){
                 foreach ($parentCategorys as $parentCategory){
                   $breadcrumbs->addCrumb($parentCategory->getUrlKey(), array(
@@ -52,6 +55,17 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
                   ));
                 }
               }
+            }
+            if(!$category_is_landing_indexproject && $category_style == Magpleasure_Blog_Model_Categorystyle::INDEX_PROJECT){
+                $parentCategoryIndexprojects = Mage::helper('mpblog')->getParentCategoryIndexproject($category_style);
+                if($parentCategoryIndexprojects->getSize()){
+                    foreach ($parentCategoryIndexprojects as $parentCategoryIndexproject){
+                        $breadcrumbs->addCrumb($parentCategoryIndexproject->getUrlKey(), array(
+                          'label' => $parentCategoryIndexproject->getName(),
+                          'title' => $parentCategoryIndexproject->getName(),
+                        ));
+                    }
+                }
             }
             $breadcrumbs->addCrumb($this->getCategory()->getUrlKey(), array(
                 'label' => $this->getCategory()->getName(),

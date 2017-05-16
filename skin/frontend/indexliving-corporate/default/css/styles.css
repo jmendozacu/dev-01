@@ -1438,7 +1438,7 @@ button#ajaxcart_continue_shopping { background: #f0f1d9; color: #7c7c7c;}
 }
 
 .breadcrumbs span {
-  float: left;
+  /*float: left;*/
   padding: 0 7px;
 }
 
