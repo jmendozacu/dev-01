@@ -50,7 +50,7 @@
 }
 .searchautocomplete .nav {
   float: left;
-  height: 46px;
+  height: 40px;
   position: relative;
   width: 100%;
   border:solid 1px #DADADA;
@@ -71,13 +71,13 @@
   border: 1px solid #DDD;
   color: black;
   cursor: pointer;
-  height: 29px;
+  height: 39px;
   left: 5px;
   margin: 0;
   outline: 0;
   padding: 0;
   position: absolute;
-  top: 5px;
+  top: 0;
   visibility: visible;
   width: auto;
 }
@@ -89,30 +89,29 @@
   cursor: pointer;
   float: left;
   font-size: 14px;
-  height: 45px;
-  line-height: 46px;
+  height: 39px;
+  line-height: 37px;
   margin: 0px 0px 0px 2px;
   padding: 0px 25px 0px 10px;
   text-align: center;
   white-space: nowrap;
 }
 .searchautocomplete .nav .nav-search-in .nav-down-arrow {
-  right: 6px;
-  top: 18px;
+  right: 10px;
+  top: 15px;
   position: absolute;
   width: 10px;
   height: 10px;
-  background:url(images/arrow.png) no-repeat center center;
+  background: url(images/arrow.png) no-repeat center center;
 }
 
 .searchautocomplete .nav .nav-input {
-  *zoom: 1;
   margin: 0;
   padding: 0px 5px 0px 5px;
   z-index: 12;
   position: relative;
-  height:30px;
-  line-height:30px;
+  height: 30px;
+  line-height: 30px;
 }
 .searchautocomplete .nav .nav-input:before,
 .searchautocomplete .nav .nav-input:after {
@@ -127,7 +126,7 @@
   z-index: 10;
   padding: 0px;
   height: 23px;
-  line-height:30px;
+  line-height: 30px;
   border: 0px;
   font-size: 14px;
   background: transparent;
@@ -135,7 +134,8 @@
   outline: 0px;
   margin-left: 18px;
   width: 100%;
-  color:#9C9C9C;
+  color: #9C9C9C; 
+  position: absolute;
 }
 .searchautocomplete .nav .nav-input input.suggest {
   display: none;
@@ -145,17 +145,17 @@
 .searchautocomplete .nav-submit-button {
 }
 .searchautocomplete .nav-submit-button .button {
-  width:58px;
-  height:46px;
-  position:absolute;
-  top:0px;
-  right:0px;
-  background:url(images/icon-search.png) no-repeat center center #FFC222;
+  width: 58px;
+  height: 40px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: url(images/icon-search.png) no-repeat center center #FFC222;
   -webkit-border-radius: 0px 3px 3px 0px;
   -moz-border-radius: 0px 3px 3px 0px;
   border-radius: 0px 3px 3px 0px;
   z-index: 14;
-  text-indent:-9999px;
+  text-indent: -9999px;
 }
 
 .searchautocomplete .searchautocomplete-placeholder {
@@ -429,17 +429,3 @@
   .searchautocomplete .searchautocomplete-placeholder ul {max-height:300px; overflow-y:auto;}
   .searchautocomplete .searchautocomplete-placeholder {top:48px;}
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

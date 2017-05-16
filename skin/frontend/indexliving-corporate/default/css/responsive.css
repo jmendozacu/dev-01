@@ -9,7 +9,7 @@
 }
 
 .product-viewed-mobile-tablet {
-    display: none;
+    display: none; 
 }
 @media (min-width: 1213px) {
     .searchautocomplete{width: 445px;}
