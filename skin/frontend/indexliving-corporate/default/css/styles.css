@@ -13744,6 +13744,7 @@ margin-bottom:15px;
   margin-right:2%;
   margin-bottom: 40px;
   border:solid 1px #ebebeb;
+  min-height: 373px;
 }
 .list-joy-quality li:nth-child(3n) {
   margin-right:0px;
