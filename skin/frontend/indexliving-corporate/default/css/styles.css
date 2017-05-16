@@ -3622,6 +3622,8 @@ body {
   float: left;
   width: 100%;
 }
+.ideas-inspiration a.left-link{left:0;} 
+.ideas-inspiration a.left-link:after{display: none;}
 .ideas-inspiration .title-style1 {
   margin: 0 0 10px
 }
@@ -3669,7 +3671,7 @@ body {
   min-height: 45px;
   margin-bottom: 10px;
 }
-body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DBYordX';font-size:20px;}
+body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DBYordX';font-size:18px;}
 .ideas-inspiration .list-ideas ul li a span.text{
   font-size: 18px;
   color: #000000;
