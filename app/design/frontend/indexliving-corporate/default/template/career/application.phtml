@@ -79,13 +79,13 @@ $job = Mage::getModel('career/job')->load($id);
               <div class="field left">
                 <label for="identity_number" class="required"><em>*</em><?php echo $this->__('Identity number') ?></label>
                 <div class="input-box">
-                  <input type="text" name="identity_number" value="" id="identity_number" class="input-text required-entry" title="<?php echo $this->__('Identity number') ?>" />
+                  <input type="text" name="identity_number" value="" id="identity_number" class="input-text required-entry validate-number-id" title="<?php echo $this->__('Identity number') ?>" />
                 </div>
               </div>
               <div class="field right">
                 <label for="email" class="required"><em>*</em><?php echo $this->__('Email') ?></label>
                 <div class="input-box">
-                  <input type="text" name="email" value="" id="email" class="input-text required-entry" title="<?php echo $this->__('Company name') ?>" />
+                  <input type="text" name="email" value="" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Company name') ?>" />
                 </div>
               </div>
             </li>
@@ -107,13 +107,13 @@ $job = Mage::getModel('career/job')->load($id);
               <div class="field left">
                 <label for="tel" class="required"><em>*</em><?php echo $this->__('Phone number') ?></label>
                 <div class="input-box">
-                  <input type="text" name="tel" value="" id="tel" class="input-text required-entry" title="<?php echo $this->__('Phone number') ?>" />
+                  <input type="text" name="tel" value="" id="tel" class="input-text required-entry validate-number" title="<?php echo $this->__('Phone number') ?>" />
                 </div>
               </div>
               <div class="field right">
-                <label for="date_of_birth" class="required"><em>*</em><?php echo $this->__('Date Of Birth') ?></label>
+                <label for="date_of_birth"><?php echo $this->__('Date Of Birth') ?></label>
                 <div class="input-box">
-                  <input type="text" name="date_of_birth" value="" id="date_of_birth" class="input-text required-entry" title="<?php echo $this->__('Date Of Birth') ?>" />
+                  <input type="text" name="date_of_birth" value="" id="date_of_birth" class="input-text " title="<?php echo $this->__('Date Of Birth') ?>" />
                 </div>
               </div>
             </li>
@@ -165,6 +165,18 @@ $job = Mage::getModel('career/job')->load($id);
   //]]>
 </script>
 <script type="text/javascript">
+  Validation.add('validate-number-id', 'Please enter a valid ID Number. For example 0165872824445', function(v) {
+    var pass=v.strip(); /*strip leading and trailing spaces*/
+    return !(pass.length !=13);
+  });
+  Calendar.setup({
+    inputField : 'date_of_birth',
+    ifFormat : '%m/%e/%Y',
+    button : 'date_from_trig',
+    align : 'Bl',
+    singleClick : true
+  });
+
   jQuery(function($) {
     var token = '<?php echo Mage::helper('amajaxlogin/facebook')->getAppId(); ?>|<?php echo Mage::helper('amajaxlogin/facebook')->getSecretId(); ?>';
     $(document).ready(function(){
