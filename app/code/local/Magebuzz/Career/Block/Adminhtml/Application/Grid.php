@@ -70,6 +70,13 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
             'index' => 'present_company',
             'width' => '100px'
         ));
+      $this->addColumn('date_of_birth', array(
+        'header' => Mage::helper('career')->__('Date Of Birth'),
+        'align' => 'left',
+        'index' => 'date_of_birth',
+        'type'  => 'date',
+        'width' => '100px'
+      ));
 
         $this->addColumn('application_for_job_id', array(
           'header' => Mage::helper('career')->__('Application For Job'),
@@ -96,7 +103,8 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
             'index' => 'stores',
             'is_system' => true,
         ));
-
+      $this->addExportType('*/*/exportCsv', Mage::helper('career')->__('CSV'));
+      $this->addExportType('*/*/exportXml', Mage::helper('career')->__('XML'));
         return parent::_prepareColumns();
 
     }
