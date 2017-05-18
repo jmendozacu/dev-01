@@ -25,7 +25,8 @@
               </div>
             <?php endif; ?>
           <?php endif;?>
-          <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
+          <?php $category_name = $this->getCategory()->getData('name');?>
+          <div class="post-tag"><span><?php echo $this->__(''.$category_name)?></span></div>
           <div class="popup-image">
             <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>" ></div>
           </div>

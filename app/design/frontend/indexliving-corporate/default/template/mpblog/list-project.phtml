@@ -62,7 +62,8 @@
                                         </div>
                                     <?php endif; ?>
                                 <?php endif;?>
-                                <div class="post-tag"><span><?php echo $this->__('Condominium')?></span></div>
+                              <?php $category_name = $this->getCategory()->getData('name');?>
+                              <div class="post-tag"><span><?php echo $this->__(''.$category_name)?></span></div>
                                 <?php
                                   $isPostHasSlide = Mage::helper('mpblog')->isPostHasSlide($post->getId());
                                   if($isPostHasSlide):
