@@ -21,8 +21,12 @@ class Magebuzz_Delivery_IndexController extends Mage_Core_Controller_Front_Actio
     $result['cost'] = array();
     if ($costs) {
       $result['success'] = true;
-      foreach($costs as $cost){
-        $result['cost'][] =  Mage::helper('core')->currency($cost, true, false); ;
+      foreach($costs as $key => $value){
+        if($key == 'cost'){
+          $result['cost'][] =  Mage::helper('core')->currency($value, true, false); ;
+        }elseif($key == 'day'){
+          $result['day'][] = $value;
+        }
       }
     } else {
       $result['success'] = false;
@@ -40,7 +44,7 @@ class Magebuzz_Delivery_IndexController extends Mage_Core_Controller_Front_Actio
 
     $readConnection = $resource->getConnection('core_read');
 
-    $query  = 'SELECT rate_id,cost_base,rate.method_id,method.is_active FROM ' . $resource->getTableName('amtable/rate') . ' AS `rate`';
+    $query  = 'SELECT rate_id,time_delivery,cost_base,rate.method_id,method.is_active FROM ' . $resource->getTableName('amtable/rate') . ' AS `rate`';
     $query .= ' LEFT JOIN ' . $resource->getTableName('amtable/method'). ' AS `method` ON ' . 'rate.method_id = method.method_id';
     $query .= ' WHERE method.is_active = 1 AND';
     $query .= ' (shipping_type = "' . $post['shipping_type'] . '" OR ' . 'shipping_type = "0")' . ' AND';
@@ -63,7 +67,8 @@ class Magebuzz_Delivery_IndexController extends Mage_Core_Controller_Front_Actio
     $maxRates = Mage::getModel('amtable/method')->getCollection()->hashMaxRate();
 
     foreach ($results as $key  => $rate){
-      $cost[$key] =  $rate['cost_base'];
+      $cost['cost'] =  $rate['cost_base'];
+      $cost['day'] = $rate['time_delivery'];
       if ($maxRates[$rate['method_id']] != '0.00' && $maxRates[$rate['method_id']] < $rate['cost_base']){
         $cost[$key] = $maxRates[$rate['method_id']];
       }
