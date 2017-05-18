@@ -218,6 +218,7 @@
                 </block>
                 <block type="mpblog/content_post" name="mpblog.post.promotion" as="post.promotion" template="mpblog/post-promotion.phtml">
                     <block type="mpblog/sidebar_recentpost" name="mpblog.recentpost" as="recentpost" template="mpblog/sidebar/recentpost-promotion.phtml"/>
+                    <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>
                 </block>
                 <block type="mpblog/content_post" name="mpblog.post.news.event" as="post.news.event" template="mpblog/post-news-event.phtml">
                     <block type="mpblog/social" name="mpblog_social" as="mpblog_social" template="mpblog/social.phtml"/>

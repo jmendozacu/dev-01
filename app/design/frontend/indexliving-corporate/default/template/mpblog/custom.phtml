@@ -37,7 +37,10 @@ $collection = $this->getCollection();
 
             <?php if ($this->showThesis()): ?>
             <div class="mp-content std fix-me">
-                <?php echo $post->getShortContent(); ?>
+                <a class="mp-shortcontent" href="<?php echo $this->getReadMoreUrl($post); ?>"
+                   title="<?php echo $this->__("Short Content"); ?>">
+                    <?php echo $post->getShortContent(); ?>
+                </a>
             </div>
             <div class="mp-details fix-me">
                 <a class="button mp-read-more" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("Read More"); ?>">

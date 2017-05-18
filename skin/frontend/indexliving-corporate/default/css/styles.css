@@ -12396,7 +12396,10 @@ ul.mp-details > li >a:before,
 #career,
 .design-build-page{
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
+  color: #000;
 }
+.cms-box-gray p, .cms-box-gray li{color:#000 !important}
+.cms-page-view .top-info-style1 p{font-size: 16px;}
 .page-title.style2 h1 {
   font-size:28px;
   color:#252525;
