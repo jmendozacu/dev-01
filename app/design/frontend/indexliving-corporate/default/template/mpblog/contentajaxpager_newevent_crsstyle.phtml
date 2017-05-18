@@ -36,7 +36,10 @@
             <a href="<?php echo $post->getPostUrl(); ?>"><?php echo $this->escapeHtml($post->getTitle()); ?></a>
           </div>
           <div class="mp-content std fix-me">
-            <?php echo $post->getShortContent(); ?>
+            <a class="mp-shortcontent" href="<?php echo $this->getReadMoreUrl($post); ?>"
+               title="<?php echo $this->__("Short Content"); ?>">
+              <?php echo $post->getShortContent(); ?>
+            </a>
           </div>
           <div class="mp-details fix-me">
             <a class="mp-read-more" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("Read More"); ?>">
