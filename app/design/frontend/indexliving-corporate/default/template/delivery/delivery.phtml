@@ -90,7 +90,9 @@
       </div>
       <div class="result-cost">
         <div class="result-info">
-          <span class="shipping-cost">Your shipping cost : </span><span class="result" style="display: none"></span>
+          <span class="shipping-cost"><?php echo $this->__('Your shipping cost : '); ?> </span><span class="result" style="display: none"></span>
+          <br/>
+          <span class="shipping-cost"><?php echo $this->__('Estimated Delivery : '); ?>  </span><span class="result-day" style="display: none"></span>
           <div>The delivery fee will be charged depend on the distance of the location delivery area.
             </div>
         </div>
@@ -141,6 +143,8 @@
                 $j('#ajax_cart_loading').hide();
                 $j('.result').text(result.cost);
                 $j('.result').fadeIn();
+                $j('.result-day').text(result.day + ' (days)');
+                $j('.result-day').fadeIn();
               }else{
                 $j('#ajaxcart-overlay').hide();
                 $j('#ajax_cart_loading').hide();
