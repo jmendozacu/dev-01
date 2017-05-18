@@ -1562,7 +1562,15 @@ i.mpblog-old-magento.glyphicons:before {
   text-transform: uppercase;
   font-weight: bold;
 }
-.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) ul.mp-details > li >a {
+.mpblog-post-view ul.mp-details {
+  float:right;
+  clear: both;
+  margin-bottom:15px;
+  width: auto;
+}
+
+.list-promotion .mpblog-list.list .mpblog-post:nth-child(1) ul.mp-details > li >a,
+.mpblog-post-view ul.mp-details > li >a{
   text-indent: 0;
   width:auto;
   padding-left:40px;
@@ -1612,11 +1620,13 @@ ul.mp-details > li >a.mp-download:before {
 ul.mp-details > li >a.mp-share:before {
   background-position:-43px -17px ;
 }
-ul.mp-details > li >a:hover {
+ul.mp-details > li >a:hover,
+ul.mp-details > li >a.active{
   text-decoration: none;
   color:#FF8A00 ;
 }
-ul.mp-details > li >a:hover:before {
+ul.mp-details > li >a:hover:before,
+ul.mp-details > li >a.active:before{
   background-color:#FF8A00;
 }
 .box-shares {
