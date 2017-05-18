@@ -39,7 +39,8 @@
                             <div class="mp-header">
                                 <?php if ($post->getCreatedAt()): ?>
                                     <span class="post-time">
-                                <?php echo date('d F Y', strtotime($post->getCreatedAt()));; ?>
+                                        <?php echo Mage::helper('core')->formatDate($post->getCreatedAt(), 'long', false) ?>
+<!--                                --><?php //echo date('d F Y', strtotime($post->getCreatedAt()));; ?>
                             </span>
                                 <?php endif; ?>
                                 <div class="post-views">
