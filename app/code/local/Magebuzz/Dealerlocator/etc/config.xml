@@ -11,7 +11,7 @@
         <use>standard</use>
         <args>
           <module>Magebuzz_Dealerlocator</module>
-          <frontName>index-locator</frontName>
+          <frontName>store-location</frontName>
         </args>
       </dealerlocator>
     </routers>
