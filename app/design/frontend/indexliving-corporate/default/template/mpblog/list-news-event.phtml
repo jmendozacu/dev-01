@@ -33,7 +33,8 @@
                                     </div>
                                 </div>
                             <?php endif; ?>
-                            <div class="post-tag"><span><?php echo $this->__('Kitchen')?></span></div>
+                          <?php $category_name = $this->getCategory()->getData('name');?>
+                          <div class="post-tag"><span><?php echo $this->__(''.$category_name)?></span></div>
                         </div>
                         <div class="post-info">
                             <div class="mp-header">
