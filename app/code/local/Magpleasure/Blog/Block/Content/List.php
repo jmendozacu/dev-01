@@ -99,6 +99,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
 //            ->setLimit($this->_helper()->getPostsLimit())
             ->setCollection($this->getCollection())
             ->setTemplate('mpblog/list/pager.phtml')
+          ->setAvailableLimit(array(20=>20,25=>25,30=>30,50=>50))
         ;
 
         return $this;
