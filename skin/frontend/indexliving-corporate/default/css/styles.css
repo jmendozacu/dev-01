@@ -13995,12 +13995,23 @@ body.career-index-application #career{
 }
 body.career-index-application #career #application .application_form{
   border: 1px solid #e6e6e6;
-  width: 74%;
+  width: 100%;
   background: #f6f6f6;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   float:left;
+}
+body.career-index-application #career #application .parrent-application{
+  float: left;
+  width: 74%;
+}
+.back-pre-url{
+  padding-top: 20px;
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
 }
 body.career-index-application #career #application .career-contacts {
   float:left;
