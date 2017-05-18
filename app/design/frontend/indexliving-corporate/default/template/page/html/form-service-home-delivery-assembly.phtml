@@ -99,6 +99,8 @@
                 $j('#ajax_cart_loading').hide();
                 $j('.result').text(result.cost);
                 $j('.result').fadeIn();
+                $j('.result-day').text(result.day + ' (days)');
+                $j('.result-day').fadeIn();
               }else{
                 $j('#ajaxcart-overlay').hide();
                 $j('#ajax_cart_loading').hide();

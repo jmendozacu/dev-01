@@ -70,6 +70,7 @@ $job = Mage::getModel('career/job')->load($id);
   <div class="clearboth"></div>
   <div id="application">
     <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
+    <div class="parrent-application">
     <div class="application_form">
       <form id="application-form" method="post" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id,'job_title'=>$job->getData('title')))?>">
         <div id="personal_information">
@@ -155,6 +156,10 @@ $job = Mage::getModel('career/job')->load($id);
             <button type="submit" title="Submit" class="button"><span><span>Send form</span></span></button>
           </div>
       </form>
+    </div>
+    <div class="back-pre-url">
+      <span id="back-pre-url" onclick="backPre()" style="cursor: pointer"><?php echo ' < '.$this->__('BACK')?></span>
+    </div>
     </div>
     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-contacts')->toHtml() ?>
   </div>
