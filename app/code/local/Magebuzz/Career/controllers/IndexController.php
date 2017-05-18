@@ -20,6 +20,7 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
                 $model = Mage::getModel('career/application');
                 $model
                   ->setData($params)
+                  ->setCreatedAt(Mage::getModel('core/date')->date('Y-m-d'))
                   ->setApplicationForJobId($job_id)
                   ->setApplicationForJob($job_title)
                   ->setId(NULL)

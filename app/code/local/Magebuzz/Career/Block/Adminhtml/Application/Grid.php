@@ -70,10 +70,10 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
             'index' => 'present_company',
             'width' => '100px'
         ));
-      $this->addColumn('date_of_birth', array(
-        'header' => Mage::helper('career')->__('Date Of Birth'),
+      $this->addColumn('created_at', array(
+        'header' => Mage::helper('career')->__('Join Date'),
         'align' => 'left',
-        'index' => 'date_of_birth',
+        'index' => 'created_at',
         'type'  => 'date',
         'width' => '100px'
       ));
