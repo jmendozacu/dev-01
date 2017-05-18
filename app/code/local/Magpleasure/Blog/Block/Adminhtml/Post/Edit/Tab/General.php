@@ -177,6 +177,18 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_General extends Mage_Adminh
                 'onchange'  => "changePostStatus(this);",
             ));
 
+        $fieldset->addField('top_promotion', 'select',
+          array(
+            'name'      => 'top_promotion',
+            'label'     => $this->_helper()->__('Top Promotion'),
+            'options'   => $this->_helper()
+              ->getCommon()
+              ->getArrays()
+              ->valueLabelToParams(
+                Mage::getSingleton('adminhtml/system_config_source_yesno')->toOptionArray()
+              ),
+          ));
+
         $values = new Varien_Object($this->_getValues());
         $_isNew = !$values->getCreatedAt();
 
