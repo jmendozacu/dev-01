@@ -2154,3 +2154,6 @@ ul.mp-details > li >a.active:before{
   }
 
 }
+.list-decor-style1 .mpblog-list.list .mpblog-post:nth-child(3n + 3) {
+  clear: left;
+}
