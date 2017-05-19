@@ -36,13 +36,30 @@ class Magpleasure_Blog_Block_Social extends Magpleasure_Blog_Block_Content_Post
     {
         $url = $button->getUrl();
 
-        $url = str_replace("{url}", urlencode($this->getPost()->getPostUrl()), $url);
-        $url = str_replace("{title}", urlencode($this->getPost()->getTitle()), $url);
-        $url = str_replace("{description}", urlencode($this->getPost()->getMetaDescription()), $url);
+        $page = $this->getRequest()->getParam('p');
+        $postId = $this->getPostId();
 
-        if ($button->getImage()){
-            $url = str_replace("{image}", urlencode($this->getPost()->getPostThumbnailSrc()), $url);
+        if(is_null($page)){
+            $url = str_replace("{url}", urlencode($this->getPost()->getPostUrl()), $url);
+            $url = str_replace("{title}", urlencode($this->getPost()->getTitle()), $url);
+            $url = str_replace("{description}", urlencode($this->getPost()->getMetaDescription()), $url);
+
+            if ($button->getImage()){
+                $url = str_replace("{image}", urlencode($this->getPost()->getPostThumbnailSrc()), $url);
+            }
         }
+        else{
+            if($postId){
+                $url = str_replace("{url}", urlencode($this->getPostInList($postId)->getPostUrl()), $url);
+                $url = str_replace("{title}", urlencode($this->getPostInList($postId)->getTitle()), $url);
+                $url = str_replace("{description}", urlencode($this->getPostInList($postId)->getMetaDescription()), $url);
+
+                if ($button->getImage()){
+                    $url = str_replace("{image}", urlencode($this->getPostInList($postId)->getPostThumbnailSrc()), $url);
+                }
+            }
+        }
+
 
         return $url;
     }
@@ -69,4 +86,9 @@ class Magpleasure_Blog_Block_Social extends Magpleasure_Blog_Block_Content_Post
                 !$button->getImage();
     }
 
+    public function getPostInList($postId){
+        $post = Mage::getModel('mpblog/post');
+        $post->load($postId);
+        return $post;
+    }
 }

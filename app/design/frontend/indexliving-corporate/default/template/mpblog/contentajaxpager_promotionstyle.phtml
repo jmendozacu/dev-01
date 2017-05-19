@@ -37,17 +37,20 @@
                 <?php echo $this->__("View"); ?>
               </a>
             </li>
-            <li>
-              <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="#">
-                <?php echo $this->__("Download"); ?>
-              </a>
-            </li>
+            <?php if($post->getDocumentPromotion()):?>
+              <li>
+                <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
+                  <?php echo $this->__("Download"); ?>
+                </a>
+              </li>
+            <?php endif ?>
             <?php //if ($helper->getSocialEnabled()): ?>
             <li class="box-shares">
               <a class="mp-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)">
                 <?php echo $this->__("Share"); ?>
               </a>
-              <?php echo $this->getChildHtml('mpblog_social'); ?>
+              <?php echo $this->getLayout()->createBlock('mpblog/social')->setData("post_id", $post->getData('post_id'))->setTemplate('mpblog/social.phtml')->toHtml() ?>
+<!--              --><?php //echo $this->getChildHtml('mpblog_social'); ?>
             </li>
 
             <?php //endif; ?>

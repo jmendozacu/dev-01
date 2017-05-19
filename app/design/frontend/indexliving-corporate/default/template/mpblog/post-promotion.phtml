@@ -22,11 +22,13 @@ $post = $this->getPost();
                   <?php echo $this->__("View"); ?>
                 </a>
               </li>
+              <?php if($post->getDocumentPromotion()):?>
               <li>
                 <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
                   <?php echo $this->__("Download"); ?>
                 </a>
               </li>
+              <?php endif ?>
               <?php //if ($helper->getSocialEnabled()): ?>
               <li class="box-shares">
                 <a class="mp-share link-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)" id="shareProductLink">
