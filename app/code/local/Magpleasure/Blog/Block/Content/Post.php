@@ -93,18 +93,20 @@ class Magpleasure_Blog_Block_Content_Post extends Magpleasure_Blog_Block_Content
     protected function _prepareBreadcrumbs()
     {
         parent::_prepareBreadcrumbs();
-
-        $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
-        if ($breadcrumbs){
+        $page = $this->getRequest()->getParam('p');
+        if(is_null($page)){
+            $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+            if ($breadcrumbs){
 //            $breadcrumbs->addCrumb('blog', array(
 //                'label' => $this->_helper()->getMenuLabel(),
 //                'title' => $this->_helper()->getMenuLabel(),
 //                'link' => $this->_helper()->_url()->getUrl(),
 //            ));
-            $breadcrumbs->addCrumb('post', array(
-                'label' => $this->getTitle(),
-                'title' => $this->getTitle(),
-            ));
+                $breadcrumbs->addCrumb('post', array(
+                  'label' => $this->getTitle(),
+                  'title' => $this->getTitle(),
+                ));
+            }
         }
     }
 

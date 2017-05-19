@@ -35,7 +35,8 @@
             <?php elseif($_crumbInfo['last']): ?>
                 <strong><?php echo $this->escapeHtml(Mage::helper('core')->__($_crumbInfo['label'])) ?></strong>
             <?php else: ?>
-                <?php echo $this->escapeHtml(Mage::helper('core')->__($_crumbInfo['label'])) ?>
+                <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>"><?php echo $this->escapeHtml(Mage::helper('core')->__($_crumbInfo['label'])) ?></a>
+<!--                --><?php //echo $this->escapeHtml(Mage::helper('core')->__($_crumbInfo['label'])) ?>
             <?php endif; ?>
             <?php if(!$_crumbInfo['last']): ?>
                 <span>> </span>

@@ -14973,4 +14973,8 @@ body.faq-index-index{
   background-image: url("../mpblog/images/assets/google_bookmarks.png");
   background-image: url("../mpblog/images/assets/google_bookmarks.svg");
 }
-.open_sticky_menu .box-top-menu{position: fixed;z-index:9999;background:#FFF;top:0;} 
+.open_sticky_menu .box-top-menu{position: fixed;z-index:9999;background:#FFF;top:0;}
+.breadcrumbs .page-container ul li:last-child a{
+  color: #000;
+  font-weight: bold;
+}

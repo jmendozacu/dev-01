@@ -52,6 +52,7 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
                   $breadcrumbs->addCrumb($parentCategory->getUrlKey(), array(
                     'label' => $parentCategory->getName(),
                     'title' => $parentCategory->getName(),
+                    'link' => Mage::getBaseUrl('web').'blog/category/'.$parentCategory->getUrlKey(),
                   ));
                 }
               }
@@ -63,6 +64,7 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
                         $breadcrumbs->addCrumb($parentCategoryIndexproject->getUrlKey(), array(
                           'label' => $parentCategoryIndexproject->getName(),
                           'title' => $parentCategoryIndexproject->getName(),
+                          'link' => Mage::getBaseUrl('web').'blog/category/'.$parentCategoryIndexproject->getUrlKey(),
                         ));
                     }
                 }
@@ -70,6 +72,7 @@ class Magpleasure_Blog_Block_Content_Category extends Magpleasure_Blog_Block_Con
             $breadcrumbs->addCrumb($this->getCategory()->getUrlKey(), array(
                 'label' => $this->getCategory()->getName(),
                 'title' => $this->getCategory()->getName(),
+                'link' => Mage::getBaseUrl('web').'blog/category/'.$this->getCategory()->getUrlKey(),
             ));
         }
     }
