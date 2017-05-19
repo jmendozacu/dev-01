@@ -33,7 +33,12 @@
                                     </div>
                                 </div>
                             <?php endif; ?>
-                          <?php $category_name = $this->getCategory()->getData('name');?>
+                          <?php
+                          $category_name = '';
+                          if($this->getCategory()):
+                            ?>
+                            <?php $category_name = $this->getCategory()->getData('name');?>
+                          <?php endif ?>
                           <div class="post-tag"><span><?php echo $this->__(''.$category_name)?></span></div>
                         </div>
                         <div class="post-info">
