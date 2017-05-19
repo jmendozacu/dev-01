@@ -12,6 +12,7 @@ class Magebuzz_Career_Block_Job extends Mage_Core_Block_Template{
         parent::_prepareLayout();
         $pager = $this->getLayout()->createBlock('page/html_pager', 'custom.pager');
         $pager->setCollection($this->getCollection());
+        $pager->setAvailableLimit(array(20=>20,25=>25,30=>30,50=>50));
         $this->setChild('pager', $pager);
         return $this;
     }
