@@ -249,4 +249,20 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
         return $this->_helper()->getRssDisplayOnList();
     }
 
+
+    public function getPromotionCollection()
+    {
+        $collection = Mage::getModel('mpblog/post')->getCollection();
+        if (!Mage::app()->isSingleStoreMode()) {
+            $collection->addStoreFilter(Mage::app()->getStore()->getId());
+        }
+        $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Post::STATUS_ENABLED);
+        $collection->setUrlKeyIsNotNull();
+        $collection->setOrder("top_promotion", "DESC");
+        $this->_checkCategory($collection);
+        $this->_checkTag($collection);
+
+        $this->_collection = $collection;
+        return $this->_collection;
+    }
 }

@@ -12,9 +12,10 @@
             <?php echo $this->__('Index living mall %s',$this->getPageHeader()) ; ?>
         </h1>
     </div>
-    <?php if (count($this->getCollection())): ?>
+    <?php if (count($this->getPromotionCollection())): ?>
         <div class="mpblog-list list">
-            <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
+            <?php $i=0; foreach ($this->getPromotionCollection() as $post): $i++;?>
+              <?php $top_promotion = $post->getData('top_promotion'); ?>
                 <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
                 <div class="mpblog-post">
                     <div class="post-image">
