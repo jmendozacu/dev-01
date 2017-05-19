@@ -13301,6 +13301,17 @@ ul.mp-details > li >a:before,
 .service-home-delivery-assembly .box-info.box-form {
   border:solid 2px #FDC300;
   padding:22px;
+  border-top: none;
+}
+.service-home-delivery-assembly .box-info.shop-online {
+  border:solid 2px #FDC300;
+  border-bottom: none;
+  margin-bottom: 0;
+  padding:22px;
+}
+.service-home-delivery-assembly .box-info.box-form-bottom {
+  border:solid 2px #FDC300;
+  padding:22px;
 }
 
 .service-home-delivery-assembly .form-list li {
