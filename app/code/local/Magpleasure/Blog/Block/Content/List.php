@@ -259,6 +259,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
         $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Post::STATUS_ENABLED);
         $collection->setUrlKeyIsNotNull();
         $collection->setOrder("top_promotion", "DESC");
+        $collection->setOrder("time_top_promotion", "DESC");
         $this->_checkCategory($collection);
         $this->_checkTag($collection);
 
