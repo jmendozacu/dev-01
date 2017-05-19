@@ -61,6 +61,14 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Media extends Mage_Adminhtm
             'url' => 'magpleasure/mpblog',
         ));
 
+        $fieldset->addField('brand_lable', 'ajax_image', array(
+          'label'     => $this->_helper()->__('Brand Lable'),
+          'required'  => false,
+          'name'      => 'brand_lable',
+          'dir' => 'magpleasure'.DS.'mpblog',
+          'url' => 'magpleasure/mpblog',
+        ));
+
         $document = '';
         $path = '';
         $data['blog_id'] = $this->getRequest()->getParam('id');

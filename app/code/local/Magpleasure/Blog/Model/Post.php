@@ -610,6 +610,12 @@ class Magpleasure_Blog_Model_Post extends Magpleasure_Blog_Model_Abstract implem
         return $this->_thumbnailSrc($src);
     }
 
+    public function getBrandLableThumbnailSrc()
+    {
+        $src = $this->getData('brand_lable') ? $this->getData('brand_lable') : $this->getData('brand_lable');
+        return $this->_thumbnailSrc($src);
+    }
+
     protected function _thumbnailSrc($src)
     {
         if ($src){
