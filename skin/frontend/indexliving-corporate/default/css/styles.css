@@ -13073,7 +13073,13 @@ ul.mp-details > li >a:before,
 .home-service-page .box-service-gray .info-contacts strong {
   color:#ffc222;
 }
-
+.home-service-page .service_type_six{padding: 40px 0 70px;clear: both;}
+.home-service-page .service_type_six h2{ font-size: 35px;}
+.home-service-page .service_type_six h2 span{font-size: 47px;padding-right: 10px;}
+.set_btn {
+    text-align: center;
+    padding: 40px;
+}
   /* --------------------- */
 .cms-page-view .list-other-links {
   float:left;

@@ -1562,15 +1562,16 @@ i.mpblog-old-magento.glyphicons:before {
   text-transform: uppercase;
   font-weight: bold;
 }
-.mpblog-post-view ul.mp-details {
-  float:right;
+.mpblog-post-promotiom ul.mp-details {
+  float: right;
   clear: both;
-  margin-bottom:15px;
   width: auto;
+  font-family: 'Kanit', Helvetica, Arial, sans-serif;
+  margin: 8px 0;
 }
 
 .list-promotion .mpblog-list.list .mpblog-post:nth-child(1) ul.mp-details > li >a,
-.mpblog-post-view ul.mp-details > li >a{
+.mpblog-post-promotiom ul.mp-details > li >a{
   text-indent: 0;
   width:auto;
   padding-left:40px;

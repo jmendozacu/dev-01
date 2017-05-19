@@ -15,32 +15,32 @@ $post = $this->getPost();
 <div class="mpblog-2column-right mpblog-post-promotiom">
     <div class="mp-blog-head fix-me">
         <h1 class="mp-title title-promotion">
-            <?php echo $this->escapeHtml($post->getTitle()); ?>
+            <span></span><?php echo $this->escapeHtml($post->getTitle()); ?></span>
+            <ul class="mp-details fix-me">
+              <li>
+                <a class="mp-view active" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("View"); ?>">
+                  <?php echo $this->__("View"); ?>
+                </a>
+              </li>
+              <li>
+                <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
+                  <?php echo $this->__("Download"); ?>
+                </a>
+              </li>
+              <?php //if ($helper->getSocialEnabled()): ?>
+              <li class="box-shares">
+                <a class="mp-share link-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)" id="shareProductLink">
+                  <?php echo $this->__("Share"); ?>
+                </a>
+                <?php echo $this->getChildHtml('mpblog_social'); ?>
+              </li>
+              <?php //endif; ?>
+            </ul>
         </h1>
     </div>
     <div class="mpblog-col-content">
         <div class="mpblog-container">
             <div class="mpblog-post mpblog-post-view">
-                <ul class="mp-details fix-me">
-                  <li>
-                    <a class="mp-view active" href="<?php echo $this->getReadMoreUrl($post); ?>" title="<?php echo $this->__("View"); ?>">
-                      <?php echo $this->__("View"); ?>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
-                      <?php echo $this->__("Download"); ?>
-                    </a>
-                  </li>
-                  <?php //if ($helper->getSocialEnabled()): ?>
-                  <li class="box-shares">
-                    <a class="mp-share link-share" title="<?php echo $this->__("Share"); ?>" href="javascript:void(0)" id="shareProductLink">
-                      <?php echo $this->__("Share"); ?>
-                    </a>
-                    <?php echo $this->getChildHtml('mpblog_social'); ?>
-                  </li>
-                  <?php //endif; ?>
-                </ul>
                 <?php if ($post->getPostThumbnailSrc()): ?>
                     <div class="post-thumbnail">
                         <?php if ($this->hasThumbnailUrl()): ?>
