@@ -12321,6 +12321,7 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .caculator .shipping-cost{  color: black;  font-size: 18px;  font-weight: 600;  }
 .caculator #shipping-form-validate h4{color:#fab80a; }
 .caculator .result{  font-size: 18px;  font-weight: 600;  color: #ffc222;  }
+.caculator .result-day{  font-size: 18px;  font-weight: 600;  color: #ffc222;  }
 .caculator .result-cost{  background:url(../images/DAYS.png) no-repeat 20px 20px #f6f6f6;  padding:20px;  width: 600px;  max-width: 100%;  margin-top: 30px;  text-align: justify;  }
 .caculator .result-info{  margin-left: 170px;  border-left: 1px solid #ccc;  padding-left: 25px;  }
 .caculator .result-info2{  padding-top: 35px;  }
@@ -13072,7 +13073,13 @@ ul.mp-details > li >a:before,
 .home-service-page .box-service-gray .info-contacts strong {
   color:#ffc222;
 }
-
+.home-service-page .service_type_six{padding: 40px 0 70px;clear: both;}
+.home-service-page .service_type_six h2{ font-size: 35px;}
+.home-service-page .service_type_six h2 span{font-size: 47px;padding-right: 10px;}
+.set_btn {
+    text-align: center;
+    padding: 40px;
+}
   /* --------------------- */
 .cms-page-view .list-other-links {
   float:left;
@@ -13994,12 +14001,23 @@ body.career-index-application #career{
 }
 body.career-index-application #career #application .application_form{
   border: 1px solid #e6e6e6;
-  width: 74%;
+  width: 100%;
   background: #f6f6f6;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   float:left;
+}
+body.career-index-application #career #application .parrent-application{
+  float: left;
+  width: 74%;
+}
+.back-pre-url{
+  padding-top: 20px;
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
 }
 body.career-index-application #career #application .career-contacts {
   float:left;

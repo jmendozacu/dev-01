@@ -600,3 +600,7 @@ jQuery(document).ready(function () {
 		}
 	);
 });
+function backPre(){
+  parent.history.back();
+  return false;
+}

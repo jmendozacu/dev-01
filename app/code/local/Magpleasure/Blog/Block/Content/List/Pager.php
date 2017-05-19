@@ -7,6 +7,7 @@
 
 class Magpleasure_Blog_Block_Content_List_Pager extends Mage_Page_Block_Html_Pager
 {
+    protected $_availableLimit = array(20=>20,30=>30,40=>40,50=>50);
     /** @var Magpleasure_Blog_Model_Interface */
     protected $_object = null;
 

@@ -666,7 +666,7 @@
   margin: 0 0 3px 20px;
 }
 .mpblog-post .mp-content a > img {
-  border: 1px solid #D0CBC1;
+  /*border: 1px solid #D0CBC1;*/
   padding: 3px;
   margin-right: 10px;
   margin-bottom: 5px;
@@ -2154,4 +2154,7 @@ ul.mp-details > li >a.active:before{
     line-height: 34px;
   }
 
+}
+.list-decor-style1 .mpblog-list.list .mpblog-post:nth-child(3n + 3) {
+  clear: left;
 }
