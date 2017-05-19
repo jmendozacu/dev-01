@@ -104,9 +104,11 @@
                                         <?php echo $post->getFullContent(); ?>
                                     </div>
                                 </div>
+                              <?php if($post->getBrandLableThumbnailSrc()): ?>
                                 <div class="box-right">
                                     <img alt="image logo" src="<?php echo $post->getBrandLableThumbnailSrc() ?>" />
                                 </div>
+                              <?php endif?>
                             </div>
                         </div>
                     <?php endforeach; ?>
