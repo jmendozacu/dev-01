@@ -153,6 +153,8 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
                 $collection->addStoreFilter(Mage::app()->getStore()->getId());
             }
             $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Post::STATUS_ENABLED);
+            $collection->addFieldToFilter('published_to', array('gteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
+            $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
             $collection->setUrlKeyIsNotNull();
             $collection->setDateOrder();
 
@@ -257,6 +259,8 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
             $collection->addStoreFilter(Mage::app()->getStore()->getId());
         }
         $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Post::STATUS_ENABLED);
+        $collection->addFieldToFilter('published_to', array('gteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
+        $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
         $collection->setUrlKeyIsNotNull();
         $collection->setOrder("top_promotion", "DESC");
         $collection->setOrder("time_top_promotion", "DESC");

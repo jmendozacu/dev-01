@@ -42,6 +42,19 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_General extends Mage_Adminh
             $this->_values['published_at'] = $publishedAt->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
         }
 
+        $publishedTo = isset($this->_values['published_to']) ? $this->_values['published_to'] : null;
+        if ($publishedTo){
+
+            try {
+                $publishedTo = new Zend_Date($publishedTo, Zend_Date::ISO_8601);
+            } catch (Exception $e){
+                $publishedTo = new Zend_Date($publishedTo, Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT));
+            }
+
+            $publishedTo->subSecond($this->_helper()->getTimezoneOffset());
+            $this->_values['published_to'] = $publishedTo->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
+        }
+
         $currentDate = new Zend_Date();
         $currentDate->subSecond($this->_helper()->getTimezoneOffset());
         $format = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
@@ -281,6 +294,79 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_General extends Mage_Adminh
         </script>
         ";
 
+        $html_public_to = "
+        <a  href=\"#\"
+            onclick=\"definePublishToDate(); return false;\"
+            id=\"published_to_show_button\"
+            style=\"{$showStyle}\">{$showLabel}</a>
+
+        <a  href=\"#\"
+            onclick=\"publishToDateRightNow(); return false;\"
+            id=\"published_to_cancel_button\"
+            style=\"{$cancelStyle}\">{$cancelLabel}</a>
+
+        <script type=\"text/javascript\">
+        //<![CDATA[
+
+            $('published_to_trig').style.display = 'none';
+            $('published_to_trig').src = '{$imagePath}';
+
+            var definePublishToDate = function(){
+
+                Effect.Appear('published_to_trig', {duration: 0.5});
+                Effect.Appear('published_to', {duration: 0.5, afterFinish: function(e){
+                    $('published_to_show_button').style.display = 'none';
+                    $('published_to_cancel_button').style.display = 'inline';
+                    $('user_define_publish').value = '1';
+                }});
+            };
+
+            var publishToDateRightNow = function(){
+
+                Effect.Fade('published_to_trig', {duration: 0.3});
+                Effect.Fade('published_to', {duration: 0.3, afterFinish: function(e){
+                    $('published_to_show_button').style.display = 'inline';
+                    $('published_to_cancel_button').style.display = 'none';
+                    $('user_define_publish').value = '0';
+
+                    $('status').value = '{$statusEnabled}';
+                }});
+
+
+            };
+
+            var changePostStatus = function(el){
+                var currentStatus = $('current_status').value;
+                var selectedStatus = $('status').value;
+                var statusEnabled = '{$statusEnabled}';
+                var statusScheduled = '{$statusScheduled}';
+                var newStatus = $(el).value;
+
+                if ((currentStatus == statusScheduled) && (newStatus == statusEnabled)){
+                    if (confirm('{$message}')){
+                        $('published_to').value = $('current_date').value;
+                    } else {
+                        $(el).value = statusScheduled;
+                    }
+                }
+
+                if (selectedStatus == statusScheduled){
+                    $('notify_on_enable').parentNode.parentNode.style.display = '';
+                    $('published_to').addClassName('required-entry');
+                } else {
+                    $('notify_on_enable').parentNode.parentNode.style.display = 'none';
+                    $('published_to').removeClassName('required-entry');
+                }
+            };
+
+            document.observe('dom:loaded', function(){
+                changePostStatus($('status'));
+            });
+
+        //]]>
+        </script>
+        ";
+
         $outputFormat = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
 
         $fieldset->addField('current_date', 'hidden', array(
@@ -289,8 +375,8 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_General extends Mage_Adminh
         ));
 
         $fieldset->addField('published_at', 'date', array(
-            'label'  => $this->_helper()->__('Publish Date'),
-            'title'  => $this->_helper()->__('Publish Date'),
+            'label'  => $this->_helper()->__('Publish From Date'),
+            'title'  => $this->_helper()->__('Publish From Date'),
             'name'      => 'published_at',
             'time'      => true,
             'style'     => !$_isNew ? 'width: 110px !important; display: inline;' : 'width: 110px !important; display: none;',
@@ -298,6 +384,18 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_General extends Mage_Adminh
             'input_format' => Varien_Date::DATETIME_INTERNAL_FORMAT,
             'format'       => $outputFormat,
             'after_element_html' => $_isNew ? $html : '',
+        ));
+
+        $fieldset->addField('published_to', 'date', array(
+          'label'  => $this->_helper()->__('Publish To Date'),
+          'title'  => $this->_helper()->__('Publish To Date'),
+          'name'      => 'published_to',
+          'time'      => true,
+          'style'     => !$_isNew ? 'width: 110px !important; display: inline;' : 'width: 110px !important; display: none;',
+          'image'     => !$_isNew ? $imagePath : null,
+          'input_format' => Varien_Date::DATETIME_INTERNAL_FORMAT,
+          'format'       => $outputFormat,
+          'after_element_html' => $_isNew ? $html_public_to : '',
         ));
 
         $fieldset->addField('notify_on_enable', 'select', array(
