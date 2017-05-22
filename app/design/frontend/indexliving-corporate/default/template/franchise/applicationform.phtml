@@ -38,7 +38,7 @@
                         <div class="field left">
                             <label for="tel" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
                             <div class="input-box">
-                                <input type="text" name="tel" value="" id="tel" class="input-text required-entry validate-number" title="<?php echo $this->__('Telephone') ?>" />
+                                <input type="text" name="tel" value="" id="tel" class="input-text required-entry validate-number validate-phone" title="<?php echo $this->__('Telephone') ?>" />
                             </div>
                         </div>
                         <div class="field right">
@@ -144,6 +144,11 @@
 </div>
 <script type="text/javascript">
     //< ![CDATA[
+    Validation.add('validate-phone', 'Please enter a valid Phone number. For example 0163759645', function(v) {
+      var pass=v.strip(); /*strip leading and trailing spaces*/
+      return !(pass.length <9 || pass.length >10 );
+    });
+
     var myForm = new VarienForm('application-form',true);
     //]]>
     var formId = 'application-form';
