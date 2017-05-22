@@ -108,7 +108,7 @@ $job = Mage::getModel('career/job')->load($id);
               <div class="field left">
                 <label for="tel" class="required"><em>*</em><?php echo $this->__('Phone number') ?></label>
                 <div class="input-box">
-                  <input type="text" name="tel" value="" id="tel" class="input-text required-entry validate-number" title="<?php echo $this->__('Phone number') ?>" />
+                  <input type="text" name="tel" value="" id="tel" class="input-text required-entry validate-number validate-phone" title="<?php echo $this->__('Phone number') ?>" />
                 </div>
               </div>
               <div class="field right">
@@ -173,6 +173,11 @@ $job = Mage::getModel('career/job')->load($id);
   Validation.add('validate-number-id', 'Please enter a valid ID Number. For example 0165872824445', function(v) {
     var pass=v.strip(); /*strip leading and trailing spaces*/
     return !(pass.length !=13);
+  });
+
+  Validation.add('validate-phone', 'Please enter a valid Phone number. For example 0163759645', function(v) {
+    var pass=v.strip(); /*strip leading and trailing spaces*/
+    return !(pass.length <9 || pass.length >10 );
   });
   Calendar.setup({
     inputField : 'date_of_birth',
