@@ -457,8 +457,10 @@ class Magpleasure_Blog_Model_Post extends Magpleasure_Blog_Model_Abstract implem
         $views
             ->addFieldToFilter('post_id', $this->getPostId())
             ;
-
-        return $views->getSize();
+      $collectionViews = Mage::getModel('mpblog/post');
+      $collectionViews->load($this->getPostId());
+      $randomViews = $collectionViews->getData('random_views');
+      return $randomViews + $views->getSize();
     }
 
     public function getScheduledDate()

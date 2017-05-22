@@ -376,6 +376,9 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
         $post->setPublishedTo($publishedTo->toString(Varien_Date::DATETIME_INTERNAL_FORMAT));
       }
       $post->setTimeTopPromotion(Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s'))->save();
+      if(is_null($post_id)){
+        $post->setRandomViews(rand(100,150))->save();
+      }
       $post->save();
       $this->_getSession()->addSuccess($this->_helper()->__("Post was successfully saved."));
 
