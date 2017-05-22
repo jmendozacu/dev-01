@@ -20,6 +20,7 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
             'align' => 'right',
             'width' => '50px',
             'index' => 'application_id',
+          'type' => 'number'
         ));
 
         $this->addColumn('identity_number', array(
