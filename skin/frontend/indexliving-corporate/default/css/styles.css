@@ -2783,6 +2783,18 @@ form .legend {
   display: table;
   clear: both;
 }
+.input-box.dob_box:after{
+  content: '';
+  clear: both;
+  display: block;
+  width: 45px;
+  height: 33px;
+  position: absolute;
+  background: black;
+  right: -4px;
+  top: 3px;
+  background: url('../images/calendar.gif') no-repeat center center;
+}
 
 li.centinel-logos div.input-box img {
   display: inline;
