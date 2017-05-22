@@ -2783,6 +2783,9 @@ form .legend {
   display: table;
   clear: both;
 }
+#date_of_birth {
+  background: url('../images/calendar.png') no-repeat right center;
+}
 
 li.centinel-logos div.input-box img {
   display: inline;
@@ -4089,6 +4092,7 @@ a.skip-link {
   font-weight: 600;
 }
 .nav-primary li a{font-family: 'Futura';color:#252525;}
+body:lang(th) .nav-primary li a{font-family: 'Index';}
 .nav-primary li.level0 a:hover{border-bottom: solid 2px #FFC226;text-decoration: none;}
 .nav-primary li.level1 a:hover{border:none;text-decoration: underline;}
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
@@ -12399,6 +12403,11 @@ ul.mp-details > li >a:before,
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
   color: #000;
 }
+
+.buttons-set.delivery button{
+  color: #fff;
+}
+
 .cms-box-gray p, .cms-box-gray li{color:#000 !important}
 .cms-page-view .top-info-style1 p{font-size: 16px;}
 .page-title.style2 h1 {
@@ -13808,7 +13817,7 @@ margin-bottom:15px;
   overflow: hidden;
   font-weight: 300;
 }
-
+.list-joy-quality li .box-info a:hover{text-decoration: none;}
 /* Career */
 
 .career-top-info {
