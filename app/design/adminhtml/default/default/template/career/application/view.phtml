@@ -92,6 +92,10 @@ $jobTitle = Mage::getModel('career/job')->load($application_for_job_id)->getData
     <td id="lable"><label for="last_position"><?php echo $this->__('Last Position')?></label></td>
     <td><?php echo $values['last_position']?></td>
   </tr>
+  <tr>
+    <td id="lable"><label for="created_at"><?php echo $this->__('Join date')?></label></td>
+    <td><?php echo $values['created_at']?></td>
+  </tr>
 
   </tbody>
 </table>
