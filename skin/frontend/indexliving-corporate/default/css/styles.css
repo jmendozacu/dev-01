@@ -12403,6 +12403,11 @@ ul.mp-details > li >a:before,
   font-family: 'Kanit', Helvetica, Arial, sans-serif;
   color: #000;
 }
+
+.buttons-set.delivery button{
+  color: #fff;
+}
+
 .cms-box-gray p, .cms-box-gray li{color:#000 !important}
 .cms-page-view .top-info-style1 p{font-size: 16px;}
 .page-title.style2 h1 {
