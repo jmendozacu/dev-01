@@ -275,7 +275,7 @@
 }
 
 #fancybox-thumbs ul {
-	position: relative;
+	/*position: relative;*/
 	list-style: none;
 	margin: 0;
 	padding: 12px 10px;
