@@ -55,19 +55,24 @@ class Magpleasure_Blog_Model_Networks extends Varien_Object
     protected function _construct()
     {
         $this->_networks = array(
+          array(
+            'value'=>'facebook',
+            'label'=>$this->_helper()->__('Facebook'),
+            'is_template' => false,
+            'url' => 'http://www.facebook.com/share.php?u={url}&description={description}&title={title}&image={image}',
+            'style' => 'background-position:-343px -1px;',
+          ),
+          array(
+            'value'=>'googleplus',
+            'label'=>$this->_helper()->__('Google Plus'),
+            'is_template' => true,
+          ),
             array(
                 'value'=>'twitter',
                 'label'=>$this->_helper()->__('Twitter'),
                 'is_template' => false,
                 'url' => 'http://twitter.com/?status={title} : {url}',
                 'style' => 'background-position:-343px -55px;',
-            ),
-            array(
-                'value'=>'facebook',
-                'label'=>$this->_helper()->__('Facebook'),
-                'is_template' => false,
-                'url' => 'http://www.facebook.com/share.php?u={url}&description={description}&title={title}&image={image}',
-                'style' => 'background-position:-343px -1px;',
             ),
             array(
                 'value'=>'vkontakte',
@@ -154,11 +159,7 @@ class Magpleasure_Blog_Model_Networks extends Varien_Object
                 'url' => 'https://www.google.com/bookmarks/mark?op=add&bkmk={url}&title={title}',
                 'style' => 'background-position:-91px -19px;',
             ),
-            array(
-                'value'=>'googleplus',
-                'label'=>$this->_helper()->__('Google Plus'),
-                'is_template' => true,
-            ),
+
         );
         parent::_construct();
     }
