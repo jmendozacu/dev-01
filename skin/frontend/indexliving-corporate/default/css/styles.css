@@ -14989,7 +14989,7 @@ body.faq-index-index{
 }
 /*.open_sticky_menu*/ .header-sticky{
   position: fixed;
-  z-index:9999;
+  z-index:10;
   background:#FFF;
   top:0;
   width:100%;
