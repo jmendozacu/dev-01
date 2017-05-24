@@ -30,12 +30,6 @@ $post = $this->getPost();
                         <span></span><?php echo $this->__('Views') ?> </span>
                     </div>
                     <?php if ($helper->getSocialEnabled()): ?>
-                        <div class="post-social">
-                            <div class="share">
-                                <strong  id="results"><?php echo $this->__('50') ?></strong>
-                                <span></span><?php echo $this->__('Shares') ?> </span>
-                            </div>
-                        </div>
                         <?php if ($helper->getSocialEnabled()): ?>
                             <?php echo $this->getSocialHtml(); ?>
                         <?php endif; ?>
