@@ -4,7 +4,7 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
         parent::__construct();
         $this->setId('application');
         $this->setDefaultSort('application_id');
-        $this->setDefaultDir('ASC');
+        $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
     }
 
