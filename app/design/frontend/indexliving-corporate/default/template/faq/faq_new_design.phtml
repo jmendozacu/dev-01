@@ -1,20 +1,8 @@
 <div class="category-group tab-left">
   <ul class="tabs">
     <li class="first">
-      <a href="#" title="">Online FAQ</a>
-      <div class="category first" style="display: none">
-        <?php
-        $category_online_faqs = $this->getCategories()->addFieldToFilter('category_group', Magebuzz_Faq_Model_Categorygroup::ONLINE_FAQ);
-        ?>
-        <?php foreach ($category_online_faqs as $category_online_faq): ?>
-          <?php $online_faq_id =  $category_online_faq->getData('category_id'); ?>
-          <a id="cate_id_<?php echo $online_faq_id ?>" class="category-faq" onclick="showFaq(<?php echo $online_faq_id ?>)"  href="#"><?php echo $category_online_faq->getData('category_name') ?><span class="arrow"> > </span></a>
-        <?php endforeach; ?>
-      </div>
-    </li>
-    <li>
       <a href="#">In-store FAQ</a>
-      <div class="category" style="display: none">
+      <div class="category first" style="display: none">
         <?php
         $category_in_store_faqs = $this->getCategories()->addFieldToFilter('category_group', Magebuzz_Faq_Model_Categorygroup::IN_STORE_FAQ);
         ?>
@@ -24,6 +12,19 @@
         <?php endforeach; ?>
       </div>
     </li>
+    <li>
+      <a href="#" title="">Online FAQ</a>
+      <div class="category" style="display: none">
+        <?php
+        $category_online_faqs = $this->getCategories()->addFieldToFilter('category_group', Magebuzz_Faq_Model_Categorygroup::ONLINE_FAQ);
+        ?>
+        <?php foreach ($category_online_faqs as $category_online_faq): ?>
+          <?php $online_faq_id =  $category_online_faq->getData('category_id'); ?>
+          <a id="cate_id_<?php echo $online_faq_id ?>" class="category-faq" onclick="showFaq(<?php echo $online_faq_id ?>)"  href="#"><?php echo $category_online_faq->getData('category_name') ?><span class="arrow"> > </span></a>
+        <?php endforeach; ?>
+      </div>
+    </li>
+
     <li style="display: none">
       <a href="#">About Index Living Mall</a>
       <div class="category" style="display: none">
@@ -100,4 +101,11 @@
       jQuery(this).addClass('active');
     }
   })
+</script>
+<script type="text/javascript">
+  jQuery("document").ready(function() {
+    setTimeout(function() {
+      jQuery(".faq-index-index .category.first a:first").trigger('click');
+    },10);
+  });
 </script>
