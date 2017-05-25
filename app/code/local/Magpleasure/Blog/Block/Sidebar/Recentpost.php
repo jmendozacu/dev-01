@@ -130,4 +130,12 @@ class Magpleasure_Blog_Block_Sidebar_Recentpost extends Magpleasure_Blog_Block_S
 
         return false;
     }
+
+    public function getCategory($post_id){
+        $categoryId = Mage::getModel('mpblog/post')->load($post_id)->getCategories();
+        $categoryCollection = Mage::getModel('mpblog/category')->getCollection()
+          ->addFieldToFilter('category_id',array('in' => $categoryId))
+            ->getFirstItem();
+        return $categoryCollection;
+    }
 }
