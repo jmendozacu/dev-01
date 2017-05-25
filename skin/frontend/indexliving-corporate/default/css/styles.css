@@ -14567,6 +14567,14 @@ body.career-index-application #application-form label{
   margin-bottom: 80px;
   position: relative;
 }
+.design-build-page .box2 .white_content_box{
+  background: #FFF;
+  padding: 65px;
+  width: 720px;
+  margin: 30px auto;
+  text-align: center; 
+}
+.design-build-page .box2 .white_content_box img{display: initial;}
 .design-build-page .box2 .list-content:before,
 .design-build-page .box2 .list-content:after{
    content:"";
