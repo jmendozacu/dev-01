@@ -336,6 +336,9 @@
     .searchautocomplete {width: 400px;}
 }
 @media (max-width: 991px) {
+    
+    .design-build-page .box2 .white_content_box, .design-build-page .box2 .white_content_box img{width: 100%;}
+
     .product-viewed-large-desktop {
         display: none
     }
