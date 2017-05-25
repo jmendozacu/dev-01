@@ -14568,12 +14568,11 @@ body.career-index-application #application-form label{
   position: relative;
 }
 .design-build-page .box2 .white_content_box{
-  background: #FFF;
-  padding: 65px;
-  width: 720px;
-  margin: 30px auto;
+  width: 980px;
+  margin: 30px auto; 
   text-align: center; 
 }
+.design-build-page .box2 .white_content_box .mobile_show{display: none;}
 .design-build-page .box2 .white_content_box img{display: initial;}
 .design-build-page .box2 .list-content:before,
 .design-build-page .box2 .list-content:after{
