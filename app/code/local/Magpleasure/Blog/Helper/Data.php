@@ -683,4 +683,13 @@ class Magpleasure_Blog_Helper_Data extends Mage_Core_Helper_Abstract
           ->addFieldToFilter('category_style',$subCategoryStyle);
         return $collection;
     }
+
+    public function getCategoryName($string, $start, $end){
+        $string = ' ' . $string;
+        $ini = strpos($string, $start);
+        if ($ini == 0) return '';
+        $ini += strlen($start);
+        $len = strpos($string, $end, $ini) - $ini;
+        return substr($string, $ini, $len);
+    }
 }
