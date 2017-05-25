@@ -4,7 +4,7 @@ class Magebuzz_Franchise_Block_Adminhtml_Franchise_Grid extends Mage_Adminhtml_B
         parent::__construct();
         $this->setId('franchise');
         $this->setDefaultSort('franchise_id');
-        $this->setDefaultDir('ASC');
+        $this->setDefaultDir('DESC');
         $this->setSaveParametersInSession(true);
     }
 
@@ -20,6 +20,7 @@ class Magebuzz_Franchise_Block_Adminhtml_Franchise_Grid extends Mage_Adminhtml_B
             'align' => 'right',
             'width' => '50px',
             'index' => 'franchise_id',
+          'type' => 'number'
         ));
 
         $this->addColumn('contact_name', array(
