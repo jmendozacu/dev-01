@@ -37,7 +37,7 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Additional
             if (!$this->getRequest()->getParam("id")){
 
                 $defaults = array(
-                    "posted_by" => $author->getDefaultName(),
+                    "posted_by" => 'indexlivingmall',
                     "google_profile" => $author->getDefaultGoogleProfile(),
                     "twitter_profile" => $author->getDefaultTwitterProfile(),
                     "facebook_profile" => $author->getDefaultFacebookProfile(),
