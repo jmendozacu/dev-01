@@ -2964,6 +2964,10 @@
 .cms-page-view.cms-custom-form .std .fieldset.bank.bank_radio .input-box {
     width: 593px;
 }
+@media (max-width: 700px) {
+    .design-build-page .box2 .white_content_box .mobile_show{display: block;}
+    .design-build-page .box2 .white_content_box .desktop_show{display: none;}
+}   
 @media (max-width: 697px) {
     .table_price_delivery .desktop_show {
         display: none;
