@@ -2785,6 +2785,7 @@ form .legend {
 }
 #date_of_birth {
   background: url('../images/calendar.png') no-repeat right center;
+  background-color: #FFFFFF;
 }
 
 li.centinel-logos div.input-box img {
