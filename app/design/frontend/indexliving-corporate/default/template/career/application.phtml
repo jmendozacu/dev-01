@@ -178,7 +178,12 @@ $job = Mage::getModel('career/job')->load($id);
     ifFormat : '%m/%e/%Y',
     button : 'date_from_trig',
     align : 'Bl',
-    singleClick : true
+    singleClick : true,
+    onClose : false,
+    weekNumbers: false,
+    yearsCombo: null,
+    hilitedYear: null,
+    activeYear: null
   });
 
   jQuery(function($) {
