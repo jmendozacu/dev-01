@@ -25,6 +25,7 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
                   ->setApplicationForJob($job_title)
                   ->setId(NULL)
                   ->save();
+                Mage::helper('career')->sendEmail($params,$job_title);
                 Mage::getSingleton('core/session')->addSuccess($this->__('Apply successfully!'));
                 $this->_redirect('*/*/index');
                 return;
