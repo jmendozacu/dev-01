@@ -21,8 +21,8 @@
                     </text>
                 </action>
             </block>
-          <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name></action>
-          <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+          <action method="addItem"><type>js_css</type><name>calendar/calendar-system-carrer.css</name></action>
+          <action method="addItem"><type>js</type><name>calendar/calendar-carrer.js</name></action>
           <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
           <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml" />
         </reference>
