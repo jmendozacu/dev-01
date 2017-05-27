@@ -70,7 +70,16 @@ class Amasty_Customform_Block_Adminhtml_Form_Edit_Tab_General extends Mage_Admin
                 'values' => $yesno
             )
         );
-
+    if($this->getFormModel()->getData('code') == 'application_form'){
+        $fieldset->addField(
+          'template_email_id', 'select', array(
+            'name'   => 'template_email_id',
+            'label'  => $helper->__('Choose template email'),
+            'title'  => $helper->__('Choose template email'),
+            'values' => Mage::getModel('amcustomform/system_config_source_customtemplate')->toOptionArray()
+          )
+        );
+    }
         $form->setValues($this->getFormModel()->getData());
         $this->setForm($form);
 

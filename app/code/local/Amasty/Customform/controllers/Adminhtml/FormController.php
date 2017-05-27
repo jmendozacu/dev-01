@@ -67,11 +67,13 @@ class Amasty_Customform_Adminhtml_FormController extends Mage_Adminhtml_Controll
         $redirectBack = !! $this->getRequest()->getParam('back', false);
 
         if ($postData = $this->getRequest()->getPost()) {
+            $template_email_id = $postData['template_email_id'];
             try {
                 $this->processingData($postData);
                 /** @var Amasty_Customform_Model_Form $form */
                 $form = Mage::getModel('amcustomform/form');
                 $form->setData($postData);
+                $form->setData('template_email_id',$template_email_id);
                 $form->realizeRelationData();
 
                 $form->save();

@@ -269,4 +269,32 @@ class Amasty_Customform_Helper_Data extends Mage_Core_Helper_Abstract
             $item->setData($fieldName, ($i+1)*10);
         }
     }
+  public function sendEmailApplicationForm($data,$emailTemplate){
+      $sender  = array(
+        'name'  => Mage::getStoreConfig('trans_email/ident_sales/name'),
+        'email' => Mage::getStoreConfig('trans_email/ident_sales/email')
+      );
+      $receptionEmail = 'project@indexlivingmall.com';
+      $receptionName = 'Index Livingmall';
+
+      $postObject = new Varien_Object();
+      $fieldvalues = array();
+      foreach(unserialize($data['values']) as $field){
+        $key = strtolower($field['label']);
+        $key = str_replace(' ', '_', $key);
+        $fieldvalues[$key] = $field['value'];
+      }
+      $postObject->setData($fieldvalues);
+      $translate = Mage::getSingleton('core/translate');
+      $translate->setTranslateInline(false);
+      Mage::getModel('core/email_template')
+        ->sendTransactional(
+          $emailTemplate,
+          $sender,
+          $receptionEmail,
+          $receptionName,
+          array('data' => $postObject)
+        );
+      $translate->setTranslateInline(true);
+  }
 }

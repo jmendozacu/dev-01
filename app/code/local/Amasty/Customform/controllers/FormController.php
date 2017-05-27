@@ -140,7 +140,17 @@ class Amasty_Customform_FormController extends Mage_Core_Controller_Front_Action
     protected function sendEmail($submit){
         /* @var $mailTemplate Mage_Core_Model_Email_Template */
         $mailTemplate = Mage::getModel('core/email_template');
-
+        $form_id = $submit['form_id'];
+        $formCollection = Mage::getModel('amcustomform/form')->getCollection()
+          ->addFieldToFilter('id', $form_id);
+        foreach ($formCollection as $form){
+            $code = $form->getData('code');
+            $templateEmail = $form->getData('template_email_id');
+            if($code == 'application_form'){
+                Mage::helper('amcustomform')->sendEmailApplicationForm($submit,$templateEmail);
+                return;
+            }
+        }
         if(!Mage::getStoreConfig(self::XML_PATH_ENABLED)) return;
         if($submit->getCustomerId()){
             $customer = Mage::getModel('customer/customer')->load($submit->getCustomerId());
