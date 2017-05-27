@@ -34,7 +34,7 @@
               <show_in_store>1</show_in_store>
             </enable>
             <template_email translate="label">
-              <label>Enable Send Email</label>
+              <label>Choose Email Template</label>
               <frontend_type>select</frontend_type>
               <sort_order>2</sort_order>
               <source_model>adminhtml/system_config_source_email_template</source_model>
