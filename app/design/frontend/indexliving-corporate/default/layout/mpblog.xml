@@ -188,6 +188,8 @@
     <mpblog_index_post>
         <update handle="mpblog_default"/>
         <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/jquery.fancybox.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jquery.fancybox.css</name></action>
             <action method="addJs">
                 <styles>mpblog/comments.js</styles>
             </action>

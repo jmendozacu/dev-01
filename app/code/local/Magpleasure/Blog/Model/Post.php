@@ -287,7 +287,7 @@ class Magpleasure_Blog_Model_Post extends Magpleasure_Blog_Model_Abstract implem
 
                     $imageHtml = $image->outertext;
                     $image->outertext =
-                        '<a title="'.$imageAlt.'" href="'.$imageSrc.'" rel="lightbox[mpblog_'.$postId.']" target="_blank">'.
+                        '<a title="'.$imageAlt.'" href="javascript:void(0)">'.
                         $imageHtml.
                         '</a>'
                     ;

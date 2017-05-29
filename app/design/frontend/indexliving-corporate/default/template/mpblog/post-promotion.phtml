@@ -58,6 +58,10 @@ $post = $this->getPost();
                 <?php endif; ?>
                 <div class="mp-content std fix-me">
                     <?php echo $post->getFullContent(); ?>
+                  <div class="popup-image" style="display: none">
+                    <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>">
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -72,5 +76,41 @@ $post = $this->getPost();
 <script type="text/javascript" >
   jQuery('.mp-share').click( function(){
     jQuery(this).next().toggle();
+  });
+</script>
+<script type="text/javascript">
+  setTimeout(function(){
+    jQuery(document).ready(function() {
+      jQuery('.main-slider-id<?php echo $post->getId() ?> .voucher-gallery-thumbs').fancybox({
+        prevEffect : 'none',
+        nextEffect : 'none',
+        closeBtn  : true,
+        arrows    : true,
+        loop: false,
+        nextClick : true,
+        helpers : {
+          thumbs : {
+            width  : 86,
+            height : 86
+          }
+        }
+      });
+    });
+  }, 1000);
+
+</script>
+<script type="text/javascript">
+  jQuery(".mpblog-post.mpblog-post-view .mp-content a img").click(function() {
+    jQuery.ajax({
+      type: "post",
+      url: "<?php echo $this->getUrl('mpblog/index/getSlideImagesContentPost'); ?>?postId=" + <?php echo $post->getId() ?>,
+      success: function (transport) {
+        debugger;
+        if (transport.success == 'true') {
+          jQuery('.parent_content_'+<?php echo $post->getId() ?>).html(transport.result);
+          jQuery(".popup_img_li_"+<?php echo $post->getId() ?>).first().children().click();
+        }
+      }
+    });
   });
 </script>
