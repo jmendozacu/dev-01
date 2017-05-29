@@ -1781,6 +1781,9 @@ ul.mp-details > li >a.active:before{
   margin-top:20px;
   font-size: 17px;
 }
+.career-contacts.project_sales {
+    padding: 20px 0;
+}
 .list-index-project .mpblog-post .post-info{
   float:left;
   width:100%;
