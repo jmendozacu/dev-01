@@ -4,8 +4,10 @@
       <label><?php echo $this->__('Type Product to buy') ?></label>
       <div class="input-box">
         <?php
-        $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'am_shipping_type'); //"am_shipping_type" is the attribute_code
-        $allOptions = $attribute->getSource()->getAllOptions(true, true);
+        $storeId   = Mage::app()->getStore()->getId();
+        $config    = Mage::getModel('eav/config');
+        $attribute = $config->getAttribute('catalog_product', 'am_shipping_type');
+        $allOptions    = $attribute->setStoreId($storeId)->getSource()->getAllOptions();
         ?>
         <select class="validate-select" name="shipping_type" id="shipping_type">
           <option value=""><?php echo $this->__('Choose an Option...') ?></option>
@@ -46,7 +48,7 @@
       <div class="input-box">
         <label><?php echo $this->__('County / District') ?></label>
         <select id="city_id" name="city_id" title="<?php echo $this->__('City') ?>" class="validate-select" style="display:none;">
-          <option value=""><?php echo $this->__('Please select City') ?></option>
+          <option value=""><?php echo $this->__('Please select County / District') ?></option>
         </select>
         <input type="text" name="city" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('City')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
       </div>
@@ -60,7 +62,6 @@
   </ul>
   <div class="buttons-set delivery">
      <div class="note">
-       <?php echo $this->__('Note: This calculation is a preliminary calculation of shipping costs.')?>
      </div>
     <button class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
     <button class="button button-cancel" title="Cancel" type="reset" onclick="$j('.result').fadeOut();"><span><span><?php echo $this->__('Cancel') ?></span></span></button>
