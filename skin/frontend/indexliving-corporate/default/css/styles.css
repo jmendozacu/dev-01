@@ -15066,6 +15066,7 @@ body.faq-index-index{
   font-weight: 100 !important;
   padding-top: 10px;
 }
-.faq-index-index #list-faq .answer span.content ul{
+.faq-index-index #list-faq .answer span.content ul,
+.faq-index-index #list-faq .answer span.content ol{
   list-style: initial !important;
 }
