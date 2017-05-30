@@ -15069,4 +15069,5 @@ body.faq-index-index{
 .faq-index-index #list-faq .answer span.content ul,
 .faq-index-index #list-faq .answer span.content ol{
   list-style: initial !important;
+  padding-left: 20px;
 }
