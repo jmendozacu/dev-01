@@ -15061,3 +15061,8 @@ body.faq-index-index{
 #career li .input-box input{
   border: solid 1px #d7d7d7;
 }
+#career p.comment-attachment{
+  font-size: 14px !important;
+  font-weight: 100 !important;
+  padding-top: 10px;
+}
