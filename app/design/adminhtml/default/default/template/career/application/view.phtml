@@ -1,7 +1,17 @@
 <?php
 $values = $this->getValuesData();
+
 $application_for_job_id = $values['application_for_job_id'];
+$ageId = $values['work_age'];
+$age = Mage::helper('career')->getTitleAge($ageId);
+$work_type_id = $values['work_type'];
+
 $jobTitle = Mage::getModel('career/job')->load($application_for_job_id)->getData('title');
+$work_type_title = null;
+if($work_type_id){
+  $workTypeCollection = Mage::getModel('career/worktype')->load($work_type_id);
+  $work_type_title = $workTypeCollection->getData('title');
+}
 ?>
 <style type="text/css">
   .application_form{
@@ -78,11 +88,11 @@ $jobTitle = Mage::getModel('career/job')->load($application_for_job_id)->getData
   </tr>
   <tr>
     <td id="lable"><label for="work_type"><?php echo $this->__('Work Type')?></label></td>
-    <td><?php echo $values['work_type']?></td>
+    <td><?php echo $work_type_title?></td>
   </tr>
   <tr>
     <td id="lable"><label for="work_age"><?php echo $this->__('Work Age')?></label></td>
-    <td><?php echo $values['work_age']?></td>
+    <td><?php echo $age?></td>
   </tr>
   <tr>
     <td id="lable"><label for="present_company"><?php echo $this->__('Present Company')?></label></td>
@@ -96,6 +106,26 @@ $jobTitle = Mage::getModel('career/job')->load($application_for_job_id)->getData
     <td id="lable"><label for="created_at"><?php echo $this->__('Join date')?></label></td>
     <td><?php echo $values['created_at']?></td>
   </tr>
+  <?php $pathMedia = Mage::getBaseUrl('media') . 'career/'; ?>
+  <?php $_extensImage = array('jpg', 'png', 'gif'); ?>
+  <tr>
+    <td id="lable"><label for="attachment"><?php echo $this->__('Attachment')?></label></td>
+  <?php foreach ($values as $key => $value) {
+    ?>
 
+      <?php if ($value && $key != 'status') :?>
+        <?php if ($key == 'attachment') : ?>
+          <td>
+            <?php $extensions = explode('.', $value); ?>
+            <?php if (in_array($extensions[count($extensions) - 1], $_extensImage)): ?>
+              <a download="<?php echo $value ?>" href="<?php echo $pathMedia . $value ?>"><img src="<?php echo $pathMedia . $value ?>" width="100px" ></a>
+            <?php else : ?>
+              <a href="<?php echo $pathMedia . $value ?>" target="_blank"><?php echo $value ?></a>
+            <?php endif; ?>
+          </td>
+        <?php endif; ?>
+      <?php endif; ?>
+  <?php } ?>
+  </tr>
   </tbody>
 </table>

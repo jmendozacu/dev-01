@@ -1,6 +1,8 @@
 <?php
 $id = $this->getRequest()->getParam('id');
 $job = Mage::getModel('career/job')->load($id);
+$workTypeCollections = Mage::helper('career')->getWorkType();
+$ages = Mage::helper('career')->getAge();
 ?>
 <div class="page-title style2">
   <h1><?php echo $this->__('Career') ?> </h1>
@@ -66,7 +68,7 @@ $job = Mage::getModel('career/job')->load($id);
     <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
     <div class="parrent-application">
     <div class="application_form">
-      <form id="application-form" method="post" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id,'job_title'=>$job->getData('title')))?>">
+      <form id="application-form" method="post" enctype="multipart/form-data" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id,'job_title'=>$job->getData('title')))?>">
         <div id="personal_information">
           <p><?php echo $this->__('Personal Information')?></p>
           <ul>
@@ -121,13 +123,23 @@ $job = Mage::getModel('career/job')->load($id);
                 <div class="field left">
                   <label for="work_type" class="required"><em>*</em><?php echo $this->__('Work Type') ?></label>
                   <div class="input-box">
-                    <input type="text" name="work_type" value="" id="work_type" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" />
+                    <select name="work_type" id="work_type" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" >
+                      <?php foreach ($workTypeCollections as $workTypeCollection) :?>
+                        <option value="<?php echo $workTypeCollection->getId()?>"><?php echo $workTypeCollection->getTitle()?></option>
+                      <?php endforeach ?>
+                    </select>
+<!--                    <input type="text" name="work_type" value="" id="work_type" class="input-text required-entry" title="--><?php //echo $this->__('Work Type') ?><!--" />-->
                   </div>
                 </div>
                 <div class="field right">
                   <label for="work_age" class="required"><em>*</em><?php echo $this->__('Work Age') ?></label>
                   <div class="input-box">
-                    <input type="text" name="work_age" value="" id="work_age" class="input-text required-entry" title="<?php echo $this->__('Work Age') ?>" />
+                    <select name="work_age" id="work_age" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" >
+                      <?php foreach ($ages as $age) :?>
+                        <option value="<?php echo $age['value']?>"><?php echo $age['label']?></option>
+                      <?php endforeach ?>
+                    </select>
+<!--                    <input type="text" name="work_age" value="" id="work_age" class="input-text required-entry" title="--><?php //echo $this->__('Work Age') ?><!--" />-->
                   </div>
                 </div>
               </li>
@@ -142,6 +154,16 @@ $job = Mage::getModel('career/job')->load($id);
                   <label for="last_position" class="required"><em>*</em><?php echo $this->__('Last Position') ?></label>
                   <div class="input-box">
                     <input type="text" name="last_position" value="" id="last_position" class="input-text required-entry" title="<?php echo $this->__('Last Position') ?>" />
+                  </div>
+                </div>
+              </li>
+              <li>
+                <label for="cp-attacment"><?php echo $this->__('Attach CV')?></label>
+                <div class="input-box input-attachment">
+                  <input class="" id="uploadFile" placeholder="<?php echo $this->__('No file chosen') ?>" disabled="disabled" />
+                  <div class="box-attachment">
+                    <span><?php echo $this->__('Choose File') ?></span>
+                    <input class="input-text" type="file" id="cp-attachment" name="cp-attachment" />
                   </div>
                 </div>
               </li>
@@ -201,4 +223,7 @@ $job = Mage::getModel('career/job')->load($id);
       return false;
     })
   });
+  document.getElementById("cp-attachment").onchange = function () {
+    document.getElementById("uploadFile").value = this.files[0].name;
+  };
 </script>

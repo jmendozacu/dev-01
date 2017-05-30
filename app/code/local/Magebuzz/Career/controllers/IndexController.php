@@ -17,9 +17,28 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
         }
         else{
             try {
+                $fileName = '';
+                if (isset($_FILES['cp-attachment']['name']) && $_FILES['cp-attachment']['name'] != '') {
+                    try {
+                        $fileName = $_FILES['cp-attachment']['name'];
+                        $uploader = new Varien_File_Uploader('cp-attachment');
+                        $uploader->setAllowedExtensions(array('doc', 'docx', 'pdf', 'jpg', 'png', 'zip', 'gif','txt','xlsx','rar')); //add more file types you want to allow
+                        $uploader->setAllowRenameFiles(false);
+                        $uploader->setFilesDispersion(false);
+                        $path = Mage::getBaseDir('media') . DS . 'career';
+                        if (!is_dir($path)) {
+                            mkdir($path, 0777, true);
+                        }
+                        $uploader->save($path . DS, $fileName);
+                        $attachmentFilePath = Mage::getBaseDir('media') . DS . 'career' . DS . $fileName;
+                    } catch (Exception $e) {
+                        Mage::getSingleton('customer/session')->addError($e->getMessage());
+                    }
+                }
                 $model = Mage::getModel('career/application');
                 $model
                   ->setData($params)
+                  ->setAttachment($fileName)
                   ->setCreatedAt(Mage::getModel('core/date')->date('Y-m-d'))
                   ->setApplicationForJobId($job_id)
                   ->setApplicationForJob($job_title)

@@ -15,9 +15,14 @@
 					<sort_order>20</sort_order>
 					<action>adminhtml/application</action>
 				</application>
+				<worktype module="career">
+					<title>Manage Work Type</title>
+					<sort_order>30</sort_order>
+					<action>adminhtml/careerworktype</action>
+				</worktype>
 				<config module="career">
 					<title>Configuration</title>
-					<sort_order>21</sort_order>
+					<sort_order>40</sort_order>
 					<action>adminhtml/system_config/edit/section/career</action>
 				</config>
 			</children>
@@ -56,6 +61,11 @@
 								<sort_order>20</sort_order>
 								<action>adminhtml/application</action>
 							</application>
+							<worktype module="career">
+								<title>Manage Work Type</title>
+								<sort_order>30</sort_order>
+								<action>adminhtml/careerworktype</action>
+							</worktype>
 						</children>
 					</career>
 				</children>				

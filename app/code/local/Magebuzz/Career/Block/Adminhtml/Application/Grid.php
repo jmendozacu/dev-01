@@ -55,14 +55,16 @@ class Magebuzz_Career_Block_Adminhtml_Application_Grid extends Mage_Adminhtml_Bl
             'header' => Mage::helper('career')->__('Work Type'),
             'align' => 'left',
             'index' => 'work_type',
-            'width' => '100px'
+            'renderer' => 'Magebuzz_Career_Block_Adminhtml_Application_Renderer_Worktype',
+            'width' => '100px',
         ));
 
         $this->addColumn('work_age', array(
             'header' => Mage::helper('career')->__('Work Age'),
             'align' => 'left',
             'index' => 'work_age',
-            'width' => '100px'
+            'width' => '100px',
+          'renderer' => 'Magebuzz_Career_Block_Adminhtml_Application_Renderer_Workage',
         ));
 
         $this->addColumn('present_company', array(

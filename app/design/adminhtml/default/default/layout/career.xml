@@ -10,6 +10,11 @@
             <block type="career/adminhtml_job" name="jobform" />
         </reference>
     </adminhtml_careerjob_index>
+    <adminhtml_careerworktype_index>
+        <reference name="content">
+            <block type="career/adminhtml_worktype" name="worktypeform" />
+        </reference>
+    </adminhtml_careerworktype_index>
 
     <adminhtml_application_view>
         <reference name="content">
