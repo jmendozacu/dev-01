@@ -39,6 +39,8 @@
                             <?php if ($post->getCreatedAt()): ?>
                                 <span class="post-time">
                                     <?php echo Mage::helper('core')->formatDate($post->getCreatedAt(), 'long', false) ?>
+                                  <span> - </span>
+                                    <?php echo Mage::helper('core')->formatDate($post->getPublishedTo(), 'long', false) ?>
 <!--                                    --><?php //echo date('d F Y', strtotime($post->getCreatedAt()));; ?>
                                 </span>
                             <?php endif; ?>
