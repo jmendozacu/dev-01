@@ -370,32 +370,33 @@ if ($this->getCategoryFilter()) {
   jQuery(document).ready(function() {
     var widthWindow = jQuery(window).width();
     if (widthWindow > 768) {
-        jQuery("#alsolike-product-list").owlCarousel({
-            loop: false,
-            margin: 20,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 10
-                },
-                600: {
-                    items: 3
-                },
-                768: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        });
+      jQuery("#alsolike-product-list").owlCarousel({
+        loop: false,
+        margin: 20,
+        nav: true,
+        responsive: {
+          0: {
+            items: 10
+          },
+          600: {
+            items: 3
+          },
+          768: {
+            items: 3
+          },
+          1000: {
+            items: 3
+          }
+        }
+      });
     } else {
-        jQuery('.recommend-product-list').mCustomScrollbar({
-            axis: "x",
-            advanced: {autoExpandHorizontalScroll: true}
-        });
+      jQuery('.recommend-product-list').mCustomScrollbar({
+        axis: "x",
+        advanced: {autoExpandHorizontalScroll: true}
+      });
     }
-  })
+  });
+
 </script>
 <script type="text/javascript">
 

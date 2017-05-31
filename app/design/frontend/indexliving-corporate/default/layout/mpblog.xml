@@ -46,6 +46,8 @@
             </action>
         </reference>
         <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/owl.carousel.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/owl.carousel.css</name></action>
             <block type="mpblog/content_archive_wrapper" name="mpblog.content.archive.wrapper" as="mpblog_content_archive_wrapper"/>
             <action method="addItem">
                 <type>skin_css</type>

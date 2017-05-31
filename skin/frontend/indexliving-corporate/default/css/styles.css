@@ -15071,3 +15071,25 @@ body.faq-index-index{
   list-style: initial !important;
   padding-left: 20px;
 }
+.cms-who-we-are .category-highlight-products .owl-prev,
+.cms-who-we-are .category-highlight-products .owl-next{
+  top: 84% !important;
+}
+.cms-who-we-are .products-grid .product-image img{
+  min-height: 162px;
+  min-width: 162px;
+}
+.cms-who-we-are .category-highlight-products .page-container{
+  padding: 0 !important;
+}
+.mpblog-index-category .category-highlight-products .owl-prev,
+.mpblog-index-category .category-highlight-products .owl-next{
+  top: 92% !important;
+}
+.mpblog-index-category .products-grid .product-image img{
+  min-height: 162px;
+  min-width: 162px;
+}
+.mpblog-index-category .category-highlight-products .page-container{
+  padding: 0 !important;
+}
