@@ -12709,7 +12709,7 @@ ul.mp-details > li >a:before,
   max-width:100%;
 }
 .joy-design-page .top-info label {
-  color:#707070;
+  color:#000;
   font-size:18px;
   font-weight: 300;
   margin-bottom:10px;
@@ -12886,7 +12886,7 @@ ul.mp-details > li >a:before,
 .list-service li:nth-child(2n + 1) .box-info {
   border-right:none;
 }
-.list-service li .box-info h2{
+.list-service li .box-info h2, .list-service li .box-info h2 a{
   color:#FFC222;
   font-size:35px;
   text-transform: uppercase;
@@ -12895,7 +12895,7 @@ ul.mp-details > li >a:before,
   line-height: 38px;
   margin-bottom:12px;
 }
-.list-service li .box-info h2 strong {
+.list-service li .box-info h2 strong, .list-service li .box-info h2 a strong {
   font-weight: bold;
 }
 .list-service li .box-info p {
@@ -12906,6 +12906,8 @@ ul.mp-details > li >a:before,
   line-height: 24px;
   margin-bottom:20px;
 }
+.list-service li .box-info h2 a, .list-service li .box-info p a{cursor: pointer;}
+.list-service li .box-info h2 a:hover, .list-service li .box-info p a:hover{text-decoration: none;}
 .list-service li .box-info a {
   font-size: 16px;
   padding: 3px 12px;
@@ -13131,7 +13133,7 @@ ul.mp-details > li >a:before,
   width:100%;
 }
 .service-detail .top-info p {
- color:#707070;
+ color:#000;
   font-size: 18px;
   font-weight: 300;
   line-height: 24px;
