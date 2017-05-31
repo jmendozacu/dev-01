@@ -15088,7 +15088,8 @@ body.faq-index-index{
 .mpblog-index-category .category-highlight-products .owl-next{
   top: 92% !important;
 }
-.mpblog-index-category .products-grid .product-image img{
+.mpblog-index-category .products-grid .product-image img,
+.cms-4-joy-joy-design .products-grid .product-image img{
   min-height: 162px;
   min-width: 162px;
 }
