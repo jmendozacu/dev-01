@@ -12643,7 +12643,7 @@ ul.mp-details > li >a:before,
   margin-bottom:0px;
 }
 .joy-price-page  .box-left label{
-  font-size:49px;
+  font-size:40px;
   font-weight: 300;
   font-style: normal;
   color:#000;
@@ -12653,7 +12653,7 @@ ul.mp-details > li >a:before,
   font-weight: normal;
 }
 .joy-price-page  .box-left p{
-  color:#7D7D7D;
+  color:#000;
   font-size:18px;
   font-weight: 300;
   font-style: normal;
