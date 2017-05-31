@@ -4712,7 +4712,7 @@ body.catalogsearch-result-index .page-title h1 {
   display:block;
 }
 
-.products-grid .product-image img {
+.cms-index-home .products-grid .product-image img {
   min-width: 230.41px;
   min-height: 230.41px;
   max-width: 100%;
@@ -15082,18 +15082,6 @@ body.faq-index-index{
   min-width: 162px;
 }
 .cms-who-we-are .category-highlight-products .page-container{
-  padding: 0 !important;
-}
-.mpblog-index-category .category-highlight-products .owl-prev,
-.mpblog-index-category .category-highlight-products .owl-next{
-  top: 92% !important;
-}
-.mpblog-index-category .products-grid .product-image img,
-.cms-4-joy-joy-design .products-grid .product-image img{
-  min-height: 162px;
-  min-width: 162px;
-}
-.mpblog-index-category .category-highlight-products .page-container{
   padding: 0 !important;
 }
 div#mpblog_content_list .category-highlight-products {
