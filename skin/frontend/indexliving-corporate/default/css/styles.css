@@ -15096,3 +15096,11 @@ body.faq-index-index{
 .mpblog-index-category .category-highlight-products .page-container{
   padding: 0 !important;
 }
+div#mpblog_content_list .category-highlight-products {
+  float: left;
+  width: 100%;
+}
+div#mpblog_content_list .mpblog-container {
+  float: left;
+  width: 100%;
+}
