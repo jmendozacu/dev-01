@@ -2985,8 +2985,12 @@
     .table_price_delivery.style2 .table_row .furniture_prd{
         width: 100%
     }
-    .table_price_delivery.style2 .table_row {
+    .table_price_delivery.style2 .table_row,
+    .table_price_delivery.style4 .table_row{
         border-bottom:0px;
+    }
+    .table_price_delivery.style4 .table_row .furniture_prd.style-line2 .td {
+      min-height:0px;
     }
     .delivery-index-index .mobile_show .td.white.full,
     .table_price_delivery .table_row .td,
@@ -4574,7 +4578,7 @@
         margin-top:5px;
     }
     .service-home-delivery-assembly .box-info.box-form {
-        padding:8px;
+        /*padding:8px;*/
     }
     .service-home-delivery-assembly .form-list li {
         padding:10px 0;
@@ -4618,6 +4622,7 @@
     .service-home-delivery-assembly .delivery-info .delivery-top {
         position: relative;
         margin-bottom:10px;
+      padding-top:50px;
     }
     .cms-page-view .amshopby-featured-wrapper .brands-grid li .brand-info .brand-text {
         border-top:none;
