@@ -8,6 +8,9 @@ $ages = Mage::helper('career')->getAge();
   <h1><?php echo $this->__('Career') ?> </h1>
 </div>
 <div id="career">
+  <div class="back-pre-url top">
+    <span id="back-pre-url" onclick="backPre()" style="cursor: pointer; color: #000"><span class="arrow"><?php echo ' < '?></span><?php echo $this->__('BACK')?></span>
+  </div>
   <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-detail-bannertop')->toHtml() ?>
   <div id="content-job" class="content-job">
     <label class="job-title"><?php echo $job->getData('title')?></label>
@@ -124,6 +127,7 @@ $ages = Mage::helper('career')->getAge();
                   <label for="work_type" class="required"><em>*</em><?php echo $this->__('Work Type') ?></label>
                   <div class="input-box">
                     <select name="work_type" id="work_type" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" >
+                      <option value=""><?php echo $this->__('Please select work type') ?></option>
                       <?php foreach ($workTypeCollections as $workTypeCollection) :?>
                         <option value="<?php echo $workTypeCollection->getId()?>"><?php echo $workTypeCollection->getTitle()?></option>
                       <?php endforeach ?>
@@ -135,6 +139,7 @@ $ages = Mage::helper('career')->getAge();
                   <label for="work_age" class="required"><em>*</em><?php echo $this->__('Work Age') ?></label>
                   <div class="input-box">
                     <select name="work_age" id="work_age" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" >
+                      <option value=""><?php echo $this->__('Please select work age') ?></option>
                       <?php foreach ($ages as $age) :?>
                         <option value="<?php echo $age['value']?>"><?php echo $age['label']?></option>
                       <?php endforeach ?>

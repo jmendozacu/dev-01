@@ -13,6 +13,9 @@ $post = $this->getPost();
 /** @var Magpleasure_Blog_Block_Content_Post $this */
 ?>
 <div class="mpblog-2column-right mpblog-post-promotiom">
+  <div class="back-pre-url top promo">
+    <span id="back-pre-url" onclick="backPre()" style="cursor: pointer; color: #000"><span class="arrow"><?php echo ' < '?></span><?php echo $this->__('BACK')?></span>
+  </div>
     <div class="mp-blog-head fix-me">
         <h1 class="mp-title title-promotion">
             <span></span><?php echo $this->escapeHtml($post->getTitle()); ?></span>

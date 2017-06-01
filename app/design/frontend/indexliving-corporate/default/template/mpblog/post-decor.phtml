@@ -19,6 +19,9 @@ $post = $this->getPost();
     <div class="mpblog-col-content">
         <div class="mpblog-container">
             <div class="mpblog-post mpblog-post-view">
+              <div class="back-pre-url top">
+                <span id="back-pre-url" onclick="backPre()" style="cursor: pointer; color: #000"><span class="arrow"><?php echo ' < '?></span><?php echo $this->__('BACK')?></span>
+              </div>
                 <div class="mp-blog-head fix-me">
                     <h1 class=""><?php echo $this->escapeHtml($post->getTitle()); ?></h1>
                 </div>
