@@ -10936,7 +10936,11 @@ div.paypal-logo span > img {
 .table_price_delivery .table_row .th{background:#252525;padding: 14px 0 1px;}
 .table_price_delivery .table_row .th h3{color:#FFF; font-size:18px; font-family: 'Kanit'; font-weight: 500;}
 .table_price_delivery .table_row .total_buy{width: 18%;margin-right: 2%;float: left;}
-.table_price_delivery .table_row .furniture_prd, .table_price_delivery .table_row .home_prd{width: 39%;float: left;margin-right: 2%;}
+.table_price_delivery .table_row .furniture_prd,
+.table_price_delivery .table_row .home_prd{width: 39%;float: left;margin-right: 2%;}
+.table_price_delivery .table_row .furniture_prd.last {
+  margin-right:0px;
+}
 .table_price_delivery .table_row .furniture_prd.one{width:80%;margin-right: 0;}
 .table_price_delivery .table_row .home_prd{margin-right: 0;}
 .table_price_delivery .table_row .tr{background:#f7f7f7;}
@@ -10976,6 +10980,17 @@ div.paypal-logo span > img {
 .table_price_delivery.style3 .table_row .td:last-child {
   width:100%;
   display: block;
+}
+.table_price_delivery.style4 .table_row .td:last-child,
+.table_price_delivery.style4 .table_row .td{
+  width:100%;
+  float:left;
+}
+.table_price_delivery.style4 .table_row .td + .td{
+  border-top:solid 1px #fff;
+}
+.table_price_delivery.style4 .table_row .furniture_prd.style-line2 .td {
+  min-height:56px;
 }
 
 /*cms-custom-form*/
@@ -13324,13 +13339,13 @@ ul.mp-details > li >a:before,
   background: #FFC222;
 }
 .service-home-delivery-assembly .box-info.box-form {
-  border:solid 2px #FDC300;
-  padding:22px;
+  /*border:solid 2px #FDC300;
+  padding:22px;*/
   border-top: none;
 }
 .service-home-delivery-assembly .box-info.shop-online {
   border:solid 2px #FDC300;
-  border-bottom: none;
+  /*border-bottom: none;*/
   margin-bottom: 0;
   padding:22px;
 }
