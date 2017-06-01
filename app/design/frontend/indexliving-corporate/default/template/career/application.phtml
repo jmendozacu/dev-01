@@ -9,7 +9,7 @@ $ages = Mage::helper('career')->getAge();
 </div>
 <div id="career">
   <div class="back-pre-url top">
-    <span id="back-pre-url" onclick="backPre()" style="cursor: pointer; color: #000"><span class="arrow"><?php echo ' < '?></span><?php echo $this->__('BACK')?></span>
+    <span id="back-pre-url" onclick="backPre()" style="cursor: pointer; color: #000"><?php echo ' < '.$this->__('BACK')?></span>
   </div>
   <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('career-detail-bannertop')->toHtml() ?>
   <div id="content-job" class="content-job">
