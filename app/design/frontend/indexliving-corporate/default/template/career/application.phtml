@@ -124,9 +124,9 @@ $ages = Mage::helper('career')->getAge();
             <ul>
               <li>
                 <div class="field left">
-                  <label for="work_type" class="required"><em>*</em><?php echo $this->__('Work Type') ?></label>
+                  <label for="work_type" class=""><?php echo $this->__('Work Type') ?></label>
                   <div class="input-box">
-                    <select name="work_type" id="work_type" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" >
+                    <select name="work_type" id="work_type" class="input-text" title="<?php echo $this->__('Work Type') ?>" >
                       <option value=""><?php echo $this->__('Please select work type') ?></option>
                       <?php foreach ($workTypeCollections as $workTypeCollection) :?>
                         <option value="<?php echo $workTypeCollection->getId()?>"><?php echo $workTypeCollection->getTitle()?></option>
@@ -136,9 +136,9 @@ $ages = Mage::helper('career')->getAge();
                   </div>
                 </div>
                 <div class="field right">
-                  <label for="work_age" class="required"><em>*</em><?php echo $this->__('Work Age') ?></label>
+                  <label for="work_age" class=""><?php echo $this->__('Work Age') ?></label>
                   <div class="input-box">
-                    <select name="work_age" id="work_age" class="input-text required-entry" title="<?php echo $this->__('Work Type') ?>" >
+                    <select name="work_age" id="work_age" class="input-text" title="<?php echo $this->__('Work Type') ?>" >
                       <option value=""><?php echo $this->__('Please select work age') ?></option>
                       <?php foreach ($ages as $age) :?>
                         <option value="<?php echo $age['value']?>"><?php echo $age['label']?></option>
@@ -150,20 +150,20 @@ $ages = Mage::helper('career')->getAge();
               </li>
               <li>
                 <div class="field left">
-                  <label for="present_company" class="required"><em>*</em><?php echo $this->__('Present Company') ?></label>
+                  <label for="present_company" class=""><?php echo $this->__('Present Company') ?></label>
                   <div class="input-box">
-                    <input type="text" name="present_company" value="" id="present_company" class="input-text required-entry" title="<?php echo $this->__('Present Company') ?>" />
+                    <input type="text" name="present_company" value="" id="present_company" class="input-text" title="<?php echo $this->__('Present Company') ?>" />
                   </div>
                 </div>
                 <div class="field right">
-                  <label for="last_position" class="required"><em>*</em><?php echo $this->__('Last Position') ?></label>
+                  <label for="last_position" class=""><?php echo $this->__('Last Position') ?></label>
                   <div class="input-box">
-                    <input type="text" name="last_position" value="" id="last_position" class="input-text required-entry" title="<?php echo $this->__('Last Position') ?>" />
+                    <input type="text" name="last_position" value="" id="last_position" class="input-text" title="<?php echo $this->__('Last Position') ?>" />
                   </div>
                 </div>
               </li>
               <li>
-                <label for="cp-attacment"><?php echo $this->__('Attach CV')?></label>
+                <label for="cp-attacment"><?php echo $this->__('Attach CV/Resume')?></label>
                 <div class="input-box input-attachment">
                   <input class="" id="uploadFile" placeholder="<?php echo $this->__('No file chosen') ?>" disabled="disabled" />
                   <div class="box-attachment">
