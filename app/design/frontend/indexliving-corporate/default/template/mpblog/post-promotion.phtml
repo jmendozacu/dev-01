@@ -61,6 +61,32 @@ $post = $this->getPost();
                 <?php endif; ?>
                 <div class="mp-content std fix-me">
                     <?php echo $post->getFullContent(); ?>
+                  <?php
+                  $catalogId = $post->getData('catalog');
+                  if($catalogId):
+                    $book = Mage::getModel('flippingbook/magazine')->load($catalogId);
+                    $bookUrl = Mage::getBlockSingleton('flippingbook/frontend_list')->getMagazineUrl($book);
+                  ?>
+                    <h2><?php echo $this->__('Catalog')?></h2>
+                    <div class="catalog-content">
+                      <div class="box-image">
+                        <a href="<?php echo $bookUrl ?>" title="<?php echo $book->getData('magazine_title') ?>">
+                          <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$book->getData('magazine_thumbnail');?>">
+                        </a>
+                      </div>
+                      <div class="infor-book">
+                        <div class="date-time">
+                          <?php
+                          $createDate = new DateTime($book->getData('created_at'));
+                          echo $createDate->format('j F, Y');
+                          ?>
+                        </div>
+                        <div class="name-book">
+                          <?php echo $book->getData('magazine_title') ?>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endif ?>
                   <div class="popup-image" style="display: none">
                     <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>">
                     </div>

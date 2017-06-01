@@ -184,6 +184,13 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Additional
             );
         }
 
+        $fieldset->addField('catalog', 'select', array(
+          'label'     => $this->_helper()->__("Catalog"),
+          'required'  => false,
+          'name'      => 'catalog',
+          'options'   => $this->_helper()->getListCatalogPost(),
+        ));
+
         $fieldset->addField('comments_enabled', 'select', array(
             'label'     => $this->_helper()->__("Allow Comments"),
             'required'  => false,

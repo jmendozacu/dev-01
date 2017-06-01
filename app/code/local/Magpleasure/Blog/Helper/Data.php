@@ -692,4 +692,14 @@ class Magpleasure_Blog_Helper_Data extends Mage_Core_Helper_Abstract
         $len = strpos($string, $end, $ini) - $ini;
         return substr($string, $ini, $len);
     }
+    public function getListCatalogPost(){
+        $bookCollections = Mage::getModel('flippingbook/magazine')->getCollection();
+        $books = array(
+          "0" => "Please select catalog"
+        );
+        foreach ($bookCollections as $bookCollection) {
+            $books[$bookCollection->getData('magazine_id')] = $bookCollection->getData('magazine_title');
+        }
+        return $books;
+    }
 }
