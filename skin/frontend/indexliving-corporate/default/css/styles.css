@@ -14070,6 +14070,32 @@ body.career-index-application #career #application .parrent-application{
   font-size: 18px;
   font-weight: bold;
 }
+.back-pre-url.who-we-are{
+  padding: 0 0 15px;
+}
+.back-pre-url.who-we-are span{
+  float: right;
+}
+.back-pre-url.top{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.back-pre-url .promo{
+  padding-top: 0;
+  padding-bottom: 10px;
+
+}
+@media only screen and (min-width:920px){
+  .back-pre-url.top.promo{
+    padding-right: 26%;
+  }
+}
+.back-pre-url.top #back-pre-url{
+  float: right;
+}
+.back-pre-url.top #back-pre-url .arrow{
+  font-weight: 100;
+}
 body.career-index-application #career #application .career-contacts {
   float:left;
   width:26%;
@@ -15099,10 +15125,6 @@ body.faq-index-index{
   list-style: initial !important;
   padding-left: 20px;
 }
-.cms-who-we-are .category-highlight-products .owl-prev,
-.cms-who-we-are .category-highlight-products .owl-next{
-  top: 84% !important;
-}
 .cms-who-we-are .products-grid .product-image img{
   min-height: 162px;
   min-width: 162px;
@@ -15110,11 +15132,16 @@ body.faq-index-index{
 .cms-who-we-are .category-highlight-products .page-container{
   padding: 0 !important;
 }
-div#mpblog_content_list .category-highlight-products {
+div#mpblog_content_list .category-highlight-products,
+.cms-who-we-are .category-highlight-products {
   float: left;
   width: 100%;
 }
-div#mpblog_content_list .mpblog-container {
+div#mpblog_content_list .mpblog-container,
+.cms-who-we-are .featured-brands {
   float: left;
   width: 100%;
+}
+.career-index-application .back-pre-url.top span{
+  float: right;
 }
