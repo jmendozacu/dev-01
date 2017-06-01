@@ -3730,7 +3730,7 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 .box-home-list-products .box-list-products ul li dl{padding-bottom: 5px}
 .box-home-list-products .best-seller,
 .box-home-list-products .new-arrival {float:left; width:100%;}
-.box-home-list-products .best-seller {margin-bottom:42px;}
+.box-home-list-products .best-seller {margin-bottom:15px;}
 .box-home-list-products .best-seller .title-style1:before{
   width: 84%;
 }
@@ -4677,6 +4677,9 @@ body.catalogsearch-result-index .page-title h1 {
 .products-grid {
   position: relative;
 }
+.products-grid .empty-option {
+  display:none;
+}
 
 .products-grid:after {
   content: '';
@@ -4688,7 +4691,7 @@ body.catalogsearch-result-index .page-title h1 {
   position: relative;
   margin-bottom: 20px;
   text-align: left;
-  padding:0px 10px;
+  padding:10px 10px 0px;
   border:solid 1px transparent;
 }
 .products-grid > li:hover, .products-grid div.item:hover {border:solid 1px #EAEAEA; border-radius:3px; box-shadow:0px 0px 2px 2px #F8F8F8;}
@@ -4713,9 +4716,8 @@ body.catalogsearch-result-index .page-title h1 {
 }
 
 .cms-index-home .products-grid .product-image img {
-  min-width: 230.41px;
-  min-height: 230.41px;
   max-width: 100%;
+  width:100%;
   margin:auto;
   height: auto;
 }
@@ -5334,30 +5336,39 @@ body.catalogsearch-result-index .page-title h1 {
 .flip-container, .front, .back {
 	width: 100%;
 	height: 100%;
-	min-height:263px;
+	/*min-height:263px;*/
 }
 
-.catalog-category-view .products-grid--max-3-col .flip-container, .catalog-category-view .products-grid--max-3-col .front,  .catalog-category-view .products-grid--max-3-col .back{min-height: 263px;}
+.catalog-category-view .products-grid--max-3-col .flip-container, .catalog-category-view .products-grid--max-3-col .front,  .catalog-category-view .products-grid--max-3-col .back{
+  /*min-height: 263px;*/
+}
 
 .block-highlight .flip-container, .block-highlight .flip-container .front, .block-highlight .flip-container .back {
 	width: 100%;
 	height: 100%;
-	min-height:200px;
+	/*min-height:200px;*/
 }
-.catalog-category-view .block-highlight #alsolike-product-list  .flip-container, .catalog-category-view .block-highlight #recommend-product-list  .flip-container{min-height: 200px;}
+.catalog-category-view .block-highlight #alsolike-product-list  .flip-container, .catalog-category-view .block-highlight #recommend-product-list  .flip-container{
+  /*min-height: 200px;*/
+}
 .block-highlight #bestseller-product-list .flip-container, .block-highlight #bestseller-product-list .flip-container .front, .block-highlight #bestseller-product-list .flip-container .back {
 	width: 100%;
 	height: 100%;
-	min-height:268px;
+	/*min-height:268px;*/
 }
 
-.box-home-list-products .block-highlight .flip-container{min-height:247px;}
+.box-home-list-products .block-highlight .flip-container{
+  /*min-height:247px;*/
+}
 
 /* flip speed goes here */
 .flipper {
 	position: relative;
 }
-.front, .back {
+.front {
+  position: relative;
+}
+.back {
 	position: absolute;
 	top: 0;
 	left: 0;
