@@ -152,7 +152,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
             if (!Mage::app()->isSingleStoreMode()){
                 $collection->addStoreFilter(Mage::app()->getStore()->getId());
             }
-            $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Post::STATUS_ENABLED);
+            $collection->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_ENABLED, Magpleasure_Blog_Model_Post::STATUS_SCHEDULED)) );
             $collection->addFieldToFilter('published_to', array('gt' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
             $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
             $collection->setUrlKeyIsNotNull();
@@ -258,7 +258,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
         if (!Mage::app()->isSingleStoreMode()) {
             $collection->addStoreFilter(Mage::app()->getStore()->getId());
         }
-        $collection->addFieldToFilter('status', Magpleasure_Blog_Model_Post::STATUS_ENABLED);
+        $collection->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_ENABLED,Magpleasure_Blog_Model_Post::STATUS_SCHEDULED)) );
         $collection->addFieldToFilter('published_to', array('gt' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
         $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
         $collection->setUrlKeyIsNotNull();
