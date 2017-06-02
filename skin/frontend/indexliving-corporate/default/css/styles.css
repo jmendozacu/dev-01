@@ -14168,6 +14168,8 @@ body.career-index-application #application-form label{
 .cms-page-view .content_cms.about-us .frist_con .c_right {
   width:66%;
 }
+.content_cms.about-us .aword_img{margin:60px auto 20px;text-align: center;}
+.content_cms.about-us .aword_img img{display: initial;} 
 .cms-page-view .content_cms.about-us  p,
 .cms-page-view .content_cms.about-us li{
   font-size:16px;
