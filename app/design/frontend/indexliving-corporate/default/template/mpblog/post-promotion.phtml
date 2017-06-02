@@ -120,7 +120,7 @@ $post = $this->getPost();
         nextClick : true,
         helpers : {
           thumbs : {
-            width  : 86,
+            width  : 125,
             height : 86
           }
         }
@@ -135,7 +135,6 @@ $post = $this->getPost();
       type: "post",
       url: "<?php echo $this->getUrl('mpblog/index/getSlideImagesContentPost'); ?>?postId=" + <?php echo $post->getId() ?>,
       success: function (transport) {
-        debugger;
         if (transport.success == 'true') {
           jQuery('.parent_content_'+<?php echo $post->getId() ?>).html(transport.result);
           jQuery(".popup_img_li_"+<?php echo $post->getId() ?>).first().children().click();
