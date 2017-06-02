@@ -24,6 +24,21 @@ class Magebuzz_Career_Block_Adminhtml_Worktype_Edit_Tab_Form extends Mage_Adminh
         'class'     => 'required-entry',
         'required'  => true,)
     );
+
+    $field = $fieldset->addField(
+        'store_id',
+      'multiselect',
+      array('name' => 'store_id[]',
+        'label' => Mage::helper('career')->__('Store View'),
+        'title' => Mage::helper('career')->__('Store View'),
+        'required' => TRUE,
+        'values' => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(FALSE, TRUE),
+        )
+    );
+    $renderer = $this->getLayout()
+      ->createBlock('adminhtml/store_switcher_form_renderer_fieldset_element');
+    $field->setRenderer($renderer);
+
     $fieldset->addField(
       'status',
       'select',

@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Magebuzz_Career>
-            <version>0.1.6</version>
+            <version>0.1.7</version>
         </Magebuzz_Career>
     </modules>
     <frontend>
@@ -70,6 +70,9 @@
                     <worktype>
                         <table>career_worktype</table>
                     </worktype>
+                    <worktypestore>
+                        <table>career_worktype_store</table>
+                    </worktypestore>
                 </entities>
             </career_mysql4>
         </models>
