@@ -14245,13 +14245,15 @@ body.career-index-application #application-form label{
   font-weight: bold;
   margin-bottom:20px;
 }
-.cms-brand .top-content label {
+.cms-brand .top-content label, .cms-brand .top-content .caption_brands {
   font-size:18px;
   font-weight: 300;
   color:#000;
   margin-bottom:65px;
-  line-height:30px;
+  line-height:30px;  
 }
+.cms-brand .top-content .caption_brands p{margin-bottom: 15px;font-size: 18px;} 
+.cms-brand .desc_40 {padding: 25px 30px;} 
 .cms-brand .top-content .actions {
   float:left;
   width:100%;
