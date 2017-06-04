@@ -171,10 +171,10 @@ $ages = Mage::helper('career')->getAge();
                     <input class="input-text" type="file" id="cp-attachment" name="cp-attachment" />
                   </div>
                 </div>
-                <p class="comment-attachment"><?php echo $this->__('
-                  * If there are multiple files, please zip to a single file (the total file size is not more than 1 Mb.)</br>
-                  * In case there is no CV / Resume attached, please fill out the Application Form.
-                  ')?>
+                <p class="comment-attachment">
+                  <?php echo $this->__('* If there are multiple files, please zip to a single file (the total file size is not more than 1 Mb.)')?>
+                  </br>
+                  <?php echo $this->__('* In case there is no CV / Resume attached, please fill out the Application Form.')?>
                 </p>
               </li>
             </ul>

@@ -37,8 +37,11 @@ class Magebuzz_Career_Helper_Data extends Mage_Core_Helper_Abstract{
     }
   }
   public function getWorkType(){
-    $collection = Mage::getModel('career/worktype')->getCollection();
-    $collection->addFieldToFilter('status','1');
+    $workstylesStoreTable = Mage::getSingleton('core/resource')->getTableName('career_worktype_store');
+    $collection = Mage::getModel('career/worktype')->getCollection();;
+    $collection->getSelect()
+      ->joinLeft(array('workstylesStore'=>$workstylesStoreTable),'main_table.worktype_id=workstylesStore.worktype_id','store_id')
+      ->where("workstylesStore.store_id = ".Mage::app()->getStore()->getStoreId());
     return $collection;
   }
   public function getAge() {
