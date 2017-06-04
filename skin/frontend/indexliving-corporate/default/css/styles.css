@@ -15149,3 +15149,10 @@ div#mpblog_content_list .mpblog-container,
 .career-index-application .back-pre-url.top span{
   float: right;
 }
+.catalog-content .box-image img{
+  max-width: 300px;
+  max-height: 500px;
+}
+.catalog-content{
+  text-align: center;
+}

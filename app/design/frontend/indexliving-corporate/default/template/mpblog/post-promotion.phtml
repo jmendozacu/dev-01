@@ -70,7 +70,7 @@ $post = $this->getPost();
                     <h2><?php echo $this->__('Catalog')?></h2>
                     <div class="catalog-content">
                       <div class="box-image">
-                        <a href="<?php echo $bookUrl ?>" title="<?php echo $book->getData('magazine_title') ?>">
+                        <a target="_blank" href="<?php echo $bookUrl ?>" title="<?php echo $book->getData('magazine_title') ?>">
                           <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$book->getData('magazine_thumbnail');?>">
                         </a>
                       </div>
