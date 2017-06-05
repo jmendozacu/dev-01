@@ -15050,7 +15050,8 @@ body.faq-index-index{
   background-image: url("../mpblog/images/assets/google_bookmarks.png");
   background-image: url("../mpblog/images/assets/google_bookmarks.svg");
 }
-/*.open_sticky_menu */.wrapper {
+/*.open_sticky_menu */
+body {
   padding-top:140px;
 }
 /*.open_sticky_menu*/ .header-sticky{
