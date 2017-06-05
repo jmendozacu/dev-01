@@ -18,7 +18,9 @@
         ?>
       </div>
       <div class="name-book">
+        <a href="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $lastest_book->getData('magazine_title') ?>">
         <?php echo $lastest_book->getData('magazine_title') ?>
+        </a>
       </div>
       <div class="short-des"><?php echo $lastest_book->getDescription() ?></div>
       <?php if($lastest_book->getData('magazine_background_pdf') && $lastest_book->getData('magazine_enable_pdf')) : ?>
@@ -59,7 +61,7 @@
     </div>
   </div>
   <div class="category_book">
-    <ul class="categpry_list">
+    <ul class="categpry_list tab"> 
       <li>
         <a href="javascript:;" onclick="getListBooks('all')"title="all"><?php echo $this->__('ALl')?></a>
       </li>
@@ -91,7 +93,9 @@
                 ?>
               </div>
               <div class="name-book">
+                <a href="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $_magazine->getData('magazine_title') ?>">
                 <?php echo $_magazine->getData('magazine_title') ?>
+                </a>
               </div>
               <div class="file-size">
                 <?php echo $this->__('File Size : ') ?>
