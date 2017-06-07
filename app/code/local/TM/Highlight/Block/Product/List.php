@@ -246,7 +246,7 @@ class TM_Highlight_Block_Product_List
             if (!$this->getToolbarBlockName()) {
                 $this->getToolbarBlock()->setData('_current_limit', $this->getProductsCount());
             }
-            
+
             $collection->getSelect()->limit($this->getProductsLimit());
 
             $this->applyDefaultPriceBlock();
@@ -831,7 +831,7 @@ class TM_Highlight_Block_Product_List
         }
 
         $config = array_merge($config, $this->_getAdditionalConfig());
-//Zend_Debug::dump($config['attributes']);die();
+
         return $config['attributes'];
     }
     public function getImageOptions($attribute, $option){
@@ -858,5 +858,22 @@ class TM_Highlight_Block_Product_List
         $config['w'] = $attr->getData('cat_small_width');
         $config['h'] =  $attr->getData('cat_small_height');
         return $config;
+    }
+
+    public function getCollectionRelated($collection = 'highlight/catalog_product_collection')
+    {
+        $_product = Mage::getModel('catalog/product')
+          ->getCollection()
+          ->addAttributeToFilter('sku', array("in" => (explode(",", $this->getSkuFilter()))))
+          ->addAttributeToSelect('name')
+          ->addAttributeToSelect('price')
+          ->addAttributeToSelect('final_price')
+          ->addAttributeToSelect('small_image')
+          ->addAttributeToSelect('flip_image');
+        return $_product;
+    }
+    public function getRelatedLoadedProductCollection()
+    {
+        return $this->getCollectionRelated();
     }
 }
