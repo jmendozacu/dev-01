@@ -464,6 +464,7 @@ div.flipbook-viewport {
     text-align: center;
     margin-bottom:30px;
 }
+.category_book .categpry_list.tab{display: none;}
 .category_book .categpry_list li {
     display:inline-block;
     line-height: 20px;
@@ -537,4 +538,43 @@ div.flipbook-viewport {
   left: 0px;
   top: 0px;
   opacity: 0;
+}
+@media only screen and (max-width: 770px) {
+  .flipbook-view .fb_topBar .box-title {
+    width:100%;
+  }
+  div.flipbook-viewport {
+    padding:0px;
+    margin:0px;
+  }
+  .flipbook.animated {
+    width:100%!important;
+    margin-left:0px!important;
+
+  }
+  #book-zoom {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  div.flipbook-viewport,
+  .flipbook-viewport .page-wrapper div{
+    max-width:100%!important;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+  }
+  .flipbook-viewport .page-wrapper {
+    max-width:50%;
+  }
+  .next-button,
+  .previous-button {
+    display: none!important;
+  }
+  .fb_slider {
+    position: absolute;
+    top: 0px;
+    left: 0px!important;
+    max-width: 100%;
+    z-index: 9;
+    margin: 0px;
+  }
 }

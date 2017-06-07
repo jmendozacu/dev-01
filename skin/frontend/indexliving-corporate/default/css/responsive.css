@@ -815,7 +815,9 @@
         height: 45px;
         background: url(../images/arrow-left.png) no-repeat center center;
     }
-
+    .nav-primary li.level0 a.show-sub-menu:hover {
+      border:none;
+    }
     #header-nav .nav-primary > li.level0.parent a.i-show-sub-menu {
         width: 45px;
         height: 45px;
@@ -1226,7 +1228,7 @@
         text-transform: uppercase;
         position: relative;
         border-bottom: 1px solid #ebebeb;
-        z-index: 9999;
+        z-index: 9;
     }
     .box-menu-home h3:after{
         content:"";
@@ -1979,7 +1981,9 @@
         max-width: none;
     }
 
-    .recommend-product-list div.item {
+    #alsolike-product-list div.item {
+      float:left;
+      margin-right:10px;
     }
 
     #product-list-related div.item {
@@ -4455,6 +4459,12 @@
     .home-service-page .box-service-gray .info-contacts a{
         font-size: 24px;
     }
+  .joy-service-page .list-service li .box-info h2 a br{
+    display:none;
+  }
+  .joy-service-page .list-service li .box-info h2 a br + strong{
+    display:inline-block;
+  }
     .joy-design-page .list-designer li .designer-info h4 {
         font-size:29px;
     }

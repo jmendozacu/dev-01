@@ -44,6 +44,7 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Media extends Mage_Adminhtm
         $fieldset = $form->addFieldset('thumbnails', array('legend' => $this->_helper()->__('Thumbnails')));
 
         $fieldset->addType('ajax_image', 'Magpleasure_Common_Block_System_Entity_Form_Element_File_Image');
+      $fieldset->addType('file', 'Magpleasure_Blog_Block_Adminhtml_Post_Helper_File');
 
         $fieldset->addField('list_thumbnail', 'ajax_image', array(
             'label' => $this->_helper()->__('List Image'),
@@ -89,7 +90,6 @@ class Magpleasure_Blog_Block_Adminhtml_Post_Edit_Tab_Media extends Mage_Adminhtm
           'label'     => $this->_helper()->__('Document'),
           'required'  => false,
           'name'      => 'document_promotion',
-          'note' =>     $this->_helper()->__("<a href='$path'>$document</a>"),
         ));
 
         $fieldset->addField('thumbnail_url', 'text', array(

@@ -10,7 +10,7 @@
     <default>
         <reference name="head">
             <action method="addCss">
-                <name>Amasty/amreports/admin.css</name>
+                <name>amasty/amreports/admin.css</name>
             </action>
         </reference>
     </default>
