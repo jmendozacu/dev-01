@@ -269,6 +269,16 @@
 	background: #000;
 	margin-left: -9px;
 }
+@media screen and (min-width: 990px) {
+	#fancybox-thumbs.bottom {
+		max-width:59.5%;
+	}
+}
+@media screen and (max-width: 768px) {
+	#fancybox-thumbs.bottom {
+		max-width:98%;
+	}
+}
 
 #fancybox-thumbs.top {
 	top: 2px;
