@@ -815,7 +815,9 @@
         height: 45px;
         background: url(../images/arrow-left.png) no-repeat center center;
     }
-
+    .nav-primary li.level0 a.show-sub-menu:hover {
+      border:none;
+    }
     #header-nav .nav-primary > li.level0.parent a.i-show-sub-menu {
         width: 45px;
         height: 45px;
@@ -1226,7 +1228,7 @@
         text-transform: uppercase;
         position: relative;
         border-bottom: 1px solid #ebebeb;
-        z-index: 9999;
+        z-index: 9;
     }
     .box-menu-home h3:after{
         content:"";
