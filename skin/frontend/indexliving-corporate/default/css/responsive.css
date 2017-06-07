@@ -1981,7 +1981,9 @@
         max-width: none;
     }
 
-    .recommend-product-list div.item {
+    #alsolike-product-list div.item {
+      float:left;
+      margin-right:10px;
     }
 
     #product-list-related div.item {
