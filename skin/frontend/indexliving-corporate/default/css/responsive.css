@@ -4459,6 +4459,12 @@
     .home-service-page .box-service-gray .info-contacts a{
         font-size: 24px;
     }
+  .joy-service-page .list-service li .box-info h2 a br{
+    display:none;
+  }
+  .joy-service-page .list-service li .box-info h2 a br + strong{
+    display:inline-block;
+  }
     .joy-design-page .list-designer li .designer-info h4 {
         font-size:29px;
     }
