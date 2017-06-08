@@ -15163,3 +15163,10 @@ div#mpblog_content_list .mpblog-container,
 .catalog-content{
   text-align: center;
 }
+.mpblog-index-post .related-products h2.product-name{
+  position: absolute;
+  top: 240px;
+}
+.mpblog-index-post .related-products .grid-price{
+  padding-top: 50px;
+}
