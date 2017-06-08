@@ -370,6 +370,12 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
       }
       $post->addData($requestPost);
 
+      $published_to = $requestPost['published_to'];
+      $current_time = Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
+      if($published_to < $current_time){
+        $post->setStatus('0');
+      }
+
       # Process Timezone
       if (($post->getUserDefinePublish() || $post->getId() || $post->getId())) {
         $datetimeFormat = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
