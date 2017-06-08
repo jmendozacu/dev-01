@@ -702,4 +702,21 @@ class Magpleasure_Blog_Helper_Data extends Mage_Core_Helper_Abstract
         }
         return $books;
     }
+
+  public function getImages($post_id)
+  {
+    $full_content = Mage::getModel('mpblog/post')->load($post_id)->getFullContent();
+    Varien_Profiler::start("mp::blog::process_dom");
+
+    $domHelper = Mage::helper('mpblog')->getCommon()->getSimpleDOM();
+    $dom = $domHelper->str_get_dom($full_content);
+    $html = '';
+    foreach ($dom->find('img') as $image) {
+      $paths = $image->getAttribute('src');
+      $html .= '<a id="fotorama-a" href="' . $paths . '">';
+      $html .= '<img alt="image post" src="' . $paths . '" />';
+      $html .= '</a>';
+    }
+    return html_entity_decode($html);
+  }
 }

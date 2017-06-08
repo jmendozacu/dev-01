@@ -1,0 +1,42 @@
+.fullscreen,
+.fotorama--fullscreen,
+.fotorama--fullscreen .fotorama__stage,
+.fotorama--fullscreen .fotorama__nav,
+.fotorama-overlay {
+  background-color: rgba(0,0,0,0.6);
+}
+
+.thumbs > .fotorama {
+  overflow: visible;
+}
+
+/* style thumbs a bit */
+.thumbs a {
+  text-decoration: none;
+  display: inline !important;
+  color: #34457b;
+}
+.thumbs a:hover {
+  color: #af1d05;
+}
+.thumbs a.switch {
+  border-bottom: 1px dashed;
+}
+.thumbs img {
+  width: auto;
+  height: 72px;
+  border: 2px #fff solid;
+  margin-left: -2px;
+}
+
+.thumbs a:hover img {
+  border-color: #00afea;
+}
+
+/* straight “close” icon instead of “cancel fullscreen” */
+.fotorama--fullscreen .fotorama__fullscreen-icon {
+  background-position: -64px 0;
+}
+div.thumbs div.fotorama{
+  display: inline-flex;
+}
