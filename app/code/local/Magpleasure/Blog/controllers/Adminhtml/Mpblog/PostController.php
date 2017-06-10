@@ -371,7 +371,9 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
       $post->addData($requestPost);
 
       $published_to = $requestPost['published_to'];
-//      $current_time = Mage::getModel('core/date')->gmtDate('d/m/Y H:i');
+      if(!strtotime($published_to)){
+        $published_to = str_replace('/', '-', $published_to);
+      }
 
       $datetime = Zend_Date::now();
       $datetime->setLocale(Mage::getStoreConfig(
@@ -379,7 +381,7 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
         ->setTimezone(Mage::getStoreConfig(
           Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE));
       $current_time = $datetime->get(Zend_Date::DATETIME_SHORT);
-      
+
       if(strtotime($published_to) < strtotime($current_time)){
         $post->setStatus('0');
       }
@@ -399,6 +401,7 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
       if(!is_null($post_id)){
         $post->setData('random_views',rand(100,150))->save();
       }
+
       $post->save();
       $this->_getSession()->addSuccess($this->_helper()->__("Post was successfully saved."));
 
