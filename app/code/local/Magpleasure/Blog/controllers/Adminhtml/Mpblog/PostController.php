@@ -371,8 +371,16 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
       $post->addData($requestPost);
 
       $published_to = $requestPost['published_to'];
-      $current_time = Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s');
-      if($published_to < $current_time){
+//      $current_time = Mage::getModel('core/date')->gmtDate('d/m/Y H:i');
+
+      $datetime = Zend_Date::now();
+      $datetime->setLocale(Mage::getStoreConfig(
+        Mage_Core_Model_Locale::XML_PATH_DEFAULT_LOCALE))
+        ->setTimezone(Mage::getStoreConfig(
+          Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE));
+      $current_time = $datetime->get(Zend_Date::DATETIME_SHORT);
+      
+      if(strtotime($published_to) < strtotime($current_time)){
         $post->setStatus('0');
       }
 
