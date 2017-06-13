@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <config>
     <sections>
-        <foomancommon>
-            <groups>
-                <extensions>
-                    <fields>
-                        <fooman_googleanalyticsplus translate="label" module="googleanalyticsplus">
-                            <label>GoogleAnalyticsPlus</label>
-                            <frontend_type>label</frontend_type>
-                            <frontend_model>googleanalyticsplus/adminhtml_extensioninfo</frontend_model>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </fooman_googleanalyticsplus>
-                    </fields>
-                </extensions>
-            </groups>
-        </foomancommon>
+        <!--<foomancommon>-->
+            <!--<groups>-->
+                <!--<extensions>-->
+                    <!--<fields>-->
+                        <!--<fooman_googleanalyticsplus translate="label" module="googleanalyticsplus">-->
+                            <!--<label>GoogleAnalyticsPlus</label>-->
+                            <!--<frontend_type>label</frontend_type>-->
+                            <!--<frontend_model>googleanalyticsplus/adminhtml_extensioninfo</frontend_model>-->
+                            <!--<sort_order>10</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>1</show_in_website>-->
+                            <!--<show_in_store>1</show_in_store>-->
+                        <!--</fooman_googleanalyticsplus>-->
+                    <!--</fields>-->
+                <!--</extensions>-->
+            <!--</groups>-->
+        <!--</foomancommon>-->
         <google>
             <groups>
                 <analyticsplus translate="label">
