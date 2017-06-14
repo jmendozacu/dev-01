@@ -44,10 +44,8 @@
                             <div class="post-info">
                                 <div class="mp-header">
                                     <?php if ($post->getCreatedAt()): ?>
-                                        <span class="post-time">
-                                            <?php echo Mage::helper('core')->formatDate($post->getCreatedAt(), 'long', false) ?>
-<!--                                    --><?php //echo date('d F Y', strtotime($post->getCreatedAt()));; ?>
-                                </span>
+                                      <?php $date = Mage::helper('mpblog')->dateThai($post->getCreatedAt()); ?>
+                                      <span class="post-time"><?php echo Mage::helper('core')->formatDate($date, 'long', false) ?></span>
                                     <?php endif; ?>
                                     <div class="post-views">
                                         <strong><?php echo $post->getViews() ?></strong>

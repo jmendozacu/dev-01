@@ -719,4 +719,14 @@ class Magpleasure_Blog_Helper_Data extends Mage_Core_Helper_Abstract
     }
     return html_entity_decode($html);
   }
+    public function dateThai($strDate)
+    {
+        $strYear = date("Y",strtotime($strDate))+543;
+        $strMonth= date("n",strtotime($strDate));
+        $strDay= date("j",strtotime($strDate));
+        $strHour= date("H",strtotime($strDate));
+        $strMinute= date("i",strtotime($strDate));
+        $strSeconds= date("s",strtotime($strDate));
+        return "$strYear-$strMonth-$strDay $strHour:$strMinute:$strSeconds";
+    }
 }
