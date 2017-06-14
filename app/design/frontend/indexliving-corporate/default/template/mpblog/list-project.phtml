@@ -68,7 +68,6 @@
                                 ?>
                                 <?php $category_name = $this->getCategory()->getData('name');?>
                               <?php endif ?>
-                              <div class="post-tag"><span><?php echo $this->__(''.$category_name)?></span></div>
                                 <?php
                                   $isPostHasSlide = Mage::helper('mpblog')->isPostHasSlide($post->getId());
                                   if($isPostHasSlide):

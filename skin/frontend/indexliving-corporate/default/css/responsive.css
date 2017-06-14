@@ -4748,4 +4748,15 @@
         left:50%;
         margin-left:-15px;
     }
+  /*.open_sticky_menu */
+  body.cms-index-index {
+    padding-top:140px;
+  }
+  body.cms-index-index .header-sticky{
+    position: fixed;
+    z-index:10;
+    background:#FFF;
+    top:0;
+    width:100%;
+  }
 }
