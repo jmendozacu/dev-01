@@ -68,7 +68,10 @@ $ages = Mage::helper('career')->getAge();
   </div>
   <div class="clearboth"></div>
   <div id="application">
-    <p class="join_us"><span class="join_us">Join us</span> become part of you team</p>
+    <p class="join_us">
+      <span class="join_us">Join us</span> become part of you team /
+      <span>มาร่วมเป็นส่วนหนึ่งกับเรา</span>
+    </p>
     <div class="parrent-application">
     <div class="application_form">
       <form id="application-form" method="post" enctype="multipart/form-data" action="<?php echo $this->getUrl('career/index/submitApplication',array('job_id'=>$id,'job_title'=>$job->getData('title')))?>">
@@ -178,8 +181,8 @@ $ages = Mage::helper('career')->getAge();
                 </p>
               </li>
             </ul>
-            <p class="note">* You must fill the information</p>
-            <button type="submit" title="Submit" class="button"><span><span>Send form</span></span></button>
+            <p class="note"><?php echo $this->__('* You must fill the information') ?></p>
+            <button type="submit" title="Submit" class="button"><span><span><?php echo $this->__('Send form')?></span></span></button>
           </div>
       </form>
     </div>
