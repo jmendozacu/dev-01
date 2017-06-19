@@ -152,7 +152,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
           ->setTimezone(Mage::getStoreConfig(
             Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE));
         $current_time = $datetime->get(Zend_Date::DATETIME_SHORT);
-        $current_time = Mage::getModel('core/date')->date('Y-m-d H:i', $current_time);
+        $current_time = Mage::getModel('core/date')->date('d/m/Y H:i', $current_time);
 
         if (!$this->_collection){
             /** @var Magpleasure_Blog_Model_Mysql4_Post_Collection  $collection  */
