@@ -4056,7 +4056,7 @@ a.skip-link {
 }
 .cms-index-index .nav-primary{ border-bottom: none;}
 .nav-primary .title-viewall span.level2 {padding:12px 0; color:#FFD322; text-transform:capitalize; float:left; width:100%; padding-left:68px; padding-right:2px; position:relative;}
-.nav-primary > li.level0 { padding: 10px 24px 8px;}
+.nav-primary > li.level0 { padding: 10px 20px 8px;}
 body:lang(th) .nav-primary > li.level0 { padding: 10px 27px 8px;}
 .nav-primary li {float:left;/*width:100%;*/ font-size:14px;  text-transform:capitalize; padding:0; line-height:22px;}
 .nav-primary li.level0 > ul.level0 {
