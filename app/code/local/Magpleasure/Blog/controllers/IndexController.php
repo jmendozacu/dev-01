@@ -449,18 +449,15 @@ class Magpleasure_Blog_IndexController extends Mage_Core_Controller_Front_Action
 
         $html = '';
         if($image_names){
-            $html .='<ul class="main-slider-id'.$post_id.'" id="main-slider-id'.$post_id.'">';
+            $i = 1;
             foreach ($image_names as $image_name) {
                 $images = $image_name->getImages();
                 $paths = $media_dir . 'magebuzz/' . $images;
-
-                $html .= '<li class="popup_img_li_'.$post_id.'">';
-                $html .= '<a class="voucher-gallery-thumbs" data-fancybox-group="voucher-gallery" href="'.$paths.'">';
-                $html .= '<img alt="image post" src="'.$paths.'" />';
+                $html .= '<a id="fotorama-a'.$i.$post_id.'" class="fotorama-a-'.$post_id.'" href="' . $paths . '">';
+                $html .= '<img alt="image post" src="' . $paths . '" />';
                 $html .= '</a>';
-                $html .= '</li>';
+                $i++;
             }
-            $html .= '</ul>';
         }
         $response['result'] = $html;
         $response['success'] = 'true';

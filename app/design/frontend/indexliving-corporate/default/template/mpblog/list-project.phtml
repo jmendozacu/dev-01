@@ -8,151 +8,197 @@
 
 
 <?php
-  $category  = $this->getCategory();
-  $show_landing_field  = $category->getData('category_is_landing_project');
+$category  = $this->getCategory();
+$show_landing_field  = $category->getData('category_is_landing_project');
 ?>
 <div class="mpblog-2column-left">
   <?php if($show_landing_field):?>
     <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('index-corp-blog-indexproject')->toHtml() ?>
   <?php endif; ?>
-    <div class="mpblog-col-left">
-        <?php echo $this->getChildHtml('mpblog.sidebar_category_prject'); ?>
-    </div>
-    <div class="mpblog-col-content">
-        <div class="mpblog-container list list-decor-style3 list-index-project">
-            <div class="mp-blog-head fix-me">
-                <h1 class="mp-title"><?php echo $this->getPageHeader(); ?></h1>
-              <?php if(!$show_landing_field):?>
-                <a class="button button-contact-project-sales" title="<?php echo $this->__('Contact Project Sales') ?>" href="javascript:void(0)"><?php echo $this->__('Contact Project Sales') ?></a>
-              <?php endif; ?>
-            </div>
-            <?php if (count($this->getCollection())): ?>
+  <div class="mpblog-col-left">
+    <?php echo $this->getChildHtml('mpblog.sidebar_category_prject'); ?>
+  </div>
+  <div class="mpblog-col-content">
+    <div class="mpblog-container list list-decor-style3 list-index-project">
+      <div class="mp-blog-head fix-me">
+        <h1 class="mp-title"><?php echo $this->getPageHeader(); ?></h1>
+        <?php if(!$show_landing_field):?>
+          <a class="button button-contact-project-sales" title="<?php echo $this->__('Contact Project Sales') ?>" href="javascript:void(0)"><?php echo $this->__('Contact Project Sales') ?></a>
+        <?php endif; ?>
+      </div>
+      <?php if (count($this->getCollection())): ?>
 
-                <div class="mpblog-list list">
+        <div class="mpblog-list list">
 
-                    <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
-                        <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
-                        <div class="mpblog-post" onclick="showImages(<?php echo $post->getId() ?>)">
-                            <div class="post-image <?php if($post->getImage()):?> box-cursor-pointer <?php endif;?>" id="post-image-<?php echo $post->getId() ?>">
-                                <?php if( $i == 1):   ?>
-                                    <?php if ($post->getPostThumbnailSrc()): ?>
-                                        <div class="post-thumbnail blog-desktop">
-                                            <img class="thumbnail"
-                                                 src="<?php echo $post->getPostThumbnailSrc(); ?>"
-                                                 alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
-                                        </div>
-                                    <?php endif; ?>
-                                  <?php if ($post->getListThumbnailSrc()): ?>
-                                    <div class="thumbnail-container blog-mobile">
-                                      <div class="post-thumbnail">
-                                        <img class="thumbnail"
-                                             src="<?php echo $post->getListThumbnailSrc(); ?>"
-                                             alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
-                                      </div>
-                                    </div>
-                                  <?php endif; ?>
-                                <?php else:?>
-                                    <?php if ($post->getListThumbnailSrc()): ?>
-                                        <div class="thumbnail-container">
-                                            <div class="post-thumbnail">
-                                                <img class="thumbnail"
-                                                         src="<?php echo $post->getListThumbnailSrc(); ?>"
-                                                         alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                <?php endif;?>
-                              <?php
-                              $category_name = '';
-                              if($this->getCategory()):
-                                ?>
-                                <?php $category_name = $this->getCategory()->getData('name');?>
-                              <?php endif ?>
-                                <?php
-                                  $isPostHasSlide = Mage::helper('mpblog')->isPostHasSlide($post->getId());
-                                  if($isPostHasSlide):
-                                ?>
-                                  <div class="popup-image">
-                                      <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>" ></div>
-                                  </div>
-
-                                  <script type="text/javascript">
-                                      setTimeout(function(){
-                                          jQuery(document).ready(function() {
-                                              jQuery('.main-slider-id<?php echo $post->getId() ?> .voucher-gallery-thumbs').fancybox({
-                                                  prevEffect : 'none',
-                                                  nextEffect : 'none',
-                                                  closeBtn  : true,
-                                                  arrows    : true,
-                                                  loop: false,
-                                                  nextClick : true,
-                                                  helpers : {
-                                                      thumbs : {
-                                                          width  : 86,
-                                                          height : 86
-                                                      }
-                                                  }
-                                              });
-                                          });
-                                      }, 1000);
-
-                                  </script>
-                                <?php endif;?>
-                            </div>
-                            <div class="post-info">
-                                <div class="box-left">
-                                    <div class="mp-post-title">
-                                        <?php echo $this->escapeHtml($post->getTitle()); ?>
-                                    </div>
-                                    <div class="mp-content">
-                                        <?php echo $post->getFullContent(); ?>
-                                    </div>
-                                </div>
-                              <?php if($post->getBrandLableThumbnailSrc()): ?>
-                                <div class="box-right">
-                                    <img alt="image logo" src="<?php echo $post->getBrandLableThumbnailSrc() ?>" />
-                                </div>
-                              <?php endif?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+          <?php $i=0; foreach ($this->getCollection() as $post): $i++;?>
+            <?php /** @var Magpleasure_Blog_Model_Post $post */ ?>
+            <div class="mpblog-post">
+              <div class="post-image <?php if($post->getImage()):?> box-cursor-pointer <?php endif;?>" id="post-image-<?php echo $post->getId() ?>">
+                <?php if( $i == 1):   ?>
+                  <?php if ($post->getPostThumbnailSrc()): ?>
+                    <div class="post-thumbnail blog-desktop">
+                      <img class="thumbnail" onclick="showImages(<?php echo $post->getId() ?>)"
+                           src="<?php echo $post->getPostThumbnailSrc(); ?>"
+                           alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                    </div>
+                  <?php endif; ?>
+                  <?php if ($post->getListThumbnailSrc()): ?>
+                    <div class="thumbnail-container blog-mobile">
+                      <div class="post-thumbnail">
+                        <img class="thumbnail" onclick="showImages(<?php echo $post->getId() ?>)"
+                             src="<?php echo $post->getListThumbnailSrc(); ?>"
+                             alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+                <?php else:?>
+                  <?php if ($post->getListThumbnailSrc()): ?>
+                    <div class="thumbnail-container">
+                      <div class="post-thumbnail">
+                        <img class="thumbnail" onclick="showImages(<?php echo $post->getId() ?>)"
+                             src="<?php echo $post->getListThumbnailSrc(); ?>"
+                             alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
+                      </div>
+                    </div>
+                  <?php endif; ?>
+                <?php endif;?>
+                <?php
+                $category_name = '';
+                if($this->getCategory()):
+                  ?>
+                  <?php $category_name = $this->getCategory()->getData('name');?>
+                <?php endif ?>
+                <div class="post-tag"><span><?php echo $this->__(''.$category_name)?></span></div>
+                <?php
+                $isPostHasSlide = Mage::helper('mpblog')->isPostHasSlide($post->getId());
+                if($isPostHasSlide):
+                  ?>
+                  <div class="thumbs" id="thumbs_<?php echo $post->getId() ?>" style="display: none">
+                    <div class="fotorama"
+                         id="fotorama_<?php echo $post->getId() ?>"
+                         data-auto="false"
+                         data-allow-full-screen="true"
+                         data-thumb-width="70"
+                         data-thumb-height="47"
+                         data-nav="thumbs">
+                    </div>
+                  </div>
+                <?php endif;?>
+              </div>
+              <div class="post-info">
+                <div class="box-left">
+                  <div class="mp-post-title">
+                    <?php echo $this->escapeHtml($post->getTitle()); ?>
+                  </div>
+                  <div class="mp-content">
+                    <?php echo $post->getFullContent(); ?>
+                  </div>
                 </div>
-                <?php echo $this->getToolbarHtml(); ?>
-            <?php else: ?>
-                <?php echo $this->__("There are no posts yet."); ?>
-            <?php endif; ?>
+                <?php if($post->getBrandLableThumbnailSrc()): ?>
+                  <div class="box-right">
+                    <img alt="image logo" src="<?php echo $post->getBrandLableThumbnailSrc() ?>" />
+                  </div>
+                <?php endif?>
+              </div>
+            </div>
+          <?php endforeach; ?>
         </div>
+        <?php echo $this->getToolbarHtml(); ?>
+      <?php else: ?>
+        <?php echo $this->__("There are no posts yet."); ?>
+      <?php endif; ?>
     </div>
-    <div class="box-application-form" id="box-application-form">
-        <div class="content-popup">
-            <?php echo $this->getChildHtml('mpblog.application.form'); ?>
-        </div>
-        <a class="icon-close" id="close-application-form" href="javascript:void(0)" title="<?php echo $this->__('Close') ?>"><?php echo $this->__('Close') ?></a>
+  </div>
+  <div class="box-application-form" id="box-application-form">
+    <div class="content-popup">
+      <?php echo $this->getChildHtml('mpblog.application.form'); ?>
     </div>
-    <script type="text/javascript">
-        jQuery('#box-application-form').hide();
-        jQuery('.button-contact-project-sales').click(function() {
-            jQuery('#box-application-form').show();
-        });
-        jQuery('#close-application-form').click(function() {
-            jQuery('#box-application-form').hide();
-        });
-    </script>
+    <a class="icon-close" id="close-application-form" href="javascript:void(0)" title="<?php echo $this->__('Close') ?>"><?php echo $this->__('Close') ?></a>
+  </div>
+  <script type="text/javascript">
+    jQuery('#box-application-form').hide();
+    jQuery('.button-contact-project-sales').click(function() {
+      jQuery('#box-application-form').show();
+    });
+    jQuery('#close-application-form').click(function() {
+      jQuery('#box-application-form').hide();
+    });
+  </script>
   <script type="text/javascript">
     function showImages(postId) {
       if(!jQuery('.main-slider-id'+postId).length){
-      jQuery.ajax({
-        type: "post",
-        url: "<?php echo $this->getUrl('mpblog/index/getSlideImages'); ?>?postId=" + postId,
-        success: function (transport) {
-          if (transport.success == 'true') {
-            jQuery('.parent_content_'+postId).html(transport.result);
-            jQuery(".popup_img_li_"+postId).first().children().click();
+        jQuery.ajax({
+          type: "post",
+          url: "<?php echo $this->getUrl('mpblog/index/getSlideImages'); ?>?postId=" + postId,
+          success: function (transport) {
+            if (transport.success == 'true') {
+              jQuery("#fotorama_"+postId).html(transport.result);
+              jQuery(function($) {
+                // overlay for smoother fullscreen enter
+                var $overlay = $('<div class="fotorama-overlay"></div>')
+                  .css({position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: 10001})
+                  .fadeTo(0, 0)
+                  .hide()
+                  .appendTo('body');
+
+                // take all .fotorama blocks
+                $('#thumbs_'+postId).each(function () {
+                  var $thumbs = $(this),
+
+                  // clone it and make fotorama
+                    $fotorama = $('#fotorama_'+postId, $thumbs)
+                      .clone()
+                      //.show()
+                      .css({position: 'absolute', left: -99999, top: -99999})
+                      .appendTo('body')
+                      .fadeTo(0, 0)
+                      .fotorama(),
+                    fotorama = $fotorama.data('fotorama');
+
+                  for (var _i = 0, _l = fotorama.data.length; _i < _l; _i++) {
+                    // prepare id to use in fotorama.show()
+                    fotorama.data[_i].id = fotorama.data[_i].img;
+                  }
+
+                  // bind clicks
+                  $thumbs.on('click', 'a', function (e) {
+                    e.preventDefault();
+
+                    var $this = $(this);
+
+                    $overlay
+                      .show()
+                      .stop()
+                      .fadeTo(150, 1, function () {
+                        $fotorama.stop().fadeTo(150, 1);
+
+                        // API calls
+                        fotorama
+                          // show needed frame
+                          .show({index: $this.attr('href'), time: 0})
+                          // open fullscreen
+                          .requestFullScreen();
+                      });
+                  });
+
+                  $fotorama.on('fotorama:fullscreenexit', function () {
+                    $fotorama.stop().fadeTo(0, 0);
+                    $overlay.stop().fadeTo(300, 0, function () {
+                      $overlay.hide();
+                    });
+                  });
+                });
+
+              });
+              jQuery('#fotorama_'+postId+' #fotorama-a1'+postId).trigger('click');
+            }
           }
-        }
-      });
+        });
       }
     }
+  </script>
+  <script type="text/javascript">
+
   </script>
 </div>
 

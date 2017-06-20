@@ -41,10 +41,6 @@ $post = $this->getPost();
                 </div>
                 <div class="mp-content std fix-me">
                     <?php echo $post->getFullContent(); ?>
-                    <div class="popup-image" style="display: none">
-                        <div class="popup-content parent_content_<?php echo $post->getId() ?>" id="parent_content_<?php echo $post->getId() ?>">
-                            </div>
-                        </div>
                 </div>
             </div>
             <?php echo $this->getChildHtml('recentpost')?>
@@ -52,6 +48,16 @@ $post = $this->getPost();
       <div class="back-pre-url">
         <span id="back-pre-url" onclick="backPre()" style="cursor: pointer; color: #000"><?php echo ' < '.$this->__('BACK')?></span>
       </div>
+        <div class="thumbs" style="display: none">
+            <div class="fotorama"
+                 data-auto="false"
+                 data-allow-full-screen="true"
+                 data-thumb-width="70"
+                 data-thumb-height="47"
+                 data-nav="thumbs">
+                <?php echo Mage::helper('mpblog')->getImages($post->getId()) ?>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -71,39 +77,68 @@ $post = $this->getPost();
         })
     });
 </script>
-
 <script type="text/javascript">
-    setTimeout(function(){
-        jQuery(document).ready(function() {
-            jQuery('.main-slider-id<?php echo $post->getId() ?> .voucher-gallery-thumbs').fancybox({
-                prevEffect : 'none',
-                nextEffect : 'none',
-                closeBtn  : true,
-                arrows    : true,
-                loop: false,
-                nextClick : true,
-                helpers : {
-                    thumbs : {
-                        width  : 125,
-                        height : 86
-                    }
-                }
+    jQuery(function($) {
+
+        // overlay for smoother fullscreen enter
+        var $overlay = $('<div class="fotorama-overlay"></div>')
+          .css({position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, zIndex: 10001})
+          .fadeTo(0, 0)
+          .hide()
+          .appendTo('body');
+
+        // take all .fotorama blocks
+        $('.thumbs').each(function () {
+            var $thumbs = $(this),
+
+            // clone it and make fotorama
+              $fotorama = $('.fotorama', $thumbs)
+                .clone()
+                  //.show()
+                .css({position: 'absolute', left: -99999, top: -99999})
+                .appendTo('body')
+                .fadeTo(0, 0)
+                .fotorama(),
+              fotorama = $fotorama.data('fotorama');
+
+            for (var _i = 0, _l = fotorama.data.length; _i < _l; _i++) {
+                // prepare id to use in fotorama.show()
+                fotorama.data[_i].id = fotorama.data[_i].img;
+            }
+
+            // bind clicks
+            $thumbs.on('click', 'a', function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+
+                $overlay
+                  .show()
+                  .stop()
+                  .fadeTo(150, 1, function () {
+                      $fotorama.stop().fadeTo(150, 1);
+
+                      // API calls
+                      fotorama
+                          // show needed frame
+                        .show({index: $this.attr('href'), time: 0})
+                          // open fullscreen
+                        .requestFullScreen();
+                  });
+            });
+
+            $fotorama.on('fotorama:fullscreenexit', function () {
+                $fotorama.stop().fadeTo(0, 0);
+                $overlay.stop().fadeTo(300, 0, function () {
+                    $overlay.hide();
+                });
             });
         });
-    }, 1000);
 
+    });
 </script>
 <script type="text/javascript">
-    jQuery(".mpblog-post.mpblog-post-view .mp-content a img").click(function() {
-        jQuery.ajax({
-            type: "post",
-            url: "<?php echo $this->getUrl('mpblog/index/getSlideImagesContentPost'); ?>?postId=" + <?php echo $post->getId() ?>,
-            success: function (transport) {
-                if (transport.success == 'true') {
-                    jQuery('.parent_content_'+<?php echo $post->getId() ?>).html(transport.result);
-                    jQuery(".popup_img_li_"+<?php echo $post->getId() ?>).first().children().click();
-                }
-            }
-        });
-    });
+    jQuery('.mpblog-post.mpblog-post-view .mp-content a img').click(function(){
+        jQuery(".fotorama #fotorama-a").trigger('click');
+    })
 </script>
