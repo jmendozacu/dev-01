@@ -644,6 +644,9 @@
 }
 .mpblog-post .mp-content iframe.blog-video {
   margin-bottom: 1.5em !important;
+  width: 500px !important;
+  height: 281px !important;
+  max-width: 100% !important;
 }
 .mpblog-post .mp-content hr.cutter {
   display: none;
