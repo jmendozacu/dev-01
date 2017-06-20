@@ -119,7 +119,7 @@ class Magpleasure_Blog_Helper_Url extends Mage_Core_Helper_Abstract
 
         $collection
             ->addFieldToFilter('url_key', $clean)
-            ->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_ENABLED, Magpleasure_Blog_Model_Post::STATUS_HIDDEN)))
+            ->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_SCHEDULED, Magpleasure_Blog_Model_Post::STATUS_ENABLED, Magpleasure_Blog_Model_Post::STATUS_HIDDEN)))
             ->setUrlKeyIsNotNull()
         ;
 
