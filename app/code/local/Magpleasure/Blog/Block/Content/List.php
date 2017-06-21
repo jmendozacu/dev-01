@@ -146,14 +146,6 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
 
     public function getCollection()
     {
-        $datetime = Zend_Date::now();
-        $datetime->setLocale(Mage::getStoreConfig(
-          Mage_Core_Model_Locale::XML_PATH_DEFAULT_LOCALE))
-          ->setTimezone(Mage::getStoreConfig(
-            Mage_Core_Model_Locale::XML_PATH_DEFAULT_TIMEZONE));
-        $current_time = $datetime->get(Zend_Date::DATETIME_SHORT);
-        $current_time = Mage::getModel('core/date')->date('d/m/Y H:i', $current_time);
-
         if (!$this->_collection){
             /** @var Magpleasure_Blog_Model_Mysql4_Post_Collection  $collection  */
             $collection = Mage::getModel('mpblog/post')->getCollection();
@@ -161,7 +153,7 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
                 $collection->addStoreFilter(Mage::app()->getStore()->getId());
             }
             $collection->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_ENABLED, Magpleasure_Blog_Model_Post::STATUS_SCHEDULED)) );
-            $collection->addFieldToFilter('published_to', array('gt' => $current_time));
+//            $collection->addFieldToFilter('published_to', array('gt' => $current_time));
 //            $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
             $collection->setUrlKeyIsNotNull();
             $collection->setDateOrder();
