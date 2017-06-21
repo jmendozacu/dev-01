@@ -30,7 +30,8 @@ $collection = $this->getCollectionByLanding('category_is_landing');
                 ?>
                 <?php if ($collection_subcate_2['status'] == 1): ?>
                 <li class="mpblog-category level-2">
-                  <a href="<?php echo $collection_subcate_2->getCategoryUrlSubcate(null,$subcate_id_2); ?>" class="categories-title"><?php echo $this->escapeHtml($collection_subcate_2['name']); ?></a>
+<!--                  <a href="--><?php //echo $collection_subcate_2->getCategoryUrlSubcate(null,$subcate_id_2); ?><!--" class="categories-title">--><?php //echo $this->escapeHtml($collection_subcate_2['name']); ?><!--</a>-->
+                    <span class="categories-title"><?php echo $this->escapeHtml($collection_subcate_2['name']); ?></span>
                   <?php
                   $subcate_ids_3 = $collection_subcate_2->getData('sub_category');
                   if($subcate_ids_3):
