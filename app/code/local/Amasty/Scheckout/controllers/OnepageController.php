@@ -637,13 +637,22 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
       }
 // end customer already had address
       //114: ILM
-      if(in_array("115", $shippingType)){
+        $_product = Mage::getModel('catalog/product');
+        $attr = $_product->getResource()->getAttribute("am_shipping_type");
+        $ilm = null;
+        $thaipost = null;
+        if ($attr->usesSource()) {
+             $ilm = $attr->getSource()->getOptionId("ILM");
+             $thaipost = $attr->getSource()->getOptionId("Thaipost");
+        }
+
+      if(in_array($thaipost, $shippingType)){
         $_response['thaipost'] = 1;
       }
       else{
         $_response['thaipost'] = 0;
       }
-      if(in_array("114", $shippingType)){
+      if(in_array($ilm, $shippingType)){
         $_response['ilm'] = 1;
       }
       else{

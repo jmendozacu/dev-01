@@ -18,8 +18,16 @@
 $shippingType = Mage::helper('customaddress')->checkShippingType();
 $shippingType = implode(",",$shippingType);
 // 114: ILM, 115: THAIPOST
-$hasILM = strpos($shippingType, '114');
-$hasTHAIPOST = strpos($shippingType, '115');
+$_product = Mage::getModel('catalog/product');
+$attr = $_product->getResource()->getAttribute("am_shipping_type");
+$ilm = null;
+$thaipost = null;
+if ($attr->usesSource()) {
+    $ilm = $attr->getSource()->getOptionId("ILM");
+    $thaipost = $attr->getSource()->getOptionId("Thaipost");
+}
+$hasILM = strpos($shippingType, $ilm);
+$hasTHAIPOST = strpos($shippingType, $thaipost);
 ?>
 <div class="order-review-button">
 	<div id='comment'>
