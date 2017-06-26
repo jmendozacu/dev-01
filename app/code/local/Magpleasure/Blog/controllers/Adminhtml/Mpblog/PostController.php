@@ -342,6 +342,7 @@ class Magpleasure_Blog_Adminhtml_Mpblog_PostController extends Magpleasure_Blog_
       }
       if (isset($_FILES['document_promotion']['name']) && $_FILES['document_promotion']['name'] != '') {
         $document = $_FILES["document_promotion"]["name"];
+        $document = str_replace( ' ', '_', $document );
         try {
           $uploader = new Varien_File_Uploader('document_promotion');
           $uploader->setAllowedExtensions(array('pdf', 'doc'));
