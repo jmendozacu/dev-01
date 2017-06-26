@@ -1,5 +1,8 @@
 <?php
 $_productCollection = $this->getRelatedLoadedProductCollection();
+if(count($_productCollection) == 0){
+  $_productCollection = $this->getLoadedProductCollection();
+}
 //$_productCollection->clear();
 //$_productCollection->addAttributeToSelect('flip_image');
 //$_productCollection->load();
