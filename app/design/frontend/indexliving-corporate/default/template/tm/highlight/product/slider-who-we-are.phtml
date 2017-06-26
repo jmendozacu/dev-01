@@ -342,28 +342,34 @@ if ($this->getCategoryFilter()) {
   <a class="blog-mobile button button-view-all" title="<?php echo $this->__('view all') ?>" href="<?php echo $_categoryUrl; ?>"><span><?php echo $this->__('view all products') ?></span></a>
 </div>
 <script type="text/javascript">
-  setTimeout(function(){
-    jQuery("#recommend-product-list-blog").owlCarousel({
-      loop: false,
-      margin: 10,
-      dots:false,
-      nav: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        501: {
-          items: 2
-        },
-        768: {
-          items: 5
-        },
-        1000: {
-          items: 5
+  jQuery(document).ready(function() {
+    setTimeout(function () {
+      jQuery("#recommend-product-list-blog").owlCarousel({
+        loop: false,
+        margin: 10,
+        dots: false,
+        <?php if(count($_productCollection) > 5):?>
+        nav: true,
+        <?php else: ?>
+        nav: false,
+        <?php endif; ?>
+        responsive: {
+          0: {
+            items: 1
+          },
+          501: {
+            items: 2
+          },
+          768: {
+            items: 5
+          },
+          1000: {
+            items: 5
+          }
         }
-      }
-    });
-  }, 1000);
+      });
+    }, 1000);
+  })
 
 </script>
 <script type="text/javascript">
