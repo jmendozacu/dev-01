@@ -26,9 +26,9 @@
                                 <?php if( $i == 1):   ?>
                                     <?php if ($post->getPostThumbnailSrc()): ?>
                                         <div class="post-thumbnail blog-desktop">
-                                            <?php if ($this->hasThumbnailUrl()): ?>
-                                            <a class="thumbnail-url" title="<?php echo $this->escapeHtml($post->getTitle()); ?>" href="<?php echo $this->getThumbnailUrl(); ?>">
-                                                <?php endif; ?>
+<!--                                            --><?php //if ($this->hasThumbnailUrl()): ?>
+                                            <a class="thumbnail-url" title="<?php echo $this->escapeHtml($post->getTitle()); ?>" href="<?php echo $post->getPostUrl(); ?>">
+<!--                                                --><?php //endif; ?>
                                                 <img class="thumbnail"
                                                      src="<?php echo $post->getPostThumbnailSrc(); ?>"
                                                      alt="<?php echo $this->escapeHtml($post->getTitle()); ?>"/>
