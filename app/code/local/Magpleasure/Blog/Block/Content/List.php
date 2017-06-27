@@ -152,12 +152,18 @@ class Magpleasure_Blog_Block_Content_List extends Magpleasure_Blog_Block_Content
             if (!Mage::app()->isSingleStoreMode()){
                 $collection->addStoreFilter(Mage::app()->getStore()->getId());
             }
-
-
-            $collection->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_ENABLED, Magpleasure_Blog_Model_Post::STATUS_SCHEDULED)) );
-//            $collection->addFieldToFilter('published_to', array('gt' => $current_time));
-            $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
-//            Zend_Debug::dump($collection->getSelect()->__toString());
+          $collection->getSelect()->where
+          ('
+                (main_table.status=2) OR
+                (main_table.published_to >= "'. Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s').'"
+                AND
+                 main_table.published_at <= "'. Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s').'"
+                AND
+                 main_table.status=3)
+             ');
+//            $collection->addFieldToFilter('status', array('in' => array(Magpleasure_Blog_Model_Post::STATUS_ENABLED, Magpleasure_Blog_Model_Post::STATUS_SCHEDULED)) );
+//            $collection->addFieldToFilter('published_to', array('gt' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
+//            $collection->addFieldToFilter('published_at', array('lteq' => Mage::getModel('core/date')->gmtDate('Y-m-d H:i:s')));
             $collection->setUrlKeyIsNotNull();
             $collection->setDateOrder();
 
