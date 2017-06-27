@@ -42,7 +42,7 @@
             </li>
             <?php if($post->getDocumentPromotion()):?>
               <li>
-                <a class="mp-download" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
+                <a class="mp-download" target="_blank" title="<?php echo $this->__("Download"); ?>" href="<?php echo  $path = Mage::getBaseUrl('media').DS . 'magebuzz'. DS . 'doccument'. DS . 'promotion'. DS . $post->getDocumentPromotion()?>">
                   <?php echo $this->__("Download"); ?>
                 </a>
               </li>
