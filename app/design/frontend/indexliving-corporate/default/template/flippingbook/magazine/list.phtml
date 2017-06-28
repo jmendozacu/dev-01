@@ -6,7 +6,7 @@
   <div class="lastest-book">
     <?php $lastest_book = $this->getLastestBook(); ?>
     <div class="box-image">
-      <a href="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $lastest_book->getData('magazine_title') ?>">
+      <a href="<?php echo $lastest_book->getData('url_direct_link'); ?>" target="_blank" title="<?php echo $lastest_book->getData('magazine_title') ?>">
         <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$lastest_book->getData('magazine_thumbnail');?>" />
       </a>
     </div>
@@ -18,7 +18,7 @@
         ?>
       </div>
       <div class="name-book">
-        <a href="<?php echo $this->getMagazineUrl($lastest_book); ?>" title="<?php echo $lastest_book->getData('magazine_title') ?>">
+        <a href="<?php echo $lastest_book->getData('url_direct_link'); ?>" target="_blank" title="<?php echo $lastest_book->getData('magazine_title') ?>">
         <?php echo $lastest_book->getData('magazine_title') ?>
         </a>
       </div>
@@ -81,7 +81,7 @@
         <?php foreach($collection as $_magazine): ?>
           <li class="item">
             <div class="box-image">
-              <a href="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $_magazine->getData('magazine_title') ?>">
+              <a href="<?php echo $_magazine->getData('url_direct_link'); ?>" target="_blank" title="<?php echo $_magazine->getData('magazine_title') ?>">
                 <img src="<?php echo  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'flippingbook/images/thumbnail/'.$_magazine->getData('magazine_thumbnail');?>" />
               </a>
             </div>
@@ -93,7 +93,7 @@
                 ?>
               </div>
               <div class="name-book">
-                <a href="<?php echo $this->getMagazineUrl($_magazine); ?>" title="<?php echo $_magazine->getData('magazine_title') ?>">
+                <a href="<?php echo $_magazine->getData('url_direct_link'); ?>" target="_blank" title="<?php echo $_magazine->getData('magazine_title') ?>">
                 <?php echo $_magazine->getData('magazine_title') ?>
                 </a>
               </div>
