@@ -34,7 +34,7 @@
         </div>
         <div class="tb_social" style="float: right; margin-left: 0px;">
 
-          <a class="view" title="<?php echo $this->__('View')?>" href="<?php echo $lastest_book->getData('url_direct_link') ?>"><?php echo $this->__('View') ?></a>
+          <a class="view" target="_blank" title="<?php echo $this->__('View')?>" href="<?php echo $lastest_book->getData('url_direct_link') ?>"><?php echo $this->__('View') ?></a>
 
           <?php if ($lastest_book->getMagazineEnablePdf() && $lastest_book->getMagazineBackgroundPdf()): ?>
             <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
@@ -106,7 +106,7 @@
                 <?php  ?>
               </div>
               <div class="tb_social">
-                <a class="view" title="<?php echo $this->__('View')?>" href="<?php echo $_magazine->getData('url_direct_link'); ?>"><?php echo $this->__('View') ?></a>
+                <a class="view" target="_blank" title="<?php echo $this->__('View')?>" href="<?php echo $_magazine->getData('url_direct_link'); ?>"><?php echo $this->__('View') ?></a>
                 <?php if ($_magazine->getMagazineEnablePdf() && $_magazine->getMagazineBackgroundPdf()): ?>
                   <i class="tbicon icon-pdf" title="<?php echo $this->__('Download PDF'); ?>"
                      onclick="location.href='<?php echo $this->getPdfUrl($_magazine); ?>'"><?php echo $this->__('Download') ?></i>
