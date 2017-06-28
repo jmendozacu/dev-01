@@ -4087,7 +4087,7 @@ body:lang(th) .nav-primary > li.level0 { padding: 10px 27px 8px;}
   width:100%;
   position:relative;
   color:#252525;
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Index', sans-serif;
   font-size: 17px;
   font-weight: 600;
 }
@@ -4108,7 +4108,7 @@ body:lang(th) .nav-primary li a{font-family: 'Index';}
 .nav-primary li.subcat > ul >li {float:left; width:100%;}
 .nav-primary li.subcat ul ul {float:left; width:100%; margin-bottom:15px; margin-top:5px;}
 .nav-primary li.subcat ul  li  a{
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Index', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #464646;
@@ -10934,7 +10934,7 @@ div.paypal-logo span > img {
 .table_price_delivery .table_row{padding-bottom: 10px;border-bottom: solid 1px #e6e6e6;text-align: center;}
 .table_price_delivery .table_row.last{border-bottom: 0;}
 .table_price_delivery .table_row .th{background:#252525;padding: 14px 0 1px;}
-.table_price_delivery .table_row .th h3{color:#FFF; font-size:18px; font-family: 'Kanit'; font-weight: 500;}
+.table_price_delivery .table_row .th h3{color:#FFF; font-size:18px; font-family: 'Index'; font-weight: 500;}
 .table_price_delivery .table_row .total_buy{width: 18%;margin-right: 2%;float: left;}
 .table_price_delivery .table_row .furniture_prd,
 .table_price_delivery .table_row .home_prd{width: 39%;float: left;margin-right: 2%;}
@@ -10948,7 +10948,7 @@ div.paypal-logo span > img {
 .table_price_delivery .table_row .td{background:#f7f7f7;width:49.8%;float:left;border-right:1px solid #FFF;padding:10px;}
 .table_price_delivery .table_row .td:last-child{width: 50%;border-right: 0;}
 .table_price_delivery .table_row .td.free{height:39px;}
-.table_price_delivery .table_row .td h4{font-weight:bold;font-size:16px; font-family: 'Kanit'; margin-bottom: 5px;}
+.table_price_delivery .table_row .td h4{font-weight:bold;font-size:16px; font-family: 'Index'; margin-bottom: 5px;}
 .table_price_delivery .table_row .td p{font-size:15px; font-weight: 300; line-height:18px; color:#000; }
 .table_price_delivery .table_row .tr.clearfix.style1 .td p {
    color:#767676;
@@ -11140,7 +11140,7 @@ div.paypal-logo span > img {
   font-size:16px;
   color:#252525;
   line-height: 26px;
-  font-family: 'Kanit';
+  font-family: 'Index';
   font-weight:300;
 }
 .franchise-concept label {
@@ -11174,7 +11174,7 @@ div.paypal-logo span > img {
   font-weight: bold;
   color:#FBB50D;
   text-transform: uppercase;
-  font-family: 'Kanit';
+  font-family: 'Index';
   margin:15px 0 10px;
 }
 .franchise-concept .box-gray {
@@ -12428,7 +12428,7 @@ ul.mp-details > li >a:before,
 .buttons-set button,
 #career,
 .design-build-page{
-  font-family: 'Kanit', Helvetica, Arial, sans-serif;
+  font-family: 'Index', Helvetica, Arial, sans-serif;
   color: #000;
 }
 
@@ -12948,7 +12948,7 @@ ul.mp-details > li >a:before,
   font-size:20px;
   color:#000;
   font-weight: 500;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 
 /* home service page*/
@@ -12999,7 +12999,7 @@ ul.mp-details > li >a:before,
   vertical-align: middle;
   font-size:26px;
   color:#000;
-  font-family: 'Kanit';
+  font-family: 'Index';
   font-weight: 300;
 }
 .home-service-page .box-qacode .qa-code  {
@@ -13010,7 +13010,7 @@ ul.mp-details > li >a:before,
 .home-service-page .list-service li .box-info h2 {
   position: relative  ;
   padding-bottom:10px;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 .home-service-page .list-service li .box-info h2:before{
   content:"";
@@ -13058,7 +13058,7 @@ ul.mp-details > li >a:before,
   font-size:24px;
   color:#000;
   font-weight: bold;
-  font-family: 'Kanit';
+  font-family: 'Index';
   margin-bottom:15px;
 }
 .home-service-page .box-service-gray ul{
@@ -13073,7 +13073,7 @@ ul.mp-details > li >a:before,
   background:#fff;
   text-align: center;
   padding: 15px 5px;
-  font-family: 'Kanit';
+  font-family: 'Index';
   font-weight: 300;
   font-size:16px;
   color:#252525;
@@ -13097,7 +13097,7 @@ ul.mp-details > li >a:before,
   float:left;
   width:100%;
   margin-top:10px;
-  font-family: 'Kanit';
+  font-family: 'Index';
   font-weight: 300;
   font-size:18px;
   color:#252525;
@@ -13385,7 +13385,7 @@ ul.mp-details > li >a:before,
   margin-right:10px;
   font-size:16px;
   color:#000;
-  font-family: 'Kanit', Helvetica, Arial, sans-serif;
+  font-family: 'Index', Helvetica, Arial, sans-serif;
 }
 .service-home-delivery-assembly .form-list select + span {
   float:left;
@@ -13612,7 +13612,7 @@ margin-bottom:15px;
   font-size: 24px;
   text-transform: none;
   font-weight: 500;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 #application-form p.note{
   color: red;
@@ -13861,7 +13861,7 @@ margin-bottom:15px;
   float:left;
   width:100%;
   margin:22px 0 30px;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 .career-top-info .top-info {
   float:left;
@@ -13901,7 +13901,7 @@ margin-bottom:15px;
   margin-top:-10px;
 }
 .career-contacts h2{
-  font-family: 'Kanit';
+  font-family: 'Index';
   font-size:24px;
   color:#ffc222;
   font-weight: bold;
@@ -13976,7 +13976,7 @@ body.career-index-index .job_list{
   text-align: center;
   font-size: 16px;
   font-weight: 500;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 
 body.career-index-index #job_title,
@@ -14155,7 +14155,7 @@ body.career-index-application #application-form label{
   font-size:22px;
   font-weight: 500;
   line-height: 30px;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 .content_cms.about-us .box-banner .box-info h3{
    margin-bottom:8px;
@@ -14163,7 +14163,7 @@ body.career-index-application #application-form label{
   font-weight: normal;
   text-transform: uppercase;
   color:#000;
-  font-family: 'Kanit';
+  font-family: 'Index';
 }
 .cms-page-view .content_cms.about-us .frist_con .c_left {
   width:34%;
@@ -14184,7 +14184,7 @@ body.career-index-application #application-form label{
 }
 .cms-page-view .content_cms.about-us .frist_con .c_right h2 {
   font-size:28px;
-  font-family: 'Kanit';
+  font-family: 'Index';
   font-weight: bold;
   margin-bottom:20px;
 }
@@ -14202,7 +14202,7 @@ body.career-index-application #application-form label{
   font-size:28px;
   font-weight: bold;
   color:#000;
-  font-family: 'Kanit';
+  font-family: 'Index';
   margin-bottom:20px;
 }
 .cms-page-view .content_cms.about-us #tabs_history,
@@ -14221,7 +14221,7 @@ body.career-index-application #application-form label{
 
 /* brands cms*/
 .cms-brand{
-  font-family: 'Kanit';
+  font-family: 'Index';
   margin-bottom:100px;
   float: left;
   width: 100%;
@@ -14609,7 +14609,7 @@ body.career-index-application #application-form label{
   font-weight: bold;
   line-height:55px;
   margin-bottom:10px;
-  font-family: 'Kanit';
+  font-family: 'Index';
   margin-top: 10px;
 }
 .design-build-page .box2 .container-box {
@@ -14696,7 +14696,7 @@ body.career-index-application #application-form label{
   font-size:50px;
   font-weight: bold;
   margin-bottom:12px;
-  font-family: 'Kanit';
+  font-family: 'Index';
   line-height: 50px;
 }
 .design-build-page .box3 h3 strong{
@@ -14924,7 +14924,7 @@ body.career-index-application #application-form label{
   font-weight: 600;
 }
 body.faq-index-index{
-  font-family: 'Kanit', Helvetica, Arial, sans-serif;
+  font-family: 'Index', Helvetica, Arial, sans-serif;
 }
 @media (max-width: 768px){
   .faq-index-index ul.tabs {
