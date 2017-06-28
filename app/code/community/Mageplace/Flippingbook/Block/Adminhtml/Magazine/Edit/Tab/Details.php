@@ -173,6 +173,16 @@ class Mageplace_Flippingbook_Block_Adminhtml_Magazine_Edit_Tab_Details extends M
                 )
             )
         );
+
+        $fieldset_details->addField('url_direct_link',
+          'text',
+          array(
+            'name'     => 'url_direct_link',
+            'label'    => $this->__("Url for direct link"),
+            'title'    => $this->__("Url for direct link"),
+          )
+        );
+
       $fieldset_details->addField('description',
         'textarea',
         array(
