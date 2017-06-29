@@ -3675,7 +3675,7 @@ body {
   min-height: 45px;
   margin-bottom: 10px;
 }
-body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DBYordX';font-size:18px;}
+body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'Index';font-size:14px;font-weight:normal;color:#636363;}
 .ideas-inspiration .list-ideas ul li a span.text{
   font-size: 18px;
   color: #000000;
@@ -3690,15 +3690,16 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'DB
 .home-blog .owl-item {
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1; 
 }
 
 .home-blog .owl-item h3{
-  font-size: 21px;
+  font-size: 18px;
   font-weight: normal;
   text-align: left;
   text-transform: capitalize;
-  font-family: 'Futura','DBYordX';
+  /*font-family: 'Futura','DBYordX';*/
+  font-family:"Index",Helvetica,Arial,sans-serif;
   margin-top: 10px;
 }
 .home-blog .owl-carousel .owl-controls .owl-nav .owl-prev, .home-video .owl-carousel .owl-controls .owl-nav .owl-prev {
