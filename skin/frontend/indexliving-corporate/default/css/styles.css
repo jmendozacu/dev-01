@@ -14254,9 +14254,9 @@ body.career-index-application #application-form label{
   margin-bottom:20px;
 }
 .cms-brand .top-content label, .cms-brand .top-content .caption_brands {
-  font-size:18px;
-  font-weight: 300;
-  color:#000;
+  font-size:16px;
+  font-weight: normal;
+  color:#636363;
   margin-bottom:65px;
   line-height:30px;  
 }
@@ -14302,9 +14302,9 @@ body.career-index-application #application-form label{
   width:59%;
 }
 .cms-brand .box-content p {
-  font-size:18px;
-  color:#000;
-  font-weight: 300;
+  font-size:16px;
+  color:#636363;
+  font-weight: normal;
   line-height: 24px;
 }
 .cms-brand .box-content p strong{
