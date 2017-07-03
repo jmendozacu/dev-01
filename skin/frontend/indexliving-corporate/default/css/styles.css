@@ -13234,6 +13234,17 @@ ul.mp-details > li >a:before,
   margin-bottom:12px;
   text-transform: uppercase;
 }
+
+.service-detail.sleeping_specialist .top-info {text-align: left;}
+.service-detail.sleeping_specialist .top-info h2 { text-align: center;}
+.service-detail.sleeping_specialist .top-info h3 {margin-bottom: -16px;line-height: 46px;}
+.service-detail.sleeping_specialist .top-info p{font-size: 15px;}
+.service-detail.sleeping_specialist .listd ul {  margin-left: 10px;  margin-bottom: 14px;}
+.service-detail.sleeping_specialist .listd ul li:before { content: "- ";}
+.service-detail.sleeping_specialist .list_num {margin-left: 31px;margin-bottom:19px;}
+.service-detail.sleeping_specialist .list_num li { list-style-type: decimal;}
+
+
 .service-detail.service-home-delivery-assembly .top-info p {
   margin-bottom:25px;
 }
