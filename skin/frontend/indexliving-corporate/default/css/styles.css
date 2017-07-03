@@ -10950,7 +10950,7 @@ div.paypal-logo span > img {
 .table_price_delivery .table_row .td:last-child{width: 50%;border-right: 0;}
 .table_price_delivery .table_row .td.free{height:39px;}
 .table_price_delivery .table_row .td h4{font-weight:bold;font-size:16px; font-family: 'Index'; margin-bottom: 5px;}
-.table_price_delivery .table_row .td p{font-size:15px; font-weight: 300; line-height:18px; color:#000; }
+.table_price_delivery .table_row .td p{font-size:14px; font-weight: normal; line-height:18px; color:#636363; }
 .table_price_delivery .table_row .tr.clearfix.style1 .td p {
    color:#767676;
 }
@@ -12491,9 +12491,9 @@ ul.mp-details > li >a:before,
 .cms-page-view .std .joy-card-page p,
 .joy-card-page .joy-boxinfo .box-info,
 .cms-page-view .std .joy-card-page li{
-  font-size:18px;
-  color:#252525;
-  font-weight: 300;
+  font-size: 16px;
+  color: #636363;
+  font-weight: normal;
   font-style: normal;
   line-height: 28px;
 }
@@ -12561,8 +12561,9 @@ ul.mp-details > li >a:before,
 .cms-page-view .std .joy-card-page .joycard-content-text li,
 .cms-page-view .std .joy-card-page .joycard-content-text p {
   font-size:14px;
-  font-weight: 300;
+  font-weight: normal;
   line-height: 20px;
+  color:#636363;
 }
 .joycard-content-text h5{
   color:#000;
@@ -12681,9 +12682,9 @@ ul.mp-details > li >a:before,
   font-weight: normal;
 }
 .joy-price-page  .box-left p{
-  color:#000;
+  color:#height;
   font-size:18px;
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
   line-height: 30px;
 }
@@ -12692,12 +12693,12 @@ ul.mp-details > li >a:before,
   width:100%;
   margin-bottom:25px;
   font-size:16px;
-  font-weight: 300;
+  font-weight: normal;
   font-style: normal;
   padding-left:100px;
   position: relative;
   line-height: 24px;
-  color:#000;
+  color:#636363;
   min-height:82px;
 }
 .joy-price-page .box-right li:before{
@@ -12714,6 +12715,7 @@ ul.mp-details > li >a:before,
   font-weight: normal;
   margin-bottom:10px;
   display: block;
+  color:#000;
 }
 .joy-price-page .box-right li.economy:before {
   background-position: 0px -373px;
@@ -12927,9 +12929,9 @@ ul.mp-details > li >a:before,
   font-weight: bold;
 }
 .list-service li .box-info p {
-  font-size:17px;
-  color:#000;
-  font-weight: 300;
+  font-size:15px;
+  color:#636363;
+  font-weight: normal;
   font-style: normal;
   line-height: 24px;
   margin-bottom:20px;
@@ -12961,6 +12963,8 @@ ul.mp-details > li >a:before,
   display: table;
   margin-bottom:15px;
 }
+.home-service-page .button.button-facebook{background-color: #034EA1;}
+.home-service-page .button.button-facebook:hover{ background-color: #044082;}
 .home-service-page .top-info .box-logo,
 .home-service-page .top-info .box-video {
    display: table-cell;
@@ -14497,9 +14501,9 @@ body.career-index-application #application-form label{
 }
 .design-build-page .box1 ul li {
   font-size:18px;
-  color:#252525;
+  color:#636363;
   margin-top:18px;
-  font-weight: 300;
+  font-weight: normal;
 }
 .design-build-page .box1 ul li.li-icon {
   padding-left:45px;
@@ -14803,9 +14807,9 @@ body.career-index-application #application-form label{
   float:left;
   width:calc(50% - 10px);
   margin-right:20px;
-  color:#000;
-  font-size:16px;
-  font-weight: 300;
+  color:#636363;
+  font-size:14px;
+  font-weight: normal;
 }
 .design-build-page .box3 .box-text .col2-text + .col2-text {
   margin-right:0px;
@@ -14875,10 +14879,10 @@ body.career-index-application #application-form label{
 .design-build-page .box4 .col-3 li li {
   padding-left:16px;
   position: relative;
-  font-size:16px;
-  font-weight: 300;
+  font-size:14px;
+  font-weight: normal;
   line-height: 24px;
-  color:#000;
+  color:#636363;
 }
 
 .design-build-page .box4 .col-3 li li:before{
