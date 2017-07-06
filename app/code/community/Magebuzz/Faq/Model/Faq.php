@@ -29,8 +29,9 @@ class Magebuzz_Faq_Model_Faq extends Mage_Core_Model_Abstract
 			->join(array('faq_category' => Mage::getModel('core/resource')->getTableName('faq_category_item')), 'main_table.faq_id=faq_category.faq_id')
 			->join(array('fstore' => Mage::getModel('core/resource')->getTableName('faq_store')), 'main_table.faq_id=fstore.faq_id')
 			->where('faq_category.category_id IN (?)', $categories)
-			->where('fstore.store_id IN (?)', $storeIds);
-
+			->where('fstore.store_id IN (?)', $storeIds)
+			->group('fstore.faq_id');
+		;
 		return $collection;
 	}
 }
