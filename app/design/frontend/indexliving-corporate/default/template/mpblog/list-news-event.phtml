@@ -44,7 +44,8 @@
                             <div class="mp-header">
                                 <?php if ($post->getCreatedAt()): ?>
                                   <?php $date = Mage::helper('mpblog')->dateThai($post->getCreatedAt()); ?>
-                                  <span class="post-time"><?php echo Mage::helper('core')->formatDate($date, 'long', false) ?></span>
+                                  <?php $store_id = Mage::app()->getStore()->getStoreId();?>
+                                  <span class="post-time"><?php if($store_id == 3){ echo Mage::helper('core')->formatDate($date, 'long', false);} else { echo Mage::helper('core')->formatDate($post->getCreatedAt(), 'long', false);} ?></span>
                                 <?php endif; ?>
                                 <div class="post-views">
                                     <strong><?php echo $post->getViews() ?></strong>
