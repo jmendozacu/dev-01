@@ -2549,6 +2549,10 @@ span.weee {
 }
 .pages a, .pages .current, .pages .current, .pages .current:hover{font-size:11px;width: auto;min-width:19px;}
 
+.toolbar .pagination .pages .current{padding:0;border-radius:100%;width:19px;height:19px;}
+.toolbar .pagination .pages .current a {color: #ffcd4b;}
+.toolbar .pagination .pages a {line-height: 19px;}
+
 @media only screen and (max-width: 479px) {
   .pager .amount--has-pages {
     display: none;
