@@ -573,7 +573,7 @@ function loadLogoutWithAjax(event) {
 }
 
 document.observe("dom:loaded", function() {
-    AmAjaxLoginLoad('a[href*="customer/account/login/"]');    
+    // AmAjaxLoginLoad('a[href*="customer/account/login/"]');    
     AmAjaxLogoutLoad('a[href*="customer/account/logout/"]');    
 });
 
