@@ -1345,6 +1345,7 @@ i.mpblog-old-magento.glyphicons:before {
   text-transform: capitalize;
   font-weight: normal;
   font-style: normal;
+  display: none;
 }
 .mpblog-list.list .mpblog-post .mp-header{
   color: #898989;
