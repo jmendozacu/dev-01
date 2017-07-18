@@ -14998,6 +14998,7 @@ body.faq-index-index{
   float: left;
   display: inline-block;
   padding-right: 5px;
+  max-width: 59px;
 }
 #career .job-social .share{
   float: left;

@@ -317,6 +317,9 @@ div.flipbook-viewport {
     color: #000;
     cursor: pointer;
 }
+ul#category_book_list .tb_social .view {
+    width: 30px;
+}
 .tb_social .icon-pdf:hover,
 .tb_social .box-share >label:hover,
 .tb_social .view:hover,
