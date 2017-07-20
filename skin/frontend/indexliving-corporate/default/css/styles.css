@@ -3630,22 +3630,22 @@ body {
   float: left;
   width: 100%;
 }
-.ideas-inspiration a.left-link{left:0;} 
-.ideas-inspiration a.left-link:after{display: none;}
-.ideas-inspiration .title-style1 {
+.ideas-inspiration a.left-link, .home-video  a.left-link{left:0;} 
+.ideas-inspiration a.left-link:after, .home-video a.left-link:after{display: none;}
+.ideas-inspiration .title-style1, .home-video .title-style1 {
   margin: 0 0 10px
 }
-.ideas-inspiration .title-style1:before {
+.ideas-inspiration .title-style1:before, .home-video .title-style1:before{
   width: 77%;
 }
-.ideas-inspiration .title-style1 span {
+.ideas-inspiration .title-style1 span, .home-video .title-style1 span {
   line-height: 32px;
   padding-right: 20px;
   position: relative;
   background: #fff;
   font-size: 30px;
 }
-.ideas-inspiration .title-style1 span strong{
+.ideas-inspiration .title-style1 span strong, .home-video .title-style1 span strong{
   font-size: 32px;
 }
 .ideas-inspiration .list-ideas{
