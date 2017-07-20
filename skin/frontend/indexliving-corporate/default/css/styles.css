@@ -4085,6 +4085,7 @@ body:lang(th) .nav-primary > li.level0 { padding: 10px 27px 8px;}
   width: 16.65%;
   position: relative;
 }
+.nav-primary li.level0 > ul.level0 > li.level1:nth-child(6n+1){clear: left;} 
 .nav-primary li.level1{}
 .nav-primary li.level1.first {border-top:none;}
 .nav-primary li.level1 > a {
