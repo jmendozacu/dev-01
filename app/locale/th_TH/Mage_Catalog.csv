@@ -551,7 +551,7 @@
 "For the first order. When a minimum purchase of 500 baht.","สำหรับการสั่งซื้อสินค้าครั้งแรก เมื่อมียอดขั้นต่ำ500บาท"
 "*Reservations are limited to a maximum discount of 300 baht.","*ส่วนลดนี้จำกัดส่วนลดสูงสุด มูลค่า 300 บาท"
 "**The discount code will be sent to your email. And the conditions were prescribed.","รหัสส่วนลดจะถูกส่งเข้าอีเมล และเงื่อนไขเป็นไปตามบริษัทกำหนด"
-"STORE","STORE LOCATOR"
+"STORE","STORE LOCATION"
 "Checkout","ชำระค่าสินค้า"
 "Features","รายละเอียดสินค้า"
 "This product has only %s available items","สินค้าคงเหลือ %s ชิ้น"
