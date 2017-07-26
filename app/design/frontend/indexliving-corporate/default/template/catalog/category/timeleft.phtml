@@ -6,12 +6,18 @@ $storeTimeStamp = strtotime($now);
 $toTimeStamp    = strtotime($time_end);
 $timeleft = (int)$toTimeStamp - (int)$storeTimeStamp;
 $timeleft = $timeleft * 1000;
+if($timeleft > 1000000000){
+  $timeleft = 1000000000;
+}
 ?>
 
 <script type="text/javascript">
   //<![CDATA[
   document.observe("dom:loaded", function() {
     setTimeout(function(){
+      <?php if($timeleft >= 1000000000){ ?>
+        location.reload(true);
+      <?php }else{?>
       var catId = <?php echo $category->getId() ?>;
       var url = '<?php echo $this->getUrl('bannerads/index/disableCategory', array('_secure' => $this->getRequest()->isSecure())); ?>';
       alert('This category is out of date. We will refresh page now');
@@ -30,6 +36,7 @@ $timeleft = $timeleft * 1000;
           }
         }
       );
+      <?php } ?>
     },  <?php echo $timeleft ?>);
   });
   //]]>
