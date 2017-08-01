@@ -145,8 +145,8 @@
 
     /* category */
     .categories-list .category-grid li.category-item {
-        min-height: 340px;
-        max-height: 340px;
+/*        min-height: 340px;
+        max-height: 340px;*/
     }
 
     #customer-reviews .review-list.no-review {
@@ -1876,13 +1876,13 @@
 
     .categories-list .category-grid li.category-item,
     .categories-list .category-grid li.category-item.last {
-        width: 100%;
-        margin-right: 0%;
+        width: 32%;
+        margin-right: 2%;
         padding-bottom: 40px;
         min-height: 0px;
         margin-bottom: 2% !important;
     }
-
+    .categories-list .category-grid li.category-item.last{margin-right:0;}
     .categories-list .category-grid li.category-item.category-products-list {
         position: relative;
     }
@@ -4275,12 +4275,15 @@
     }
 }
 
-@media (max-width: 500px){
+@media (max-width: 500px){ 
+
+    .categories-list .category-grid li.category-item, .categories-list .category-grid li.category-item.last{width: 100%;margin-right:0;max-height: 490px;}
+    .allcategories-list .category-grid .category-item img{max-height:444px;}
     #application-form  #personal_information,
     #application-form  #work_information {
         padding:10px;
     }
-    #application-form .left,
+    #application-form .left, 
     #application-form .right {
         margin:0px 0 10px;
         width:100%;
