@@ -3735,10 +3735,10 @@ body {
 .box-home-list-products .banner-left {float:left; width: 24.75%;}
 .box-home-list-products .banner-left li{margin-bottom:30px;}
 .title-style1 {float:left; width:100%; margin-bottom:40px; text-align:left; position:relative; }
-.title-style1:before {content:""; position:absolute; height:7px; width:87%; background:#F4F4F4; bottom:4px; right:0;}
+.title-style1:before {content:""; position:absolute; height:7px; width:87%; background:#F4F4F4; bottom:10px; right:0;}
 .title-style1 span {display:inline-block; line-height:22px; color:#434343; font-size:24px; text-transform:uppercase; font-weight:normal; background-color: #fff; position: relative; z-index: 10; padding-right: 15px; padding-bottom: 5px;}
 .title-style1 span strong{ font-weight: bold; color: #ffc222;}
-.title-style1 a {position:absolute; bottom:10px; right:0px; line-height:22px; color:#000; font-weight: normal; font-size:14px; padding-right:15px; z-index:9}
+.title-style1 a {position:absolute; bottom:18px; right:0px; line-height:22px; color:#000; font-weight: normal; font-size:14px; padding-right:15px; z-index:9}
 .title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #919191; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
 .title-style1 a:hover {color:#FFC222; text-decoration:none;}
 .title-style1 a:hover:after {border-left-color:#FFC222;}
