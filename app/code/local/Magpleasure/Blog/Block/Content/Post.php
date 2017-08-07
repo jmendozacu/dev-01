@@ -192,13 +192,17 @@ class Magpleasure_Blog_Block_Content_Post extends Magpleasure_Blog_Block_Content
             /** @var Magpleasure_Blog_Model_Category $category  */
             $categoryUrl = Mage::helper('core/http')->getHttpReferer();
             $categoryUrlKey = Mage::helper('mpblog')->getCategoryName($categoryUrl, 'category/', '.html');
-            $categorys = Mage::getModel('mpblog/category')->getCollection()
-              ->addFieldToFilter('url_key',$categoryUrlKey);
-            foreach ($categorys as $category) {
-                $categoryId = $category->getData('category_id');
+            if($categoryUrlKey){
+                $categorys = Mage::getModel('mpblog/category')->getCollection()
+                  ->addFieldToFilter('url_key',$categoryUrlKey);
+                foreach ($categorys as $category) {
+                    $categoryId = $category->getData('category_id');
+                }
+                if($categoryId){
+                    $category = Mage::getModel('mpblog/category')->load($categoryId);
+                    $this->_category = $category;
+                }
             }
-            $category = Mage::getModel('mpblog/category')->load($categoryId);
-            $this->_category = $category;
         }
         return $this->_category;
     }

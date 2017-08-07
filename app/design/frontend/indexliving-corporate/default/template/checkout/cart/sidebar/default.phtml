@@ -44,7 +44,7 @@
         <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>" onclick="return confirm('<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Are you sure you would like to remove this item from the shopping cart?')) ?>');" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
         <p class="product-name"><?php if ($this->hasProductUrl()): ?><a href="<?php echo $this->getProductUrl() ?>"><?php endif; ?><?php echo $this->escapeHtml($this->getProductName()) ?><?php if ($this->hasProductUrl()): ?></a><?php endif; ?></p>
         <p class="product-desc">
-					<?php echo Mage::helper('catalog/output')->productAttribute($_product, nl2br($product->getShortDescription()), 'short_description') ?>
+					<?php echo Mage::helper('catalog/output')->productAttribute($product, nl2br($product->getShortDescription()), 'short_description') ?>
 				</p>
         <?php if ($_options = $this->getOptionList()):?>
           <dl class="item-options">
