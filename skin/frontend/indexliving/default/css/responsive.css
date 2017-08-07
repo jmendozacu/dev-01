@@ -799,6 +799,25 @@
         height: 45px;
         line-height: 45px;
     }
+    #header-nav .nav-primary > li.level0 > a.level0 {
+        display: block;
+        float: left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #363636;
+        height: 45px;
+        line-height: 45px;
+        padding: 0 15px;
+        width: 100%;
+    }
+    #header-nav .nav-primary > li.level0.nav-2 > a.level0 {
+        font-family: 'Index', Helvetica, Arial, sans-serif;
+        font-size: 17px;
+        color: #FFC222;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
     #header-nav .nav-primary > li.level0.parent.parent-active a.level0.has-children {
         float: right;
         font-family: 'Kanit', sans-serif;
@@ -1030,10 +1049,10 @@
     }
 
     .ideas-inspiration .title-style1 span {
-        font-size: 20px;
+        font-size: 25px;
     }
     .ideas-inspiration .title-style1 span strong{
-        font-size: 22px;
+        font-size: 27px;
     }
 
     .title-style1:before, .ideas-inspiration .title-style1:before {
@@ -1351,7 +1370,7 @@
         left: 0px;
         top: 44px;
         z-index: 10000;
-        background: url(../images/bkg_box_filter.png);
+        background: #ffffff;
     }
 
     .box-top-menu .page-header {
