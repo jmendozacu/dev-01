@@ -20,14 +20,43 @@ class Amasty_Scheckout_OnepageController extends Mage_Checkout_OnepageController
 				$shipping = $this->getRequest()->getPost('shipping', array());
 				$usingBillingCase = isset($shipping['same_as_billing']) ? (int)$shipping['same_as_billing'] : 0;
         if (!$usingBillingCase) {
-					//billing is different 
-					$billing['email'] = $shipping['email'];
-					$billing['day'] = $shipping['day'];
-					$billing['month'] = $shipping['month'];
-					$billing['year'] = $shipping['year'];
-					$billing['gender'] = $shipping['gender'];
-					$billing['customer_password'] = $shipping['customer_password'];
-					$billing['confirm_password'] = $shipping['confirm_password'];
+					//billing is different
+          if(isset($shipping['email'])){
+            $billing['email'] = $shipping['email'];
+          }else{
+            $billing['email'] = null;
+          }
+          if(isset($shipping['day'])){
+            $billing['day'] = $shipping['day'];
+          }else{
+            $billing['day'] = null;
+          }
+          if(isset($shipping['month'])){
+            $billing['month'] = $shipping['month'];
+          }else{
+            $billing['month'] = null;
+          }
+          if(isset($shipping['year'])){
+            $billing['year'] = $shipping['year'];
+          }else{
+            $billing['year'] = null;
+          }
+					if(isset($shipping['gender'])){
+            $billing['gender'] = $shipping['gender'];
+          }else{
+            $billing['gender'] = null;
+          }
+					if(isset($shipping['customer_password'])){
+            $billing['customer_password'] = $shipping['customer_password'];
+          }else{
+            $billing['customer_password'] = null;
+          }
+					if(isset($shipping['confirm_password'])){
+            $billing['confirm_password'] = $shipping['confirm_password'];
+          }else{
+            $billing['confirm_password'] = null;
+          }
+
 					
 					$this->getRequest()->setPost('billing', $billing);	
 				}
