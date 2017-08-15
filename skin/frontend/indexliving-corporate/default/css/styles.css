@@ -3465,6 +3465,7 @@ body {
 .topheader-links li.joycard a span:before {background-position:-85px 8px;}
 .topheader-links li.location a span:before {background-position:6px -33px;}
 .topheader-links li.services a span:before {background-position:-36px -33px;}
+.topheader-links:lang(th) li a{font-size: 13px;} 
 
 .header-language-container .box-right {float:right;}
 .call-us {float:left; padding: 0; margin-right:10px;color:#000; }
