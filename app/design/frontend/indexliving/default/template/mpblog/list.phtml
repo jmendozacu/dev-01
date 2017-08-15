@@ -64,3 +64,11 @@
         <?php echo $this->__("There are no posts yet."); ?>
     <?php endif; ?>
 </div>
+<?php /* MS-546: Check active for category Idea Inspiration */ ?>
+<?php if($this->getCategory()->getUrlKey() == 'idea-inspiration'):?>
+    <script type="text/javascript">
+        $j(document).ready(function () {
+            $j('.nav-primary > li.level0.nav-2').addClass('active');
+        });
+    </script>
+<?php endif ?>

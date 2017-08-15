@@ -811,12 +811,14 @@
         padding: 0 15px;
         width: 100%;
     }
-    #header-nav .nav-primary > li.level0.nav-2 > a.level0 {
-        font-family: 'Index', Helvetica, Arial, sans-serif;
-        font-size: 17px;
-        color: #FFC222;
-        text-transform: uppercase;
-        font-weight: bold;
+    #header-nav .nav-primary > li.level0.active > a.level0 {
+        /*font-family: 'Index', Helvetica, Arial, sans-serif;*/
+        /*font-size: 17px;*/
+        /*color: #FFC222;*/
+        /*text-transform: uppercase;*/
+        /*font-weight: bold;*/
+        color: #FFC222!important;
+        font-weight: bold!important;
     }
     #header-nav .nav-primary > li.level0.parent.parent-active a.level0.has-children {
         float: right;

@@ -4093,7 +4093,11 @@ a.skip-link {
 
 
 .nav-primary li a{font-family: 'Futura';color:#252525;}
-.nav-primary li.level0:hover > a{border-bottom: solid 2px #FFC226;}
+.nav-primary li.level0:hover > a,
+.nav-primary li.level0.active > a{
+  border-bottom: solid 2px #FFC226;
+  color: #FFC226;
+}
 .nav-primary li.level0 > a:hover{  text-decoration: none; }
 .nav-primary li.level1 a:hover{border:none;text-decoration: underline;}
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
