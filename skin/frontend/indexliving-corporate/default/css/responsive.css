@@ -789,6 +789,27 @@
     #header-nav .nav-primary > li.level0.parent a.level0 {
         padding: 0 15px;
     }
+    #header-nav .nav-primary > li.level0.active > a.level0 {
+        /*font-family: 'Index', Helvetica, Arial, sans-serif;*/
+        /*font-size: 17px;*/
+        /*color: #FFC222;*/
+        /*text-transform: uppercase;*/
+        /*font-weight: bold;*/
+        color: #FFC222!important;
+        font-weight: bold!important;
+    }
+    #header-nav .nav-primary > li.level0 > a.level0 {
+        display: block;
+        float: left;
+        font-family: 'Kanit', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+        color: #363636;
+        height: 45px;
+        line-height: 45px;
+        padding: 0 15px;
+        width: 100%;
+    }
     #header-nav .nav-primary > li.level0.parent a.level0.has-children {
         display: block;
         width: calc(100% - 45px);

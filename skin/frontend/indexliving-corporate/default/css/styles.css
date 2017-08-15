@@ -4100,7 +4100,11 @@ body:lang(th) .nav-primary > li.level0 { padding: 10px 27px 8px;}
 }
 .nav-primary li a{font-family: 'Futura';color:#252525;}
 body:lang(th) .nav-primary li a{font-family: 'Index';}
-.nav-primary li.level0 a:hover{border-bottom: solid 2px #FFC226;text-decoration: none;}
+.nav-primary li.level0:hover > a,
+.nav-primary li.level0.active > a{
+  border-bottom: solid 2px #FFC226;
+  color: #FFC226;
+}
 .nav-primary li.level1 a:hover{border:none;text-decoration: underline;}
 .nav-primary .menu-content .title-viewall {float:left; width:100%; padding:12px 30px; background:#363636;}
 .nav-primary .menu-content .title-viewall a {float:right; font-size:14px;  font-weight:bold; line-height:22px; color:#fff; padding-right:33px; position:relative;}
