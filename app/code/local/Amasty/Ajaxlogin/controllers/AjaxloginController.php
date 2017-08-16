@@ -307,12 +307,9 @@ class Amasty_Ajaxlogin_AjaxloginController extends Mage_Customer_AccountControll
             //when customer is not yes
             $cusSocialId = $customerBySocialId->getEntityId();
             $customerSocial = Mage::getModel('customer/customer')->load($cusSocialId);
-            if($customerSocial->getData('am_is_activated') == '2'){
+//            if($customerSocial->getData('am_is_activated') == '2'){
               $this->showCartPopup($this->__('Login or Create an Account'), $this->__('You have successfully logged in using your %s account.', $typeName), "", 2);
-            }
-            else{
-              $this->showCartPopup($this->__('Login or Create an Account'), $this->__('Account is not active yet.', $typeName), "", 1);
-            }
+//            }
             
             return;
         }
