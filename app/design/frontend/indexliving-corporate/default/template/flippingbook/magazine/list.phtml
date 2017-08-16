@@ -76,7 +76,10 @@
     </ul>
     <ul class="category_book_list" id="category_book_list">
       <div id="all_list">
-      <?php $collection = Mage::getModel('flippingbook/magazine')->getCollection()->addFieldToFilter('is_active', 1);; ?>
+      <?php $collection = Mage::getModel('flippingbook/magazine')->getCollection()
+        ->addFieldToFilter('is_active', 1)
+      ->addOrder('magazine_sort_order', 'ASC')
+      ; ?>
       <?php if($collection->getData()): ?>
         <?php foreach($collection as $_magazine): ?>
           <li class="item">
