@@ -52,12 +52,12 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 					    $product = Mage::getModel('catalog/product');
 					    $dealerAdds = array();
 					    $dealerDels = array();
-					    $processes = Mage::getSingleton('index/process')->getCollection();
-						$temp = array();
-			    		foreach ($processes as $key => $value) {
-							$temp[$value->getProcessId()] = $value->getMode();
-							$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
-						}
+					 //    $processes = Mage::getSingleton('index/process')->getCollection();
+						// $temp = array();
+			   //  		foreach ($processes as $key => $value) {
+						// 	$temp[$value->getProcessId()] = $value->getMode();
+						// 	$value->setData('mode',Mage_Index_Model_Process::MODE_MANUAL)->save();
+						// }
 					    foreach ($csvdata as $sku => $data) {
 
 					    	$p = $product->loadByAttribute('sku', $sku);
@@ -144,10 +144,10 @@ class MarginFrame_Sync_Model_Cron_Store extends Mage_Core_Model_Abstract
 							unset($s);
 					    	
 					    }					
-					    foreach ($temp as $key => $mode) {
-							$process = Mage::getSingleton('index/process')->load($key);
-							$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
-						}
+					 //    foreach ($temp as $key => $mode) {
+						// 	$process = Mage::getSingleton('index/process')->load($key);
+						// 	$process->setData('mode',Mage_Index_Model_Process::MODE_REAL_TIME)->save();
+						// }
 						
 						fclose($handle);
 						Mage::log('close file : '.$dir.$filenamecsv, null, $filename_log,true);
