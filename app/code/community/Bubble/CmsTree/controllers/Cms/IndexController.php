@@ -29,4 +29,11 @@ class Bubble_CmsTree_Cms_IndexController extends Mage_Cms_IndexController
             $this->_forward('defaultIndex');
         }
     }
+
+  public function noRouteAction($coreRoute = null)
+  {
+      header("HTTP/1.1 301 Moved Permanently");
+      header("Location: ".Mage::helper('core/url')->getHomeUrl());
+      exit();
+  }
 }
