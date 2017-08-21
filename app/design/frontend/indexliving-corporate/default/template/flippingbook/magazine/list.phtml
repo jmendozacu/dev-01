@@ -78,7 +78,8 @@
       <div id="all_list">
       <?php $collection = Mage::getModel('flippingbook/magazine')->getCollection()
         ->addFieldToFilter('is_active', 1)
-      ->addOrder('magazine_sort_order', 'ASC')
+      ->addOrder('magazine_sort_order', 'DESC')
+      ->addOrder('magazine_id', 'DESC')
       ; ?>
       <?php if($collection->getData()): ?>
         <?php foreach($collection as $_magazine): ?>
