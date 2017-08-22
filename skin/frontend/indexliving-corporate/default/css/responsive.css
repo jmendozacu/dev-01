@@ -3441,7 +3441,7 @@
     .title-style1 a {
         display: none;
     }
-
+    .ideas-inspiration .title-style1 a.left-link{display: block;left:10px;}
     #ajax_loader_review {
         position: fixed;
     }

@@ -3758,6 +3758,8 @@ body:lang(th) .ideas-inspiration .list-ideas ul li a span.text{ font-family: 'In
 .title-style1 a:after {content:""; position:absolute; top:7px; right:0px; width:0px; height:0px; border-left:solid 7px #919191; border-bottom:solid 4px transparent; border-top:solid 4px transparent; }
 .title-style1 a:hover {color:#FFC222; text-decoration:none;}
 .title-style1 a:hover:after {border-left-color:#FFC222;}
+.ideas-inspiration .title-style1 a.left-link{left: 0;}
+.ideas-inspiration .title-style1 a.left-link:after{display: none;}
 .box-home-list-products  .category-products {float:left; width:100%;}
 
 .box-home-decor {float:left; width:100%; position:relative;display: none; }
