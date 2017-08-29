@@ -8,10 +8,10 @@
  * Please refer to http://www.magentocommerce.com for more information.
  *
  * @category  Mirasvit
- * @package   Sphinx Search Ultimate
- * @version   2.3.3.1
- * @build     1291
- * @copyright Copyright (C) 2016 Mirasvit (http://mirasvit.com/)
+ * @package   Fast Asynchronous Re-indexing
+ * @version   1.1.13
+ * @build     436
+ * @copyright Copyright (C) 2017 Mirasvit (http://mirasvit.com/)
  */
 
 
@@ -21,6 +21,7 @@ class Mirasvit_MstCore_Model_Feed_Abstract extends Mage_Core_Model_Abstract
     {
         $curl = new Varien_Http_Adapter_Curl();
         $curl->write(Zend_Http_Client::POST, $url, '1.1', array(), http_build_query($params));
+        $curl->addOption('timeout', 10);
         $data = $curl->read();
 
         if ($data === false) {

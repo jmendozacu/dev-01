@@ -8,10 +8,10 @@
  * Please refer to http://www.magentocommerce.com for more information.
  *
  * @category  Mirasvit
- * @package   Sphinx Search Ultimate
- * @version   2.3.3.1
- * @build     1291
- * @copyright Copyright (C) 2016 Mirasvit (http://mirasvit.com/)
+ * @package   Fast Asynchronous Re-indexing
+ * @version   1.1.13
+ * @build     436
+ * @copyright Copyright (C) 2017 Mirasvit (http://mirasvit.com/)
  */
 
 
@@ -52,13 +52,7 @@ class Mirasvit_MstCore_Helper_Data extends Mage_Core_Helper_Data
 
     public function pr($arr, $ip = false, $die = false)
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $clientIp = $_SERVER['HTTP_CLIENT_IP'];
-        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $clientIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else {
-            $clientIp = $_SERVER['REMOTE_ADDR'];
-        }
+        $clientIp = $this->getRemoteIP();
 
         if (!$ip) {
             pr($arr);
@@ -68,6 +62,21 @@ class Mirasvit_MstCore_Helper_Data extends Mage_Core_Helper_Data
                 die();
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getRemoteIP()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $clientIp = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $clientIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $clientIp = $_SERVER['REMOTE_ADDR'];
+        }
+        return $clientIp;
     }
 
     public function copyConfigData($oldPath, $newPath, $callbackFunction = false)
@@ -208,6 +217,47 @@ class Mirasvit_MstCore_Helper_Data extends Mage_Core_Helper_Data
         }
 
         return array();
+    }
+
+    /**
+     * Set value for custom variable.
+     * Create variable if it does not exist.
+     *
+     * @param string $code
+     * @param string $value
+     *
+     * @return Mage_Core_Model_Variable
+     */
+    public function setVar($code, $value)
+    {
+        $variable = Mage::getModel('core/variable');
+        $variable = $variable->loadByCode($code);
+
+        if (!$variable->getId()) {
+            $variable->setCode($code)
+                ->setName($code);
+        }
+
+        $variable->setPlainValue($value)
+            ->setHtmlValue($variable->getPlainValue())
+            ->save();
+
+        return $variable;
+    }
+
+    /**
+     * Get custom variable plain value by code.
+     *
+     * @param string $code
+     *
+     * @return string|null
+     */
+    public function getVar($code)
+    {
+        $variable = Mage::getModel('core/variable');
+        $variable = $variable->loadByCode($code);
+
+        return $variable->getPlainValue();
     }
 }
 

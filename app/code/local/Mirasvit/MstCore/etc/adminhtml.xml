@@ -6,7 +6,7 @@
                 <tools>
                     <children>
                         <mst_validator translate="title">
-                            <title>Extensions Validator</title>
+                            <title>Mirasvit Extensions Validator</title>
                             <sort_order>1001</sort_order>
                             <action>adminhtml/mstcore_validator/index</action>
                         </mst_validator>
