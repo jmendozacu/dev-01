@@ -12,7 +12,7 @@
 <config>
     <modules>
         <EcommerceTeam_Dataflow>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </EcommerceTeam_Dataflow>
     </modules>
