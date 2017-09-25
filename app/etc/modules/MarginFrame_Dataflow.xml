@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MarginFrame_Dataflow>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MarginFrame_Dataflow>
+    </modules>
+</config>

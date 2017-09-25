@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MarginFrame_TTF>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>1.0</version>			
+        </MarginFrame_TTF>
+    </modules>
+</config>

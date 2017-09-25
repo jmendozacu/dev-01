@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <menu>
+        <system>
+            <children>
+                <convert>
+                    <children>
+                        <marginframe_dataflow_product_import>
+                            <title>PIM Product Import</title>
+                            <sort_order>10</sort_order>
+                            <children>
+                                <profile>
+                                    <title>Dataflow - Profiles</title>
+                                    <action>adminhtml/dataflow_profile_import/index</action>
+                                    <sort_order>10</sort_order>
+                                </profile>
+                                <schedule>
+                                    <title>Schedule Log</title>
+                                    <action>adminhtml/dataflow_profile_import/schedule</action>
+                                    <sort_order>20</sort_order>
+                                </schedule>
+                            </children>
+                        </marginframe_dataflow_product_import>
+                    </children>
+                </convert>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <convert>
+                                <children>
+                                    <marginframe_dataflow_product_import>
+                                        <title>PIM Product Import</title>
+                                        <children>
+                                            <profile translate="title">
+                                                <title>Allow Manage Profiles</title>
+                                                <sort_order>10</sort_order>
+                                            </profile>
+                                            <schedule translate="title">
+                                                <title>Allow to Manage Schedule</title>
+                                                <sort_order>60</sort_order>
+                                            </schedule>
+                                        </children>
+                                    </marginframe_dataflow_product_import>
+                                </children>
+                            </convert>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

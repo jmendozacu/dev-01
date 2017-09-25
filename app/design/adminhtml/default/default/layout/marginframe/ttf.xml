@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <ttf_adminhtml_importcod_index>
+        <reference name="content">
+            <block type="ttf/adminhtml_importcod" name="importcod" />
+        </reference>
+    </ttf_adminhtml_importcod_index>
+</layout>
