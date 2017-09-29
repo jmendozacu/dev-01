@@ -24,12 +24,14 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 /**
- * @var Mage_Page_Block_Html_Header $this
+ * @var Mage_Page_Block_Html_Header $this 
  */
 ?>
+
 <script type="text/javascript">
   customerIsLoggedIn = <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()):?>false <?php else:?>true <?php endif;?>;
 </script>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('top-banner-on-header')->toHtml() ?> 
 <div class="header-sticky">
   <div class="header-language-background">
     <div class="header-language-container">
@@ -42,7 +44,7 @@
       </div>
     </div>
   </div>
-
+  
   <header id="header" class="page-header">
     <div class="page-header-container">
       <div class="icon-menu box-mobile toggle-header-content" id="toggle-menu">

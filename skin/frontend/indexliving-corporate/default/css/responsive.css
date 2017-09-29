@@ -4775,13 +4775,16 @@
     }
   /*.open_sticky_menu */
   body.cms-index-index {
-    padding-top:140px;
+    padding-top:0;
   }
   body.cms-index-index .header-sticky{
-    position: fixed;
+    position: relative;
     z-index:10;
     background:#FFF;
     top:0;
     width:100%;
   }
+  .open_sticky_menu .header-sticky{position: fixed !important;}
+  .open_sticky_menu .top-banner-on-header{display: none !important;}
+   body.cms-index-index.open_sticky_menu {padding-top:300px;}
 }

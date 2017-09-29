@@ -15194,3 +15194,6 @@ div#mpblog_content_list .mpblog-container,
 .mpblog-index-post .related-products .grid-price{
   padding-top: 50px;
 }
+
+.top-banner-on-header{text-align: center;}
+.top-banner-on-header img{display: inline-block;}
