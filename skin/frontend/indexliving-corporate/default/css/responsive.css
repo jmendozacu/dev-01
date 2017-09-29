@@ -4786,5 +4786,5 @@
   }
   .open_sticky_menu .header-sticky{position: fixed !important;}
   .open_sticky_menu .top-banner-on-header{display: none !important;}
-   body.cms-index-index.open_sticky_menu {padding-top:300px;}
+   body.cms-index-index.open_sticky_menu {padding-top:200px;}
 }
