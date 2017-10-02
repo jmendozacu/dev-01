@@ -121,6 +121,6 @@ class Magebuzz_Career_Adminhtml_CareerjobController extends Mage_Adminhtml_Contr
   }
 
   protected function _isAllowed()	{
-    return Mage::getSingleton('admin/session')->isAllowed('career/items');
+    return Mage::getSingleton('admin/session')->isAllowed('career/job');
   }
 }

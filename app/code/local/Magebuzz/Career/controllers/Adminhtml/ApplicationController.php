@@ -96,5 +96,7 @@ class Magebuzz_Career_Adminhtml_ApplicationController extends Mage_Adminhtml_Con
     die;
   }
 
-
+  protected function _isAllowed()   {
+    return Mage::getSingleton('admin/session')->isAllowed('career/application');
+  }
 }
