@@ -657,6 +657,7 @@
 }
 
 @media (max-width: 768px) {
+
     .tab-left:before {
         background: transparent;
     }
@@ -773,6 +774,13 @@
     .icon-minicart.active {
         background-position: -69px -180px;
     }
+
+    /*Banner King Rama 9*/
+    .page {  padding-top: 78px;}
+    .top-banner-on-header {text-align: center;position: fixed;top: 0px;width: 100%; float: left;z-index: 9999;}
+    #header { background: #ffffff; float: left;width: 100%; padding: 0px;position: fixed; z-index: 999; top: 76px; border-bottom: 1px solid #ebebeb;}
+
+
 
     #header-nav .nav-primary > li.level0 {
         width: 100%;
@@ -4787,4 +4795,22 @@
   .open_sticky_menu .header-sticky{position: fixed !important;}
   .open_sticky_menu .top-banner-on-header{display: none !important;}
    body.cms-index-index.open_sticky_menu {padding-top:200px;}
+}
+
+/*Banner King 9*/
+@media (max-width: 685px) {
+    #header{top: 68px;}
+    .page { padding-top: 69px;}
+}   
+@media (max-width: 414px) {
+    #header{top: 43px;}
+    .page { padding-top: 45px;}
+}  
+@media (max-width: 414px) {
+    #header{top: 40px;}
+    .page { padding-top: 42px;}
+}
+@media (max-width: 320px) {
+    #header{top: 35px;}
+    .page { padding-top: 36px;}
 }
