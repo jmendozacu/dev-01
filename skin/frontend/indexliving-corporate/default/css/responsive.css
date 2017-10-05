@@ -776,11 +776,9 @@
     }
 
     /*Banner King Rama 9*/
-    .page {  padding-top: 78px;}
-    .top-banner-on-header {text-align: center;position: fixed;top: 0px;width: 100%; float: left;z-index: 9999;}
-    #header { background: #ffffff; float: left;width: 100%; padding: 0px;position: fixed; z-index: 999; top: 76px; border-bottom: 1px solid #ebebeb;}
-
-
+    .page {  padding-top: 71px;} 
+    .top-banner-on-header {text-align: center;position: fixed;top: 0px;width: 100%; float: left;z-index: 9999;height: 71px;}
+    #header { background: #ffffff; float: left;width: 100%; padding: 0px;position: fixed; z-index: 999; top: 71px; border-bottom: 1px solid #ebebeb;}
 
     #header-nav .nav-primary > li.level0 {
         width: 100%;
@@ -4799,17 +4797,20 @@
 
 /*Banner King 9*/
 @media (max-width: 685px) {
-    #header{top: 68px;}
-    .page { padding-top: 69px;}
-}   
-@media (max-width: 414px) {
-    #header{top: 43px;}
-    .page { padding-top: 45px;}
+    .top-banner-on-header{height: 63px;}
+    #header{top: 63px;}
+    .page { padding-top: 64px;}
+}  
+@media (max-width: 500px) {
+    .top-banner-on-header{height: 48px;}
+    #header{top: 48px;}
+    .page { padding-top: 49px;}
 }  
 @media (max-width: 414px) {
-    #header{top: 40px;}
-    .page { padding-top: 42px;}
-}
+    .top-banner-on-header{height: 38px;}
+    #header{top: 38px;}
+    .page { padding-top: 39px;}
+}  
 @media (max-width: 320px) {
     #header{top: 35px;}
     .page { padding-top: 36px;}

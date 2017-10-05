@@ -15195,5 +15195,5 @@ div#mpblog_content_list .mpblog-container,
   padding-top: 50px;
 }
 
-.top-banner-on-header{text-align: center;}
+.top-banner-on-header{text-align: center; height: auto; max-height: 100px;} 
 .top-banner-on-header img{display: inline-block;}
