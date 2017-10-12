@@ -298,7 +298,7 @@
   .main-banners .wrap-bannerads .bx-wrapper .main-banners .wrap-bannerads div.banner .bx-viewport, .main-banners .wrap-bannerads div.banner .bx-viewport img{max-height: 357px !important;}
   .main-banners .wrap-bannerads .bx-wrapper{}
   .wrap-bannerads .bx-viewport .banner-desc{
-      display: none;
+      /*display: none;*/
   }
   .main-banners .bx-wrapper .bx-pager.bx-default-pager {  bottom: 15px;}
   .wrap-bannerads .bx-viewport .banner-desc::before{display: none;}
