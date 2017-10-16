@@ -54,9 +54,10 @@ class Magebuzz_Career_Helper_Data extends Mage_Core_Helper_Abstract{
       array('value' => 6, 'label' => Mage::helper('career')->__('5-8')),
       array('value' => 7, 'label' => Mage::helper('career')->__('5-10')),
       array('value' => 8, 'label' => Mage::helper('career')->__('8-15')),
-      array('value' => 9, 'label' => Mage::helper('career')->__('10-15')),
-      array('value' => 10, 'label' => Mage::helper('career')->__('15-25')),
-      array('value' => 11, 'label' => Mage::helper('career')->__('20 and up')),
+      //array('value' => 9, 'label' => Mage::helper('career')->__('10-15')),
+      //array('value' => 10, 'label' => Mage::helper('career')->__('15-25')),
+      //array('value' => 11, 'label' => Mage::helper('career')->__('20 and up')),
+      array('value' => 9, 'label' => Mage::helper('career')->__('15 and up')),
     );
   }
   public function getTitleAge($ageId){
@@ -87,14 +88,17 @@ class Magebuzz_Career_Helper_Data extends Mage_Core_Helper_Abstract{
     elseif($ageId == 8){
       return '8-15';
     }
-    elseif($ageId == 9){
-      return '10-15';
-    }
-    elseif($ageId == 10){
-      return '15-25';
-    }
-    elseif($ageId == 11){
-      return '20 and up';
+    // elseif($ageId == 9){
+    //   return '10-15';
+    // }
+    // elseif($ageId == 10){
+    //   return '15-25';
+    // }
+    // elseif($ageId == 11){
+    //   return '20 and up';
+    // }
+    else{
+      return '15 and up';
     }
   }
 }

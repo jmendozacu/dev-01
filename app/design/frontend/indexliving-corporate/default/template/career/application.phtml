@@ -113,7 +113,7 @@ $ages = Mage::helper('career')->getAge();
                 </div>
               </div>
               <div class="field right">
-                <label for="date_of_birth"><?php echo $this->__('Date Of Birth') ?></label>
+                <label for="date_of_birth"><?php echo $this->__('Date Of Birth') ?> <?php echo $this->__('dd/mm/yyyy (A.D.)') ?></label>
                 <div class="input-box dob_box" style="position: relative">
                   <input type="text" name="date_of_birth" value="" id="date_of_birth" class="input-text " title="<?php echo $this->__('Date Of Birth') ?>" />
                 </div>
@@ -209,7 +209,7 @@ $ages = Mage::helper('career')->getAge();
   });
   Calendar.setup({
     inputField : 'date_of_birth',
-    ifFormat : '%m/%e/%Y',
+    ifFormat : '%e/%m/%Y',
     button : 'date_from_trig',
     align : 'Bl',
     singleClick : true,

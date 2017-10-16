@@ -18,8 +18,15 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
         else{
             try {
                 $fileName = '';
+                if(isset($_FILES['cp-attachment'])) {
+                    
+                }
                 if (isset($_FILES['cp-attachment']['name']) && $_FILES['cp-attachment']['name'] != '') {
-                    try {
+                    //try {
+                        $maxsize = 1048576;
+                        if(($_FILES['cp-attachment']['size'] > $maxsize)) {
+                            throw new Exception('File too large. File must be less than 1 MB.');
+                        }
                         $now = date('ymdHis');
                         $fileName = $now.'_'.$_FILES['cp-attachment']['name'];
                         $uploader = new Varien_File_Uploader('cp-attachment');
@@ -35,9 +42,9 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
                             $fileName = $res['file'];
                         }
                         $attachmentFilePath = Mage::getBaseDir('media') . DS . 'career' . DS . $fileName;
-                    } catch (Exception $e) {
-                        Mage::getSingleton('customer/session')->addError($e->getMessage());
-                    }
+                    // } catch (Exception $e) {
+                    //     Mage::getSingleton('customer/session')->addError($e->getMessage());
+                    // }
                 }
                 $model = Mage::getModel('career/application');
                 $model
