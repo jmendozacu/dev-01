@@ -167,14 +167,14 @@ $ages = Mage::helper('career')->getAge();
               <li>
                 <label for="cp-attachment"><?php echo $this->__('Attach CV/Resume')?></label>
                 <div class="input-box input-attachment">
-                  <input class="" id="uploadFile" placeholder="<?php echo $this->__('No file chosen') ?>" disabled="disabled" />
+                  <input class="validate-upload-size" id="uploadFile" placeholder="<?php echo $this->__('No file chosen') ?>" disabled="disabled" />
                   <div class="box-attachment">
                     <span><?php echo $this->__('Choose File') ?></span>
                     <input class="input-text" type="file" id="cp-attachment" name="cp-attachment" />
                   </div>
                 </div>
                 <p class="comment-attachment">
-                  <?php echo $this->__('* If there are multiple files, please zip to a single file (the total file size is not more than 1 Mb.)')?>
+                  <?php echo $this->__('* If there are multiple files, please zip to a single file (the total file size is not more than 1 MB.)')?>
                   </br>
                   <?php echo $this->__('* In case there is no CV / Resume attached, please fill out the Application Form.')?>
                 </p>
@@ -238,4 +238,18 @@ $ages = Mage::helper('career')->getAge();
   document.getElementById("cp-attachment").onchange = function () {
     document.getElementById("uploadFile").value = this.files[0].name;
   };
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+    var theForm = new VarienForm('application-form', true);
+    Validation.add('validate-upload-size','<?php echo $this->__('File must be less than 1 MB.') ?>', function(the_field_value){
+      var file = document.getElementById('cp-attachment').files[0];
+      if(file && file.size > 1048576) { // 1 MB (this size is in bytes)
+          return false;        
+      }
+      return true;
+    });
+
+//]]>   
 </script>

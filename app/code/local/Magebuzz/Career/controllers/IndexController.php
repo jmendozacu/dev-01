@@ -61,8 +61,9 @@ class Magebuzz_Career_IndexController extends Mage_Core_Controller_Front_Action{
                 return;
             }
             catch (Exception $e) {
-                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
-                $this->_redirect('*/*/');
+                Mage::getSingleton('core/session')->addError($e->getMessage());
+                //$this->_redirect('*/*/');
+                $this->_redirectReferer();
                 return;
             }
         }
