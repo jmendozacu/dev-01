@@ -1396,7 +1396,7 @@ button#ajaxcart_continue_shopping { background: #f0f1d9; color: #7c7c7c;}
  */
 .icon-sprite, .btn-remove2, /* .ratings .rating-box, .ratings .rating-box .rating, */ .pager > .sort-by .sort-by-switcher, .sorter > .view-mode .grid,
 .sorter > .view-mode .list, .skip-nav .icon, .skip-search .icon, #search_mini_form .search-button:before, .skip-account .icon, .skip-cart .icon/* , .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating  */{
-  background-image: url(../images/icon_sprite.png);
+  background-image: url(../images/icon_sprite_new_update.png);
   background-repeat: no-repeat;
   text-indent: -9999px;
 }
