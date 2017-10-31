@@ -774,13 +774,13 @@
     .icon-minicart.active {
         background-position: -69px -180px;
     }
-
+    .searchautocomplete .nav .nav-input input { left: 22%;right: 20px;}
     /*Banner King Rama 9*/
-    .page {  padding-top: 71px;} 
-    .top-banner-on-header {text-align: center;position: fixed;top: 0px;width: 100%; float: left;z-index: 9999;height: 71px;}
-    #header { background: #ffffff; float: left;width: 100%; padding: 0px;position: fixed; z-index: 999; top: 71px; border-bottom: 1px solid #ebebeb;}
+    .page {  padding-top: 0;}  
+    .top-banner-on-header {text-align: center;position: fixed;top: 0px;width: 100%; float: left;z-index: 9999;height: 0;}
+    #header { background: #ffffff; float: left;width: 100%; padding: 0px;position: fixed; z-index: 999; top: 0; border-bottom: 1px solid #ebebeb;}
     #header-nav .nav-primary > li.level0 {
-        width: 100%;
+        width: 100%;  
         border-bottom: 1px solid #ebebeb;
         padding: 0;
     }
@@ -2970,7 +2970,7 @@
     }
 }
 
-@media (min-width: 640px) and (max-width: 767px) {
+@media (min-width: 640px) and (max-width: 767px) { 
     #customer-reviews .review-list li > div.review-rating {
         width: 30%;
     }
@@ -2986,7 +2986,10 @@
         text-align: right;
     }
 }
-
+@media (max-width: 767px){
+  #header-search{top: 0;}
+  .searchautocomplete {  width: 100%;}
+}    
 .cms-page-view.cms-custom-form .std .bank_radio li.fields {
     width: 100%;
     overflow: auto
@@ -4302,13 +4305,9 @@
     }
 }
 @media (max-width: 755px){
-    .searchautocomplete { width: 100%;}
-    #header-search{top:70px;}
     .searchautocomplete .nav .nav-input input{left: 30px;}
 }   
-@media (max-width: 680px){
-    #header-search{top: 62px;}
-}   
+
 @media (max-width: 500px){ 
         #header-search {top: 47px;}
     .categories-list .category-grid li.category-item, .categories-list .category-grid li.category-item.last{width: 100%;margin-right:0;max-height: 490px;}
@@ -4802,23 +4801,7 @@
 }
 
 /*Banner King 9*/
-@media (max-width: 685px) {
-    .top-banner-on-header{height: 63px;}
-    #header{top: 63px;}
-    .page { padding-top: 64px;}
-}  
-@media (max-width: 500px) {
-    .top-banner-on-header{height: 48px;}
-    #header{top: 48px;}
-    .page { padding-top: 49px;}
-}  
-@media (max-width: 414px) {
-    .top-banner-on-header{height: 38px;}
-    #header{top: 38px;}
-    .page { padding-top: 39px;}
-    #header-search{top:37px;}
-}  
-@media (max-width: 320px) {
-    #header{top: 35px;}
-    .page { padding-top: 36px;}
-}
+@media (max-width: 680px){
+    #header-search{top: 0;}
+    #header { top: 0;}
+}   
