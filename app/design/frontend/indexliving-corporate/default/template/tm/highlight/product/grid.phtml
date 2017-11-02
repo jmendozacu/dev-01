@@ -70,7 +70,7 @@
                 <h2 class="product-name">
                 <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
                 <?php //echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
-                <?php $productName = $this->htmlEscape($_product->getName()); echo Mage::helper('core/string')->truncate($productName, $length = 31, $etc = '...', $remainder = '', $breakWords = true); ?>
+                <?php $productName = $this->htmlEscape($_product->getName()); echo Mage::helper('core/string')->truncate($productName, $length = 77, $etc = '...', $remainder = '', $breakWords = true); ?>
                 </a>
                 </h2>
                 <div class="desc">

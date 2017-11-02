@@ -4750,7 +4750,7 @@ body.catalogsearch-result-index .page-title h1 {
 .category-products .products-grid .link-wishlist{right:10px;}
 .products-grid .link-wishlist.added-item {background-position:-78px -791px;}
 .products-grid .product-name {line-height:21px; margin-bottom:5px;height:48px;overflow: hidden;}
-.products-grid .product-name a {color:#000; font-size:17px; font-weight: bold; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
+.products-grid .product-name a {color:#000; font-size:17px; font-weight: normal; line-height:18px; height:18px; overflow:hidden; text-transform:uppercase; }
 .products-grid .desc {font-size:12px; color:#434343; font-weight: 300; margin-bottom:5px; height: 18px;display: none;}
 .products-grid  .grid-price {float:left; width:100%; position:relative;}
 .products-grid  .grid-price .save-price-percent, .catalog-product-view .product-view .product-shop .save-price-percent{position:absolute; padding: 4px 5px 1px 6px; text-align:center;background-color: #FF0000; font-size:8px; text-transform:uppercase; color:#FFF; line-height:10px; font-weight: bold;}
@@ -12348,6 +12348,8 @@ body:lang(en) .list-all-product-dealer .dealer-pager .amount{font-size: 16px;tex
 .product-view .bundle .product-options {padding-top: 87px;}
 .product-view .bundle .change-qty { margin-top: 84px;}
 .product-view .bundle .add-to-cart {position: absolute;top: 0;}
+
+body:lang(th) .products-grid .product-name a, .products-grid .product-name a{font-weight: normal;}
 
 /* ============================================ *
  * MS-45:  Show option bundle product
