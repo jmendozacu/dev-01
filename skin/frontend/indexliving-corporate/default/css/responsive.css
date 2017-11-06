@@ -2380,9 +2380,11 @@
     }
 
     .products-grid .product-name {
-        height: 42px;
+        height: 45px;
         overflow: hidden;
     }
+    body:lang(th) .products-grid .product-name {height: 50px;}
+    .products-grid .product-name a {font-size: 16px;}
 
     /* my account */
     .col2-set .col-1.registered-users, .forgot-password,
