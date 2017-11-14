@@ -14062,6 +14062,7 @@ body.career-index-index .job_list tbody tr td a:hover{
   font-weight: 300;
   line-height: 28px;
 }
+.content-job .list-info div{font-family: 'db_yord_xregular', Helvetica, Arial, sans-serif;font-size: 20px;}
 .content-job .list-info label{
   font-size: 16px;
   font-weight: 500;
